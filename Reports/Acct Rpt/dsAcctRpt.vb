@@ -164,7 +164,7 @@ Public Class dsAcctRpt
         End If
         If (Not (ds.Tables("CYRate")) Is Nothing) Then
             Me.Tables.Add(New CYRateDataTable(ds.Tables("CYRate")))
-        End Ifx
+        End If
         If (Not (ds.Tables("Sales")) Is Nothing) Then
             Me.Tables.Add(New SalesDataTable(ds.Tables("Sales")))
         End If
