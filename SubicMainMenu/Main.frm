@@ -1,4 +1,5 @@
 VERSION 5.00
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.1#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmMain 
    BorderStyle     =   1  'Fixed Single
    ClientHeight    =   1170
@@ -178,15 +179,87 @@ Begin VB.Form frmMain
          Width           =   1260
       End
    End
-   Begin VB.PictureBox ilsMenuIcons 
-      BackColor       =   &H80000005&
-      Height          =   480
+   Begin MSComctlLib.ImageList ilsMenuIcons 
       Left            =   0
-      ScaleHeight     =   420
-      ScaleWidth      =   1140
-      TabIndex        =   9
       Top             =   0
-      Width           =   1200
+      _ExtentX        =   1005
+      _ExtentY        =   1005
+      BackColor       =   -2147483643
+      ImageWidth      =   16
+      ImageHeight     =   16
+      MaskColor       =   12632256
+      _Version        =   393216
+      BeginProperty Images {2C247F25-8591-11D1-B16A-00C0F0283628} 
+         NumListImages   =   17
+         BeginProperty ListImage1 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "Main.frx":A852
+            Key             =   """DataEntry"""
+         EndProperty
+         BeginProperty ListImage2 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "Main.frx":A9AC
+            Key             =   """ShutDown"""
+         EndProperty
+         BeginProperty ListImage3 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "Main.frx":D15E
+            Key             =   """Timer"""
+         EndProperty
+         BeginProperty ListImage4 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "Main.frx":D2B8
+            Key             =   """NetPrinter"""
+         EndProperty
+         BeginProperty ListImage5 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "Main.frx":FA6A
+            Key             =   """Printer"""
+         EndProperty
+         BeginProperty ListImage6 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "Main.frx":1221C
+            Key             =   """FindInDoc"""
+         EndProperty
+         BeginProperty ListImage7 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "Main.frx":149CE
+            Key             =   """LogOff"""
+         EndProperty
+         BeginProperty ListImage8 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "Main.frx":14E20
+            Key             =   """TechSupport"""
+         EndProperty
+         BeginProperty ListImage9 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "Main.frx":15272
+            Key             =   """Help"""
+         EndProperty
+         BeginProperty ListImage10 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "Main.frx":153CC
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage11 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "Main.frx":15526
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage12 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "Main.frx":15840
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage13 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "Main.frx":15B5A
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage14 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "Main.frx":15CB4
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage15 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "Main.frx":1677E
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage16 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "Main.frx":1683F
+            Key             =   ""
+         EndProperty
+         BeginProperty ListImage17 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+            Picture         =   "Main.frx":16999
+            Key             =   ""
+         EndProperty
+      EndProperty
    End
 End
 Attribute VB_Name = "frmMain"
@@ -212,6 +285,8 @@ Dim maxhgt As Long, maxwid As Long
 Dim pwid, phgt As Integer
 
 Private Sub Form_Load()
+
+Set m_cMenu = New cPopupMenu
     ' setup status bar
     Me.Icon = ilsMenuIcons.ListImages(17).Picture
     With picBackground
@@ -344,6 +419,7 @@ Dim iI As Long
 
     ' Set up pop-up menu:
     Set m_cMenu = New cPopupMenu
+'   Set m_cMenu = CreateObject("cPopupMenu")
     With m_cMenu
         ' Set up for cPopupMenu:
         .hWndOwner = Me.hwnd
@@ -515,12 +591,16 @@ Dim cINVPR02 As Object
 Dim cINVPAY As Object
 Dim cPAYRPT As Object
     ' Show the popup menu and get the item the user clicks:
-    'lIndex = m_cMenu.ShowPopupMenu(picMainStatus.left, picMainStatus.tOp, picMainStatus.left, picMainStatus.tOp, Me.ScaleWidth - picMainStatus.left - picMainStatus.Width, picMainStatus.tOp + picMainStatus.Height, False)
-    lIndex = m_cMenu.ShowPopupMenu(picMainStatus.left, picMainStatus.tOp, picMainStatus.left, picMainStatus.tOp, Me.ScaleWidth - picMainStatus.left - picMainStatus.Width, picMainStatus.tOp, False)
-    'lIndex = m_cMenu.ShowPopupMenu(picMainStatus.left, picMainStatus.tOp, , , , , False)
+    
+  '  lIndex = m_cMenu.ShowPopupMenu(picMainStatus.left, picMainStatus.tOp, picMainStatus.left, picMainStatus.tOp, Me.ScaleWidth - picMainStatus.left - picMainStatus.Width, picMainStatus.tOp + picMainStatus.Height, False)
+   lIndex = m_cMenu.ShowPopupMenu( _
+        picMainStatus.left, picMainStatus.tOp, picMainStatus.left, picMainStatus.tOp, _
+        Me.ScaleWidth - picMainStatus.left - picMainStatus.Width, picMainStatus.tOp, False)
+'    lIndex = m_cMenu.ShowPopupMenu(picMainStatus.left, picMainStatus.tOp, , , , , False)
+
     If (lIndex > 0) Then
         Me.Refresh
-         Case m_cMenu.ItemKey(lIndex)
+        Select Case m_cMenu.ItemKey(lIndex)
 '-------------------------------------------------------------------------------------
             Case "CYMDE01"
                 Set cCYMDE01 = CreateObject("prjManifestCont.clsCYMDE01")

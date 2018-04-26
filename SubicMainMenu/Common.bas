@@ -54,7 +54,7 @@ Dim sBuffer As String
     End If
 End Function
 
-Public Sub zGetINIVal()
+Public Sub zGetINIVal(ByVal port As String)
 Dim n, i As Integer
 Dim f, s, s1, s2 As String
     
