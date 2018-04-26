@@ -3,4 +3,4 @@ frmLogIn = 0, 0, 0, 0, C, 0, 0, 0, 0, C
 cLogo = 0, 0, 0, 0, C
 uAnimButton = 0, 0, 0, 0, C, 0, 0, 0, 0, C
 CWaitCursor = 0, 0, 0, 0, C
-frmMain = 26, 26, 1456, 615, C, 0, 0, 0, 0, C
+frmMain = 52, 52, 939, 494, , 26, 26, 913, 468, C
