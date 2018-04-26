@@ -8,7 +8,7 @@ Begin VB.Form frmNextCCR
    ClientTop       =   4485
    ClientWidth     =   4005
    BeginProperty Font 
-      Name            =   "IBM3270 - 1254"
+      Name            =   "Arial"
       Size            =   15
       Charset         =   0
       Weight          =   400

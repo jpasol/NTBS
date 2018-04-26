@@ -3,12 +3,12 @@ Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "MSFLXGRD.OCX"
 Begin VB.Form frmCYRate 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "CY Special Services Tariff Rates"
-   ClientHeight    =   9465
+   ClientHeight    =   9525
    ClientLeft      =   45
    ClientTop       =   330
-   ClientWidth     =   14925
+   ClientWidth     =   14535
    BeginProperty Font 
-      Name            =   "IBM3270 - 1254"
+      Name            =   "Arial"
       Size            =   12
       Charset         =   0
       Weight          =   400
@@ -20,8 +20,8 @@ Begin VB.Form frmCYRate
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   9465
-   ScaleWidth      =   14925
+   ScaleHeight     =   9525
+   ScaleWidth      =   14535
    ShowInTaskbar   =   0   'False
    StartUpPosition =   2  'CenterScreen
    Begin MSFlexGridLib.MSFlexGrid grdCYRate 
@@ -29,8 +29,8 @@ Begin VB.Form frmCYRate
       Left            =   75
       TabIndex        =   0
       Top             =   75
-      Width           =   14790
-      _ExtentX        =   26088
+      Width           =   14430
+      _ExtentX        =   25453
       _ExtentY        =   15505
       _Version        =   393216
       Cols            =   6
@@ -43,7 +43,7 @@ Begin VB.Form frmCYRate
       SelectionMode   =   1
       FormatString    =   "RATE    |^ SZ |^ TYPE |DESCRIPTION                             |AMOUNT       | UOM        "
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   15
          Charset         =   0
          Weight          =   400
@@ -59,7 +59,7 @@ Begin VB.Form frmCYRate
       BorderStyle     =   1  'Fixed Single
       Caption         =   "ESC"
       BeginProperty Font 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   18
          Charset         =   0
          Weight          =   700
@@ -68,8 +68,8 @@ Begin VB.Form frmCYRate
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H00FFFFFF&
-      Height          =   360
-      Left            =   12825
+      Height          =   480
+      Left            =   12480
       TabIndex        =   6
       Top             =   9000
       Width           =   930
@@ -80,7 +80,7 @@ Begin VB.Form frmCYRate
       BorderStyle     =   1  'Fixed Single
       Caption         =   " EXIT "
       BeginProperty Font 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   18
          Charset         =   0
          Weight          =   700
@@ -89,8 +89,8 @@ Begin VB.Form frmCYRate
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H00C0E0FF&
-      Height          =   360
-      Left            =   13875
+      Height          =   480
+      Left            =   13440
       TabIndex        =   5
       Top             =   9000
       Width           =   1005
@@ -102,7 +102,7 @@ Begin VB.Form frmCYRate
       BorderStyle     =   1  'Fixed Single
       Caption         =   "ENTER"
       BeginProperty Font 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   18
          Charset         =   0
          Weight          =   700
@@ -111,11 +111,11 @@ Begin VB.Form frmCYRate
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H00FFFFFF&
-      Height          =   360
-      Left            =   7500
+      Height          =   480
+      Left            =   6720
       TabIndex        =   4
       Top             =   9000
-      Width           =   930
+      Width           =   1290
    End
    Begin VB.Label Label1 
       Appearance      =   0  'Flat
@@ -123,7 +123,7 @@ Begin VB.Form frmCYRate
       BorderStyle     =   1  'Fixed Single
       Caption         =   " SELECT FROM LIST"
       BeginProperty Font 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   18
          Charset         =   0
          Weight          =   700
@@ -132,11 +132,11 @@ Begin VB.Form frmCYRate
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H00C0E0FF&
-      Height          =   360
-      Left            =   8550
+      Height          =   480
+      Left            =   8040
       TabIndex        =   3
       Top             =   9000
-      Width           =   2205
+      Width           =   3705
    End
    Begin VB.Label Label46 
       Alignment       =   2  'Center
@@ -145,7 +145,7 @@ Begin VB.Form frmCYRate
       BorderStyle     =   1  'Fixed Single
       Caption         =   "UP / DN ARROW KEYS"
       BeginProperty Font 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   18
          Charset         =   0
          Weight          =   700
@@ -154,11 +154,11 @@ Begin VB.Form frmCYRate
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H00FFFFFF&
-      Height          =   360
+      Height          =   480
       Left            =   75
       TabIndex        =   2
       Top             =   9000
-      Width           =   2430
+      Width           =   1440
    End
    Begin VB.Label Label56 
       Appearance      =   0  'Flat
@@ -166,7 +166,7 @@ Begin VB.Form frmCYRate
       BorderStyle     =   1  'Fixed Single
       Caption         =   " NAVIGATE UP / DOWN LIST"
       BeginProperty Font 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   18
          Charset         =   0
          Weight          =   700
@@ -175,11 +175,11 @@ Begin VB.Form frmCYRate
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H00C0E0FF&
-      Height          =   360
-      Left            =   2625
+      Height          =   480
+      Left            =   1560
       TabIndex        =   1
       Top             =   9000
-      Width           =   3105
+      Width           =   4425
    End
 End
 Attribute VB_Name = "frmCYRate"

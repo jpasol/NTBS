@@ -13,7 +13,7 @@ Begin VB.Form frmCustPick
    ScaleWidth      =   10935
    Begin VB.TextBox txtName 
       BeginProperty Font 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   15
          Charset         =   0
          Weight          =   400
@@ -29,7 +29,7 @@ Begin VB.Form frmCustPick
    End
    Begin VB.TextBox txtCode 
       BeginProperty Font 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   15
          Charset         =   0
          Weight          =   400
@@ -46,7 +46,7 @@ Begin VB.Form frmCustPick
    Begin VB.CommandButton cmdName 
       Caption         =   "&Name"
       BeginProperty Font 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   12
          Charset         =   0
          Weight          =   700
@@ -63,7 +63,7 @@ Begin VB.Form frmCustPick
    Begin VB.CommandButton cmdCode 
       Caption         =   "&Code"
       BeginProperty Font 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   12
          Charset         =   0
          Weight          =   700
@@ -79,7 +79,7 @@ Begin VB.Form frmCustPick
    End
    Begin VB.ListBox lstCustomer 
       BeginProperty Font 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   15
          Charset         =   0
          Weight          =   400
@@ -87,7 +87,7 @@ Begin VB.Form frmCustPick
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   6660
+      Height          =   6615
       Left            =   75
       TabIndex        =   2
       Top             =   960
@@ -198,6 +198,8 @@ Private Sub lzRetPick()
         If .ListIndex >= 0 Then
             gsCusCode = Left(.Text, 6)
             gsCusName = Trim(Mid(.Text, 9))
+            frmCYSCCR.txtCusName.Text = gsCusName
+            frmCYSCCR.Text1.Text = gsCusCode
             Unload Me
         End If
     End With
