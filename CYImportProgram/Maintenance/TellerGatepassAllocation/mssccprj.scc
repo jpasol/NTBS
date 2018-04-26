@@ -1,0 +1,11 @@
+[SCC]
+SCC=This is a source code control file
+[Allocation.vbp]
+SCC_Project_Name = "$/NTBS File Maintenance/Allocation", WRCAAAAA
+SCC_Aux_Path = \\Sysdev_nt\VS6\VSS,
+[CCRAllocation.vbp]
+SCC_Project_Name ="$/NTBS File Maintenance/Allocation", WRCAAAAA
+SCC_Aux_Path =\\Sysdev_nt\VS6\VSS,
+[prjTest.vbp]
+SCC_Project_Name=this project is not under source code control
+SCC_Aux_Path=<This is an empty string for the mssccprj.scc file>
