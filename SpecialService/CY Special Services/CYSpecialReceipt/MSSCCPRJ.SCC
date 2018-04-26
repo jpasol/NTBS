@@ -1,8 +1,9 @@
-[SCC]
-SCC=This is a source code control file
+SCC = This is a Source Code Control file
+
 [CCRPr03.vbp]
-SCC_Project_Name=this project is not under source code control
-SCC_Aux_Path=<This is an empty string for the mssccprj.scc file>
+SCC_Aux_Path = "\\itss-tfssvr\vss_itss$"
+SCC_Project_Name = "$/itss/Subsidiaries/SBITC/AGH/CY Special Services_Sharon/CYSpecialReceipt", HUIIAAAA
+
 [Testing.vbp]
-SCC_Project_Name=this project is not under source code control
-SCC_Aux_Path=<This is an empty string for the mssccprj.scc file>
+SCC_Aux_Path = "\\itss-tfssvr\vss_itss$"
+SCC_Project_Name = "$/itss/Subsidiaries/SBITC/AGH/CY Special Services_Sharon/CYSpecialReceipt", HUIIAAAA

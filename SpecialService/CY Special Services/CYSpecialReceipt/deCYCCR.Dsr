@@ -1,12 +1,12 @@
 VERSION 5.00
 Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCYCCR 
-   ClientHeight    =   9765
+   ClientHeight    =   11295
    ClientLeft      =   0
    ClientTop       =   0
-   ClientWidth     =   11175
-   _ExtentX        =   19711
-   _ExtentY        =   17224
-   FolderFlags     =   1
+   ClientWidth     =   20550
+   _ExtentX        =   36248
+   _ExtentY        =   19923
+   FolderFlags     =   7
    TypeLibGuid     =   "{0917860D-1236-11D3-BD7D-00105A64485A}"
    TypeInfoGuid    =   "{0917860E-1236-11D3-BD7D-00105A64485A}"
    TypeInfoCookie  =   0
@@ -16,7 +16,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCYCCR
       ConnectionName  =   "Billing"
       ConnDispId      =   1001
       SourceOfData    =   3
-      ConnectionSource=   "Provider=SQLOLEDB.1;Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Billing;Data Source=SBITCBILLING"
+      ConnectionSource=   "Provider=SQLOLEDB.1;Password=Ictsi123;Persist Security Info=True;User ID=SA_ICTSI;Initial Catalog=billing;Data Source=SBITCBILLING"
       Expanded        =   -1  'True
       IsSQL           =   -1  'True
       QuoteChar       =   34
@@ -30,6 +30,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCYCCR
       CommandText     =   $"deCYCCR.dsx":0000
       ActiveConnectionName=   "Billing"
       CommandType     =   1
+      Expanded        =   -1  'True
       IsRSReturning   =   -1  'True
       NumFields       =   4
       BeginProperty Field1 
@@ -449,6 +450,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCYCCR
       CommandText     =   $"deCYCCR.dsx":00B7
       ActiveConnectionName=   "Billing"
       CommandType     =   1
+      Expanded        =   -1  'True
       IsRSReturning   =   -1  'True
       NumFields       =   1
       BeginProperty Field1 
