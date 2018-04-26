@@ -169,7 +169,7 @@
                 <File
                     RelPath = "rptCash.rpt"
                     BuildAction = "EmbeddedResource"
-                    Generator = "CrystalDecisions.VSShell.CodeGen.ReportCodeGenerator"
+                    Generator = "CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator"
                     LastGenOutput = "rptCash.vb"
                 />
                 <File
@@ -183,7 +183,7 @@
                 <File
                     RelPath = "rptSales.rpt"
                     BuildAction = "EmbeddedResource"
-                    Generator = "CrystalDecisions.VSShell.CodeGen.ReportCodeGenerator"
+                    Generator = "CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator"
                     LastGenOutput = "rptSales.vb"
                 />
                 <File
