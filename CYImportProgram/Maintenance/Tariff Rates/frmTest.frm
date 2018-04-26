@@ -15,7 +15,7 @@ Begin VB.Form frmTest
          Name            =   "Arial Black"
          Size            =   12
          Charset         =   0
-         Weight          =   700
+         Weight          =   900
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
@@ -49,24 +49,50 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Public gConnStr As String
+
+Dim sqlConBilling As String
+Dim sqlConNavis As String
+
 Function ConnectToServer() As Boolean
-    Dim gconnstr As String
+   
     Dim x As Object
     
+    Call ReadConfig
+    gConnStr = sqlConBilling
     
-    gconnstr = "Provider=sqloledb" & _
-                ";Data Source=" & "sbitcbilling" & _
-                ";Initial Catalog=" & "BILLING" & _
-                ";Integrated Security=SSPI"
+'    gConnStr = "Provider=sqloledb" & _
+'                ";Data Source=" & "MDC-VIRTUAL\MDCDEV" & _
+'                ";Initial Catalog=" & "sbitc_billing" & _
+'                ";Integrated Security=SSPI"
     
     Set x = CreateObject("CYRatesMaintenance.clsCYRates")
     With x
-        .ConnectByStr (gconnstr)
+        .ConnectByStr (gConnStr)
         .Execute
         .Disconnect
     End With
     Set x = Nothing
 End Function
+
+'MDC (20131209)
+'Exclude connection string on source code
+
+Public Sub ReadConfig()
+Dim Xcnt As Integer
+Open App.Path & "\" & "Conn.cfg" For Binary Access Read As #1
+
+Do While Not EOF(1)
+    Xcnt = Xcnt + 1
+    Select Case Xcnt
+        Case 1
+            Line Input #1, sqlConBilling
+        Case 2
+            Line Input #1, sqlConNavis
+    End Select
+Loop
+End Sub
+
 
 Private Sub cmdClose_Click()
    Unload Me

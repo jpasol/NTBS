@@ -1,16 +1,18 @@
 Type=Exe
-Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#C:\WINDOWS\System32\stdole2.tlb#OLE Automation
-Reference=*\G{D1C483EE-1A5A-11D3-8DBC-00105A644934}#22.0#0#..\..\..\..\SUBICNewProgram\CYImportProgram\Maintenance\Tariff Rates\CYRatesMaintenance.dll#
+Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\WINDOWS\system32\stdole2.tlb#OLE Automation
+Reference=*\G{D1C483EE-1A5A-11D3-8DBC-00105A644934}#22.0#0#CYRatesMaintenance.dll#
 Form=frmTest.frm
+IconForm="frmTest"
 Startup="frmTest"
-ExeName32="CYRate.exe"
-Path32="..\..\SUBICNewProgram\Tariff Rates"
+HelpFile=""
+Title="prjTariff"
+ExeName32="SBITC_CYRate.exe"
 Command32=""
 Name="prjTest"
 HelpContextID="0"
 CompatibleMode="0"
 MajorVer=1
-MinorVer=0
+MinorVer=1
 RevisionVer=0
 AutoIncrementVer=0
 ServerSupportFiles=0
@@ -30,3 +32,6 @@ Unattended=0
 Retained=0
 ThreadPerObject=0
 MaxNumberOfThreads=1
+
+[MS Transaction Server]
+AutoRefresh=1
