@@ -62,6 +62,9 @@ Begin VB.Form frmSubicINVReprint
       _Version        =   348160
       WindowTitle     =   "Invoice Preview"
       WindowBorderStyle=   1
+      WindowControlBox=   -1  'True
+      WindowMaxButton =   -1  'True
+      WindowMinButton =   -1  'True
       WindowState     =   2
       ProgressDialog  =   0   'False
       PrintFileLinesPerPage=   60
@@ -97,6 +100,10 @@ Option Explicit
 
 Dim gcnnBilling As ADODB.Connection
 Dim gbConnected As Boolean
+
+'MDC (20131205)
+Dim sqlConBilling As String
+Dim sqlConNavis As String
 
 Private Sub cmdDisplay_Click()
 Dim rsINVict As New ADODB.Recordset
@@ -139,6 +146,8 @@ Dim tmpInvNo As Long
         CYInvoice.ReportFileName = App.Path & "\SubicInvoice1.rpt"
         CYInvoice.ParameterFields(1) = "InvoiceNo; " & Trim(tmpInvNo) & ";TRUE"
         CYInvoice.PrintReport
+        
+       
     'End If
     Screen.MousePointer = vbDefault
     
@@ -146,11 +155,28 @@ End Sub
 
 Private Sub ConnectToBilling()
 Dim gConnStr As String
-    gConnStr = "Provider=SQLOLEDB;Data Source=sbitcbilling;Initial Catalog=Billing;Integrated Security=SSPI"
+Call ReadConfig
+    gConnStr = sqlConBilling '"Provider=SQLOLEDB;Data Source=sbitcbilling;Initial Catalog=Billing;Integrated Security=SSPI"
     Set gcnnBilling = New ADODB.Connection
     gcnnBilling.Open gConnStr
     gbConnected = True
 End Sub
+
+Public Sub ReadConfig()
+Dim Xcnt As Integer
+Open App.Path & "\" & "Conn.cfg" For Binary Access Read As #1
+
+Do While Not EOF(1)
+    Xcnt = Xcnt + 1
+    Select Case Xcnt
+        Case 1
+            Line Input #1, sqlConBilling
+        Case 2
+            Line Input #1, sqlConNavis
+    End Select
+Loop
+End Sub
+
 
 Private Sub cmdExit_Click()
     Unload Me

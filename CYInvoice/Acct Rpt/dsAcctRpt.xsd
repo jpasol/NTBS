@@ -57,6 +57,7 @@
 							<xs:element name="discnt" type="xs:decimal" minOccurs="0" />
 							<xs:element name="invremark" type="xs:string" minOccurs="0" />
 							<xs:element name="cargo" type="xs:string" minOccurs="0" />
+							<xs:element name="CompanyCode" type="xs:string" minOccurs="0" />
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
@@ -103,6 +104,7 @@
 							<xs:element name="SS" type="xs:decimal" minOccurs="0" />
 							<xs:element name="Others" type="xs:decimal" minOccurs="0" />
 							<xs:element name="PayDate" type="xs:dateTime" minOccurs="0" />
+							<xs:element name="CompanyCode" type="xs:string" minOccurs="0" />
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
@@ -121,6 +123,7 @@
 							<xs:element name="SS" type="xs:decimal" minOccurs="0" />
 							<xs:element name="AR" type="xs:decimal" minOccurs="0" />
 							<xs:element name="SV" type="xs:decimal" minOccurs="0" />
+							<xs:element name="CompanyCode" type="xs:string" minOccurs="0" />
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>

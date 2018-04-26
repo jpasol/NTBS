@@ -39,6 +39,8 @@ Public Class frmAcctRpt
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents crvAcctRpt As CrystalDecisions.Windows.Forms.CrystalReportViewer
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents cmbCompCode As System.Windows.Forms.ComboBox
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Dim resources As System.Resources.ResourceManager = New System.Resources.ResourceManager(GetType(frmAcctRpt))
         Me.dtpStart = New System.Windows.Forms.DateTimePicker
@@ -49,6 +51,8 @@ Public Class frmAcctRpt
         Me.Label1 = New System.Windows.Forms.Label
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
+        Me.Label4 = New System.Windows.Forms.Label
+        Me.cmbCompCode = New System.Windows.Forms.ComboBox
         Me.SuspendLayout()
         '
         'dtpStart
@@ -74,6 +78,9 @@ Public Class frmAcctRpt
         'crvAcctRpt
         '
         Me.crvAcctRpt.ActiveViewIndex = -1
+        Me.crvAcctRpt.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.crvAcctRpt.DisplayGroupTree = False
         Me.crvAcctRpt.Location = New System.Drawing.Point(176, 8)
         Me.crvAcctRpt.Name = "crvAcctRpt"
@@ -96,7 +103,7 @@ Public Class frmAcctRpt
         Me.btnPreview.BackColor = System.Drawing.SystemColors.ActiveBorder
         Me.btnPreview.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnPreview.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPreview.Location = New System.Drawing.Point(16, 168)
+        Me.btnPreview.Location = New System.Drawing.Point(16, 216)
         Me.btnPreview.Name = "btnPreview"
         Me.btnPreview.Size = New System.Drawing.Size(144, 26)
         Me.btnPreview.TabIndex = 3
@@ -135,11 +142,34 @@ Public Class frmAcctRpt
         Me.Label3.TabIndex = 7
         Me.Label3.Text = "End Date"
         '
+        'Label4
+        '
+        Me.Label4.BackColor = System.Drawing.Color.Transparent
+        Me.Label4.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.Black
+        Me.Label4.Location = New System.Drawing.Point(16, 160)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(128, 16)
+        Me.Label4.TabIndex = 9
+        Me.Label4.Text = "Company Code"
+        '
+        'cmbCompCode
+        '
+        Me.cmbCompCode.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbCompCode.Items.AddRange(New Object() {"ALL", "SBITC", "ISI"})
+        Me.cmbCompCode.Location = New System.Drawing.Point(16, 176)
+        Me.cmbCompCode.Name = "cmbCompCode"
+        Me.cmbCompCode.Size = New System.Drawing.Size(144, 24)
+        Me.cmbCompCode.TabIndex = 10
+        Me.cmbCompCode.Text = "ALL"
+        '
         'frmAcctRpt
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.BackColor = System.Drawing.Color.LightSlateGray
         Me.ClientSize = New System.Drawing.Size(1016, 710)
+        Me.Controls.Add(Me.cmbCompCode)
+        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -194,7 +224,7 @@ Public Class frmAcctRpt
 
             'Export and Special Services
             dtabCCRPay = New DataTable
-            dtabCCRPay = clsAcctRpt.Get_CCRPay(dtpStart.Text & " 00:00:00 AM", dtpEnd.Text & " 11:58:59 PM")
+            dtabCCRPay = clsAcctRpt.Get_CCRPay(dtpStart.Text & " 00:00:00 AM", dtpEnd.Text & " 11:58:59 PM", cmbCompCode.Text.Trim)
 
             If dtabCCRPay.Rows.Count > 0 Then
                 Dim lngCCRPay As Long = 0
@@ -250,10 +280,26 @@ Public Class frmAcctRpt
                                 Loop
                             End If
 
+
                             'Add cash data
+
+                            'PRNH 08102017 - Retrieve Exporter if Cusnam is blank
+
+                            Dim cusNameExp As String = Trim(dtabCCRPay.Rows(lngCCRPay)("cusnam"))
+                            If cusNameExp = "" Then
+                                cusNameExp = dtabCCRCyx.Rows(0)("exprtr")
+                            End If
+
+                            'Add_CashData(dtabCCRPay.Rows(lngCCRPay)("sysdttm"), _
+                            '             strDocNo, "", Trim(strChkNo), _
+                            '             dtabCCRPay.Rows(lngCCRPay)("cusnam"), _
+                            '             lngExpAmt, 0, lngExpAmt, 0, 0, 0, 0)
                             Add_CashData(dtabCCRPay.Rows(lngCCRPay)("sysdttm"), _
-                                         strDocNo, "", Trim(strChkNo), _
-                                         dtabCCRPay.Rows(lngCCRPay)("cusnam"), lngExpAmt, 0, lngExpAmt, 0, 0, 0, 0)
+                                        strDocNo, "", Trim(strChkNo), _
+                                        cusNameExp, _
+                                        lngExpAmt, 0, lngExpAmt, 0, 0, 0, 0, dtabCCRCyx.Rows(0)("CompanyCode"))
+
+
                         Else 'Special Services
                             Dim intCCRCys As Integer = 0
 
@@ -306,7 +352,7 @@ Public Class frmAcctRpt
                             'Add cash data
                             Add_CashData(dtabCCRPay.Rows(lngCCRPay)("sysdttm"), _
                                          strDocNo, "", Trim(strChkNo), _
-                                         dtabCCRPay.Rows(lngCCRPay)("cusnam"), lngSpcAmt, 0, 0, lngSpcAmt, 0, 0, 0)
+                                         dtabCCRPay.Rows(lngCCRPay)("cusnam"), lngSpcAmt, 0, 0, lngSpcAmt, 0, 0, 0, dtabCCRDtl.Rows(0)("CompanyCode"))
                         End If
                     End If
                     lngCCRPay += 1
@@ -315,7 +361,7 @@ Public Class frmAcctRpt
 
             'Import
             dtabCYMPay = New DataTable
-            dtabCYMPay = clsAcctRpt.Get_CYMPay(dtpStart.Text & " 00:00:00 AM", dtpEnd.Text & " 11:58:59 PM")
+            dtabCYMPay = clsAcctRpt.Get_CYMPay(dtpStart.Text & " 00:00:00 AM", dtpEnd.Text & " 11:58:59 PM", cmbCompCode.Text.Trim)
 
             If dtabCYMPay.Rows.Count > 0 Then
                 Dim lngCYMAmt As Double = 0
@@ -357,31 +403,58 @@ Public Class frmAcctRpt
                             lngCYMAmt = 0
                             Do While intCCRCym < dtabCYMGps.Rows.Count
                                 lngCYMAmt = lngCYMAmt + _
-                                            IIf(dtabCYMGps.Rows(intCCRCym)("dgramt") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("dgramt")) + _
-                                            IIf(dtabCYMGps.Rows(intCCRCym)("udstoamt") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("udstoamt")) + _
-                                            IIf(dtabCYMGps.Rows(intCCRCym)("udstovat") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("udstovat")) - _
-                                            IIf(dtabCYMGps.Rows(intCCRCym)("udstotax") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("udstotax")) + _
-                                            IIf(dtabCYMGps.Rows(intCCRCym)("ovzamt") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("ovzamt")) + _
-                                            IIf(dtabCYMGps.Rows(intCCRCym)("stoamt") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("stoamt")) + _
-                                            IIf(dtabCYMGps.Rows(intCCRCym)("arramt") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("arramt")) + _
-                                            IIf(dtabCYMGps.Rows(intCCRCym)("whfamt") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("whfamt")) + _
-                                            IIf(dtabCYMGps.Rows(intCCRCym)("wghamt") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("wghamt")) + _
-                                            IIf(dtabCYMGps.Rows(intCCRCym)("rframt") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("rframt")) + _
-                                            IIf(dtabCYMGps.Rows(intCCRCym)("stovat") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("stovat")) + _
-                                            IIf(dtabCYMGps.Rows(intCCRCym)("arrvat") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("arrvat")) + _
-                                            IIf(dtabCYMGps.Rows(intCCRCym)("wghvat") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("wghvat")) + _
-                                            IIf(dtabCYMGps.Rows(intCCRCym)("rfrvat") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("rfrvat")) - _
-                                            IIf(dtabCYMGps.Rows(intCCRCym)("stotax") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("stotax")) - _
-                                            IIf(dtabCYMGps.Rows(intCCRCym)("arrtax") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("arrtax")) - _
-                                            IIf(dtabCYMGps.Rows(intCCRCym)("wghtax") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("wghtax")) - _
-                                            IIf(dtabCYMGps.Rows(intCCRCym)("rfrtax") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("rfrtax"))
+                                        IIf(dtabCYMGps.Rows(intCCRCym)("udstoamt") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("udstoamt")) + _
+                                        IIf(dtabCYMGps.Rows(intCCRCym)("udstovat") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("udstovat")) - _
+                                        IIf(dtabCYMGps.Rows(intCCRCym)("udstotax") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("udstotax")) + _
+                                        IIf(dtabCYMGps.Rows(intCCRCym)("stoamt") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("stoamt")) + _
+                                        IIf(dtabCYMGps.Rows(intCCRCym)("arramt") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("arramt")) + _
+                                        IIf(dtabCYMGps.Rows(intCCRCym)("whfamt") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("whfamt")) + _
+                                        IIf(dtabCYMGps.Rows(intCCRCym)("wghamt") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("wghamt")) + _
+                                        IIf(dtabCYMGps.Rows(intCCRCym)("rframt") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("rframt")) + _
+                                        IIf(dtabCYMGps.Rows(intCCRCym)("stovat") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("stovat")) + _
+                                        IIf(dtabCYMGps.Rows(intCCRCym)("arrvat") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("arrvat")) + _
+                                        IIf(dtabCYMGps.Rows(intCCRCym)("wghvat") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("wghvat")) + _
+                                        IIf(dtabCYMGps.Rows(intCCRCym)("rfrvat") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("rfrvat")) - _
+                                        IIf(dtabCYMGps.Rows(intCCRCym)("stotax") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("stotax")) - _
+                                        IIf(dtabCYMGps.Rows(intCCRCym)("arrtax") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("arrtax")) - _
+                                        IIf(dtabCYMGps.Rows(intCCRCym)("wghtax") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("wghtax")) - _
+                                        IIf(dtabCYMGps.Rows(intCCRCym)("rfrtax") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("rfrtax"))
+                                'IIf(dtabCYMGps.Rows(intCCRCym)("dgramt") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("dgramt")) + _
+                                'IIf(dtabCYMGps.Rows(intCCRCym)("udstoamt") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("udstoamt")) + _
+                                'IIf(dtabCYMGps.Rows(intCCRCym)("udstovat") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("udstovat")) - _
+                                'IIf(dtabCYMGps.Rows(intCCRCym)("udstotax") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("udstotax")) + _
+                                'IIf(dtabCYMGps.Rows(intCCRCym)("ovzamt") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("ovzamt")) + _
+                                'IIf(dtabCYMGps.Rows(intCCRCym)("stoamt") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("stoamt")) + _
+                                'IIf(dtabCYMGps.Rows(intCCRCym)("arramt") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("arramt")) + _
+                                'IIf(dtabCYMGps.Rows(intCCRCym)("whfamt") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("whfamt")) + _
+                                'IIf(dtabCYMGps.Rows(intCCRCym)("wghamt") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("wghamt")) + _
+                                'IIf(dtabCYMGps.Rows(intCCRCym)("rframt") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("rframt")) + _
+                                'IIf(dtabCYMGps.Rows(intCCRCym)("stovat") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("stovat")) + _
+                                'IIf(dtabCYMGps.Rows(intCCRCym)("arrvat") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("arrvat")) + _
+                                'IIf(dtabCYMGps.Rows(intCCRCym)("wghvat") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("wghvat")) + _
+                                'IIf(dtabCYMGps.Rows(intCCRCym)("rfrvat") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("rfrvat")) - _
+                                'IIf(dtabCYMGps.Rows(intCCRCym)("stotax") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("stotax")) - _
+                                'IIf(dtabCYMGps.Rows(intCCRCym)("arrtax") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("arrtax")) - _
+                                'IIf(dtabCYMGps.Rows(intCCRCym)("wghtax") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("wghtax")) - _
+                                'IIf(dtabCYMGps.Rows(intCCRCym)("rfrtax") Is DBNull.Value, 0, dtabCYMGps.Rows(intCCRCym)("rfrtax"))
                                 intCCRCym += 1
                             Loop
 
                             'Add cash data
+
+                            'PRNH 08102017 - Retrieve Consignee if Cusnam is blank
+                            Dim custImp As String = dtabCYMPay.Rows(lngCYMPay)("cusnam")
+                            If custImp = "" Then
+                                custImp = dtabCYMGps.Rows(0)("cnsgne")
+                            End If
+
+                            'Add_CashData(dtabCYMPay.Rows(lngCYMPay)("sysdttm"), _
+                            '             strDocNo, "", Trim(strChkNo), _
+                            '             dtabCYMPay.Rows(lngCYMPay)("cusnam"), lngCYMAmt, lngCYMAmt, 0, 0, 0, 0, 0)
+
                             Add_CashData(dtabCYMPay.Rows(lngCYMPay)("sysdttm"), _
                                          strDocNo, "", Trim(strChkNo), _
-                                         dtabCYMPay.Rows(lngCYMPay)("cusnam"), lngCYMAmt, lngCYMAmt, 0, 0, 0, 0, 0)
+                                         custImp, lngCYMAmt, lngCYMAmt, 0, 0, 0, 0, 0, dtabCYMGps.Rows(0)("CompanyCode"))
                         End If
                     End If
                     lngCYMPay += 1
@@ -430,7 +503,7 @@ Public Class frmAcctRpt
                                     'Add cash data
                                     Add_CashData(dtabInvPayHdr.Rows(rowInvPayHdr)("ORDate"), _
                                                  Trim("INV " & strDocNo), dtabInvPayHdr.Rows(rowInvPayHdr)("ORNum"), Trim(strChkNo), _
-                                                 strCusName, lngInvAmt, 0, 0, 0, 0, lngInvAmt, 0)
+                                                 strCusName, lngInvAmt, 0, 0, 0, 0, lngInvAmt, 0, dtabInvPayDtl.Rows(intInvPayDtl)("CompanyCode"))
                                 Else
                                     'Get invoice data
                                     Dim lngInvRefNo As Long = 0
@@ -528,7 +601,8 @@ Public Class frmAcctRpt
                                     'Add cash data
                                     Add_CashData(dtabInvPayHdr.Rows(rowInvPayHdr)("ORDate"), _
                                                  Trim("INV " & strDocNo), dtabInvPayHdr.Rows(rowInvPayHdr)("ORNum"), Trim(strChkNo), _
-                                                 strCusName, lngInvAmt, dblCIM1, dblCEX1, dblOth1, dblSS1, 0, dblVC1)
+                                                 strCusName, lngInvAmt, dblCIM1, dblCEX1, dblOth1, dblSS1, 0, dblVC1, _
+                                                 dtabINVCYB.Rows(0)("CompanyCode"))
                                 End If
                             End If
                             intInvPayDtl += 1
@@ -553,7 +627,7 @@ Public Class frmAcctRpt
 
             'Get invoice data
             dtabINVICT = New dsAcctRpt.INVICTDataTable
-            dtabINVICT = clsAcctRpt.Get_INVICT(dtpStart.Text & " 00:00:00 AM", dtpEnd.Text & " 11:58:59 PM")
+            dtabINVICT = clsAcctRpt.Get_INVICT(dtpStart.Text & " 00:00:00 AM", dtpEnd.Text & " 11:58:59 PM", cmbCompCode.Text.Trim)
 
             If dtabINVICT.Rows.Count > 0 Then
                 Dim intInvCtr As Integer = 0
@@ -613,7 +687,7 @@ Public Class frmAcctRpt
                                            dtabINVICT.Rows(intInvCtr)("invnum"), _
                                            "- - - - - C A N C E L L E D - - - - -", _
                                            0, 0, 0, 0, 0, _
-                                           0, dtpEnd.MaxDate)
+                                           0, dtpEnd.MaxDate, dtabINVCYB.Rows(0)("invamt"))
                     Else
                         'Check if invoice has payment record,get paydate and invoice balance
                         Dim blnSkip As Boolean = False
@@ -663,7 +737,8 @@ Public Class frmAcctRpt
                                                    dtabINVICT.Rows(intInvCtr)("invnum"), _
                                                    dtabINVICT.Rows(intInvCtr)("cusnam"), _
                                                    dblInvAmt, dblVC1, dblCEX1, dblCIM1, dblSS1, _
-                                                   dblOth1, dtabPayDtl.Rows(0)("Paydate"))
+                                                   dblOth1, dtabPayDtl.Rows(0)("Paydate"), _
+                                                   "")
 
                             End If
                         Else
@@ -675,7 +750,7 @@ Public Class frmAcctRpt
                                                dtabINVICT.Rows(intInvCtr)("invnum"), _
                                                dtabINVICT.Rows(intInvCtr)("cusnam"), _
                                                dblInvAmt, dblVC, dblCEX, dblCIM, dblSS, _
-                                               dblOth, dtpEnd.MaxDate)
+                                               dblOth, dtpEnd.MaxDate, "")
                         End If
                     End If
                     intInvCtr += 1
@@ -705,7 +780,8 @@ Public Class frmAcctRpt
                               ByVal strCustomer As String, ByVal dblInvAmt As Double, _
                               ByVal dblVC As Double, ByVal dblCEX As Double, _
                               ByVal dblCIM As Double, ByVal dblSS As Double, _
-                              ByVal dblOth As Double, ByVal dtePayDte As Date)
+                              ByVal dblOth As Double, ByVal dtePayDte As Date, _
+                              ByVal dblCompCode As String)
 
         Dim rowSales As dsAcctRpt.SalesRow
 
@@ -734,7 +810,8 @@ Public Class frmAcctRpt
                              ByVal strPayor As String, ByVal dblAmt As Double, _
                              ByVal dblImp As Double, ByVal dblExp As Double, _
                              ByVal dblMC As Double, ByVal dblSS As Double, _
-                             ByVal dblAR As Double, ByVal dblSV As Double)
+                             ByVal dblAR As Double, ByVal dblSV As Double, _
+                             ByVal dblCompCode As String)
 
         Dim rowCash As dsAcctRpt.CashRow
 
@@ -753,12 +830,9 @@ Public Class frmAcctRpt
             .SS = dblSS
             .AR = dblAR
             .SV = dblSV
+            .CompanyCode = dblCompCode
         End With
 
         dtabCash.Rows.Add(rowCash)
-    End Sub
-
-    Private Sub frmAcctRpt_Closing(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles MyBase.Closing
-
     End Sub
 End Class

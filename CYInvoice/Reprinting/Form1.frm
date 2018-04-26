@@ -24,7 +24,7 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Private Sub Command1_Click()
-    Dim x As New clssubicINVReprint
+    Dim x As New clsSubicINVReprint
     x.Execute
     Set x = Nothing
 End Sub

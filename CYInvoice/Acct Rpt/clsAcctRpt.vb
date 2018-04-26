@@ -9,8 +9,8 @@ Public Class clsAcctRpt
     Private strConn As String
 
     Public Sub New(ByVal strSrvr As String, ByVal strDB As String)
-        'strConn = "Data Source='" & Trim(strSrvr) & "';Initial Catalog='" & Trim(strDB) & "';UID='Reporter';PWD="
-        strConn = "Data Source='" & Trim(strSrvr) & "';Initial Catalog='" & Trim(strDB) & "';Integrated Security=SSPI"
+        strConn = "Data Source='" & Trim(strSrvr) & "';Initial Catalog='" & Trim(strDB) & "';UID='SA_ICTSI';PWD=Ictsi123"
+        'strConn = "Data Source='" & Trim(strSrvr) & "';Initial Catalog='" & Trim(strDB) & "';Integrated Security=SSPI"
     End Sub
 
     Private Function Connection() As Boolean
@@ -32,15 +32,24 @@ Public Class clsAcctRpt
         End Try
     End Function
 
-    Public Function Get_INVICT(ByVal dteStart As Date, ByVal dteEnd As Date) As dsAcctRpt.INVICTDataTable
+    Public Function Get_INVICT(ByVal dteStart As Date, ByVal dteEnd As Date, ByVal compCode As String) As dsAcctRpt.INVICTDataTable
         Dim cmdINVICT As New SqlCommand
         Dim daINVICT As New SqlDataAdapter
         Dim dtabINVICT As New dsAcctRpt.INVICTDataTable
+        Dim sqlQuery As String = "Select a.* From INVICT a " & _
+        "Inner join invcyb b on a.refnum = b.refnum " & _
+        "Where a.invdttm >='" & dteStart & "' And a.invdttm <='" & dteEnd & "' "
+
+        If compCode <> "ALL" Then
+            sqlQuery &= "and b.CompanyCode = '" & compCode & "' "
+        End If
+
+        sqlQuery &= "Order By a.refnum Asc"
 
         If Connection() = True Then
             With cmdINVICT
                 .Connection = objConn
-                .CommandText = "Select * From INVICT Where invdttm >='" & dteStart & "' And invdttm <='" & dteEnd & "' Order By Invdttm Asc,invnum Asc"
+                .CommandText = sqlQuery
                 .CommandType = CommandType.Text
 
                 .ExecuteNonQuery()
@@ -112,15 +121,26 @@ Public Class clsAcctRpt
         End If
     End Function
 
-    Public Function Get_CCRPay(ByVal dteStart As Date, ByVal dteEnd As Date) As DataTable
+    Public Function Get_CCRPay(ByVal dteStart As Date, ByVal dteEnd As Date, ByVal compCode As String) As DataTable
         Dim cmdCCRPay As New SqlCommand
         Dim daCCRPay As New SqlDataAdapter
         Dim dtabCCRPay As New DataTable
 
+        Dim sqlQuery As String = "SELECT a.* FROM CCRPay a " & _
+            "INNER JOIN CCRCyx b on a.refnum=b.refnum " & _
+            "INNER JOIN CCRDtl c on a.refnum=c.refnum " & _
+            "WHERE a.sysdttm >='" & dteStart & "' And a.sysdttm <='" & dteEnd & "' "
+
+        If compCode <> "ALL" Then
+            sqlQuery &= " AND (b.CompanyCode='" & compCode & "' or c.CompanyCode='" & compCode & "')"
+        End If
+        sqlQuery &= " Order By a.Refnum"
+
+
         If Connection() = True Then
             With cmdCCRPay
                 .Connection = objConn
-                .CommandText = "SELECT * FROM CCRPay WHERE sysdttm >='" & dteStart & "' And sysdttm <='" & dteEnd & "' Order By Refnum"
+                .CommandText = sqlQuery
                 .CommandType = CommandType.Text
 
                 .ExecuteNonQuery()
@@ -133,15 +153,23 @@ Public Class clsAcctRpt
         End If
     End Function
 
-    Public Function Get_CYMPay(ByVal dteStart As Date, ByVal dteEnd As Date) As DataTable
+    Public Function Get_CYMPay(ByVal dteStart As Date, ByVal dteEnd As Date, ByVal compCode As String) As DataTable
         Dim cmdCYMPay As New SqlCommand
         Dim daCYMPay As New SqlDataAdapter
         Dim dtabCYMPay As New DataTable
+        Dim sqlQuery As String = "SELECT a.* FROM CYMPay a " & _
+            "INNER JOIN CYMGps b on a.refnum=b.refnum " & _
+            "WHERE a.sysdttm >='" & dteStart & "' And sysdttm <='" & dteEnd & "' "
+
+        If compCode <> "ALL" Then
+            sqlQuery &= " AND b.CompanyCode='" & compCode & "'"
+        End If
+        sqlQuery &= " Order By a.Refnum"
 
         If Connection() = True Then
             With cmdCYMPay
                 .Connection = objConn
-                .CommandText = "SELECT * FROM CYMPay WHERE sysdttm >='" & dteStart & "' And sysdttm <='" & dteEnd & "'"
+                .CommandText = sqlQuery
                 .CommandType = CommandType.Text
 
                 .ExecuteNonQuery()

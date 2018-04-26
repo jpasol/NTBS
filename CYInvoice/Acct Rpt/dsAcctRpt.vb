@@ -1235,6 +1235,8 @@ Public Class dsAcctRpt
         
         Private columncargo As DataColumn
         
+        Private columnCompanyCode As DataColumn
+        
         Friend Sub New()
             MyBase.New("INVCYB")
             Me.InitClass
@@ -1377,6 +1379,12 @@ Public Class dsAcctRpt
             End Get
         End Property
         
+        Friend ReadOnly Property CompanyCodeColumn As DataColumn
+            Get
+                Return Me.columnCompanyCode
+            End Get
+        End Property
+        
         Public Default ReadOnly Property Item(ByVal index As Integer) As INVCYBRow
             Get
                 Return CType(Me.Rows(index),INVCYBRow)
@@ -1414,9 +1422,10 @@ Public Class dsAcctRpt
                     ByVal updcde As String,  _
                     ByVal discnt As Decimal,  _
                     ByVal invremark As String,  _
-                    ByVal cargo As String) As INVCYBRow
+                    ByVal cargo As String,  _
+                    ByVal CompanyCode As String) As INVCYBRow
             Dim rowINVCYBRow As INVCYBRow = CType(Me.NewRow,INVCYBRow)
-            rowINVCYBRow.ItemArray = New Object() {refnum, itmnum, rtecde, cntsze, rtedsc, qty, dyshrs, vatcde, invamt, invtax, invvat, sysdttm, status, rectag, userid, updcde, discnt, invremark, cargo}
+            rowINVCYBRow.ItemArray = New Object() {refnum, itmnum, rtecde, cntsze, rtedsc, qty, dyshrs, vatcde, invamt, invtax, invvat, sysdttm, status, rectag, userid, updcde, discnt, invremark, cargo, CompanyCode}
             Me.Rows.Add(rowINVCYBRow)
             Return rowINVCYBRow
         End Function
@@ -1459,6 +1468,7 @@ Public Class dsAcctRpt
             Me.columndiscnt = Me.Columns("discnt")
             Me.columninvremark = Me.Columns("invremark")
             Me.columncargo = Me.Columns("cargo")
+            Me.columnCompanyCode = Me.Columns("CompanyCode")
         End Sub
         
         Private Sub InitClass()
@@ -1500,6 +1510,8 @@ Public Class dsAcctRpt
             Me.Columns.Add(Me.columninvremark)
             Me.columncargo = New DataColumn("cargo", GetType(System.String), Nothing, System.Data.MappingType.Element)
             Me.Columns.Add(Me.columncargo)
+            Me.columnCompanyCode = New DataColumn("CompanyCode", GetType(System.String), Nothing, System.Data.MappingType.Element)
+            Me.Columns.Add(Me.columnCompanyCode)
             Me.Constraints.Add(New UniqueConstraint("dsAcctRptKey2", New DataColumn() {Me.columnrefnum, Me.columnitmnum}, true))
             Me.Constraints.Add(New UniqueConstraint("dsAcctRptKey4", New DataColumn() {Me.columnrtecde}, false))
             Me.columnrefnum.AllowDBNull = false
@@ -1799,6 +1811,19 @@ Public Class dsAcctRpt
             End Set
         End Property
         
+        Public Property CompanyCode As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableINVCYB.CompanyCodeColumn),String)
+                Catch e As InvalidCastException
+                    Throw New StrongTypingException("Cannot get value because it is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableINVCYB.CompanyCodeColumn) = value
+            End Set
+        End Property
+        
         Public Function IscntszeNull() As Boolean
             Return Me.IsNull(Me.tableINVCYB.cntszeColumn)
         End Function
@@ -1925,6 +1950,14 @@ Public Class dsAcctRpt
         
         Public Sub SetcargoNull()
             Me(Me.tableINVCYB.cargoColumn) = System.Convert.DBNull
+        End Sub
+        
+        Public Function IsCompanyCodeNull() As Boolean
+            Return Me.IsNull(Me.tableINVCYB.CompanyCodeColumn)
+        End Function
+        
+        Public Sub SetCompanyCodeNull()
+            Me(Me.tableINVCYB.CompanyCodeColumn) = System.Convert.DBNull
         End Sub
         
         Public Function GetCYRateRows() As CYRateRow()
@@ -2854,6 +2887,8 @@ Public Class dsAcctRpt
         
         Private columnPayDate As DataColumn
         
+        Private columnCompanyCode As DataColumn
+        
         Friend Sub New()
             MyBase.New("Sales")
             Me.InitClass
@@ -2942,6 +2977,12 @@ Public Class dsAcctRpt
             End Get
         End Property
         
+        Friend ReadOnly Property CompanyCodeColumn As DataColumn
+            Get
+                Return Me.columnCompanyCode
+            End Get
+        End Property
+        
         Public Default ReadOnly Property Item(ByVal index As Integer) As SalesRow
             Get
                 Return CType(Me.Rows(index),SalesRow)
@@ -2960,9 +3001,9 @@ Public Class dsAcctRpt
             Me.Rows.Add(row)
         End Sub
         
-        Public Overloads Function AddSalesRow(ByVal Invdttm As Date, ByVal invnum As Decimal, ByVal cusnam As String, ByVal invamt As Decimal, ByVal VC As Decimal, ByVal CEX As Decimal, ByVal CIM As Decimal, ByVal SS As Decimal, ByVal Others As Decimal, ByVal PayDate As Date) As SalesRow
+        Public Overloads Function AddSalesRow(ByVal Invdttm As Date, ByVal invnum As Decimal, ByVal cusnam As String, ByVal invamt As Decimal, ByVal VC As Decimal, ByVal CEX As Decimal, ByVal CIM As Decimal, ByVal SS As Decimal, ByVal Others As Decimal, ByVal PayDate As Date, ByVal CompanyCode As String) As SalesRow
             Dim rowSalesRow As SalesRow = CType(Me.NewRow,SalesRow)
-            rowSalesRow.ItemArray = New Object() {Invdttm, invnum, cusnam, invamt, VC, CEX, CIM, SS, Others, PayDate}
+            rowSalesRow.ItemArray = New Object() {Invdttm, invnum, cusnam, invamt, VC, CEX, CIM, SS, Others, PayDate, CompanyCode}
             Me.Rows.Add(rowSalesRow)
             Return rowSalesRow
         End Function
@@ -2992,6 +3033,7 @@ Public Class dsAcctRpt
             Me.columnSS = Me.Columns("SS")
             Me.columnOthers = Me.Columns("Others")
             Me.columnPayDate = Me.Columns("PayDate")
+            Me.columnCompanyCode = Me.Columns("CompanyCode")
         End Sub
         
         Private Sub InitClass()
@@ -3015,6 +3057,8 @@ Public Class dsAcctRpt
             Me.Columns.Add(Me.columnOthers)
             Me.columnPayDate = New DataColumn("PayDate", GetType(System.DateTime), Nothing, System.Data.MappingType.Element)
             Me.Columns.Add(Me.columnPayDate)
+            Me.columnCompanyCode = New DataColumn("CompanyCode", GetType(System.String), Nothing, System.Data.MappingType.Element)
+            Me.Columns.Add(Me.columnCompanyCode)
         End Sub
         
         Public Function NewSalesRow() As SalesRow
@@ -3203,6 +3247,19 @@ Public Class dsAcctRpt
             End Set
         End Property
         
+        Public Property CompanyCode As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSales.CompanyCodeColumn),String)
+                Catch e As InvalidCastException
+                    Throw New StrongTypingException("Cannot get value because it is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSales.CompanyCodeColumn) = value
+            End Set
+        End Property
+        
         Public Function IsInvdttmNull() As Boolean
             Return Me.IsNull(Me.tableSales.InvdttmColumn)
         End Function
@@ -3282,6 +3339,14 @@ Public Class dsAcctRpt
         Public Sub SetPayDateNull()
             Me(Me.tableSales.PayDateColumn) = System.Convert.DBNull
         End Sub
+        
+        Public Function IsCompanyCodeNull() As Boolean
+            Return Me.IsNull(Me.tableSales.CompanyCodeColumn)
+        End Function
+        
+        Public Sub SetCompanyCodeNull()
+            Me(Me.tableSales.CompanyCodeColumn) = System.Convert.DBNull
+        End Sub
     End Class
     
     <System.Diagnostics.DebuggerStepThrough()>  _
@@ -3339,6 +3404,8 @@ Public Class dsAcctRpt
         Private columnAR As DataColumn
         
         Private columnSV As DataColumn
+        
+        Private columnCompanyCode As DataColumn
         
         Friend Sub New()
             MyBase.New("Cash")
@@ -3440,6 +3507,12 @@ Public Class dsAcctRpt
             End Get
         End Property
         
+        Friend ReadOnly Property CompanyCodeColumn As DataColumn
+            Get
+                Return Me.columnCompanyCode
+            End Get
+        End Property
+        
         Public Default ReadOnly Property Item(ByVal index As Integer) As CashRow
             Get
                 Return CType(Me.Rows(index),CashRow)
@@ -3458,9 +3531,9 @@ Public Class dsAcctRpt
             Me.Rows.Add(row)
         End Sub
         
-        Public Overloads Function AddCashRow(ByVal Pddte As Date, ByVal DocNo As String, ByVal ORNo As String, ByVal ChkNo As String, ByVal Payor As String, ByVal Amt As Decimal, ByVal ImpAmt As Decimal, ByVal ExpAmt As Decimal, ByVal McAmt As Decimal, ByVal SS As Decimal, ByVal AR As Decimal, ByVal SV As Decimal) As CashRow
+        Public Overloads Function AddCashRow(ByVal Pddte As Date, ByVal DocNo As String, ByVal ORNo As String, ByVal ChkNo As String, ByVal Payor As String, ByVal Amt As Decimal, ByVal ImpAmt As Decimal, ByVal ExpAmt As Decimal, ByVal McAmt As Decimal, ByVal SS As Decimal, ByVal AR As Decimal, ByVal SV As Decimal, ByVal CompanyCode As String) As CashRow
             Dim rowCashRow As CashRow = CType(Me.NewRow,CashRow)
-            rowCashRow.ItemArray = New Object() {Pddte, DocNo, ORNo, ChkNo, Payor, Amt, ImpAmt, ExpAmt, McAmt, SS, AR, SV}
+            rowCashRow.ItemArray = New Object() {Pddte, DocNo, ORNo, ChkNo, Payor, Amt, ImpAmt, ExpAmt, McAmt, SS, AR, SV, CompanyCode}
             Me.Rows.Add(rowCashRow)
             Return rowCashRow
         End Function
@@ -3492,6 +3565,7 @@ Public Class dsAcctRpt
             Me.columnSS = Me.Columns("SS")
             Me.columnAR = Me.Columns("AR")
             Me.columnSV = Me.Columns("SV")
+            Me.columnCompanyCode = Me.Columns("CompanyCode")
         End Sub
         
         Private Sub InitClass()
@@ -3519,6 +3593,8 @@ Public Class dsAcctRpt
             Me.Columns.Add(Me.columnAR)
             Me.columnSV = New DataColumn("SV", GetType(System.Decimal), Nothing, System.Data.MappingType.Element)
             Me.Columns.Add(Me.columnSV)
+            Me.columnCompanyCode = New DataColumn("CompanyCode", GetType(System.String), Nothing, System.Data.MappingType.Element)
+            Me.Columns.Add(Me.columnCompanyCode)
         End Sub
         
         Public Function NewCashRow() As CashRow
@@ -3733,6 +3809,19 @@ Public Class dsAcctRpt
             End Set
         End Property
         
+        Public Property CompanyCode As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableCash.CompanyCodeColumn),String)
+                Catch e As InvalidCastException
+                    Throw New StrongTypingException("Cannot get value because it is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCash.CompanyCodeColumn) = value
+            End Set
+        End Property
+        
         Public Function IsPddteNull() As Boolean
             Return Me.IsNull(Me.tableCash.PddteColumn)
         End Function
@@ -3827,6 +3916,14 @@ Public Class dsAcctRpt
         
         Public Sub SetSVNull()
             Me(Me.tableCash.SVColumn) = System.Convert.DBNull
+        End Sub
+        
+        Public Function IsCompanyCodeNull() As Boolean
+            Return Me.IsNull(Me.tableCash.CompanyCodeColumn)
+        End Function
+        
+        Public Sub SetCompanyCodeNull()
+            Me(Me.tableCash.CompanyCodeColumn) = System.Convert.DBNull
         End Sub
     End Class
     
