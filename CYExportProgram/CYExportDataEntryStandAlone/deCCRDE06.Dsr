@@ -1,22 +1,22 @@
 VERSION 5.00
 Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06 
-   ClientHeight    =   9765
+   ClientHeight    =   7440
    ClientLeft      =   0
    ClientTop       =   0
-   ClientWidth     =   10635
-   _ExtentX        =   18759
-   _ExtentY        =   17224
-   FolderFlags     =   1
+   ClientWidth     =   15165
+   _ExtentX        =   26749
+   _ExtentY        =   13123
+   FolderFlags     =   7
    TypeLibGuid     =   "{9AB22BB0-E016-11D2-BD0C-00105A64485A}"
    TypeInfoGuid    =   "{9AB22BB1-E016-11D2-BD0C-00105A64485A}"
    TypeInfoCookie  =   0
    Version         =   4
    NumConnections  =   1
    BeginProperty Connection1 
-      ConnectionName  =   "Billing"
+      ConnectionName  =   "Billing_NCT2"
       ConnDispId      =   1001
       SourceOfData    =   3
-      ConnectionSource=   $"deCCRDE06.dsx":0000
+      ConnectionSource=   "Provider=SQLOLEDB.1;Password=Ictsi123;Persist Security Info=True;User ID=SA_ICTSI;Initial Catalog=billing;Data Source=SBITCBILLING"
       Expanded        =   -1  'True
       IsSQL           =   -1  'True
       QuoteChar       =   34
@@ -28,7 +28,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommDispId      =   1002
       RsDispId        =   1221
       CommandText     =   "dbo.CYRate"
-      ActiveConnectionName=   "Billing"
+      ActiveConnectionName=   "Billing_NCT2"
       CommandType     =   2
       dbObjectType    =   1
       IsRSReturning   =   -1  'True
@@ -131,7 +131,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommDispId      =   1007
       RsDispId        =   1011
       CommandText     =   "select getdate()"
-      ActiveConnectionName=   "Billing"
+      ActiveConnectionName=   "Billing_NCT2"
       CommandType     =   1
       IsRSReturning   =   -1  'True
       NumFields       =   1
@@ -151,7 +151,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommDispId      =   1012
       RsDispId        =   1194
       CommandText     =   "dbo.CCRpay"
-      ActiveConnectionName=   "Billing"
+      ActiveConnectionName=   "Billing_NCT2"
       CommandType     =   2
       dbObjectType    =   1
       CursorType      =   2
@@ -392,7 +392,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommDispId      =   1018
       RsDispId        =   1196
       CommandText     =   "dbo.CCRcyx"
-      ActiveConnectionName=   "Billing"
+      ActiveConnectionName=   "Billing_NCT2"
       CommandType     =   2
       dbObjectType    =   1
       CursorType      =   2
@@ -729,14 +729,14 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommDispId      =   1028
       RsDispId        =   -1
       CommandText     =   "dbo.up_getnextccr"
-      ActiveConnectionName=   "Billing"
+      ActiveConnectionName=   "Billing_NCT2"
       Prepared        =   -1  'True
-      CallSyntax      =   "{? = CALL dbo.up_getnextccr( ?, ?) }"
+      CallSyntax      =   "{? = CALL dbo.up_getnextccr( ?, ?, ?) }"
       NumFields       =   0
       NumGroups       =   0
-      ParamCount      =   3
+      ParamCount      =   4
       BeginProperty P1 
-         RealName        =   "RETURN_VALUE"
+         RealName        =   "@RETURN_VALUE"
          Direction       =   4
          Precision       =   10
          Scale           =   0
@@ -765,6 +765,16 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
          HostType        =   8
          Required        =   -1  'True
       EndProperty
+      BeginProperty P4 
+         RealName        =   "@@pCOMPANYCODE"
+         Direction       =   1
+         Precision       =   0
+         Scale           =   0
+         Size            =   10
+         DataType        =   200
+         HostType        =   8
+         Required        =   -1  'True
+      EndProperty
       RelationCount   =   0
       AggregateCount  =   0
    EndProperty
@@ -773,7 +783,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommDispId      =   1030
       RsDispId        =   -1
       CommandText     =   "dbo.up_getcontrolno"
-      ActiveConnectionName=   "Billing"
+      ActiveConnectionName=   "Billing_NCT2"
       CallSyntax      =   "{? = CALL dbo.up_getcontrolno( ?, ?) }"
       NumFields       =   0
       NumGroups       =   0
@@ -816,7 +826,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommDispId      =   1032
       RsDispId        =   -1
       CommandText     =   "UPDATE CCRCyx SET  status = 'WHF' where (cntnum = ?) AND (ccrnum = ?) and (status <> 'CAN') "
-      ActiveConnectionName=   "Billing"
+      ActiveConnectionName=   "Billing_NCT2"
       CommandType     =   1
       NumFields       =   0
       NumGroups       =   0
@@ -848,8 +858,8 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommandName     =   "getPrevCCRPayment"
       CommDispId      =   1036
       RsDispId        =   1105
-      CommandText     =   $"deCCRDE06.dsx":008F
-      ActiveConnectionName=   "Billing"
+      CommandText     =   $"deCCRDE06.dsx":0000
+      ActiveConnectionName=   "Billing_NCT2"
       CommandType     =   1
       IsRSReturning   =   -1  'True
       NumFields       =   5
@@ -913,7 +923,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommDispId      =   1055
       RsDispId        =   1062
       CommandText     =   "SELECT * FROM ccralloc WHERE TELLER = ?"
-      ActiveConnectionName=   "Billing"
+      ActiveConnectionName=   "Billing_NCT2"
       CommandType     =   1
       Locktype        =   3
       IsRSReturning   =   -1  'True
@@ -1018,8 +1028,8 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommandName     =   "prtCCRPAY"
       CommDispId      =   1077
       RsDispId        =   1082
-      CommandText     =   $"deCCRDE06.dsx":0130
-      ActiveConnectionName=   "Billing"
+      CommandText     =   $"deCCRDE06.dsx":00A1
+      ActiveConnectionName=   "Billing_NCT2"
       CommandType     =   1
       IsRSReturning   =   -1  'True
       NumFields       =   15
@@ -1163,7 +1173,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommDispId      =   -1
       RsDispId        =   -1
       CommandText     =   "select * from ccrcyx"
-      ActiveConnectionName=   "Billing"
+      ActiveConnectionName=   "Billing_NCT2"
       CommandType     =   1
       RelateToParent  =   -1  'True
       ParentCommandName=   "prtCCRPAY"
@@ -1498,14 +1508,14 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommDispId      =   1083
       RsDispId        =   -1
       CommandText     =   "dbo.up_applyccr"
-      ActiveConnectionName=   "Billing"
+      ActiveConnectionName=   "Billing_NCT2"
       Prepared        =   -1  'True
-      CallSyntax      =   "{? = CALL dbo.up_applyccr( ?, ?) }"
+      CallSyntax      =   "{? = CALL dbo.up_applyccr( ?, ?, ?) }"
       NumFields       =   0
       NumGroups       =   0
-      ParamCount      =   3
+      ParamCount      =   4
       BeginProperty P1 
-         RealName        =   "RETURN_VALUE"
+         RealName        =   "@RETURN_VALUE"
          Direction       =   4
          Precision       =   10
          Scale           =   0
@@ -1531,6 +1541,16 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
          Scale           =   0
          Size            =   0
          DataType        =   131
+         HostType        =   8
+         Required        =   -1  'True
+      EndProperty
+      BeginProperty P4 
+         RealName        =   "@@pCOMPANYCODE"
+         Direction       =   1
+         Precision       =   0
+         Scale           =   0
+         Size            =   10
+         DataType        =   200
          HostType        =   8
          Required        =   -1  'True
       EndProperty
@@ -1542,13 +1562,13 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommDispId      =   1085
       RsDispId        =   -1
       CommandText     =   "dbo.up_chkvalidccr"
-      ActiveConnectionName=   "Billing"
-      CallSyntax      =   "{? = CALL dbo.up_chkvalidccr( ?, ?) }"
+      ActiveConnectionName=   "Billing_NCT2"
+      CallSyntax      =   "{? = CALL dbo.up_chkvalidccr( ?, ?, ?) }"
       NumFields       =   0
       NumGroups       =   0
-      ParamCount      =   3
+      ParamCount      =   4
       BeginProperty P1 
-         RealName        =   "RETURN_VALUE"
+         RealName        =   "@RETURN_VALUE"
          Direction       =   4
          Precision       =   10
          Scale           =   0
@@ -1577,6 +1597,16 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
          HostType        =   8
          Required        =   -1  'True
       EndProperty
+      BeginProperty P4 
+         RealName        =   "@@pCOMPANYCODE"
+         Direction       =   1
+         Precision       =   0
+         Scale           =   0
+         Size            =   10
+         DataType        =   200
+         HostType        =   8
+         Required        =   -1  'True
+      EndProperty
       RelationCount   =   0
       AggregateCount  =   0
    EndProperty
@@ -1585,7 +1615,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommDispId      =   1089
       RsDispId        =   1157
       CommandText     =   "Select refnum, cntnum, userid, sysdttm,trncde,whfcde,exprtr,itmnum from CCRcyx where refnum = ?"
-      ActiveConnectionName=   "Billing"
+      ActiveConnectionName=   "Billing_NCT2"
       CommandType     =   1
       IsRSReturning   =   -1  'True
       NumFields       =   8
@@ -1673,7 +1703,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommDispId      =   1097
       RsDispId        =   1104
       CommandText     =   "SELECT username = USER_NAME(), workstation = HOST_NAME()"
-      ActiveConnectionName=   "Billing"
+      ActiveConnectionName=   "Billing_NCT2"
       CommandType     =   1
       IsRSReturning   =   -1  'True
       NumFields       =   2
@@ -1703,7 +1733,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommDispId      =   1109
       RsDispId        =   1114
       CommandText     =   "SELECT * FROM customer ORDER BY cusnam"
-      ActiveConnectionName=   "Billing"
+      ActiveConnectionName=   "Billing_NCT2"
       CommandType     =   1
       IsRSReturning   =   -1  'True
       NumFields       =   12
@@ -1811,9 +1841,9 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
    BeginProperty Recordset17 
       CommandName     =   "getTotal"
       CommDispId      =   1115
-      RsDispId        =   1187
-      CommandText     =   $"deCCRDE06.dsx":0272
-      ActiveConnectionName=   "Billing"
+      RsDispId        =   1233
+      CommandText     =   $"deCCRDE06.dsx":01E3
+      ActiveConnectionName=   "Billing_NCT2"
       CommandType     =   1
       IsRSReturning   =   -1  'True
       NumFields       =   1
@@ -1854,8 +1884,8 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommandName     =   "getCCRList"
       CommDispId      =   1122
       RsDispId        =   1127
-      CommandText     =   $"deCCRDE06.dsx":0344
-      ActiveConnectionName=   "Billing"
+      CommandText     =   $"deCCRDE06.dsx":02CB
+      ActiveConnectionName=   "Billing_NCT2"
       CommandType     =   1
       IsRSReturning   =   -1  'True
       NumFields       =   4
@@ -1911,7 +1941,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommDispId      =   1128
       RsDispId        =   1133
       CommandText     =   "Select * from CCRcyx where refnum = ? and seqnum = ? and status <> 'CAN'"
-      ActiveConnectionName=   "Billing"
+      ActiveConnectionName=   "Billing_NCT2"
       CommandType     =   1
       IsRSReturning   =   -1  'True
       NumFields       =   39
@@ -2257,7 +2287,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommDispId      =   1134
       RsDispId        =   1139
       CommandText     =   "select * from CCRpay where refnum = ?"
-      ActiveConnectionName=   "Billing"
+      ActiveConnectionName=   "Billing_NCT2"
       CommandType     =   1
       IsRSReturning   =   -1  'True
       NumFields       =   28
@@ -2505,7 +2535,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommDispId      =   1140
       RsDispId        =   1149
       CommandText     =   "SELECT noccr = COUNT(DISTINCT ccrnum) FROM ccrcyx WHERE refnum = ? AND seqnum = ?"
-      ActiveConnectionName=   "Billing"
+      ActiveConnectionName=   "Billing_NCT2"
       CommandType     =   1
       IsRSReturning   =   -1  'True
       NumFields       =   1
@@ -2547,7 +2577,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommDispId      =   1150
       RsDispId        =   1207
       CommandText     =   "SELECT * FROM ccrcyx WHERE refnum = ? AND seqnum = ? "
-      ActiveConnectionName=   "Billing"
+      ActiveConnectionName=   "Billing_NCT2"
       CommandType     =   1
       IsRSReturning   =   -1  'True
       NumFields       =   40
@@ -2901,7 +2931,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommDispId      =   1158
       RsDispId        =   -1
       CommandText     =   "dbo.up_applyadr"
-      ActiveConnectionName=   "Billing"
+      ActiveConnectionName=   "Billing_NCT2"
       CallSyntax      =   "{? = CALL dbo.up_applyadr( ?, ?, ?, ?, ?, ?) }"
       NumFields       =   0
       NumGroups       =   0
@@ -2984,7 +3014,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommDispId      =   1163
       RsDispId        =   -1
       CommandText     =   "dbo.up_getadrbal"
-      ActiveConnectionName=   "Billing"
+      ActiveConnectionName=   "Billing_NCT2"
       CallSyntax      =   "{? = CALL dbo.up_getadrbal( ?, ?) }"
       NumFields       =   0
       NumGroups       =   0
@@ -3027,7 +3057,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommDispId      =   1165
       RsDispId        =   -1
       CommandText     =   "dbo.up_getcustomername"
-      ActiveConnectionName=   "Billing"
+      ActiveConnectionName=   "Billing_NCT2"
       CallSyntax      =   "{? = CALL dbo.up_getcustomername( ?, ?) }"
       NumFields       =   0
       NumGroups       =   0
@@ -3070,7 +3100,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommDispId      =   1175
       RsDispId        =   -1
       CommandText     =   "dbo.up_getsysdate"
-      ActiveConnectionName=   "Billing"
+      ActiveConnectionName=   "Billing_NCT2"
       CallSyntax      =   "{? = CALL dbo.up_getsysdate( ?) }"
       NumFields       =   0
       NumGroups       =   0
@@ -3103,7 +3133,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommDispId      =   1177
       RsDispId        =   -1
       CommandText     =   "UPDATE ccralloc SET prvccr = ?, prvdte = GETDATE() WHERE userid = ?"
-      ActiveConnectionName=   "Billing"
+      ActiveConnectionName=   "Billing_NCT2"
       CommandType     =   1
       NumFields       =   0
       NumGroups       =   0
@@ -3138,7 +3168,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommDispId      =   1213
       RsDispId        =   1216
       CommandText     =   "SELECT * From ccrcyx WHERE refnum = 138776 AND seqnum = 2 order by itmnum"
-      ActiveConnectionName=   "Billing"
+      ActiveConnectionName=   "Billing_NCT2"
       CommandType     =   1
       IsRSReturning   =   -1  'True
       NumFields       =   40
@@ -3473,4 +3503,3 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-

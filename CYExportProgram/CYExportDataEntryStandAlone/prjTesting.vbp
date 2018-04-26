@@ -1,15 +1,17 @@
 Type=Exe
-Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#C:\WINDOWS\System32\stdole2.tlb#OLE Automation
-Reference=*\G{00000205-0000-0010-8000-00AA006D2EA4}#2.5#0#C:\Program Files\Common Files\system\ado\msado25.tlb#Microsoft ActiveX Data Objects 2.0 Library
-Reference=*\G{9A07D931-9026-11D4-B0E7-00105A6CF58B}#11.0#0#..\..\..\SUBICNewProgram\CYExportProgram\CYExportDataEntryStandAlone\CCRDE06.dll#CY SUBIC Export Data Entry Class 
+Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\Windows\system32\stdole2.tlb#OLE Automation
+Reference=*\G{00000205-0000-0010-8000-00AA006D2EA4}#2.5#0#..\..\..\Program Files\Common Files\System\ado\msado25.tlb#Microsoft ActiveX Data Objects 2.0 Library
+Reference=*\ACCRDE06.vbp
 Module=modPRJ; modPRJ.bas
 Startup="Sub Main"
-ExeName32="prjTesting.exe"
+HelpFile=""
+Title="ExportDataEntry"
+ExeName32="NCT2_ExportDataEntry.exe"
 Command32=""
 Name="prjTesting"
 HelpContextID="0"
 CompatibleMode="0"
-MajorVer=1
+MajorVer=2
 MinorVer=0
 RevisionVer=0
 AutoIncrementVer=0
@@ -30,3 +32,7 @@ Unattended=0
 Retained=0
 ThreadPerObject=0
 MaxNumberOfThreads=1
+DebugStartupOption=0
+
+[MS Transaction Server]
+AutoRefresh=1

@@ -9,7 +9,7 @@ Begin VB.Form frmPrinter
    ClipControls    =   0   'False
    ControlBox      =   0   'False
    BeginProperty Font 
-      Name            =   "IBM3270 - 1254"
+      Name            =   "Arial"
       Size            =   13.5
       Charset         =   0
       Weight          =   400
@@ -92,6 +92,7 @@ Option Explicit
 Dim PreviousPrinter As Integer
 Private Sub cmbPrinter_Click()
     Set Printer = Printers(cmbPrinter.ListIndex)
+    Printer.Orientation = 2 'landscape
     PrinterRef = cmbPrinter.ListIndex
 End Sub
 Private Sub cmbPrinter_KeyDown(KeyCode As Integer, Shift As Integer)
@@ -126,6 +127,7 @@ Private Sub Form_Load()
     For Each Pr In Printers
         strRef = Str(ref + 1)
         cmbPrinter.AddItem strRef & "| " & Pr.DeviceName
+
         If Pr.DeviceName = Printer.DeviceName Then
             refTouse = ref
         End If
