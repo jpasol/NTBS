@@ -1,6 +1,6 @@
 VERSION 5.00
-Object = "{C4847593-972C-11D0-9567-00A0C9273C2A}#2.2#0"; "crviewer.dll"
-Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "MSMASK32.OCX"
+Object = "{C4847593-972C-11D0-9567-00A0C9273C2A}#8.0#0"; "CRVIEWER.DLL"
+Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "msmask32.ocx"
 Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
 Begin VB.Form frmCYUgty 
    Caption         =   "SBITC Extraction of Underguarantee Bill"
@@ -24,6 +24,16 @@ Begin VB.Form frmCYUgty
    ScaleWidth      =   15240
    StartUpPosition =   3  'Windows Default
    WindowState     =   2  'Maximized
+   Begin VB.ComboBox Combo1 
+      Height          =   420
+      ItemData        =   "frmCYUgty.frx":014A
+      Left            =   450
+      List            =   "frmCYUgty.frx":0154
+      TabIndex        =   11
+      Text            =   "SBITC"
+      Top             =   4200
+      Width           =   2895
+   End
    Begin ComctlLib.ProgressBar ProgressBar1 
       Height          =   255
       Left            =   3720
@@ -74,6 +84,7 @@ Begin VB.Form frmCYUgty
       EnablePopupMenu =   -1  'True
       EnableExportButton=   0   'False
       EnableSearchExpertButton=   0   'False
+      EnableHelpButton=   0   'False
    End
    Begin VB.CommandButton cmdPreview 
       Caption         =   "&Preview Invoice(s)"
@@ -88,10 +99,10 @@ Begin VB.Form frmCYUgty
       EndProperty
       Height          =   735
       Left            =   360
-      Picture         =   "frmCYUgty.frx":014A
+      Picture         =   "frmCYUgty.frx":0164
       Style           =   1  'Graphical
       TabIndex        =   3
-      Top             =   4080
+      Top             =   4900
       Width           =   2895
    End
    Begin MSMask.MaskEdBox mskStrDte 
@@ -264,7 +275,7 @@ Private Function ValidInvNum() As Boolean
     Dim rsINVICT As New ADODB.Recordset
     Dim sql As String
     
-    sql = "Select invnum from INVICT where (invnum='" & Trim(txtInvNum) & "')"
+    sql = "Select invnum from INVICT where (invnum='" & Trim(txtInvNum) & "') AND (CompanyCode = '" & Combo1.Text & "') AND (status <> 'CAN')"
     With rsINVICT
         .Open sql, gcnnBilling, , , adCmdText
         If Not (.BOF And .EOF) Then
@@ -274,7 +285,8 @@ Private Function ValidInvNum() As Boolean
         End If
         .Close
     End With
-End Function
+ End Function
+
 
 Private Sub Form_Load()
     mskStrDte.Text = Format(Now, "YYYY/MM/DD")
@@ -282,6 +294,7 @@ Private Sub Form_Load()
     ChrgTyp = EX    ' set default to export
     ConnectToBilling
 End Sub
+
 
 Private Sub mnuChgTyp_Click(Index As Integer)
     Select Case Index
@@ -347,7 +360,7 @@ Private Sub TransferData()
 '   ---------------------------- E X P O R T ------------------------------
         Case EX
        
-            strSQL = "Select * from CCRCyx where (status <> 'CAN') and " & _
+            strSQL = "Select * from CCRCyx where (status <> 'CAN') and CompanyCode = '" & Combo1.Text & "' and " & _
                 "(guarntycde = 'Y') and " & _
                 "cast('" & mskStrDte.Text & "' as datetime) <= sysdttm and " & _
                 "('" & tmpEndDte & "' > sysdttm) order by refnum"
@@ -384,12 +397,12 @@ Private Sub TransferData()
                                         
                     Call SaveINVCYB(tmpRefNum, tmpItmNum, tmpRteCde, .Fields("cntsze"), _
                         .Fields("cntnum"), .Fields("ccrnum"), _
-                        .Fields("arramt") + .Fields("ovzamt") + .Fields("dgramt"), _
+                        .Fields("arramt") + .Fields("ovzamt") + .Fields("dgramt") + .Fields("wghamt"), _
                         .Fields("arrvat"), .Fields("ovzamt"), .Fields("dgramt"), _
-                        .Fields("revton"), "", .Fields("arrtax"), .Fields("vatcde"), 1)
+                        .Fields("revton"), "WGH", .Fields("arrtax"), .Fields("vatcde"), 1)
 
                     tmpTtlAmt = tmpTtlAmt + .Fields("arramt") + .Fields("ovzamt") + _
-                                                  .Fields("dgramt")
+                                                  .Fields("dgramt") + .Fields("wghamt")
                     tmpTtlVat = tmpTtlVat + .Fields("arrvat")
                     tmpTtlTax = tmpTtlTax + .Fields("arrtax")
                         
@@ -422,7 +435,7 @@ SaveINVICTex:
 '   ---------------------------- I M P O R T ------------------------------
         Case IM
         
-        strSQL = "SELECT * FROM CYMGPS WHERE (status <> 'CAN') and " & _
+        strSQL = "SELECT * FROM CYMGPS WHERE (status <> 'CAN') and CompanyCode = '" & Combo1.Text & "' and " & _
             "(gtycde <> '') and " & _
             "(left(broker, 3) <> 'BOC') and " & _
             " cast('" & mskStrDte.Text & "' as datetime) <= sysdte and " & _
@@ -478,6 +491,8 @@ SaveINVICTex:
                         tmpTtlAmt = tmpTtlAmt + .Fields("arramt")
                         tmpTtlVat = tmpTtlVat + .Fields("arrvat")
                         tmpTtlTax = tmpTtlTax + .Fields("arrtax")
+                        ''
+                        'compcode = .Fields("CompanyCode")
                         
                     End If
                     
@@ -600,7 +615,7 @@ SaveINVICTim:
         
             prvChgTyp = ""
             prvChgSze = ""
-            strSQL = "Select * from CCRdtl where (status <> 'CAN') and " & _
+            strSQL = "Select * from CCRdtl where (status <> 'CAN') and CompanyCode = '" & Combo1.Text & "' and " & _
                 "(guarntycde = 'Y') and " & _
                 "cast('" & mskStrDte.Text & "' as datetime) <= sysdttm and " & _
                 "('" & tmpEndDte & "' > sysdttm) order by refnum"
@@ -731,6 +746,7 @@ Dim strCustmr As String
             .Fields("updcde") = "A"
             .Fields("cfscy") = "1"
             .Fields("effdte") = ""
+            .Fields("CompanyCode") = Combo1.Text
             .Update
             .Close
         End With
@@ -771,6 +787,8 @@ Private Sub SaveINVCYB(pRefNum As Long, pItmNum As Integer, pRteCde As String, _
                 Case "RFR"
                     .Fields("rtedsc") = .Fields("rtedsc") & "-" & intRfrHrs & " HR(S)"
                     .Fields("dyshrs") = intRfrHrs / 6
+                Case "WGH"
+                    .Fields("rtedsc") = .Fields("rtedsc") & " W/ADDL. WEIGHING CHARGE"
             End Select
             If pInvVat = 0 And pInvTax = 0 Then
                 pVatCde = "0"
@@ -793,6 +811,7 @@ Private Sub SaveINVCYB(pRefNum As Long, pItmNum As Integer, pRteCde As String, _
             .Fields("discnt") = 0
             .Fields("invremark") = ""
             .Fields("cargo") = "NA"
+            .Fields("CompanyCode") = Combo1.Text
             .Update
             .Close
     End With
@@ -821,17 +840,21 @@ Private Function GetCustomerCode(pRefNum As Long, pImpExp As String) As String
 End Function
 
 Private Sub PreviewOutput(pLstInv As Long)
+
     Dim crInvoice As New crSubicRpt
+    'Dim crInvoice As New CrystalReport1
     Dim tmpStartInv As Long
 
     tmpStartInv = CLng(txtInvNum)
 
     Do Until tmpStartInv > pLstInv
         crInvoice.ParameterFields(1).AddCurrentValue (tmpStartInv)
+        crInvoice.ParameterFields(2).AddCurrentValue (Combo1.Text)
         tmpStartInv = tmpStartInv + 1
         If ProgressBar1.Value > 90 Then ProgressBar1.Value = 0
         ProgressBar1.Value = ProgressBar1.Value + 2
     Loop
+    'CRViewer.ReportSource = crInvoice
     CRViewer.ReportSource = crInvoice
     ProgressBar1.Value = 100
     CRViewer.ViewReport
@@ -872,3 +895,4 @@ Private Function GetRecordTag(pRate As String) As String
       GetRecordTag = tmpTag
   End With
 End Function
+

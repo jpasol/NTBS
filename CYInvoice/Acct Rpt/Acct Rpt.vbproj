@@ -1,7 +1,7 @@
 <VisualStudioProject>
     <VisualBasic
         ProjectType = "Local"
-        ProductVersion = "7.10.3077"
+        ProductVersion = "7.10.6030"
         SchemaVersion = "2.0"
         ProjectGuid = "{1C6D207E-0188-4B15-A0FF-23FA5A6AA09F}"
     >
@@ -78,32 +78,32 @@
                     AssemblyName = "System.Xml"
                 />
                 <Reference
-                    Name = "CrystalDecisions.Windows.Forms"
-                    AssemblyName = "CrystalDecisions.Windows.Forms"
-                    HintPath = "..\..\..\..\..\..\Program Files\Common Files\Crystal Decisions\1.1\Managed\CrystalDecisions.Windows.Forms.dll"
-                    AssemblyFolderKey = "hklm\crystal.net"
-                />
-                <Reference
-                    Name = "CrystalDecisions.Shared"
-                    AssemblyName = "CrystalDecisions.Shared"
-                    HintPath = "..\..\..\..\..\..\Program Files\Common Files\Crystal Decisions\1.1\Managed\CrystalDecisions.Shared.dll"
-                    AssemblyFolderKey = "hklm\crystal.net"
-                />
-                <Reference
-                    Name = "CrystalDecisions.ReportSource"
-                    AssemblyName = "CrystalDecisions.ReportSource"
-                    HintPath = "..\..\..\..\..\..\Program Files\Common Files\Crystal Decisions\1.1\Managed\CrystalDecisions.ReportSource.dll"
-                    AssemblyFolderKey = "hklm\crystal.net"
-                />
-                <Reference
                     Name = "System.Web.Services"
                     AssemblyName = "System.Web.Services"
                     HintPath = "..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Web.Services.dll"
                 />
                 <Reference
+                    Name = "CrystalDecisions.Windows.Forms"
+                    AssemblyName = "CrystalDecisions.Windows.Forms"
+                    HintPath = "c:\program files\common files\crystal decisions\2.5\managed\CrystalDecisions.Windows.Forms.dll"
+                    AssemblyFolderKey = "hklm\crystal.net"
+                />
+                <Reference
+                    Name = "CrystalDecisions.Shared"
+                    AssemblyName = "CrystalDecisions.Shared"
+                    HintPath = "c:\program files\common files\crystal decisions\2.5\managed\CrystalDecisions.Shared.dll"
+                    AssemblyFolderKey = "hklm\crystal.net"
+                />
+                <Reference
+                    Name = "CrystalDecisions.ReportSource"
+                    AssemblyName = "CrystalDecisions.ReportSource"
+                    HintPath = "c:\program files\common files\crystal decisions\2.5\managed\CrystalDecisions.ReportSource.dll"
+                    AssemblyFolderKey = "hklm\crystal.net"
+                />
+                <Reference
                     Name = "CrystalDecisions.CrystalReports.Engine"
                     AssemblyName = "CrystalDecisions.CrystalReports.Engine"
-                    HintPath = "..\..\..\..\..\..\Program Files\Common Files\Crystal Decisions\1.1\Managed\CrystalDecisions.CrystalReports.Engine.dll"
+                    HintPath = "c:\program files\common files\crystal decisions\2.5\managed\CrystalDecisions.CrystalReports.Engine.dll"
                     AssemblyFolderKey = "hklm\crystal.net"
                 />
             </References>
@@ -169,7 +169,7 @@
                 <File
                     RelPath = "rptCash.rpt"
                     BuildAction = "EmbeddedResource"
-                    Generator = "CrystalDecisions.VSShell.CodeGen.ReportCodeGenerator"
+                    Generator = "CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator"
                     LastGenOutput = "rptCash.vb"
                 />
                 <File
@@ -183,7 +183,7 @@
                 <File
                     RelPath = "rptSales.rpt"
                     BuildAction = "EmbeddedResource"
-                    Generator = "CrystalDecisions.VSShell.CodeGen.ReportCodeGenerator"
+                    Generator = "CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator"
                     LastGenOutput = "rptSales.vb"
                 />
                 <File
