@@ -16,24 +16,6 @@ Begin VB.Form frmLogIn
    ScaleWidth      =   7080
    ShowInTaskbar   =   0   'False
    StartUpPosition =   2  'CenterScreen
-   Begin VB.ComboBox PortCombo 
-      BeginProperty Font 
-         Name            =   "Arial"
-         Size            =   12
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   405
-      ItemData        =   "LogIn.frx":0000
-      Left            =   1440
-      List            =   "LogIn.frx":000D
-      TabIndex        =   15
-      Top             =   480
-      Width           =   3495
-   End
    Begin VB.TextBox txtLogOn 
       Appearance      =   0  'Flat
       BeginProperty Font 
@@ -45,15 +27,15 @@ Begin VB.Form frmLogIn
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   330
+      Height          =   375
       IMEMode         =   3  'DISABLE
       Index           =   4
-      Left            =   1425
+      Left            =   1440
       MaxLength       =   15
       TabIndex        =   13
       TabStop         =   0   'False
-      Top             =   2400
-      Width           =   2100
+      Top             =   2520
+      Width           =   2175
    End
    Begin VB.CheckBox chkNTLog 
       Appearance      =   0  'Flat
@@ -69,11 +51,11 @@ Begin VB.Form frmLogIn
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H80000008&
-      Height          =   315
-      Left            =   4665
+      Height          =   375
+      Left            =   4560
       TabIndex        =   4
-      Top             =   2790
-      Width           =   1440
+      Top             =   2280
+      Width           =   1455
    End
    Begin VB.TextBox txtLogOn 
       Appearance      =   0  'Flat
@@ -86,17 +68,17 @@ Begin VB.Form frmLogIn
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   330
+      Height          =   375
       IMEMode         =   3  'DISABLE
       Index           =   3
-      Left            =   1410
+      Left            =   1440
       Locked          =   -1  'True
       MaxLength       =   10
       PasswordChar    =   "*"
       TabIndex        =   1
       TabStop         =   0   'False
-      Top             =   1950
-      Width           =   2100
+      Top             =   2040
+      Width           =   2175
    End
    Begin VB.TextBox txtLogOn 
       Appearance      =   0  'Flat
@@ -109,15 +91,15 @@ Begin VB.Form frmLogIn
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   330
+      Height          =   375
       Index           =   2
-      Left            =   1425
+      Left            =   1440
       Locked          =   -1  'True
       MaxLength       =   10
       TabIndex        =   0
       TabStop         =   0   'False
-      Top             =   1500
-      Width           =   2100
+      Top             =   1560
+      Width           =   2175
    End
    Begin VB.TextBox txtLogOn 
       Appearance      =   0  'Flat
@@ -130,14 +112,14 @@ Begin VB.Form frmLogIn
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   330
+      Height          =   375
       Index           =   1
-      Left            =   1425
+      Left            =   1440
       Locked          =   -1  'True
       TabIndex        =   6
       TabStop         =   0   'False
-      Top             =   1050
-      Width           =   2100
+      Top             =   1080
+      Width           =   2175
    End
    Begin VB.TextBox txtLogOn 
       Appearance      =   0  'Flat
@@ -150,33 +132,14 @@ Begin VB.Form frmLogIn
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   330
+      Height          =   375
       Index           =   0
-      Left            =   4785
+      Left            =   1440
       Locked          =   -1  'True
       TabIndex        =   5
       TabStop         =   0   'False
-      Top             =   1080
-      Width           =   2100
-   End
-   Begin VB.Label lblLogOn 
-      BackStyle       =   0  'Transparent
-      Caption         =   "Port:"
-      BeginProperty Font 
-         Name            =   "Verdana"
-         Size            =   9.75
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   495
-      Index           =   5
-      Left            =   240
-      TabIndex        =   16
       Top             =   600
-      Width           =   1140
+      Width           =   2175
    End
    Begin VB.Label lblLogOn 
       BackStyle       =   0  'Transparent
@@ -194,8 +157,8 @@ Begin VB.Form frmLogIn
       Index           =   4
       Left            =   240
       TabIndex        =   14
-      Top             =   2400
-      Width           =   1140
+      Top             =   2520
+      Width           =   1215
    End
    Begin VB.Shape shpLogOn 
       BorderColor     =   &H00808080&
@@ -221,7 +184,7 @@ Begin VB.Form frmLogIn
       Height          =   240
       Left            =   360
       TabIndex        =   12
-      Top             =   3000
+      Top             =   3120
       Width           =   5115
    End
    Begin VB.Label lblLogExit 
@@ -240,13 +203,13 @@ Begin VB.Form frmLogIn
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H80000008&
-      Height          =   390
-      Left            =   4590
-      MouseIcon       =   "LogIn.frx":0020
+      Height          =   495
+      Left            =   4440
+      MouseIcon       =   "LogIn.frx":0000
       MousePointer    =   99  'Custom
       TabIndex        =   3
-      Top             =   2115
-      Width           =   1590
+      Top             =   1680
+      Width           =   1695
    End
    Begin VB.Label lblLogOk 
       Alignment       =   2  'Center
@@ -264,13 +227,13 @@ Begin VB.Form frmLogIn
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H80000008&
-      Height          =   390
-      Left            =   4590
-      MouseIcon       =   "LogIn.frx":032A
+      Height          =   615
+      Left            =   4440
+      MouseIcon       =   "LogIn.frx":030A
       MousePointer    =   99  'Custom
       TabIndex        =   2
-      Top             =   1560
-      Width           =   1590
+      Top             =   960
+      Width           =   1695
    End
    Begin VB.Label lblLogOn 
       BackStyle       =   0  'Transparent
@@ -286,10 +249,10 @@ Begin VB.Form frmLogIn
       EndProperty
       Height          =   375
       Index           =   3
-      Left            =   225
+      Left            =   240
       TabIndex        =   10
-      Top             =   1950
-      Width           =   1140
+      Top             =   2040
+      Width           =   1215
    End
    Begin VB.Label lblLogOn 
       BackStyle       =   0  'Transparent
@@ -307,8 +270,8 @@ Begin VB.Form frmLogIn
       Index           =   2
       Left            =   240
       TabIndex        =   9
-      Top             =   1500
-      Width           =   1140
+      Top             =   1560
+      Width           =   1215
    End
    Begin VB.Label lblLogOnTitle 
       BackColor       =   &H00000000&
@@ -346,8 +309,8 @@ Begin VB.Form frmLogIn
       Index           =   1
       Left            =   240
       TabIndex        =   8
-      Top             =   1050
-      Width           =   1140
+      Top             =   1080
+      Width           =   1215
    End
    Begin VB.Label lblLogOn 
       BackStyle       =   0  'Transparent
@@ -363,10 +326,10 @@ Begin VB.Form frmLogIn
       EndProperty
       Height          =   375
       Index           =   0
-      Left            =   3600
+      Left            =   240
       TabIndex        =   7
-      Top             =   1080
-      Width           =   1140
+      Top             =   600
+      Width           =   1215
    End
 End
 Attribute VB_Name = "frmLogIn"
