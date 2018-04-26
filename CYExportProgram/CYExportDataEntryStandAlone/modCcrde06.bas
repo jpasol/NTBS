@@ -2,11 +2,13 @@ Attribute VB_Name = "modCcrde06"
 Option Explicit
 
 Public gcnnBilling As ADODB.Connection
+Public gcnnNavis As ADODB.Connection
 
 ' Public Variables
 Public gPassword As String * 10
 Public gConnStr As String
 Public gbConnected As Boolean
+Public gbNavis As Boolean
 Public gsCaption As String
 
 ' INI variables
@@ -100,6 +102,13 @@ End Type
 ' ** End of Printing Public Variables
 
 Public RateArr(1 To 300) As Rates
+
+Public Function ComputeWeighing() As Currency
+    'If chkWeighing.Value = 1 Then
+        ComputeWeighing = GetRate2("MCTRUS", "20")
+    'End If
+End Function
+
 Public Function Comp_Arrastre(ByRef sngdangramt As Currency, ByRef sngBscArr As Currency, ByRef sngRton As Currency, _
             ByRef sngOvzAmt As Currency, cnt_Size As Integer, cnt_Dngr As String, _
             cnt_Length As Single, cnt_Width As Single, _
@@ -138,7 +147,10 @@ Public Function Comp_Arrastre(ByRef sngdangramt As Currency, ByRef sngBscArr As 
     sngRton = 0
     sngRevton = 0
     sngOvzAmt = 0
+
 ' ** COMPUTATION FOR OVERSIZE AMOUNTS
+
+    
     If (cnt_Length <> 0) And (cnt_Width <> 0) And (cnt_Height <> 0) Then
         If cnt_UMS <> "I" Then
             cnt_Length = Round((cnt_Length / 2.54), 2)
@@ -191,6 +203,7 @@ Public Function Comp_Arrastre(ByRef sngdangramt As Currency, ByRef sngBscArr As 
     End If
     Comp_Arrastre = arrAmt
 End Function
+
 Public Function GetRate(Rtecode As String, cntsize As Integer) As Currency
 Dim ctrArr As Integer
 ctrArr = 0
@@ -200,5 +213,32 @@ ctrArr = 0
         Exit For
     End If
     Next ctrArr
+End Function
+
+Public Function GetRate2(Rtecode As String, cntsize As String) As Currency
+Dim ctrArr As Integer
+ctrArr = 0
+    For ctrArr = 1 To 300
+     If Rtecode = Trim(RateArr(ctrArr).Rtecode) Then
+        GetRate2 = RateArr(ctrArr).RteAmt
+        Exit For
+    End If
+    Next ctrArr
+End Function
+
+Public Function UpdateIsN4BillingPermissionGrantedStatus(ByVal unitId As String) As String
+    Dim rstN4Status As ADODB.Recordset
+    Dim strUpdateStatus As String
+    
+    Set rstN4Status = New ADODB.Recordset
+    
+    strUpdateStatus = ""
+    strUpdateStatus = "UPDATE CCRCYX " & _
+                    "SET IsN4BillingPermissionGranted = 1 " & _
+                    "WHERE cntnum = '" & unitId & "' and IsN4BillingPermissionGranted = 0 "
+                    
+    rstN4Status.Open strUpdateStatus, gcnnBilling, adOpenForwardOnly, adLockReadOnly
+    
+   ' GetGKey = rstGKey.Fields(0)
 End Function
 

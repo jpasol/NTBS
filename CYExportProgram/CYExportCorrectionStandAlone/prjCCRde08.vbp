@@ -1,6 +1,6 @@
 Type=Exe
-Reference=*\G{00000205-0000-0010-8000-00AA006D2EA4}#2.5#0#C:\Program Files\Common Files\system\ado\msado25.tlb#Microsoft ActiveX Data Objects 2.0 Library
-Object={831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0; MSCOMCTL.OCX
+Reference=*\G{00000205-0000-0010-8000-00AA006D2EA4}#2.5#0#..\..\..\..\Program Files\Common Files\System\ado\msado25.tlb#Microsoft ActiveX Data Objects 2.0 Library
+Object={831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.1#0; MSCOMCTL.OCX
 Module=mod08; mod08.bas
 Startup="Sub Main"
 HelpFile=""

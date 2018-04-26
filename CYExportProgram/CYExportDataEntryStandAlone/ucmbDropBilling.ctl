@@ -3,9 +3,9 @@ Begin VB.UserControl ucmbDropBilling
    ClientHeight    =   420
    ClientLeft      =   0
    ClientTop       =   0
-   ClientWidth     =   3270
+   ClientWidth     =   2505
    BeginProperty Font 
-      Name            =   "IBM3270 - 1254"
+      Name            =   "Arial"
       Size            =   15
       Charset         =   0
       Weight          =   400
@@ -15,7 +15,7 @@ Begin VB.UserControl ucmbDropBilling
    EndProperty
    KeyPreview      =   -1  'True
    ScaleHeight     =   420
-   ScaleWidth      =   3270
+   ScaleWidth      =   2505
    ToolboxBitmap   =   "ucmbDropBilling.ctx":0000
    Begin VB.ComboBox Combo1 
       BackColor       =   &H8000000F&
@@ -92,12 +92,12 @@ Private Sub Combo1_LostFocus()
     Combo1.BackColor = &H8000000F
 End Sub
 Private Sub UserControl_Initialize()
-    UserControl.Height = Combo1.Height
-    Combo1.Width = UserControl.Width
+    UserControl.height = Combo1.height
+    Combo1.width = UserControl.width
 End Sub
 Private Sub UserControl_Resize()
-    UserControl.Height = Combo1.Height
-    Combo1.Width = UserControl.Width
+    UserControl.height = Combo1.height
+    Combo1.width = UserControl.width
 End Sub
 'MappingInfo=Combo1,Combo1,-1,BackColor
 Public Property Get BackColor() As OLE_COLOR

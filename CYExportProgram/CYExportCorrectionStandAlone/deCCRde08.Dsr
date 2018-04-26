@@ -1,11 +1,11 @@
 VERSION 5.00
 Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08 
-   ClientHeight    =   9765
+   ClientHeight    =   7845
    ClientLeft      =   0
    ClientTop       =   0
-   ClientWidth     =   11175
-   _ExtentX        =   19711
-   _ExtentY        =   17224
+   ClientWidth     =   14775
+   _ExtentX        =   26061
+   _ExtentY        =   13838
    FolderFlags     =   5
    TypeLibGuid     =   "{D300CD6F-EBEB-11D2-BD1F-00105A64485A}"
    TypeInfoGuid    =   "{D300CD70-EBEB-11D2-BD1F-00105A64485A}"
@@ -2392,3 +2392,6 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Private Sub DataEnvironment_Initialize()
+
+End Sub
