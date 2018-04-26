@@ -10,11 +10,13 @@ Attribute VB_Name = "clsCCRAllocation"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
-Attribute VB_Exposed = True
+Attribute VB_Exposed = False
 Attribute VB_Ext_KEY = "SavedWithClassBuilder6" ,"Yes"
 Attribute VB_Ext_KEY = "Top_Level" ,"Yes"
+Option Explicit
 'local variable(s) to hold property value(s)
 Private mvarUserid As Variant 'local copy
+
 Public Property Let Userid(ByVal vData As Variant)
 'used when assigning a value to the property, on the left side of an assignment.
 'Syntax: X.Userid = 5
@@ -37,6 +39,9 @@ Public Property Get Userid() As Variant
         Userid = mvarUserid
     End If
 End Property
+
+
+
 
 Public Sub Execute()
     frmAllocation.Show vbModal
