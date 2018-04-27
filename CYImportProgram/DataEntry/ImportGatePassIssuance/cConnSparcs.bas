@@ -984,8 +984,7 @@ Public Function GetCompanyCode(ByVal regNum As String) As String
     
 Exit Function
 err:
-
-MsgBox "Error retrieving LDD. Error message:" & err.Description
+MsgBox "Error retrieving LDD  . Error message:" & err.Description
 End Function
 
 Public Function SavePaymentToSparcs(ByVal pContNum As String, ByVal pCharge As String, ByVal pPaid As String, ByVal pGKey As String)
