@@ -975,7 +975,7 @@ Public Function GetCompanyCode(ByVal regNum As String) As String
 
     rstCC.Open strQuery, gcnnNavis, adOpenForwardOnly, adLockReadOnly
     
-    If Not rstCC.BOF = True Or Not rstCC.EOF = True Or Not IsNull(rstCC.Fields(0)) Then
+    If ((Not rstCC.BOF = True) Or (Not rstCC.EOF = True)) And (Not IsNull(rstCC.Fields(0))) Then
         GetCompanyCode = rstCC.Fields(0)
     Else
         GetCompanyCode = ""
@@ -983,9 +983,9 @@ Public Function GetCompanyCode(ByVal regNum As String) As String
     End If
     
 Exit Function
-err:
 
-MsgBox "Error retrieving LDD. Error message:" & err.Description
+err:
+MsgBox "Error retrieving LDD  . Error message:" & err.Description
 End Function
 
 Public Function SavePaymentToSparcs(ByVal pContNum As String, ByVal pCharge As String, ByVal pPaid As String, ByVal pGKey As String)
