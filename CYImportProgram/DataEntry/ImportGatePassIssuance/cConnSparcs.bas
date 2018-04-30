@@ -948,7 +948,7 @@ Public Function getLDD(ByVal regNum As String) As String
 
     rstLDD.Open strLDD, gcnnNavis, adOpenForwardOnly, adLockReadOnly
     
-    If Not rstLDD.BOF = True Or Not rstLDD.EOF = True Or Not IsNull(rstLDD.Fields(0)) Then
+    If ((Not rstLDD.BOF = True Or Not rstLDD.EOF = True) And (Not IsNull(rstLDD.Fields(0)))) Then
         getLDD = rstLDD.Fields(0)
     Else
         getLDD = "1899-12-30"
