@@ -40,16 +40,16 @@ Begin VB.Form frmCYCancelCorrect
       TabCaption(0)   =   "Correct Gatepass"
       TabPicture(0)   =   "frmCYCancelCorrect.frx":0000
       Tab(0).ControlEnabled=   0   'False
-      Tab(0).Control(0)=   "fraDetail"
+      Tab(0).Control(0)=   "cmdSaveCorrectGatePass"
       Tab(0).Control(1)=   "Frame1"
-      Tab(0).Control(2)=   "cmdSaveCorrectGatePass"
+      Tab(0).Control(2)=   "fraDetail"
       Tab(0).ControlCount=   3
       TabCaption(1)   =   "Cancel Gatepass"
       TabPicture(1)   =   "frmCYCancelCorrect.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "cmdCancelGatepass"
+      Tab(1).Control(0)=   "Frame3"
       Tab(1).Control(1)=   "Frame4"
-      Tab(1).Control(2)=   "Frame3"
+      Tab(1).Control(2)=   "cmdCancelGatepass"
       Tab(1).ControlCount=   3
       TabCaption(2)   =   "Correct Payment"
       TabPicture(2)   =   "frmCYCancelCorrect.frx":0038
@@ -60,8 +60,8 @@ Begin VB.Form frmCYCancelCorrect
       TabCaption(3)   =   "View"
       TabPicture(3)   =   "frmCYCancelCorrect.frx":0054
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "Frame6"
-      Tab(3).Control(1)=   "Frame5"
+      Tab(3).Control(0)=   "Frame5"
+      Tab(3).Control(1)=   "Frame6"
       Tab(3).ControlCount=   2
       Begin VB.Frame Frame6 
          Caption         =   "Gatepass Detail"
@@ -3513,7 +3513,7 @@ Private Sub cmdSaveCorrectPayment_Click()
             intResponse = MsgBox("not balanced. please fix.", vbExclamation + vbOKOnly, "")
             Exit Sub
         Else
-'            If (curPreviousADRAmount <> CCur(mskADRAmount)) And (curPreviousADRAmount > 0 Or CCur(mskADRAmount) > 0) Then
+            If (curPreviousADRAmount <> CCur(mskADRAmount)) And (curPreviousADRAmount > 0 Or CCur(mskADRAmount) > 0) Then
 '                curADRDifference = curPreviousADRAmount + CCur(mskADRBalance) - mskADRAmount
 '                If curADRDifference < 0 Then
 '                    intResponse = MsgBox("insufficient ADR amount. please check.", vbExclamation + vbOKOnly, "")
@@ -3528,7 +3528,7 @@ Private Sub cmdSaveCorrectPayment_Click()
 '                        lngControlNo = lzApplyADR(txtCustomerCode, "CYM", CCur(mskReference3), CCur(mskADRAmount), UCase(zCurrentUser()), "")
 '                    End If
 '                End If
-'            Else
+            Else
                 txtCustomerCode = ""
                 txtCustomerName = ""
                 mskADRAmount = 0
