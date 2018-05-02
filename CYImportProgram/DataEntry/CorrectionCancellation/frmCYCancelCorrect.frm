@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "MSMASK32.OCX"
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "tabctl32.OCX"
 Begin VB.Form frmCYCancelCorrect 
    Caption         =   "Cancellation / Correction"
    ClientHeight    =   11010
@@ -40,16 +40,16 @@ Begin VB.Form frmCYCancelCorrect
       TabCaption(0)   =   "Correct Gatepass"
       TabPicture(0)   =   "frmCYCancelCorrect.frx":0000
       Tab(0).ControlEnabled=   0   'False
-      Tab(0).Control(0)=   "cmdSaveCorrectGatePass"
+      Tab(0).Control(0)=   "fraDetail"
       Tab(0).Control(1)=   "Frame1"
-      Tab(0).Control(2)=   "fraDetail"
+      Tab(0).Control(2)=   "cmdSaveCorrectGatePass"
       Tab(0).ControlCount=   3
       TabCaption(1)   =   "Cancel Gatepass"
       TabPicture(1)   =   "frmCYCancelCorrect.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "Frame3"
+      Tab(1).Control(0)=   "cmdCancelGatepass"
       Tab(1).Control(1)=   "Frame4"
-      Tab(1).Control(2)=   "cmdCancelGatepass"
+      Tab(1).Control(2)=   "Frame3"
       Tab(1).ControlCount=   3
       TabCaption(2)   =   "Correct Payment"
       TabPicture(2)   =   "frmCYCancelCorrect.frx":0038
@@ -60,8 +60,8 @@ Begin VB.Form frmCYCancelCorrect
       TabCaption(3)   =   "View"
       TabPicture(3)   =   "frmCYCancelCorrect.frx":0054
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "Frame5"
-      Tab(3).Control(1)=   "Frame6"
+      Tab(3).Control(0)=   "Frame6"
+      Tab(3).Control(1)=   "Frame5"
       Tab(3).ControlCount=   2
       Begin VB.Frame Frame6 
          Caption         =   "Gatepass Detail"
@@ -1500,7 +1500,6 @@ Begin VB.Form frmCYCancelCorrect
             _ExtentX        =   4471
             _ExtentY        =   714
             _Version        =   393216
-            Enabled         =   0   'False
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
                Name            =   "Arial"
                Size            =   15
@@ -3516,10 +3515,11 @@ Private Sub cmdSaveCorrectPayment_Click()
         Else
             If (curPreviousADRAmount <> CCur(mskADRAmount)) And (curPreviousADRAmount > 0 Or CCur(mskADRAmount) > 0) Then
                 curADRDifference = curPreviousADRAmount + CCur(mskADRBalance) - mskADRAmount
-                If curADRDifference < 0 Then
-                    intResponse = MsgBox("insuffficient ADR amount. please check.", vbExclamation + vbOKOnly, "")
-                    Exit Sub
-                Else
+'                If curADRDifference < 0 Then
+                If IsNumeric(curADRDifference) Then
+'                    intResponse = MsgBox("insufficient ADR amount. please check.", vbExclamation + vbOKOnly, "")
+'                    Exit Sub
+'                Else
                     If (curPreviousADRAmount = 0) And (CCur(mskADRAmount) > 0) Then
                         lngControlNo = lzApplyADR(txtCustomerCode, "CYM", CCur(mskReference3), CCur(mskADRAmount), UCase(zCurrentUser()), "")
                     ElseIf (curPreviousADRAmount > 0) And (CCur(mskADRAmount) = 0) Then
@@ -3580,13 +3580,19 @@ End Sub
 Private Sub mskADRAmount_KeyDown(KeyCode As Integer, Shift As Integer)
     Call FieldAdvance(KeyCode, mskADRAmount, txtCustomerCode)
 End Sub
+Private Function NonNumtoZero(variable As Object)
+    If Not IsNumeric(variable) Then
+    variable = 0
+    End If
+End Function
 
 Private Sub mskADRAmount_LostFocus()
     If Not IsNumeric(mskADRAmount) Then
             mskADRAmount = 0
     Else
-        If (CCur(mskADRAmount) > CCur(mskADRBalance)) Or (CCur(mskADRAmount) > CCur(mskAmountToPay)) Then
-            mskADRAmount = mskAmountToPay
+
+        If (CCur(mskADRAmount) > CCur(NonNumtoZero(mskADRBalance))) Or (CCur(mskADRAmount) > CCur(mskAmountToPay)) Then
+           ' mskADRAmount = mskAmountToPay
         End If
     End If
     Call SumPaymentTypes
@@ -3594,7 +3600,7 @@ Private Sub mskADRAmount_LostFocus()
         txtCustomerCode = ""
         txtCustomerName = ""
         mskADRBalance = 0
-        mskADRAmount.Enabled = False
+        'mskADRAmount.Enabled = False
     End If
     mskADRAmount = Format(mskADRAmount, "###,###,##0.00")
 End Sub
