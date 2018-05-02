@@ -1,0 +1,3 @@
+VBGROUP 5.0
+StartupProject=SubicMainMenu\Main.vbp
+Project=CYImportProgram\DataEntry\CorrectionCancellation\prjCorrection.vbp
