@@ -3505,7 +3505,7 @@ Private Sub cmdSaveCorrectPayment_Click()
     Dim curComputedTotal As Currency
     Dim curADRDifference As Currency
     
-    If curPreviousADRAmount = mskADRAmount And curPreviousCashAmount = mskCashAmount Then
+    If curPreviousADRAmount = NonNumtoZero(mskADRAmount) And curPreviousCashAmount = NonNumtoZero(mskCashAmount) Then
         'no need
     Else
         'compute first
@@ -3540,6 +3540,7 @@ Private Sub cmdSaveCorrectPayment_Click()
 End Sub
 
 Private Sub SaveCorrectPayment()
+    If IsNull(mskReference3) Then
     Set rstCYMPAY = New ADODB.Recordset
     rstCYMPAY.LockType = adLockOptimistic
     rstCYMPAY.CursorType = adOpenStatic
@@ -3570,6 +3571,7 @@ Private Sub SaveCorrectPayment()
         .Update
         .Close
     End With
+    End If
 End Sub
 
 Private Sub Form_Activate()
