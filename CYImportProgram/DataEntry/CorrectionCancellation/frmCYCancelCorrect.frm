@@ -3513,23 +3513,22 @@ Private Sub cmdSaveCorrectPayment_Click()
             intResponse = MsgBox("not balanced. please fix.", vbExclamation + vbOKOnly, "")
             Exit Sub
         Else
-            If (curPreviousADRAmount <> CCur(mskADRAmount)) And (curPreviousADRAmount > 0 Or CCur(mskADRAmount) > 0) Then
-                curADRDifference = curPreviousADRAmount + CCur(mskADRBalance) - mskADRAmount
+'            If (curPreviousADRAmount <> CCur(mskADRAmount)) And (curPreviousADRAmount > 0 Or CCur(mskADRAmount) > 0) Then
+'                curADRDifference = curPreviousADRAmount + CCur(mskADRBalance) - mskADRAmount
 '                If curADRDifference < 0 Then
-                If IsNumeric(curADRDifference) Then
 '                    intResponse = MsgBox("insufficient ADR amount. please check.", vbExclamation + vbOKOnly, "")
 '                    Exit Sub
-'                Else
-                    If (curPreviousADRAmount = 0) And (CCur(mskADRAmount) > 0) Then
-                        lngControlNo = lzApplyADR(txtCustomerCode, "CYM", CCur(mskReference3), CCur(mskADRAmount), UCase(zCurrentUser()), "")
-                    ElseIf (curPreviousADRAmount > 0) And (CCur(mskADRAmount) = 0) Then
-                        lngControlNo = lzVoidADR(strPreviousCustomerCode, mskADRNum, UCase(zCurrentUser()), "")
-                    ElseIf (curPreviousADRAmount > 0) And (CCur(mskADRAmount) > 0) Then
-                        lngControlNo = lzVoidADR(strPreviousCustomerCode, mskADRNum, UCase(zCurrentUser()), "")
-                        lngControlNo = lzApplyADR(txtCustomerCode, "CYM", CCur(mskReference3), CCur(mskADRAmount), UCase(zCurrentUser()), "")
-                    End If
-                End If
-            Else
+'               Else
+'                    If (curPreviousADRAmount = 0) And (CCur(mskADRAmount) > 0) Then
+'                        lngControlNo = lzApplyADR(txtCustomerCode, "CYM", CCur(mskReference3), CCur(mskADRAmount), UCase(zCurrentUser()), "")
+'                    ElseIf (curPreviousADRAmount > 0) And (CCur(mskADRAmount) = 0) Then
+'                        lngControlNo = lzVoidADR(strPreviousCustomerCode, mskADRNum, UCase(zCurrentUser()), "")
+'                    ElseIf (curPreviousADRAmount > 0) And (CCur(mskADRAmount) > 0) Then
+'                        lngControlNo = lzVoidADR(strPreviousCustomerCode, mskADRNum, UCase(zCurrentUser()), "")
+'                        lngControlNo = lzApplyADR(txtCustomerCode, "CYM", CCur(mskReference3), CCur(mskADRAmount), UCase(zCurrentUser()), "")
+'                    End If
+'                End If
+'            Else
                 txtCustomerCode = ""
                 txtCustomerName = ""
                 mskADRAmount = 0
@@ -3551,7 +3550,7 @@ Private Sub SaveCorrectPayment()
         .Fields("cusnam") = txtCustomerName
         .Fields("cshamt") = CCur(mskCashAmount)
         .Fields("adramt") = CCur(mskADRAmount)
-        .Fields("adrnum") = lngControlNo
+        '.Fields("adrnum") = lngControlNo
         .Fields("chgamt") = CCur(mskChange)
         .Fields("chkno1") = "" & mskCheckNo(0)
         .Fields("chkno2") = "" & mskCheckNo(1)
