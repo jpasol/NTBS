@@ -1283,9 +1283,11 @@ err_Connect:
         MsgBox lsErrStr, vbCritical
     Next
 End Function
-Public Function ParseNonNum(NonNum As Variant) As Integer
-If Not IsNumeric(NonNum) Then
-NonNum = 0
-End If
+Public Function ParseNonNum(NonNum As Variant) As Variant
+On Error GoTo err:
+ParseNonNum = CCur(NonNum)
+Exit Function
+err:
+ParseNonNum = 0
 End Function
 
