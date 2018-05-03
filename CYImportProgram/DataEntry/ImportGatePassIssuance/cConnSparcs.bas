@@ -903,7 +903,7 @@ Err_PW:
     
     'If no Visit ID used
     GetVisitID = ""
-    MsgBox "Error in retrieving Visit ID. Kindly verify with Operations. Error message: " & err.Description
+    'MsgBox "Error in retrieving Visit ID. Kindly verify with Operations. Error message: " & err.Description
 
 End Function
 
