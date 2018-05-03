@@ -1239,6 +1239,7 @@ Dim prmGetCustomer As ADODB.Parameter
     
 End Function
 
+
 Public Function ConnectToNavis() As Boolean '(ByVal pCnnStr As String) As Boolean
 Dim errBilling As ADODB.Error
 Dim lsErrStr As String
@@ -1282,3 +1283,9 @@ err_Connect:
         MsgBox lsErrStr, vbCritical
     Next
 End Function
+Public Function ParseNonNum(NonNum As Variant) As Integer
+If Not IsNumeric(NonNum) Then
+NonNum = 0
+End If
+End Function
+

@@ -1119,7 +1119,7 @@ Begin VB.Form frmManifestCont
             EndProperty
             CalendarBackColor=   16777215
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   282198019
+            Format          =   200474627
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtStorageFree 
@@ -1141,7 +1141,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   282198019
+            Format          =   200474627
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtEndStorage 
@@ -1163,7 +1163,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   282198019
+            Format          =   200474627
             CurrentDate     =   32874
          End
          Begin VB.Label lblManifest 
@@ -9445,7 +9445,7 @@ Private Sub RunningTotal()
     mskRunning = 0
     With msfCharges
         For intRow = 1 To (.Rows - 1)
-            mskRunning = CCur(mskRunning) + CCur(.TextMatrix(intRow, Column.PayOnly))
+            mskRunning = CCur(mskRunning) + CCur(ParseNonNum(.TextMatrix(intRow, Column.PayOnly)))
         Next intRow
     End With
     mskRunning = Format(mskRunning, "###,###,##0.00")
