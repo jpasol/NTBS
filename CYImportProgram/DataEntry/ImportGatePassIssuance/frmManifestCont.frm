@@ -1119,7 +1119,7 @@ Begin VB.Form frmManifestCont
             EndProperty
             CalendarBackColor=   16777215
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   71630851
+            Format          =   282198019
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtStorageFree 
@@ -1141,7 +1141,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   71630851
+            Format          =   282198019
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtEndStorage 
@@ -1163,7 +1163,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   71630851
+            Format          =   282198019
             CurrentDate     =   32874
          End
          Begin VB.Label lblManifest 
@@ -7409,7 +7409,7 @@ Private Sub Retrieve_ManifestData(ByVal strBillNo As String)
         Else
             txtBroker.Text = ""
         End If
-        txtSealNo.Text = Trim(.Fields("silnum"))
+        txtSealNo.Text = IIf(IsNull(Trim(.Fields("silnum"))), "", Trim(.Fields("silnum")))
         txtVoyageNo.Text = IIf(IsNull(Trim(.Fields("voynum"))), "", Trim(.Fields("voynum")))
         txtCommodity.Text = Trim(.Fields("ctnNameDesc"))
         txtVesselCode.Text = IIf(IsNull(Trim(.Fields("vslname"))), "", Trim(.Fields("vslname")))
