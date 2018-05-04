@@ -24,6 +24,7 @@ Begin VB.Form frmCYCancelCorrect
       _ExtentY        =   19129
       _Version        =   393216
       Tabs            =   4
+      Tab             =   1
       TabsPerRow      =   4
       TabHeight       =   520
       ForeColor       =   32768
@@ -38,7 +39,7 @@ Begin VB.Form frmCYCancelCorrect
       EndProperty
       TabCaption(0)   =   "Correct Gatepass"
       TabPicture(0)   =   "frmCYCancelCorrect.frx":0000
-      Tab(0).ControlEnabled=   -1  'True
+      Tab(0).ControlEnabled=   0   'False
       Tab(0).Control(0)=   "fraDetail"
       Tab(0).Control(0).Enabled=   0   'False
       Tab(0).Control(1)=   "Frame1"
@@ -48,7 +49,7 @@ Begin VB.Form frmCYCancelCorrect
       Tab(0).ControlCount=   3
       TabCaption(1)   =   "Cancel Gatepass"
       TabPicture(1)   =   "frmCYCancelCorrect.frx":001C
-      Tab(1).ControlEnabled=   0   'False
+      Tab(1).ControlEnabled=   -1  'True
       Tab(1).Control(0)=   "Frame3"
       Tab(1).Control(0).Enabled=   0   'False
       Tab(1).Control(1)=   "Frame4"
@@ -64,8 +65,8 @@ Begin VB.Form frmCYCancelCorrect
       TabCaption(3)   =   "View"
       TabPicture(3)   =   "frmCYCancelCorrect.frx":0054
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "Frame6"
-      Tab(3).Control(1)=   "Frame5"
+      Tab(3).Control(0)=   "Frame5"
+      Tab(3).Control(1)=   "Frame6"
       Tab(3).ControlCount=   2
       Begin VB.Frame Frame6 
          Caption         =   "Gatepass Detail"
@@ -656,7 +657,7 @@ Begin VB.Form frmCYCancelCorrect
             Strikethrough   =   0   'False
          EndProperty
          Height          =   400
-         Left            =   -62400
+         Left            =   12600
          TabIndex        =   19
          Top             =   1920
          Width           =   2175
@@ -673,7 +674,7 @@ Begin VB.Form frmCYCancelCorrect
             Strikethrough   =   0   'False
          EndProperty
          Height          =   400
-         Left            =   12480
+         Left            =   -62520
          TabIndex        =   15
          Top             =   9840
          Width           =   2175
@@ -692,7 +693,7 @@ Begin VB.Form frmCYCancelCorrect
          EndProperty
          ForeColor       =   &H8000000D&
          Height          =   8055
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   69
          Top             =   2400
          Width           =   14535
@@ -1112,7 +1113,7 @@ Begin VB.Form frmCYCancelCorrect
       End
       Begin VB.Frame Frame3 
          Height          =   1455
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   66
          Top             =   840
          Width           =   6135
@@ -1973,7 +1974,7 @@ Begin VB.Form frmCYCancelCorrect
       End
       Begin VB.Frame Frame1 
          Height          =   1455
-         Left            =   240
+         Left            =   -74760
          TabIndex        =   53
          Top             =   840
          Width           =   6135
@@ -2092,7 +2093,7 @@ Begin VB.Form frmCYCancelCorrect
          EndProperty
          ForeColor       =   &H8000000D&
          Height          =   8055
-         Left            =   240
+         Left            =   -74760
          TabIndex        =   41
          Top             =   2400
          Width           =   14535
@@ -3089,6 +3090,7 @@ If IsNumeric(mskReference) Then ' added for button to do nothing when mskReferen
     Exit Sub
 ErrcmdSaveCorrectGatePass:
     MsgBox "An Error Occurred in cmdSaveCorrectGatePass_Click"
+    Call InitializeCorrectGatepassTab
 End Sub
 Function ParseNonNum(variable As Variant) As Variant 'Function to convert null or empty string values
 On Error GoTo ErrParseNonNum
@@ -3463,7 +3465,7 @@ Private Sub WriteCancelGatepassTab()
     
     Exit Sub
 errWriteCancelGatepassTab:
-    MsgBox ("Record does not Exist" & vbNewLine & vbNewLine & "Reinitializing Values...")
+    MsgBox ("An Error Occurred in WriteCancelGatepassTab")
     
 End Sub
 
