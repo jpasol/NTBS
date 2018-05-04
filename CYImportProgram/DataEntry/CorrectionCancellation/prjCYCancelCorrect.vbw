@@ -1,5 +1,5 @@
-frmCYCancelCorrect = 471, -17, 1170, 432, , 52, 52, 751, 501, C
+frmCYCancelCorrect = 471, -17, 1170, 432, I, 52, 52, 1344, 842, C
 modCalled = 52, 52, 751, 501, 
 modCommon = 0, 0, 699, 449, 
-clsCYMDE03 = 26, 26, 725, 475, 
+clsCYMDE03 = 26, 26, 725, 475, Z
 CWaitCursor = 130, 130, 829, 579, C
