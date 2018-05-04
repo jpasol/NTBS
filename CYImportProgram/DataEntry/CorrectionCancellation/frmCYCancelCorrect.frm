@@ -24,6 +24,7 @@ Begin VB.Form frmCYCancelCorrect
       _ExtentY        =   19129
       _Version        =   393216
       Tabs            =   4
+      Tab             =   2
       TabsPerRow      =   4
       TabHeight       =   520
       ForeColor       =   32768
@@ -38,25 +39,23 @@ Begin VB.Form frmCYCancelCorrect
       EndProperty
       TabCaption(0)   =   "Correct Gatepass"
       TabPicture(0)   =   "frmCYCancelCorrect.frx":0000
-      Tab(0).ControlEnabled=   -1  'True
-      Tab(0).Control(0)=   "fraDetail"
-      Tab(0).Control(0).Enabled=   0   'False
+      Tab(0).ControlEnabled=   0   'False
+      Tab(0).Control(0)=   "cmdSaveCorrectGatePass"
       Tab(0).Control(1)=   "Frame1"
-      Tab(0).Control(1).Enabled=   0   'False
-      Tab(0).Control(2)=   "cmdSaveCorrectGatePass"
-      Tab(0).Control(2).Enabled=   0   'False
+      Tab(0).Control(2)=   "fraDetail"
       Tab(0).ControlCount=   3
       TabCaption(1)   =   "Cancel Gatepass"
       TabPicture(1)   =   "frmCYCancelCorrect.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "cmdCancelGatepass"
+      Tab(1).Control(0)=   "Frame3"
       Tab(1).Control(1)=   "Frame4"
-      Tab(1).Control(2)=   "Frame3"
+      Tab(1).Control(2)=   "cmdCancelGatepass"
       Tab(1).ControlCount=   3
       TabCaption(2)   =   "Correct Payment"
       TabPicture(2)   =   "frmCYCancelCorrect.frx":0038
-      Tab(2).ControlEnabled=   0   'False
+      Tab(2).ControlEnabled=   -1  'True
       Tab(2).Control(0)=   "fraPayment"
+      Tab(2).Control(0).Enabled=   0   'False
       Tab(2).ControlCount=   1
       TabCaption(3)   =   "View"
       TabPicture(3)   =   "frmCYCancelCorrect.frx":0054
@@ -670,7 +669,7 @@ Begin VB.Form frmCYCancelCorrect
             Strikethrough   =   0   'False
          EndProperty
          Height          =   400
-         Left            =   12480
+         Left            =   -62520
          TabIndex        =   15
          Top             =   9840
          Width           =   2175
@@ -1217,7 +1216,7 @@ Begin VB.Form frmCYCancelCorrect
       End
       Begin VB.Frame fraPayment 
          Height          =   9855
-         Left            =   -74400
+         Left            =   600
          TabIndex        =   56
          Top             =   600
          Width           =   13815
@@ -1970,7 +1969,7 @@ Begin VB.Form frmCYCancelCorrect
       End
       Begin VB.Frame Frame1 
          Height          =   1455
-         Left            =   240
+         Left            =   -74760
          TabIndex        =   53
          Top             =   840
          Width           =   6135
@@ -2089,7 +2088,7 @@ Begin VB.Form frmCYCancelCorrect
          EndProperty
          ForeColor       =   &H8000000D&
          Height          =   8055
-         Left            =   240
+         Left            =   -74760
          TabIndex        =   41
          Top             =   2400
          Width           =   14535
@@ -2997,12 +2996,17 @@ Private Sub cmdGetCorrectPayment_Click()
             curPreviousCheck5 = CCur(mskCheckAmount(4))
             strPreviousCustomerCode = .Fields("cuscde")
             mskCashAmount.SetFocus
-            
 
         End If
         .Close
     End With
-    
+    mskADRAmount.Enabled = True
+    mskADRNum.Enabled = True
+    On Error GoTo Continue
+    txtCustomerCode = CLng(txtCustomerCode)
+    mskADRAmount.Enabled = False
+    mskADRNum.Enabled = False
+Continue:
 End Sub
 
 Private Sub cmdGetView_Click()
@@ -3541,13 +3545,13 @@ Private Sub cmdSaveCorrectPayment_Click()
     
     'If curPreviousADRAmount = NonNumtoZero(mskADRAmount) And curPreviousCashAmount = NonNumtoZero(mskCashAmount) Then
         'no need
-   ' Else
+    'Else
         'compute first
         If mskChange < 0 Then
             intResponse = MsgBox("not balanced. please fix.", vbExclamation + vbOKOnly, "")
             Exit Sub
         Else
-            If (curPreviousADRAmount <> CCur(mskADRAmount)) And (curPreviousADRAmount > 0 Or CCur(mskADRAmount) > 0) Then
+'            If (curPreviousADRAmount <> CCur(mskADRAmount)) And (curPreviousADRAmount > 0 Or CCur(mskADRAmount) > 0) Then
 '                curADRDifference = curPreviousADRAmount + CCur(mskADRBalance) - mskADRAmount
 '                If curADRDifference < 0 Then
 '                    intResponse = MsgBox("insufficient ADR amount. please check.", vbExclamation + vbOKOnly, "")
@@ -3562,14 +3566,14 @@ Private Sub cmdSaveCorrectPayment_Click()
 '                        lngControlNo = lzApplyADR(txtCustomerCode, "CYM", CCur(mskReference3), CCur(mskADRAmount), UCase(zCurrentUser()), "")
 '                    End If
 '                End If
-            Else
-                txtCustomerCode = ""
-                txtCustomerName = ""
-                mskADRAmount = 0
-            End If
+'            Else
+'                txtCustomerCode = ""
+'                txtCustomerName = ""
+'                mskADRAmount = 0
+'            End If
             Call SaveCorrectPayment
             Call InitializeCorrectPayment
-            
+
         End If
     'End If
 End Sub
@@ -3812,6 +3816,8 @@ Private Sub txtCustomerCode_KeyDown(KeyCode As Integer, Shift As Integer)
         Call FieldAdvance(KeyCode, mskCheckAmount(4), cmdSaveCorrectPayment)
     End If
 End Sub
+
+
 
 Private Sub txtDeclaredWeight_KeyDown(KeyCode As Integer, Shift As Integer)
     Call FieldAdvance(KeyCode, txtBoatNote, txtVesselCode)
