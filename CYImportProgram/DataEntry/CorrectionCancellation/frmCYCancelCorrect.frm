@@ -2679,6 +2679,7 @@ Private Sub chkCustomsGuard_KeyDown(KeyCode As Integer, Shift As Integer)
 End Sub
 
 Private Sub cmdCancelGatepass_Click()
+If IsNumeric(mskReference2) Then
     intResponse = MsgBox("Are you sure you want to cancel this detail?", vbCritical + vbYesNo, "")
     If intResponse = vbYes Then
         intTabNumber = 2
@@ -2690,6 +2691,7 @@ Private Sub cmdCancelGatepass_Click()
         intTabNumber = 0
     Else
         mskReference2.SetFocus
+    End If
     End If
 End Sub
 
@@ -3050,10 +3052,11 @@ Private Sub cmdGetView_Click()
 End Sub
 
 Private Sub cmdSaveCorrectGatePass_Click()
+If IsNumeric(mskReference) Then ' added for button to do nothing when mskReference is not numeric
     intResponse = MsgBox("Save the following changes?", vbYesNo + vbInformation, "")
     If intResponse = vbYes Then
-        If CLng(mskGatePassNo) <> lngPreviousGatepass Then
-            If lzChkCYMgpIfExist(mskGatePassNo) Then
+        If CLng(ParseNonNum(mskGatePassNo)) <> lngPreviousGatepass Then
+            If lzChkCYMgpIfExist(ParseNonNum(mskGatePassNo)) Then
                 intResponse = MsgBox("Cannot continue. Gatepass already existing.", vbOKOnly + vbExclamation, "")
                 mskGatePassNo.SetFocus
             Else
@@ -3079,11 +3082,18 @@ Private Sub cmdSaveCorrectGatePass_Click()
             mskReference.SetFocus
         End If
     End If
+    End If
     Exit Sub
 ErrcmdSaveCorrectGatePass:
     MsgBox "An Error Occurred in cmdSaveCorrectGatePass_Click"
 End Sub
-
+Function ParseNonNum(variable As Variant) As Variant 'Function to convert null or empty string values
+On Error GoTo ErrParseNonNum
+ParseNonNum = CLng(variable)
+Exit Function
+ErrParseNonNum:
+ParseNonNum = 0
+End Function
 Private Sub WriteToLogOrig()
     Set rstCYMGpsZ = New ADODB.Recordset
     rstCYMGpsZ.LockType = adLockOptimistic
@@ -3466,7 +3476,7 @@ Private Sub UpdateACOCTN(pGatePass As Long, pContainer As String)
     cmdCancel.Execute
 End Sub
 Private Sub InitializeCorrectGatepassTab()
-   'mskReference = ""
+    'mskReference = ""
     mskSequence = ""
     mskGatePassNo = ""
     txtContainerNo = ""
