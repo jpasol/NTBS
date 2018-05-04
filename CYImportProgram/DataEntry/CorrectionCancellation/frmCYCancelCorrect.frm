@@ -49,9 +49,12 @@ Begin VB.Form frmCYCancelCorrect
       TabCaption(1)   =   "Cancel Gatepass"
       TabPicture(1)   =   "frmCYCancelCorrect.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "cmdCancelGatepass"
+      Tab(1).Control(0)=   "Frame3"
+      Tab(1).Control(0).Enabled=   0   'False
       Tab(1).Control(1)=   "Frame4"
-      Tab(1).Control(2)=   "Frame3"
+      Tab(1).Control(1).Enabled=   0   'False
+      Tab(1).Control(2)=   "cmdCancelGatepass"
+      Tab(1).Control(2).Enabled=   0   'False
       Tab(1).ControlCount=   3
       TabCaption(2)   =   "Correct Payment"
       TabPicture(2)   =   "frmCYCancelCorrect.frx":0038
@@ -2072,7 +2075,7 @@ Begin VB.Form frmCYCancelCorrect
             Index           =   1
             Left            =   1680
             TabIndex        =   54
-            Top             =   360
+            Top             =   240
             Width           =   1815
          End
       End
@@ -2879,7 +2882,7 @@ Private Sub GetInfo2()
     rstCYMPAY.Open "Select * from CYMPay where refnum =" & Val(mskReference2), gcnnBilling, , , adCmdText
     
     With rstCYMPAY
-        If .EOF And .BOF Then
+        If .EOF And .BOF And .RecordCount < 0 Then
             intResponse = MsgBox("Reference Number not found.", vbOKOnly + vbInformation, "")
             mskReference2.SetFocus
         Else
