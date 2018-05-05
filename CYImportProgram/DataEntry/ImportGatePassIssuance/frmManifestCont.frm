@@ -1119,7 +1119,7 @@ Begin VB.Form frmManifestCont
             EndProperty
             CalendarBackColor=   16777215
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   185794563
+            Format          =   185860099
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtStorageFree 
@@ -1141,7 +1141,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   185794563
+            Format          =   185860099
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtEndStorage 
@@ -1163,7 +1163,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   185794563
+            Format          =   185860099
             CurrentDate     =   32874
          End
          Begin VB.Label lblManifest 
@@ -4983,7 +4983,7 @@ Private Function OKToSave() As Boolean
     
     OKToSave = True
     'If CCur(mskChange) < 0 Then
-    If CCur(mskChange) = 0 Then
+    If CCur(mskChange) <> 0 Then
         OKToSave = False
         intResponse = MsgBox("Not Balanced. Please check...", vbExclamation + vbOKOnly, "")
         With mskCashAmount
