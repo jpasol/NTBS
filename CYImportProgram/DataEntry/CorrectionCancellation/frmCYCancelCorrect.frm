@@ -24,6 +24,7 @@ Begin VB.Form frmCYCancelCorrect
       _ExtentY        =   19129
       _Version        =   393216
       Tabs            =   4
+      Tab             =   2
       TabsPerRow      =   4
       TabHeight       =   520
       ForeColor       =   32768
@@ -38,7 +39,7 @@ Begin VB.Form frmCYCancelCorrect
       EndProperty
       TabCaption(0)   =   "Correct Gatepass"
       TabPicture(0)   =   "frmCYCancelCorrect.frx":0000
-      Tab(0).ControlEnabled=   -1  'True
+      Tab(0).ControlEnabled=   0   'False
       Tab(0).Control(0)=   "fraDetail"
       Tab(0).Control(0).Enabled=   0   'False
       Tab(0).Control(1)=   "Frame1"
@@ -49,20 +50,21 @@ Begin VB.Form frmCYCancelCorrect
       TabCaption(1)   =   "Cancel Gatepass"
       TabPicture(1)   =   "frmCYCancelCorrect.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "cmdCancelGatepass"
+      Tab(1).Control(0)=   "Frame3"
       Tab(1).Control(1)=   "Frame4"
-      Tab(1).Control(2)=   "Frame3"
+      Tab(1).Control(2)=   "cmdCancelGatepass"
       Tab(1).ControlCount=   3
       TabCaption(2)   =   "Correct Payment"
       TabPicture(2)   =   "frmCYCancelCorrect.frx":0038
-      Tab(2).ControlEnabled=   0   'False
+      Tab(2).ControlEnabled=   -1  'True
       Tab(2).Control(0)=   "fraPayment"
+      Tab(2).Control(0).Enabled=   0   'False
       Tab(2).ControlCount=   1
       TabCaption(3)   =   "View"
       TabPicture(3)   =   "frmCYCancelCorrect.frx":0054
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "Frame5"
-      Tab(3).Control(1)=   "Frame6"
+      Tab(3).Control(0)=   "Frame6"
+      Tab(3).Control(1)=   "Frame5"
       Tab(3).ControlCount=   2
       Begin VB.Frame Frame6 
          Caption         =   "Gatepass Detail"
@@ -670,7 +672,7 @@ Begin VB.Form frmCYCancelCorrect
             Strikethrough   =   0   'False
          EndProperty
          Height          =   400
-         Left            =   12480
+         Left            =   -62520
          TabIndex        =   15
          Top             =   9840
          Width           =   2175
@@ -1217,7 +1219,7 @@ Begin VB.Form frmCYCancelCorrect
       End
       Begin VB.Frame fraPayment 
          Height          =   9855
-         Left            =   -74400
+         Left            =   600
          TabIndex        =   56
          Top             =   600
          Width           =   13815
@@ -1970,7 +1972,7 @@ Begin VB.Form frmCYCancelCorrect
       End
       Begin VB.Frame Frame1 
          Height          =   1455
-         Left            =   240
+         Left            =   -74760
          TabIndex        =   53
          Top             =   840
          Width           =   6135
@@ -2089,7 +2091,7 @@ Begin VB.Form frmCYCancelCorrect
          EndProperty
          ForeColor       =   &H8000000D&
          Height          =   8055
-         Left            =   240
+         Left            =   -74760
          TabIndex        =   41
          Top             =   2400
          Width           =   14535
@@ -3548,7 +3550,7 @@ Private Sub cmdSaveCorrectPayment_Click()
         'no need
     'Else
         'compute first
-        If mskChange < 0 Then
+        If mskChange <> 0 Then
             intResponse = MsgBox("not balanced. please fix.", vbExclamation + vbOKOnly, "")
             Exit Sub
         Else
