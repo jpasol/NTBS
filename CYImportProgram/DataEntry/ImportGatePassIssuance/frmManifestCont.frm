@@ -1119,7 +1119,7 @@ Begin VB.Form frmManifestCont
             EndProperty
             CalendarBackColor=   16777215
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   185860099
+            Format          =   184614915
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtStorageFree 
@@ -1141,7 +1141,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   185860099
+            Format          =   184614915
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtEndStorage 
@@ -1163,7 +1163,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   185860099
+            Format          =   184614915
             CurrentDate     =   32874
          End
          Begin VB.Label lblManifest 
@@ -7699,7 +7699,7 @@ Private Sub sstMain_GotFocus()
         msfCharges.SetFocus
         msfCharges.Row = msfCharges.Rows - 1
         msfCharges.Col = 1
-        SendKeys "{RIGHT}{LEFT}"
+        'SendKeys "{RIGHT}{LEFT}"
     End If
 End Sub
 
@@ -8268,7 +8268,7 @@ Private Sub cmdCompute_Click()
          With msfCharges
             msfCharges.SetFocus
             msfCharges.Col = 1
-            SendKeys "{RIGHT}{LEFT}"
+            'SendKeys "{RIGHT}{LEFT}"
          End With
     End If
 End Sub

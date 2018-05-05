@@ -1266,7 +1266,6 @@ Dim lsErrStr As String
         ";Initial Catalog=apex" & _
         ";User ID=sa_ictsi;Password=Ictsi123"
 
-
         
     gbNavis = True
     ConnectToNavis = True
