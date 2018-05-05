@@ -1119,7 +1119,7 @@ Begin VB.Form frmManifestCont
             EndProperty
             CalendarBackColor=   16777215
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   187498499
+            Format          =   185794563
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtStorageFree 
@@ -1141,7 +1141,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   187498499
+            Format          =   185794563
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtEndStorage 
@@ -1163,7 +1163,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   187498499
+            Format          =   185794563
             CurrentDate     =   32874
          End
          Begin VB.Label lblManifest 
@@ -4982,7 +4982,8 @@ Private Function OKToSave() As Boolean
     Dim intCheckCtr As Integer
     
     OKToSave = True
-    If CCur(mskChange) < 0 Then
+    'If CCur(mskChange) < 0 Then
+    If CCur(mskChange) = 0 Then
         OKToSave = False
         intResponse = MsgBox("Not Balanced. Please check...", vbExclamation + vbOKOnly, "")
         With mskCashAmount
@@ -6625,7 +6626,8 @@ Private Sub mskBOCGatepassDate_KeyDown(KeyCode As Integer, Shift As Integer)
 End Sub
 
 Private Sub mskChange_Change()
-    If Val(mskChange.Text) >= 0 Then
+    'if Val(mskChange.Text) >= 0 Then
+    If Val(mskChange.Text) = 0 Then
         cmdSave.Enabled = True
     Else
         cmdSave.Enabled = False
