@@ -179,9 +179,7 @@ Begin VB.Form frmCCRde06
       TabPicture(2)   =   "frmCCRde06.frx":0902
       Tab(2).ControlEnabled=   0   'False
       Tab(2).Control(0)=   "Frame8"
-      Tab(2).Control(0).Enabled=   0   'False
       Tab(2).Control(1)=   "Frame6"
-      Tab(2).Control(1).Enabled=   0   'False
       Tab(2).Control(2)=   "cmdPrint"
       Tab(2).Control(2).Enabled=   0   'False
       Tab(2).Control(3)=   "cmdPymBack"
@@ -189,45 +187,25 @@ Begin VB.Form frmCCRde06
       Tab(2).Control(4)=   "cmdPymCancel"
       Tab(2).Control(4).Enabled=   0   'False
       Tab(2).Control(5)=   "utxtCCRNo"
-      Tab(2).Control(5).Enabled=   0   'False
       Tab(2).Control(6)=   "utxtCsh"
-      Tab(2).Control(6).Enabled=   0   'False
       Tab(2).Control(7)=   "utxtChq(0)"
-      Tab(2).Control(7).Enabled=   0   'False
       Tab(2).Control(8)=   "utxtChq(1)"
-      Tab(2).Control(8).Enabled=   0   'False
       Tab(2).Control(9)=   "utxtChq(2)"
-      Tab(2).Control(9).Enabled=   0   'False
       Tab(2).Control(10)=   "utxtChq(3)"
-      Tab(2).Control(10).Enabled=   0   'False
       Tab(2).Control(11)=   "utxtChq(4)"
-      Tab(2).Control(11).Enabled=   0   'False
       Tab(2).Control(12)=   "utxtChqBnk(0)"
-      Tab(2).Control(12).Enabled=   0   'False
       Tab(2).Control(13)=   "utxtChqBnk(1)"
-      Tab(2).Control(13).Enabled=   0   'False
       Tab(2).Control(14)=   "utxtChqBnk(2)"
-      Tab(2).Control(14).Enabled=   0   'False
       Tab(2).Control(15)=   "utxtChqBnk(3)"
-      Tab(2).Control(15).Enabled=   0   'False
       Tab(2).Control(16)=   "utxtChqBnk(4)"
-      Tab(2).Control(16).Enabled=   0   'False
       Tab(2).Control(17)=   "utxtCustNo"
-      Tab(2).Control(17).Enabled=   0   'False
       Tab(2).Control(18)=   "utxtCustName"
-      Tab(2).Control(18).Enabled=   0   'False
       Tab(2).Control(19)=   "utxtAdrAmt"
-      Tab(2).Control(19).Enabled=   0   'False
       Tab(2).Control(20)=   "utxtChqNo(0)"
-      Tab(2).Control(20).Enabled=   0   'False
       Tab(2).Control(21)=   "utxtChqNo(1)"
-      Tab(2).Control(21).Enabled=   0   'False
       Tab(2).Control(22)=   "utxtChqNo(2)"
-      Tab(2).Control(22).Enabled=   0   'False
       Tab(2).Control(23)=   "utxtChqNo(3)"
-      Tab(2).Control(23).Enabled=   0   'False
       Tab(2).Control(24)=   "utxtChqNo(4)"
-      Tab(2).Control(24).Enabled=   0   'False
       Tab(2).ControlCount=   25
       Begin CCRDE06.utxtTextBilling utxtSBMAPermit 
          Height          =   420
@@ -3529,7 +3507,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          BeginProperty Panel6 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
-            TextSave        =   "8:53 AM"
+            TextSave        =   "2:35 PM"
          EndProperty
       EndProperty
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -4091,13 +4069,13 @@ Private Sub Main()
 '        ";Initial Catalog=BILLING" & _
 '        ";Integrated Security=SSPI"
 '        ";UID=tosadmin; password=password"
-
-
+'
+'
 '         gConnStr = "Provider=sqloledb" & _
 '        ";Data Source=sbitc-dev" & _
 '        ";Initial Catalog=sbitcbilling" & _
 '        ";UID=sa_ictsi; password=Ictsi123"
-        
+'
        '";Integrated Security=SSPI"
     Set mp = New clsCCRde06
     mp.Userid = gzCurrentUser
@@ -4118,6 +4096,7 @@ End Function
 
 Public Sub ReadConfig()
 Dim Xcnt As Integer
+On Error Resume Next
 Open App.Path & "\" & "Conn.cfg" For Binary Access Read As #1
 
 Do While Not EOF(1)
