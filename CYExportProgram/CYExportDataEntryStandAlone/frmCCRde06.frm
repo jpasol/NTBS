@@ -59,7 +59,6 @@ Begin VB.Form frmCCRde06
       _ExtentY        =   20135
       _Version        =   393216
       TabOrientation  =   1
-      Tab             =   2
       TabHeight       =   882
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Arial"
@@ -72,7 +71,7 @@ Begin VB.Form frmCCRde06
       EndProperty
       TabCaption(0)   =   "Details"
       TabPicture(0)   =   "frmCCRde06.frx":08CA
-      Tab(0).ControlEnabled=   0   'False
+      Tab(0).ControlEnabled=   -1  'True
       Tab(0).Control(0)=   "txtTotDue"
       Tab(0).Control(0).Enabled=   0   'False
       Tab(0).Control(1)=   "txtPpaTotal"
@@ -145,40 +144,40 @@ Begin VB.Form frmCCRde06
       TabCaption(1)   =   "Header"
       TabPicture(1)   =   "frmCCRde06.frx":08E6
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "Label17"
-      Tab(1).Control(1)=   "Frame2"
-      Tab(1).Control(2)=   "Frame16"
-      Tab(1).Control(3)=   "Frame7"
-      Tab(1).Control(4)=   "Frame3"
-      Tab(1).Control(5)=   "Frame5"
-      Tab(1).Control(6)=   "cmdBack"
-      Tab(1).Control(6).Enabled=   0   'False
-      Tab(1).Control(7)=   "Frame10"
-      Tab(1).Control(8)=   "utxtEntry1(0)"
-      Tab(1).Control(9)=   "utxtEntry1(1)"
-      Tab(1).Control(10)=   "utxtEntry1(2)"
-      Tab(1).Control(11)=   "utxtEntry1(3)"
-      Tab(1).Control(12)=   "utxtEntry1(4)"
-      Tab(1).Control(13)=   "utxtEntry1(5)"
+      Tab(1).Control(0)=   "utxtSBMAPermit"
+      Tab(1).Control(1)=   "utxtWhfExmp"
+      Tab(1).Control(2)=   "utxtUGuarantee"
+      Tab(1).Control(3)=   "utxtWhfOnly"
+      Tab(1).Control(4)=   "utxtWhfExmpt"
+      Tab(1).Control(5)=   "utxtVatCode"
+      Tab(1).Control(6)=   "utxtVessel"
+      Tab(1).Control(7)=   "utxtCommodity"
+      Tab(1).Control(8)=   "utxtRemark"
+      Tab(1).Control(9)=   "utxtBroker"
+      Tab(1).Control(10)=   "utxtExporter"
+      Tab(1).Control(11)=   "utxtEntry1(10)"
+      Tab(1).Control(12)=   "utxtEntry1(9)"
+      Tab(1).Control(13)=   "utxtEntry1(7)"
       Tab(1).Control(14)=   "utxtEntry1(6)"
-      Tab(1).Control(15)=   "utxtEntry1(7)"
-      Tab(1).Control(16)=   "utxtEntry1(9)"
-      Tab(1).Control(17)=   "utxtEntry1(10)"
-      Tab(1).Control(18)=   "utxtExporter"
-      Tab(1).Control(19)=   "utxtBroker"
-      Tab(1).Control(20)=   "utxtRemark"
-      Tab(1).Control(21)=   "utxtCommodity"
-      Tab(1).Control(22)=   "utxtVessel"
-      Tab(1).Control(23)=   "utxtVatCode"
-      Tab(1).Control(24)=   "utxtWhfExmpt"
-      Tab(1).Control(25)=   "utxtWhfOnly"
-      Tab(1).Control(26)=   "utxtUGuarantee"
-      Tab(1).Control(27)=   "utxtWhfExmp"
-      Tab(1).Control(28)=   "utxtSBMAPermit"
+      Tab(1).Control(15)=   "utxtEntry1(5)"
+      Tab(1).Control(16)=   "utxtEntry1(4)"
+      Tab(1).Control(17)=   "utxtEntry1(3)"
+      Tab(1).Control(18)=   "utxtEntry1(2)"
+      Tab(1).Control(19)=   "utxtEntry1(1)"
+      Tab(1).Control(20)=   "utxtEntry1(0)"
+      Tab(1).Control(21)=   "Frame10"
+      Tab(1).Control(22)=   "cmdBack"
+      Tab(1).Control(22).Enabled=   0   'False
+      Tab(1).Control(23)=   "Frame5"
+      Tab(1).Control(24)=   "Frame3"
+      Tab(1).Control(25)=   "Frame7"
+      Tab(1).Control(26)=   "Frame16"
+      Tab(1).Control(27)=   "Frame2"
+      Tab(1).Control(28)=   "Label17"
       Tab(1).ControlCount=   29
       TabCaption(2)   =   "Payment"
       TabPicture(2)   =   "frmCCRde06.frx":0902
-      Tab(2).ControlEnabled=   -1  'True
+      Tab(2).ControlEnabled=   0   'False
       Tab(2).Control(0)=   "Frame8"
       Tab(2).Control(0).Enabled=   0   'False
       Tab(2).Control(1)=   "Frame6"
@@ -238,26 +237,42 @@ Begin VB.Form frmCCRde06
          Top             =   2400
          Visible         =   0   'False
          Width           =   1095
-         _extentx        =   1931
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":091E
-         maxlength       =   30
+         _ExtentX        =   1931
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   30
       End
       Begin CCRDE06.pText utxtNo 
          Height          =   420
-         Left            =   -69960
+         Left            =   5040
          TabIndex        =   1
          Top             =   720
          Width           =   1815
-         _extentx        =   3201
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0942
+         _ExtentX        =   3201
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
       End
       Begin MSFlexGridLib.MSFlexGrid flexTshipMnt 
          Height          =   495
-         Left            =   -70560
+         Left            =   4440
          TabIndex        =   83
          Top             =   2400
          Width           =   5055
@@ -281,7 +296,7 @@ Begin VB.Form frmCCRde06
       End
       Begin MSFlexGridLib.MSFlexGrid flexDangerClass 
          Height          =   495
-         Left            =   -70560
+         Left            =   4440
          TabIndex        =   84
          Top             =   1920
          Width           =   5055
@@ -306,62 +321,102 @@ Begin VB.Form frmCCRde06
       Begin CCRDE06.utxtTextBilling utxtChqNo 
          Height          =   420
          Index           =   4
-         Left            =   5400
+         Left            =   -69600
          TabIndex        =   55
          Top             =   5640
          Width           =   2655
-         _extentx        =   4683
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0966
+         _ExtentX        =   4683
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
       End
       Begin CCRDE06.utxtTextBilling utxtChqNo 
          Height          =   420
          Index           =   3
-         Left            =   5400
+         Left            =   -69600
          TabIndex        =   52
          Top             =   5160
          Width           =   2655
-         _extentx        =   4683
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":098A
+         _ExtentX        =   4683
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
       End
       Begin CCRDE06.utxtTextBilling utxtChqNo 
          Height          =   420
          Index           =   2
-         Left            =   5400
+         Left            =   -69600
          TabIndex        =   49
          Top             =   4680
          Width           =   2655
-         _extentx        =   4683
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":09AE
+         _ExtentX        =   4683
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
       End
       Begin CCRDE06.utxtTextBilling utxtChqNo 
          Height          =   420
          Index           =   1
-         Left            =   5400
+         Left            =   -69600
          TabIndex        =   46
          Top             =   4200
          Width           =   2655
-         _extentx        =   4683
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":09D2
+         _ExtentX        =   4683
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
       End
       Begin CCRDE06.utxtTextBilling utxtChqNo 
          Height          =   420
          Index           =   0
-         Left            =   5400
+         Left            =   -69600
          TabIndex        =   43
          Top             =   3720
          Width           =   2655
-         _extentx        =   4683
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":09F6
+         _ExtentX        =   4683
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
       End
       Begin CCRDE06.utxtNumBilling utxtWhfExmp 
          Height          =   420
@@ -371,235 +426,363 @@ Begin VB.Form frmCCRde06
          Top             =   5160
          Visible         =   0   'False
          Width           =   615
-         _extentx        =   1085
-         _extenty        =   741
-         backcolor       =   -2147483633
-         enabled         =   0   'False
-         font            =   "frmCCRde06.frx":0A1A
-         maxlength       =   1
+         _ExtentX        =   1085
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         Enabled         =   0   'False
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   1
       End
       Begin CCRDE06.utxtNumBilling utxtAdrAmt 
          Height          =   420
-         Left            =   2760
+         Left            =   -72240
          TabIndex        =   58
          Top             =   7200
          Width           =   2415
-         _extentx        =   4260
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0A3E
-         maxlength       =   14
-         alignment       =   1
-         maskformat      =   "###,###,###.00"
-         maskformat      =   "###,###,###.00"
-         decimalplaces   =   2
-         last            =   -1  'True
+         _ExtentX        =   4260
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   14
+         Alignment       =   1
+         Maskformat      =   "###,###,###.00"
+         Maskformat      =   "###,###,###.00"
+         DecimalPlaces   =   2
+         Last            =   -1  'True
       End
       Begin CCRDE06.utxtTextBilling utxtCustName 
          Height          =   420
-         Left            =   5400
+         Left            =   -69600
          TabIndex        =   59
          Top             =   6600
          Width           =   6495
-         _extentx        =   11456
-         _extenty        =   741
-         backcolor       =   -2147483633
-         enabled         =   0   'False
-         font            =   "frmCCRde06.frx":0A62
-         alignment       =   2
+         _ExtentX        =   11456
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         Enabled         =   0   'False
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Alignment       =   2
       End
       Begin CCRDE06.utxtNumBilling utxtCustNo 
          Height          =   420
-         Left            =   2760
+         Left            =   -72240
          TabIndex        =   57
          Top             =   6600
          Width           =   2415
-         _extentx        =   4260
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0A86
-         maxlength       =   8
-         alignment       =   1
-         maskformat      =   "########"
-         maskformat      =   "########"
+         _ExtentX        =   4260
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   8
+         Alignment       =   1
+         Maskformat      =   "########"
+         Maskformat      =   "########"
       End
       Begin CCRDE06.utxtTextBilling utxtChqBnk 
          Height          =   420
          Index           =   4
-         Left            =   8280
+         Left            =   -66720
          TabIndex        =   56
          Top             =   5640
          Width           =   2655
-         _extentx        =   4683
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0AAA
-         maxlength       =   10
+         _ExtentX        =   4683
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   10
       End
       Begin CCRDE06.utxtTextBilling utxtChqBnk 
          Height          =   420
          Index           =   3
-         Left            =   8280
+         Left            =   -66720
          TabIndex        =   53
          Top             =   5160
          Width           =   2655
-         _extentx        =   4683
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0ACE
-         maxlength       =   10
+         _ExtentX        =   4683
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   10
       End
       Begin CCRDE06.utxtTextBilling utxtChqBnk 
          Height          =   420
          Index           =   2
-         Left            =   8280
+         Left            =   -66720
          TabIndex        =   50
          Top             =   4680
          Width           =   2655
-         _extentx        =   4683
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0AF2
-         maxlength       =   10
+         _ExtentX        =   4683
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   10
       End
       Begin CCRDE06.utxtTextBilling utxtChqBnk 
          Height          =   420
          Index           =   1
-         Left            =   8280
+         Left            =   -66720
          TabIndex        =   47
          Top             =   4200
          Width           =   2655
-         _extentx        =   4683
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0B16
-         maxlength       =   10
+         _ExtentX        =   4683
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   10
       End
       Begin CCRDE06.utxtTextBilling utxtChqBnk 
          Height          =   420
          Index           =   0
-         Left            =   8280
+         Left            =   -66720
          TabIndex        =   44
          Top             =   3720
          Width           =   2655
-         _extentx        =   4683
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0B3A
-         maxlength       =   10
+         _ExtentX        =   4683
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   10
       End
       Begin CCRDE06.utxtNumBilling utxtChq 
          Height          =   420
          Index           =   4
-         Left            =   2760
+         Left            =   -72240
          TabIndex        =   54
          Top             =   5640
          Width           =   2415
-         _extentx        =   4260
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0B5E
-         maxlength       =   14
-         alignment       =   1
-         maskformat      =   "###,###,###.00"
-         maskformat      =   "###,###,###.00"
-         decimalplaces   =   2
+         _ExtentX        =   4260
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   14
+         Alignment       =   1
+         Maskformat      =   "###,###,###.00"
+         Maskformat      =   "###,###,###.00"
+         DecimalPlaces   =   2
       End
       Begin CCRDE06.utxtNumBilling utxtChq 
          Height          =   420
          Index           =   3
-         Left            =   2760
+         Left            =   -72240
          TabIndex        =   51
          Top             =   5160
          Width           =   2415
-         _extentx        =   4260
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0B82
-         maxlength       =   14
-         alignment       =   1
-         maskformat      =   "###,###,###.00"
-         maskformat      =   "###,###,###.00"
-         decimalplaces   =   2
+         _ExtentX        =   4260
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   14
+         Alignment       =   1
+         Maskformat      =   "###,###,###.00"
+         Maskformat      =   "###,###,###.00"
+         DecimalPlaces   =   2
       End
       Begin CCRDE06.utxtNumBilling utxtChq 
          Height          =   420
          Index           =   2
-         Left            =   2760
+         Left            =   -72240
          TabIndex        =   48
          Top             =   4680
          Width           =   2415
-         _extentx        =   4260
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0BA6
-         maxlength       =   14
-         alignment       =   1
-         maskformat      =   "###,###,###.00"
-         maskformat      =   "###,###,###.00"
-         decimalplaces   =   2
+         _ExtentX        =   4260
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   14
+         Alignment       =   1
+         Maskformat      =   "###,###,###.00"
+         Maskformat      =   "###,###,###.00"
+         DecimalPlaces   =   2
       End
       Begin CCRDE06.utxtNumBilling utxtChq 
          Height          =   420
          Index           =   1
-         Left            =   2760
+         Left            =   -72240
          TabIndex        =   45
          Top             =   4200
          Width           =   2415
-         _extentx        =   4260
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0BCA
-         maxlength       =   14
-         alignment       =   1
-         maskformat      =   "###,###,###.00"
-         maskformat      =   "###,###,###.00"
-         decimalplaces   =   2
+         _ExtentX        =   4260
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   14
+         Alignment       =   1
+         Maskformat      =   "###,###,###.00"
+         Maskformat      =   "###,###,###.00"
+         DecimalPlaces   =   2
       End
       Begin CCRDE06.utxtNumBilling utxtChq 
          Height          =   420
          Index           =   0
-         Left            =   2760
+         Left            =   -72240
          TabIndex        =   42
          Top             =   3720
          Width           =   2415
-         _extentx        =   4260
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0BEE
-         maxlength       =   14
-         alignment       =   1
-         maskformat      =   "###,###,###.00"
-         maskformat      =   "###,###,###.00"
-         decimalplaces   =   2
+         _ExtentX        =   4260
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   14
+         Alignment       =   1
+         Maskformat      =   "###,###,###.00"
+         Maskformat      =   "###,###,###.00"
+         DecimalPlaces   =   2
       End
       Begin CCRDE06.utxtNumBilling utxtCsh 
          Height          =   420
-         Left            =   2760
+         Left            =   -72240
          TabIndex        =   41
          Top             =   3240
          Width           =   2415
-         _extentx        =   4260
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0C12
-         maxlength       =   14
-         alignment       =   1
-         maskformat      =   "###,###,###.00"
-         maskformat      =   "###,###,###.00"
-         decimalplaces   =   2
+         _ExtentX        =   4260
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   14
+         Alignment       =   1
+         Maskformat      =   "###,###,###.00"
+         Maskformat      =   "###,###,###.00"
+         DecimalPlaces   =   2
       End
       Begin CCRDE06.utxtNumBilling utxtCCRNo 
          Height          =   975
-         Left            =   2760
+         Left            =   -72240
          TabIndex        =   39
          Top             =   1200
          Width           =   4335
-         _extentx        =   7646
-         _extenty        =   1720
-         backcolor       =   -2147483633
-         forecolor       =   8388608
-         font            =   "frmCCRde06.frx":0C36
+         _ExtentX        =   7646
+         _ExtentY        =   1720
+         BackColor       =   -2147483633
+         ForeColor       =   8388608
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   36
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
       End
       Begin CCRDE06.utxtTextBilling utxtUGuarantee 
          Height          =   420
@@ -607,11 +790,19 @@ Begin VB.Form frmCCRde06
          TabIndex        =   26
          Top             =   6120
          Width           =   615
-         _extentx        =   1085
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0C5A
-         maxlength       =   1
+         _ExtentX        =   1085
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   1
       End
       Begin CCRDE06.utxtTextBilling utxtWhfOnly 
          Height          =   420
@@ -621,12 +812,20 @@ Begin VB.Form frmCCRde06
          Top             =   5160
          Visible         =   0   'False
          Width           =   615
-         _extentx        =   1085
-         _extenty        =   741
-         backcolor       =   -2147483633
-         enabled         =   0   'False
-         font            =   "frmCCRde06.frx":0C7E
-         maxlength       =   1
+         _ExtentX        =   1085
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         Enabled         =   0   'False
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   1
       End
       Begin CCRDE06.utxtTextBilling utxtWhfExmpt 
          Height          =   420
@@ -636,12 +835,20 @@ Begin VB.Form frmCCRde06
          Top             =   5280
          Visible         =   0   'False
          Width           =   615
-         _extentx        =   1085
-         _extenty        =   741
-         backcolor       =   -2147483633
-         enabled         =   0   'False
-         font            =   "frmCCRde06.frx":0CA2
-         maxlength       =   1
+         _ExtentX        =   1085
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         Enabled         =   0   'False
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   1
       End
       Begin CCRDE06.utxtNumBilling utxtVatCode 
          Height          =   420
@@ -649,10 +856,18 @@ Begin VB.Form frmCCRde06
          TabIndex        =   22
          Top             =   4080
          Width           =   615
-         _extentx        =   1085
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0CC6
+         _ExtentX        =   1085
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
       End
       Begin CCRDE06.utxtTextBilling utxtVessel 
          Height          =   420
@@ -660,11 +875,19 @@ Begin VB.Form frmCCRde06
          TabIndex        =   21
          Top             =   2880
          Width           =   2175
-         _extentx        =   3836
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0CEA
-         maxlength       =   12
+         _ExtentX        =   3836
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   12
       End
       Begin CCRDE06.utxtTextBilling utxtCommodity 
          Height          =   420
@@ -672,11 +895,19 @@ Begin VB.Form frmCCRde06
          TabIndex        =   18
          Top             =   1920
          Width           =   5055
-         _extentx        =   8916
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0D0E
-         maxlength       =   30
+         _ExtentX        =   8916
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   30
       End
       Begin CCRDE06.utxtTextBilling utxtRemark 
          Height          =   420
@@ -684,11 +915,19 @@ Begin VB.Form frmCCRde06
          TabIndex        =   20
          Top             =   2400
          Width           =   5055
-         _extentx        =   8916
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0D32
-         maxlength       =   30
+         _ExtentX        =   8916
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   30
       End
       Begin CCRDE06.utxtTextBilling utxtBroker 
          Height          =   420
@@ -696,11 +935,19 @@ Begin VB.Form frmCCRde06
          TabIndex        =   17
          Top             =   1440
          Width           =   5055
-         _extentx        =   8916
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0D56
-         maxlength       =   30
+         _ExtentX        =   8916
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   30
       End
       Begin CCRDE06.utxtTextBilling utxtExporter 
          Height          =   420
@@ -708,140 +955,228 @@ Begin VB.Form frmCCRde06
          TabIndex        =   16
          Top             =   960
          Width           =   5055
-         _extentx        =   8916
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0D7A
-         maxlength       =   30
+         _ExtentX        =   8916
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   30
       End
       Begin CCRDE06.utxtNumBilling utxtNumDangr 
          Height          =   420
-         Left            =   -71280
+         Left            =   3720
          TabIndex        =   4
          Top             =   1920
          Width           =   495
-         _extentx        =   873
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0D9E
-         maxlength       =   1
+         _ExtentX        =   873
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   1
       End
       Begin CCRDE06.utxtTextBilling utxtUMS 
          Height          =   420
-         Left            =   -63240
+         Left            =   11760
          TabIndex        =   10
          Top             =   3000
          Width           =   495
-         _extentx        =   873
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0DC2
-         maxlength       =   1
+         _ExtentX        =   873
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   1
       End
       Begin CCRDE06.utxtNumBilling utxtHeight 
          Height          =   420
-         Left            =   -65640
+         Left            =   9360
          TabIndex        =   9
          Top             =   3000
          Width           =   1455
-         _extentx        =   2566
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0DE6
-         maxlength       =   6
-         maskformat      =   "###.00"
-         maskformat      =   "###.00"
+         _ExtentX        =   2566
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   6
+         Maskformat      =   "###.00"
+         Maskformat      =   "###.00"
       End
       Begin CCRDE06.utxtNumBilling utxtWidth 
          Height          =   420
-         Left            =   -68520
+         Left            =   6480
          TabIndex        =   8
          Top             =   3000
          Width           =   1455
-         _extentx        =   2566
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0E0A
-         maxlength       =   6
-         maskformat      =   "###.00"
-         maskformat      =   "###.00"
+         _ExtentX        =   2566
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   6
+         Maskformat      =   "###.00"
+         Maskformat      =   "###.00"
       End
       Begin CCRDE06.utxtNumBilling utxtLength 
          Height          =   420
-         Left            =   -71280
+         Left            =   3720
          TabIndex        =   7
          Top             =   3000
          Width           =   1575
-         _extentx        =   2778
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0E2E
-         maxlength       =   6
-         maskformat      =   "###.00"
-         maskformat      =   "###.00"
+         _ExtentX        =   2778
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   6
+         Maskformat      =   "###.00"
+         Maskformat      =   "###.00"
       End
       Begin CCRDE06.utxtNumBilling utxtDollar 
          Height          =   420
-         Left            =   -68400
+         Left            =   6600
          TabIndex        =   6
          Top             =   2400
          Width           =   1095
-         _extentx        =   1931
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0E52
-         maxlength       =   6
-         maskformat      =   "###.00"
-         maskformat      =   "###.00"
-         decimalplaces   =   2
+         _ExtentX        =   1931
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   6
+         Maskformat      =   "###.00"
+         Maskformat      =   "###.00"
+         DecimalPlaces   =   2
       End
       Begin CCRDE06.utxtTextBilling utxtTshipMnt 
          Height          =   420
-         Left            =   -71280
+         Left            =   3720
          TabIndex        =   5
          Top             =   2400
          Width           =   495
-         _extentx        =   873
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0E76
-         maxlength       =   1
+         _ExtentX        =   873
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   1
       End
       Begin CCRDE06.utxtTextBilling utxtFEmp 
          Height          =   420
-         Left            =   -66360
+         Left            =   8640
          TabIndex        =   3
          Top             =   1320
          Width           =   495
-         _extentx        =   873
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0E9A
-         maxlength       =   1
+         _ExtentX        =   873
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   1
       End
       Begin CCRDE06.utxtNumBilling utxtSze 
          Height          =   420
-         Left            =   -71280
+         Left            =   3720
          TabIndex        =   2
          Top             =   1320
          Width           =   495
-         _extentx        =   873
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0EBE
-         maxlength       =   20
+         _ExtentX        =   873
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   20
       End
       Begin CCRDE06.utxtTextBilling utxtPref 
          Height          =   420
-         Left            =   -71280
+         Left            =   3720
          TabIndex        =   0
          Top             =   720
          Width           =   1095
-         _extentx        =   1931
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0EE2
-         maxlength       =   4
+         _ExtentX        =   1931
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   4
       End
       Begin CCRDE06.utxtEntry utxtEntry1 
          Height          =   420
@@ -850,12 +1185,20 @@ Begin VB.Form frmCCRde06
          TabIndex        =   38
          Top             =   8280
          Width           =   1455
-         _extentx        =   2566
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0F06
-         maxlength       =   8
-         alignment       =   1
+         _ExtentX        =   2566
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   8
+         Alignment       =   1
       End
       Begin CCRDE06.utxtEntry utxtEntry1 
          Height          =   420
@@ -864,12 +1207,20 @@ Begin VB.Form frmCCRde06
          TabIndex        =   37
          Top             =   8280
          Width           =   1455
-         _extentx        =   2566
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0F2A
-         maxlength       =   8
-         alignment       =   1
+         _ExtentX        =   2566
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   8
+         Alignment       =   1
       End
       Begin CCRDE06.utxtEntry utxtEntry1 
          Height          =   420
@@ -878,12 +1229,20 @@ Begin VB.Form frmCCRde06
          TabIndex        =   36
          Top             =   8280
          Width           =   1455
-         _extentx        =   2566
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0F4E
-         maxlength       =   8
-         alignment       =   1
+         _ExtentX        =   2566
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   8
+         Alignment       =   1
       End
       Begin CCRDE06.utxtEntry utxtEntry1 
          Height          =   420
@@ -892,12 +1251,20 @@ Begin VB.Form frmCCRde06
          TabIndex        =   35
          Top             =   8280
          Width           =   1455
-         _extentx        =   2566
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0F72
-         maxlength       =   8
-         alignment       =   1
+         _ExtentX        =   2566
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   8
+         Alignment       =   1
       End
       Begin CCRDE06.utxtEntry utxtEntry1 
          Height          =   420
@@ -906,12 +1273,20 @@ Begin VB.Form frmCCRde06
          TabIndex        =   34
          Top             =   8280
          Width           =   1455
-         _extentx        =   2566
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0F96
-         maxlength       =   8
-         alignment       =   1
+         _ExtentX        =   2566
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   8
+         Alignment       =   1
       End
       Begin CCRDE06.utxtEntry utxtEntry1 
          Height          =   420
@@ -920,12 +1295,20 @@ Begin VB.Form frmCCRde06
          TabIndex        =   33
          Top             =   7800
          Width           =   1455
-         _extentx        =   2566
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0FBA
-         maxlength       =   8
-         alignment       =   1
+         _ExtentX        =   2566
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   8
+         Alignment       =   1
       End
       Begin CCRDE06.utxtEntry utxtEntry1 
          Height          =   420
@@ -934,12 +1317,20 @@ Begin VB.Form frmCCRde06
          TabIndex        =   32
          Top             =   7800
          Width           =   1455
-         _extentx        =   2566
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":0FDE
-         maxlength       =   8
-         alignment       =   1
+         _ExtentX        =   2566
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   8
+         Alignment       =   1
       End
       Begin CCRDE06.utxtEntry utxtEntry1 
          Height          =   420
@@ -948,12 +1339,20 @@ Begin VB.Form frmCCRde06
          TabIndex        =   31
          Top             =   7800
          Width           =   1455
-         _extentx        =   2566
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":1002
-         maxlength       =   8
-         alignment       =   1
+         _ExtentX        =   2566
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   8
+         Alignment       =   1
       End
       Begin CCRDE06.utxtEntry utxtEntry1 
          Height          =   420
@@ -962,12 +1361,20 @@ Begin VB.Form frmCCRde06
          TabIndex        =   30
          Top             =   7800
          Width           =   1455
-         _extentx        =   2566
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":1026
-         maxlength       =   8
-         alignment       =   1
+         _ExtentX        =   2566
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   8
+         Alignment       =   1
       End
       Begin CCRDE06.utxtEntry utxtEntry1 
          Height          =   420
@@ -976,12 +1383,20 @@ Begin VB.Form frmCCRde06
          TabIndex        =   29
          Top             =   7800
          Width           =   1455
-         _extentx        =   2566
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":104A
-         maxlength       =   8
-         alignment       =   1
+         _ExtentX        =   2566
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   8
+         Alignment       =   1
       End
       Begin CCRDE06.utxtEntry utxtEntry1 
          Height          =   420
@@ -990,9 +1405,17 @@ Begin VB.Form frmCCRde06
          TabIndex        =   61
          Top             =   5880
          Width           =   1455
-         _extentx        =   2566
-         _extenty        =   741
-         font            =   "frmCCRde06.frx":106E
+         _ExtentX        =   2566
+         _ExtentY        =   741
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
       End
       Begin VB.Frame Frame10 
          BeginProperty Font 
@@ -1034,12 +1457,20 @@ Begin VB.Form frmCCRde06
                TabStop         =   0   'False
                Top             =   480
                Width           =   6495
-               _extentx        =   11456
-               _extenty        =   741
-               backcolor       =   -2147483633
-               enabled         =   0   'False
-               font            =   "frmCCRde06.frx":1092
-               alignment       =   2
+               _ExtentX        =   11456
+               _ExtentY        =   741
+               BackColor       =   -2147483633
+               Enabled         =   0   'False
+               BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+                  Name            =   "Arial"
+                  Size            =   15
+                  Charset         =   0
+                  Weight          =   400
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               Alignment       =   2
             End
             Begin CCRDE06.utxtNumBilling utxtCustNo1 
                Height          =   420
@@ -1047,14 +1478,22 @@ Begin VB.Form frmCCRde06
                TabIndex        =   27
                Top             =   480
                Width           =   2415
-               _extentx        =   4260
-               _extenty        =   741
-               backcolor       =   -2147483633
-               font            =   "frmCCRde06.frx":10B6
-               maxlength       =   8
-               alignment       =   1
-               maskformat      =   "########"
-               maskformat      =   "########"
+               _ExtentX        =   4260
+               _ExtentY        =   741
+               BackColor       =   -2147483633
+               BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+                  Name            =   "Arial"
+                  Size            =   15
+                  Charset         =   0
+                  Weight          =   400
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               MaxLength       =   8
+               Alignment       =   1
+               Maskformat      =   "########"
+               Maskformat      =   "########"
             End
             Begin VB.Label Label65 
                Alignment       =   2  'Center
@@ -1132,7 +1571,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   690
-         Left            =   10920
+         Left            =   -64080
          Style           =   1  'Graphical
          TabIndex        =   74
          TabStop         =   0   'False
@@ -1151,7 +1590,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   690
-         Left            =   360
+         Left            =   -74640
          Style           =   1  'Graphical
          TabIndex        =   72
          TabStop         =   0   'False
@@ -1171,7 +1610,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   690
-         Left            =   -63480
+         Left            =   11520
          Style           =   1  'Graphical
          TabIndex        =   69
          TabStop         =   0   'False
@@ -1191,7 +1630,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   690
-         Left            =   -70920
+         Left            =   4080
          TabIndex        =   65
          TabStop         =   0   'False
          Top             =   9360
@@ -1210,7 +1649,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   690
-         Left            =   -74520
+         Left            =   480
          Style           =   1  'Graphical
          TabIndex        =   63
          TabStop         =   0   'False
@@ -1229,7 +1668,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   690
-         Left            =   -67080
+         Left            =   7920
          Style           =   1  'Graphical
          TabIndex        =   67
          TabStop         =   0   'False
@@ -1248,7 +1687,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   345
-         Left            =   -65400
+         Left            =   9600
          TabIndex        =   82
          TabStop         =   0   'False
          Top             =   1440
@@ -1267,7 +1706,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   690
-         Left            =   -70920
+         Left            =   4080
          Style           =   1  'Graphical
          TabIndex        =   64
          TabStop         =   0   'False
@@ -1286,7 +1725,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   690
-         Left            =   10920
+         Left            =   -64080
          Style           =   1  'Graphical
          TabIndex        =   73
          TabStop         =   0   'False
@@ -1324,7 +1763,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   690
-         Left            =   -74520
+         Left            =   480
          Style           =   1  'Graphical
          TabIndex        =   62
          TabStop         =   0   'False
@@ -1344,7 +1783,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   690
-         Left            =   -63480
+         Left            =   11520
          Style           =   1  'Graphical
          TabIndex        =   68
          TabStop         =   0   'False
@@ -1364,7 +1803,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   690
-         Left            =   -67080
+         Left            =   7920
          Style           =   1  'Graphical
          TabIndex        =   66
          TabStop         =   0   'False
@@ -1373,7 +1812,7 @@ Begin VB.Form frmCCRde06
       End
       Begin MSFlexGridLib.MSFlexGrid flexDetails 
          Height          =   4095
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   85
          TabStop         =   0   'False
          Top             =   3600
@@ -1413,7 +1852,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   3375
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   107
          Top             =   120
          Width           =   14775
@@ -1752,7 +2191,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   1815
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   106
          Top             =   8400
          Width           =   14895
@@ -1768,7 +2207,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   1755
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   124
          Top             =   8400
          Width           =   14895
@@ -2360,7 +2799,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   8295
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   126
          Top             =   120
          Width           =   14895
@@ -2685,7 +3124,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   4095
-         Left            =   -74400
+         Left            =   600
          TabIndex        =   11
          TabStop         =   0   'False
          Top             =   3600
@@ -2704,7 +3143,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   285
-         Left            =   -64320
+         Left            =   10680
          TabIndex        =   155
          Top             =   7380
          Visible         =   0   'False
@@ -2722,7 +3161,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   330
-         Left            =   -65640
+         Left            =   9360
          TabIndex        =   154
          Top             =   6900
          Visible         =   0   'False
@@ -2740,7 +3179,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   330
-         Left            =   -64560
+         Left            =   10440
          TabIndex        =   153
          Top             =   7860
          Width           =   1935
@@ -2777,7 +3216,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   375
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   151
          Top             =   7800
          Width           =   1815
@@ -2796,7 +3235,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          ForeColor       =   &H00C00000&
          Height          =   420
-         Left            =   -72840
+         Left            =   2160
          TabIndex        =   15
          Top             =   7800
          Width           =   735
@@ -2815,7 +3254,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          ForeColor       =   &H00800000&
          Height          =   420
-         Left            =   -62520
+         Left            =   12480
          TabIndex        =   12
          Top             =   6840
          Visible         =   0   'False
@@ -2836,7 +3275,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          ForeColor       =   &H00800000&
          Height          =   420
-         Left            =   -62520
+         Left            =   12480
          TabIndex        =   13
          Top             =   7320
          Visible         =   0   'False
@@ -2856,7 +3295,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          ForeColor       =   &H00800000&
          Height          =   420
-         Left            =   -62520
+         Left            =   12480
          TabIndex        =   14
          Top             =   7800
          Width           =   2535
@@ -2902,10 +3341,18 @@ Begin VB.Form frmCCRde06
          TabIndex        =   158
          Top             =   1800
          Width           =   615
-         _extentx        =   1085
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":10DA
+         _ExtentX        =   1085
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
       End
       Begin CCRDE06.utxtTextBilling txtSupervisor 
          Height          =   420
@@ -2913,11 +3360,19 @@ Begin VB.Form frmCCRde06
          TabIndex        =   157
          Top             =   1320
          Width           =   4215
-         _extentx        =   7435
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "frmCCRde06.frx":10FE
-         maxlength       =   19
+         _ExtentX        =   7435
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   19
       End
       Begin VB.TextBox txtUserid 
          BackColor       =   &H8000000F&
@@ -3074,7 +3529,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          BeginProperty Panel6 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
-            TextSave        =   "1:44 PM"
+            TextSave        =   "8:53 AM"
          EndProperty
       EndProperty
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -3637,10 +4092,11 @@ Private Sub Main()
 '        ";Integrated Security=SSPI"
 '        ";UID=tosadmin; password=password"
 
-         gConnStr = "Provider=sqloledb" & _
-        ";Data Source=sbitc-dev" & _
-        ";Initial Catalog=sbitcbilling" & _
-        ";UID=sa_ictsi; password=Ictsi123"
+
+'         gConnStr = "Provider=sqloledb" & _
+'        ";Data Source=sbitc-dev" & _
+'        ";Initial Catalog=sbitcbilling" & _
+'        ";UID=sa_ictsi; password=Ictsi123"
         
        '";Integrated Security=SSPI"
     Set mp = New clsCCRde06
@@ -3662,7 +4118,6 @@ End Function
 
 Public Sub ReadConfig()
 Dim Xcnt As Integer
-On Error Resume Next
 Open App.Path & "\" & "Conn.cfg" For Binary Access Read As #1
 
 Do While Not EOF(1)
@@ -5093,9 +5548,6 @@ Private Sub utxtNo_KeyDown(KeyCode As Integer, Shift As Integer)
                 If lblCompCode.Caption <> "" Then
                     If flexDetails.TextMatrix(1, 45) <> lblCompCode.Caption Then
                         MsgBox "Company code must be the same with the first container."
-                        
-                        
-
 ResetCont:
                         Call InitializeDetail
                         Call EnableForNewContainer(True)
