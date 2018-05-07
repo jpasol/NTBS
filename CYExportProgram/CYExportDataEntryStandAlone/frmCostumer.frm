@@ -27,7 +27,7 @@ Begin VB.Form frmCostumer
    Begin VB.TextBox txtCode 
       BackColor       =   &H8000000F&
       BeginProperty Font 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   15
          Charset         =   0
          Weight          =   400
@@ -44,7 +44,7 @@ Begin VB.Form frmCostumer
    Begin VB.CommandButton cmdCancel 
       Caption         =   "F12 - Cancel"
       BeginProperty Font 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   15
          Charset         =   0
          Weight          =   400
@@ -80,7 +80,7 @@ Begin VB.Form frmCostumer
       GridLines       =   0
       SelectionMode   =   1
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   15
          Charset         =   0
          Weight          =   400
@@ -92,7 +92,7 @@ Begin VB.Form frmCostumer
    Begin VB.TextBox txtName 
       BackColor       =   &H8000000F&
       BeginProperty Font 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   15
          Charset         =   0
          Weight          =   400
@@ -110,7 +110,7 @@ Begin VB.Form frmCostumer
    Begin VB.CommandButton OKButton 
       Caption         =   "Enter - OK"
       BeginProperty Font 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   15
          Charset         =   0
          Weight          =   400
@@ -137,7 +137,7 @@ Begin VB.Form frmCostumer
          BorderStyle     =   1  'Fixed Single
          Caption         =   "Code"
          BeginProperty Font 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -157,7 +157,7 @@ Begin VB.Form frmCostumer
          BorderStyle     =   1  'Fixed Single
          Caption         =   "Customer Name"
          BeginProperty Font 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
