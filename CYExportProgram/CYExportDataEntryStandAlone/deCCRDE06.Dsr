@@ -16,7 +16,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       ConnectionName  =   "Billing_NCT2"
       ConnDispId      =   1001
       SourceOfData    =   3
-      ConnectionSource=   "Provider=SQLOLEDB.1;Password=Ictsi123;Persist Security Info=True;User ID=SA_ICTSI;Initial Catalog=billing;Data Source=SBITCBILLING"
+      ConnectionSource=   "Provider=SQLOLEDB.1;Password=Ictsi123;Persist Security Info=True;User ID=SA_ICTSI;Initial Catalog=billing;Data Source=SBITC-DEV"
       Expanded        =   -1  'True
       IsSQL           =   -1  'True
       QuoteChar       =   34
