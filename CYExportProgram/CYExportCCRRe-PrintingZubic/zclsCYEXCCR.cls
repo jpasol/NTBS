@@ -626,16 +626,26 @@ Dim strArrastre As String * 12
 Dim strWArrastre As String * 12
 Dim strWharfage As String * 12
 Dim strTArrastre As String * 12
+
+Dim strWgh As String * 9
+Dim strWeighing As String * 9
+Dim sngWeighTotal As Currency
+Dim sngWeighing As Currency
+Dim sngWghAmt As Currency
+
 Dim strTWArrastre As String * 12
 Dim strTWharfage As String * 12
 Dim sngArrastre As Currency
 Dim sngWArrastre  As Currency
+
+Dim sngWgh As Currency
 Dim sngWharfage As Currency
 Dim sngTArrastre As Single
 Dim sngTWArrastre As Single
 Dim sngTWharfage As Single
 Dim sngVat As Single
 Dim sngWtx As Single
+
 Dim vslName As String * 10
 Dim x As Integer
 Dim strRemarks As String * 15
@@ -649,6 +659,7 @@ Dim remark3 As String
 Dim UserName As String
 Dim strValidation As String * 35
 Dim RevTonnage As String * 16
+
 WhfRteAmt = 0
 ctrCnt = 11
 DE.CCRDetails pRefnum, pSeqnum
@@ -698,6 +709,8 @@ If CD.RecordCount > 0 Then
         strEntry = .Fields("entnum") & ""
         strValidation = Trim(Refn) & " " & Trim(Seqf) & " " & Trim(CCRf) & " " & Format(.Fields("sysdttm"), "YY-MM-DD hh:nn")
         vslName = .Fields("vslcde") & ""
+        
+        
         Printer.Font = "Courier 12cpi"
         Printer.FontSize = 10
         Printer.Print " "
@@ -727,6 +740,8 @@ If CD.RecordCount > 0 Then
         End If
         sngVat = 0
         sngWtx = 0
+        sngWeighTotal = 0
+        
         Do While Not .EOF
             If .Fields("vatcde") <> "1" Then
                 sngVat = sngVat + CSng(.Fields("arrvat"))
@@ -738,6 +753,11 @@ If CD.RecordCount > 0 Then
             sngWArrastre = CSng(.Fields("arramt")) + CSng(.Fields("ovzamt")) + CSng(.Fields("dgramt"))
             sngTArrastre = sngTArrastre + sngArrastre
             sngTWArrastre = sngTWArrastre + sngWArrastre
+            
+            sngWgh = CSng(.Fields("wghamt"))
+            sngWeighing = sngWeighing + sngWgh
+            sngWeighTotal = sngWeighTotal + sngWgh
+            
             If .Fields("whfcde") = "0" Then
                 sngWharfage = CSng(.Fields("whfamt"))
             Else
@@ -759,6 +779,11 @@ If CD.RecordCount > 0 Then
             Else
                 strWharfage = " "
             End If
+            If sngWgh > 0 Then
+                strWgh = Format(sngWgh, "##,###.#0")
+            Else
+                strWgh = 0
+            End If
             strSize = .Fields("cntsze")
             strCtnnum = .Fields("cntnum")
             If CSng(.Fields("ovzamt")) > 0 Then
@@ -766,7 +791,7 @@ If CD.RecordCount > 0 Then
             Else
                 RevTonnage = ""
             End If
-            Printer.Print Space(2) & strSize & Space(1) & strCtnnum & Space(2) & RevTonnage & Space(2) & strArrastre & Space(29) & strArrastre
+            Printer.Print Space(2) & strSize & Space(1) & strCtnnum & Space(2) & RevTonnage & Space(2) & strArrastre & Space(2) & strWgh & Space(20) & Format(CDbl(strArrastre) + CDbl(strWgh), "###,###,###.#0")
             ctrCnt = ctrCnt - 1
             .MoveNext
         Loop
@@ -802,8 +827,8 @@ If CD.RecordCount > 0 Then
         'Printer.Print " "  ' 3
         Printer.Print " "  ' 3
         Printer.Print " "  ' 3
-        Printer.Print Space(6) & Space(15) & Space(17) & Space(17) & Trim(tmpString) & Space(10) & strTArrastre
-        tmpString = NumToText(CCur(sngTArrastre))
+        Printer.Print Space(6) & Space(15) & Space(17) & Space(17) & Trim(tmpString) & Space(10) & Format(CDbl(strTArrastre) + CDbl(sngWeighTotal), "###,###,###.#0")
+        tmpString = NumToText(CCur(sngTArrastre) + sngWeighTotal)
         Word1 = Mid(tmpString, 1, 35)
         If Len(Trim(Mid(tmpString, 35, 1))) <> 0 And Len(Trim(Mid(tmpString, 36, 1))) <> 0 Then
             Word1 = Trim(Word1) & "-"
@@ -823,8 +848,8 @@ If CD.RecordCount > 0 Then
         Else
             Printer.Print "  FOREIGN " & Space(36) & Word3
         End If
-        Printer.Print " "
-        tmpString = strChqAmt & " CK    " & strCshAmt & " CS"
+        Printer.Print ""
+        tmpString = strChqAmt & " CK    " & Format(strCshAmt + sngWeighTotal, "###,###,###.#0") & "    CS"
         Printer.Print Space(44) & tmpString
         tmpString = strAdrAmt & " AD"
         Printer.Print Space(5) & UserName  ' & Space(26) & tmpString
