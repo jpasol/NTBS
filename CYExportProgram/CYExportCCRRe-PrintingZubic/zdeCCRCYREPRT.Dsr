@@ -1,11 +1,11 @@
 VERSION 5.00
 Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT 
-   ClientHeight    =   9765
+   ClientHeight    =   14040
    ClientLeft      =   0
    ClientTop       =   0
-   ClientWidth     =   11175
-   _ExtentX        =   19711
-   _ExtentY        =   17224
+   ClientWidth     =   24510
+   _ExtentX        =   43233
+   _ExtentY        =   24765
    FolderFlags     =   1
    TypeLibGuid     =   "{2D835FC3-0BA4-11D3-BD67-00105A64485A}"
    TypeInfoGuid    =   "{2D835FC4-0BA4-11D3-BD67-00105A64485A}"
@@ -16,7 +16,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
       ConnectionName  =   "Billing"
       ConnDispId      =   1001
       SourceOfData    =   3
-      ConnectionSource=   "Provider=SQLOLEDB.1;Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Billing;Data Source=SBITCBILLING"
+      ConnectionSource=   "Provider=SQLOLEDB.1;Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=sbitcbilling;Data Source=SBITC-DEV"
       Expanded        =   -1  'True
       IsSQL           =   -1  'True
       QuoteChar       =   34
@@ -26,11 +26,10 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
    BeginProperty Recordset1 
       CommandName     =   "getTotal"
       CommDispId      =   1002
-      RsDispId        =   1029
+      RsDispId        =   1081
       CommandText     =   $"zdeCCRCYREPRT.dsx":0000
       ActiveConnectionName=   "Billing"
       CommandType     =   1
-      Expanded        =   -1  'True
       IsRSReturning   =   -1  'True
       NumFields       =   1
       BeginProperty Field1 
@@ -70,7 +69,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
       CommandName     =   "getCCRList"
       CommDispId      =   1009
       RsDispId        =   1015
-      CommandText     =   $"zdeCCRCYREPRT.dsx":00D2
+      CommandText     =   $"zdeCCRCYREPRT.dsx":00E6
       ActiveConnectionName=   "Billing"
       CommandType     =   1
       IsRSReturning   =   -1  'True
@@ -2013,7 +2012,3 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-Private Sub Connection1_InfoMessage(ByVal pError As ADODB.Error, adStatus As ADODB.EventStatusEnum, ByVal pConnection As ADODB.Connection)
-
-End Sub
-

@@ -849,7 +849,7 @@ If CD.RecordCount > 0 Then
             Printer.Print "  FOREIGN " & Space(36) & Word3
         End If
         Printer.Print ""
-        tmpString = strChqAmt & " CK    " & Format(strCshAmt + sngWeighTotal, "###,###,###.#0") & "    CS"
+        tmpString = strChqAmt & " CK    " & strCshAmt & " CS"
         Printer.Print Space(44) & tmpString
         tmpString = strAdrAmt & " AD"
         Printer.Print Space(5) & UserName  ' & Space(26) & tmpString

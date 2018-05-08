@@ -39,6 +39,7 @@ Public ChkAmount5 As Single
 
 Public sngTempAmt As Single
 
+
 Public blnChkno1 As Boolean
 Public blnChkno2 As Boolean
 Public blnChkno3 As Boolean
