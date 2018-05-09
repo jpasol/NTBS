@@ -583,6 +583,9 @@ Private Sub OutCCR(pRefnum As Long, pSeqnum As Long, pCustomer As String, pAdrAm
     Dim f As Integer
     Dim CCR As rptCCRPr03
     Set CCR = New rptCCRPr03
+    
+    'CCR.Database.LogOnServer "pdsodbc.dll", "SBITC-DEV", "sbitcbilling", "tosadmin", "password"
+    
     CCR.EnableParameterPrompting = False
     CCR.ParameterFields(1).AddCurrentValue (pRefnum)
     CCR.ParameterFields(2).AddCurrentValue (pSeqnum)
@@ -597,7 +600,8 @@ Private Sub OutCCR(pRefnum As Long, pSeqnum As Long, pCustomer As String, pAdrAm
     CCR.ParameterFields(11).AddCurrentValue (pChkno5)
     CCR.ParameterFields(12).AddCurrentValue (strSupervisor)
 '    CCR.TxtSupervisor.SetText strSupervisor
-    CCR.DisplayProgressDialog = False
+    CCR.DisplayProgressDialog = True
+
     CCR.SelectPrinter Printer.DriverName, Printer.DeviceName, Printer.Port
     CCR.PaperOrientation = crPortrait
     CCR.PrintOut False, 1
@@ -606,5 +610,3 @@ End Sub
 Public Sub CCRSupervisor(ByVal vData As String)
      strSupervisor = vData
 End Sub
-
-
