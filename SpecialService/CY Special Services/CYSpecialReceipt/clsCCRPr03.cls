@@ -584,7 +584,7 @@ Private Sub OutCCR(pRefnum As Long, pSeqnum As Long, pCustomer As String, pAdrAm
     Dim CCR As rptCCRPr03
     Set CCR = New rptCCRPr03
     
-    'CCR.Database.LogOnServer "pdsodbc.dll", "SBITC-DEV", "sbitcbilling", "tosadmin", "password"
+    CCR.Database.LogOnServer "pdsodbc.dll", "SBITCBILLING", "billing", "sa_ictsi", "Ictsi123"
     
     CCR.EnableParameterPrompting = False
     CCR.ParameterFields(1).AddCurrentValue (pRefnum)
