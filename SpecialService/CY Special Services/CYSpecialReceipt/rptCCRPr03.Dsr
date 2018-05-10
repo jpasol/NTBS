@@ -11,6 +11,3 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-Private Sub Report_NoData(pCancel As Boolean)
-
-End Sub
