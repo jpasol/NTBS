@@ -22,6 +22,7 @@ Begin VB.Form frmReprintCCR
    ScaleWidth      =   4980
    Begin VB.CommandButton cmdReprint 
       Caption         =   "Re&print"
+      Enabled         =   0   'False
       BeginProperty Font 
          Name            =   "Arial"
          Size            =   19.5
@@ -179,7 +180,7 @@ Private Sub cmdReprint_Click()
 '        .CCRSupervisor vSupervisor
 '        .CCRNumber = CLng("0" & txtCCRNum)
 '        .PrintCCR CLng("0" & Trim(txtCCRRefNo))
-        OutCCRPC CLng(Trim(txtCCRRefNo))
+        OutCCRPC CStr(Trim(txtCCRRefNo)), CStr(Trim(txtCCRNum))
         txtCCRRefNo = Space(txtCCRRefNo.MaxLength)
         txtCCRNum = Space(txtCCRNum.MaxLength)
 '    End With
@@ -235,6 +236,9 @@ End Sub
 
 Private Sub txtCCRRefNo_Change()
     cmdReprint.Enabled = (CLng("0" & txtCCRRefNo) > 0)
+    
+    Dim ado As Recordset
+
 End Sub
 
 Private Sub txtCCRRefNo_GotFocus()
@@ -256,6 +260,8 @@ Private Sub txtCCRRefNo_KeyPress(KeyAscii As Integer)
 End Sub
 
 Private Sub txtCCRRefNo_LostFocus()
+    Dim getCCR As ADODB.Recordset
+    
     With txtCCRRefNo
         .BackColor = vbWindowBackground
     End With
@@ -392,7 +398,7 @@ NumToTextError:
 End Function
 
 
-Private Sub OutCCRPC(pRefnum As Long)
+Private Sub OutCCRPC(pRefnum As Long, pCCRnum As Long)
 ' *************************
 ' ** Printing of receipt **
 ' *************************
@@ -440,7 +446,7 @@ Dim rsCCRPay As ADODB.Recordset
 Dim strAdrAmt As String
 
 ctrCnt = 11
-On Error Resume Next
+
     Set rsCCRPay = New ADODB.Recordset
     rsCCRPay.Open "SELECT cusnam, userid From CCRPay WHERE refnum = " & Trim(CStr(pRefnum)), _
             gcnnBilling, adOpenDynamic, adLockOptimistic, adCmdText
@@ -451,7 +457,11 @@ On Error Resume Next
     rsCCRPay.Close
     
 Set rsCCRDetail = New ADODB.Recordset
+'rsCCRDetail.Open "SELECT * From CCRdtl WHERE refnum = " & Trim(CStr(pRefnum)) & "" _
+'        & " order by itmnum", _
+'        gcnnBilling, adOpenDynamic, adLockOptimistic, adCmdText
 rsCCRDetail.Open "SELECT * From CCRdtl WHERE refnum = " & Trim(CStr(pRefnum)) & "" _
+        & " AND ccrnum = " & Trim(CStr(pCCRnum)) & "" _
         & " order by itmnum", _
         gcnnBilling, adOpenDynamic, adLockOptimistic, adCmdText
 If rsCCRDetail.BOF <> True And rsCCRDetail.EOF <> True Then
@@ -491,8 +501,8 @@ If rsCCRDetail.BOF <> True And rsCCRDetail.EOF <> True Then
         strValidation = Trim(Refn) & " " & Trim(Seqf) & " " & Trim(CCRf) & " " & Format(.Fields("sysdttm"), "YY-MM-DD hh:nn")
         vslName = .Fields("vslcde") & ""
         
-'        Printer.Font = "Courier 12cpi"
-        Printer.Font = "Courier"
+        Printer.Font = "Courier 12cpi"
+'        Printer.Font = "Courier"
         Printer.FontSize = 10
 
         Printer.Print " "
@@ -635,16 +645,16 @@ If rsCCRDetail.BOF <> True And rsCCRDetail.EOF <> True Then
             UserName = .Fields("userid")
             
             Printer.Print Space(5) & UserName  ' & Space(26) & tmpString
-            
-            tmpString = strCshAmt & " CS            "
+              
+            tmpString = strCshAmt & " CS                  "
+            Printer.CurrentX = Printer.ScaleWidth - Printer.TextWidth(tmpString)
+            Printer.Print tmpString
+              
+            tmpString = strChqAmt & " CK                  "
             Printer.CurrentX = Printer.ScaleWidth - Printer.TextWidth(tmpString)
             Printer.Print tmpString
             
-            tmpString = strChqAmt & " CK            "
-            Printer.CurrentX = Printer.ScaleWidth - Printer.TextWidth(tmpString)
-            Printer.Print tmpString
-            
-            tmpString = strAdrAmt & " AD            "
+            tmpString = strAdrAmt & " AD                  "
             Printer.CurrentX = Printer.ScaleWidth - Printer.TextWidth(tmpString)
             Printer.Print tmpString
             
@@ -709,6 +719,8 @@ If rsCCRDetail.BOF <> True And rsCCRDetail.EOF <> True Then
     
     Printer.FontSize = 10
     Printer.EndDoc
+Else
+MsgBox "Reference/CCR # not found!", vbExclamation, "Error"
 
 End If
 
