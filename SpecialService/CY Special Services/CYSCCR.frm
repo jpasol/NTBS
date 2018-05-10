@@ -9768,6 +9768,7 @@ If rsCCRDetail.BOF <> True And rsCCRDetail.EOF <> True Then
         vslName = .Fields("vslcde") & ""
         
         Printer.Font = "Courier 12cpi"
+'        Printer.Font = "Courier"
         Printer.FontSize = 10
 
         Printer.Print " "
@@ -9902,16 +9903,32 @@ If rsCCRDetail.BOF <> True And rsCCRDetail.EOF <> True Then
             strChqAmt = Format(TotalCheckAmount, "###,###.00")
             strCshAmt = Format(.Fields("cshamt"), "###,###.00")
             
-            tmpString = strChqAmt & " CK    " & strCshAmt & " CS"
-            Printer.Print Space(44) & tmpString
-            
+'            tmpString = strChqAmt & " CK    " & strCshAmt & " CS"
+'            Printer.Print Space(44) & tmpString
+'
             strAdrAmt = Format(.Fields("adramt"), "###,###.00")
-            
-            tmpString = strAdrAmt & " AD"
             
             UserName = .Fields("userid")
             
             Printer.Print Space(5) & UserName  ' & Space(26) & tmpString
+              
+            tmpString = strCshAmt & " CS                  "
+            Printer.CurrentX = Printer.ScaleWidth - Printer.TextWidth(tmpString)
+            Printer.Print tmpString
+              
+            tmpString = strChqAmt & " CK                  "
+            Printer.CurrentX = Printer.ScaleWidth - Printer.TextWidth(tmpString)
+            Printer.Print tmpString
+            
+            tmpString = strAdrAmt & " AD                  "
+            Printer.CurrentX = Printer.ScaleWidth - Printer.TextWidth(tmpString)
+            Printer.Print tmpString
+            
+'            tmpString = strAdrAmt & " AD"
+            
+'            UserName = .Fields("userid")
+'
+'            Printer.Print Space(5) & UserName  ' & Space(26) & tmpString
             
             If IsNull(.Fields("chkamt1")) = False Then
                 tmp1 = Trim(.Fields("chkno1"))
@@ -9975,6 +9992,8 @@ rsCCRDetail.Close
 Set rsCCRDetail = Nothing
 
 End Sub
+
+
 
 Private Function NumToText(dblValue As Currency) As String
     Static ones(0 To 9) As String
