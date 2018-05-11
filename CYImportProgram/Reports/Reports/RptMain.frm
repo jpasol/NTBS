@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{C4847593-972C-11D0-9567-00A0C9273C2A}#2.2#0"; "crviewer.dll"
+Object = "{C4847593-972C-11D0-9567-00A0C9273C2A}#8.0#0"; "crviewer.dll"
 Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "MSMASK32.OCX"
 Begin VB.Form frmRptMain 
    Caption         =   "CY Import Reports"
@@ -517,6 +517,7 @@ Begin VB.Form frmRptMain
       EnablePopupMenu =   0   'False
       EnableExportButton=   0   'False
       EnableSearchExpertButton=   0   'False
+      EnableHelpButton=   0   'False
    End
    Begin VB.Menu mnuReport 
       Caption         =   "&Menu"
@@ -866,6 +867,7 @@ Public Sub lzViewReport()
                              "," & right(txtToTime.Text, 2) & ",59))"
                     If Len(Trim(txtOther.Text)) > 0 Then
                         rcdSel = "({CYMgps.userid} = '" & Trim(txtOther.Text) & "') AND " & rcdSel
+
                     End If
                     If chkICX.Value = 1 Then
                         rcdSel = "Trim({UserInfo.dptcde}) = 'ICX' AND " & rcdSel
