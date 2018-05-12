@@ -1,6 +1,6 @@
 VERSION 5.00
-Object = "{215FDF11-012A-11D3-BD4F-00105A64485A}#5.0#0"; "MpUserControls.ocx"
 Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
+Object = "{215FDF11-012A-11D3-BD4F-00105A64485A}#5.0#0"; "MpUserControls.ocx"
 Begin VB.UserControl usrctrlCCRde08 
    BorderStyle     =   1  'Fixed Single
    ClientHeight    =   11925
@@ -8,7 +8,7 @@ Begin VB.UserControl usrctrlCCRde08
    ClientTop       =   0
    ClientWidth     =   15360
    BeginProperty Font 
-      Name            =   "IBM3270 - 1254"
+      Name            =   "Arial"
       Size            =   15
       Charset         =   0
       Weight          =   400
@@ -83,10 +83,11 @@ Begin VB.UserControl usrctrlCCRde08
       _Version        =   393216
       TabOrientation  =   1
       Tabs            =   5
+      Tab             =   2
       TabsPerRow      =   5
       TabHeight       =   617
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   15
          Charset         =   0
          Weight          =   400
@@ -96,11 +97,9 @@ Begin VB.UserControl usrctrlCCRde08
       EndProperty
       TabCaption(0)   =   "CONTAINER NUMBER"
       TabPicture(0)   =   "usrctrlCCRde08.ctx":0000
-      Tab(0).ControlEnabled=   -1  'True
+      Tab(0).ControlEnabled=   0   'False
       Tab(0).Control(0)=   "Frame12"
-      Tab(0).Control(0).Enabled=   0   'False
       Tab(0).Control(1)=   "Frame3"
-      Tab(0).Control(1).Enabled=   0   'False
       Tab(0).Control(2)=   "cmdClose1"
       Tab(0).Control(2).Enabled=   0   'False
       Tab(0).Control(3)=   "cmdCancel1"
@@ -112,15 +111,10 @@ Begin VB.UserControl usrctrlCCRde08
       TabPicture(1)   =   "usrctrlCCRde08.ctx":001C
       Tab(1).ControlEnabled=   0   'False
       Tab(1).Control(0)=   "Label39"
-      Tab(1).Control(0).Enabled=   0   'False
       Tab(1).Control(1)=   "Frame13"
-      Tab(1).Control(1).Enabled=   0   'False
       Tab(1).Control(2)=   "Frame5"
-      Tab(1).Control(2).Enabled=   0   'False
       Tab(1).Control(3)=   "utxtDetTeller1"
-      Tab(1).Control(3).Enabled=   0   'False
       Tab(1).Control(4)=   "utxtDetDteTme"
-      Tab(1).Control(4).Enabled=   0   'False
       Tab(1).Control(5)=   "cmdClose2"
       Tab(1).Control(5).Enabled=   0   'False
       Tab(1).Control(6)=   "cmdCancel2"
@@ -128,13 +122,11 @@ Begin VB.UserControl usrctrlCCRde08
       Tab(1).Control(7)=   "cmdSave2"
       Tab(1).Control(7).Enabled=   0   'False
       Tab(1).Control(8)=   "utxtDetEntnum(0)"
-      Tab(1).Control(8).Enabled=   0   'False
       Tab(1).Control(9)=   "utxtDetEntnum(1)"
-      Tab(1).Control(9).Enabled=   0   'False
       Tab(1).ControlCount=   10
       TabCaption(2)   =   "CANCELLATION"
       TabPicture(2)   =   "usrctrlCCRde08.ctx":0038
-      Tab(2).ControlEnabled=   0   'False
+      Tab(2).ControlEnabled=   -1  'True
       Tab(2).Control(0)=   "Label40"
       Tab(2).Control(0).Enabled=   0   'False
       Tab(2).Control(1)=   "Frame14"
@@ -189,116 +181,69 @@ Begin VB.UserControl usrctrlCCRde08
       TabCaption(3)   =   "PAYMENT"
       TabPicture(3)   =   "usrctrlCCRde08.ctx":0054
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "Label37"
-      Tab(3).Control(0).Enabled=   0   'False
-      Tab(3).Control(1)=   "Frame15"
-      Tab(3).Control(1).Enabled=   0   'False
-      Tab(3).Control(2)=   "Frame7"
-      Tab(3).Control(2).Enabled=   0   'False
-      Tab(3).Control(3)=   "utxtPymChqNum(2)"
-      Tab(3).Control(3).Enabled=   0   'False
-      Tab(3).Control(4)=   "utxtPymChqNum(1)"
-      Tab(3).Control(4).Enabled=   0   'False
-      Tab(3).Control(5)=   "utxtPymCash"
-      Tab(3).Control(5).Enabled=   0   'False
-      Tab(3).Control(6)=   "utxtPymChq(0)"
-      Tab(3).Control(6).Enabled=   0   'False
-      Tab(3).Control(7)=   "utxtPymChq(1)"
+      Tab(3).Control(0)=   "utxtPymChqBnk(4)"
+      Tab(3).Control(1)=   "utxtPymChqBnk(3)"
+      Tab(3).Control(2)=   "utxtPymChqBnk(2)"
+      Tab(3).Control(3)=   "utxtPymChqBnk(1)"
+      Tab(3).Control(4)=   "utxtPymChqNum(4)"
+      Tab(3).Control(5)=   "utxtPymChqNum(3)"
+      Tab(3).Control(6)=   "utxtPymChqNum(0)"
+      Tab(3).Control(7)=   "cmdSave4"
       Tab(3).Control(7).Enabled=   0   'False
-      Tab(3).Control(8)=   "utxtPymChq(2)"
+      Tab(3).Control(8)=   "cmdCancel4"
       Tab(3).Control(8).Enabled=   0   'False
-      Tab(3).Control(9)=   "utxtPymChq(3)"
+      Tab(3).Control(9)=   "cmdClose4"
       Tab(3).Control(9).Enabled=   0   'False
-      Tab(3).Control(10)=   "utxtPymChq(4)"
-      Tab(3).Control(10).Enabled=   0   'False
-      Tab(3).Control(11)=   "utxtPymAdr"
-      Tab(3).Control(11).Enabled=   0   'False
-      Tab(3).Control(12)=   "utxtCustNo"
-      Tab(3).Control(12).Enabled=   0   'False
-      Tab(3).Control(13)=   "utxtChange"
-      Tab(3).Control(13).Enabled=   0   'False
-      Tab(3).Control(14)=   "utxtCustName"
-      Tab(3).Control(14).Enabled=   0   'False
-      Tab(3).Control(15)=   "utxtPymReference"
-      Tab(3).Control(15).Enabled=   0   'False
-      Tab(3).Control(16)=   "cmdClose4"
-      Tab(3).Control(16).Enabled=   0   'False
-      Tab(3).Control(17)=   "cmdCancel4"
-      Tab(3).Control(17).Enabled=   0   'False
-      Tab(3).Control(18)=   "cmdSave4"
-      Tab(3).Control(18).Enabled=   0   'False
-      Tab(3).Control(19)=   "utxtPymChqNum(0)"
-      Tab(3).Control(19).Enabled=   0   'False
-      Tab(3).Control(20)=   "utxtPymChqNum(3)"
-      Tab(3).Control(20).Enabled=   0   'False
-      Tab(3).Control(21)=   "utxtPymChqNum(4)"
-      Tab(3).Control(21).Enabled=   0   'False
-      Tab(3).Control(22)=   "utxtPymChqBnk(1)"
-      Tab(3).Control(22).Enabled=   0   'False
-      Tab(3).Control(23)=   "utxtPymChqBnk(2)"
-      Tab(3).Control(23).Enabled=   0   'False
-      Tab(3).Control(24)=   "utxtPymChqBnk(3)"
-      Tab(3).Control(24).Enabled=   0   'False
-      Tab(3).Control(25)=   "utxtPymChqBnk(4)"
-      Tab(3).Control(25).Enabled=   0   'False
+      Tab(3).Control(10)=   "utxtPymReference"
+      Tab(3).Control(11)=   "utxtCustName"
+      Tab(3).Control(12)=   "utxtChange"
+      Tab(3).Control(13)=   "utxtCustNo"
+      Tab(3).Control(14)=   "utxtPymAdr"
+      Tab(3).Control(15)=   "utxtPymChq(4)"
+      Tab(3).Control(16)=   "utxtPymChq(3)"
+      Tab(3).Control(17)=   "utxtPymChq(2)"
+      Tab(3).Control(18)=   "utxtPymChq(1)"
+      Tab(3).Control(19)=   "utxtPymChq(0)"
+      Tab(3).Control(20)=   "utxtPymCash"
+      Tab(3).Control(21)=   "utxtPymChqNum(1)"
+      Tab(3).Control(22)=   "utxtPymChqNum(2)"
+      Tab(3).Control(23)=   "Frame7"
+      Tab(3).Control(24)=   "Frame15"
+      Tab(3).Control(25)=   "Label37"
       Tab(3).ControlCount=   26
       TabCaption(4)   =   "Refund"
       TabPicture(4)   =   "usrctrlCCRde08.ctx":0070
       Tab(4).ControlEnabled=   0   'False
-      Tab(4).Control(0)=   "Label65"
+      Tab(4).Control(0)=   "cmdClose5"
       Tab(4).Control(0).Enabled=   0   'False
-      Tab(4).Control(1)=   "Frame19"
+      Tab(4).Control(1)=   "cmdCancel5"
       Tab(4).Control(1).Enabled=   0   'False
-      Tab(4).Control(2)=   "Frame16"
+      Tab(4).Control(2)=   "cmdSave5"
       Tab(4).Control(2).Enabled=   0   'False
-      Tab(4).Control(3)=   "utxtRefPrefix"
-      Tab(4).Control(3).Enabled=   0   'False
-      Tab(4).Control(4)=   "utxtRefCntno"
-      Tab(4).Control(4).Enabled=   0   'False
-      Tab(4).Control(5)=   "utxtRefSeq"
-      Tab(4).Control(5).Enabled=   0   'False
-      Tab(4).Control(6)=   "utxtRefRefNum"
-      Tab(4).Control(6).Enabled=   0   'False
-      Tab(4).Control(7)=   "utxtRefExporter"
-      Tab(4).Control(7).Enabled=   0   'False
-      Tab(4).Control(8)=   "utxtRefBroker"
-      Tab(4).Control(8).Enabled=   0   'False
-      Tab(4).Control(9)=   "utxtRefCommodity"
-      Tab(4).Control(9).Enabled=   0   'False
-      Tab(4).Control(10)=   "utxtRefVessel"
-      Tab(4).Control(10).Enabled=   0   'False
-      Tab(4).Control(11)=   "utxtRefCCR"
-      Tab(4).Control(11).Enabled=   0   'False
-      Tab(4).Control(12)=   "utxtRefEntno(0)"
-      Tab(4).Control(12).Enabled=   0   'False
+      Tab(4).Control(3)=   "utxtRefEntno(9)"
+      Tab(4).Control(4)=   "utxtRefEntno(8)"
+      Tab(4).Control(5)=   "utxtRefEntno(7)"
+      Tab(4).Control(6)=   "utxtRefEntno(6)"
+      Tab(4).Control(7)=   "utxtRefEntno(5)"
+      Tab(4).Control(8)=   "utxtRefEntno(4)"
+      Tab(4).Control(9)=   "utxtRefEntno(3)"
+      Tab(4).Control(10)=   "utxtRefEntno(2)"
+      Tab(4).Control(11)=   "utxtRefEntno(1)"
+      Tab(4).Control(12)=   "utxtRefTeller"
       Tab(4).Control(13)=   "utxtRefDate"
-      Tab(4).Control(13).Enabled=   0   'False
-      Tab(4).Control(14)=   "utxtRefTeller"
-      Tab(4).Control(14).Enabled=   0   'False
-      Tab(4).Control(15)=   "utxtRefEntno(1)"
-      Tab(4).Control(15).Enabled=   0   'False
-      Tab(4).Control(16)=   "utxtRefEntno(2)"
-      Tab(4).Control(16).Enabled=   0   'False
-      Tab(4).Control(17)=   "utxtRefEntno(3)"
-      Tab(4).Control(17).Enabled=   0   'False
-      Tab(4).Control(18)=   "utxtRefEntno(4)"
-      Tab(4).Control(18).Enabled=   0   'False
-      Tab(4).Control(19)=   "utxtRefEntno(5)"
-      Tab(4).Control(19).Enabled=   0   'False
-      Tab(4).Control(20)=   "utxtRefEntno(6)"
-      Tab(4).Control(20).Enabled=   0   'False
-      Tab(4).Control(21)=   "utxtRefEntno(7)"
-      Tab(4).Control(21).Enabled=   0   'False
-      Tab(4).Control(22)=   "utxtRefEntno(8)"
-      Tab(4).Control(22).Enabled=   0   'False
-      Tab(4).Control(23)=   "utxtRefEntno(9)"
-      Tab(4).Control(23).Enabled=   0   'False
-      Tab(4).Control(24)=   "cmdSave5"
-      Tab(4).Control(24).Enabled=   0   'False
-      Tab(4).Control(25)=   "cmdCancel5"
-      Tab(4).Control(25).Enabled=   0   'False
-      Tab(4).Control(26)=   "cmdClose5"
-      Tab(4).Control(26).Enabled=   0   'False
+      Tab(4).Control(14)=   "utxtRefEntno(0)"
+      Tab(4).Control(15)=   "utxtRefCCR"
+      Tab(4).Control(16)=   "utxtRefVessel"
+      Tab(4).Control(17)=   "utxtRefCommodity"
+      Tab(4).Control(18)=   "utxtRefBroker"
+      Tab(4).Control(19)=   "utxtRefExporter"
+      Tab(4).Control(20)=   "utxtRefRefNum"
+      Tab(4).Control(21)=   "utxtRefSeq"
+      Tab(4).Control(22)=   "utxtRefCntno"
+      Tab(4).Control(23)=   "utxtRefPrefix"
+      Tab(4).Control(24)=   "Frame16"
+      Tab(4).Control(25)=   "Frame19"
+      Tab(4).Control(26)=   "Label65"
       Tab(4).ControlCount=   27
       Begin VB.CommandButton cmdClose5 
          Caption         =   "F3 - Close"
@@ -341,7 +286,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -366,7 +311,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -391,7 +336,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -416,7 +361,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -441,7 +386,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -466,7 +411,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -491,7 +436,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -516,7 +461,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -541,7 +486,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -564,7 +509,7 @@ Begin VB.UserControl usrctrlCCRde08
          _ExtentY        =   741
          BackColor       =   -2147483633
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -586,7 +531,7 @@ Begin VB.UserControl usrctrlCCRde08
          _ExtentY        =   741
          BackColor       =   -2147483633
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -608,7 +553,7 @@ Begin VB.UserControl usrctrlCCRde08
          _ExtentY        =   741
          BackColor       =   -2147483633
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -630,7 +575,7 @@ Begin VB.UserControl usrctrlCCRde08
          _ExtentY        =   741
          BackColor       =   -2147483633
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -652,7 +597,7 @@ Begin VB.UserControl usrctrlCCRde08
          _ExtentY        =   741
          BackColor       =   -2147483633
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -674,7 +619,7 @@ Begin VB.UserControl usrctrlCCRde08
          _ExtentY        =   741
          BackColor       =   -2147483633
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -696,7 +641,7 @@ Begin VB.UserControl usrctrlCCRde08
          _ExtentY        =   741
          BackColor       =   -2147483633
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -718,7 +663,7 @@ Begin VB.UserControl usrctrlCCRde08
          _ExtentY        =   741
          BackColor       =   -2147483633
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -740,7 +685,7 @@ Begin VB.UserControl usrctrlCCRde08
          _ExtentY        =   741
          BackColor       =   -2147483633
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -765,7 +710,7 @@ Begin VB.UserControl usrctrlCCRde08
          Caption         =   "F2 - Continue"
          Enabled         =   0   'False
          Height          =   615
-         Left            =   -68040
+         Left            =   6960
          TabIndex        =   98
          TabStop         =   0   'False
          Top             =   8040
@@ -785,7 +730,7 @@ Begin VB.UserControl usrctrlCCRde08
          Caption         =   "F2 - Continue"
          Enabled         =   0   'False
          Height          =   615
-         Left            =   6960
+         Left            =   -68040
          TabIndex        =   92
          TabStop         =   0   'False
          Top             =   8040
@@ -803,7 +748,7 @@ Begin VB.UserControl usrctrlCCRde08
       Begin VB.CommandButton cmdCancel3 
          Caption         =   "F12 - Cancel"
          Height          =   615
-         Left            =   -63000
+         Left            =   12000
          TabIndex        =   100
          TabStop         =   0   'False
          Top             =   8040
@@ -821,7 +766,7 @@ Begin VB.UserControl usrctrlCCRde08
       Begin VB.CommandButton cmdCancel1 
          Caption         =   "F12 - Cancel"
          Height          =   615
-         Left            =   12000
+         Left            =   -63000
          TabIndex        =   94
          TabStop         =   0   'False
          Top             =   8040
@@ -839,7 +784,7 @@ Begin VB.UserControl usrctrlCCRde08
       Begin VB.CommandButton cmdClose3 
          Caption         =   "F3 - Close"
          Height          =   615
-         Left            =   -65520
+         Left            =   9480
          TabIndex        =   99
          TabStop         =   0   'False
          Top             =   8040
@@ -857,7 +802,7 @@ Begin VB.UserControl usrctrlCCRde08
       Begin VB.CommandButton cmdClose1 
          Caption         =   "F3 - Close"
          Height          =   615
-         Left            =   9480
+         Left            =   -65520
          TabIndex        =   93
          TabStop         =   0   'False
          Top             =   8040
@@ -873,7 +818,7 @@ Begin VB.UserControl usrctrlCCRde08
          _ExtentY        =   741
          BackColor       =   -2147483633
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -900,7 +845,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -922,7 +867,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -945,7 +890,7 @@ Begin VB.UserControl usrctrlCCRde08
          _ExtentY        =   741
          BackColor       =   -2147483633
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -967,7 +912,7 @@ Begin VB.UserControl usrctrlCCRde08
          _ExtentY        =   741
          BackColor       =   -2147483633
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -992,7 +937,7 @@ Begin VB.UserControl usrctrlCCRde08
          _ExtentY        =   741
          BackColor       =   -2147483633
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -1016,7 +961,7 @@ Begin VB.UserControl usrctrlCCRde08
          _ExtentY        =   741
          BackColor       =   -2147483633
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -1040,7 +985,7 @@ Begin VB.UserControl usrctrlCCRde08
          _ExtentY        =   741
          BackColor       =   -2147483633
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -1064,7 +1009,7 @@ Begin VB.UserControl usrctrlCCRde08
          _ExtentY        =   741
          BackColor       =   -2147483633
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -1088,7 +1033,7 @@ Begin VB.UserControl usrctrlCCRde08
          _ExtentY        =   741
          BackColor       =   -2147483633
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -1111,7 +1056,7 @@ Begin VB.UserControl usrctrlCCRde08
          _ExtentY        =   741
          BackColor       =   -2147483633
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -1127,7 +1072,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtTextBilling utxtCnlTeller2 
          Height          =   420
-         Left            =   -70560
+         Left            =   4440
          TabIndex        =   48
          TabStop         =   0   'False
          Top             =   7350
@@ -1137,7 +1082,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -1149,7 +1094,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtTextBilling utxtCnlDteTme 
          Height          =   420
-         Left            =   -70560
+         Left            =   4440
          TabIndex        =   47
          TabStop         =   0   'False
          Top             =   6870
@@ -1159,7 +1104,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -1171,7 +1116,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtNumBilling utxtCnlEntnum2 
          Height          =   420
-         Left            =   -72360
+         Left            =   2640
          TabIndex        =   38
          TabStop         =   0   'False
          Top             =   5670
@@ -1181,7 +1126,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -1195,7 +1140,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtNumBilling utxtCnlEntnum3 
          Height          =   420
-         Left            =   -70800
+         Left            =   4200
          TabIndex        =   39
          TabStop         =   0   'False
          Top             =   5670
@@ -1205,7 +1150,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -1219,7 +1164,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtNumBilling utxtCnlEntnum4 
          Height          =   420
-         Left            =   -69240
+         Left            =   5760
          TabIndex        =   40
          TabStop         =   0   'False
          Top             =   5670
@@ -1229,7 +1174,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -1243,7 +1188,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtNumBilling utxtCnlEntnum5 
          Height          =   420
-         Left            =   -67680
+         Left            =   7320
          TabIndex        =   41
          TabStop         =   0   'False
          Top             =   5670
@@ -1253,7 +1198,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -1267,7 +1212,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtNumBilling utxtCnlEntnum6 
          Height          =   420
-         Left            =   -73920
+         Left            =   1080
          TabIndex        =   42
          TabStop         =   0   'False
          Top             =   6240
@@ -1277,7 +1222,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -1291,7 +1236,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtNumBilling utxtCnlEntnum7 
          Height          =   420
-         Left            =   -72360
+         Left            =   2640
          TabIndex        =   43
          TabStop         =   0   'False
          Top             =   6240
@@ -1301,7 +1246,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -1315,7 +1260,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtNumBilling utxtCnlEntnum8 
          Height          =   420
-         Left            =   -70800
+         Left            =   4200
          TabIndex        =   44
          TabStop         =   0   'False
          Top             =   6240
@@ -1325,7 +1270,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -1339,7 +1284,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtNumBilling utxtCnlEntnum9 
          Height          =   420
-         Left            =   -69240
+         Left            =   5760
          TabIndex        =   45
          TabStop         =   0   'False
          Top             =   6240
@@ -1349,7 +1294,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -1363,7 +1308,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtNumBilling utxtCnlEntnum1 
          Height          =   420
-         Left            =   -73920
+         Left            =   1080
          TabIndex        =   37
          TabStop         =   0   'False
          Top             =   5700
@@ -1373,7 +1318,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -1387,7 +1332,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtNumBilling utxtCnlEntnum10 
          Height          =   420
-         Left            =   -67680
+         Left            =   7320
          TabIndex        =   46
          TabStop         =   0   'False
          Top             =   6240
@@ -1397,7 +1342,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -1411,7 +1356,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtNumBilling utxtCnlCCRNum 
          Height          =   420
-         Left            =   -70680
+         Left            =   4320
          TabIndex        =   32
          TabStop         =   0   'False
          Top             =   2280
@@ -1421,7 +1366,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -1435,7 +1380,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtTextBilling utxtCnlVessel 
          Height          =   420
-         Left            =   -70680
+         Left            =   4320
          TabIndex        =   33
          TabStop         =   0   'False
          Top             =   2790
@@ -1445,7 +1390,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -1457,7 +1402,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtTextBilling utxtCnlCommodity 
          Height          =   420
-         Left            =   -70680
+         Left            =   4320
          TabIndex        =   34
          TabStop         =   0   'False
          Top             =   3270
@@ -1467,7 +1412,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -1479,7 +1424,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtTextBilling utxtCnlBroker 
          Height          =   420
-         Left            =   -70680
+         Left            =   4320
          TabIndex        =   35
          TabStop         =   0   'False
          Top             =   3750
@@ -1489,7 +1434,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -1501,7 +1446,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtTextBilling utxtCnlExporter 
          Height          =   420
-         Left            =   -70680
+         Left            =   4320
          TabIndex        =   36
          TabStop         =   0   'False
          Top             =   4200
@@ -1511,7 +1456,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -1523,7 +1468,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtNumBilling utxtCnlRefnum 
          Height          =   420
-         Left            =   -70680
+         Left            =   4320
          TabIndex        =   30
          Top             =   750
          Width           =   1455
@@ -1531,7 +1476,7 @@ Begin VB.UserControl usrctrlCCRde08
          _ExtentY        =   741
          BackColor       =   -2147483633
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -1544,7 +1489,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtNumBilling utxtCnlSeqnum 
          Height          =   420
-         Left            =   -70680
+         Left            =   4320
          TabIndex        =   31
          Top             =   1230
          Width           =   735
@@ -1552,7 +1497,7 @@ Begin VB.UserControl usrctrlCCRde08
          _ExtentY        =   741
          BackColor       =   -2147483633
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -1575,7 +1520,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -1597,7 +1542,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -1609,7 +1554,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin VB.Frame Frame6 
          Height          =   7455
-         Left            =   -74880
+         Left            =   120
          TabIndex        =   141
          Top             =   480
          Width           =   15015
@@ -1723,7 +1668,7 @@ Begin VB.UserControl usrctrlCCRde08
             _ExtentY        =   741
             BackColor       =   -2147483633
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   15
                Charset         =   0
                Weight          =   400
@@ -1745,7 +1690,7 @@ Begin VB.UserControl usrctrlCCRde08
             _ExtentY        =   741
             BackColor       =   -2147483633
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   15
                Charset         =   0
                Weight          =   400
@@ -1767,7 +1712,7 @@ Begin VB.UserControl usrctrlCCRde08
             _ExtentY        =   741
             BackColor       =   -2147483633
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   15
                Charset         =   0
                Weight          =   400
@@ -1789,7 +1734,7 @@ Begin VB.UserControl usrctrlCCRde08
             _ExtentY        =   741
             BackColor       =   -2147483633
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   15
                Charset         =   0
                Weight          =   400
@@ -1811,7 +1756,7 @@ Begin VB.UserControl usrctrlCCRde08
             _ExtentY        =   741
             BackColor       =   -2147483633
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   15
                Charset         =   0
                Weight          =   400
@@ -1833,7 +1778,7 @@ Begin VB.UserControl usrctrlCCRde08
             _ExtentY        =   741
             BackColor       =   -2147483633
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   15
                Charset         =   0
                Weight          =   400
@@ -1855,7 +1800,7 @@ Begin VB.UserControl usrctrlCCRde08
             _ExtentY        =   741
             BackColor       =   -2147483633
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   15
                Charset         =   0
                Weight          =   400
@@ -1877,7 +1822,7 @@ Begin VB.UserControl usrctrlCCRde08
             _ExtentY        =   741
             BackColor       =   -2147483633
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   15
                Charset         =   0
                Weight          =   400
@@ -1906,7 +1851,7 @@ Begin VB.UserControl usrctrlCCRde08
             _ExtentY        =   741
             BackColor       =   -2147483633
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   15
                Charset         =   0
                Weight          =   400
@@ -1926,7 +1871,7 @@ Begin VB.UserControl usrctrlCCRde08
             _ExtentY        =   741
             BackColor       =   -2147483633
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   15
                Charset         =   0
                Weight          =   400
@@ -1946,7 +1891,7 @@ Begin VB.UserControl usrctrlCCRde08
             _ExtentY        =   741
             BackColor       =   -2147483633
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   15
                Charset         =   0
                Weight          =   400
@@ -1966,7 +1911,7 @@ Begin VB.UserControl usrctrlCCRde08
             _ExtentY        =   741
             BackColor       =   -2147483633
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   15
                Charset         =   0
                Weight          =   400
@@ -1988,7 +1933,7 @@ Begin VB.UserControl usrctrlCCRde08
             _ExtentY        =   741
             BackColor       =   -2147483633
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   15
                Charset         =   0
                Weight          =   400
@@ -2009,7 +1954,7 @@ Begin VB.UserControl usrctrlCCRde08
             _ExtentY        =   741
             BackColor       =   -2147483633
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   15
                Charset         =   0
                Weight          =   400
@@ -2030,7 +1975,7 @@ Begin VB.UserControl usrctrlCCRde08
             _ExtentY        =   741
             BackColor       =   -2147483633
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   15
                Charset         =   0
                Weight          =   400
@@ -2053,7 +1998,7 @@ Begin VB.UserControl usrctrlCCRde08
             BackColor       =   -2147483633
             Enabled         =   0   'False
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   15
                Charset         =   0
                Weight          =   400
@@ -2073,7 +2018,7 @@ Begin VB.UserControl usrctrlCCRde08
             _ExtentY        =   741
             BackColor       =   -2147483633
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   15
                Charset         =   0
                Weight          =   400
@@ -2186,7 +2131,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin VB.Frame Frame3 
          Height          =   7695
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   120
          Top             =   240
          Width           =   15015
@@ -2200,7 +2145,7 @@ Begin VB.UserControl usrctrlCCRde08
             _ExtentY        =   741
             BackColor       =   -2147483633
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   15
                Charset         =   0
                Weight          =   400
@@ -2221,7 +2166,7 @@ Begin VB.UserControl usrctrlCCRde08
             BackColor       =   -2147483633
             Enabled         =   0   'False
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   15
                Charset         =   0
                Weight          =   400
@@ -2243,7 +2188,7 @@ Begin VB.UserControl usrctrlCCRde08
             BackColor       =   -2147483633
             Enabled         =   0   'False
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   15
                Charset         =   0
                Weight          =   400
@@ -2265,7 +2210,7 @@ Begin VB.UserControl usrctrlCCRde08
             BackColor       =   -2147483633
             Enabled         =   0   'False
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   15
                Charset         =   0
                Weight          =   400
@@ -2285,7 +2230,7 @@ Begin VB.UserControl usrctrlCCRde08
             _ExtentY        =   741
             BackColor       =   -2147483633
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   15
                Charset         =   0
                Weight          =   400
@@ -2305,7 +2250,7 @@ Begin VB.UserControl usrctrlCCRde08
             _ExtentY        =   741
             BackColor       =   -2147483633
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   15
                Charset         =   0
                Weight          =   400
@@ -2325,7 +2270,7 @@ Begin VB.UserControl usrctrlCCRde08
             _ExtentY        =   741
             BackColor       =   -2147483633
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   15
                Charset         =   0
                Weight          =   400
@@ -2347,7 +2292,7 @@ Begin VB.UserControl usrctrlCCRde08
             _ExtentY        =   741
             BackColor       =   -2147483633
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   15
                Charset         =   0
                Weight          =   400
@@ -2369,7 +2314,7 @@ Begin VB.UserControl usrctrlCCRde08
             _ExtentY        =   741
             BackColor       =   -2147483633
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   15
                Charset         =   0
                Weight          =   400
@@ -2461,7 +2406,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin VB.Frame Frame12 
          Height          =   1095
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   159
          Top             =   7680
          Width           =   15015
@@ -2475,7 +2420,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin VB.Frame Frame14 
          Height          =   1095
-         Left            =   -74880
+         Left            =   120
          TabIndex        =   162
          Top             =   7680
          Width           =   15015
@@ -2491,7 +2436,7 @@ Begin VB.UserControl usrctrlCCRde08
          _ExtentY        =   741
          BackColor       =   -2147483633
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -2513,7 +2458,7 @@ Begin VB.UserControl usrctrlCCRde08
          _ExtentY        =   741
          BackColor       =   -2147483633
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -2541,7 +2486,7 @@ Begin VB.UserControl usrctrlCCRde08
             _ExtentY        =   873
             BackColor       =   -2147483633
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   15
                Charset         =   0
                Weight          =   700
@@ -2561,7 +2506,7 @@ Begin VB.UserControl usrctrlCCRde08
             _ExtentY        =   741
             BackColor       =   -2147483633
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   15
                Charset         =   0
                Weight          =   400
@@ -2697,7 +2642,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -2719,7 +2664,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -2742,7 +2687,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -2766,7 +2711,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -2790,7 +2735,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -2812,7 +2757,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -2834,7 +2779,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -2856,7 +2801,7 @@ Begin VB.UserControl usrctrlCCRde08
          BackColor       =   -2147483633
          Enabled         =   0   'False
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -2876,7 +2821,7 @@ Begin VB.UserControl usrctrlCCRde08
          _ExtentY        =   741
          BackColor       =   -2147483633
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -2897,7 +2842,7 @@ Begin VB.UserControl usrctrlCCRde08
          _ExtentY        =   741
          BackColor       =   -2147483633
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -2917,7 +2862,7 @@ Begin VB.UserControl usrctrlCCRde08
          _ExtentY        =   741
          BackColor       =   -2147483633
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -2938,7 +2883,7 @@ Begin VB.UserControl usrctrlCCRde08
          _ExtentY        =   741
          BackColor       =   -2147483633
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   15
             Charset         =   0
             Weight          =   400
@@ -3090,7 +3035,7 @@ Begin VB.UserControl usrctrlCCRde08
          Caption         =   "CCR Cancellation"
          ForeColor       =   &H00FFFFFF&
          Height          =   375
-         Left            =   -74880
+         Left            =   120
          TabIndex        =   154
          Top             =   120
          Width           =   15015
@@ -3466,7 +3411,7 @@ Private Sub cmdPayment_Click()
     Call CommandTabstop(False)
     cmdSave4.Enabled = False
     utxtPymAdr.TabStop = False
-    utxtPymAdr.Enabled = False
+    'utxtPymAdr.Enabled = False
     utxtPymReference.TabStop = True
 '    utxtPymReference.Value = ""
     utxtPymReference.SetFocus
@@ -3665,7 +3610,8 @@ strSaveMess4 = ""
 strSaveMess5 = ""
 strResponse = False
 
-    If utxtChange.Value > 0 Or utxtChange.Value = 0 Then
+    'If utxtChange.Value > 0 Or utxtChange.Value = 0 Then
+    If utxtChange.Value = 0 Then
         strSaveMess4 = "Do You Want to Continue Processing ?"
         Call SystemMessage(strSaveMess4, strSaveMess5)
         If strResponse = True Then
@@ -3676,7 +3622,7 @@ strResponse = False
         End If
     Else
         strSaveMess4 = "Cannot Save Update Payment. Total Amount PAID"
-        strSaveMess5 = "is LESS THAN AMOUNT to be paid."
+        strSaveMess5 = "is NOT EQUAL to the amount due."
         Call ErrorMessage(strSaveMess4, strSaveMess5)
     End If
     
@@ -4050,10 +3996,10 @@ If KeyCode = vbKeyReturn Then
                     Call MoveDetailsToCancelFields
                 End If
             End If
-        Else
-                Message1 = "Cannot CANCEL current transaction. Transaction is"
-                Message2 = "paid with ADR."
-                Call ErrorMessage(Message1, Message2)
+'        Else
+'                Message1 = "Cannot CANCEL current transaction. Transaction is"
+'                Message2 = "paid with ADR."
+'                Call ErrorMessage(Message1, Message2)
         End If
     End If
 utxtCnlRefnum.SetFocus
@@ -4585,12 +4531,12 @@ If Len(Trim(utxtCustNo.Value)) <> 0 Then
             utxtPymAdr.TabStop = True
             utxtPymAdr.Enabled = True
             utxtPymAdr.SetFocus
-            cmdSave4.Enabled = False
+            'cmdSave4.Enabled = False
         Else
             If ReturnSingle(CStr(utxtPymAdr.Value)) = 0 Then
                 utxtPymAdr.Value = ".00"
                 utxtPymAdr.TabStop = False
-                utxtPymAdr.Enabled = False
+                'utxtPymAdr.Enabled = False
             End If
         End If
 Else
@@ -4598,7 +4544,7 @@ Else
     strPymCustName = ""
     utxtPymAdr.Value = ".00"
     utxtPymAdr.TabStop = False
-    utxtPymAdr.Enabled = False
+    'utxtPymAdr.Enabled = False
     utxtCustName.Text = ""
     cmdSave4.Enabled = True
 End If
@@ -4618,7 +4564,7 @@ Select Case KeyCode
                 utxtPymAdr.Enabled = True
             Else
                 utxtPymAdr.TabStop = False
-                utxtPymAdr.Enabled = False
+                'utxtPymAdr.Enabled = False
             End If
         End If
     Case 37 'Left
@@ -4885,40 +4831,40 @@ Private Sub utxtNewCntPrefix_Change()
 End Sub
 
 Private Sub utxtPymAdr_Change()
-Dim strAdrMsg1 As String
-Dim strAdrMsg2 As String
-Dim intResponse As Integer
-
-If numberin Then
-    If IsNumeric(utxtPymAdr.Value) Then
-        If CSng(utxtPymAdr.Value) > AdrBalance Then
-            utxtPymAdr.Value = Trim(utxtPymAdr.Value)
-            utxtCustName.Text = Trim(utxtCustName.Text)
-            strAdrMsg1 = utxtPymAdr.Value & " is greater than the Current ADR Running Balance for Customer "
-            strAdrMsg2 = utxtCustName.Text
-            intResponse = MsgBox(strAdrMsg1 & strAdrMsg2, vbOKOnly, "ADR Amount Error Message")
-            utxtPymAdr.Value = sngPreviousADR
-            utxtPymAdr.SelStart = 0
-            utxtPymAdr.SelLength = utxtPymAdr.Value
-            utxtPymAdr.SetFocus
-        Else
-            If CSng(Trim(utxtPymAdr.Value)) > CSng(Trim(sngPymAmtPay)) Then
-                utxtPymAdr.Value = Trim(utxtPymAdr.Value)
-                utxtCustName.Text = Trim(utxtCustName.Text)
-                strAdrMsg1 = utxtPymAdr.Value & " is greater than the Total Amount to be paid "
-                strAdrMsg2 = utxtCustName.Text
-                intResponse = MsgBox(strAdrMsg1 & strAdrMsg2, vbOKOnly, "ADR Amount Error Message")
-                utxtPymAdr.Value = sngPreviousADR
-                utxtPymAdr.SelStart = 0
-                utxtPymAdr.SelLength = utxtPymAdr.Value
-                utxtPymAdr.SetFocus
-            Else
-                cmdSave4.Enabled = True
-            End If
-        End If
-        numberin = False
-     End If
-End If
+'Dim strAdrMsg1 As String
+'Dim strAdrMsg2 As String
+'Dim intResponse As Integer
+'
+'If numberin Then
+'    If IsNumeric(utxtPymAdr.Value) Then
+'        If CSng(utxtPymAdr.Value) > AdrBalance Then
+'            utxtPymAdr.Value = Trim(utxtPymAdr.Value)
+'            utxtCustName.Text = Trim(utxtCustName.Text)
+'            strAdrMsg1 = utxtPymAdr.Value & " is greater than the Current ADR Running Balance for Customer "
+'            strAdrMsg2 = utxtCustName.Text
+'            intResponse = MsgBox(strAdrMsg1 & strAdrMsg2, vbOKOnly, "ADR Amount Error Message")
+'            utxtPymAdr.Value = sngPreviousADR
+'            utxtPymAdr.SelStart = 0
+'            utxtPymAdr.SelLength = utxtPymAdr.Value
+'            utxtPymAdr.SetFocus
+'        Else
+'            If CSng(Trim(utxtPymAdr.Value)) > CSng(Trim(sngPymAmtPay)) Then
+'                utxtPymAdr.Value = Trim(utxtPymAdr.Value)
+'                utxtCustName.Text = Trim(utxtCustName.Text)
+'                strAdrMsg1 = utxtPymAdr.Value & " is greater than the Total Amount to be paid "
+'                strAdrMsg2 = utxtCustName.Text
+'                intResponse = MsgBox(strAdrMsg1 & strAdrMsg2, vbOKOnly, "ADR Amount Error Message")
+'                utxtPymAdr.Value = sngPreviousADR
+'                utxtPymAdr.SelStart = 0
+'                utxtPymAdr.SelLength = utxtPymAdr.Value
+'                utxtPymAdr.SetFocus
+'            Else
+'                cmdSave4.Enabled = True
+'            End If
+'        End If
+'        numberin = False
+'     End If
+'End If
     utxtChange.Value = EvaluateChange
     utxtChange.Value = Format(utxtChange.Value, "###,###,##0.00")
 End Sub
@@ -4976,11 +4922,11 @@ End Sub
 Private Sub utxtPymChq_Change(Index As Integer)
     utxtChange.Value = EvaluateChange
     utxtChange.Value = Format(utxtChange.Value, "###,###,##0.00")
-    If utxtChange.Value < 0 Then
-        cmdSave4.Enabled = False
-    Else
-        cmdSave4.Enabled = True
-    End If
+'    If utxtChange.Value < 0 Then
+'        cmdSave4.Enabled = False
+'    Else
+'        cmdSave4.Enabled = True
+'    End If
 End Sub
 
 Private Sub utxtPymChq_KeyDown(Index As Integer, KeyCode As Integer, Shift As Integer)
@@ -5147,38 +5093,38 @@ If utxtCustNo.Value = 0 Then
     utxtCustNo.Value = 0
     utxtCustName.Text = ""
 End If
-If CLng(utxtCustNo.Value) <> CLng(strPymCustCode) Or CSng(utxtPymAdr.Value) <> sngPymAdr Then
-    If CLng(strPymCustCode) = 0 And CLng(utxtCustNo.Value) <> 0 Then
-        lngAdrnum = DE.ApplyAdr(utxtCustNo.Value, "CCR", lngRefno, CSng(utxtPymAdr.Value), "", gUserid)
-        If lngAdrnum <= 0 Then
-            MsgBox "Apply ADR is not successful", vbOKOnly, "ADR Message"
-            Exit Sub
-        End If
-    ElseIf CLng(strPymCustCode) <> 0 And CLng(utxtCustNo.Value) = 0 Then
-        lngAdrChk = DE.CancelADr(strPymCustCode, lngPymADRNum, "", gUserid)
-        If lngAdrChk < 1 Then
-            MsgBox "ADR Cancelation is not successful", vbOKOnly, "ADR Message"
-            Exit Sub
-        End If
-    ElseIf CLng(utxtCustNo.Value) = CLng(strPymCustCode) Then
-        If CSng(utxtPymAdr.Value) <> sngPymAdr Then
-            lngAdrChk = DE.CancelADr(strPymCustCode, lngPymADRNum, "", gUserid)
-            If lngAdrChk < 1 Then
-                MsgBox "ADR Cancelation is not successful", vbOKOnly, "ADR Message"
-                Exit Sub
-            End If
-            lngAdrnum = DE.ApplyAdr(utxtCustNo.Value, "CCR", lngRefno, CSng(utxtPymAdr.Value), "", gUserid)
-            If lngAdrnum <= 0 Then
-                MsgBox "Apply ADR is not successful", vbOKOnly, "ADR Message"
-                Exit Sub
-            End If
-         Else
-            lngAdrnum = lngPymADRNum
-        End If
-    End If
-    Else
+'If CLng(utxtCustNo.Value) <> CLng(strPymCustCode) Or CSng(utxtPymAdr.Value) <> sngPymAdr Then
+'    If CLng(strPymCustCode) = 0 And CLng(utxtCustNo.Value) <> 0 Then
+'        lngAdrnum = DE.ApplyAdr(utxtCustNo.Value, "CCR", lngRefno, CSng(utxtPymAdr.Value), "", gUserid)
+'        If lngAdrnum <= 0 Then
+'            MsgBox "Apply ADR is not successful", vbOKOnly, "ADR Message"
+'            Exit Sub
+'        End If
+'    ElseIf CLng(strPymCustCode) <> 0 And CLng(utxtCustNo.Value) = 0 Then
+'        lngAdrChk = DE.CancelADr(strPymCustCode, lngPymADRNum, "", gUserid)
+'        If lngAdrChk < 1 Then
+'            MsgBox "ADR Cancelation is not successful", vbOKOnly, "ADR Message"
+'            Exit Sub
+'        End If
+'    ElseIf CLng(utxtCustNo.Value) = CLng(strPymCustCode) Then
+'        If CSng(utxtPymAdr.Value) <> sngPymAdr Then
+'            lngAdrChk = DE.CancelADr(strPymCustCode, lngPymADRNum, "", gUserid)
+'            If lngAdrChk < 1 Then
+'                MsgBox "ADR Cancelation is not successful", vbOKOnly, "ADR Message"
+'                Exit Sub
+'            End If
+'            lngAdrnum = DE.ApplyAdr(utxtCustNo.Value, "CCR", lngRefno, CSng(utxtPymAdr.Value), "", gUserid)
+'            If lngAdrnum <= 0 Then
+'                MsgBox "Apply ADR is not successful", vbOKOnly, "ADR Message"
+'                Exit Sub
+'            End If
+'         Else
+'            lngAdrnum = lngPymADRNum
+'        End If
+'    End If
+'    Else
         lngAdrnum = lngPymADRNum
-End If
+'End If
     utxtPymCash.Value = ReturnSingle(CStr(utxtPymCash.Value))
     For intCtr = 0 To 4
         utxtPymChq(intCtr).Value = ReturnSingle(CStr((utxtPymChq(intCtr).Value)))
@@ -5218,11 +5164,11 @@ Private Sub utxtPymCash_Change()
     
     utxtChange.Value = EvaluateChange
     utxtChange.Value = Format(utxtChange.Value, "###,###,##0.00")
-    If utxtChange.Value < 0 Then
-        cmdSave4.Enabled = False
-    Else
-        cmdSave4.Enabled = True
-    End If
+'    If utxtChange.Value < 0 Then
+'        cmdSave4.Enabled = False
+'    Else
+'        cmdSave4.Enabled = True
+'    End If
 End Sub
 Private Sub SystemMessage(strSysMess As String, strSysMess1 As String)
     Beep
