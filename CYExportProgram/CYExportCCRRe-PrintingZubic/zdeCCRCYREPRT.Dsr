@@ -3,8 +3,8 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
    ClientHeight    =   14040
    ClientLeft      =   0
    ClientTop       =   0
-   ClientWidth     =   24510
-   _ExtentX        =   43233
+   ClientWidth     =   22155
+   _ExtentX        =   39079
    _ExtentY        =   24765
    FolderFlags     =   1
    TypeLibGuid     =   "{2D835FC3-0BA4-11D3-BD67-00105A64485A}"
@@ -30,6 +30,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
       CommandText     =   $"zdeCCRCYREPRT.dsx":0000
       ActiveConnectionName=   "Billing"
       CommandType     =   1
+      Expanded        =   -1  'True
       IsRSReturning   =   -1  'True
       NumFields       =   1
       BeginProperty Field1 
@@ -72,6 +73,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
       CommandText     =   $"zdeCCRCYREPRT.dsx":00E6
       ActiveConnectionName=   "Billing"
       CommandType     =   1
+      Expanded        =   -1  'True
       IsRSReturning   =   -1  'True
       NumFields       =   5
       BeginProperty Field1 
@@ -136,6 +138,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
       CommandText     =   "Select * from CCRcyx where refnum = ? and seqnum = ? and status <> 'CAN'"
       ActiveConnectionName=   "Billing"
       CommandType     =   1
+      Expanded        =   -1  'True
       IsRSReturning   =   -1  'True
       NumFields       =   39
       BeginProperty Field1 
@@ -484,6 +487,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
       CommandText     =   "select * from CCRpay where refnum = ?"
       ActiveConnectionName=   "Billing"
       CommandType     =   1
+      Expanded        =   -1  'True
       IsRSReturning   =   -1  'True
       NumFields       =   13
       BeginProperty Field1 
@@ -613,6 +617,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
       CommandText     =   "select * from ccrcyx"
       ActiveConnectionName=   "Billing"
       CommandType     =   1
+      Expanded        =   -1  'True
       IsRSReturning   =   -1  'True
       NumFields       =   39
       BeginProperty Field1 
@@ -939,6 +944,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
       CommandText     =   "select * from ccrpay"
       ActiveConnectionName=   "Billing"
       CommandType     =   1
+      Expanded        =   -1  'True
       IsRSReturning   =   -1  'True
       NumFields       =   28
       BeginProperty Field1 
@@ -1177,6 +1183,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
       CommandText     =   "SELECT noccr = COUNT(DISTINCT ccrnum) FROM ccrcyx WHERE refnum = ? AND seqnum = ?"
       ActiveConnectionName=   "Billing"
       CommandType     =   1
+      Expanded        =   -1  'True
       IsRSReturning   =   -1  'True
       NumFields       =   1
       BeginProperty Field1 
@@ -1221,6 +1228,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
       CommandText     =   "SELECT * FROM ccrcyx WHERE refnum = ? AND seqnum = ? ORDER BY refnum,seqnum,itmnum "
       ActiveConnectionName=   "Billing"
       CommandType     =   1
+      Expanded        =   -1  'True
       IsRSReturning   =   -1  'True
       NumFields       =   40
       BeginProperty Field1 
@@ -1575,6 +1583,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
       CommandText     =   "select workstation=host_name()"
       ActiveConnectionName=   "Billing"
       CommandType     =   1
+      Expanded        =   -1  'True
       IsRSReturning   =   -1  'True
       NumFields       =   1
       BeginProperty Field1 
@@ -1597,6 +1606,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
       CommandText     =   "select * from ccrcyx where ccrnum = ? order by itmnum"
       ActiveConnectionName=   "Billing"
       CommandType     =   1
+      Expanded        =   -1  'True
       IsRSReturning   =   -1  'True
       NumFields       =   40
       BeginProperty Field1 
@@ -1941,6 +1951,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
       CommandText     =   "SELECT DISTINCT refnum, seqnum, ccrnum, exprtr, broker, sysdttm FROM ccrcyx WHERE refnum = ? ORDER BY ccrnum, seqnum"
       ActiveConnectionName=   "Billing"
       CommandType     =   1
+      Expanded        =   -1  'True
       IsRSReturning   =   -1  'True
       NumFields       =   6
       BeginProperty Field1 

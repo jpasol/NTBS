@@ -419,9 +419,9 @@ Public Function PrintCCR(pRefnum As Long) As Boolean
             blnChkno5 = False
             DE.getTotal .Fields("refnum"), .Fields("seqnum")
             Set DETTl = DE.rsgetTotal
-            DetailTl = DETTl.Fields("TotalAmt")
-            DetailAmt = DETTl.Fields("TotalAmt")
-            TotalAmt = DETTl.Fields("totalamt")
+            DetailTl = parsenull(DETTl.Fields("TotalAmt"))
+            DetailAmt = parsenull(DETTl.Fields("TotalAmt"))
+            TotalAmt = parsenull(DETTl.Fields("totalamt"))
             '   **  Checks Liquidation of ADR, Cheque and Cash
             '   ** Liquidation of ADR
             If AdrAmt <> 0 Then
@@ -712,6 +712,7 @@ If CD.RecordCount > 0 Then
         
         
         Printer.Font = "Courier 12cpi"
+'        Printer.Font = "Courier"
         Printer.FontSize = 10
         Printer.Print " "
         'Printer.Print Space(23) & "REF " & Refn & " SEQ " & Seqf & Space(2) & CCRf
@@ -754,7 +755,7 @@ If CD.RecordCount > 0 Then
             sngTArrastre = sngTArrastre + sngArrastre
             sngTWArrastre = sngTWArrastre + sngWArrastre
             
-            sngWgh = CSng(.Fields("wghamt"))
+            sngWgh = (CSng((parsenull(.Fields("wghamt")))))
             sngWeighing = sngWeighing + sngWgh
             sngWeighTotal = sngWeighTotal + sngWgh
             
@@ -849,10 +850,23 @@ If CD.RecordCount > 0 Then
             Printer.Print "  FOREIGN " & Space(36) & Word3
         End If
         Printer.Print ""
-        tmpString = strChqAmt & " CK    " & strCshAmt & " CS"
-        Printer.Print Space(44) & tmpString
-        tmpString = strAdrAmt & " AD"
+'        tmpString = strChqAmt & " CK    " & strCshAmt & " CS"
+'        Printer.Print Space(44) & tmpString
+'        tmpString = strAdrAmt & " AD"
         Printer.Print Space(5) & UserName  ' & Space(26) & tmpString
+    
+        tmpString = strCshAmt & " CS                  "
+        Printer.CurrentX = Printer.ScaleWidth - Printer.TextWidth(tmpString)
+        Printer.Print tmpString
+          
+        tmpString = strChqAmt & " CK                  "
+        Printer.CurrentX = Printer.ScaleWidth - Printer.TextWidth(tmpString)
+        Printer.Print tmpString
+        
+        tmpString = strAdrAmt & " AD                  "
+        Printer.CurrentX = Printer.ScaleWidth - Printer.TextWidth(tmpString)
+        Printer.Print tmpString
+        
         If blnChkno1 Then
             tmp1 = StrChk1
         Else
@@ -1195,5 +1209,12 @@ NumToTextError:
     Resume EndNumToText
 End Function
 
+Public Function parsenull(variable As Variant) As Variant
+On Error GoTo parse
+parsenull = CCur(variable)
+Exit Function
+parse:
+parsenull = 0
 
+End Function
 
