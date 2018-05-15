@@ -64,10 +64,10 @@ Begin VB.Form frmCYSCorrection
       TabCaption(1)   =   "PAYMENT CORRECTION"
       TabPicture(1)   =   "CYSCorrectionNT.frx":0166
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "cmdSave"
-      Tab(1).Control(1)=   "Command1"
-      Tab(1).Control(2)=   "Frame5"
-      Tab(1).Control(3)=   "Frame4"
+      Tab(1).Control(0)=   "Frame4"
+      Tab(1).Control(1)=   "Frame5"
+      Tab(1).Control(2)=   "Command1"
+      Tab(1).Control(3)=   "cmdSave"
       Tab(1).ControlCount=   4
       Begin VB.Frame Frame4 
          Caption         =   "Reference No."
@@ -1258,7 +1258,7 @@ Dim bVoided, bADRPaid As Boolean
                 cmdVoid.Enabled = False
                 MsgBox "CCR already voided."
             End If
-            bADRPaid = (!adramt > 0)
+'            bADRPaid = (!adramt > 0)
             If bADRPaid Then
                 cmdVoid.Enabled = False
                 MsgBox "CCR is paid by ADR. Cannot be voided."
