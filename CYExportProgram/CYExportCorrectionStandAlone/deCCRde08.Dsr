@@ -1,11 +1,11 @@
 VERSION 5.00
 Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08 
-   ClientHeight    =   7845
+   ClientHeight    =   14040
    ClientLeft      =   0
    ClientTop       =   0
-   ClientWidth     =   14775
-   _ExtentX        =   26061
-   _ExtentY        =   13838
+   ClientWidth     =   22290
+   _ExtentX        =   39317
+   _ExtentY        =   24765
    FolderFlags     =   5
    TypeLibGuid     =   "{D300CD6F-EBEB-11D2-BD1F-00105A64485A}"
    TypeInfoGuid    =   "{D300CD70-EBEB-11D2-BD1F-00105A64485A}"
@@ -1647,12 +1647,12 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
    BeginProperty Recordset16 
       CommandName     =   "ChkReference"
       CommDispId      =   1087
-      RsDispId        =   1093
+      RsDispId        =   1128
       CommandText     =   "select * from ccrpay where refnum = ? and adramt > 0"
       ActiveConnectionName=   "Billing"
       CommandType     =   1
       IsRSReturning   =   -1  'True
-      NumFields       =   28
+      NumFields       =   32
       BeginProperty Field1 
          Precision       =   8
          Size            =   19
@@ -1682,10 +1682,34 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
          Size            =   19
          Scale           =   2
          Type            =   131
+         Name            =   "ftramt"
+         Caption         =   "ftramt"
+      EndProperty
+      BeginProperty Field5 
+         Precision       =   10
+         Size            =   19
+         Scale           =   2
+         Type            =   131
+         Name            =   "ftrfee"
+         Caption         =   "ftrfee"
+      EndProperty
+      BeginProperty Field6 
+         Precision       =   0
+         Size            =   10
+         Scale           =   0
+         Type            =   200
+         Name            =   "ackno"
+         Caption         =   "ackno"
+      EndProperty
+      BeginProperty Field7 
+         Precision       =   10
+         Size            =   19
+         Scale           =   2
+         Type            =   131
          Name            =   "cshamt"
          Caption         =   "cshamt"
       EndProperty
-      BeginProperty Field5 
+      BeginProperty Field8 
          Precision       =   10
          Size            =   19
          Scale           =   2
@@ -1693,7 +1717,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
          Name            =   "adramt"
          Caption         =   "adramt"
       EndProperty
-      BeginProperty Field6 
+      BeginProperty Field9 
          Precision       =   8
          Size            =   19
          Scale           =   0
@@ -1701,7 +1725,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
          Name            =   "adrnum"
          Caption         =   "adrnum"
       EndProperty
-      BeginProperty Field7 
+      BeginProperty Field10 
          Precision       =   9
          Size            =   19
          Scale           =   2
@@ -1709,7 +1733,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
          Name            =   "chgamt"
          Caption         =   "chgamt"
       EndProperty
-      BeginProperty Field8 
+      BeginProperty Field11 
          Precision       =   0
          Size            =   10
          Scale           =   0
@@ -1717,7 +1741,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
          Name            =   "chkno1"
          Caption         =   "chkno1"
       EndProperty
-      BeginProperty Field9 
+      BeginProperty Field12 
          Precision       =   0
          Size            =   10
          Scale           =   0
@@ -1725,7 +1749,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
          Name            =   "chkno2"
          Caption         =   "chkno2"
       EndProperty
-      BeginProperty Field10 
+      BeginProperty Field13 
          Precision       =   0
          Size            =   10
          Scale           =   0
@@ -1733,7 +1757,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
          Name            =   "chkno3"
          Caption         =   "chkno3"
       EndProperty
-      BeginProperty Field11 
+      BeginProperty Field14 
          Precision       =   0
          Size            =   10
          Scale           =   0
@@ -1741,7 +1765,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
          Name            =   "chkno4"
          Caption         =   "chkno4"
       EndProperty
-      BeginProperty Field12 
+      BeginProperty Field15 
          Precision       =   0
          Size            =   10
          Scale           =   0
@@ -1749,7 +1773,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
          Name            =   "chkno5"
          Caption         =   "chkno5"
       EndProperty
-      BeginProperty Field13 
+      BeginProperty Field16 
          Precision       =   10
          Size            =   19
          Scale           =   2
@@ -1757,7 +1781,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
          Name            =   "chkamt1"
          Caption         =   "chkamt1"
       EndProperty
-      BeginProperty Field14 
+      BeginProperty Field17 
          Precision       =   10
          Size            =   19
          Scale           =   2
@@ -1765,7 +1789,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
          Name            =   "chkamt2"
          Caption         =   "chkamt2"
       EndProperty
-      BeginProperty Field15 
+      BeginProperty Field18 
          Precision       =   10
          Size            =   19
          Scale           =   2
@@ -1773,7 +1797,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
          Name            =   "chkamt3"
          Caption         =   "chkamt3"
       EndProperty
-      BeginProperty Field16 
+      BeginProperty Field19 
          Precision       =   10
          Size            =   19
          Scale           =   2
@@ -1781,7 +1805,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
          Name            =   "chkamt4"
          Caption         =   "chkamt4"
       EndProperty
-      BeginProperty Field17 
+      BeginProperty Field20 
          Precision       =   10
          Size            =   19
          Scale           =   2
@@ -1789,7 +1813,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
          Name            =   "chkamt5"
          Caption         =   "chkamt5"
       EndProperty
-      BeginProperty Field18 
+      BeginProperty Field21 
          Precision       =   0
          Size            =   10
          Scale           =   0
@@ -1797,7 +1821,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
          Name            =   "chkbnk1"
          Caption         =   "chkbnk1"
       EndProperty
-      BeginProperty Field19 
+      BeginProperty Field22 
          Precision       =   0
          Size            =   10
          Scale           =   0
@@ -1805,7 +1829,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
          Name            =   "chkbnk2"
          Caption         =   "chkbnk2"
       EndProperty
-      BeginProperty Field20 
+      BeginProperty Field23 
          Precision       =   0
          Size            =   10
          Scale           =   0
@@ -1813,7 +1837,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
          Name            =   "chkbnk3"
          Caption         =   "chkbnk3"
       EndProperty
-      BeginProperty Field21 
+      BeginProperty Field24 
          Precision       =   0
          Size            =   10
          Scale           =   0
@@ -1821,7 +1845,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
          Name            =   "chkbnk4"
          Caption         =   "chkbnk4"
       EndProperty
-      BeginProperty Field22 
+      BeginProperty Field25 
          Precision       =   0
          Size            =   10
          Scale           =   0
@@ -1829,7 +1853,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
          Name            =   "chkbnk5"
          Caption         =   "chkbnk5"
       EndProperty
-      BeginProperty Field23 
+      BeginProperty Field26 
          Precision       =   0
          Size            =   3
          Scale           =   0
@@ -1837,7 +1861,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
          Name            =   "status"
          Caption         =   "status"
       EndProperty
-      BeginProperty Field24 
+      BeginProperty Field27 
          Precision       =   0
          Size            =   1
          Scale           =   0
@@ -1845,7 +1869,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
          Name            =   "rectag"
          Caption         =   "rectag"
       EndProperty
-      BeginProperty Field25 
+      BeginProperty Field28 
          Precision       =   0
          Size            =   10
          Scale           =   0
@@ -1853,7 +1877,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
          Name            =   "userid"
          Caption         =   "userid"
       EndProperty
-      BeginProperty Field26 
+      BeginProperty Field29 
          Precision       =   23
          Size            =   16
          Scale           =   3
@@ -1861,7 +1885,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
          Name            =   "sysdttm"
          Caption         =   "sysdttm"
       EndProperty
-      BeginProperty Field27 
+      BeginProperty Field30 
          Precision       =   0
          Size            =   1
          Scale           =   0
@@ -1869,13 +1893,21 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
          Name            =   "updcde"
          Caption         =   "updcde"
       EndProperty
-      BeginProperty Field28 
+      BeginProperty Field31 
          Precision       =   0
          Size            =   1
          Scale           =   0
          Type            =   129
          Name            =   "ccrtyp"
          Caption         =   "ccrtyp"
+      EndProperty
+      BeginProperty Field32 
+         Precision       =   0
+         Size            =   1
+         Scale           =   0
+         Type            =   129
+         Name            =   "ccrmod"
+         Caption         =   "ccrmod"
       EndProperty
       NumGroups       =   0
       ParamCount      =   1
