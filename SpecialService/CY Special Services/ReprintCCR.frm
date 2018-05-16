@@ -235,12 +235,19 @@ Private Sub txtCCRNum_LostFocus()
 End Sub
 
 Private Sub txtCCRRefNo_Change()
-    cmdReprint.Enabled = (CLng("0" & txtCCRRefNo) > 0)
+    cmdReprint.Enabled = (CLng(parsezero("0" & txtCCRRefNo)) > 0)
     
     Dim ado As Recordset
 
 End Sub
 
+Private Function parsezero(var As Variant) As Variant
+On Error GoTo parse
+parsezero = CLng(var)
+Exit Function
+parse:
+parsezero = 0
+End Function
 Private Sub txtCCRRefNo_GotFocus()
     With txtCCRRefNo
         .BackColor = vbInfoBackground
@@ -398,7 +405,7 @@ NumToTextError:
 End Function
 
 
-Private Sub OutCCRPC(pRefnum As Long, pCCRnum As Long)
+Private Sub OutCCRPC(pRefnum As Long, pCCRNum As Long)
 ' *************************
 ' ** Printing of receipt **
 ' *************************
@@ -461,7 +468,7 @@ Set rsCCRDetail = New ADODB.Recordset
 '        & " order by itmnum", _
 '        gcnnBilling, adOpenDynamic, adLockOptimistic, adCmdText
 rsCCRDetail.Open "SELECT * From CCRdtl WHERE refnum = " & Trim(CStr(pRefnum)) & "" _
-        & " AND ccrnum = " & Trim(CStr(pCCRnum)) & "" _
+        & " AND ccrnum = " & Trim(CStr(pCCRNum)) & "" _
         & " order by itmnum", _
         gcnnBilling, adOpenDynamic, adLockOptimistic, adCmdText
 If rsCCRDetail.BOF <> True And rsCCRDetail.EOF <> True Then
