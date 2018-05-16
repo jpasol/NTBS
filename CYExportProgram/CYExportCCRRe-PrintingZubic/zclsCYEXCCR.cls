@@ -711,8 +711,8 @@ If CD.RecordCount > 0 Then
         vslName = .Fields("vslcde") & ""
         
         
-'        Printer.Font = "Courier 12cpi"
-        Printer.Font = "Courier"
+        Printer.Font = "Courier 12cpi"
+'        Printer.Font = "Courier"
         Printer.FontSize = 10
         Printer.Print " "
         'Printer.Print Space(23) & "REF " & Refn & " SEQ " & Seqf & Space(2) & CCRf
