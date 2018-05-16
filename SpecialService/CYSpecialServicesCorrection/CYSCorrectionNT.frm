@@ -33,6 +33,7 @@ Begin VB.Form frmCYSCorrection
       _ExtentY        =   13256
       _Version        =   393216
       Tabs            =   2
+      Tab             =   1
       TabsPerRow      =   2
       TabHeight       =   794
       WordWrap        =   0   'False
@@ -49,25 +50,24 @@ Begin VB.Form frmCYSCorrection
       EndProperty
       TabCaption(0)   =   "CCR VOIDING && CORRECTION"
       TabPicture(0)   =   "CYSCorrectionNT.frx":014A
-      Tab(0).ControlEnabled=   -1  'True
-      Tab(0).Control(0)=   "Frame1"
-      Tab(0).Control(0).Enabled=   0   'False
-      Tab(0).Control(1)=   "Frame2"
-      Tab(0).Control(1).Enabled=   0   'False
+      Tab(0).ControlEnabled=   0   'False
+      Tab(0).Control(0)=   "cmdExit"
+      Tab(0).Control(1)=   "cmdVoid"
       Tab(0).Control(2)=   "Frame3"
-      Tab(0).Control(2).Enabled=   0   'False
-      Tab(0).Control(3)=   "cmdVoid"
-      Tab(0).Control(3).Enabled=   0   'False
-      Tab(0).Control(4)=   "cmdExit"
-      Tab(0).Control(4).Enabled=   0   'False
+      Tab(0).Control(3)=   "Frame2"
+      Tab(0).Control(4)=   "Frame1"
       Tab(0).ControlCount=   5
       TabCaption(1)   =   "PAYMENT CORRECTION"
       TabPicture(1)   =   "CYSCorrectionNT.frx":0166
-      Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "Frame4"
-      Tab(1).Control(1)=   "Frame5"
-      Tab(1).Control(2)=   "Command1"
-      Tab(1).Control(3)=   "cmdSave"
+      Tab(1).ControlEnabled=   -1  'True
+      Tab(1).Control(0)=   "cmdSave"
+      Tab(1).Control(0).Enabled=   0   'False
+      Tab(1).Control(1)=   "Command1"
+      Tab(1).Control(1).Enabled=   0   'False
+      Tab(1).Control(2)=   "Frame5"
+      Tab(1).Control(2).Enabled=   0   'False
+      Tab(1).Control(3)=   "Frame4"
+      Tab(1).Control(3).Enabled=   0   'False
       Tab(1).ControlCount=   4
       Begin VB.Frame Frame4 
          Caption         =   "Reference No."
@@ -82,7 +82,7 @@ Begin VB.Form frmCYSCorrection
          EndProperty
          ForeColor       =   &H00004080&
          Height          =   840
-         Left            =   -74775
+         Left            =   225
          TabIndex        =   51
          Top             =   600
          Width           =   3315
@@ -122,7 +122,7 @@ Begin VB.Form frmCYSCorrection
          EndProperty
          ForeColor       =   &H00004080&
          Height          =   5265
-         Left            =   -74775
+         Left            =   225
          TabIndex        =   39
          Top             =   1425
          Width           =   8865
@@ -519,6 +519,7 @@ Begin VB.Form frmCYSCorrection
             _ExtentX        =   2408
             _ExtentY        =   688
             _Version        =   393216
+            Enabled         =   0   'False
             MaxLength       =   6
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
                Name            =   "Arial"
@@ -721,7 +722,7 @@ Begin VB.Form frmCYSCorrection
       Begin VB.CommandButton Command1 
          Caption         =   "E&xit"
          Height          =   465
-         Left            =   -67350
+         Left            =   7650
          TabIndex        =   30
          Top             =   6825
          Width           =   1365
@@ -730,7 +731,7 @@ Begin VB.Form frmCYSCorrection
          Caption         =   "&Save"
          Enabled         =   0   'False
          Height          =   465
-         Left            =   -68850
+         Left            =   6150
          TabIndex        =   29
          Top             =   6825
          Width           =   1365
@@ -738,7 +739,7 @@ Begin VB.Form frmCYSCorrection
       Begin VB.CommandButton cmdExit 
          Caption         =   "E&xit"
          Height          =   465
-         Left            =   7650
+         Left            =   -67350
          TabIndex        =   7
          Top             =   6825
          Width           =   1365
@@ -747,7 +748,7 @@ Begin VB.Form frmCYSCorrection
          Caption         =   "&Void"
          Enabled         =   0   'False
          Height          =   465
-         Left            =   6150
+         Left            =   -68850
          TabIndex        =   6
          Top             =   6825
          Width           =   1365
@@ -765,7 +766,7 @@ Begin VB.Form frmCYSCorrection
          EndProperty
          ForeColor       =   &H00004080&
          Height          =   840
-         Left            =   4650
+         Left            =   -70350
          TabIndex        =   35
          Top             =   600
          Width           =   3540
@@ -816,7 +817,7 @@ Begin VB.Form frmCYSCorrection
          EndProperty
          ForeColor       =   &H00004080&
          Height          =   5115
-         Left            =   225
+         Left            =   -74775
          TabIndex        =   33
          Top             =   1575
          Width           =   8790
@@ -890,7 +891,7 @@ Begin VB.Form frmCYSCorrection
          EndProperty
          ForeColor       =   &H00004080&
          Height          =   840
-         Left            =   225
+         Left            =   -74775
          TabIndex        =   32
          Top             =   600
          Width           =   4140
@@ -1098,14 +1099,17 @@ Dim n As Integer
         Case vbKeyReturn
             If (CCur("0" & Trim(txtADRAmt)) > 0) Then
                 If Trim(txtCusCode) <> "" Then
-                    Call lzGetADRAmt
+'                    Call lzGetADRAmt
                 Else
                     cmdSave.Enabled = False
-                    txtCusCode.SetFocus
+'                    txtCusCode.SetFocus
+                    txtCshAmt.SetFocus
                 End If
             Else
-                txtCusCode = Space(txtCusCode.MaxLength)
-                txtCustomer.SetFocus
+'                txtCusCode = Space(txtCusCode.MaxLength)
+                'txtCustomer.SetFocus
+                txtCshAmt.SetFocus
+
             End If
             KeyAscii = 0
         Case Else
@@ -1114,7 +1118,7 @@ End Sub
 
 Private Sub txtADRAmt_LostFocus()
     txtADRAmt.BackColor = vbWindowBackground
-    If (CCur("0" & Trim(txtADRAmt)) = 0) Then txtCusCode = Space(txtCusCode.MaxLength)
+'    If (CCur("0" & Trim(txtADRAmt)) = 0) Then txtCusCode = Space(txtCusCode.MaxLength)
     Call lzComputePay
 End Sub
 
@@ -2049,7 +2053,7 @@ Dim curAmtDue, curADRAmt, curBalance, curCash As Currency
     On Error GoTo 0
     
     If curBalance <= 0 Then
-        txtCusCode.SetFocus
+'        txtCusCode.SetFocus
     Else
         txtCustomer = Left(lzGetCustomerName(txtCusCode), 40)
         txtCustomer.Enabled = False
@@ -2086,30 +2090,30 @@ Dim n As Integer
 Dim dLogDate As Date
 Dim curADRAmt As Currency
 Dim vADRNum As Long
-
-    vADRNum = 0
-    curADRAmt = CCur("0" & txtADRAmt)
-    If curADRAmt <> curOldADRAmt Then
-        If curOldADRAmt > 0 Then
-            If lzVoidADR(txtCusCode, nOldADRNo, vUserID, "CYSSR Correction") > 0 Then
-                vADRNum = lzApplyADR(txtCusCode, "CCR", CLng("0" & Trim(txtPayRefNo)), curADRAmt, vUserID, "CYSSR Correction")
-                If vADRNum <= 0 Then
-                    txtCshAmt.SetFocus
-                    Exit Sub
-                End If
-            Else
-                txtCshAmt.SetFocus
-                Exit Sub
-            End If
-        Else
-            vADRNum = lzApplyADR(txtCusCode, "CCR", CLng("0" & Trim(txtPayRefNo)), curADRAmt, vUserID, "CYSSR Correction")
-            If vADRNum <= 0 Then
-                txtCshAmt.SetFocus
-                Exit Sub
-            End If
-        End If
-    End If
-    
+'
+'    vADRNum = 0
+'    curADRAmt = CCur("0" & txtADRAmt)
+'    If curADRAmt <> curOldADRAmt Then
+'        If curOldADRAmt > 0 Then
+'            If lzVoidADR(txtCusCode, nOldADRNo, vUserID, "CYSSR Correction") > 0 Then
+'                vADRNum = lzApplyADR(txtCusCode, "CCR", CLng("0" & Trim(txtPayRefNo)), curADRAmt, vUserID, "CYSSR Correction")
+'                If vADRNum <= 0 Then
+'                    txtCshAmt.SetFocus
+'                    Exit Sub
+'                End If
+'            Else
+'                txtCshAmt.SetFocus
+'                Exit Sub
+'            End If
+'        Else
+'            vADRNum = lzApplyADR(txtCusCode, "CCR", CLng("0" & Trim(txtPayRefNo)), curADRAmt, vUserID, "CYSSR Correction")
+'            If vADRNum <= 0 Then
+'                txtCshAmt.SetFocus
+'                Exit Sub
+'            End If
+'        End If
+'    End If
+'
     ' get system date
     dLogDate = gzGetSysDate
     
