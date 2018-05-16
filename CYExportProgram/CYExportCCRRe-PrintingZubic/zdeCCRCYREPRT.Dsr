@@ -16,7 +16,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
       ConnectionName  =   "Billing"
       ConnDispId      =   1001
       SourceOfData    =   3
-      ConnectionSource=   "Provider=SQLOLEDB.1;Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=billing;Data Source=SBITCBILLING"
+      ConnectionSource=   "Provider=SQLOLEDB.1;Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=sbitcbilling;Data Source=SBITC-DEV"
       Expanded        =   -1  'True
       IsSQL           =   -1  'True
       QuoteChar       =   34
