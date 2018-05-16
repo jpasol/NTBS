@@ -16,7 +16,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       ConnectionName  =   "Billing_NCT2"
       ConnDispId      =   1001
       SourceOfData    =   3
-      ConnectionSource=   $"deCCRDE06.dsx":0000
+      ConnectionSource=   "Provider=SQLOLEDB.1;Password=Ictsi123;Persist Security Info=True;User ID=SA_ICTSI;Initial Catalog=billing;Data Source=SBITCBILLING"
       Expanded        =   -1  'True
       IsSQL           =   -1  'True
       QuoteChar       =   34
@@ -858,7 +858,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommandName     =   "getPrevCCRPayment"
       CommDispId      =   1036
       RsDispId        =   1105
-      CommandText     =   $"deCCRDE06.dsx":0088
+      CommandText     =   $"deCCRDE06.dsx":0000
       ActiveConnectionName=   "Billing_NCT2"
       CommandType     =   1
       IsRSReturning   =   -1  'True
@@ -1028,7 +1028,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommandName     =   "prtCCRPAY"
       CommDispId      =   1077
       RsDispId        =   1082
-      CommandText     =   $"deCCRDE06.dsx":0129
+      CommandText     =   $"deCCRDE06.dsx":00A1
       ActiveConnectionName=   "Billing_NCT2"
       CommandType     =   1
       IsRSReturning   =   -1  'True
@@ -1842,7 +1842,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommandName     =   "getTotal"
       CommDispId      =   1115
       RsDispId        =   1233
-      CommandText     =   $"deCCRDE06.dsx":026B
+      CommandText     =   $"deCCRDE06.dsx":01E3
       ActiveConnectionName=   "Billing_NCT2"
       CommandType     =   1
       IsRSReturning   =   -1  'True
@@ -1884,7 +1884,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommandName     =   "getCCRList"
       CommDispId      =   1122
       RsDispId        =   1127
-      CommandText     =   $"deCCRDE06.dsx":0353
+      CommandText     =   $"deCCRDE06.dsx":02CB
       ActiveConnectionName=   "Billing_NCT2"
       CommandType     =   1
       IsRSReturning   =   -1  'True
