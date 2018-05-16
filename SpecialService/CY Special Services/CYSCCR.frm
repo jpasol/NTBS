@@ -10272,18 +10272,18 @@ Dim lsErrStr As String
    '     ";Initial Catalog=apex" & _
     '    ";Integrated Security=SSPI"
         
-    Set gcnnNavis = New ADODB.Connection
-    gcnnNavis.Open "Provider=sqloledb" & _
-        ";Data Source=sbitc-db" & _
-        ";Initial Catalog=apex" & _
-        ";User ID=tosadmin;Password=tosadmin"
-        
 '    Set gcnnNavis = New ADODB.Connection
 '    gcnnNavis.Open "Provider=sqloledb" & _
-'        ";Data Source=sbitc-dev" & _
+'        ";Data Source=sbitc-db" & _
 '        ";Initial Catalog=apex" & _
-'        ";User ID=sa_ictsi;password=Ictsi123"
-'
+'        ";User ID=tosadmin;Password=tosadmin"
+
+    Set gcnnNavis = New ADODB.Connection
+    gcnnNavis.Open "Provider=sqloledb" & _
+        ";Data Source=sbitc-dev" & _
+        ";Initial Catalog=apex" & _
+        ";User ID=sa_ictsi;password=Ictsi123"
+
     gbNavis = True
     ConnectToNavis = True
     
