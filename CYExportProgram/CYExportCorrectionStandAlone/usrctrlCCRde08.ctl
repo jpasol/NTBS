@@ -4923,11 +4923,10 @@ End Sub
 
 Private Sub utxtPymAdr_LostFocus()
 On Error GoTo parse
-    utxtChange.Value = EvaluateChange
-    utxtChange.Value = Format(CCur(utxtChange.Value), "###,###,##0.00")
+    utxtPymAdr.Value = Format(CCur(utxtPymAdr.Value), "###,###,##0.00")
     Exit Sub
 parse:
-    utxtChange.Value = Format(0, "###,###,##0.00")
+    utxtPymAdr.Value = Format(0, "###,###,##0.00")
 End Sub
 
 Private Sub utxtPymChq_Change(Index As Integer)
