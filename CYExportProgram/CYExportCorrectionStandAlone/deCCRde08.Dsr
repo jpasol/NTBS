@@ -27,7 +27,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       CommandName     =   "RtvContainer"
       CommDispId      =   1002
       RsDispId        =   1025
-      CommandText     =   $"deCCRde08.dsx":0091
+      CommandText     =   $"deCCRde08.dsx":008F
       ActiveConnectionName=   "Billing"
       CommandType     =   1
       IsRSReturning   =   -1  'True
@@ -386,7 +386,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       CommandName     =   "RtvDetails"
       CommDispId      =   1006
       RsDispId        =   1020
-      CommandText     =   $"deCCRde08.dsx":00E5
+      CommandText     =   $"deCCRde08.dsx":00E3
       ActiveConnectionName=   "Billing"
       CommandType     =   1
       IsRSReturning   =   -1  'True
@@ -734,7 +734,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       CommandName     =   "UpdateCntNum"
       CommDispId      =   1012
       RsDispId        =   -1
-      CommandText     =   $"deCCRde08.dsx":011F
+      CommandText     =   $"deCCRde08.dsx":011D
       ActiveConnectionName=   "Billing"
       CommandType     =   1
       NumFields       =   0
@@ -870,7 +870,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       CommandName     =   "UpdateDtlCCR"
       CommDispId      =   1028
       RsDispId        =   -1
-      CommandText     =   $"deCCRde08.dsx":0187
+      CommandText     =   $"deCCRde08.dsx":0185
       ActiveConnectionName=   "Billing"
       CommandType     =   1
       NumFields       =   0
@@ -1061,31 +1061,40 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       CommandName     =   "UpdateCCRAlloc"
       CommDispId      =   1040
       RsDispId        =   -1
-      CommandText     =   $"deCCRde08.dsx":022D
+      CommandText     =   $"deCCRde08.dsx":022B
       ActiveConnectionName=   "Billing"
       CommandType     =   1
       NumFields       =   0
       NumGroups       =   0
-      ParamCount      =   2
+      ParamCount      =   3
       BeginProperty P1 
          RealName        =   "Param1"
-         UserName        =   "PreviousCCR"
-         Direction       =   1
-         Precision       =   8
-         Scale           =   0
-         Size            =   19
-         DataType        =   131
-         HostType        =   3
-         Required        =   -1  'True
-      EndProperty
-      BeginProperty P2 
-         RealName        =   "Param2"
-         UserName        =   "Teller"
+         UserName        =   "Company"
          Direction       =   1
          Precision       =   0
          Scale           =   0
          Size            =   10
          DataType        =   200
+         HostType        =   8
+         Required        =   -1  'True
+      EndProperty
+      BeginProperty P2 
+         RealName        =   "Param2"
+         Direction       =   1
+         Precision       =   255
+         Scale           =   255
+         Size            =   10
+         DataType        =   200
+         HostType        =   8
+         Required        =   -1  'True
+      EndProperty
+      BeginProperty P3 
+         RealName        =   "Param3"
+         Direction       =   1
+         Precision       =   255
+         Scale           =   255
+         Size            =   5
+         DataType        =   202
          HostType        =   8
          Required        =   -1  'True
       EndProperty
@@ -1096,7 +1105,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       CommandName     =   "ChkPayment"
       CommDispId      =   1042
       RsDispId        =   1048
-      CommandText     =   $"deCCRde08.dsx":0263
+      CommandText     =   $"deCCRde08.dsx":0275
       ActiveConnectionName=   "Billing"
       CommandType     =   1
       IsRSReturning   =   -1  'True
@@ -1225,7 +1234,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       CommandName     =   "SelectContainer"
       CommDispId      =   1051
       RsDispId        =   1082
-      CommandText     =   $"deCCRde08.dsx":028F
+      CommandText     =   $"deCCRde08.dsx":02A1
       ActiveConnectionName=   "Billing"
       CommandType     =   1
       IsRSReturning   =   -1  'True
@@ -1346,7 +1355,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       CommandName     =   "UpdateOVRCCR"
       CommDispId      =   1061
       RsDispId        =   -1
-      CommandText     =   $"deCCRde08.dsx":0347
+      CommandText     =   $"deCCRde08.dsx":0359
       ActiveConnectionName=   "Billing"
       CommandType     =   1
       NumFields       =   0
@@ -1940,7 +1949,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       CommandName     =   "CCRPay"
       CommDispId      =   1094
       RsDispId        =   -1
-      CommandText     =   $"deCCRde08.dsx":037A
+      CommandText     =   $"deCCRde08.dsx":038C
       ActiveConnectionName=   "Billing"
       CommandType     =   1
       Locktype        =   3
@@ -2391,7 +2400,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       CommandName     =   "RefundUpdate"
       CommDispId      =   1115
       RsDispId        =   -1
-      CommandText     =   $"deCCRde08.dsx":04A0
+      CommandText     =   $"deCCRde08.dsx":04B2
       ActiveConnectionName=   "Billing"
       CommandType     =   1
       NumFields       =   0

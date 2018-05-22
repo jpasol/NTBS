@@ -4271,7 +4271,7 @@ Const strSveDetUpdte = "U"
 lngSveDetSequence = 0
 Call ClearDetails
 If lngCCR <> lngOldCCR Then
-    DE.UpdateCCRAlloc lngCCR, StrUser
+    DE.UpdateCCRAlloc lngCCR, StrUser, strVarCompany
 End If
  
 DE.RtvDetails lngUpdSveRefno, lngUpdSveSeqno
