@@ -3,8 +3,8 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
    ClientHeight    =   14040
    ClientLeft      =   0
    ClientTop       =   0
-   ClientWidth     =   22290
-   _ExtentX        =   39317
+   ClientWidth     =   22155
+   _ExtentX        =   39079
    _ExtentY        =   24765
    FolderFlags     =   5
    TypeLibGuid     =   "{D300CD6F-EBEB-11D2-BD1F-00105A64485A}"
@@ -1006,12 +1006,13 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       RsDispId        =   -1
       CommandText     =   "dbo.up_chkvalidccr"
       ActiveConnectionName=   "Billing"
-      CallSyntax      =   "{? = CALL dbo.up_chkvalidccr( ?, ?) }"
+      CallSyntax      =   "{? = CALL dbo.up_chkvalidccr( ?, ?, ?) }"
       NumFields       =   0
       NumGroups       =   0
-      ParamCount      =   3
+      ParamCount      =   4
       BeginProperty P1 
-         RealName        =   "RETURN_VALUE"
+         RealName        =   "@RETURN_VALUE"
+         UserName        =   "RETURN_VALUE"
          Direction       =   4
          Precision       =   10
          Scale           =   0
@@ -1039,7 +1040,18 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
          Scale           =   0
          Size            =   0
          DataType        =   131
-         HostType        =   3
+         HostType        =   8
+         Required        =   -1  'True
+      EndProperty
+      BeginProperty P4 
+         RealName        =   "@@pCOMPANYCODE"
+         UserName        =   "COMPANYCODE"
+         Direction       =   1
+         Precision       =   0
+         Scale           =   0
+         Size            =   10
+         DataType        =   200
+         HostType        =   8
          Required        =   -1  'True
       EndProperty
       RelationCount   =   0
