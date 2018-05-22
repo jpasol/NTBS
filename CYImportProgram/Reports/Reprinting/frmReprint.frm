@@ -1,6 +1,6 @@
 VERSION 5.00
-Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "MSMASK32.OCX"
-Object = "{00025600-0000-0000-C000-000000000046}#5.2#0"; "crystl32.ocx"
+Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "msmask32.ocx"
+Object = "{00025600-0000-0000-C000-000000000046}#5.2#0"; "Crystl32.OCX"
 Begin VB.Form frmReprint 
    Caption         =   "Reprint Gatepass"
    ClientHeight    =   9405
@@ -436,9 +436,15 @@ Private Sub GetTotalChargePerDetail()
     rstCYMGps.CursorType = adOpenStatic
     rstCYMGps.Open "Select * from CYMGps where refnum= " & CLng(mskReference) & " order by seqnum", gcnnBilling, , , adCmdText
     
+    Dim i As Integer
+    i = 0
+    
     rstCYMGps.MoveFirst
     Do While Not rstCYMGps.EOF
-        With Detail
+    
+    i = i + 1
+       
+       With Detail
             .Arrastre = rstCYMGps.Fields("arramt")
             .ArrastreVAT = rstCYMGps.Fields("arrvat")
             .ArrastreTAX = rstCYMGps.Fields("arrtax")
@@ -547,6 +553,10 @@ Private Sub GetTotalChargePerDetail()
             End Select
             .DueICTSIWords = .DueICTSI - .Wharfage
             
+            If i < .Sequence Then
+            Call FauxPrintGatepass
+            End If
+            
             If .Sequence = CInt(mskSequence) Then
                 Call PrintGatePass
             End If
@@ -554,6 +564,7 @@ Private Sub GetTotalChargePerDetail()
             rstCYMGps.MoveNext
         End With
     Loop
+    i = 0
     On Error GoTo ErrorEndDoc
         Printer.EndDoc
     On Error GoTo 0
@@ -567,7 +578,340 @@ ErrorEndDoc:
         Resume
     End If
 End Sub
+Private Sub FauxPrintGatepass()
+'used to calculate payments
+    Dim strToText As String
+    Dim strPayment As String
+    Dim blnChk1Printed As Boolean
+    Dim blnChk2Printed As Boolean
+    Dim blnChk3Printed As Boolean
+    Dim blnChk4Printed As Boolean
+    Dim blnChk5Printed As Boolean
+    
+    With Detail
+        On Error GoTo ErrPrinting
+            'Printer.FontName = "Arial"
+            'Printer.FontSize = 11
+            'Printer.PrintQuality = vbPRPQDraft
+            'Printer.Print
+            'Printer.Print
+            ''Printer.Print
+            'Printer.Print Space(80); .Reference; Space(1); .Sequence; Space(1); .Gatepass
+            'Printer.Print
+            'Printer.Print Space(125); Format(.SysDate, "yyyy/mm/dd"); Space(5); Format(.SysDate, "hh:mm:ss")
+            ''Printer.Print
+            'Printer.Print
+            'Printer.Print
+            'Printer.Print
+            'Printer.Print
+            'Printer.Print Space(8); Left(.Consignee, 30); Space(21); Left(.Registry, 10); Space(12); Left(.VoyageNo, 10); Space(20); Left(.CustomPermitNo, 10)
+            'Printer.Print
+            ''Printer.Print
+            'Printer.Print Space(8); Left(.Broker, 32); Space(30); Left(.BillNum, 20); Space(30); Left(.SMBAPermitNo, 10)
+            'Printer.Print
+            ''Printer.Print
+            'Printer.Print Space(8); Left(.VesselCode, 10); Space(23); Left(.PortofOrig, 3); Space(46); Format(.LastDischarge, "yyyy/mm/dd"); Space(20); .DeclaredWeight
+            'Printer.Print
+            'Printer.Print Space(8); Left(.ContainerNo, 12); Space(17); Left(.ContainerSize, 2); Space(7);
+            If .FullEmp = "F" Then
+                'Printer.Print "FULL";
+            Else
+                'Printer.Print "EMPTY";
+            End If
+            'Printer.Print Space(10); Left(.Location, 10); Space(30); Left(.ShippingLine, 7)
+            'Printer.Print
+            'Printer.Print
+            'Printer.Print
+            'Printer.Print Space(38); Space(42); ' Format(.FreeUntil, "yyyy/mm/dd"); Space(32);
+            
+            If .PlugIn = cNullDate Then
+                'Printer.Print Space(10);
+                'Printer.Print Space(8);
+                'Printer.Print Space(5)
+            Else
+                'Printer.Print Format(.PlugIn, "yyyy/mm/dd");
+                'Printer.Print Space(3);
+                'Printer.Print Format(.PlugIn, "hh:mm")
+            End If
+           
+            ''Printer.Print
+            If .PlugOut <> cNullDate Then
+                'Printer.Print Space(69); .StorageDay; Space(44);
+                'Printer.Print DateDiff("h", .PlugIn, .PlugOut);
+            Else
+                'Printer.Print Space(127);
+            End If
+            'Printer.Print Space(7);
+            'Printer.Print Format(.CRODate, "yyyy/mm/dd")
+            'Printer.Print Space(38); Space(42); 'Format(.StorageEnd, "yyyy/mm/dd"); Space(32);
+            If .PlugOut = cNullDate Then
+                'Printer.Print Space(10);
+                'Printer.Print Space(8);
+                'Printer.Print Space(5);
+            Else
+                'Printer.Print Format(.PlugOut, "yyyy/mm/dd");
+                'Printer.Print Space(3);
+                'Printer.Print Format(.PlugOut, "hh:mm")
+            End If
+            'Printer.Print
+            'Printer.Print
+            'Printer.Print
+            'Printer.Print
+            If .RevenueTon > 0 Then
+                RSet .strRevenueTon = CStr(Format(.RevenueTon, "###0.00"))
+                'Printer.Print Left(.strRevenueTon & Space(7), 7); Space(16);
+            Else
+                'Printer.Print Space(7); Space(21);
+            End If
+                
+            If .Oversize > 0 Then
+                RSet .strArrastreLessOversize = CStr(Format(.ArrastreNet - .Oversize, "###,##0.00"))
+                'Printer.Print Left(.strArrastreLessOversize & Space(10), 10);
+            Else
+                RSet .strArrastreLessOversize = CStr(Format(.ArrastreNet, "###,##0.00"))
+                'Printer.Print Left(.strArrastreLessOversize & Space(10), 10);
+            End If
+            'Printer.Print Space(21);
+            
+            RSet .strStorageAmt = CStr(Format(.StorageAMT, "###,##0.00"))
+            'Printer.Print Left(.strStorageAmt & Space(10), 10);
+            'Printer.Print Space(21);
+            
+            RSet .strReeferNet = CStr(Format(.ReeferNet, "###,##0.00"))
+            'Printer.Print Left(.strReeferNet & Space(10), 10);
+            'Printer.Print Space(21);
+            
+            RSet .strTotalCharge = CStr(Format(.TotalCharge, "####,##0.00"))
+            'Printer.Print Left(.strTotalCharge & Space(11), 11);
+            'Printer.Print
+            'Printer.Print
+            'Printer.Print Space(9); Space(8);
+            If .Oversize > 0 Then
+                RSet .strOversize = CStr(Format(.Oversize, "###,##0.00"))
+                'Printer.Print Left(.strOversize & Space(10), 10);
+            Else
+                'Printer.Print Space(10);
+            End If
+            
+            'Printer.Print Space(8);
+            If .Discount > 0 Then
+                RSet .strDiscount = CStr(Format(.Discount, "##,##0.000"))
+                'Printer.Print Left(.strDiscount & Space(10), 10);
+            Else
+                'Printer.Print Space(10)
+            End If
+            
+            'for total
+            ''Printer.Print
+            'Printer.Print
+            'Printer.Print Space(29);
+            'Printer.Print Space(21);
+            Select Case .VATCode
+                Case Space(1), "4"
+                    'Printer.Print Space(20); "ZERO RATED VAT     ";
+                Case "1"
+                    'Printer.Print Space(20); "VAT INCLUSIVE      ";
+                Case "2", "3", "5"
+                    'Printer.Print Space(20); "VAT INCL. LESS WTAX";
+            End Select
+            
+           ''Printer.Print Space(42);
+            
+            RSet .strTotalCharge = CStr(Format(.TotalCharge, "####,##0.00"))
+            'Printer.Print Space(31); Left(.strTotalCharge & Space(11), 11)
+            'Printer.Print
+            'Printer.Print Space(5); Left(.Commodity, 20);
+            'Printer.Print Space(20);
+           ''Printer.Print Left(.UserID, 10);
+            'Printer.Print Space(10);
+            'Printer.Print Space(10);
+            strToText = NumToText(.DueICTSIWords)
+            'Printer.Print Left(strToText, 45)
+            'Printer.Print Space(75); Mid(strToText, 40)
+            
+            ''Printer.Print
+            ''Printer.Print
+            'Printer.Print
+            'Printer.Print Space(92); Format(.SysDate, "yyyymmdd"); Space(1); Format(.SysDate, "hhmm"); Space(1); _
+                                   .Reference; Space(1); .Sequence; Space(1); .Gatepass
+            ''Printer.Print
+            'Printer.Print Space(5); Left(.UserID, 10); Space(14); Left(gbSupervisor, 15);
+            'Printer.Print Space(50);
+            Select Case .UnderGuarantee
+                Case Space(1)
+                    'Printer.Print "        "
+                Case "A"
+                    'Printer.Print "U/G ARR "
+                Case "B"
+                    'Printer.Print "U/G STRG"
+                Case "C"
+                    'Printer.Print "U/G WGH "
+                Case "D"
+                    'Printer.Print "U/G RFR "
+                Case "N"
+                    'Printer.Print "ALL     "
+                Case Else
+                    'Printer.Print "U/G     "
+            End Select
+            ''Printer.Print Space(75)
+            ''Printer.Print Space(5)
+            ''Printer.Print
+            If .DangerClass = Space(1) Then
+                'Printer.Print Space(4);
+            Else
+                'Printer.Print "DC " & .DangerClass;
+            End If
+            
+            strPayment = LiquidatePaymentTypes(2)
+            'Printer.Print Space(70);
+            If strPayment <> "" Then
+                'Printer.Print Left(strPayment, 11);
+                'Printer.Print Space(1);
+                'Printer.Print "CK";
+                blnChk1Printed = True
+            Else
+                'Printer.Print Space(14);
+                blnChk1Printed = False
+            End If
+            
+            strPayment = LiquidatePaymentTypes(3)
+            'Printer.Print Space(20);
+            If strPayment <> "" Then
+                'Printer.Print Left(strPayment, 11);
+                'Printer.Print Space(1);
+                'Printer.Print "CK";
+                blnChk2Printed = True
+            Else
+                'Printer.Print Space(14);
+                blnChk2Printed = False
+            End If
+                
+            'Printer.Print Space(10);
+            'Printer.Print
+            strPayment = LiquidatePaymentTypes(4)
+            'Printer.Print Space(70);
+            If strPayment <> "" Then
+                'Printer.Print Left(strPayment, 11);
+                'Printer.Print Space(1);
+                'Printer.Print "CK";
+                blnChk3Printed = True
+            Else
+                'Printer.Print Space(14);
+                blnChk3Printed = False
+            End If
+            ''Printer.Print
+            strPayment = LiquidatePaymentTypes(5)
+            'Printer.Print Space(10);
+            If strPayment <> "" Then
+                'Printer.Print Left(strPayment, 11);
+                'Printer.Print Space(1);
+                'Printer.Print "CK";
+                blnChk4Printed = True
+            Else
+                'Printer.Print Space(14);
+                blnChk4Printed = False
+            End If
+            'Printer.Print
+            strPayment = LiquidatePaymentTypes(6)
+            'Printer.Print Space(70);
+            If strPayment <> "" Then
+                'Printer.Print Left(strPayment, 11);
+                'Printer.Print Space(1);
+                'Printer.Print "CK"
+                blnChk5Printed = True
+            Else
+                'Printer.Print Space(14)
+                blnChk5Printed = False
+            End If
+            
+            'Printer.Print Space(92);
+            If blnChk1Printed Then
+                'Printer.Print Left((Payment.CheckNo1 & Space(10)), 10);
+                'Printer.Print Space(1);
+            End If
+            If blnChk2Printed Then
+                'Printer.Print Left((Payment.CheckNo2 & Space(10)), 10);
+                'Printer.Print Space(1);
+            End If
+            If blnChk3Printed Then
+                'Printer.Print Left((Payment.CheckNo3 & Space(10)), 10);
+                'Printer.Print Space(1);
+            End If
+            If blnChk4Printed Then
+                'Printer.Print Left((Payment.CheckNo4 & Space(10)), 10);
+                'Printer.Print Space(1);
+            End If
+            If blnChk5Printed Then
+                'Printer.Print Left((Payment.CheckNo5 & Space(10)), 10);
+                'Printer.Print Space(1);
+            End If
+            'Printer.Print Space(5)
+            
+            strPayment = LiquidatePaymentTypes(7)
+            'Printer.Print Space(70);
+            If strPayment <> "" Then
+                'Printer.Print Left(strPayment, 11);
+                'Printer.Print Space(1);
+                'Printer.Print "CS";
+            Else
+                'Printer.Print Space(14);
+            End If
+            'Printer.Print Space(5);
+            If blnChk1Printed Then
+                'Printer.Print Left((Payment.CheckBnk1 & Space(10)), 10);
+                'Printer.Print Space(1);
+            End If
+            If blnChk2Printed Then
+                'Printer.Print Left((Payment.CheckBnk2 & Space(10)), 10);
+                'Printer.Print Space(1);
+            End If
+            If blnChk3Printed Then
+                'Printer.Print Left((Payment.CheckBnk3 & Space(10)), 10);
+                'Printer.Print Space(1);
+            End If
+            If blnChk4Printed Then
+                'Printer.Print Left((Payment.CheckBnk4 & Space(10)), 10);
+                'Printer.Print Space(1);
+            End If
+            If blnChk5Printed Then
+                'Printer.Print Left((Payment.CheckBnk5 & Space(10)), 10);
+                'Printer.Print Space(1)
+            Else
+                'Printer.Print Space(1)
+            End If
+            'Printer.Print
+            'Printer.Print
+            'Printer.Print Space(110);
+            'Printer.Print .Remark
+            If .CustomsGuard = "Y" Then
+                'Printer.Print Space(109); "/Underguard  "
+            Else
+                'Printer.Print Space(109); Space(13)
+            End If
+            
+            'Printer.Print Space(4);
+            'Printer.Print
+            'Printer.Print
+            'Printer.Print Space(75); "CCR VALID UNTIL "; Space(10)
+            'If .CRODate > .StorageEnd Then
+            '    'Printer.Print Format(.StorageEnd, "yyyy/mm/dd")
+            'Else
+            '    'Printer.Print Format(.CRODate, "yyyy/mm/dd")
+            'End If
+            'Printer.NewPage
+        End With
+    On Error GoTo 0
+    Exit Sub
 
+ErrPrinting:
+    intResponse = MsgBox("Error printing...", vbExclamation + vbDefaultButton2 + vbAbortRetryIgnore, "Error!")
+    If intResponse = vbAbort Then
+        Unload Me
+    ElseIf (intResponse = vbRetry) Or (intResponse = vbIgnore) Then
+        Resume
+    End If
+
+End Sub
 Private Sub PrintGatePass()
     Dim strToText As String
     Dim strPayment As String
