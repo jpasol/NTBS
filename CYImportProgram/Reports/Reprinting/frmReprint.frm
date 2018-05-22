@@ -436,13 +436,10 @@ Private Sub GetTotalChargePerDetail()
     rstCYMGps.CursorType = adOpenStatic
     rstCYMGps.Open "Select * from CYMGps where refnum= " & CLng(mskReference) & " order by seqnum", gcnnBilling, , , adCmdText
     
-    Dim i As Integer
-    i = 0
     
     rstCYMGps.MoveFirst
     Do While Not rstCYMGps.EOF
     
-    i = i + 1
        
        With Detail
             .Arrastre = rstCYMGps.Fields("arramt")
@@ -553,10 +550,10 @@ Private Sub GetTotalChargePerDetail()
             End Select
             .DueICTSIWords = .DueICTSI - .Wharfage
             
-            If i < .Sequence Then
-            Call FauxPrintGatepass
+            If .Sequence < CInt(mskSequence) Then
+                Call FauxPrintGatepass
             End If
-            
+
             If .Sequence = CInt(mskSequence) Then
                 Call PrintGatePass
             End If
@@ -564,7 +561,6 @@ Private Sub GetTotalChargePerDetail()
             rstCYMGps.MoveNext
         End With
     Loop
-    i = 0
     On Error GoTo ErrorEndDoc
         Printer.EndDoc
     On Error GoTo 0
