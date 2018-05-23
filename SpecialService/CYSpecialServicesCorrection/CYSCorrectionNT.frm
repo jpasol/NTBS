@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
-Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "MSMASK32.OCX"
+Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "msmask32.ocx"
 Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "MSFLXGRD.OCX"
 Begin VB.Form frmCYSCorrection 
    Caption         =   "CY Special Services Voiding / Correction"
@@ -2177,7 +2177,7 @@ Dim vADRNum As Long
         rst!chkno1 = txtChkNo(0)
         rst!chkno2 = txtChkNo(1)
         rst!chkno3 = txtChkNo(2)
-        rst!chkno3 = txtChkNo(3)
+        rst!chkno4 = txtChkNo(3)
         rst!chkno5 = txtChkNo(4)
         rst!chkamt1 = CCur("0" & txtChkAmt(0))
         rst!chkamt2 = CCur("0" & txtChkAmt(1))
@@ -2204,7 +2204,7 @@ Dim vADRNum As Long
         rstLog!chkno1 = rst!chkno1
         rstLog!chkno2 = rst!chkno2
         rstLog!chkno3 = rst!chkno3
-        rstLog!chkno4 = rst!chkno3
+        rstLog!chkno4 = rst!chkno4
         rstLog!chkno5 = rst!chkno5
         rstLog!chkamt1 = rst!chkamt1
         rstLog!chkamt2 = rst!chkamt2
