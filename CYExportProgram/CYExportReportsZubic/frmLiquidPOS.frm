@@ -1,6 +1,6 @@
 VERSION 5.00
-Object = "{C4847593-972C-11D0-9567-00A0C9273C2A}#2.2#0"; "crviewer.dll"
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
+Object = "{C4847593-972C-11D0-9567-00A0C9273C2A}#8.0#0"; "crviewer.dll"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmLiquidPOS 
    Caption         =   "Liquidator's Cash & PPA Report"
    ClientHeight    =   10890
@@ -10,7 +10,7 @@ Begin VB.Form frmLiquidPOS
    ClipControls    =   0   'False
    ControlBox      =   0   'False
    BeginProperty Font 
-      Name            =   "IBM3270 - 1254"
+      Name            =   "Arial"
       Size            =   15
       Charset         =   0
       Weight          =   400
@@ -52,17 +52,9 @@ Begin VB.Form frmLiquidPOS
       TabIndex        =   2
       Top             =   600
       Width           =   1455
-      _ExtentX        =   2566
-      _ExtentY        =   741
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "IBM3270 - 1254"
-         Size            =   15
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
+      _extentx        =   2566
+      _extenty        =   741
+      font            =   "frmLiquidPOS.frx":0000
    End
    Begin zcCCRRpt.prvusrctrlDate RepDte 
       Height          =   420
@@ -70,17 +62,9 @@ Begin VB.Form frmLiquidPOS
       TabIndex        =   1
       Top             =   600
       Width           =   1935
-      _ExtentX        =   3413
-      _ExtentY        =   741
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "IBM3270 - 1254"
-         Size            =   15
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
+      _extentx        =   3413
+      _extenty        =   741
+      font            =   "frmLiquidPOS.frx":0024
    End
    Begin VB.TextBox noCopy 
       Alignment       =   2  'Center
@@ -120,8 +104,8 @@ Begin VB.Form frmLiquidPOS
       TabIndex        =   10
       Top             =   8400
       Width           =   9375
-      _ExtentX        =   16536
-      _ExtentY        =   1508
+      _extentx        =   16536
+      _extenty        =   1508
    End
    Begin VB.CommandButton cmdCriteria 
       Caption         =   "&Criteria"
@@ -160,6 +144,7 @@ Begin VB.Form frmLiquidPOS
       EnablePopupMenu =   -1  'True
       EnableExportButton=   -1  'True
       EnableSearchExpertButton=   0   'False
+      EnableHelpButton=   0   'False
    End
    Begin VB.CommandButton cmdPreview 
       Caption         =   "Pre&view Cash Copy"
@@ -180,7 +165,7 @@ Begin VB.Form frmLiquidPOS
       Caption         =   "Pr&int"
       Height          =   615
       Left            =   11640
-      Picture         =   "frmLiquidPOS.frx":0000
+      Picture         =   "frmLiquidPOS.frx":0048
       Style           =   1  'Graphical
       TabIndex        =   14
       Top             =   9480
@@ -190,7 +175,7 @@ Begin VB.Form frmLiquidPOS
       Caption         =   "E&xit"
       Height          =   615
       Left            =   120
-      Picture         =   "frmLiquidPOS.frx":014A
+      Picture         =   "frmLiquidPOS.frx":0192
       Style           =   1  'Graphical
       TabIndex        =   11
       Top             =   9480
@@ -224,18 +209,10 @@ Begin VB.Form frmLiquidPOS
       TabIndex        =   4
       Top             =   600
       Width           =   1455
-      _ExtentX        =   2566
-      _ExtentY        =   741
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "IBM3270 - 1254"
-         Size            =   15
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      MaxLength       =   8
+      _extentx        =   2566
+      _extenty        =   741
+      font            =   "frmLiquidPOS.frx":02DC
+      maxlength       =   8
    End
    Begin zcCCRRpt.prvusrctrlDate RepDte2 
       Height          =   420
@@ -243,17 +220,9 @@ Begin VB.Form frmLiquidPOS
       TabIndex        =   3
       Top             =   600
       Width           =   1935
-      _ExtentX        =   3413
-      _ExtentY        =   741
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "IBM3270 - 1254"
-         Size            =   15
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
+      _extentx        =   3413
+      _extenty        =   741
+      font            =   "frmLiquidPOS.frx":0300
    End
    Begin MSComctlLib.StatusBar SBar 
       Align           =   2  'Align Bottom
@@ -277,15 +246,15 @@ Begin VB.Form frmLiquidPOS
          EndProperty
          BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             AutoSize        =   1
-            Object.Width           =   12356
+            Object.Width           =   12250
          EndProperty
          BeginProperty Panel4 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   6
-            TextSave        =   "10/11/2000"
+            TextSave        =   "5/24/2018"
          EndProperty
          BeginProperty Panel5 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
-            TextSave        =   "9:25 AM"
+            TextSave        =   "3:17 PM"
          EndProperty
          BeginProperty Panel6 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Text            =   "CCRRPT"
@@ -293,7 +262,7 @@ Begin VB.Form frmLiquidPOS
          EndProperty
       EndProperty
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   12
          Charset         =   0
          Weight          =   700
@@ -405,7 +374,7 @@ End Sub
 
 Private Function OutLiquidator(Preview As Boolean, Level As Integer) As Boolean
     
-    Dim Mp As Recordset
+    Dim Mp As Adodb.Recordset
     
     Dim ChqAmt As String
     Dim AdrAmt As String
@@ -413,7 +382,7 @@ Private Function OutLiquidator(Preview As Boolean, Level As Integer) As Boolean
     Dim TotalAmt As String
     
     Dim LqRpt As New rptAuditorPOS
-    Dim rsCheck As Recordset
+    Dim rsCheck As Adodb.Recordset
     Dim TellerToProcess As String * 10
     
     Dim strRange As String
@@ -427,7 +396,7 @@ Private Function OutLiquidator(Preview As Boolean, Level As Integer) As Boolean
     fromDte = CDate(Trim(RepDte.Text) & " " & Trim(rptFromtime.Text))
     toDte = CDate(Trim(RepDte2.Text) & " " & Trim(rptTotime.Text))
     
-    strRange = "From " & Format(fromDte, "yyyy-mm-dd hh:nn:ss") & " To " & Format(toDte, "yyyy-mm-dd hh:nn:ss")
+    strRange = "From " & VBA.Format(fromDte, "yyyy-mm-dd hh:nn:ss") & " To " & VBA.Format(toDte, "yyyy-mm-dd hh:nn:ss")
     toDte = DateAdd("n", 1, toDte)
     TellerToProcess = Trim(UCase(Teller.Text))
     strTeller = "Teller  : " & Trim(TellerToProcess)
@@ -463,11 +432,11 @@ Private Function OutLiquidator(Preview As Boolean, Level As Integer) As Boolean
     Set Mp = Nothing
     
     ' ** Setting the selection formula
-'    LqRpt.RecordSelectionFormula = "{CCRcyx.sysdttm} >= DATETIME(" & Format(fromDte, "yyyy,mm,dd,hh,mm,ss") & ")" _
-'                                        & " and {CCRcyx.sysdttm} <= DATETIME(" & Format(toDte, "yyyy,mm,dd,hh,mm,ss") & ")" _
+'    LqRpt.RecordSelectionFormula = "{CCRcyx.sysdttm} >= DATETIME(" & VBA.Format(fromDte, "yyyy,mm,dd,hh,mm,ss") & ")" _
+'                                        & " and {CCRcyx.sysdttm} <= DATETIME(" & VBA.Format(toDte, "yyyy,mm,dd,hh,mm,ss") & ")" _
 '                                        & " and {CCRcyx.userid} = '" & Trim(TellerToProcess) & "'"
-    LqRpt.RecordSelectionFormula = "{CCRpay.sysdttm} >= DATETIME(" & Format(fromDte, "yyyy,mm,dd,hh,mm,ss") & ")" _
-                                        & " and {CCRpay.sysdttm} <= DATETIME(" & Format(toDte, "yyyy,mm,dd,hh,mm,ss") & ")" _
+    LqRpt.RecordSelectionFormula = "{CCRpay.sysdttm} >= DATETIME(" & VBA.Format(fromDte, "yyyy,mm,dd,hh,mm,ss") & ")" _
+                                        & " and {CCRpay.sysdttm} <= DATETIME(" & VBA.Format(toDte, "yyyy,mm,dd,hh,mm,ss") & ")" _
                                         & " and {CCRpay.userid} = '" & Trim(TellerToProcess) & "'" _
                                         & " and {CCRpay.ftramt} > 0 and {CCRpay.adramt} = 0 and {CCRpay.refnum} = {CCRcyx.refnum}"
 
@@ -577,7 +546,7 @@ Private Sub Form_Load()
 End Sub
 
 Private Sub Initialize()
-    Dim rsUsr As Recordset
+    Dim rsUsr As Adodb.Recordset
     VE.getInformation
     Set rsUsr = VE.rsgetInformation
     SBar.Panels(1) = gUserid
@@ -773,7 +742,7 @@ End Sub
 
 Private Sub SummarySave()
 
-Dim rstSummary As Recordset
+Dim rstSummary As Adodb.Recordset
 sngSumArr = 0
 sngSumArrVat = 0
 sngSumArrNVat = 0
@@ -843,7 +812,7 @@ End Sub
 
 Private Sub ComputeCash(tmpFrDate As Date, tmpToDate As Date, tmpTeller As String)
 
-Dim rstCash As Recordset
+Dim rstCash As Adodb.Recordset
 Dim sngChk As Currency
 
 sngCash = 0
