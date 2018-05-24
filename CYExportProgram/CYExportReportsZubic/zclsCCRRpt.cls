@@ -19,8 +19,8 @@ Private mvarUserid As String 'local copy
 Public Property Let Userid(ByVal vData As String)
 ' ** used when assigning a value to the property, on the left side of an assignment.
 ' ** Syntax: X.Userid = 5
-    mvarUserid = UCase(vData)
-    gUserid = UCase(vData)
+    mvarUserid = VBA.UCase(vData)
+    gUserid = VBA.UCase(vData)
 End Property
 Public Property Get Userid() As String
 ' ** Syntax: Debug.Print X.Userid

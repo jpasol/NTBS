@@ -1,6 +1,6 @@
 VERSION 5.00
-Object = "{C4847593-972C-11D0-9567-00A0C9273C2A}#2.2#0"; "crviewer.dll"
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
+Object = "{C4847593-972C-11D0-9567-00A0C9273C2A}#8.0#0"; "crviewer.dll"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmSummary 
    Caption         =   " Summary Collection Report"
    ClientHeight    =   10890
@@ -10,7 +10,7 @@ Begin VB.Form frmSummary
    ClipControls    =   0   'False
    ControlBox      =   0   'False
    BeginProperty Font 
-      Name            =   "IBM3270 - 1254"
+      Name            =   "Arial"
       Size            =   15
       Charset         =   0
       Weight          =   400
@@ -53,7 +53,7 @@ Begin VB.Form frmSummary
       Width           =   1815
       _extentx        =   3201
       _extenty        =   741
-      font            =   "frmSummary.frx":0030
+      font            =   "frmSummary.frx":0024
    End
    Begin VB.TextBox txtNoted 
       BackColor       =   &H8000000F&
@@ -109,6 +109,7 @@ Begin VB.Form frmSummary
       EnablePopupMenu =   -1  'True
       EnableExportButton=   -1  'True
       EnableSearchExpertButton=   0   'False
+      EnableHelpButton=   0   'False
    End
    Begin VB.CommandButton cmdPreview 
       Caption         =   "Pre&view"
@@ -129,7 +130,7 @@ Begin VB.Form frmSummary
       Caption         =   "Pr&int"
       Height          =   615
       Left            =   11880
-      Picture         =   "frmSummary.frx":0060
+      Picture         =   "frmSummary.frx":0048
       Style           =   1  'Graphical
       TabIndex        =   10
       Top             =   9480
@@ -139,7 +140,7 @@ Begin VB.Form frmSummary
       Caption         =   "E&xit"
       Height          =   615
       Left            =   240
-      Picture         =   "frmSummary.frx":01AA
+      Picture         =   "frmSummary.frx":0192
       Style           =   1  'Graphical
       TabIndex        =   8
       Top             =   9480
@@ -189,15 +190,15 @@ Begin VB.Form frmSummary
          EndProperty
          BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             AutoSize        =   1
-            Object.Width           =   12277
+            Object.Width           =   12250
          EndProperty
          BeginProperty Panel4 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   6
-            TextSave        =   "10/19/00"
+            TextSave        =   "5/24/2018"
          EndProperty
          BeginProperty Panel5 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
-            TextSave        =   "10:34 AM"
+            TextSave        =   "3:17 PM"
          EndProperty
          BeginProperty Panel6 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Text            =   "CCRRPT"
@@ -205,7 +206,7 @@ Begin VB.Form frmSummary
          EndProperty
       EndProperty
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   12
          Charset         =   0
          Weight          =   700
@@ -222,7 +223,7 @@ Begin VB.Form frmSummary
       Width           =   1455
       _extentx        =   2566
       _extenty        =   741
-      font            =   "frmSummary.frx":02F4
+      font            =   "frmSummary.frx":02DC
       maxlength       =   8
    End
    Begin VB.Label Label6 
@@ -314,10 +315,10 @@ Private Sub cmdExit_Click()
 End Sub
 Private Function OutLiquidator(Preview As Boolean) As Boolean
     
-    Dim Mp As Recordset
+    Dim Mp As Adodb.Recordset
     Dim AdrAmt As String
     Dim LqRpt As New rptSummary
-    Dim rsCheck As Recordset
+    Dim rsCheck As Adodb.Recordset
     Dim fromDte As Date
     Dim toDte As Date
     Dim TellerToProcess As String * 10
@@ -330,22 +331,22 @@ Private Function OutLiquidator(Preview As Boolean) As Boolean
         
     ' ** Setting the default
     OutLiquidator = False
-    fromDte = CDate(Trim(RepDte.Text) & " " & Trim(rptFromtime.Text))
-    toDte = CDate(Trim(RepDte.Text) & " " & Trim(rptTotime.Text))
-    TellerToProcess = Trim(UCase(Teller.Text))
+    fromDte = CDate(VBA.Trim(RepDte.Text) & " " & VBA.Trim(rptFromtime.Text))
+    toDte = CDate(VBA.Trim(RepDte.Text) & " " & VBA.Trim(rptTotime.Text))
+    TellerToProcess = VBA.Trim(VBA.UCase(Teller.Text))
     
-    If Len(Trim(TellerToProcess)) = 0 Then
+    If Len(VBA.Trim(TellerToProcess)) = 0 Then
         VE.getTotalAdr fromDte, toDte
         Set Mp = VE.rsgetTotalAdr
-        LqRpt.RecordSelectionFormula = "{CCRcyx.sysdttm} >= DATETIME(" & Format(fromDte, "yyyy,mm,dd,hh,mm,ss") & ")" _
-                & " and {CCRcyx.sysdttm} <= DATETIME(" & Format(toDte, "yyyy,mm,dd,hh,mm,ss") & ")" _
+        LqRpt.RecordSelectionFormula = "{CCRcyx.sysdttm} >= DATETIME(" & VBA.Format(fromDte, "yyyy,mm,dd,hh,mm,ss") & ")" _
+                & " and {CCRcyx.sysdttm} <= DATETIME(" & VBA.Format(toDte, "yyyy,mm,dd,hh,mm,ss") & ")" _
                 & " and  {CCRcyx.status} <> 'CAN' "
     Else
         VE.getTellerTotalAdr fromDte, toDte, TellerToProcess
         Set Mp = VE.rsgetTellerTotalAdr
-        LqRpt.RecordSelectionFormula = "{CCRcyx.sysdttm} >= DATETIME(" & Format(fromDte, "yyyy,mm,dd,hh,mm,ss") & ")" _
-                                        & " and {CCRcyx.sysdttm} <= DATETIME(" & Format(toDte, "yyyy,mm,dd,hh,mm,ss") & ")" _
-                                        & " and {CCRcyx.userid} = '" & Trim(TellerToProcess) & "'" _
+        LqRpt.RecordSelectionFormula = "{CCRcyx.sysdttm} >= DATETIME(" & VBA.Format(fromDte, "yyyy,mm,dd,hh,mm,ss") & ")" _
+                                        & " and {CCRcyx.sysdttm} <= DATETIME(" & VBA.Format(toDte, "yyyy,mm,dd,hh,mm,ss") & ")" _
+                                        & " and {CCRcyx.userid} = '" & VBA.Trim(TellerToProcess) & "'" _
                                          & " and  {CCRcyx.status} <> 'CAN'  "
     End If
     If Mp.RecordCount > 0 Then
@@ -361,9 +362,9 @@ Private Function OutLiquidator(Preview As Boolean) As Boolean
     Set Mp = Nothing
     
     LqRpt.ParameterFields(1).AddCurrentValue (AdrAmt)
-    LqRpt.ParameterFields(2).AddCurrentValue (CDate(Trim(RepDte.Text)))
+    LqRpt.ParameterFields(2).AddCurrentValue (CDate(VBA.Trim(RepDte.Text)))
     LqRpt.ParameterFields(3).AddCurrentValue (TellerToProcess)
-    LqRpt.ParameterFields(4).AddCurrentValue (Trim(txtNoted.Text))
+    LqRpt.ParameterFields(4).AddCurrentValue (VBA.Trim(txtNoted.Text))
     ' LqRpt.ParameterFields(5).AddCurrentValue ("")
     
     ' ** Determining the Output
@@ -371,13 +372,13 @@ Private Function OutLiquidator(Preview As Boolean) As Boolean
         CRViewer1.Visible = True
         cmdCriteria.Visible = True
         Nav1.Visible = True
-        LqRpt.PaperOrientation = crPortrait
+        LqRpt.PaperOrientation = CRAXDDRT.crPortrait
         CRViewer1.ReportSource = LqRpt
         CRViewer1.ViewReport
         Nav1.cmdRefresh_Click
     Else
         LqRpt.SelectPrinter Printer.DriverName, Printer.DeviceName, Printer.Port
-        LqRpt.PaperOrientation = crPortrait
+        LqRpt.PaperOrientation = CRAXDDRT.crPortrait
         LqRpt.DisplayProgressDialog = False
         If IsNumeric(noCopy.Text) Then
             LqRpt.PrintOut False, CInt(noCopy)
@@ -410,16 +411,16 @@ Private Sub Form_Load()
     cmdPreview.Enabled = False
     CRViewer1.Visible = False
     cmdCriteria.Visible = False
-    RepDte.Text = Format(Now, "YYYY-MM-DD")
+    RepDte.Text = VBA.Format(Now, "YYYY-MM-DD")
     rptFromtime.Text = "00:00:01"
     rptTotime.Text = "23:58:59"
-    Teller.Text = UCase(gUserid)
+    Teller.Text = VBA.UCase(gUserid)
     Call Initialize
     Nav1.Visible = False
     Set Nav1.CRViewerControl = CRViewer1
 End Sub
 Private Sub Initialize()
-Dim rsUsr As Recordset
+Dim rsUsr As Adodb.Recordset
     VE.getInformation
     Set rsUsr = VE.rsgetInformation
     SBar.Panels(1) = gUserid
@@ -461,7 +462,7 @@ End Sub
 
 Private Sub noCopy_LostFocus()
     noCopy.BackColor = &H8000000F
-    If Len(Trim(noCopy.Text)) = 0 Then
+    If Len(VBA.Trim(noCopy.Text)) = 0 Then
         noCopy.Text = "1"
     End If
 End Sub
@@ -504,7 +505,7 @@ If KeyAscii <> 8 Then
     If KeyAscii = 13 Then
         SendKeys "{Tab}", True
     Else
-        KeyAscii = Asc(UCase(Chr(KeyAscii)))
+        KeyAscii = Asc(VBA.UCase(VBA.Chr(KeyAscii)))
     End If
 End If
 End Sub

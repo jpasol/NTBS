@@ -9,7 +9,7 @@ Begin VB.Form frmPrinter
    ClipControls    =   0   'False
    ControlBox      =   0   'False
    BeginProperty Font 
-      Name            =   "IBM3270 - 1254"
+      Name            =   "Arial"
       Size            =   13.5
       Charset         =   0
       Weight          =   400
@@ -123,7 +123,7 @@ Private Sub Form_Load()
     Dim strRef As String * 2
     ref = 0
     For Each Pr In Printers
-        strRef = Str(ref + 1)
+        strRef = VBA.Str(ref + 1)
         cmbPrinter.AddItem strRef & "| " & Pr.DeviceName
         If Pr.DeviceName = Printer.DeviceName Then
             refTouse = ref
