@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "MSMASK32.OCX"
+Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "msmask32.ocx"
 Begin VB.Form frmReprintCCR 
    Caption         =   "CY Specical Services CCR Reprinting"
    ClientHeight    =   2385
@@ -560,14 +560,14 @@ If rsCCRDetail.BOF <> True And rsCCRDetail.EOF <> True Then
                 sValidUntil = .Fields("enstodttm") & IIf(.Fields("chargetyp") = "IMRF", .Fields("rfrhrs"), "")
             End If
             
-            Amount = CSng(.Fields("amt")) + CSng(.Fields("dgramt")) + CSng(.Fields("ovzamt")) + CSng(.Fields("vatamt")) - CSng(.Fields("wtax"))
+            Amount = CDbl(.Fields("amt")) + CDbl(.Fields("dgramt")) + CDbl(.Fields("ovzamt")) + CDbl(.Fields("vatamt")) - CDbl(.Fields("wtax"))
             'Printer.Print Space(2) & strSize & Space(1) & strCtnnum & Space(2) & RevTonnage & Space(2) & strArrastre & Space(29) & strArrastre
             'sharon 05Nov2009 Printer.Print Space(2) & strSize & Space(1) & strCtnnum & Space(2) & RevTonnage & Space(2) & strArrastre & Space(2) & strWgh & Space(26) & Format(CDbl(strArrastre) + CDbl(strWgh), "###,###,###.#0")
             'printing of container numbers, container size, amount, rate code and rate description
             Printer.Print Space(2) & strSize & Space(1) & strCtnnum & Space(2) & sDays & Space(2) & sRateDescription & Space(2) & docRefNo & Space(2) & sValidUntilText & Space(2); sValidUntil & Space(6) & Format(CDbl(Amount), "###,###,###.#0")
             TotalAmount = TotalAmount + Amount
-            TotalVatAmount = TotalVatAmount + CSng(.Fields("vatamt"))
-            TotalTaxAmount = TotalTaxAmount + CSng(.Fields("wtax"))
+            TotalVatAmount = TotalVatAmount + CDbl(.Fields("vatamt"))
+            TotalTaxAmount = TotalTaxAmount + CDbl(.Fields("wtax"))
             strRemarks = Trim(.Fields("remark"))
             ctrCnt = ctrCnt - 1
             .MoveNext
@@ -626,19 +626,19 @@ If rsCCRDetail.BOF <> True And rsCCRDetail.EOF <> True Then
         With rsCCRPay
         'get the Header/footer data
             If IsNull(.Fields("chkamt1")) = False Then
-                TotalCheckAmount = TotalCheckAmount + CSng(.Fields("chkamt1"))
+                TotalCheckAmount = TotalCheckAmount + CCur(.Fields("chkamt1"))
             End If
             If IsNull(.Fields("chkamt2")) = False Then
-                TotalCheckAmount = TotalCheckAmount + CSng(.Fields("chkamt2"))
+                TotalCheckAmount = TotalCheckAmount + CCur(.Fields("chkamt2"))
             End If
             If IsNull(.Fields("chkamt3")) = False Then
-                TotalCheckAmount = TotalCheckAmount + CSng(.Fields("chkamt3"))
+                TotalCheckAmount = TotalCheckAmount + CCur(.Fields("chkamt3"))
             End If
             If IsNull(.Fields("chkamt4")) = False Then
-                TotalCheckAmount = TotalCheckAmount + CSng(.Fields("chkamt4"))
+                TotalCheckAmount = TotalCheckAmount + CCur(.Fields("chkamt4"))
             End If
             If IsNull(.Fields("chkamt5")) = False Then
-                TotalCheckAmount = TotalCheckAmount + CSng(.Fields("chkamt5"))
+                TotalCheckAmount = TotalCheckAmount + CCur(.Fields("chkamt5"))
             End If
             
             strChqAmt = Format(TotalCheckAmount, "###,###.00")
