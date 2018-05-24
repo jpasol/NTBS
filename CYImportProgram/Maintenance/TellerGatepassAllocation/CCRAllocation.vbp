@@ -1,6 +1,6 @@
 Type=Exe
-Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\Windows\system32\stdole2.tlb#OLE Automation
-Reference=*\G{00000205-0000-0010-8000-00AA006D2EA4}#2.5#0#..\..\..\Program Files\Common Files\System\ado\msado25.tlb#Microsoft ActiveX Data Objects 2.0 Library
+Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\..\..\..\..\..\..\Windows\SysWOW64\stdole2.tlb#OLE Automation
+Reference=*\G{00000205-0000-0010-8000-00AA006D2EA4}#2.5#0#..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Common Files\System\ado\msado25.tlb#Microsoft ActiveX Data Objects 2.0 Library
 Object={BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0; TABCTL32.OCX
 Object={5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0; MSFLXGRD.OCX
 Class=clsCCRAllocation; clsCCRAllocation.cls
