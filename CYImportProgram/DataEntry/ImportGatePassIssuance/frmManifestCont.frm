@@ -1,8 +1,8 @@
 VERSION 5.00
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomct2.OCX"
 Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "MSFLXGRD.OCX"
-Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "MSMASK32.OCX"
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "tabctl32.OCX"
+Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "msmask32.ocx"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Begin VB.Form frmManifestCont 
    BackColor       =   &H00E0E0E0&
    Caption         =   "CY Import Billing - Manifest Containers"
@@ -63,83 +63,83 @@ Begin VB.Form frmManifestCont
       TabCaption(0)   =   "Permit"
       TabPicture(0)   =   "frmManifestCont.frx":0006
       Tab(0).ControlEnabled=   0   'False
-      Tab(0).Control(0)=   "txtCompCode"
-      Tab(0).Control(1)=   "txtTransactionType"
-      Tab(0).Control(2)=   "txtCustomPermit"
-      Tab(0).Control(3)=   "txtSBMAPermit"
-      Tab(0).Control(4)=   "chkForExam"
-      Tab(0).Control(5)=   "txtRegistry"
-      Tab(0).Control(6)=   "txtBL"
-      Tab(0).Control(7)=   "cmdNextBL"
-      Tab(0).Control(8)=   "lblManifest(74)"
-      Tab(0).Control(9)=   "lblManifest(43)"
-      Tab(0).Control(10)=   "lblManifest(42)"
-      Tab(0).Control(11)=   "lblManifest(41)"
-      Tab(0).Control(12)=   "lblManifest(29)"
-      Tab(0).Control(13)=   "lblManifest(37)"
-      Tab(0).Control(14)=   "lblManifest(36)"
-      Tab(0).Control(15)=   "lblManifest(35)"
+      Tab(0).Control(0)=   "lblManifest(35)"
+      Tab(0).Control(1)=   "lblManifest(36)"
+      Tab(0).Control(2)=   "lblManifest(37)"
+      Tab(0).Control(3)=   "lblManifest(29)"
+      Tab(0).Control(4)=   "lblManifest(41)"
+      Tab(0).Control(5)=   "lblManifest(42)"
+      Tab(0).Control(6)=   "lblManifest(43)"
+      Tab(0).Control(7)=   "lblManifest(74)"
+      Tab(0).Control(8)=   "cmdNextBL"
+      Tab(0).Control(9)=   "txtBL"
+      Tab(0).Control(10)=   "txtRegistry"
+      Tab(0).Control(11)=   "chkForExam"
+      Tab(0).Control(12)=   "txtSBMAPermit"
+      Tab(0).Control(13)=   "txtCustomPermit"
+      Tab(0).Control(14)=   "txtTransactionType"
+      Tab(0).Control(15)=   "txtCompCode"
       Tab(0).ControlCount=   16
       TabCaption(1)   =   "Header"
       TabPicture(1)   =   "frmManifestCont.frx":0022
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "lblManifest(2)"
-      Tab(1).Control(1)=   "lblManifest(0)"
-      Tab(1).Control(2)=   "lblManifest(1)"
-      Tab(1).Control(3)=   "lblManifest(4)"
-      Tab(1).Control(4)=   "lblManifest(5)"
-      Tab(1).Control(5)=   "mskGatePassNo"
-      Tab(1).Control(6)=   "txtBrokerNO"
-      Tab(1).Control(7)=   "txtCustomer"
-      Tab(1).Control(8)=   "cboVAT"
-      Tab(1).Control(9)=   "chkWharfageExempt"
-      Tab(1).Control(10)=   "chkWharfageOnly"
-      Tab(1).Control(11)=   "cboUnderGuarantee"
-      Tab(1).Control(12)=   "cmdPreviousHeader"
-      Tab(1).Control(13)=   "cmdNextHeader"
+      Tab(1).Control(0)=   "cmdNextHeader"
+      Tab(1).Control(1)=   "cmdPreviousHeader"
+      Tab(1).Control(2)=   "cboUnderGuarantee"
+      Tab(1).Control(3)=   "chkWharfageOnly"
+      Tab(1).Control(4)=   "chkWharfageExempt"
+      Tab(1).Control(5)=   "cboVAT"
+      Tab(1).Control(6)=   "txtCustomer"
+      Tab(1).Control(7)=   "txtBrokerNO"
+      Tab(1).Control(8)=   "mskGatePassNo"
+      Tab(1).Control(9)=   "lblManifest(5)"
+      Tab(1).Control(10)=   "lblManifest(4)"
+      Tab(1).Control(11)=   "lblManifest(1)"
+      Tab(1).Control(12)=   "lblManifest(0)"
+      Tab(1).Control(13)=   "lblManifest(2)"
       Tab(1).ControlCount=   14
       TabCaption(2)   =   "Other Info"
       TabPicture(2)   =   "frmManifestCont.frx":003E
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "cmdNextOtherInfo"
+      Tab(2).Control(0)=   "fraOther"
       Tab(2).Control(1)=   "cmdPreviousOtherInfo"
-      Tab(2).Control(2)=   "fraOther"
+      Tab(2).Control(2)=   "cmdNextOtherInfo"
       Tab(2).ControlCount=   3
       TabCaption(3)   =   "Container"
       TabPicture(3)   =   "frmManifestCont.frx":005A
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "cmdNextContainer"
-      Tab(3).Control(1)=   "cmdPreviousContainer"
-      Tab(3).Control(2)=   "cmdCompute"
-      Tab(3).Control(3)=   "cboDangClass"
-      Tab(3).Control(4)=   "cboStorageStat"
-      Tab(3).Control(5)=   "chkWeighing"
-      Tab(3).Control(6)=   "fraPlug"
-      Tab(3).Control(7)=   "fraDetail"
-      Tab(3).Control(8)=   "fraOversize"
-      Tab(3).Control(9)=   "fraStorage"
-      Tab(3).Control(10)=   "mskCRODate"
-      Tab(3).Control(11)=   "mskAdvGPDate"
-      Tab(3).Control(12)=   "lblManifest(15)"
-      Tab(3).Control(13)=   "lblManifest(16)"
-      Tab(3).Control(14)=   "lblManifest(11)"
-      Tab(3).Control(15)=   "lblManifest(14)"
+      Tab(3).Control(0)=   "lblManifest(14)"
+      Tab(3).Control(1)=   "lblManifest(11)"
+      Tab(3).Control(2)=   "lblManifest(16)"
+      Tab(3).Control(3)=   "lblManifest(15)"
+      Tab(3).Control(4)=   "mskAdvGPDate"
+      Tab(3).Control(5)=   "mskCRODate"
+      Tab(3).Control(6)=   "fraStorage"
+      Tab(3).Control(7)=   "fraOversize"
+      Tab(3).Control(8)=   "fraDetail"
+      Tab(3).Control(9)=   "fraPlug"
+      Tab(3).Control(10)=   "chkWeighing"
+      Tab(3).Control(11)=   "cboStorageStat"
+      Tab(3).Control(12)=   "cboDangClass"
+      Tab(3).Control(13)=   "cmdCompute"
+      Tab(3).Control(14)=   "cmdPreviousContainer"
+      Tab(3).Control(15)=   "cmdNextContainer"
       Tab(3).ControlCount=   16
       TabCaption(4)   =   "Charges"
       TabPicture(4)   =   "frmManifestCont.frx":0076
       Tab(4).ControlEnabled=   0   'False
-      Tab(4).Control(0)=   "cmdViewGrid"
-      Tab(4).Control(1)=   "cmdAnother"
-      Tab(4).Control(2)=   "fraExpand"
-      Tab(4).Control(3)=   "fraStorageInfo"
-      Tab(4).Control(4)=   "fraCharges"
-      Tab(4).Control(5)=   "fraRunning"
-      Tab(4).Control(6)=   "cmdNextCharges"
-      Tab(4).Control(7)=   "cmdPreviousCharges"
-      Tab(4).Control(8)=   "msfCharges"
-      Tab(4).Control(9)=   "mskReeferHours"
-      Tab(4).Control(10)=   "lblManifest(71)"
-      Tab(4).Control(11)=   "lblManifest(34)"
+      Tab(4).Control(0)=   "lblManifest(34)"
+      Tab(4).Control(1)=   "lblManifest(71)"
+      Tab(4).Control(2)=   "mskReeferHours"
+      Tab(4).Control(3)=   "msfCharges"
+      Tab(4).Control(4)=   "cmdPreviousCharges"
+      Tab(4).Control(5)=   "cmdNextCharges"
+      Tab(4).Control(6)=   "fraRunning"
+      Tab(4).Control(7)=   "fraCharges"
+      Tab(4).Control(8)=   "fraStorageInfo"
+      Tab(4).Control(9)=   "fraExpand"
+      Tab(4).Control(10)=   "cmdAnother"
+      Tab(4).Control(11)=   "cmdViewGrid"
       Tab(4).ControlCount=   12
       TabCaption(5)   =   "Payment"
       TabPicture(5)   =   "frmManifestCont.frx":0092
@@ -1119,7 +1119,7 @@ Begin VB.Form frmManifestCont
             EndProperty
             CalendarBackColor=   16777215
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   184614915
+            Format          =   196739075
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtStorageFree 
@@ -1141,7 +1141,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   184614915
+            Format          =   196739075
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtEndStorage 
@@ -1163,7 +1163,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   184614915
+            Format          =   196739075
             CurrentDate     =   32874
          End
          Begin VB.Label lblManifest 
@@ -4938,10 +4938,11 @@ txtLog.Text = txtLog.Text & "cmdSave_Click: vChkCode = False" & vbCrLf
 '                lngControlNo = 0
 '            End If
 
-            Call SaveHeaders
+'            Call SaveHeaders
             If (SaveDetails = -1) Then
             GoTo err
             End If
+            Call SaveHeaders
 
 
             intResponse = MsgBox("Gatepass will now be printed.", vbOKOnly + vbInformation, "Printing...")
@@ -5497,9 +5498,8 @@ Private Function SaveDetails() As Integer
         lngGPSNum = CLng(mskGatePassNo)
         lngStartGatepass = lngGPSNum
         
-        
-        
             For intRow = 1 To (msfCharges.Rows - 1)
+updateQuery:
             updateQuery = "": updateQuery2 = ""
             updateQuery = "INSERT INTO CYMGps (refnum,seqnum,gpsnum,gpstyp,cntnum,enttyp,entnum,voyageno,location,sbmapn,custompn," & _
                     "tincnsgne,tinbroker,cntsze,fulemp,forexm,cntovl,cntovw,cntovh,ovzums,ovzamt,trncde,whfcde,whfrate,whfonly," & _
@@ -5716,7 +5716,11 @@ ErrSaveDetails:
         SaveDetails = -1
         Exit Function
     ElseIf (intResponse = vbRetry) Or (intResponse = vbIgnore) Then
-        Resume
+        Dim dc As New clsCYMDE01
+        dc.Disconnect
+        dc.ConnectByStr (pCnnStr2)
+        rsCYMGPS.ActiveConnection = gcnnBilling
+        GoTo updateQuery
     End If
 ErrWriteIfForExam:
     intResponse = MsgBox("Error writing in Exam file...", vbExclamation + vbDefaultButton2 + vbAbortRetryIgnore, "Error!")
@@ -7699,7 +7703,7 @@ Private Sub sstMain_GotFocus()
         msfCharges.SetFocus
         msfCharges.Row = msfCharges.Rows - 1
         msfCharges.Col = 1
-        'SendKeys "{RIGHT}{LEFT}"
+        SendKeys "{RIGHT}{LEFT}"
     End If
 End Sub
 
@@ -8268,7 +8272,7 @@ Private Sub cmdCompute_Click()
          With msfCharges
             msfCharges.SetFocus
             msfCharges.Col = 1
-            'SendKeys "{RIGHT}{LEFT}"
+            SendKeys "{RIGHT}{LEFT}"
          End With
     End If
 End Sub
