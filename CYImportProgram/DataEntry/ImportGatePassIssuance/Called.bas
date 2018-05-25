@@ -378,6 +378,7 @@ Public Sub gzApplyCYMGP(ByVal pUser As String, ByVal pGatePassNo As Long, ByVal 
     Set cmdApplyCYMGP = New ADODB.Command
     With cmdApplyCYMGP
         Set .ActiveConnection = gcnnBilling
+ApplyCYMgp:
         .CommandText = "up_applycymgp"
         .CommandType = adCmdStoredProc
     
@@ -395,6 +396,11 @@ Public Sub gzApplyCYMGP(ByVal pUser As String, ByVal pGatePassNo As Long, ByVal 
     
 err:
     MsgBox err.Description, vbOKOnly, "gzApplyCYMGP"
+    Dim dc As clsCYMDE01
+    dc.Disconnect
+    dc.ConnectByStr (pCnnStr2)
+    cmdApplyCYMGP.ActiveConnection = gcnnBilling
+    GoTo ApplyCYMgp
 End Sub
 
 '--------------------------------------------------------------------
@@ -1255,16 +1261,16 @@ Dim lsErrStr As String
 '        ";User ID=tosadmin;Password=tosadmin"
 '
 'PRNH - Prod IP
-'    gcnnNavis.Open "Provider=sqloledb" & _
-'            ";Data Source=192.168.11.151" & _
-'            ";Initial Catalog=apex" & _
-'            ";User ID=tosadmin;Password=tosadmin"
+    gcnnNavis.Open "Provider=sqloledb" & _
+            ";Data Source=192.168.11.151" & _
+            ";Initial Catalog=apex" & _
+            ";User ID=tosadmin;Password=tosadmin"
 
-'PRNH - Test
-        gcnnNavis.Open "Provider=sqloledb" & _
-        ";Data Source=192.168.11.155" & _
-        ";Initial Catalog=apex" & _
-        ";User ID=sa_ictsi;Password=Ictsi123"
+''PRNH -Test
+'        gcnnNavis.Open "Provider=sqloledb" & _
+'        ";Data Source=192.168.11.155" & _
+'        ";Initial Catalog=apex" & _
+'        ";User ID=sa_ictsi;Password=Ictsi123"
 
         
     gbNavis = True

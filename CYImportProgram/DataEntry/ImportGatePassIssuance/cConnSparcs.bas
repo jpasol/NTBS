@@ -1105,7 +1105,7 @@ Public Function SavePaidThruDay(ByVal AsmxUrl As String, ByVal SoapActionUrl As 
     Exit Function
     
 Err_PW:
-    SavePaidThruDay = "Error: " & err.Number & " - " & err.Description
+    SavePaidThruDay = "Error: SavePaidThruDay" & err.Number & " - " & err.Description
 MsgBox err.Description
 End Function
 

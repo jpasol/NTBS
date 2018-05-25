@@ -1119,7 +1119,7 @@ Begin VB.Form frmManifestCont
             EndProperty
             CalendarBackColor=   16777215
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   196739075
+            Format          =   194510851
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtStorageFree 
@@ -1141,7 +1141,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   196739075
+            Format          =   194576387
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtEndStorage 
@@ -1163,7 +1163,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   196739075
+            Format          =   194576387
             CurrentDate     =   32874
          End
          Begin VB.Label lblManifest 
@@ -4927,29 +4927,26 @@ txtLog.Text = txtLog.Text & "cmdSave_Click: vChkCode = False" & vbCrLf
   txtLog.Text = txtLog.Text & "cmdSave_Click: If vChkCode Then" & vbCrLf
     intResponse = MsgBox("Save Transactions to disk?", vbYesNo + vbInformation, "Saving...")
     If intResponse = vbYes Then
+        txtLog.Text = txtLog.Text & "cmdSave_Click: If intResponse = vbYes Then" & vbCrLf
         If OKToSave Then
-        On Error GoTo err
+            txtLog.Text = txtLog.Text & "cmdSave_Click: If OKToSave Then" & vbCrLf
             lngReferenceNo = gzGetControlNo(cControlType)
-            
+            txtLog.Text = txtLog.Text & "cmdSave_Click: lngReferenceNo = gzGetControlNo(cControlType)" & vbCrLf
             'PRNH - Removed ADR Validation
 '            If mskADRAmount > 0 Then
 '                lngControlNo = lzApplyADR(txtCustomerCode, cControlType, lngReferenceNo, CCur(mskADRAmount), UCase(zCurrentUser()), "")
 '            Else
 '                lngControlNo = 0
 '            End If
-
-'            Call SaveHeaders
-            If (SaveDetails = -1) Then
-            GoTo err
-            End If
             Call SaveHeaders
-
+            Call SaveDetails
+            End If
 
             intResponse = MsgBox("Gatepass will now be printed.", vbOKOnly + vbInformation, "Printing...")
             If intResponse = vbOK Then
                 Call PrintGatePass
             End If
-        
+            
             Call InitializeHeaderVariables
             Call InitializeComputationVariables
             Call InitializeGridAndOther
@@ -4969,10 +4966,10 @@ txtLog.Text = txtLog.Text & "cmdSave_Click: vChkCode = False" & vbCrLf
             End With
         End If
     End If
-  End If
   Exit Sub
 err:
   MsgBox "An Error Occurred..."
+  Call WriteLogError
 End Sub
 
 
@@ -5162,13 +5159,13 @@ Private Sub SaveHeaders()
     On Error GoTo ErrSaveHeaders
 
     dtmSystemDateTime = gzGetSysDate
-    
+
     Dim rsCYMPay As New ADODB.Command, updateQuery As String, updateQuery2 As String
 
     'cnCYMPay.Open pCnnStr2
     
     rsCYMPay.ActiveConnection = gcnnBilling
-
+updateQuery:
     updateQuery = "INSERT INTO CYMPAY (Refnum,cuscde,cusnam,phpamt,cshamt,adramt,adrnum,chgamt,trntype,chkno1,chkno2,chkno3,chkno4,chkno5," & _
                     "chkamt1,chkamt2,chkamt3,chkamt4,chkamt5,chkbnk1,chkbnk2,chkbnk3,chkbnk4,chkbnk5,status,rectag,userid,sysdttm,updcde) "
     
@@ -5217,20 +5214,21 @@ Private Sub SaveHeaders()
         rsCYMPay.CommandTimeout = 3000
         rsCYMPay.CommandText = updateQuery
         rsCYMPay.Execute , , adExecuteNoRecords
-        
-    
-    On Error GoTo 0
-    
     Exit Sub
     
 
 ErrSaveHeaders:
     MsgBox err.Description
-    intResponse = MsgBox(err.Description) '"Error writing in header...", vbExclamation + vbDefaultButton2 + vbAbortRetryIgnore, "Error!")
+'    intResponse = MsgBox(err.Description) '"Error writing in header...", vbExclamation + vbDefaultButton2 + vbAbortRetryIgnore, "Error!")
+    intResponse = MsgBox("Error writing in header...", vbExclamation + vbDefaultButton2 + vbAbortRetryIgnore, "Error!")
     If intResponse = vbAbort Then
         Unload Me
     ElseIf (intResponse = vbRetry) Or (intResponse = vbIgnore) Then
-        Resume
+        Dim dc As New clsCYMDE01
+        dc.Disconnect
+        dc.ConnectByStr (pCnnStr2)
+        rsCYMPay.ActiveConnection = gcnnBilling
+        GoTo updateQuery
     End If
 End Sub
 
@@ -5478,7 +5476,7 @@ End Sub
 'End Sub
 
 'PRNH
-Private Function SaveDetails() As Integer
+Private Sub SaveDetails()
     Dim strContNo1 As String
     Dim strIsForWeighing As String
     Dim strOOGAmount As String
@@ -5634,11 +5632,11 @@ updateQuery:
                 rsCYMGPS.CommandTimeout = 3000
                 rsCYMGPS.CommandText = updateQuery
                 rsCYMGPS.Execute , , adExecuteNoRecords
-                
-                On Error GoTo ErrWriteIfForExam
-                    Call WriteIfForExam(intRow, Column.ForExam, lngGPSNum)
                 On Error GoTo 0
-
+'                On Error GoTo ErrWriteIfForExam
+                Call WriteIfForExam(intRow, Column.ForExam, lngGPSNum)
+'                On Error GoTo 0
+                On Error GoTo errHandle
                 If intRow <> (msfCharges.Rows - 1) Then
                     lngGPSNum = lngGPSNum + 1
                 End If
@@ -5705,16 +5703,14 @@ updateQuery:
                 Call Update_Manifest(Trim(txtBL.Text), Trim(MoveToField(Column.ContainerID, "C")), Trim(lngGPSNum), strRegNo)
                 Call gzApplyCYMGP(UCase(zCurrentUser()), lngGPSNum, msfCharges.TextMatrix(intRow, Column.CompanyCode)) ' PRNH
             Next intRow
-            
             'Call gzApplyCYMGP(UCase(zCurrentUser()), lngGPSNum)
         
         
-    Exit Function
+    Exit Sub
 ErrSaveDetails:
     intResponse = MsgBox("Error writing in detail...", vbExclamation + vbDefaultButton2 + vbAbortRetryIgnore, "Error!")
     If intResponse = vbAbort Then
-        SaveDetails = -1
-        Exit Function
+        Exit Sub
     ElseIf (intResponse = vbRetry) Or (intResponse = vbIgnore) Then
         Dim dc As New clsCYMDE01
         dc.Disconnect
@@ -5722,23 +5718,28 @@ ErrSaveDetails:
         rsCYMGPS.ActiveConnection = gcnnBilling
         GoTo updateQuery
     End If
-ErrWriteIfForExam:
-    intResponse = MsgBox("Error writing in Exam file...", vbExclamation + vbDefaultButton2 + vbAbortRetryIgnore, "Error!")
+'ErrWriteIfForExam:
+'    intResponse = MsgBox("Error writing in Exam file...", vbExclamation + vbDefaultButton2 + vbAbortRetryIgnore, "Error!")
+'    If intResponse = vbAbort Then
+'        Exit Sub
+'    ElseIf (intResponse = vbRetry) Or (intResponse = vbIgnore) Then
+'        Resume
+'    End If
+'ErrWriteToACOCtn:
+'    intResponse = MsgBox("Error writing in ACOCtn file...", vbExclamation + vbDefaultButton2 + vbAbortRetryIgnore, "Error!")
+'    If intResponse = vbAbort Then
+'        Exit Sub
+'    ElseIf (intResponse = vbRetry) Or (intResponse = vbIgnore) Then
+'        Resume
+'    End If
+errHandle:
+    intResponse = MsgBox("Error: " & err.Number & vbNewLine & err.Description, vbExclamation + vbDefaultButton2 + vbAbortRetryIgnore, "Error!")
     If intResponse = vbAbort Then
-        SaveDetails = -1
-        Exit Function
+        Exit Sub
     ElseIf (intResponse = vbRetry) Or (intResponse = vbIgnore) Then
         Resume
     End If
-ErrWriteToACOCtn:
-    intResponse = MsgBox("Error writing in ACOCtn file...", vbExclamation + vbDefaultButton2 + vbAbortRetryIgnore, "Error!")
-    If intResponse = vbAbort Then
-        SaveDetails = -1
-        Exit Function
-    ElseIf (intResponse = vbRetry) Or (intResponse = vbIgnore) Then
-        Resume
-    End If
-End Function
+End Sub
 
 Private Sub Update_Manifest(ByVal strBillNo As String, ByVal strConNo As String, ByVal strGpsNum As String, strregnum As String)
     If Up_Manifest(strBillNo, strConNo, strGpsNum, strregnum) = False Then
@@ -5803,7 +5804,7 @@ Private Sub GetTotalPaymentAmounts()
         .Customer = rstCYMPay.Fields("cusnam")
         .TotalPayment = .ADR + .CheckAmt1 + .CheckAmt2 + .CheckAmt3 + .CheckAmt4 + .CheckAmt5 _
                                 + .Cash - .Change
-                                txtLog.Text = txtLog.Text & "GetTotalPaymentAmounts: Start Sub" & vbCrLf
+        txtLog.Text = txtLog.Text & "GetTotalPaymentAmounts: Start Sub" & vbCrLf
         .RemainingPayment = .TotalPayment
         txtLog.Text = txtLog.Text & "GetTotalPaymentAmounts: Start Sub" & vbCrLf
     End With
@@ -6568,6 +6569,8 @@ Private Sub WriteIfForExam(pRow As Integer, pCol As Byte, pGatePassNo As Long)
     Dim blnExaminationRequired As Boolean
     blnExaminationRequired = Trim(msfCharges.TextMatrix(pRow, pCol)) = "Y"
     If blnExaminationRequired Then
+On Error GoTo errWriteBOC
+WriteBOC:
         Set rstBOCExam = New ADODB.Recordset
         msfCharges.Row = pRow
         With rstBOCExam
@@ -6585,6 +6588,17 @@ Private Sub WriteIfForExam(pRow As Integer, pCol As Byte, pGatePassNo As Long)
             .Update
             .Close
         End With
+    End If
+    Exit Sub
+errWriteBOC:
+        intResponse = MsgBox("Error writing in Exam file...", vbExclamation + vbDefaultButton2 + vbAbortRetryIgnore, "Error!")
+    If intResponse = vbAbort Then
+        Exit Sub
+    ElseIf (intResponse = vbRetry) Or (intResponse = vbIgnore) Then
+        Dim dc As clsCYMDE01
+        dc.Disconnect
+        dc.ConnectByStr (pCnnStr2)
+        GoTo WriteBOC
     End If
 End Sub
 
@@ -6857,7 +6871,7 @@ End Sub
 Public Function UpdateChargableUnitStorageReeferStatus(ByVal strcContNo As String, ByVal strcCharge As String, ByVal strcGKey As String)
     Dim rstN4Status As ADODB.Recordset
     Dim strN4StatusQuery As String
-    
+    On Error GoTo errHandle
     Set rstN4Status = New ADODB.Recordset
     
     If strcCharge = "STORAGE" Then
@@ -6874,6 +6888,11 @@ Public Function UpdateChargableUnitStorageReeferStatus(ByVal strcContNo As Strin
     rstN4Status.Open strN4StatusQuery, gcnnNavis, adOpenForwardOnly, adLockReadOnly
     
     Set rstN4Status = Nothing
+    Exit Function
+errHandle:
+    gcnnNavis.Close
+    Set gcnnNavis = Nothing
+    Call ConnectToNavis
 End Function
 
 Private Sub LoadColumnNumbers()
