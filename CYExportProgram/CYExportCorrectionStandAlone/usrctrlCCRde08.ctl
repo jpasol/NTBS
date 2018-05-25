@@ -490,20 +490,12 @@ Begin VB.UserControl usrctrlCCRde08
          TabIndex        =   19
          Top             =   5490
          Width           =   1455
-         _ExtentX        =   2566
-         _ExtentY        =   741
-         BackColor       =   -2147483633
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Arial"
-            Size            =   15
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         MaxLength       =   8
-         Alignment       =   1
+         _extentx        =   2566
+         _extenty        =   741
+         backcolor       =   -2147483633
+         font            =   "usrctrlCCRde08.ctx":008C
+         maxlength       =   8
+         alignment       =   1
       End
       Begin CCRde08.utxtEntry utxtDetEntnum 
          Height          =   420
@@ -512,20 +504,12 @@ Begin VB.UserControl usrctrlCCRde08
          TabIndex        =   18
          Top             =   5490
          Width           =   1455
-         _ExtentX        =   2566
-         _ExtentY        =   741
-         BackColor       =   -2147483633
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Arial"
-            Size            =   15
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         MaxLength       =   8
-         Alignment       =   1
+         _extentx        =   2566
+         _extenty        =   741
+         backcolor       =   -2147483633
+         font            =   "usrctrlCCRde08.ctx":00B0
+         maxlength       =   8
+         alignment       =   1
       End
       Begin MpUserControls.utxtTextBilling utxtPymChqBnk 
          Height          =   420
@@ -1650,20 +1634,12 @@ Begin VB.UserControl usrctrlCCRde08
             TabIndex        =   27
             Top             =   5640
             Width           =   1455
-            _ExtentX        =   2566
-            _ExtentY        =   741
-            BackColor       =   -2147483633
-            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "Arial"
-               Size            =   15
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            MaxLength       =   8
-            Alignment       =   1
+            _extentx        =   2566
+            _extenty        =   741
+            backcolor       =   -2147483633
+            font            =   "usrctrlCCRde08.ctx":00D4
+            maxlength       =   8
+            alignment       =   1
          End
          Begin CCRde08.utxtEntry utxtDetEntnum 
             Height          =   420
@@ -1672,20 +1648,12 @@ Begin VB.UserControl usrctrlCCRde08
             TabIndex        =   26
             Top             =   5640
             Width           =   1455
-            _ExtentX        =   2566
-            _ExtentY        =   741
-            BackColor       =   -2147483633
-            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "Arial"
-               Size            =   15
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            MaxLength       =   8
-            Alignment       =   1
+            _extentx        =   2566
+            _extenty        =   741
+            backcolor       =   -2147483633
+            font            =   "usrctrlCCRde08.ctx":00F8
+            maxlength       =   8
+            alignment       =   1
          End
          Begin CCRde08.utxtEntry utxtDetEntnum 
             Height          =   420
@@ -1694,20 +1662,12 @@ Begin VB.UserControl usrctrlCCRde08
             TabIndex        =   25
             Top             =   5640
             Width           =   1455
-            _ExtentX        =   2566
-            _ExtentY        =   741
-            BackColor       =   -2147483633
-            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "Arial"
-               Size            =   15
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            MaxLength       =   8
-            Alignment       =   1
+            _extentx        =   2566
+            _extenty        =   741
+            backcolor       =   -2147483633
+            font            =   "usrctrlCCRde08.ctx":011C
+            maxlength       =   8
+            alignment       =   1
          End
          Begin CCRde08.utxtEntry utxtDetEntnum 
             Height          =   420
@@ -1716,20 +1676,12 @@ Begin VB.UserControl usrctrlCCRde08
             TabIndex        =   24
             Top             =   5640
             Width           =   1455
-            _ExtentX        =   2566
-            _ExtentY        =   741
-            BackColor       =   -2147483633
-            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "Arial"
-               Size            =   15
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            MaxLength       =   8
-            Alignment       =   1
+            _extentx        =   2566
+            _extenty        =   741
+            backcolor       =   -2147483633
+            font            =   "usrctrlCCRde08.ctx":0140
+            maxlength       =   8
+            alignment       =   1
          End
          Begin CCRde08.utxtEntry utxtDetEntnum 
             Height          =   420
@@ -1738,20 +1690,12 @@ Begin VB.UserControl usrctrlCCRde08
             TabIndex        =   23
             Top             =   5640
             Width           =   1455
-            _ExtentX        =   2566
-            _ExtentY        =   741
-            BackColor       =   -2147483633
-            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "Arial"
-               Size            =   15
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            MaxLength       =   8
-            Alignment       =   1
+            _extentx        =   2566
+            _extenty        =   741
+            backcolor       =   -2147483633
+            font            =   "usrctrlCCRde08.ctx":0164
+            maxlength       =   8
+            alignment       =   1
          End
          Begin CCRde08.utxtEntry utxtDetEntnum 
             Height          =   420
@@ -1760,20 +1704,12 @@ Begin VB.UserControl usrctrlCCRde08
             TabIndex        =   22
             Top             =   5040
             Width           =   1455
-            _ExtentX        =   2566
-            _ExtentY        =   741
-            BackColor       =   -2147483633
-            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "Arial"
-               Size            =   15
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            MaxLength       =   8
-            Alignment       =   1
+            _extentx        =   2566
+            _extenty        =   741
+            backcolor       =   -2147483633
+            font            =   "usrctrlCCRde08.ctx":0188
+            maxlength       =   8
+            alignment       =   1
          End
          Begin CCRde08.utxtEntry utxtDetEntnum 
             Height          =   420
@@ -1782,20 +1718,12 @@ Begin VB.UserControl usrctrlCCRde08
             TabIndex        =   21
             Top             =   5040
             Width           =   1455
-            _ExtentX        =   2566
-            _ExtentY        =   741
-            BackColor       =   -2147483633
-            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "Arial"
-               Size            =   15
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            MaxLength       =   8
-            Alignment       =   1
+            _extentx        =   2566
+            _extenty        =   741
+            backcolor       =   -2147483633
+            font            =   "usrctrlCCRde08.ctx":01AC
+            maxlength       =   8
+            alignment       =   1
          End
          Begin CCRde08.utxtEntry utxtDetEntnum 
             Height          =   420
@@ -1804,20 +1732,12 @@ Begin VB.UserControl usrctrlCCRde08
             TabIndex        =   20
             Top             =   5040
             Width           =   1455
-            _ExtentX        =   2566
-            _ExtentY        =   741
-            BackColor       =   -2147483633
-            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "Arial"
-               Size            =   15
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            MaxLength       =   8
-            Alignment       =   1
+            _extentx        =   2566
+            _extenty        =   741
+            backcolor       =   -2147483633
+            font            =   "usrctrlCCRde08.ctx":01D0
+            maxlength       =   8
+            alignment       =   1
          End
          Begin VB.Frame Frame9 
             Caption         =   " BOC Permit Numbers "
@@ -5444,7 +5364,7 @@ Set rstDetails = DE.rsRtvDetails
 With rstDetails
     Do While Not .EOF
         If .Fields("guarntycde") <> "Y" Then
-            sngTotalAmt = .Fields("arramt") + .Fields("ovzamt") + .Fields("dgramt") + .Fields("arrvat") - _
+            sngTotalAmt = sngTotalAmt + .Fields("arramt") + .Fields("ovzamt") + .Fields("dgramt") + .Fields("arrvat") - _
                 .Fields("arrtax")
         End If
         If .Fields("whfcde") = 0 Then
