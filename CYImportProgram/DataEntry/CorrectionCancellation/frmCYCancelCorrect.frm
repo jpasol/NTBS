@@ -1,6 +1,6 @@
 VERSION 5.00
-Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "MSMASK32.OCX"
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "tabctl32.OCX"
+Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "msmask32.ocx"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Begin VB.Form frmCYCancelCorrect 
    Caption         =   "Cancellation / Correction"
    ClientHeight    =   11010
@@ -24,7 +24,7 @@ Begin VB.Form frmCYCancelCorrect
       _ExtentY        =   19129
       _Version        =   393216
       Tabs            =   4
-      Tab             =   2
+      Tab             =   1
       TabsPerRow      =   4
       TabHeight       =   520
       ForeColor       =   32768
@@ -41,24 +41,23 @@ Begin VB.Form frmCYCancelCorrect
       TabPicture(0)   =   "frmCYCancelCorrect.frx":0000
       Tab(0).ControlEnabled=   0   'False
       Tab(0).Control(0)=   "fraDetail"
-      Tab(0).Control(0).Enabled=   0   'False
       Tab(0).Control(1)=   "Frame1"
-      Tab(0).Control(1).Enabled=   0   'False
       Tab(0).Control(2)=   "cmdSaveCorrectGatePass"
-      Tab(0).Control(2).Enabled=   0   'False
       Tab(0).ControlCount=   3
       TabCaption(1)   =   "Cancel Gatepass"
       TabPicture(1)   =   "frmCYCancelCorrect.frx":001C
-      Tab(1).ControlEnabled=   0   'False
+      Tab(1).ControlEnabled=   -1  'True
       Tab(1).Control(0)=   "Frame3"
+      Tab(1).Control(0).Enabled=   0   'False
       Tab(1).Control(1)=   "Frame4"
+      Tab(1).Control(1).Enabled=   0   'False
       Tab(1).Control(2)=   "cmdCancelGatepass"
+      Tab(1).Control(2).Enabled=   0   'False
       Tab(1).ControlCount=   3
       TabCaption(2)   =   "Correct Payment"
       TabPicture(2)   =   "frmCYCancelCorrect.frx":0038
-      Tab(2).ControlEnabled=   -1  'True
+      Tab(2).ControlEnabled=   0   'False
       Tab(2).Control(0)=   "fraPayment"
-      Tab(2).Control(0).Enabled=   0   'False
       Tab(2).ControlCount=   1
       TabCaption(3)   =   "View"
       TabPicture(3)   =   "frmCYCancelCorrect.frx":0054
@@ -655,7 +654,7 @@ Begin VB.Form frmCYCancelCorrect
             Strikethrough   =   0   'False
          EndProperty
          Height          =   400
-         Left            =   -62400
+         Left            =   12600
          TabIndex        =   19
          Top             =   1920
          Width           =   2175
@@ -691,7 +690,7 @@ Begin VB.Form frmCYCancelCorrect
          EndProperty
          ForeColor       =   &H8000000D&
          Height          =   8055
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   69
          Top             =   2400
          Width           =   14535
@@ -1111,7 +1110,7 @@ Begin VB.Form frmCYCancelCorrect
       End
       Begin VB.Frame Frame3 
          Height          =   1455
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   66
          Top             =   840
          Width           =   6135
@@ -1219,7 +1218,7 @@ Begin VB.Form frmCYCancelCorrect
       End
       Begin VB.Frame fraPayment 
          Height          =   9855
-         Left            =   600
+         Left            =   -74400
          TabIndex        =   56
          Top             =   600
          Width           =   13815
@@ -2686,6 +2685,7 @@ If IsNumeric(mskReference2) Then
     If intResponse = vbYes Then
         intTabNumber = 2
         Call WriteCancelGatepassTab
+        Call UpdatePayments(Val(mskReference2), Val(mskSequence2))
         Call WriteToLogOrig
         Call WriteToLogUpdated
         Call InitializeCancelGatepassTab
@@ -3230,7 +3230,7 @@ Private Sub WriteToLogOrig()
         If Not IsNull(CYMField.outdte) Then
             .Fields("outdte") = CYMField.outdte
         End If
-        .Update
+        .update
     End With
 End Sub
 
@@ -3413,7 +3413,7 @@ Private Sub WriteToLogUpdated()
         If Not IsNull(CYMField.outdte) Then
             .Fields("outdte") = CYMField.outdte
         End If
-        .Update
+        .update
         .Close
     End With
 End Sub
@@ -3438,7 +3438,7 @@ Private Function WriteCorrectGatepassTab() As Integer
         .Fields("remark") = txtRemarks
         .Fields("cusgrd") = ConvertToChar(chkCustomsGuard.Value)
         .Fields("updcde") = "U"
-        .Update
+        .update
         .Close
     End With
     Exit Function
@@ -3461,7 +3461,7 @@ Private Sub WriteCancelGatepassTab()
         strContainer = Trim(.Fields("cntnum"))
         Call UpdateACOCTN(lngGatepass, strContainer)
         .Fields("status") = "CAN"
-        .Update
+        .update
         .Close
     End With
     End If
@@ -3483,6 +3483,108 @@ Private Sub UpdateACOCTN(pGatePass As Long, pContainer As String)
                             "'" & (Left(pContainer, 10) & "_") & "' and ctn_gpsnum = " & pGatePass
     cmdCancel.Execute
 End Sub
+Private Sub UpdatePayments(lngRefno As Long, lngSeqno As Long)
+Dim rstDetails As ADODB.Recordset
+Dim rstPayments As ADODB.Recordset
+
+Dim TotalCharges As Currency
+Dim TotalPayments As Currency
+
+Dim counter As Integer
+TotalCharges = 0
+TotalPayments = 0
+
+'get totalcharges from details
+Set rstDetails = New ADODB.Recordset
+Set rstPayments = New ADODB.Recordset
+rstDetails.Open "Select * from CYMGps where refnum =" & lngRefno & " and seqnum =" & lngSeqno & "order by seqnum", gcnnBilling, , , adCmdText
+rstPayments.Open "Select * from CYMPay where refnum =" & lngRefno, gcnnBilling, , adLockOptimistic, adCmdText
+
+'summarize charges
+With rstDetails
+
+    .MoveFirst
+    While Not .EOF = True
+    TotalCharges = TotalCharges _
+    + .Fields("arramt") + .Fields("arrvat") - .Fields("arrtax") _
+    + .Fields("stoamt") + .Fields("stovat") - .Fields("stotax") _
+    + .Fields("wghamt") + .Fields("wghvat") - .Fields("wghtax") _
+    + .Fields("rframt") + .Fields("rfrvat") - .Fields("rfrtax") _
+    + .Fields("whfamt")
+    
+    .MoveNext
+    Wend
+    .Close
+    End With
+'get payments
+With rstPayments
+
+    'add adr
+    TotalPayments = TotalPayments + .Fields("adramt")
+    
+    'add cheque 1 to 5
+    For counter = 1 To 5
+    TotalPayments = TotalPayments + .Fields(CStr("chkamt" & counter))
+    Next
+    
+    'add cash
+    TotalPayments = TotalPayments + .Fields("cshamt")
+    
+'calculate payments
+    'ADR
+    If .Fields("adramt") > 0 And .Fields("adramt") <= TotalCharges Then
+    TotalCharges = TotalCharges - .Fields("adramt")
+    TotalPayments = TotalPayments - .Fields("adramt")
+    .Fields("adramt") = 0
+    .Fields("adrnum") = 0
+    Else
+    If .Fields("adramt") > TotalCharges Then
+    .Fields("adramt") = .Fields("adramt") - TotalCharges
+    TotalPayments = TotalPayments - TotalCharges
+    TotalCharges = 0
+    GoTo update
+    End If
+    End If
+    
+    'Cheques 1 to 5
+    For counter = 1 To 5
+    If .Fields(CStr("chkamt" & counter)) > 0 And .Fields(CStr("chkamt" & counter)) <= TotalCharges Then
+    TotalCharges = TotalCharges - .Fields(CStr("chkamt" & counter))
+    TotalPayments = TotalPayments - .Fields(CStr("chkamt" & counter))
+    .Fields(CStr("chkamt" & counter)) = 0
+    .Fields(CStr("chkno" & counter)) = 0
+    .Fields(CStr("chkbnk" & counter)) = ""
+    Else
+    If .Fields(CStr("chkamt" & counter)) > TotalCharges Then
+    .Fields(CStr("chkamt" & counter)) = .Fields(CStr("chkamt" & counter)) - TotalCharges
+    TotalPayments = TotalPayments - TotalCharges
+    TotalCharges = 0
+    GoTo update
+    End If
+    End If
+    Next
+    
+    'Cash
+    If .Fields("cshamt") > 0 And .Fields("cshamt") <= TotalCharges Then
+    TotalCharges = TotalCharges - .Fields("cshamt")
+    TotalPayments = TotalPayments - .Fields("cshamt")
+    .Fields("cshamt") = 0
+    Else
+    If .Fields("cshamt") > TotalCharges Then
+    .Fields("cshamt") = .Fields("cshamt") - TotalCharges
+    TotalPayments = TotalPayments - TotalCharges
+    TotalCharges = 0
+    GoTo update
+    End If
+    End If
+    
+update:
+    .Fields("chgamt") = TotalPayments
+    .update
+    .Close
+    End With
+End Sub
+
 Private Sub InitializeCorrectGatepassTab()
     'mskReference = ""
     mskSequence = ""
@@ -3611,7 +3713,7 @@ Private Sub SaveCorrectPayment()
         .Fields("chkbnk3") = "" & txtBank(2)
         .Fields("chkbnk4") = "" & txtBank(3)
         .Fields("chkbnk5") = "" & txtBank(4)
-        .Update
+        .update
         .Close
     End With
     End If
@@ -3680,27 +3782,27 @@ Private Sub SumPaymentTypes()
 End Sub
 
 
-Private Sub mskCheckAmount_KeyDown(Index As Integer, KeyCode As Integer, Shift As Integer)
-    Select Case Index
+Private Sub mskCheckAmount_KeyDown(index As Integer, KeyCode As Integer, Shift As Integer)
+    Select Case index
         Case 0
-            Call FieldAdvance(KeyCode, mskCashAmount, mskCheckNo(Index))
+            Call FieldAdvance(KeyCode, mskCashAmount, mskCheckNo(index))
         Case 1, 2, 3, 4
-            Call FieldAdvance(KeyCode, mskCheckAmount(Index - 1), mskCheckNo(Index))
+            Call FieldAdvance(KeyCode, mskCheckAmount(index - 1), mskCheckNo(index))
     End Select
 End Sub
 
-Private Sub mskCheckAmount_LostFocus(Index As Integer)
-    If Not IsNumeric(mskCheckAmount(Index)) Then mskCheckAmount(Index) = 0
-    mskCheckAmount(Index) = Format(mskCheckAmount(Index), "###,###,##0.00")
+Private Sub mskCheckAmount_LostFocus(index As Integer)
+    If Not IsNumeric(mskCheckAmount(index)) Then mskCheckAmount(index) = 0
+    mskCheckAmount(index) = Format(mskCheckAmount(index), "###,###,##0.00")
     Call SumPaymentTypes
 End Sub
 
-Private Sub mskCheckNo_KeyDown(Index As Integer, KeyCode As Integer, Shift As Integer)
-    Call FieldAdvance(KeyCode, mskCheckAmount(Index), txtBank(Index))
+Private Sub mskCheckNo_KeyDown(index As Integer, KeyCode As Integer, Shift As Integer)
+    Call FieldAdvance(KeyCode, mskCheckAmount(index), txtBank(index))
 End Sub
 
-Private Sub mskCheckNo_LostFocus(Index As Integer)
-    If Not IsNumeric(mskCheckNo(Index)) Then mskCheckNo(Index) = 0
+Private Sub mskCheckNo_LostFocus(index As Integer)
+    If Not IsNumeric(mskCheckNo(index)) Then mskCheckNo(index) = 0
 End Sub
 
 Private Sub mskGatePassNo_KeyDown(KeyCode As Integer, Shift As Integer)
@@ -3766,17 +3868,17 @@ Private Sub sstMain_KeyDown(KeyCode As Integer, Shift As Integer)
     End If
 End Sub
 
-Private Sub txtBank_KeyDown(Index As Integer, KeyCode As Integer, Shift As Integer)
-    Select Case Index
+Private Sub txtBank_KeyDown(index As Integer, KeyCode As Integer, Shift As Integer)
+    Select Case index
         Case 0, 1, 2, 3
-            Call FieldAdvance(KeyCode, mskCheckNo(Index), mskCheckAmount(Index + 1))
+            Call FieldAdvance(KeyCode, mskCheckNo(index), mskCheckAmount(index + 1))
         Case 4
-            Call FieldAdvance(KeyCode, mskCheckNo(Index), txtCustomerCode)
+            Call FieldAdvance(KeyCode, mskCheckNo(index), txtCustomerCode)
     End Select
 End Sub
 
-Private Sub txtBank_LostFocus(Index As Integer)
-    txtBank(Index) = "" & txtBank(Index)
+Private Sub txtBank_LostFocus(index As Integer)
+    txtBank(index) = "" & txtBank(index)
 End Sub
 
 Private Sub txtBoatNote_KeyDown(KeyCode As Integer, Shift As Integer)
