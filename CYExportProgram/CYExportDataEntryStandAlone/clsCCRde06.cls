@@ -79,6 +79,7 @@ Dim lsErrStr As String
     gcnnBilling.Open pCnnStr
     gbConnected = True
     ConnectByStr = True
+    pCnnStr2 = pCnnStr
     Exit Function
 err_Connect:
     ConnectByStr = False: gbConnected = False

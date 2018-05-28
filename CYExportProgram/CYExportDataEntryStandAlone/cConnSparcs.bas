@@ -1398,6 +1398,7 @@ Err_PW:
 End Function
 
 Public Function ReleaseHold(ByVal pContNum As String)
+ On Error GoTo errhd
     Dim objDom As Object
     Dim objXmlHttp As Object
     Dim strSoapAction As String
@@ -1472,7 +1473,11 @@ Public Function ReleaseHold(ByVal pContNum As String)
    'Debug.Print strParam
     ' Close object
     Set objXmlHttp = Nothing
-    
+    Exit Function
+errhd:
+    MsgBox "Error in ReleaseHold" & vbNewLine & _
+    "Error Number: " & err.Number & vbNewLine & _
+    "Error Description: " & err.Description, vbExclamation + vbOKOnly, "Error! ReleaseHold"
 End Function
 
 'added Navis Project Team 10/26/2009
@@ -1625,6 +1630,9 @@ On Error GoTo ERR_Handler
     ReleaseDGHold = result
     Exit Function
 ERR_Handler:
+    MsgBox "Error in ReleaseDGHold" & vbNewLine & _
+    "Error Number: " & err.Number & vbNewLine & _
+    "Error Description: " & err.Description, vbExclamation + vbOKOnly, "Error! ReleaseDGHold"
     ReleaseDGHold = "Error: " & err.Number & " - " & err.Description
 End Function
 
@@ -1779,6 +1787,9 @@ On Error GoTo ERR_Handler
     ReleaseOOGHold = result
     Exit Function
 ERR_Handler:
+    MsgBox "Error in ReleaseOOGHold" & vbNewLine & _
+    "Error Number: " & err.Number & vbNewLine & _
+    "Error Description: " & err.Description, vbExclamation + vbOKOnly, "Error! ReleaseOOGHold"
     ReleaseOOGHold = "Error: " & err.Number & " - " & err.Description
 End Function
 
@@ -1822,6 +1833,7 @@ Loop
 End Sub
 
 Public Sub GetContainerLastestCategory(ByVal ContainerNo As String, ByRef Category As String, ByRef HasUnitOut As Boolean)
+On Error GoTo errhd
     Dim rsGKey As ADODB.Recordset
     Dim strQuery As String
     Dim Unit_GKey As String
@@ -1843,4 +1855,9 @@ Public Sub GetContainerLastestCategory(ByVal ContainerNo As String, ByRef Catego
     
     rsGKey.Close
     Set rsGKey = Nothing
+    Exit Sub
+errhd:
+    MsgBox "Error in GetContainerLastestCategory" & vbNewLine & _
+    "Error Number: " & err.Number & vbNewLine & _
+    "Error Description: " & err.Description, vbExclamation + vbOKOnly, "Error! GetContainerLastestCategory"
 End Sub
