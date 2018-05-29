@@ -24,7 +24,7 @@ Begin VB.Form frmCYCancelCorrect
       _ExtentY        =   19129
       _Version        =   393216
       Tabs            =   4
-      Tab             =   1
+      Tab             =   2
       TabsPerRow      =   4
       TabHeight       =   520
       ForeColor       =   32768
@@ -46,7 +46,7 @@ Begin VB.Form frmCYCancelCorrect
       Tab(0).ControlCount=   3
       TabCaption(1)   =   "Cancel Gatepass"
       TabPicture(1)   =   "frmCYCancelCorrect.frx":001C
-      Tab(1).ControlEnabled=   -1  'True
+      Tab(1).ControlEnabled=   0   'False
       Tab(1).Control(0)=   "Frame3"
       Tab(1).Control(0).Enabled=   0   'False
       Tab(1).Control(1)=   "Frame4"
@@ -56,8 +56,9 @@ Begin VB.Form frmCYCancelCorrect
       Tab(1).ControlCount=   3
       TabCaption(2)   =   "Correct Payment"
       TabPicture(2)   =   "frmCYCancelCorrect.frx":0038
-      Tab(2).ControlEnabled=   0   'False
+      Tab(2).ControlEnabled=   -1  'True
       Tab(2).Control(0)=   "fraPayment"
+      Tab(2).Control(0).Enabled=   0   'False
       Tab(2).ControlCount=   1
       TabCaption(3)   =   "View"
       TabPicture(3)   =   "frmCYCancelCorrect.frx":0054
@@ -654,7 +655,7 @@ Begin VB.Form frmCYCancelCorrect
             Strikethrough   =   0   'False
          EndProperty
          Height          =   400
-         Left            =   12600
+         Left            =   -62400
          TabIndex        =   19
          Top             =   1920
          Width           =   2175
@@ -690,7 +691,7 @@ Begin VB.Form frmCYCancelCorrect
          EndProperty
          ForeColor       =   &H8000000D&
          Height          =   8055
-         Left            =   240
+         Left            =   -74760
          TabIndex        =   69
          Top             =   2400
          Width           =   14535
@@ -1110,7 +1111,7 @@ Begin VB.Form frmCYCancelCorrect
       End
       Begin VB.Frame Frame3 
          Height          =   1455
-         Left            =   240
+         Left            =   -74760
          TabIndex        =   66
          Top             =   840
          Width           =   6135
@@ -1218,7 +1219,7 @@ Begin VB.Form frmCYCancelCorrect
       End
       Begin VB.Frame fraPayment 
          Height          =   9855
-         Left            =   -74400
+         Left            =   600
          TabIndex        =   56
          Top             =   600
          Width           =   13815
@@ -2600,7 +2601,7 @@ Private Type CYMFields
     outdte As Date
 End Type
 
-Dim rstCYMGps As ADODB.Recordset
+Dim rstCYMGPS As ADODB.Recordset
 Dim rstCYMGpsZ As ADODB.Recordset
 Dim rstCYMPAY As ADODB.Recordset
 Dim rstACOCTN As ADODB.Recordset
@@ -2684,8 +2685,8 @@ If IsNumeric(mskReference2) Then
     intResponse = MsgBox("Are you sure you want to cancel this detail?", vbCritical + vbYesNo, "")
     If intResponse = vbYes Then
         intTabNumber = 2
-        Call WriteCancelGatepassTab
         Call UpdatePayments(Val(mskReference2), Val(mskSequence2))
+        Call WriteCancelGatepassTab
         Call WriteToLogOrig
         Call WriteToLogUpdated
         Call InitializeCancelGatepassTab
@@ -2713,12 +2714,12 @@ Private Sub GetInfo()
     Dim blnPPAExist As Boolean
     Dim blnCancelled As Boolean
     
-    Set rstCYMGps = New ADODB.Recordset
-    rstCYMGps.LockType = adLockOptimistic
-    rstCYMGps.CursorType = adOpenStatic
-    rstCYMGps.Open "Select * from CYMGps where refnum =" & Val(mskReference) & " and seqnum =" & Val(mskSequence), gcnnBilling, , , adCmdText
+    Set rstCYMGPS = New ADODB.Recordset
+    rstCYMGPS.LockType = adLockOptimistic
+    rstCYMGPS.CursorType = adOpenStatic
+    rstCYMGPS.Open "Select * from CYMGps where refnum =" & Val(mskReference) & " and seqnum =" & Val(mskSequence), gcnnBilling, , , adCmdText
 
-    With rstCYMGps
+    With rstCYMGPS
         If .EOF And .BOF Then
             intResponse = MsgBox("Reference/Sequence Number not found.", vbOKOnly + vbInformation, "")
             mskReference.SetFocus
@@ -2753,7 +2754,7 @@ Private Sub GetInfo()
 End Sub
 
 Private Sub getCYMFields()
-    With rstCYMGps
+    With rstCYMGPS
         CYMField.refnum = .Fields("refnum")
         CYMField.seqnum = .Fields("seqnum")
         CYMField.gpsnum = .Fields("gpsnum")
@@ -2889,12 +2890,12 @@ Private Sub GetInfo2()
         End If
     End With
     
-    Set rstCYMGps = New ADODB.Recordset
-    rstCYMGps.LockType = adLockOptimistic
-    rstCYMGps.CursorType = adOpenStatic
-    rstCYMGps.Open "Select * from CYMGps where refnum =" & Val(mskReference2) & " and seqnum =" & Val(mskSequence2), gcnnBilling, , , adCmdText
+    Set rstCYMGPS = New ADODB.Recordset
+    rstCYMGPS.LockType = adLockOptimistic
+    rstCYMGPS.CursorType = adOpenStatic
+    rstCYMGPS.Open "Select * from CYMGps where refnum =" & Val(mskReference2) & " and seqnum =" & Val(mskSequence2), gcnnBilling, , , adCmdText
 
-    With rstCYMGps
+    With rstCYMGPS
         If .EOF And .BOF Then
             intResponse = MsgBox("Reference/Sequence Number not found.", vbOKOnly + vbInformation, "")
             mskReference2.SetFocus
@@ -2948,11 +2949,13 @@ Private Sub cmdGetCorrectGatePass_KeyDown(KeyCode As Integer, Shift As Integer)
 End Sub
 
 Private Sub cmdGetCorrectPayment_Click()
+    Dim rstCYMGPS As ADODB.Recordset
+    Set rstCYMGPS = New ADODB.Recordset
     Set rstCYMPAY = New ADODB.Recordset
     rstCYMPAY.LockType = adLockOptimistic
     rstCYMPAY.CursorType = adOpenStatic
     rstCYMPAY.Open "Select * from CYMPay where refnum =" & Val(mskReference3), gcnnBilling, , , adCmdText
-    
+    rstCYMGPS.Open "Select * from CYMGps where refnum =" & Val(mskReference3) & "and status <> 'CAN'", gcnnBilling, , , adCmdText
     With rstCYMPAY
         If .EOF And .BOF Then
             intResponse = MsgBox("Reference Number not found.", vbOKOnly + vbInformation, "")
@@ -2987,9 +2990,9 @@ Private Sub cmdGetCorrectPayment_Click()
             mskADRAmount = .Fields("adramt")
             mskADRNum = .Fields("adrnum")
             mskChange = .Fields("chgamt")
-            mskAmountToPay = CCur(mskCashAmount) + CCur(mskCheckAmount(0)) + CCur(mskCheckAmount(1)) _
-                                + CCur(mskCheckAmount(2)) + CCur(mskCheckAmount(3)) + CCur(mskCheckAmount(4)) _
-                                + CCur(mskADRAmount) - CCur(mskChange)
+'            mskAmountToPay = CCur(mskCashAmount) + CCur(mskCheckAmount(0)) + CCur(mskCheckAmount(1)) _
+'                                + CCur(mskCheckAmount(2)) + CCur(mskCheckAmount(3)) + CCur(mskCheckAmount(4)) _
+'                                + CCur(mskADRAmount) - CCur(mskChange)
             curPreviousADRAmount = CCur(mskADRAmount)
             curPreviousCashAmount = CCur(mskCashAmount)
             curPreviousCheck1 = CCur(mskCheckAmount(0))
@@ -3002,6 +3005,24 @@ Private Sub cmdGetCorrectPayment_Click()
 
         End If
         .Close
+        End With
+With rstCYMGPS
+mskAmountToPay = 0
+    If Not (.BOF And .EOF) Then
+    .MoveFirst
+    End If
+    While Not .EOF
+    mskAmountToPay = mskAmountToPay _
+    + .Fields("arramt") + .Fields("arrvat") - .Fields("arrtax") _
+    + .Fields("stoamt") + .Fields("stovat") - .Fields("stotax") _
+    + .Fields("wghamt") + .Fields("wghvat") - .Fields("wghtax") _
+    + .Fields("rframt") + .Fields("rfrvat") - .Fields("rfrtax") _
+    + .Fields("whfamt")
+    
+    .MoveNext
+    Wend
+    .Close
+    
     End With
     mskADRAmount.Enabled = True
     mskADRNum.Enabled = True
@@ -3013,12 +3034,12 @@ Continue:
 End Sub
 
 Private Sub cmdGetView_Click()
-    Set rstCYMGps = New ADODB.Recordset
-    rstCYMGps.LockType = adLockOptimistic
-    rstCYMGps.CursorType = adOpenStatic
-    rstCYMGps.Open "Select * from CYMGps where refnum =" & Val(mskReference4) & " and seqnum =" & Val(mskSequence4), gcnnBilling, , , adCmdText
+    Set rstCYMGPS = New ADODB.Recordset
+    rstCYMGPS.LockType = adLockOptimistic
+    rstCYMGPS.CursorType = adOpenStatic
+    rstCYMGPS.Open "Select * from CYMGps where refnum =" & Val(mskReference4) & " and seqnum =" & Val(mskSequence4), gcnnBilling, , , adCmdText
 
-    With rstCYMGps
+    With rstCYMGPS
         If .EOF And .BOF Then
             intResponse = MsgBox("Reference/Sequence Number not found.", vbOKOnly + vbInformation, "")
             mskReference4.SelStart = 0
@@ -3419,13 +3440,13 @@ Private Sub WriteToLogUpdated()
 End Sub
 
 Private Function WriteCorrectGatepassTab() As Integer
-    Set rstCYMGps = New ADODB.Recordset
+    Set rstCYMGPS = New ADODB.Recordset
     On Error GoTo errWriteCorrectGatepassTab
-    rstCYMGps.LockType = adLockOptimistic
-    rstCYMGps.CursorType = adOpenDynamic
-    rstCYMGps.Open "Select * from CYMGps where refnum =" & Val(mskReference) & " and seqnum =" & Val(mskSequence), gcnnBilling, , , adCmdText
+    rstCYMGPS.LockType = adLockOptimistic
+    rstCYMGPS.CursorType = adOpenDynamic
+    rstCYMGPS.Open "Select * from CYMGps where refnum =" & Val(mskReference) & " and seqnum =" & Val(mskSequence), gcnnBilling, , , adCmdText
     
-    With rstCYMGps
+    With rstCYMGPS
         .Fields("gpsnum") = CLng(mskGatePassNo)
         .Fields("cntnum") = Trim(txtContainerNo)
         .Fields("commod") = txtCommodity
@@ -3450,13 +3471,13 @@ Private Sub WriteCancelGatepassTab()
     Dim lngGatepass As Long
     Dim strContainer As String
     If IsNumeric(mskReference2) Then
-    Set rstCYMGps = New ADODB.Recordset
+    Set rstCYMGPS = New ADODB.Recordset
     On Error GoTo errWriteCancelGatepassTab
-    rstCYMGps.LockType = adLockOptimistic
-    rstCYMGps.CursorType = adOpenDynamic
-    rstCYMGps.Open "Select * from CYMGps where refnum =" & Val(mskReference2) & " and seqnum =" & Val(mskSequence2), gcnnBilling, , , adCmdText
+    rstCYMGPS.LockType = adLockOptimistic
+    rstCYMGPS.CursorType = adOpenDynamic
+    rstCYMGPS.Open "Select * from CYMGps where refnum =" & Val(mskReference2) & " and seqnum =" & Val(mskSequence2), gcnnBilling, , , adCmdText
     
-    With rstCYMGps
+    With rstCYMGPS
         lngGatepass = .Fields("gpsnum")
         strContainer = Trim(.Fields("cntnum"))
         Call UpdateACOCTN(lngGatepass, strContainer)
@@ -3497,14 +3518,15 @@ TotalPayments = 0
 'get totalcharges from details
 Set rstDetails = New ADODB.Recordset
 Set rstPayments = New ADODB.Recordset
-rstDetails.Open "Select * from CYMGps where refnum =" & lngRefno & " and seqnum =" & lngSeqno & "order by seqnum", gcnnBilling, , , adCmdText
+rstDetails.Open "Select * from CYMGps where refnum =" & lngRefno & " and seqnum =" & lngSeqno & " and status <> 'CAN' order by seqnum", gcnnBilling, , , adCmdText
 rstPayments.Open "Select * from CYMPay where refnum =" & lngRefno, gcnnBilling, , adLockOptimistic, adCmdText
 
 'summarize charges
 With rstDetails
-
+    If Not (.BOF And .EOF) Then
     .MoveFirst
-    While Not .EOF = True
+    End If
+    While Not .EOF
     TotalCharges = TotalCharges _
     + .Fields("arramt") + .Fields("arrvat") - .Fields("arrtax") _
     + .Fields("stoamt") + .Fields("stovat") - .Fields("stotax") _
@@ -3579,7 +3601,6 @@ With rstPayments
     End If
     
 update:
-    .Fields("chgamt") = TotalPayments
     .update
     .Close
     End With
