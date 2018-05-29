@@ -1119,7 +1119,7 @@ Begin VB.Form frmManifestCont
             EndProperty
             CalendarBackColor=   16777215
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   261357571
+            Format          =   198115331
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtStorageFree 
@@ -1141,7 +1141,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   261357571
+            Format          =   198115331
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtEndStorage 
@@ -1163,7 +1163,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   261357571
+            Format          =   198180867
             CurrentDate     =   32874
          End
          Begin VB.Label lblManifest 
@@ -4938,8 +4938,9 @@ txtLog.Text = txtLog.Text & "cmdSave_Click: vChkCode = False" & vbCrLf
 '            Else
 '                lngControlNo = 0
 '            End If
-            Call SaveHeaders
+
             Call SaveDetails
+            Call SaveHeaders
             End If
 
             intResponse = MsgBox("Gatepass will now be printed.", vbOKOnly + vbInformation, "Printing...")
@@ -6607,15 +6608,16 @@ Private Function ConvertToChar(pValue As Integer) As String
 End Function
 
 Private Function MoveToField(pCol As Byte, pFieldType As String) As Variant
+    Dim strTemp As String
     msfCharges.Col = pCol
     Select Case pFieldType
         Case "N"
             MoveToField = CCur(msfCharges.Text)
         Case "C"
             If pCol = Column.ContainerID Then
-                MoveToField = RTrim(msfCharges.Text)
+                MoveToField = Replace(RTrim(msfCharges.Text), "'", "''")
             Else
-                MoveToField = Trim(msfCharges.Text)
+                MoveToField = Replace(Trim(msfCharges.Text), "'", "''")
             End If
         Case "D"
             MoveToField = CDate(msfCharges.Text)
