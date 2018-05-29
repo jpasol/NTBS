@@ -22,7 +22,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       QuoteChar       =   34
       SeparatorChar   =   46
    EndProperty
-   NumRecordsets   =   21
+   NumRecordsets   =   22
    BeginProperty Recordset1 
       CommandName     =   "RtvContainer"
       CommDispId      =   1002
@@ -2548,6 +2548,399 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
          Scale           =   255
          Size            =   12
          DataType        =   200
+         HostType        =   8
+         Required        =   -1  'True
+      EndProperty
+      RelationCount   =   0
+      AggregateCount  =   0
+   EndProperty
+   BeginProperty Recordset22 
+      CommandName     =   "getDetails"
+      CommDispId      =   1132
+      RsDispId        =   1136
+      CommandText     =   "SELECT * FROM CCRcyx WHERE (refnum = ?) AND (status <> 'CAN')"
+      ActiveConnectionName=   "Billing"
+      CommandType     =   1
+      IsRSReturning   =   -1  'True
+      NumFields       =   46
+      BeginProperty Field1 
+         Precision       =   8
+         Size            =   19
+         Scale           =   0
+         Type            =   131
+         Name            =   "refnum"
+         Caption         =   "refnum"
+      EndProperty
+      BeginProperty Field2 
+         Precision       =   3
+         Size            =   19
+         Scale           =   0
+         Type            =   131
+         Name            =   "seqnum"
+         Caption         =   "seqnum"
+      EndProperty
+      BeginProperty Field3 
+         Precision       =   1
+         Size            =   19
+         Scale           =   0
+         Type            =   131
+         Name            =   "itmnum"
+         Caption         =   "itmnum"
+      EndProperty
+      BeginProperty Field4 
+         Precision       =   0
+         Size            =   12
+         Scale           =   0
+         Type            =   129
+         Name            =   "cntnum"
+         Caption         =   "cntnum"
+      EndProperty
+      BeginProperty Field5 
+         Precision       =   8
+         Size            =   19
+         Scale           =   0
+         Type            =   131
+         Name            =   "ccrnum"
+         Caption         =   "ccrnum"
+      EndProperty
+      BeginProperty Field6 
+         Precision       =   2
+         Size            =   19
+         Scale           =   0
+         Type            =   131
+         Name            =   "cntsze"
+         Caption         =   "cntsze"
+      EndProperty
+      BeginProperty Field7 
+         Precision       =   0
+         Size            =   1
+         Scale           =   0
+         Type            =   129
+         Name            =   "fulemp"
+         Caption         =   "fulemp"
+      EndProperty
+      BeginProperty Field8 
+         Precision       =   0
+         Size            =   1
+         Scale           =   0
+         Type            =   129
+         Name            =   "dgrcls"
+         Caption         =   "dgrcls"
+      EndProperty
+      BeginProperty Field9 
+         Precision       =   0
+         Size            =   12
+         Scale           =   0
+         Type            =   129
+         Name            =   "vslcde"
+         Caption         =   "vslcde"
+      EndProperty
+      BeginProperty Field10 
+         Precision       =   6
+         Size            =   19
+         Scale           =   2
+         Type            =   131
+         Name            =   "whfamt"
+         Caption         =   "whfamt"
+      EndProperty
+      BeginProperty Field11 
+         Precision       =   8
+         Size            =   19
+         Scale           =   2
+         Type            =   131
+         Name            =   "arramt"
+         Caption         =   "arramt"
+      EndProperty
+      BeginProperty Field12 
+         Precision       =   8
+         Size            =   19
+         Scale           =   2
+         Type            =   131
+         Name            =   "ovzamt"
+         Caption         =   "ovzamt"
+      EndProperty
+      BeginProperty Field13 
+         Precision       =   8
+         Size            =   19
+         Scale           =   2
+         Type            =   131
+         Name            =   "dgramt"
+         Caption         =   "dgramt"
+      EndProperty
+      BeginProperty Field14 
+         Precision       =   8
+         Size            =   19
+         Scale           =   3
+         Type            =   131
+         Name            =   "arrvat"
+         Caption         =   "arrvat"
+      EndProperty
+      BeginProperty Field15 
+         Precision       =   8
+         Size            =   19
+         Scale           =   3
+         Type            =   131
+         Name            =   "arrtax"
+         Caption         =   "arrtax"
+      EndProperty
+      BeginProperty Field16 
+         Precision       =   0
+         Size            =   1
+         Scale           =   0
+         Type            =   129
+         Name            =   "vatcde"
+         Caption         =   "vatcde"
+      EndProperty
+      BeginProperty Field17 
+         Precision       =   6
+         Size            =   19
+         Scale           =   2
+         Type            =   131
+         Name            =   "cntovzl"
+         Caption         =   "cntovzl"
+      EndProperty
+      BeginProperty Field18 
+         Precision       =   6
+         Size            =   19
+         Scale           =   2
+         Type            =   131
+         Name            =   "cntovzw"
+         Caption         =   "cntovzw"
+      EndProperty
+      BeginProperty Field19 
+         Precision       =   6
+         Size            =   19
+         Scale           =   2
+         Type            =   131
+         Name            =   "cntovzh"
+         Caption         =   "cntovzh"
+      EndProperty
+      BeginProperty Field20 
+         Precision       =   0
+         Size            =   1
+         Scale           =   0
+         Type            =   129
+         Name            =   "ovzums"
+         Caption         =   "ovzums"
+      EndProperty
+      BeginProperty Field21 
+         Precision       =   6
+         Size            =   19
+         Scale           =   2
+         Type            =   131
+         Name            =   "revton"
+         Caption         =   "revton"
+      EndProperty
+      BeginProperty Field22 
+         Precision       =   0
+         Size            =   1
+         Scale           =   0
+         Type            =   129
+         Name            =   "trncde"
+         Caption         =   "trncde"
+      EndProperty
+      BeginProperty Field23 
+         Precision       =   0
+         Size            =   1
+         Scale           =   0
+         Type            =   129
+         Name            =   "whfcde"
+         Caption         =   "whfcde"
+      EndProperty
+      BeginProperty Field24 
+         Precision       =   0
+         Size            =   1
+         Scale           =   0
+         Type            =   129
+         Name            =   "guarntycde"
+         Caption         =   "guarntycde"
+      EndProperty
+      BeginProperty Field25 
+         Precision       =   5
+         Size            =   19
+         Scale           =   2
+         Type            =   131
+         Name            =   "dolrte"
+         Caption         =   "dolrte"
+      EndProperty
+      BeginProperty Field26 
+         Precision       =   0
+         Size            =   30
+         Scale           =   0
+         Type            =   200
+         Name            =   "exprtr"
+         Caption         =   "exprtr"
+      EndProperty
+      BeginProperty Field27 
+         Precision       =   0
+         Size            =   30
+         Scale           =   0
+         Type            =   200
+         Name            =   "broker"
+         Caption         =   "broker"
+      EndProperty
+      BeginProperty Field28 
+         Precision       =   0
+         Size            =   80
+         Scale           =   0
+         Type            =   200
+         Name            =   "entnum"
+         Caption         =   "entnum"
+      EndProperty
+      BeginProperty Field29 
+         Precision       =   0
+         Size            =   30
+         Scale           =   0
+         Type            =   200
+         Name            =   "commod"
+         Caption         =   "commod"
+      EndProperty
+      BeginProperty Field30 
+         Precision       =   0
+         Size            =   30
+         Scale           =   0
+         Type            =   200
+         Name            =   "remark"
+         Caption         =   "remark"
+      EndProperty
+      BeginProperty Field31 
+         Precision       =   0
+         Size            =   20
+         Scale           =   0
+         Type            =   200
+         Name            =   "trknam"
+         Caption         =   "trknam"
+      EndProperty
+      BeginProperty Field32 
+         Precision       =   0
+         Size            =   10
+         Scale           =   0
+         Type            =   200
+         Name            =   "pltnum"
+         Caption         =   "pltnum"
+      EndProperty
+      BeginProperty Field33 
+         Precision       =   0
+         Size            =   35
+         Scale           =   0
+         Type            =   200
+         Name            =   "trkchs"
+         Caption         =   "trkchs"
+      EndProperty
+      BeginProperty Field34 
+         Precision       =   0
+         Size            =   3
+         Scale           =   0
+         Type            =   129
+         Name            =   "status"
+         Caption         =   "status"
+      EndProperty
+      BeginProperty Field35 
+         Precision       =   8
+         Size            =   19
+         Scale           =   0
+         Type            =   131
+         Name            =   "ovrccr"
+         Caption         =   "ovrccr"
+      EndProperty
+      BeginProperty Field36 
+         Precision       =   8
+         Size            =   19
+         Scale           =   0
+         Type            =   131
+         Name            =   "ppanum"
+         Caption         =   "ppanum"
+      EndProperty
+      BeginProperty Field37 
+         Precision       =   0
+         Size            =   10
+         Scale           =   0
+         Type            =   129
+         Name            =   "userid"
+         Caption         =   "userid"
+      EndProperty
+      BeginProperty Field38 
+         Precision       =   23
+         Size            =   16
+         Scale           =   3
+         Type            =   135
+         Name            =   "sysdttm"
+         Caption         =   "sysdttm"
+      EndProperty
+      BeginProperty Field39 
+         Precision       =   0
+         Size            =   1
+         Scale           =   0
+         Type            =   129
+         Name            =   "updcde"
+         Caption         =   "updcde"
+      EndProperty
+      BeginProperty Field40 
+         Precision       =   23
+         Size            =   16
+         Scale           =   3
+         Type            =   135
+         Name            =   "outdttm"
+         Caption         =   "outdttm"
+      EndProperty
+      BeginProperty Field41 
+         Precision       =   0
+         Size            =   20
+         Scale           =   0
+         Type            =   129
+         Name            =   "supvsr"
+         Caption         =   "supvsr"
+      EndProperty
+      BeginProperty Field42 
+         Precision       =   0
+         Size            =   2
+         Scale           =   0
+         Type            =   11
+         Name            =   "IsN4BillingPermissionGranted"
+         Caption         =   "IsN4BillingPermissionGranted"
+      EndProperty
+      BeginProperty Field43 
+         Precision       =   8
+         Size            =   19
+         Scale           =   2
+         Type            =   131
+         Name            =   "wghamt"
+         Caption         =   "wghamt"
+      EndProperty
+      BeginProperty Field44 
+         Precision       =   0
+         Size            =   2
+         Scale           =   0
+         Type            =   11
+         Name            =   "IsN4BillingDGPermissionGranted"
+         Caption         =   "IsN4BillingDGPermissionGranted"
+      EndProperty
+      BeginProperty Field45 
+         Precision       =   0
+         Size            =   2
+         Scale           =   0
+         Type            =   11
+         Name            =   "IsN4BillingOOGPermissionGranted"
+         Caption         =   "IsN4BillingOOGPermissionGranted"
+      EndProperty
+      BeginProperty Field46 
+         Precision       =   0
+         Size            =   10
+         Scale           =   0
+         Type            =   202
+         Name            =   "CompanyCode"
+         Caption         =   "CompanyCode"
+      EndProperty
+      NumGroups       =   0
+      ParamCount      =   1
+      BeginProperty P1 
+         RealName        =   "Param1"
+         UserName        =   "refnum"
+         Direction       =   1
+         Precision       =   8
+         Scale           =   0
+         Size            =   19
+         DataType        =   131
          HostType        =   8
          Required        =   -1  'True
       EndProperty
