@@ -1119,7 +1119,7 @@ Begin VB.Form frmManifestCont
             EndProperty
             CalendarBackColor=   16777215
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   145162243
+            Format          =   194052099
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtStorageFree 
@@ -1141,7 +1141,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   145162243
+            Format          =   194052099
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtEndStorage 
@@ -1163,7 +1163,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   145162243
+            Format          =   194052099
             CurrentDate     =   32874
          End
          Begin VB.Label lblManifest 
@@ -6118,8 +6118,8 @@ Private Sub PrintGatePassDetail()
     
     With Detail
             On Error GoTo ErrPrinting
-            Printer.FontName = "Courier"
-            Printer.FontSize = 10
+            Printer.FontName = "Arial"
+            Printer.FontSize = 11
             Printer.PrintQuality = vbPRPQDraft
             Printer.Print
             Printer.Print
