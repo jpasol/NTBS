@@ -786,6 +786,7 @@ End Select
 End Function
 
 Public Function Sparcs_VisitID(ByVal pCont As String, ByVal strParamCat As String)
+On Error GoTo errhd
     Dim strSoapAction As String
     Dim strUrl, strFilter, strContNum, strOperator, strCategory As String
     Dim strXML As String
@@ -844,6 +845,11 @@ Public Function Sparcs_VisitID(ByVal pCont As String, ByVal strParamCat As Strin
     
     'PRNH - If no Visit ID was retrieved
     If Sparcs_VisitID = "" Then Sparcs_VisitID = pCont
+    Exit Function
+errhd:
+    MsgBox "Error writing in Sparcs_VisitID..." & vbNewLine & _
+                    "Error: " & err.Number & _
+                    err.Description, vbExclamation + vbOKOnly, "Error!"
 End Function
 
 Public Function GetVisitID(ByVal AsmxUrl As String, ByVal SoapActionUrl As String, ByVal XmlBody As String, ByVal Authorization As String) As String
@@ -908,6 +914,7 @@ Err_PW:
 End Function
 
 Public Function GetGKey(ByVal pCont As String, ByVal pStatus As String, ByVal pType As String, ByVal pCat As String, ByVal pVisit As String) As String
+On Error GoTo errhd:
     Dim rstGKey As ADODB.Recordset
     Dim strGKey As String
     
@@ -924,6 +931,11 @@ Public Function GetGKey(ByVal pCont As String, ByVal pStatus As String, ByVal pT
     If Not rstGKey.BOF = True Or Not rstGKey.EOF = True Then
         GetGKey = rstGKey.Fields(0)
     End If
+    Exit Function
+errhd:
+    MsgBox "Error writing in GetVisitID..." & vbNewLine & _
+                    "Error: " & err.Number & _
+                    err.Description, vbExclamation + vbOKOnly, "Error!"
 End Function
 
 'PRNH - LDD via direct query
@@ -989,7 +1001,8 @@ MsgBox "Error retrieving LDD  . Error message:" & err.Description
 End Function
 
 Public Function SavePaymentToSparcs(ByVal pContNum As String, ByVal pCharge As String, ByVal pPaid As String, ByVal pGKey As String)
- Dim strSoapAction As String
+On Error GoTo errhd
+    Dim strSoapAction As String
     Dim strUrl As String
     Dim strXML As String
     Dim strParam As String
@@ -1047,7 +1060,11 @@ strSoapEnd = "</inv:extractGkey>" & _
         Debug.Print strXML
         strOutput = SavePaidThruDay(strUrl, strSoapAction, strXML, strauthorization)
     End If
-
+Exit Function
+errhd:
+    MsgBox "Error in SavePaymentToSparcs..." & vbNewLine & _
+    "Error: " & err.Number & vbNewLine & _
+    err.Description, vbExclamation + vbOKOnly, "Error!"
 End Function
 
 Public Function SavePaidThruDay(ByVal AsmxUrl As String, ByVal SoapActionUrl As String, ByVal XmlBody As String, ByVal Authorization As String) As String
@@ -1105,11 +1122,14 @@ Public Function SavePaidThruDay(ByVal AsmxUrl As String, ByVal SoapActionUrl As 
     Exit Function
     
 Err_PW:
+    MsgBox "Error writing in SavePaidThruDay..." & vbNewLine & _
+                    "Error: " & err.Number & _
+                    err.Description, vbExclamation + vbOKOnly, "Error!"
     SavePaidThruDay = "Error: SavePaidThruDay" & err.Number & " - " & err.Description
-MsgBox err.Description
 End Function
 
 Public Function ReleaseHold(ByVal pContNum As String)
+On Error GoTo errhd:
     Dim objDom As Object
     Dim objXmlHttp As Object
     Dim strSoapAction As String
@@ -1173,10 +1193,15 @@ Debug.Print strXML
    Debug.Print strParam
     ' Close object
     Set objXmlHttp = Nothing
-    
+    Exit Function
+errhd:
+    MsgBox "Error writing in ReleaseHold..." & vbNewLine & _
+                    "Error: " & err.Number & _
+                    err.Description, vbExclamation + vbOKOnly, "Error!"
 End Function
 
 Public Function UpdateConsigneeAndBLNumber(ByVal pContNum As String, ByVal pConsignee As String, ByVal pBLNumber As String)
+On Error GoTo errhd
     Dim objDom As Object
     Dim objXmlHttp As Object
     Dim strSoapAction As String
@@ -1245,11 +1270,16 @@ Debug.Print strXML
    Debug.Print strParam
     ' Close object
     Set objXmlHttp = Nothing
-    
+    Exit Function
+errhd:
+    MsgBox "Error writing in UpdateConsigneeAndBLNumber..." & vbNewLine & _
+                    "Error: " & err.Number & _
+                    err.Description, vbExclamation + vbOKOnly, "Error!"
 End Function
 
 
 Public Function AddWeighingHold(ByVal pContNum As String)
+On Error GoTo errhd
     Dim objDom As Object
     Dim objXmlHttp As Object
     Dim strSoapAction As String
@@ -1314,10 +1344,15 @@ Debug.Print strXML
    Debug.Print strParam
     ' Close object
     Set objXmlHttp = Nothing
-    
+    Exit Function
+errhd:
+    MsgBox "Error writing in AddWeighingHold..." & vbNewLine & _
+           "Error: " & err.Number & _
+           err.Description, vbExclamation + vbOKOnly, "Error!"
 End Function
 
 Public Function ReleaseOOGHold(ByVal pContNum As String)
+On Error GoTo errhd
     Dim objDom As Object
     Dim objXmlHttp As Object
     Dim strSoapAction As String
@@ -1381,11 +1416,16 @@ Debug.Print strXML
    Debug.Print strParam
     ' Close object
     Set objXmlHttp = Nothing
-    
+    Exit Function
+errhd:
+    MsgBox "Error writing in ReleaseOOGHold..." & vbNewLine & _
+                    "Error: " & err.Number & _
+                    err.Description, vbExclamation + vbOKOnly, "Error!"
 End Function
 
 
 Public Function ReleaseDGHold(ByVal pContNum As String)
+On Error GoTo errhd
     Dim objDom As Object
     Dim objXmlHttp As Object
     Dim strSoapAction As String
@@ -1449,7 +1489,11 @@ Debug.Print strXML
    Debug.Print strParam
     ' Close object
     Set objXmlHttp = Nothing
-    
+    Exit Function
+errhd:
+    MsgBox "Error writing in ReleaseDGHold..." & vbNewLine & _
+                    "Error: " & err.Number & _
+                    err.Description, vbExclamation + vbOKOnly, "Error!"
 End Function
 
 

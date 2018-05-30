@@ -393,7 +393,6 @@ ApplyCYMgp:
         .Execute
     End With
     Exit Sub
-    
 err:
     MsgBox err.Description, vbOKOnly, "gzApplyCYMGP"
     Dim dc As clsCYMDE01
