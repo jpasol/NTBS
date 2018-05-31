@@ -446,7 +446,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
    BeginProperty Recordset2 
       CommandName     =   "RtvDetails"
       CommDispId      =   1006
-      RsDispId        =   1020
+      RsDispId        =   1150
       CommandText     =   "SELECT * FROM CCRcyx WHERE refnum = ? AND seqnum = ? ORDER BY seqnum, itmnum "
       ActiveConnectionName=   "Billing"
       CommandType     =   1

@@ -23,11 +23,11 @@ Public Sub DisConnect()
 End Sub
 
 Public Function ConnectByStr(ByVal pCnnStr As String) As Boolean
-Dim errBilling As ADODB.Error
+Dim errBilling As adodb.Error
 Dim lsErrStr As String
     ' Open the database.
     On Error GoTo err_Connect
-    Set gcnnBilling = New ADODB.Connection
+    Set gcnnBilling = New adodb.Connection
     gcnnBilling.Open pCnnStr
     gbConnected = True
     ConnectByStr = True

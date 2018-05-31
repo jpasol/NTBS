@@ -83,7 +83,7 @@ Begin VB.UserControl usrctrlCCRde08
       _Version        =   393216
       TabOrientation  =   1
       Tabs            =   5
-      Tab             =   3
+      Tab             =   2
       TabsPerRow      =   5
       TabHeight       =   617
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -98,14 +98,14 @@ Begin VB.UserControl usrctrlCCRde08
       TabCaption(0)   =   "CONTAINER NUMBER"
       TabPicture(0)   =   "usrctrlCCRde08.ctx":0000
       Tab(0).ControlEnabled=   0   'False
-      Tab(0).Control(0)=   "Frame12"
-      Tab(0).Control(1)=   "Frame3"
+      Tab(0).Control(0)=   "cmdSave1"
+      Tab(0).Control(0).Enabled=   0   'False
+      Tab(0).Control(1)=   "cmdCancel1"
+      Tab(0).Control(1).Enabled=   0   'False
       Tab(0).Control(2)=   "cmdClose1"
       Tab(0).Control(2).Enabled=   0   'False
-      Tab(0).Control(3)=   "cmdCancel1"
-      Tab(0).Control(3).Enabled=   0   'False
-      Tab(0).Control(4)=   "cmdSave1"
-      Tab(0).Control(4).Enabled=   0   'False
+      Tab(0).Control(3)=   "Frame3"
+      Tab(0).Control(4)=   "Frame12"
       Tab(0).ControlCount=   5
       TabCaption(1)   =   "DETAILS"
       TabPicture(1)   =   "usrctrlCCRde08.ctx":001C
@@ -126,91 +126,90 @@ Begin VB.UserControl usrctrlCCRde08
       Tab(1).ControlCount=   10
       TabCaption(2)   =   "CANCELLATION"
       TabPicture(2)   =   "usrctrlCCRde08.ctx":0038
-      Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "cmdSave3"
+      Tab(2).ControlEnabled=   -1  'True
+      Tab(2).Control(0)=   "Label40"
       Tab(2).Control(0).Enabled=   0   'False
-      Tab(2).Control(1)=   "cmdCancel3"
+      Tab(2).Control(1)=   "Frame14"
       Tab(2).Control(1).Enabled=   0   'False
-      Tab(2).Control(2)=   "cmdClose3"
+      Tab(2).Control(2)=   "Frame6"
       Tab(2).Control(2).Enabled=   0   'False
-      Tab(2).Control(3)=   "utxtCnlTeller2"
-      Tab(2).Control(4)=   "utxtCnlDteTme"
-      Tab(2).Control(5)=   "utxtCnlEntnum2"
-      Tab(2).Control(6)=   "utxtCnlEntnum3"
-      Tab(2).Control(7)=   "utxtCnlEntnum4"
-      Tab(2).Control(8)=   "utxtCnlEntnum5"
-      Tab(2).Control(9)=   "utxtCnlEntnum6"
-      Tab(2).Control(10)=   "utxtCnlEntnum7"
-      Tab(2).Control(11)=   "utxtCnlEntnum8"
+      Tab(2).Control(3)=   "utxtCnlSeqnum"
+      Tab(2).Control(3).Enabled=   0   'False
+      Tab(2).Control(4)=   "utxtCnlRefnum"
+      Tab(2).Control(4).Enabled=   0   'False
+      Tab(2).Control(5)=   "utxtCnlExporter"
+      Tab(2).Control(5).Enabled=   0   'False
+      Tab(2).Control(6)=   "utxtCnlBroker"
+      Tab(2).Control(6).Enabled=   0   'False
+      Tab(2).Control(7)=   "utxtCnlCommodity"
+      Tab(2).Control(7).Enabled=   0   'False
+      Tab(2).Control(8)=   "utxtCnlVessel"
+      Tab(2).Control(8).Enabled=   0   'False
+      Tab(2).Control(9)=   "utxtCnlCCRNum"
+      Tab(2).Control(9).Enabled=   0   'False
+      Tab(2).Control(10)=   "utxtCnlEntnum10"
+      Tab(2).Control(10).Enabled=   0   'False
+      Tab(2).Control(11)=   "utxtCnlEntnum1"
+      Tab(2).Control(11).Enabled=   0   'False
       Tab(2).Control(12)=   "utxtCnlEntnum9"
-      Tab(2).Control(13)=   "utxtCnlEntnum1"
-      Tab(2).Control(14)=   "utxtCnlEntnum10"
-      Tab(2).Control(15)=   "utxtCnlCCRNum"
-      Tab(2).Control(16)=   "utxtCnlVessel"
-      Tab(2).Control(17)=   "utxtCnlCommodity"
-      Tab(2).Control(18)=   "utxtCnlBroker"
-      Tab(2).Control(19)=   "utxtCnlExporter"
-      Tab(2).Control(20)=   "utxtCnlRefnum"
-      Tab(2).Control(21)=   "utxtCnlSeqnum"
-      Tab(2).Control(22)=   "Frame6"
-      Tab(2).Control(23)=   "Frame14"
-      Tab(2).Control(24)=   "Label40"
+      Tab(2).Control(12).Enabled=   0   'False
+      Tab(2).Control(13)=   "utxtCnlEntnum8"
+      Tab(2).Control(13).Enabled=   0   'False
+      Tab(2).Control(14)=   "utxtCnlEntnum7"
+      Tab(2).Control(14).Enabled=   0   'False
+      Tab(2).Control(15)=   "utxtCnlEntnum6"
+      Tab(2).Control(15).Enabled=   0   'False
+      Tab(2).Control(16)=   "utxtCnlEntnum5"
+      Tab(2).Control(16).Enabled=   0   'False
+      Tab(2).Control(17)=   "utxtCnlEntnum4"
+      Tab(2).Control(17).Enabled=   0   'False
+      Tab(2).Control(18)=   "utxtCnlEntnum3"
+      Tab(2).Control(18).Enabled=   0   'False
+      Tab(2).Control(19)=   "utxtCnlEntnum2"
+      Tab(2).Control(19).Enabled=   0   'False
+      Tab(2).Control(20)=   "utxtCnlDteTme"
+      Tab(2).Control(20).Enabled=   0   'False
+      Tab(2).Control(21)=   "utxtCnlTeller2"
+      Tab(2).Control(21).Enabled=   0   'False
+      Tab(2).Control(22)=   "cmdClose3"
+      Tab(2).Control(22).Enabled=   0   'False
+      Tab(2).Control(23)=   "cmdCancel3"
+      Tab(2).Control(23).Enabled=   0   'False
+      Tab(2).Control(24)=   "cmdSave3"
+      Tab(2).Control(24).Enabled=   0   'False
       Tab(2).ControlCount=   25
       TabCaption(3)   =   "PAYMENT"
       TabPicture(3)   =   "usrctrlCCRde08.ctx":0054
-      Tab(3).ControlEnabled=   -1  'True
-      Tab(3).Control(0)=   "Label37"
-      Tab(3).Control(0).Enabled=   0   'False
-      Tab(3).Control(1)=   "Frame15"
-      Tab(3).Control(1).Enabled=   0   'False
-      Tab(3).Control(2)=   "Frame7"
-      Tab(3).Control(2).Enabled=   0   'False
-      Tab(3).Control(3)=   "utxtPymChqNum(2)"
-      Tab(3).Control(3).Enabled=   0   'False
-      Tab(3).Control(4)=   "utxtPymChqNum(1)"
-      Tab(3).Control(4).Enabled=   0   'False
-      Tab(3).Control(5)=   "utxtPymCash"
-      Tab(3).Control(5).Enabled=   0   'False
-      Tab(3).Control(6)=   "utxtPymChq(0)"
-      Tab(3).Control(6).Enabled=   0   'False
-      Tab(3).Control(7)=   "utxtPymChq(1)"
+      Tab(3).ControlEnabled=   0   'False
+      Tab(3).Control(0)=   "utxtPymChqBnk(4)"
+      Tab(3).Control(1)=   "utxtPymChqBnk(3)"
+      Tab(3).Control(2)=   "utxtPymChqBnk(2)"
+      Tab(3).Control(3)=   "utxtPymChqBnk(1)"
+      Tab(3).Control(4)=   "utxtPymChqNum(4)"
+      Tab(3).Control(5)=   "utxtPymChqNum(3)"
+      Tab(3).Control(6)=   "utxtPymChqNum(0)"
+      Tab(3).Control(7)=   "cmdSave4"
       Tab(3).Control(7).Enabled=   0   'False
-      Tab(3).Control(8)=   "utxtPymChq(2)"
+      Tab(3).Control(8)=   "cmdCancel4"
       Tab(3).Control(8).Enabled=   0   'False
-      Tab(3).Control(9)=   "utxtPymChq(3)"
+      Tab(3).Control(9)=   "cmdClose4"
       Tab(3).Control(9).Enabled=   0   'False
-      Tab(3).Control(10)=   "utxtPymChq(4)"
-      Tab(3).Control(10).Enabled=   0   'False
-      Tab(3).Control(11)=   "utxtPymAdr"
-      Tab(3).Control(11).Enabled=   0   'False
-      Tab(3).Control(12)=   "utxtCustNo"
-      Tab(3).Control(12).Enabled=   0   'False
-      Tab(3).Control(13)=   "utxtChange"
-      Tab(3).Control(13).Enabled=   0   'False
-      Tab(3).Control(14)=   "utxtCustName"
-      Tab(3).Control(14).Enabled=   0   'False
-      Tab(3).Control(15)=   "utxtPymReference"
-      Tab(3).Control(15).Enabled=   0   'False
-      Tab(3).Control(16)=   "cmdClose4"
-      Tab(3).Control(16).Enabled=   0   'False
-      Tab(3).Control(17)=   "cmdCancel4"
-      Tab(3).Control(17).Enabled=   0   'False
-      Tab(3).Control(18)=   "cmdSave4"
-      Tab(3).Control(18).Enabled=   0   'False
-      Tab(3).Control(19)=   "utxtPymChqNum(0)"
-      Tab(3).Control(19).Enabled=   0   'False
-      Tab(3).Control(20)=   "utxtPymChqNum(3)"
-      Tab(3).Control(20).Enabled=   0   'False
-      Tab(3).Control(21)=   "utxtPymChqNum(4)"
-      Tab(3).Control(21).Enabled=   0   'False
-      Tab(3).Control(22)=   "utxtPymChqBnk(1)"
-      Tab(3).Control(22).Enabled=   0   'False
-      Tab(3).Control(23)=   "utxtPymChqBnk(2)"
-      Tab(3).Control(23).Enabled=   0   'False
-      Tab(3).Control(24)=   "utxtPymChqBnk(3)"
-      Tab(3).Control(24).Enabled=   0   'False
-      Tab(3).Control(25)=   "utxtPymChqBnk(4)"
-      Tab(3).Control(25).Enabled=   0   'False
+      Tab(3).Control(10)=   "utxtPymReference"
+      Tab(3).Control(11)=   "utxtCustName"
+      Tab(3).Control(12)=   "utxtChange"
+      Tab(3).Control(13)=   "utxtCustNo"
+      Tab(3).Control(14)=   "utxtPymAdr"
+      Tab(3).Control(15)=   "utxtPymChq(4)"
+      Tab(3).Control(16)=   "utxtPymChq(3)"
+      Tab(3).Control(17)=   "utxtPymChq(2)"
+      Tab(3).Control(18)=   "utxtPymChq(1)"
+      Tab(3).Control(19)=   "utxtPymChq(0)"
+      Tab(3).Control(20)=   "utxtPymCash"
+      Tab(3).Control(21)=   "utxtPymChqNum(1)"
+      Tab(3).Control(22)=   "utxtPymChqNum(2)"
+      Tab(3).Control(23)=   "Frame7"
+      Tab(3).Control(24)=   "Frame15"
+      Tab(3).Control(25)=   "Label37"
       Tab(3).ControlCount=   26
       TabCaption(4)   =   "Refund"
       TabPicture(4)   =   "usrctrlCCRde08.ctx":0070
@@ -506,12 +505,20 @@ Begin VB.UserControl usrctrlCCRde08
          TabIndex        =   19
          Top             =   5490
          Width           =   1455
-         _extentx        =   2566
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "usrctrlCCRde08.ctx":008C
-         maxlength       =   8
-         alignment       =   1
+         _ExtentX        =   2566
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   8
+         Alignment       =   1
       End
       Begin CCRde08.utxtEntry utxtDetEntnum 
          Height          =   420
@@ -520,17 +527,25 @@ Begin VB.UserControl usrctrlCCRde08
          TabIndex        =   18
          Top             =   5490
          Width           =   1455
-         _extentx        =   2566
-         _extenty        =   741
-         backcolor       =   -2147483633
-         font            =   "usrctrlCCRde08.ctx":00B0
-         maxlength       =   8
-         alignment       =   1
+         _ExtentX        =   2566
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   8
+         Alignment       =   1
       End
       Begin MpUserControls.utxtTextBilling utxtPymChqBnk 
          Height          =   420
          Index           =   4
-         Left            =   7800
+         Left            =   -67200
          TabIndex        =   65
          Top             =   4770
          Width           =   2415
@@ -552,7 +567,7 @@ Begin VB.UserControl usrctrlCCRde08
       Begin MpUserControls.utxtTextBilling utxtPymChqBnk 
          Height          =   420
          Index           =   3
-         Left            =   7800
+         Left            =   -67200
          TabIndex        =   62
          Top             =   4290
          Width           =   2415
@@ -574,7 +589,7 @@ Begin VB.UserControl usrctrlCCRde08
       Begin MpUserControls.utxtTextBilling utxtPymChqBnk 
          Height          =   420
          Index           =   2
-         Left            =   7800
+         Left            =   -67200
          TabIndex        =   59
          Top             =   3810
          Width           =   2415
@@ -596,7 +611,7 @@ Begin VB.UserControl usrctrlCCRde08
       Begin MpUserControls.utxtTextBilling utxtPymChqBnk 
          Height          =   420
          Index           =   1
-         Left            =   7800
+         Left            =   -67200
          TabIndex        =   56
          Top             =   3330
          Width           =   2415
@@ -618,7 +633,7 @@ Begin VB.UserControl usrctrlCCRde08
       Begin MpUserControls.utxtTextBilling utxtPymChqNum 
          Height          =   420
          Index           =   4
-         Left            =   5280
+         Left            =   -69720
          TabIndex        =   64
          Top             =   4770
          Width           =   2415
@@ -640,7 +655,7 @@ Begin VB.UserControl usrctrlCCRde08
       Begin MpUserControls.utxtTextBilling utxtPymChqNum 
          Height          =   420
          Index           =   3
-         Left            =   5280
+         Left            =   -69720
          TabIndex        =   61
          Top             =   4290
          Width           =   2415
@@ -662,7 +677,7 @@ Begin VB.UserControl usrctrlCCRde08
       Begin MpUserControls.utxtTextBilling utxtPymChqNum 
          Height          =   420
          Index           =   0
-         Left            =   5280
+         Left            =   -69720
          TabIndex        =   52
          Top             =   2850
          Width           =   2415
@@ -685,7 +700,7 @@ Begin VB.UserControl usrctrlCCRde08
          Caption         =   "F2 - Continue"
          Enabled         =   0   'False
          Height          =   615
-         Left            =   6960
+         Left            =   -68040
          TabIndex        =   101
          TabStop         =   0   'False
          Top             =   8040
@@ -695,7 +710,7 @@ Begin VB.UserControl usrctrlCCRde08
          Caption         =   "F2 - Continue"
          Enabled         =   0   'False
          Height          =   615
-         Left            =   -68040
+         Left            =   6960
          TabIndex        =   98
          TabStop         =   0   'False
          Top             =   8040
@@ -724,7 +739,7 @@ Begin VB.UserControl usrctrlCCRde08
       Begin VB.CommandButton cmdCancel4 
          Caption         =   "F12 - Cancel"
          Height          =   615
-         Left            =   12000
+         Left            =   -63000
          TabIndex        =   103
          TabStop         =   0   'False
          Top             =   8040
@@ -733,7 +748,7 @@ Begin VB.UserControl usrctrlCCRde08
       Begin VB.CommandButton cmdCancel3 
          Caption         =   "F12 - Cancel"
          Height          =   615
-         Left            =   -63000
+         Left            =   12000
          TabIndex        =   100
          TabStop         =   0   'False
          Top             =   8040
@@ -760,7 +775,7 @@ Begin VB.UserControl usrctrlCCRde08
       Begin VB.CommandButton cmdClose4 
          Caption         =   "F3 - Close"
          Height          =   615
-         Left            =   9480
+         Left            =   -65520
          TabIndex        =   102
          TabStop         =   0   'False
          Top             =   8040
@@ -769,7 +784,7 @@ Begin VB.UserControl usrctrlCCRde08
       Begin VB.CommandButton cmdClose3 
          Caption         =   "F3 - Close"
          Height          =   615
-         Left            =   -65520
+         Left            =   9480
          TabIndex        =   99
          TabStop         =   0   'False
          Top             =   8040
@@ -795,7 +810,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtNumBilling utxtPymReference 
          Height          =   420
-         Left            =   2760
+         Left            =   -72240
          TabIndex        =   49
          Top             =   810
          Width           =   1455
@@ -820,7 +835,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtTextBilling utxtCustName 
          Height          =   420
-         Left            =   5280
+         Left            =   -69720
          TabIndex        =   69
          TabStop         =   0   'False
          Top             =   5760
@@ -842,7 +857,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtNumBilling utxtChange 
          Height          =   420
-         Left            =   2760
+         Left            =   -72240
          TabIndex        =   68
          TabStop         =   0   'False
          Top             =   6960
@@ -867,7 +882,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtNumBilling utxtCustNo 
          Height          =   420
-         Left            =   2760
+         Left            =   -72240
          TabIndex        =   66
          Top             =   5760
          Width           =   2415
@@ -889,7 +904,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtNumBilling utxtPymAdr 
          Height          =   420
-         Left            =   2760
+         Left            =   -72240
          TabIndex        =   67
          TabStop         =   0   'False
          Top             =   6360
@@ -915,7 +930,7 @@ Begin VB.UserControl usrctrlCCRde08
       Begin MpUserControls.utxtNumBilling utxtPymChq 
          Height          =   420
          Index           =   4
-         Left            =   2760
+         Left            =   -72240
          TabIndex        =   63
          Top             =   4710
          Width           =   2415
@@ -939,7 +954,7 @@ Begin VB.UserControl usrctrlCCRde08
       Begin MpUserControls.utxtNumBilling utxtPymChq 
          Height          =   420
          Index           =   3
-         Left            =   2760
+         Left            =   -72240
          TabIndex        =   60
          Top             =   4230
          Width           =   2415
@@ -963,7 +978,7 @@ Begin VB.UserControl usrctrlCCRde08
       Begin MpUserControls.utxtNumBilling utxtPymChq 
          Height          =   420
          Index           =   2
-         Left            =   2760
+         Left            =   -72240
          TabIndex        =   57
          Top             =   3750
          Width           =   2415
@@ -987,7 +1002,7 @@ Begin VB.UserControl usrctrlCCRde08
       Begin MpUserControls.utxtNumBilling utxtPymChq 
          Height          =   420
          Index           =   1
-         Left            =   2760
+         Left            =   -72240
          TabIndex        =   54
          Top             =   3300
          Width           =   2415
@@ -1011,7 +1026,7 @@ Begin VB.UserControl usrctrlCCRde08
       Begin MpUserControls.utxtNumBilling utxtPymChq 
          Height          =   420
          Index           =   0
-         Left            =   2760
+         Left            =   -72240
          TabIndex        =   51
          Top             =   2820
          Width           =   2415
@@ -1034,7 +1049,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtNumBilling utxtPymCash 
          Height          =   420
-         Left            =   2760
+         Left            =   -72240
          TabIndex        =   50
          Top             =   2160
          Width           =   2415
@@ -1058,7 +1073,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtTextBilling utxtCnlTeller2 
          Height          =   420
-         Left            =   -70560
+         Left            =   4440
          TabIndex        =   48
          TabStop         =   0   'False
          Top             =   7350
@@ -1080,7 +1095,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtTextBilling utxtCnlDteTme 
          Height          =   420
-         Left            =   -70560
+         Left            =   4440
          TabIndex        =   47
          TabStop         =   0   'False
          Top             =   6870
@@ -1102,7 +1117,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtNumBilling utxtCnlEntnum2 
          Height          =   420
-         Left            =   -72360
+         Left            =   2640
          TabIndex        =   38
          TabStop         =   0   'False
          Top             =   5550
@@ -1126,7 +1141,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtNumBilling utxtCnlEntnum3 
          Height          =   420
-         Left            =   -70800
+         Left            =   4200
          TabIndex        =   39
          TabStop         =   0   'False
          Top             =   5550
@@ -1150,7 +1165,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtNumBilling utxtCnlEntnum4 
          Height          =   420
-         Left            =   -69240
+         Left            =   5760
          TabIndex        =   40
          TabStop         =   0   'False
          Top             =   5550
@@ -1174,7 +1189,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtNumBilling utxtCnlEntnum5 
          Height          =   420
-         Left            =   -67680
+         Left            =   7320
          TabIndex        =   41
          TabStop         =   0   'False
          Top             =   5550
@@ -1198,7 +1213,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtNumBilling utxtCnlEntnum6 
          Height          =   420
-         Left            =   -73920
+         Left            =   1080
          TabIndex        =   42
          TabStop         =   0   'False
          Top             =   6120
@@ -1222,7 +1237,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtNumBilling utxtCnlEntnum7 
          Height          =   420
-         Left            =   -72360
+         Left            =   2640
          TabIndex        =   43
          TabStop         =   0   'False
          Top             =   6120
@@ -1246,7 +1261,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtNumBilling utxtCnlEntnum8 
          Height          =   420
-         Left            =   -70800
+         Left            =   4200
          TabIndex        =   44
          TabStop         =   0   'False
          Top             =   6120
@@ -1270,7 +1285,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtNumBilling utxtCnlEntnum9 
          Height          =   420
-         Left            =   -69240
+         Left            =   5760
          TabIndex        =   45
          TabStop         =   0   'False
          Top             =   6120
@@ -1294,7 +1309,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtNumBilling utxtCnlEntnum1 
          Height          =   420
-         Left            =   -73920
+         Left            =   1080
          TabIndex        =   37
          TabStop         =   0   'False
          Top             =   5580
@@ -1318,7 +1333,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtNumBilling utxtCnlEntnum10 
          Height          =   420
-         Left            =   -67680
+         Left            =   7320
          TabIndex        =   46
          TabStop         =   0   'False
          Top             =   6120
@@ -1342,7 +1357,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtNumBilling utxtCnlCCRNum 
          Height          =   420
-         Left            =   -70680
+         Left            =   4320
          TabIndex        =   32
          TabStop         =   0   'False
          Top             =   2280
@@ -1366,7 +1381,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtTextBilling utxtCnlVessel 
          Height          =   420
-         Left            =   -70680
+         Left            =   4320
          TabIndex        =   33
          TabStop         =   0   'False
          Top             =   2790
@@ -1388,7 +1403,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtTextBilling utxtCnlCommodity 
          Height          =   420
-         Left            =   -70680
+         Left            =   4320
          TabIndex        =   34
          TabStop         =   0   'False
          Top             =   3270
@@ -1410,7 +1425,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtTextBilling utxtCnlBroker 
          Height          =   420
-         Left            =   -70680
+         Left            =   4320
          TabIndex        =   35
          TabStop         =   0   'False
          Top             =   3750
@@ -1432,7 +1447,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtTextBilling utxtCnlExporter 
          Height          =   420
-         Left            =   -70680
+         Left            =   4320
          TabIndex        =   36
          TabStop         =   0   'False
          Top             =   4200
@@ -1454,7 +1469,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtNumBilling utxtCnlRefnum 
          Height          =   420
-         Left            =   -70680
+         Left            =   4320
          TabIndex        =   30
          Top             =   750
          Width           =   1455
@@ -1475,7 +1490,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin MpUserControls.utxtNumBilling utxtCnlSeqnum 
          Height          =   420
-         Left            =   -70680
+         Left            =   4320
          TabIndex        =   31
          Top             =   1230
          Width           =   735
@@ -1540,7 +1555,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin VB.Frame Frame6 
          Height          =   7455
-         Left            =   -74880
+         Left            =   120
          TabIndex        =   141
          Top             =   480
          Width           =   15015
@@ -1650,12 +1665,20 @@ Begin VB.UserControl usrctrlCCRde08
             TabIndex        =   27
             Top             =   5640
             Width           =   1455
-            _extentx        =   2566
-            _extenty        =   741
-            backcolor       =   -2147483633
-            font            =   "usrctrlCCRde08.ctx":00D4
-            maxlength       =   8
-            alignment       =   1
+            _ExtentX        =   2566
+            _ExtentY        =   741
+            BackColor       =   -2147483633
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Arial"
+               Size            =   15
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            MaxLength       =   8
+            Alignment       =   1
          End
          Begin CCRde08.utxtEntry utxtDetEntnum 
             Height          =   420
@@ -1664,12 +1687,20 @@ Begin VB.UserControl usrctrlCCRde08
             TabIndex        =   26
             Top             =   5640
             Width           =   1455
-            _extentx        =   2566
-            _extenty        =   741
-            backcolor       =   -2147483633
-            font            =   "usrctrlCCRde08.ctx":00F8
-            maxlength       =   8
-            alignment       =   1
+            _ExtentX        =   2566
+            _ExtentY        =   741
+            BackColor       =   -2147483633
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Arial"
+               Size            =   15
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            MaxLength       =   8
+            Alignment       =   1
          End
          Begin CCRde08.utxtEntry utxtDetEntnum 
             Height          =   420
@@ -1678,12 +1709,20 @@ Begin VB.UserControl usrctrlCCRde08
             TabIndex        =   25
             Top             =   5640
             Width           =   1455
-            _extentx        =   2566
-            _extenty        =   741
-            backcolor       =   -2147483633
-            font            =   "usrctrlCCRde08.ctx":011C
-            maxlength       =   8
-            alignment       =   1
+            _ExtentX        =   2566
+            _ExtentY        =   741
+            BackColor       =   -2147483633
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Arial"
+               Size            =   15
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            MaxLength       =   8
+            Alignment       =   1
          End
          Begin CCRde08.utxtEntry utxtDetEntnum 
             Height          =   420
@@ -1692,12 +1731,20 @@ Begin VB.UserControl usrctrlCCRde08
             TabIndex        =   24
             Top             =   5640
             Width           =   1455
-            _extentx        =   2566
-            _extenty        =   741
-            backcolor       =   -2147483633
-            font            =   "usrctrlCCRde08.ctx":0140
-            maxlength       =   8
-            alignment       =   1
+            _ExtentX        =   2566
+            _ExtentY        =   741
+            BackColor       =   -2147483633
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Arial"
+               Size            =   15
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            MaxLength       =   8
+            Alignment       =   1
          End
          Begin CCRde08.utxtEntry utxtDetEntnum 
             Height          =   420
@@ -1706,12 +1753,20 @@ Begin VB.UserControl usrctrlCCRde08
             TabIndex        =   23
             Top             =   5640
             Width           =   1455
-            _extentx        =   2566
-            _extenty        =   741
-            backcolor       =   -2147483633
-            font            =   "usrctrlCCRde08.ctx":0164
-            maxlength       =   8
-            alignment       =   1
+            _ExtentX        =   2566
+            _ExtentY        =   741
+            BackColor       =   -2147483633
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Arial"
+               Size            =   15
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            MaxLength       =   8
+            Alignment       =   1
          End
          Begin CCRde08.utxtEntry utxtDetEntnum 
             Height          =   420
@@ -1720,12 +1775,20 @@ Begin VB.UserControl usrctrlCCRde08
             TabIndex        =   22
             Top             =   5040
             Width           =   1455
-            _extentx        =   2566
-            _extenty        =   741
-            backcolor       =   -2147483633
-            font            =   "usrctrlCCRde08.ctx":0188
-            maxlength       =   8
-            alignment       =   1
+            _ExtentX        =   2566
+            _ExtentY        =   741
+            BackColor       =   -2147483633
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Arial"
+               Size            =   15
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            MaxLength       =   8
+            Alignment       =   1
          End
          Begin CCRde08.utxtEntry utxtDetEntnum 
             Height          =   420
@@ -1734,12 +1797,20 @@ Begin VB.UserControl usrctrlCCRde08
             TabIndex        =   21
             Top             =   5040
             Width           =   1455
-            _extentx        =   2566
-            _extenty        =   741
-            backcolor       =   -2147483633
-            font            =   "usrctrlCCRde08.ctx":01AC
-            maxlength       =   8
-            alignment       =   1
+            _ExtentX        =   2566
+            _ExtentY        =   741
+            BackColor       =   -2147483633
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Arial"
+               Size            =   15
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            MaxLength       =   8
+            Alignment       =   1
          End
          Begin CCRde08.utxtEntry utxtDetEntnum 
             Height          =   420
@@ -1748,12 +1819,20 @@ Begin VB.UserControl usrctrlCCRde08
             TabIndex        =   20
             Top             =   5040
             Width           =   1455
-            _extentx        =   2566
-            _extenty        =   741
-            backcolor       =   -2147483633
-            font            =   "usrctrlCCRde08.ctx":01D0
-            maxlength       =   8
-            alignment       =   1
+            _ExtentX        =   2566
+            _ExtentY        =   741
+            BackColor       =   -2147483633
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Arial"
+               Size            =   15
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            MaxLength       =   8
+            Alignment       =   1
          End
          Begin VB.Frame Frame9 
             Caption         =   " BOC Permit Numbers "
@@ -2342,7 +2421,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin VB.Frame Frame14 
          Height          =   1095
-         Left            =   -74880
+         Left            =   120
          TabIndex        =   162
          Top             =   7680
          Width           =   15015
@@ -2350,7 +2429,7 @@ Begin VB.UserControl usrctrlCCRde08
       Begin MpUserControls.utxtTextBilling utxtPymChqNum 
          Height          =   420
          Index           =   1
-         Left            =   5280
+         Left            =   -69720
          TabIndex        =   55
          Top             =   3330
          Width           =   2415
@@ -2372,7 +2451,7 @@ Begin VB.UserControl usrctrlCCRde08
       Begin MpUserControls.utxtTextBilling utxtPymChqNum 
          Height          =   420
          Index           =   2
-         Left            =   5280
+         Left            =   -69720
          TabIndex        =   58
          Top             =   3810
          Width           =   2415
@@ -2393,7 +2472,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin VB.Frame Frame7 
          Height          =   7455
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   111
          Top             =   480
          Width           =   15015
@@ -2916,7 +2995,7 @@ Begin VB.UserControl usrctrlCCRde08
       End
       Begin VB.Frame Frame15 
          Height          =   1065
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   163
          Top             =   7680
          Width           =   15015
@@ -2957,7 +3036,7 @@ Begin VB.UserControl usrctrlCCRde08
          Caption         =   "CCR Cancellation"
          ForeColor       =   &H00FFFFFF&
          Height          =   375
-         Left            =   -74880
+         Left            =   120
          TabIndex        =   154
          Top             =   120
          Width           =   15015
@@ -2969,7 +3048,7 @@ Begin VB.UserControl usrctrlCCRde08
          Caption         =   "Payment Correction"
          ForeColor       =   &H00FFFFFF&
          Height          =   375
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   153
          Top             =   60
          Width           =   15015
@@ -3936,8 +4015,10 @@ Message1 = ""
 Message2 = ""
 
     If KeyCode = vbKeyReturn Then
+        On Error GoTo Cancel
         If Not ChkRefNoSeqNoCntNum(utxtRefnum.Value, utxtSeqnum.Value, utxtCntPrefix.Text, _
                                                                 utxtCntNum.Text) Then
+        On Error GoTo 0
             Message1 = "There is NO TRANSACTION that exist."
             Message2 = "Enter Another transaction."
             Call ErrorMessage(Message1, Message2)
@@ -3962,6 +4043,7 @@ Message2 = ""
             End If
         End If
     End If
+Cancel:
 End Sub
 
 Private Function ChkRefNoSeqNoCntNum(lngRefTemp As Long, lngSeqTemp As Long, _
@@ -4834,7 +4916,7 @@ If IsNumeric(utxtPymAdr.Value) Then
     sngTotalAmt = sngTotalAmt + CSng(utxtPymAdr.Value)
 End If
 
-EvaluateChange = sngTotalAmt - sngPymAmtPay
+EvaluateChange = sngTotalAmt - sngPymTotalAmt
 
 End Function
 
@@ -4927,7 +5009,7 @@ Dim lngPayReference As Long
 ChkPayment = False
 lngPayReference = 0
 
-lngPayReference = utxtPymReference.Value
+lngPayReference = ReturnLong(CStr(utxtPymReference.Value))
 DE.ChkPayment lngPayReference
 Set rstPayment = DE.rsChkPayment
 With rstPayment
@@ -5314,6 +5396,7 @@ Set cusListing = New cCustomer
     Call IniVariable
 End Sub
 
+
 Private Sub utxtRefCntno_KeyDown(KeyCode As Integer, Shift As Integer)
 Dim Message1 As String
 Dim Message2 As String
@@ -5322,8 +5405,10 @@ Message1 = ""
 Message2 = ""
 
     If KeyCode = vbKeyReturn Then
+    On Error GoTo Cancel
         If Not ChkRefNoSeqNoCntNum(utxtRefRefNum.Value, utxtRefSeq.Value, utxtRefPrefix.Text, _
                                 utxtRefCntno.Value) Then
+    On Error GoTo 0
             Message1 = "There is NO TRANSACTION that exist."
             Message2 = "Enter Another transaction."
             Call ErrorMessage(Message1, Message2)
@@ -5352,7 +5437,9 @@ Message2 = ""
          utxtRefRefNum.SetFocus
         End If
     End If
+Cancel:
 End Sub
+
 
 Private Sub utxtTotal_KeyPress(KeyAscii As Integer)
     KeyAscii = 0
@@ -5395,10 +5482,8 @@ DE.Rtvdetails lngRefno, lngSeqno
 Set rstDetails = DE.rsRtvDetails
 With rstDetails
     Do While Not .EOF
-        If .Fields("guarntycde") <> "Y" And .Fields("status") <> "CAN" Then
-            sngTotalAmt = sngTotalAmt + .Fields("arramt") + .Fields("ovzamt") + .Fields("dgramt") + .Fields("arrvat") - _
+        sngTotalAmt = sngTotalAmt + .Fields("arramt") + .Fields("ovzamt") + .Fields("dgramt") + .Fields("arrvat") - _
                 .Fields("arrtax") + ReturnCurrency(.Fields("wghamt"))
-        End If
         If .Fields("whfcde") = 0 Then
             sngTotalAmt = sngTotalAmt + .Fields("whfamt")
         End If
