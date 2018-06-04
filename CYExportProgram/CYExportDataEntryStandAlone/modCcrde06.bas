@@ -242,7 +242,7 @@ On Error GoTo errorHD
                     "WHERE cntnum = '" & unitId & "' and IsN4BillingPermissionGranted = 0 "
                     
     rstN4Status.Open strUpdateStatus, gcnnBilling, adOpenForwardOnly, adLockReadOnly
-    
+    Exit Function
    ' GetGKey = rstGKey.Fields(0)
 errorHD:
     MsgBox "Error in UpdateIsN4BillingPermissionGrantedStatus" & vbNewLine & _
