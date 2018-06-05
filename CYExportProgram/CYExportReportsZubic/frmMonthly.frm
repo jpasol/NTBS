@@ -206,11 +206,11 @@ Begin VB.Form frmMonthly
          EndProperty
          BeginProperty Panel4 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   6
-            TextSave        =   "5/24/2018"
+            TextSave        =   "05/06/2018"
          EndProperty
          BeginProperty Panel5 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
-            TextSave        =   "3:17 PM"
+            TextSave        =   "2:39 PM"
          EndProperty
          BeginProperty Panel6 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Text            =   "CCRRPT"
