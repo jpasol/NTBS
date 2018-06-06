@@ -1,6 +1,6 @@
-modCalled = 0, 102, 699, 551, 
+modCalled = 0, 102, 699, 551, Z
 modCommon = 195, 217, 894, 666, 
 clsCYMDE01 = 35, 192, 734, 641, 
 CWaitCursor = 104, 104, 803, 553, 
-frmManifestCont = 410, 100, 1222, 743, Z, 202, 38, 901, 485, C
+frmManifestCont = 410, 100, 1222, 743, , 202, 38, 901, 485, C
 cConnSparcs = 338, 60, 1119, 628, 
