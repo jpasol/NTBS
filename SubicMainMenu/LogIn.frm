@@ -499,6 +499,10 @@ Private Sub lblLogOk_MouseMove(Button As Integer, Shift As Integer, x As Single,
     lblLogExit.BackColor = vbWindowBackground: lblLogExit.ForeColor = vbWindowText: lblLogExit.FontBold = False
 End Sub
 
+Private Sub lblLogOn_Click(Index As Integer)
+
+End Sub
+
 Private Sub lblLogOnTitle_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
     If Button = 1 Then
         'Visual Basic calls SetCapture when the left mouse
