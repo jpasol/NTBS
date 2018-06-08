@@ -35,7 +35,7 @@ Begin VB.Form frmAllocation
       _ExtentY        =   19500
       _Version        =   393216
       Tabs            =   5
-      Tab             =   2
+      Tab             =   4
       TabsPerRow      =   5
       TabHeight       =   520
       BackColor       =   16777215
@@ -51,19 +51,19 @@ Begin VB.Form frmAllocation
       TabCaption(0)   =   "Export "
       TabPicture(0)   =   "frmAllocation.frx":0000
       Tab(0).ControlEnabled=   0   'False
-      Tab(0).Control(0)=   "cmdExit(0)"
+      Tab(0).Control(0)=   "cmdRefresh(0)"
       Tab(0).Control(0).Enabled=   0   'False
-      Tab(0).Control(1)=   "cmdNext(0)"
-      Tab(0).Control(1).Enabled=   0   'False
-      Tab(0).Control(2)=   "cmdDel(0)"
-      Tab(0).Control(2).Enabled=   0   'False
-      Tab(0).Control(3)=   "cmdEdit(0)"
+      Tab(0).Control(1)=   "grdAlloc(0)"
+      Tab(0).Control(2)=   "fraDetails(0)"
+      Tab(0).Control(3)=   "cmdAdd(0)"
       Tab(0).Control(3).Enabled=   0   'False
-      Tab(0).Control(4)=   "cmdAdd(0)"
+      Tab(0).Control(4)=   "cmdEdit(0)"
       Tab(0).Control(4).Enabled=   0   'False
-      Tab(0).Control(5)=   "fraDetails(0)"
-      Tab(0).Control(6)=   "grdAlloc(0)"
-      Tab(0).Control(7)=   "cmdRefresh(0)"
+      Tab(0).Control(5)=   "cmdDel(0)"
+      Tab(0).Control(5).Enabled=   0   'False
+      Tab(0).Control(6)=   "cmdNext(0)"
+      Tab(0).Control(6).Enabled=   0   'False
+      Tab(0).Control(7)=   "cmdExit(0)"
       Tab(0).Control(7).Enabled=   0   'False
       Tab(0).ControlCount=   8
       TabCaption(1)   =   "CFS Import "
@@ -72,9 +72,7 @@ Begin VB.Form frmAllocation
       Tab(1).Control(0)=   "cmdRefresh(1)"
       Tab(1).Control(0).Enabled=   0   'False
       Tab(1).Control(1)=   "grdAlloc(1)"
-      Tab(1).Control(1).Enabled=   0   'False
       Tab(1).Control(2)=   "fraDetails(1)"
-      Tab(1).Control(2).Enabled=   0   'False
       Tab(1).Control(3)=   "cmdAdd(1)"
       Tab(1).Control(3).Enabled=   0   'False
       Tab(1).Control(4)=   "cmdEdit(1)"
@@ -88,7 +86,7 @@ Begin VB.Form frmAllocation
       Tab(1).ControlCount=   8
       TabCaption(2)   =   "CY Import "
       TabPicture(2)   =   "frmAllocation.frx":0038
-      Tab(2).ControlEnabled=   -1  'True
+      Tab(2).ControlEnabled=   0   'False
       Tab(2).Control(0)=   "cmdRefresh(2)"
       Tab(2).Control(0).Enabled=   0   'False
       Tab(2).Control(1)=   "cmdAdd(2)"
@@ -96,9 +94,7 @@ Begin VB.Form frmAllocation
       Tab(2).Control(2)=   "cmdEdit(2)"
       Tab(2).Control(2).Enabled=   0   'False
       Tab(2).Control(3)=   "grdAlloc(2)"
-      Tab(2).Control(3).Enabled=   0   'False
       Tab(2).Control(4)=   "fraDetails(2)"
-      Tab(2).Control(4).Enabled=   0   'False
       Tab(2).Control(5)=   "cmdDel(2)"
       Tab(2).Control(5).Enabled=   0   'False
       Tab(2).Control(6)=   "cmdNext(2)"
@@ -109,24 +105,24 @@ Begin VB.Form frmAllocation
       TabCaption(3)   =   "Empties"
       TabPicture(3)   =   "frmAllocation.frx":0054
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "cmdNext(3)"
+      Tab(3).Control(0)=   "cmdRefresh(3)"
       Tab(3).Control(0).Enabled=   0   'False
-      Tab(3).Control(1)=   "cmdDel(3)"
-      Tab(3).Control(1).Enabled=   0   'False
-      Tab(3).Control(2)=   "cmdEdit(3)"
-      Tab(3).Control(2).Enabled=   0   'False
-      Tab(3).Control(3)=   "cmdAdd(3)"
+      Tab(3).Control(1)=   "grdAlloc(3)"
+      Tab(3).Control(2)=   "fraDetails(3)"
+      Tab(3).Control(3)=   "cmdExit(3)"
       Tab(3).Control(3).Enabled=   0   'False
-      Tab(3).Control(4)=   "cmdExit(3)"
+      Tab(3).Control(4)=   "cmdAdd(3)"
       Tab(3).Control(4).Enabled=   0   'False
-      Tab(3).Control(5)=   "fraDetails(3)"
-      Tab(3).Control(6)=   "grdAlloc(3)"
-      Tab(3).Control(7)=   "cmdRefresh(3)"
+      Tab(3).Control(5)=   "cmdEdit(3)"
+      Tab(3).Control(5).Enabled=   0   'False
+      Tab(3).Control(6)=   "cmdDel(3)"
+      Tab(3).Control(6).Enabled=   0   'False
+      Tab(3).Control(7)=   "cmdNext(3)"
       Tab(3).Control(7).Enabled=   0   'False
       Tab(3).ControlCount=   8
       TabCaption(4)   =   "CY Special Service"
       TabPicture(4)   =   "frmAllocation.frx":0070
-      Tab(4).ControlEnabled=   0   'False
+      Tab(4).ControlEnabled=   -1  'True
       Tab(4).Control(0)=   "cmdRefresh(4)"
       Tab(4).Control(0).Enabled=   0   'False
       Tab(4).Control(1)=   "grdAlloc(4)"
@@ -178,7 +174,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F3=Exit"
          Height          =   735
          Index           =   4
-         Left            =   -62880
+         Left            =   12120
          TabIndex        =   81
          TabStop         =   0   'False
          Top             =   9600
@@ -188,7 +184,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F11=Next"
          Height          =   735
          Index           =   4
-         Left            =   -66360
+         Left            =   8640
          TabIndex        =   80
          TabStop         =   0   'False
          Top             =   9600
@@ -198,7 +194,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F8=Del"
          Height          =   735
          Index           =   4
-         Left            =   -68280
+         Left            =   6720
          TabIndex        =   79
          TabStop         =   0   'False
          Top             =   9600
@@ -208,7 +204,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F7=Edit"
          Height          =   735
          Index           =   4
-         Left            =   -70200
+         Left            =   4800
          TabIndex        =   78
          TabStop         =   0   'False
          Top             =   9600
@@ -218,7 +214,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F6=Add"
          Height          =   735
          Index           =   4
-         Left            =   -72120
+         Left            =   2880
          TabIndex        =   77
          TabStop         =   0   'False
          Top             =   9600
@@ -230,7 +226,7 @@ Begin VB.Form frmAllocation
          Enabled         =   0   'False
          Height          =   2775
          Index           =   4
-         Left            =   -74040
+         Left            =   960
          TabIndex        =   67
          Top             =   720
          Width           =   13095
@@ -664,7 +660,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F3=Exit"
          Height          =   735
          Index           =   2
-         Left            =   12120
+         Left            =   -62880
          TabIndex        =   36
          TabStop         =   0   'False
          Top             =   9600
@@ -694,7 +690,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F11=Next"
          Height          =   735
          Index           =   2
-         Left            =   8640
+         Left            =   -66360
          TabIndex        =   35
          TabStop         =   0   'False
          Top             =   9600
@@ -724,7 +720,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F8=Del"
          Height          =   735
          Index           =   2
-         Left            =   6720
+         Left            =   -68280
          TabIndex        =   34
          TabStop         =   0   'False
          Top             =   9600
@@ -796,7 +792,7 @@ Begin VB.Form frmAllocation
          Enabled         =   0   'False
          Height          =   2775
          Index           =   2
-         Left            =   960
+         Left            =   -74040
          TabIndex        =   45
          Top             =   720
          Width           =   13095
@@ -1459,7 +1455,7 @@ Begin VB.Form frmAllocation
       Begin MSFlexGridLib.MSFlexGrid grdAlloc 
          Height          =   5295
          Index           =   2
-         Left            =   960
+         Left            =   -74040
          TabIndex        =   30
          TabStop         =   0   'False
          Top             =   3840
@@ -1500,7 +1496,7 @@ Begin VB.Form frmAllocation
       Begin MSFlexGridLib.MSFlexGrid grdAlloc 
          Height          =   5295
          Index           =   4
-         Left            =   -74040
+         Left            =   960
          TabIndex        =   75
          TabStop         =   0   'False
          Top             =   3840
@@ -1542,7 +1538,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F7=Edit"
          Height          =   735
          Index           =   2
-         Left            =   4800
+         Left            =   -70200
          TabIndex        =   33
          TabStop         =   0   'False
          Top             =   9600
@@ -1552,7 +1548,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F6=Add"
          Height          =   735
          Index           =   2
-         Left            =   2880
+         Left            =   -72120
          TabIndex        =   32
          TabStop         =   0   'False
          Top             =   9600
@@ -1562,7 +1558,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F5=Refresh"
          Height          =   735
          Index           =   2
-         Left            =   960
+         Left            =   -74040
          TabIndex        =   31
          TabStop         =   0   'False
          Top             =   9600
@@ -1582,7 +1578,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F5=Refresh"
          Height          =   735
          Index           =   4
-         Left            =   -74040
+         Left            =   960
          TabIndex        =   76
          TabStop         =   0   'False
          Top             =   9600
@@ -1657,20 +1653,20 @@ Private Sub SetGrid()
     Dim ColCounter As Integer
         
     ColHdgs(0) = "Teller ID"
-    ColHdgs(1) = "  Start"
-    ColHdgs(2) = "   End"
+    ColHdgs(1) = "Start"
+    ColHdgs(2) = "End"
     ColHdgs(3) = "Last Issued"
     ColHdgs(4) = "Last Issue Date/Time"
     ColHdgs(5) = "Allocated By"
     ColHdgs(6) = ""
     ColHdgs(7) = "Company Code" 'PRNH - Company Code
     
-    ColWide(0) = 1700
-    ColWide(1) = 1800
-    ColWide(2) = 1800
-    ColWide(3) = 2000
+    ColWide(0) = 2100
+    ColWide(1) = 1100
+    ColWide(2) = 1100
+    ColWide(3) = 1800
     ColWide(4) = 3500
-    ColWide(5) = 2220
+    ColWide(5) = 2100
     ColWide(6) = 0
     ColWide(7) = 2220 'PRNH
        
@@ -1680,6 +1676,10 @@ Private Sub SetGrid()
             .ColWidth(ColCounter) = ColWide(ColCounter)
             ColCounter = ColCounter + 1
         Loop
+            .ColAlignment(1) = flexAlignCenterCenter
+            .ColAlignment(2) = flexAlignCenterCenter
+            .ColAlignment(3) = flexAlignCenterCenter
+            .ColAlignment(4) = flexAlignCenterCenter
     End With
     Call FillGrid
 End Sub
