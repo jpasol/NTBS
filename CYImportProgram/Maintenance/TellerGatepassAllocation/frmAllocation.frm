@@ -35,7 +35,6 @@ Begin VB.Form frmAllocation
       _ExtentY        =   19500
       _Version        =   393216
       Tabs            =   5
-      Tab             =   2
       TabsPerRow      =   5
       TabHeight       =   520
       BackColor       =   16777215
@@ -50,100 +49,134 @@ Begin VB.Form frmAllocation
       EndProperty
       TabCaption(0)   =   "Export "
       TabPicture(0)   =   "frmAllocation.frx":0000
-      Tab(0).ControlEnabled=   0   'False
-      Tab(0).Control(0)=   "cmdExit(0)"
+      Tab(0).ControlEnabled=   -1  'True
+      Tab(0).Control(0)=   "cmdRefresh(0)"
       Tab(0).Control(0).Enabled=   0   'False
-      Tab(0).Control(1)=   "cmdNext(0)"
+      Tab(0).Control(1)=   "grdAlloc(0)"
       Tab(0).Control(1).Enabled=   0   'False
-      Tab(0).Control(2)=   "cmdDel(0)"
+      Tab(0).Control(2)=   "fraDetails(0)"
       Tab(0).Control(2).Enabled=   0   'False
-      Tab(0).Control(3)=   "cmdEdit(0)"
+      Tab(0).Control(3)=   "cmdAdd(0)"
       Tab(0).Control(3).Enabled=   0   'False
-      Tab(0).Control(4)=   "cmdAdd(0)"
+      Tab(0).Control(4)=   "cmdEdit(0)"
       Tab(0).Control(4).Enabled=   0   'False
-      Tab(0).Control(5)=   "fraDetails(0)"
-      Tab(0).Control(6)=   "grdAlloc(0)"
-      Tab(0).Control(7)=   "cmdRefresh(0)"
+      Tab(0).Control(5)=   "cmdDel(0)"
+      Tab(0).Control(5).Enabled=   0   'False
+      Tab(0).Control(6)=   "cmdNext(0)"
+      Tab(0).Control(6).Enabled=   0   'False
+      Tab(0).Control(7)=   "cmdExit(0)"
       Tab(0).Control(7).Enabled=   0   'False
       Tab(0).ControlCount=   8
       TabCaption(1)   =   "CFS Import "
       TabPicture(1)   =   "frmAllocation.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "cmdRefresh(1)"
-      Tab(1).Control(0).Enabled=   0   'False
-      Tab(1).Control(1)=   "grdAlloc(1)"
+      Tab(1).Control(0)=   "Combo1(1)"
+      Tab(1).Control(1)=   "cmdExit(1)"
       Tab(1).Control(1).Enabled=   0   'False
-      Tab(1).Control(2)=   "fraDetails(1)"
+      Tab(1).Control(2)=   "cmdNext(1)"
       Tab(1).Control(2).Enabled=   0   'False
-      Tab(1).Control(3)=   "cmdAdd(1)"
+      Tab(1).Control(3)=   "cmdDel(1)"
       Tab(1).Control(3).Enabled=   0   'False
       Tab(1).Control(4)=   "cmdEdit(1)"
       Tab(1).Control(4).Enabled=   0   'False
-      Tab(1).Control(5)=   "cmdDel(1)"
+      Tab(1).Control(5)=   "cmdAdd(1)"
       Tab(1).Control(5).Enabled=   0   'False
-      Tab(1).Control(6)=   "cmdNext(1)"
-      Tab(1).Control(6).Enabled=   0   'False
-      Tab(1).Control(7)=   "cmdExit(1)"
-      Tab(1).Control(7).Enabled=   0   'False
-      Tab(1).ControlCount=   8
+      Tab(1).Control(6)=   "fraDetails(1)"
+      Tab(1).Control(7)=   "grdAlloc(1)"
+      Tab(1).Control(8)=   "cmdRefresh(1)"
+      Tab(1).Control(8).Enabled=   0   'False
+      Tab(1).ControlCount=   9
       TabCaption(2)   =   "CY Import "
       TabPicture(2)   =   "frmAllocation.frx":0038
-      Tab(2).ControlEnabled=   -1  'True
-      Tab(2).Control(0)=   "cmdRefresh(2)"
-      Tab(2).Control(0).Enabled=   0   'False
-      Tab(2).Control(1)=   "cmdAdd(2)"
+      Tab(2).ControlEnabled=   0   'False
+      Tab(2).Control(0)=   "Combo1(2)"
+      Tab(2).Control(1)=   "cmdExit(2)"
       Tab(2).Control(1).Enabled=   0   'False
-      Tab(2).Control(2)=   "cmdEdit(2)"
+      Tab(2).Control(2)=   "cmdNext(2)"
       Tab(2).Control(2).Enabled=   0   'False
-      Tab(2).Control(3)=   "grdAlloc(2)"
+      Tab(2).Control(3)=   "cmdDel(2)"
       Tab(2).Control(3).Enabled=   0   'False
       Tab(2).Control(4)=   "fraDetails(2)"
-      Tab(2).Control(4).Enabled=   0   'False
-      Tab(2).Control(5)=   "cmdDel(2)"
-      Tab(2).Control(5).Enabled=   0   'False
-      Tab(2).Control(6)=   "cmdNext(2)"
+      Tab(2).Control(5)=   "grdAlloc(2)"
+      Tab(2).Control(6)=   "cmdEdit(2)"
       Tab(2).Control(6).Enabled=   0   'False
-      Tab(2).Control(7)=   "cmdExit(2)"
+      Tab(2).Control(7)=   "cmdAdd(2)"
       Tab(2).Control(7).Enabled=   0   'False
-      Tab(2).ControlCount=   8
+      Tab(2).Control(8)=   "cmdRefresh(2)"
+      Tab(2).Control(8).Enabled=   0   'False
+      Tab(2).ControlCount=   9
       TabCaption(3)   =   "Empties"
       TabPicture(3)   =   "frmAllocation.frx":0054
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "cmdNext(3)"
-      Tab(3).Control(0).Enabled=   0   'False
-      Tab(3).Control(1)=   "cmdDel(3)"
+      Tab(3).Control(0)=   "Combo1(3)"
+      Tab(3).Control(1)=   "cmdNext(3)"
       Tab(3).Control(1).Enabled=   0   'False
-      Tab(3).Control(2)=   "cmdEdit(3)"
+      Tab(3).Control(2)=   "cmdDel(3)"
       Tab(3).Control(2).Enabled=   0   'False
-      Tab(3).Control(3)=   "cmdAdd(3)"
+      Tab(3).Control(3)=   "cmdEdit(3)"
       Tab(3).Control(3).Enabled=   0   'False
-      Tab(3).Control(4)=   "cmdExit(3)"
+      Tab(3).Control(4)=   "cmdAdd(3)"
       Tab(3).Control(4).Enabled=   0   'False
-      Tab(3).Control(5)=   "fraDetails(3)"
-      Tab(3).Control(6)=   "grdAlloc(3)"
-      Tab(3).Control(7)=   "cmdRefresh(3)"
-      Tab(3).Control(7).Enabled=   0   'False
-      Tab(3).ControlCount=   8
+      Tab(3).Control(5)=   "cmdExit(3)"
+      Tab(3).Control(5).Enabled=   0   'False
+      Tab(3).Control(6)=   "fraDetails(3)"
+      Tab(3).Control(7)=   "grdAlloc(3)"
+      Tab(3).Control(8)=   "cmdRefresh(3)"
+      Tab(3).Control(8).Enabled=   0   'False
+      Tab(3).ControlCount=   9
       TabCaption(4)   =   "CY Special Service"
       TabPicture(4)   =   "frmAllocation.frx":0070
       Tab(4).ControlEnabled=   0   'False
-      Tab(4).Control(0)=   "cmdRefresh(4)"
-      Tab(4).Control(0).Enabled=   0   'False
-      Tab(4).Control(1)=   "grdAlloc(4)"
+      Tab(4).Control(0)=   "Combo1(4)"
+      Tab(4).Control(1)=   "cmdExit(4)"
       Tab(4).Control(1).Enabled=   0   'False
-      Tab(4).Control(2)=   "fraDetails(4)"
+      Tab(4).Control(2)=   "cmdNext(4)"
       Tab(4).Control(2).Enabled=   0   'False
-      Tab(4).Control(3)=   "cmdAdd(4)"
+      Tab(4).Control(3)=   "cmdDel(4)"
       Tab(4).Control(3).Enabled=   0   'False
       Tab(4).Control(4)=   "cmdEdit(4)"
       Tab(4).Control(4).Enabled=   0   'False
-      Tab(4).Control(5)=   "cmdDel(4)"
+      Tab(4).Control(5)=   "cmdAdd(4)"
       Tab(4).Control(5).Enabled=   0   'False
-      Tab(4).Control(6)=   "cmdNext(4)"
-      Tab(4).Control(6).Enabled=   0   'False
-      Tab(4).Control(7)=   "cmdExit(4)"
-      Tab(4).Control(7).Enabled=   0   'False
-      Tab(4).ControlCount=   8
+      Tab(4).Control(6)=   "fraDetails(4)"
+      Tab(4).Control(7)=   "grdAlloc(4)"
+      Tab(4).Control(8)=   "cmdRefresh(4)"
+      Tab(4).Control(8).Enabled=   0   'False
+      Tab(4).ControlCount=   9
+      Begin VB.ComboBox Combo1 
+         Height          =   465
+         Index           =   4
+         Left            =   -73680
+         TabIndex        =   110
+         Top             =   960
+         Width           =   2535
+      End
+      Begin VB.ComboBox Combo1 
+         Height          =   465
+         Index           =   3
+         Left            =   -73680
+         TabIndex        =   109
+         Top             =   960
+         Width           =   2535
+      End
+      Begin VB.ComboBox Combo1 
+         Height          =   465
+         Index           =   2
+         Left            =   -73680
+         TabIndex        =   108
+         Top             =   960
+         Width           =   2535
+      End
+      Begin VB.ComboBox Combo1 
+         Height          =   465
+         Index           =   1
+         ItemData        =   "frmAllocation.frx":008C
+         Left            =   -73680
+         List            =   "frmAllocation.frx":008E
+         TabIndex        =   107
+         Top             =   960
+         Width           =   2535
+      End
       Begin VB.CommandButton cmdNext 
          Caption         =   "F11=Next"
          Height          =   735
@@ -244,7 +277,7 @@ Begin VB.Form frmAllocation
             MaxLength       =   10
             TabIndex        =   68
             TabStop         =   0   'False
-            Top             =   720
+            Top             =   960
             Width           =   1815
          End
          Begin VB.TextBox txtStartCCR 
@@ -257,7 +290,7 @@ Begin VB.Form frmAllocation
             MaxLength       =   8
             TabIndex        =   69
             TabStop         =   0   'False
-            Top             =   1320
+            Top             =   1560
             Width           =   1455
          End
          Begin VB.TextBox txtEndCCR 
@@ -270,7 +303,7 @@ Begin VB.Form frmAllocation
             MaxLength       =   8
             TabIndex        =   70
             TabStop         =   0   'False
-            Top             =   1920
+            Top             =   2160
             Width           =   1455
          End
          Begin VB.Label Label24 
@@ -308,7 +341,7 @@ Begin VB.Form frmAllocation
             Height          =   270
             Left            =   840
             TabIndex        =   104
-            Top             =   720
+            Top             =   960
             Width           =   1230
          End
          Begin VB.Label Label18 
@@ -346,7 +379,7 @@ Begin VB.Form frmAllocation
             Height          =   270
             Left            =   840
             TabIndex        =   102
-            Top             =   1320
+            Top             =   1560
             Width           =   1170
          End
          Begin VB.Label Label10 
@@ -384,7 +417,7 @@ Begin VB.Form frmAllocation
             Height          =   270
             Left            =   840
             TabIndex        =   100
-            Top             =   1920
+            Top             =   2160
             Width           =   1260
          End
          Begin VB.Label lblSysdte 
@@ -472,7 +505,7 @@ Begin VB.Form frmAllocation
             MaxLength       =   8
             TabIndex        =   55
             TabStop         =   0   'False
-            Top             =   1920
+            Top             =   2160
             Width           =   1455
          End
          Begin VB.TextBox txtStartCCR 
@@ -485,7 +518,7 @@ Begin VB.Form frmAllocation
             MaxLength       =   8
             TabIndex        =   54
             TabStop         =   0   'False
-            Top             =   1320
+            Top             =   1560
             Width           =   1455
          End
          Begin VB.TextBox txtTeller 
@@ -498,7 +531,7 @@ Begin VB.Form frmAllocation
             MaxLength       =   10
             TabIndex        =   53
             TabStop         =   0   'False
-            Top             =   720
+            Top             =   960
             Width           =   1815
          End
          Begin VB.Label Label23 
@@ -536,7 +569,7 @@ Begin VB.Form frmAllocation
             Height          =   270
             Left            =   840
             TabIndex        =   98
-            Top             =   720
+            Top             =   960
             Width           =   1230
          End
          Begin VB.Label Label20 
@@ -574,7 +607,7 @@ Begin VB.Form frmAllocation
             Height          =   270
             Left            =   840
             TabIndex        =   96
-            Top             =   1320
+            Top             =   1560
             Width           =   1170
          End
          Begin VB.Label Label17 
@@ -612,7 +645,7 @@ Begin VB.Form frmAllocation
             Height          =   270
             Left            =   840
             TabIndex        =   94
-            Top             =   1920
+            Top             =   2160
             Width           =   1260
          End
          Begin VB.Label lblAllocBy 
@@ -664,7 +697,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F3=Exit"
          Height          =   735
          Index           =   2
-         Left            =   12120
+         Left            =   -62880
          TabIndex        =   36
          TabStop         =   0   'False
          Top             =   9600
@@ -684,7 +717,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F3=Exit"
          Height          =   735
          Index           =   0
-         Left            =   -62880
+         Left            =   12120
          TabIndex        =   10
          TabStop         =   0   'False
          Top             =   9600
@@ -694,7 +727,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F11=Next"
          Height          =   735
          Index           =   2
-         Left            =   8640
+         Left            =   -66360
          TabIndex        =   35
          TabStop         =   0   'False
          Top             =   9600
@@ -714,7 +747,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F11=Next"
          Height          =   735
          Index           =   0
-         Left            =   -66360
+         Left            =   8640
          TabIndex        =   9
          TabStop         =   0   'False
          Top             =   9600
@@ -724,7 +757,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F8=Del"
          Height          =   735
          Index           =   2
-         Left            =   6720
+         Left            =   -68280
          TabIndex        =   34
          TabStop         =   0   'False
          Top             =   9600
@@ -764,7 +797,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F8=Del"
          Height          =   735
          Index           =   0
-         Left            =   -68280
+         Left            =   6720
          TabIndex        =   8
          TabStop         =   0   'False
          Top             =   9600
@@ -774,7 +807,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F7=Edit"
          Height          =   735
          Index           =   0
-         Left            =   -70200
+         Left            =   4800
          TabIndex        =   7
          TabStop         =   0   'False
          Top             =   9600
@@ -784,7 +817,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F6=Add"
          Height          =   735
          Index           =   0
-         Left            =   -72120
+         Left            =   2880
          TabIndex        =   6
          TabStop         =   0   'False
          Top             =   9600
@@ -796,7 +829,7 @@ Begin VB.Form frmAllocation
          Enabled         =   0   'False
          Height          =   2775
          Index           =   2
-         Left            =   960
+         Left            =   -74040
          TabIndex        =   45
          Top             =   720
          Width           =   13095
@@ -810,7 +843,7 @@ Begin VB.Form frmAllocation
             MaxLength       =   10
             TabIndex        =   27
             TabStop         =   0   'False
-            Top             =   720
+            Top             =   960
             Width           =   1815
          End
          Begin VB.TextBox txtStartCCR 
@@ -823,7 +856,7 @@ Begin VB.Form frmAllocation
             MaxLength       =   8
             TabIndex        =   28
             TabStop         =   0   'False
-            Top             =   1320
+            Top             =   1560
             Width           =   1455
          End
          Begin VB.TextBox txtEndCCR 
@@ -836,7 +869,7 @@ Begin VB.Form frmAllocation
             MaxLength       =   8
             TabIndex        =   29
             TabStop         =   0   'False
-            Top             =   1920
+            Top             =   2160
             Width           =   1455
          End
          Begin VB.Label Label15 
@@ -855,7 +888,7 @@ Begin VB.Form frmAllocation
             Height          =   270
             Left            =   840
             TabIndex        =   93
-            Top             =   1920
+            Top             =   2160
             Width           =   1260
          End
          Begin VB.Label Label14 
@@ -893,7 +926,7 @@ Begin VB.Form frmAllocation
             Height          =   270
             Left            =   840
             TabIndex        =   91
-            Top             =   1320
+            Top             =   1560
             Width           =   1170
          End
          Begin VB.Label Label11 
@@ -931,7 +964,7 @@ Begin VB.Form frmAllocation
             Height          =   270
             Left            =   840
             TabIndex        =   89
-            Top             =   720
+            Top             =   960
             Width           =   1230
          End
          Begin VB.Label Label8 
@@ -1018,7 +1051,7 @@ Begin VB.Form frmAllocation
             MaxLength       =   8
             TabIndex        =   16
             TabStop         =   0   'False
-            Top             =   1920
+            Top             =   2160
             Width           =   1455
          End
          Begin VB.TextBox txtStartCCR 
@@ -1031,7 +1064,7 @@ Begin VB.Form frmAllocation
             MaxLength       =   8
             TabIndex        =   15
             TabStop         =   0   'False
-            Top             =   1320
+            Top             =   1560
             Width           =   1455
          End
          Begin VB.TextBox txtTeller 
@@ -1044,7 +1077,7 @@ Begin VB.Form frmAllocation
             MaxLength       =   10
             TabIndex        =   14
             TabStop         =   0   'False
-            Top             =   720
+            Top             =   960
             Width           =   1815
          End
          Begin VB.Label Label36 
@@ -1063,7 +1096,7 @@ Begin VB.Form frmAllocation
             Height          =   375
             Left            =   840
             TabIndex        =   87
-            Top             =   1920
+            Top             =   2160
             Width           =   1260
          End
          Begin VB.Label Label35 
@@ -1101,7 +1134,7 @@ Begin VB.Form frmAllocation
             Height          =   270
             Left            =   840
             TabIndex        =   85
-            Top             =   1320
+            Top             =   1560
             Width           =   1170
          End
          Begin VB.Label Label33 
@@ -1139,7 +1172,7 @@ Begin VB.Form frmAllocation
             Height          =   270
             Left            =   840
             TabIndex        =   83
-            Top             =   720
+            Top             =   960
             Width           =   1230
          End
          Begin VB.Label Label31 
@@ -1212,10 +1245,20 @@ Begin VB.Form frmAllocation
          Enabled         =   0   'False
          Height          =   2775
          Index           =   0
-         Left            =   -74040
+         Left            =   960
          TabIndex        =   11
          Top             =   720
          Width           =   13095
+         Begin VB.ComboBox Combo1 
+            Height          =   465
+            Index           =   0
+            ItemData        =   "frmAllocation.frx":0090
+            Left            =   360
+            List            =   "frmAllocation.frx":0092
+            TabIndex        =   106
+            Top             =   240
+            Width           =   2535
+         End
          Begin VB.TextBox txtTeller 
             BackColor       =   &H80000010&
             BorderStyle     =   0  'None
@@ -1226,7 +1269,7 @@ Begin VB.Form frmAllocation
             MaxLength       =   10
             TabIndex        =   2
             TabStop         =   0   'False
-            Top             =   720
+            Top             =   960
             Width           =   1815
          End
          Begin VB.TextBox txtStartCCR 
@@ -1239,7 +1282,7 @@ Begin VB.Form frmAllocation
             MaxLength       =   8
             TabIndex        =   3
             TabStop         =   0   'False
-            Top             =   1320
+            Top             =   1560
             Width           =   1455
          End
          Begin VB.TextBox txtEndCCR 
@@ -1252,7 +1295,7 @@ Begin VB.Form frmAllocation
             MaxLength       =   8
             TabIndex        =   4
             TabStop         =   0   'False
-            Top             =   1920
+            Top             =   2160
             Width           =   1455
          End
          Begin VB.Label lblSysdte 
@@ -1312,7 +1355,7 @@ Begin VB.Form frmAllocation
             Height          =   270
             Left            =   840
             TabIndex        =   38
-            Top             =   720
+            Top             =   960
             Width           =   1230
          End
          Begin VB.Label lblLastDate 
@@ -1361,7 +1404,7 @@ Begin VB.Form frmAllocation
             Height          =   270
             Left            =   840
             TabIndex        =   25
-            Top             =   1320
+            Top             =   1560
             Width           =   1170
          End
          Begin VB.Label lblAllocBy 
@@ -1410,14 +1453,14 @@ Begin VB.Form frmAllocation
             Height          =   270
             Left            =   840
             TabIndex        =   12
-            Top             =   1920
+            Top             =   2160
             Width           =   1260
          End
       End
       Begin MSFlexGridLib.MSFlexGrid grdAlloc 
          Height          =   5295
          Index           =   0
-         Left            =   -74040
+         Left            =   960
          TabIndex        =   0
          TabStop         =   0   'False
          Top             =   3840
@@ -1459,7 +1502,7 @@ Begin VB.Form frmAllocation
       Begin MSFlexGridLib.MSFlexGrid grdAlloc 
          Height          =   5295
          Index           =   2
-         Left            =   960
+         Left            =   -74040
          TabIndex        =   30
          TabStop         =   0   'False
          Top             =   3840
@@ -1522,7 +1565,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F5=Refresh"
          Height          =   735
          Index           =   0
-         Left            =   -74040
+         Left            =   960
          TabIndex        =   5
          TabStop         =   0   'False
          Top             =   9600
@@ -1542,7 +1585,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F7=Edit"
          Height          =   735
          Index           =   2
-         Left            =   4800
+         Left            =   -70200
          TabIndex        =   33
          TabStop         =   0   'False
          Top             =   9600
@@ -1552,7 +1595,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F6=Add"
          Height          =   735
          Index           =   2
-         Left            =   2880
+         Left            =   -72120
          TabIndex        =   32
          TabStop         =   0   'False
          Top             =   9600
@@ -1562,7 +1605,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F5=Refresh"
          Height          =   735
          Index           =   2
-         Left            =   960
+         Left            =   -74040
          TabIndex        =   31
          TabStop         =   0   'False
          Top             =   9600
@@ -1690,7 +1733,7 @@ Private Sub FillGrid()
     Dim rstCYM As New ADODB.Recordset
     Dim rstCYE As New ADODB.Recordset
     Dim rstSPL As New ADODB.Recordset
-   
+    Dim rstCC As ADODB.Recordset
     If Index > 4 Then
         Index = 0
     End If
@@ -1698,6 +1741,18 @@ Private Sub FillGrid()
     
     Select Case Index
         Case CCR
+            With Combo1(CCR)
+            Set rstCC = New ADODB.Recordset
+            rstCC.Open "Select CompanyCode from CCRAlloc group by CompanyCode order by CompanyCode", gcnnBilling, , , adCmdText
+            If Not (rstCC.BOF And rstCC.EOF) Then
+                rstCC.MoveFirst
+            End If
+            
+            While Not rstCC.EOF
+                .AddItem rstCC.Fields("CompanyCode")
+                rstCC.MoveNext
+            Wend
+            End With
             With grdAlloc(CCR)
                 rstCCR.Open "Select * from CCRAlloc order by strccr desc", gcnnBilling, , , adCmdText
                 .Row = 0
