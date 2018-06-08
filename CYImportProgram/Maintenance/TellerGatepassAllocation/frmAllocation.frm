@@ -54,21 +54,19 @@ Begin VB.Form frmAllocation
       Tab(0).Control(0).Enabled=   0   'False
       Tab(0).Control(1)=   "grdAlloc(0)"
       Tab(0).Control(1).Enabled=   0   'False
-      Tab(0).Control(2)=   "cmdAdd(0)"
+      Tab(0).Control(2)=   "fraDetails(0)"
       Tab(0).Control(2).Enabled=   0   'False
-      Tab(0).Control(3)=   "cmdEdit(0)"
+      Tab(0).Control(3)=   "cmdAdd(0)"
       Tab(0).Control(3).Enabled=   0   'False
-      Tab(0).Control(4)=   "cmdDel(0)"
+      Tab(0).Control(4)=   "cmdEdit(0)"
       Tab(0).Control(4).Enabled=   0   'False
-      Tab(0).Control(5)=   "cmdNext(0)"
+      Tab(0).Control(5)=   "cmdDel(0)"
       Tab(0).Control(5).Enabled=   0   'False
-      Tab(0).Control(6)=   "cmdExit(0)"
+      Tab(0).Control(6)=   "cmdNext(0)"
       Tab(0).Control(6).Enabled=   0   'False
-      Tab(0).Control(7)=   "fraDetails(0)"
+      Tab(0).Control(7)=   "cmdExit(0)"
       Tab(0).Control(7).Enabled=   0   'False
-      Tab(0).Control(8)=   "Combo1(0)"
-      Tab(0).Control(8).Enabled=   0   'False
-      Tab(0).ControlCount=   9
+      Tab(0).ControlCount=   8
       TabCaption(1)   =   "CFS Import "
       TabPicture(1)   =   "frmAllocation.frx":001C
       Tab(1).ControlEnabled=   0   'False
@@ -91,40 +89,40 @@ Begin VB.Form frmAllocation
       TabCaption(2)   =   "CY Import "
       TabPicture(2)   =   "frmAllocation.frx":0038
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "cmdRefresh(2)"
-      Tab(2).Control(0).Enabled=   0   'False
-      Tab(2).Control(1)=   "cmdAdd(2)"
+      Tab(2).Control(0)=   "Combo1(2)"
+      Tab(2).Control(1)=   "cmdExit(2)"
       Tab(2).Control(1).Enabled=   0   'False
-      Tab(2).Control(2)=   "cmdEdit(2)"
+      Tab(2).Control(2)=   "cmdNext(2)"
       Tab(2).Control(2).Enabled=   0   'False
-      Tab(2).Control(3)=   "grdAlloc(2)"
+      Tab(2).Control(3)=   "cmdDel(2)"
+      Tab(2).Control(3).Enabled=   0   'False
       Tab(2).Control(4)=   "fraDetails(2)"
-      Tab(2).Control(5)=   "cmdDel(2)"
-      Tab(2).Control(5).Enabled=   0   'False
-      Tab(2).Control(6)=   "cmdNext(2)"
+      Tab(2).Control(5)=   "grdAlloc(2)"
+      Tab(2).Control(6)=   "cmdEdit(2)"
       Tab(2).Control(6).Enabled=   0   'False
-      Tab(2).Control(7)=   "cmdExit(2)"
+      Tab(2).Control(7)=   "cmdAdd(2)"
       Tab(2).Control(7).Enabled=   0   'False
-      Tab(2).Control(8)=   "Combo1(2)"
+      Tab(2).Control(8)=   "cmdRefresh(2)"
+      Tab(2).Control(8).Enabled=   0   'False
       Tab(2).ControlCount=   9
       TabCaption(3)   =   "Empties"
       TabPicture(3)   =   "frmAllocation.frx":0054
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "cmdRefresh(3)"
-      Tab(3).Control(0).Enabled=   0   'False
-      Tab(3).Control(1)=   "grdAlloc(3)"
-      Tab(3).Control(2)=   "fraDetails(3)"
-      Tab(3).Control(3)=   "cmdExit(3)"
+      Tab(3).Control(0)=   "Combo1(3)"
+      Tab(3).Control(1)=   "cmdNext(3)"
+      Tab(3).Control(1).Enabled=   0   'False
+      Tab(3).Control(2)=   "cmdDel(3)"
+      Tab(3).Control(2).Enabled=   0   'False
+      Tab(3).Control(3)=   "cmdEdit(3)"
       Tab(3).Control(3).Enabled=   0   'False
       Tab(3).Control(4)=   "cmdAdd(3)"
       Tab(3).Control(4).Enabled=   0   'False
-      Tab(3).Control(5)=   "cmdEdit(3)"
+      Tab(3).Control(5)=   "cmdExit(3)"
       Tab(3).Control(5).Enabled=   0   'False
-      Tab(3).Control(6)=   "cmdDel(3)"
-      Tab(3).Control(6).Enabled=   0   'False
-      Tab(3).Control(7)=   "cmdNext(3)"
-      Tab(3).Control(7).Enabled=   0   'False
-      Tab(3).Control(8)=   "Combo1(3)"
+      Tab(3).Control(6)=   "fraDetails(3)"
+      Tab(3).Control(7)=   "grdAlloc(3)"
+      Tab(3).Control(8)=   "cmdRefresh(3)"
+      Tab(3).Control(8).Enabled=   0   'False
       Tab(3).ControlCount=   9
       TabCaption(4)   =   "CY Special Service"
       TabPicture(4)   =   "frmAllocation.frx":0070
@@ -146,239 +144,18 @@ Begin VB.Form frmAllocation
       Tab(4).Control(8).Enabled=   0   'False
       Tab(4).ControlCount=   9
       Begin VB.ComboBox Combo1 
-         CausesValidation=   0   'False
          Height          =   465
-         Index           =   0
-         ItemData        =   "frmAllocation.frx":008C
-         Left            =   1320
-         List            =   "frmAllocation.frx":008E
+         Index           =   4
+         Left            =   -73680
          TabIndex        =   110
          Top             =   960
          Width           =   2535
       End
-      Begin VB.Frame fraDetails 
-         BackColor       =   &H80000010&
-         BorderStyle     =   0  'None
-         Enabled         =   0   'False
-         Height          =   2775
-         Index           =   0
-         Left            =   960
-         TabIndex        =   11
-         Top             =   720
-         Width           =   13095
-         Begin VB.TextBox txtEndCCR 
-            BackColor       =   &H80000010&
-            BorderStyle     =   0  'None
-            ForeColor       =   &H80000018&
-            Height          =   345
-            Index           =   0
-            Left            =   2400
-            MaxLength       =   8
-            TabIndex        =   4
-            TabStop         =   0   'False
-            Top             =   2160
-            Width           =   1455
-         End
-         Begin VB.TextBox txtStartCCR 
-            BackColor       =   &H80000010&
-            BorderStyle     =   0  'None
-            ForeColor       =   &H80000018&
-            Height          =   345
-            Index           =   0
-            Left            =   2400
-            MaxLength       =   8
-            TabIndex        =   3
-            TabStop         =   0   'False
-            Top             =   1560
-            Width           =   1455
-         End
-         Begin VB.TextBox txtTeller 
-            BackColor       =   &H80000010&
-            BorderStyle     =   0  'None
-            ForeColor       =   &H80000018&
-            Height          =   345
-            Index           =   0
-            Left            =   2400
-            MaxLength       =   10
-            TabIndex        =   2
-            TabStop         =   0   'False
-            Top             =   960
-            Width           =   1815
-         End
-         Begin VB.Label Label3 
-            AutoSize        =   -1  'True
-            BackColor       =   &H80000010&
-            Caption         =   "End"
-            BeginProperty Font 
-               Name            =   "Arial"
-               Size            =   13.5
-               Charset         =   0
-               Weight          =   700
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   270
-            Left            =   840
-            TabIndex        =   12
-            Top             =   2160
-            Width           =   1260
-         End
-         Begin VB.Label Label2 
-            AutoSize        =   -1  'True
-            BackColor       =   &H80000010&
-            Caption         =   "Start"
-            BeginProperty Font 
-               Name            =   "Arial"
-               Size            =   13.5
-               Charset         =   0
-               Weight          =   700
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   270
-            Left            =   840
-            TabIndex        =   25
-            Top             =   1560
-            Width           =   1170
-         End
-         Begin VB.Label lblLastCCR 
-            AutoSize        =   -1  'True
-            BackColor       =   &H80000010&
-            ForeColor       =   &H00FF0000&
-            Height          =   300
-            Index           =   0
-            Left            =   8640
-            TabIndex        =   40
-            Top             =   480
-            Width           =   165
-         End
-         Begin VB.Label Label4 
-            AutoSize        =   -1  'True
-            BackColor       =   &H80000010&
-            Caption         =   "Last CCR Issued"
-            BeginProperty Font 
-               Name            =   "Arial"
-               Size            =   13.5
-               Charset         =   0
-               Weight          =   700
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   270
-            Left            =   5640
-            TabIndex        =   39
-            Top             =   480
-            Width           =   2880
-         End
-         Begin VB.Label lblLastDate 
-            AutoSize        =   -1  'True
-            BackColor       =   &H80000010&
-            ForeColor       =   &H80000018&
-            Height          =   300
-            Index           =   0
-            Left            =   8640
-            TabIndex        =   37
-            Top             =   1200
-            Width           =   165
-         End
-         Begin VB.Label Label5 
-            AutoSize        =   -1  'True
-            BackColor       =   &H80000010&
-            Caption         =   "Last Issue Date/Time"
-            BeginProperty Font 
-               Name            =   "Arial"
-               Size            =   13.5
-               Charset         =   0
-               Weight          =   700
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   270
-            Left            =   5640
-            TabIndex        =   26
-            Top             =   1200
-            Width           =   2715
-         End
-         Begin VB.Label Label6 
-            AutoSize        =   -1  'True
-            BackColor       =   &H80000010&
-            Caption         =   "Allocated by"
-            BeginProperty Font 
-               Name            =   "Arial"
-               Size            =   13.5
-               Charset         =   0
-               Weight          =   700
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   270
-            Left            =   5640
-            TabIndex        =   13
-            Top             =   1920
-            Width           =   2715
-         End
-         Begin VB.Label lblAllocBy 
-            AutoSize        =   -1  'True
-            BackColor       =   &H80000010&
-            ForeColor       =   &H80000018&
-            Height          =   300
-            Index           =   0
-            Left            =   8640
-            TabIndex        =   24
-            Top             =   1920
-            Width           =   165
-         End
-         Begin VB.Label lblSysdte 
-            AutoSize        =   -1  'True
-            BackColor       =   &H80000010&
-            ForeColor       =   &H80000018&
-            Height          =   300
-            Index           =   0
-            Left            =   8640
-            TabIndex        =   49
-            Top             =   2280
-            Width           =   165
-         End
-         Begin VB.Label Label1 
-            AutoSize        =   -1  'True
-            BackColor       =   &H80000010&
-            Caption         =   "Teller ID"
-            BeginProperty Font 
-               Name            =   "Arial"
-               Size            =   13.5
-               Charset         =   0
-               Weight          =   700
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   270
-            Left            =   840
-            TabIndex        =   38
-            Top             =   960
-            Width           =   1230
-         End
-      End
       Begin VB.ComboBox Combo1 
-         Height          =   465
-         Index           =   4
-         Left            =   -73680
-         TabIndex        =   109
-         Top             =   960
-         Width           =   2535
-      End
-      Begin VB.ComboBox Combo1 
-         Enabled         =   0   'False
          Height          =   465
          Index           =   3
          Left            =   -73680
-         TabIndex        =   108
-         Text            =   "N/A"
+         TabIndex        =   109
          Top             =   960
          Width           =   2535
       End
@@ -386,19 +163,17 @@ Begin VB.Form frmAllocation
          Height          =   465
          Index           =   2
          Left            =   -73680
-         TabIndex        =   107
+         TabIndex        =   108
          Top             =   960
          Width           =   2535
       End
       Begin VB.ComboBox Combo1 
-         Enabled         =   0   'False
          Height          =   465
          Index           =   1
-         ItemData        =   "frmAllocation.frx":0090
+         ItemData        =   "frmAllocation.frx":008C
          Left            =   -73680
-         List            =   "frmAllocation.frx":0092
-         TabIndex        =   106
-         Text            =   "N/A"
+         List            =   "frmAllocation.frx":008E
+         TabIndex        =   107
          Top             =   960
          Width           =   2535
       End
@@ -547,7 +322,7 @@ Begin VB.Form frmAllocation
             Height          =   270
             Left            =   5640
             TabIndex        =   105
-            Top             =   480
+            Top             =   720
             Width           =   2760
          End
          Begin VB.Label Label21 
@@ -585,7 +360,7 @@ Begin VB.Form frmAllocation
             Height          =   270
             Left            =   5640
             TabIndex        =   103
-            Top             =   1200
+            Top             =   1320
             Width           =   2715
          End
          Begin VB.Label Label13 
@@ -664,7 +439,7 @@ Begin VB.Form frmAllocation
             Index           =   4
             Left            =   8640
             TabIndex        =   73
-            Top             =   480
+            Top             =   720
             Width           =   165
          End
          Begin VB.Label lblLastDate 
@@ -675,7 +450,7 @@ Begin VB.Form frmAllocation
             Index           =   4
             Left            =   8640
             TabIndex        =   72
-            Top             =   1200
+            Top             =   1320
             Width           =   165
          End
          Begin VB.Label lblAllocBy 
@@ -775,7 +550,7 @@ Begin VB.Form frmAllocation
             Height          =   270
             Left            =   5640
             TabIndex        =   99
-            Top             =   480
+            Top             =   720
             Width           =   2760
          End
          Begin VB.Label Label22 
@@ -813,7 +588,7 @@ Begin VB.Form frmAllocation
             Height          =   270
             Left            =   5640
             TabIndex        =   97
-            Top             =   1200
+            Top             =   1320
             Width           =   2715
          End
          Begin VB.Label Label19 
@@ -892,7 +667,7 @@ Begin VB.Form frmAllocation
             Index           =   3
             Left            =   8640
             TabIndex        =   58
-            Top             =   1200
+            Top             =   1320
             Width           =   165
          End
          Begin VB.Label lblLastCCR 
@@ -903,7 +678,7 @@ Begin VB.Form frmAllocation
             Index           =   3
             Left            =   8640
             TabIndex        =   57
-            Top             =   480
+            Top             =   720
             Width           =   165
          End
          Begin VB.Label lblSysdte 
@@ -1170,7 +945,7 @@ Begin VB.Form frmAllocation
             Height          =   270
             Left            =   5640
             TabIndex        =   90
-            Top             =   1200
+            Top             =   1320
             Width           =   2715
          End
          Begin VB.Label Label9 
@@ -1208,7 +983,7 @@ Begin VB.Form frmAllocation
             Height          =   375
             Left            =   5640
             TabIndex        =   88
-            Top             =   480
+            Top             =   720
             Width           =   2760
          End
          Begin VB.Label lblSysdte 
@@ -1230,7 +1005,7 @@ Begin VB.Form frmAllocation
             Index           =   2
             Left            =   8640
             TabIndex        =   48
-            Top             =   480
+            Top             =   720
             Width           =   165
          End
          Begin VB.Label lblLastDate 
@@ -1241,7 +1016,7 @@ Begin VB.Form frmAllocation
             Index           =   2
             Left            =   8640
             TabIndex        =   47
-            Top             =   1200
+            Top             =   1320
             Width           =   165
          End
          Begin VB.Label lblAllocBy 
@@ -1378,7 +1153,7 @@ Begin VB.Form frmAllocation
             Height          =   270
             Left            =   5640
             TabIndex        =   84
-            Top             =   1200
+            Top             =   1320
             Width           =   2715
          End
          Begin VB.Label Label32 
@@ -1416,7 +1191,7 @@ Begin VB.Form frmAllocation
             Height          =   270
             Left            =   5640
             TabIndex        =   82
-            Top             =   480
+            Top             =   720
             Width           =   2760
          End
          Begin VB.Label lblSysdte 
@@ -1449,7 +1224,7 @@ Begin VB.Form frmAllocation
             Index           =   1
             Left            =   8640
             TabIndex        =   43
-            Top             =   1200
+            Top             =   1320
             Width           =   165
          End
          Begin VB.Label lblLastCCR 
@@ -1460,8 +1235,226 @@ Begin VB.Form frmAllocation
             Index           =   1
             Left            =   8640
             TabIndex        =   42
-            Top             =   480
+            Top             =   720
             Width           =   165
+         End
+      End
+      Begin VB.Frame fraDetails 
+         BackColor       =   &H80000010&
+         BorderStyle     =   0  'None
+         Enabled         =   0   'False
+         Height          =   2775
+         Index           =   0
+         Left            =   960
+         TabIndex        =   11
+         Top             =   720
+         Width           =   13095
+         Begin VB.ComboBox Combo1 
+            Height          =   465
+            Index           =   0
+            ItemData        =   "frmAllocation.frx":0090
+            Left            =   360
+            List            =   "frmAllocation.frx":0092
+            TabIndex        =   106
+            Top             =   240
+            Width           =   2535
+         End
+         Begin VB.TextBox txtTeller 
+            BackColor       =   &H80000010&
+            BorderStyle     =   0  'None
+            ForeColor       =   &H80000018&
+            Height          =   345
+            Index           =   0
+            Left            =   2400
+            MaxLength       =   10
+            TabIndex        =   2
+            TabStop         =   0   'False
+            Top             =   960
+            Width           =   1815
+         End
+         Begin VB.TextBox txtStartCCR 
+            BackColor       =   &H80000010&
+            BorderStyle     =   0  'None
+            ForeColor       =   &H80000018&
+            Height          =   345
+            Index           =   0
+            Left            =   2400
+            MaxLength       =   8
+            TabIndex        =   3
+            TabStop         =   0   'False
+            Top             =   1560
+            Width           =   1455
+         End
+         Begin VB.TextBox txtEndCCR 
+            BackColor       =   &H80000010&
+            BorderStyle     =   0  'None
+            ForeColor       =   &H80000018&
+            Height          =   345
+            Index           =   0
+            Left            =   2400
+            MaxLength       =   8
+            TabIndex        =   4
+            TabStop         =   0   'False
+            Top             =   2160
+            Width           =   1455
+         End
+         Begin VB.Label lblSysdte 
+            AutoSize        =   -1  'True
+            BackColor       =   &H80000010&
+            ForeColor       =   &H80000018&
+            Height          =   300
+            Index           =   0
+            Left            =   8640
+            TabIndex        =   49
+            Top             =   2280
+            Width           =   165
+         End
+         Begin VB.Label lblLastCCR 
+            AutoSize        =   -1  'True
+            BackColor       =   &H80000010&
+            ForeColor       =   &H00FF0000&
+            Height          =   300
+            Index           =   0
+            Left            =   8640
+            TabIndex        =   40
+            Top             =   720
+            Width           =   165
+         End
+         Begin VB.Label Label4 
+            AutoSize        =   -1  'True
+            BackColor       =   &H80000010&
+            Caption         =   "Last CCR Issued"
+            BeginProperty Font 
+               Name            =   "Arial"
+               Size            =   13.5
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   270
+            Left            =   5640
+            TabIndex        =   39
+            Top             =   720
+            Width           =   2880
+         End
+         Begin VB.Label Label1 
+            AutoSize        =   -1  'True
+            BackColor       =   &H80000010&
+            Caption         =   "Teller ID"
+            BeginProperty Font 
+               Name            =   "Arial"
+               Size            =   13.5
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   270
+            Left            =   840
+            TabIndex        =   38
+            Top             =   960
+            Width           =   1230
+         End
+         Begin VB.Label lblLastDate 
+            AutoSize        =   -1  'True
+            BackColor       =   &H80000010&
+            ForeColor       =   &H80000018&
+            Height          =   300
+            Index           =   0
+            Left            =   8640
+            TabIndex        =   37
+            Top             =   1320
+            Width           =   165
+         End
+         Begin VB.Label Label5 
+            AutoSize        =   -1  'True
+            BackColor       =   &H80000010&
+            Caption         =   "Last Issue Date/Time"
+            BeginProperty Font 
+               Name            =   "Arial"
+               Size            =   13.5
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   270
+            Left            =   5640
+            TabIndex        =   26
+            Top             =   1320
+            Width           =   2715
+         End
+         Begin VB.Label Label2 
+            AutoSize        =   -1  'True
+            BackColor       =   &H80000010&
+            Caption         =   "Start"
+            BeginProperty Font 
+               Name            =   "Arial"
+               Size            =   13.5
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   270
+            Left            =   840
+            TabIndex        =   25
+            Top             =   1560
+            Width           =   1170
+         End
+         Begin VB.Label lblAllocBy 
+            AutoSize        =   -1  'True
+            BackColor       =   &H80000010&
+            ForeColor       =   &H80000018&
+            Height          =   300
+            Index           =   0
+            Left            =   8640
+            TabIndex        =   24
+            Top             =   1920
+            Width           =   165
+         End
+         Begin VB.Label Label6 
+            AutoSize        =   -1  'True
+            BackColor       =   &H80000010&
+            Caption         =   "Allocated by"
+            BeginProperty Font 
+               Name            =   "Arial"
+               Size            =   13.5
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   270
+            Left            =   5640
+            TabIndex        =   13
+            Top             =   1920
+            Width           =   2715
+         End
+         Begin VB.Label Label3 
+            AutoSize        =   -1  'True
+            BackColor       =   &H80000010&
+            Caption         =   "End"
+            BeginProperty Font 
+               Name            =   "Arial"
+               Size            =   13.5
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   270
+            Left            =   840
+            TabIndex        =   12
+            Top             =   2160
+            Width           =   1260
          End
       End
       Begin MSFlexGridLib.MSFlexGrid grdAlloc 
@@ -1482,6 +1475,7 @@ Begin VB.Form frmAllocation
          ScrollTrack     =   -1  'True
          FocusRect       =   0
          GridLines       =   2
+         ScrollBars      =   2
          SelectionMode   =   1
       End
       Begin MSFlexGridLib.MSFlexGrid grdAlloc 
@@ -1564,6 +1558,7 @@ Begin VB.Form frmAllocation
          ScrollTrack     =   -1  'True
          FocusRect       =   0
          GridLines       =   2
+         ScrollBars      =   2
          SelectionMode   =   1
       End
       Begin VB.CommandButton cmdRefresh 
@@ -1660,19 +1655,6 @@ Private Sub cmdRefresh_Click(Index As Integer)
   Call FillGrid
 End Sub
 
-Private Sub Combo1_Click(Index As Integer)
-Call cmdRefresh_Click(Index)
-End Sub
-
-Private Sub Combo1_KeyDown(Index As Integer, KeyCode As Integer, Shift As Integer)
-Call cmdRefresh_Click(Index)
-End Sub
-
-
-Private Sub Form_Activate()
-Combo1(0).SelLength = 0
-End Sub
-
 Private Sub Form_Load()
     Call Main
     EditSw = False
@@ -1742,169 +1724,37 @@ Private Sub SetGrid()
             ColCounter = ColCounter + 1
         Loop
     End With
-    FillCompanyCode (5)
     Call FillGrid
 End Sub
-Private Sub FillCompanyCode(Index As Integer)
-Dim rstCC As New ADODB.Recordset
-Dim i As Integer
-Select Case Index
-    Case CCR
-            With Combo1(CCR)
-                .Clear
-                rstCC.Open "Select CompanyCode from CCRAlloc group by CompanyCode order by CompanyCode", gcnnBilling, , , adCmdText
-                If Not (rstCC.BOF And rstCC.EOF) Then
-                    rstCC.MoveFirst
-                End If
-                    .AddItem ""
-                While Not rstCC.EOF
-                    If Not Trim(parse(rstCC.Fields(0))) = "" Then
-                        .AddItem rstCC.Fields(0)
-                    End If
-                    rstCC.MoveNext
-                Wend
-                While Len(Trim(.Text)) = 0
-                    .ListIndex = .ListIndex + 1
-                    .SelLength = 0
-                Wend
-                .Refresh
-                End With
-                rstCC.Close
-    Case CYM
-            With Combo1(CYM)
-                .Clear
-                rstCC.Open "Select CompanyCode from CYMAlloc group by CompanyCode order by CompanyCode", gcnnBilling, , , adCmdText
-                If Not (rstCC.BOF And rstCC.EOF) Then
-                    rstCC.MoveFirst
-                End If
-                    .AddItem ""
-                While Not rstCC.EOF
-                    If Not Trim(parse(rstCC.Fields(0))) = "" Then
-                        .AddItem rstCC.Fields(0)
-                    End If
-                    rstCC.MoveNext
-                Wend
-                While Len(Trim(.Text)) = 0
-                    .ListIndex = .ListIndex + 1
-                    .SelLength = 0
-                Wend
-                .Refresh
-            End With
-            rstCC.Close
-    Case SPL
-            With Combo1(SPL)
-                .Clear
-                rstCC.Open "Select CompanyCode from SPLAlloc group by CompanyCode order by CompanyCode", gcnnBilling, , , adCmdText
-                If Not (rstCC.BOF And rstCC.EOF) Then
-                    rstCC.MoveFirst
-                End If
-                    .AddItem ""
-                While Not rstCC.EOF
-                    If Not Trim(parse(rstCC.Fields(0))) = "" Then
-                        .AddItem rstCC.Fields(0)
-                    End If
-                    rstCC.MoveNext
-                Wend
-                While Len(Trim(.Text)) = 0
-                    .ListIndex = .ListIndex + 1
-                    .SelLength = 0
-                Wend
-                    .Refresh
-            End With
-            rstCC.Close
-    Case Else
-            With Combo1(CCR)
-                .Clear
-                rstCC.Open "Select CompanyCode from CCRAlloc group by CompanyCode order by CompanyCode", gcnnBilling, , , adCmdText
-                If Not (rstCC.BOF And rstCC.EOF) Then
-                    rstCC.MoveFirst
-                End If
-                    .AddItem ""
-                While Not rstCC.EOF
-                    If Not Trim(parse(rstCC.Fields(0))) = "" Then
-                        .AddItem rstCC.Fields(0)
-                    End If
-                    rstCC.MoveNext
-                Wend
-                While Len(Trim(.Text)) = 0
-                    .ListIndex = .ListIndex + 1
-                    .SelLength = 0
-                Wend
-                End With
-                rstCC.Close
-            With Combo1(CYM)
-                .Clear
-                rstCC.Open "Select CompanyCode from CYMAlloc group by CompanyCode order by CompanyCode", gcnnBilling, , , adCmdText
-                If Not (rstCC.BOF And rstCC.EOF) Then
-                    rstCC.MoveFirst
-                End If
-                    .AddItem ""
-                While Not rstCC.EOF
-                    If Not Trim(parse(rstCC.Fields(0))) = "" Then
-                        .AddItem rstCC.Fields(0)
-                    End If
-                    rstCC.MoveNext
-                Wend
-                While Len(Trim(.Text)) = 0
-                    .ListIndex = .ListIndex + 1
-                    .SelLength = 0
-                Wend
-                .Refresh
-            End With
-            rstCC.Close
-            With Combo1(SPL)
-                .Clear
-                rstCC.Open "Select CompanyCode from SPLAlloc group by CompanyCode order by CompanyCode", gcnnBilling, , , adCmdText
-                If Not (rstCC.BOF And rstCC.EOF) Then
-                    rstCC.MoveFirst
-                End If
-                    .AddItem ""
-                While Not rstCC.EOF
-                    If Not Trim(parse(rstCC.Fields(0))) = "" Then
-                        .AddItem rstCC.Fields(0)
-                    End If
-                    rstCC.MoveNext
-                Wend
-                While Len(Trim(.Text)) = 0
-                    .ListIndex = .ListIndex + 1
-                    .SelLength = 0
-                Wend
-                    .Refresh
-            End With
-            rstCC.Close
-End Select
 
-End Sub
 Private Sub FillGrid()
     Dim rstCCR As New ADODB.Recordset
     Dim rstCFM As New ADODB.Recordset
+    Dim rstCYM As New ADODB.Recordset
     Dim rstCYE As New ADODB.Recordset
-    Dim strConn(5) As String
+    Dim rstSPL As New ADODB.Recordset
+    Dim rstCC As ADODB.Recordset
     If Index > 4 Then
         Index = 0
     End If
     grdAlloc(Index).Rows = 2
+    
     Select Case Index
-        Case CCR, CYM, SPL
-            strConn(CCR) = "Select * from CCRAlloc "
-            strConn(CYM) = "Select * from CYMAlloc "
-            strConn(SPL) = "Select * from SPLAlloc "
-            
-            If Trim(Combo1(Index).Text) = "" Then
-                strConn(Index) = strConn(Index) & "where CompanyCode is null or CompanyCode like '%%'"
-            Else
-                strConn(Index) = strConn(Index) & "where CompanyCode = '" & Combo1(Index).Text & "' "
+        Case CCR
+            With Combo1(CCR)
+            Set rstCC = New ADODB.Recordset
+            rstCC.Open "Select CompanyCode from CCRAlloc group by CompanyCode order by CompanyCode", gcnnBilling, , , adCmdText
+            If Not (rstCC.BOF And rstCC.EOF) Then
+                rstCC.MoveFirst
             End If
             
-            strConn(CCR) = strConn(CCR) & "order by strccr desc"
-            strConn(CYM) = strConn(CYM) & "order by strgps desc"
-            strConn(SPL) = strConn(SPL) & "order by strccr desc"
-            
-            With grdAlloc(Index)
-                rstCCR.Open strConn(Index), gcnnBilling, , , adCmdText
-                If Not (rstCCR.BOF And rstCCR.EOF) Then
-                rstCCR.MoveFirst
-                End If
+            While Not rstCC.EOF
+                .AddItem rstCC.Fields("CompanyCode")
+                rstCC.MoveNext
+            Wend
+            End With
+            With grdAlloc(CCR)
+                rstCCR.Open "Select * from CCRAlloc order by strccr desc", gcnnBilling, , , adCmdText
                 .Row = 0
                 Do Until rstCCR.EOF
                     If .Row > 0 Then
@@ -1912,9 +1762,9 @@ Private Sub FillGrid()
                     End If
                     .Row = .Row + 1
                     .Col = 0: .Text = "" & rstCCR.Fields("teller")
-                    .Col = 1: .Text = "" & rstCCR.Fields(1)
-                    .Col = 2: .Text = "" & rstCCR.Fields(2)
-                    .Col = 3: .Text = "" & rstCCR.Fields(3)
+                    .Col = 1: .Text = "" & rstCCR.Fields("strccr")
+                    .Col = 2: .Text = "" & rstCCR.Fields("endccr")
+                    .Col = 3: .Text = "" & rstCCR.Fields("prvccr")
                     .Col = 4: .Text = "" & rstCCR.Fields("prvdte")
                     .Col = 5: .Text = "" & rstCCR.Fields("userid")
                     .Col = 6: .Text = "" & rstCCR.Fields("sysdte")
@@ -1926,7 +1776,6 @@ Private Sub FillGrid()
                 rstCCR.Close
                 .Row = 1: .Col = 0: .ColSel = 6
             End With
-            
         Case CFM
             With grdAlloc(CFM)
                 rstCFM.Open "Select * from CFMAlloc order by strgps desc", gcnnBilling, , , adCmdText
@@ -1946,6 +1795,30 @@ Private Sub FillGrid()
                     rstCFM.MoveNext
                 Loop
                 rstCFM.Close
+                .Row = 1: .Col = 0: .ColSel = 6
+            End With
+        Case CYM
+            With grdAlloc(CYM)
+                rstCYM.Open "Select * from CYMAlloc order by strgps desc", gcnnBilling, , , adCmdText
+                .Row = 0
+                Do Until rstCYM.EOF
+                    If .Row > 0 Then
+                        .AddItem ("")
+                    End If
+                    .Row = .Row + 1
+                    .Col = 0: .Text = "" & rstCYM.Fields("teller")
+                    .Col = 1: .Text = "" & rstCYM.Fields("strgps")
+                    .Col = 2: .Text = "" & rstCYM.Fields("endgps")
+                    .Col = 3: .Text = "" & rstCYM.Fields("prvgps")
+                    .Col = 4: .Text = "" & rstCYM.Fields("prvdte")
+                    .Col = 5: .Text = "" & rstCYM.Fields("userid")
+                    .Col = 6: .Text = "" & rstCYM.Fields("sysdte")
+                    
+                    'PRNH - Added CompanyCode
+                    .Col = 7: .Text = "" & rstCYM.Fields("CompanyCode")
+                    rstCYM.MoveNext
+                Loop
+                rstCYM.Close
                 .Row = 1: .Col = 0: .ColSel = 6
             End With
         Case CYE
@@ -1969,19 +1842,36 @@ Private Sub FillGrid()
                 rstCYE.Close
                 .Row = 1: .Col = 0: .ColSel = 6
             End With
+        Case SPL
+            With grdAlloc(SPL)
+                rstSPL.Open "Select * from SPLAlloc order by strccr desc", gcnnBilling, , , adCmdText
+                .Row = 0
+                Do Until rstSPL.EOF
+                    If .Row > 0 Then
+                        .AddItem ("")
+                    End If
+                    .Row = .Row + 1
+                    .Col = 0: .Text = "" & rstSPL.Fields("teller")
+                    .Col = 1: .Text = "" & rstSPL.Fields("strccr")
+                    .Col = 2: .Text = "" & rstSPL.Fields("endccr")
+                    .Col = 3: .Text = "" & rstSPL.Fields("prvccr")
+                    .Col = 4: .Text = "" & rstSPL.Fields("prvdte")
+                    .Col = 5: .Text = "" & rstSPL.Fields("userid")
+                    .Col = 6: .Text = "" & rstSPL.Fields("sysdte")
+                    
+                    'PRNH - Added CompanyCode
+                    .Col = 7: .Text = "" & rstSPL.Fields("CompanyCode")
+                    rstSPL.MoveNext
+                Loop
+                rstSPL.Close
+                .Row = 1: .Col = 0: .ColSel = 6
+            End With
     End Select
 End Sub
-Private Function parse(var As Variant) As Variant
-On Error GoTo parse
-parse = CStr(var)
-Exit Function
-parse:
-parse = ""
-End Function
+
 Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
     gcnnBilling.Close
 End Sub
-
 
 Private Sub grdAlloc_KeyDown(Index As Integer, KeyCode As Integer, Shift As Integer)
     Select Case KeyCode
@@ -2014,9 +1904,10 @@ Private Sub grdAlloc_RowColChange(Index As Integer)
         lblSysdte(Index) = .TextMatrix(.Row, 6)
     End With
 End Sub
+
+
 Private Sub sstAlloc_Click(PreviousTab As Integer)
     SetIndex
-    Combo1(Index).SelLength = 0
 End Sub
 
 Private Sub sstAlloc_GotFocus()
@@ -2209,7 +2100,6 @@ Private Sub FieldAdvance(pKeyCode As Integer, pPreviousControl As Control, pNext
     End Select
 End Sub
 
-
 Private Sub txtEndCCR_GotFocus(Index As Integer)
     SendKeys "{HOME}": SendKeys "+{END}"
 End Sub
@@ -2311,7 +2201,7 @@ Private Sub SaveAllocation()
     Select Case Index
         Case CCR
             With rstCCR
-                .Open "CCRAlloc where CompanyCode ='" & Combo1(Index).Text & "'", gcnnBilling, adOpenDynamic, adLockOptimistic, adCmdTable
+                .Open "CCRAlloc", gcnnBilling, adOpenDynamic, adLockOptimistic, adCmdTable
                 .AddNew
                 .Fields("teller") = txtTeller(CCR)
                 .Fields("strccr") = txtStartCCR(CCR)
@@ -2343,7 +2233,7 @@ Private Sub SaveAllocation()
             End With
         Case CYM
             With rstCYM
-                .Open "CYMAlloc where CompanyCode ='" & Combo1(Index).Text & "'"", gcnnBilling, adOpenDynamic, adLockOptimistic, adCmdTable"
+                .Open "CYMAlloc", gcnnBilling, adOpenDynamic, adLockOptimistic, adCmdTable
                 .AddNew
                 .Fields("teller") = txtTeller(CYM)
                 .Fields("strgps") = txtStartCCR(CYM)
@@ -2375,7 +2265,7 @@ Private Sub SaveAllocation()
             End With
         Case SPL
             With rstSPL
-                .Open "SPLAlloc where CompanyCode ='" & Combo1(Index).Text & "'"", gcnnBilling, adOpenDynamic, adLockOptimistic, adCmdTable"
+                .Open "SPLAlloc", gcnnBilling, adOpenDynamic, adLockOptimistic, adCmdTable
                 .AddNew
                 .Fields("teller") = txtTeller(SPL)
                 .Fields("strccr") = txtStartCCR(SPL)
