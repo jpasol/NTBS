@@ -1972,7 +1972,7 @@ Private Sub FillGrid()
     Select Case Index
         Case CCR
             With grdAlloc(CCR)
-                rstCCR.Open "Select * from CCRAlloc order by CompanyCode,teller ", gcnnBilling, , , adCmdText
+                rstCCR.Open "Select * from CCRAlloc order by CompanyCode,strccr desc ", gcnnBilling, , , adCmdText
                 .Row = 0
                 Do Until rstCCR.EOF
                     If .Row > 0 Then
@@ -1996,7 +1996,7 @@ Private Sub FillGrid()
             End With
         Case CFM
             With grdAlloc(CFM)
-                rstCFM.Open "Select * from CFMAlloc order by teller ", gcnnBilling, , , adCmdText
+                rstCFM.Open "Select * from CFMAlloc order by strgps desc", gcnnBilling, , , adCmdText
                 .Row = 0
                 Do Until rstCFM.EOF
                     If .Row > 0 Then
@@ -2017,7 +2017,7 @@ Private Sub FillGrid()
             End With
         Case CYM
             With grdAlloc(CYM)
-                rstCYM.Open "Select * from CYMAlloc order by CompanyCode,teller ", gcnnBilling, , , adCmdText
+                rstCYM.Open "Select * from CYMAlloc order by CompanyCode,strgps desc", gcnnBilling, , , adCmdText
                 .Row = 0
                 Do Until rstCYM.EOF
                     If .Row > 0 Then
@@ -2041,7 +2041,7 @@ Private Sub FillGrid()
             End With
         Case CYE
             With grdAlloc(CYE)
-                rstCYE.Open "Select * from CYEAlloc order by teller ", gcnnBilling, , , adCmdText
+                rstCYE.Open "Select * from CYEAlloc order by strgps desc", gcnnBilling, , , adCmdText
                 .Row = 0
                 Do Until rstCYE.EOF
                     If .Row > 0 Then
@@ -2062,7 +2062,7 @@ Private Sub FillGrid()
             End With
         Case SPL
             With grdAlloc(SPL)
-                rstSPL.Open "Select * from SPLAlloc order by CompanyCode,teller ", gcnnBilling, , , adCmdText
+                rstSPL.Open "Select * from SPLAlloc order by CompanyCode,strccr desc", gcnnBilling, , , adCmdText
                 .Row = 0
                 Do Until rstSPL.EOF
                     If .Row > 0 Then
