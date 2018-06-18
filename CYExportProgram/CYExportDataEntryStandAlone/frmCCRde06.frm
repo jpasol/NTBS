@@ -73,84 +73,108 @@ Begin VB.Form frmCCRde06
       TabCaption(0)   =   "Details"
       TabPicture(0)   =   "frmCCRde06.frx":08CA
       Tab(0).ControlEnabled=   0   'False
-      Tab(0).Control(0)=   "utxtNo"
-      Tab(0).Control(1)=   "flexTshipMnt"
-      Tab(0).Control(2)=   "flexDangerClass"
-      Tab(0).Control(3)=   "utxtNumDangr"
-      Tab(0).Control(4)=   "utxtUMS"
-      Tab(0).Control(5)=   "utxtHeight"
-      Tab(0).Control(6)=   "utxtWidth"
-      Tab(0).Control(7)=   "utxtLength"
-      Tab(0).Control(8)=   "utxtDollar"
-      Tab(0).Control(9)=   "utxtTshipMnt"
-      Tab(0).Control(10)=   "utxtFEmp"
-      Tab(0).Control(11)=   "utxtSze"
-      Tab(0).Control(12)=   "utxtPref"
-      Tab(0).Control(13)=   "cmdPayment"
+      Tab(0).Control(0)=   "txtTotDue"
+      Tab(0).Control(0).Enabled=   0   'False
+      Tab(0).Control(1)=   "txtPpaTotal"
+      Tab(0).Control(1).Enabled=   0   'False
+      Tab(0).Control(2)=   "txtIctsiDue"
+      Tab(0).Control(2).Enabled=   0   'False
+      Tab(0).Control(3)=   "lblNoCnt"
+      Tab(0).Control(3).Enabled=   0   'False
+      Tab(0).Control(4)=   "Label50"
+      Tab(0).Control(4).Enabled=   0   'False
+      Tab(0).Control(5)=   "Label19"
+      Tab(0).Control(5).Enabled=   0   'False
+      Tab(0).Control(6)=   "Label20"
+      Tab(0).Control(6).Enabled=   0   'False
+      Tab(0).Control(7)=   "Label21"
+      Tab(0).Control(7).Enabled=   0   'False
+      Tab(0).Control(8)=   "Text1"
+      Tab(0).Control(8).Enabled=   0   'False
+      Tab(0).Control(9)=   "Frame4"
+      Tab(0).Control(9).Enabled=   0   'False
+      Tab(0).Control(10)=   "frmCCRde06"
+      Tab(0).Control(10).Enabled=   0   'False
+      Tab(0).Control(11)=   "flexDetails"
+      Tab(0).Control(11).Enabled=   0   'False
+      Tab(0).Control(12)=   "cmdEdit"
+      Tab(0).Control(12).Enabled=   0   'False
+      Tab(0).Control(13)=   "cmdHeader"
       Tab(0).Control(13).Enabled=   0   'False
-      Tab(0).Control(14)=   "cmdDelete"
+      Tab(0).Control(14)=   "cmdExit"
       Tab(0).Control(14).Enabled=   0   'False
-      Tab(0).Control(15)=   "cmdGrid"
+      Tab(0).Control(15)=   "cmdAdd"
       Tab(0).Control(15).Enabled=   0   'False
-      Tab(0).Control(16)=   "cmdCancel"
+      Tab(0).Control(16)=   "chkNewCCR"
       Tab(0).Control(16).Enabled=   0   'False
-      Tab(0).Control(17)=   "chkNewCCR"
+      Tab(0).Control(17)=   "cmdCancel"
       Tab(0).Control(17).Enabled=   0   'False
-      Tab(0).Control(18)=   "cmdAdd"
+      Tab(0).Control(18)=   "cmdGrid"
       Tab(0).Control(18).Enabled=   0   'False
-      Tab(0).Control(19)=   "cmdExit"
+      Tab(0).Control(19)=   "cmdDelete"
       Tab(0).Control(19).Enabled=   0   'False
-      Tab(0).Control(20)=   "cmdHeader"
+      Tab(0).Control(20)=   "cmdPayment"
       Tab(0).Control(20).Enabled=   0   'False
-      Tab(0).Control(21)=   "cmdEdit"
+      Tab(0).Control(21)=   "utxtPref"
       Tab(0).Control(21).Enabled=   0   'False
-      Tab(0).Control(22)=   "flexDetails"
-      Tab(0).Control(23)=   "frmCCRde06"
-      Tab(0).Control(24)=   "Frame4"
-      Tab(0).Control(25)=   "Text1"
+      Tab(0).Control(22)=   "utxtSze"
+      Tab(0).Control(22).Enabled=   0   'False
+      Tab(0).Control(23)=   "utxtFEmp"
+      Tab(0).Control(23).Enabled=   0   'False
+      Tab(0).Control(24)=   "utxtTshipMnt"
+      Tab(0).Control(24).Enabled=   0   'False
+      Tab(0).Control(25)=   "utxtDollar"
       Tab(0).Control(25).Enabled=   0   'False
-      Tab(0).Control(26)=   "Label21"
-      Tab(0).Control(27)=   "Label20"
-      Tab(0).Control(28)=   "Label19"
-      Tab(0).Control(29)=   "Label50"
-      Tab(0).Control(30)=   "lblNoCnt"
-      Tab(0).Control(31)=   "txtIctsiDue"
-      Tab(0).Control(32)=   "txtPpaTotal"
-      Tab(0).Control(33)=   "txtTotDue"
+      Tab(0).Control(26)=   "utxtLength"
+      Tab(0).Control(26).Enabled=   0   'False
+      Tab(0).Control(27)=   "utxtWidth"
+      Tab(0).Control(27).Enabled=   0   'False
+      Tab(0).Control(28)=   "utxtHeight"
+      Tab(0).Control(28).Enabled=   0   'False
+      Tab(0).Control(29)=   "utxtUMS"
+      Tab(0).Control(29).Enabled=   0   'False
+      Tab(0).Control(30)=   "utxtNumDangr"
+      Tab(0).Control(30).Enabled=   0   'False
+      Tab(0).Control(31)=   "flexDangerClass"
+      Tab(0).Control(31).Enabled=   0   'False
+      Tab(0).Control(32)=   "flexTshipMnt"
+      Tab(0).Control(32).Enabled=   0   'False
+      Tab(0).Control(33)=   "utxtNo"
+      Tab(0).Control(33).Enabled=   0   'False
       Tab(0).ControlCount=   34
       TabCaption(1)   =   "Header"
       TabPicture(1)   =   "frmCCRde06.frx":08E6
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "utxtSBMAPermit"
-      Tab(1).Control(1)=   "utxtWhfExmp"
-      Tab(1).Control(2)=   "utxtUGuarantee"
-      Tab(1).Control(3)=   "utxtWhfOnly"
-      Tab(1).Control(4)=   "utxtWhfExmpt"
-      Tab(1).Control(5)=   "utxtVatCode"
-      Tab(1).Control(6)=   "utxtVessel"
-      Tab(1).Control(7)=   "utxtCommodity"
-      Tab(1).Control(8)=   "utxtRemark"
-      Tab(1).Control(9)=   "utxtBroker"
-      Tab(1).Control(10)=   "utxtExporter"
-      Tab(1).Control(11)=   "utxtEntry1(10)"
-      Tab(1).Control(12)=   "utxtEntry1(9)"
-      Tab(1).Control(13)=   "utxtEntry1(7)"
+      Tab(1).Control(0)=   "Label17"
+      Tab(1).Control(1)=   "Frame2"
+      Tab(1).Control(2)=   "Frame16"
+      Tab(1).Control(3)=   "Frame7"
+      Tab(1).Control(4)=   "Frame3"
+      Tab(1).Control(5)=   "Frame5"
+      Tab(1).Control(6)=   "cmdBack"
+      Tab(1).Control(6).Enabled=   0   'False
+      Tab(1).Control(7)=   "Frame10"
+      Tab(1).Control(8)=   "utxtEntry1(0)"
+      Tab(1).Control(9)=   "utxtEntry1(1)"
+      Tab(1).Control(10)=   "utxtEntry1(2)"
+      Tab(1).Control(11)=   "utxtEntry1(3)"
+      Tab(1).Control(12)=   "utxtEntry1(4)"
+      Tab(1).Control(13)=   "utxtEntry1(5)"
       Tab(1).Control(14)=   "utxtEntry1(6)"
-      Tab(1).Control(15)=   "utxtEntry1(5)"
-      Tab(1).Control(16)=   "utxtEntry1(4)"
-      Tab(1).Control(17)=   "utxtEntry1(3)"
-      Tab(1).Control(18)=   "utxtEntry1(2)"
-      Tab(1).Control(19)=   "utxtEntry1(1)"
-      Tab(1).Control(20)=   "utxtEntry1(0)"
-      Tab(1).Control(21)=   "Frame10"
-      Tab(1).Control(22)=   "cmdBack"
-      Tab(1).Control(22).Enabled=   0   'False
-      Tab(1).Control(23)=   "Frame5"
-      Tab(1).Control(24)=   "Frame3"
-      Tab(1).Control(25)=   "Frame7"
-      Tab(1).Control(26)=   "Frame16"
-      Tab(1).Control(27)=   "Frame2"
-      Tab(1).Control(28)=   "Label17"
+      Tab(1).Control(15)=   "utxtEntry1(7)"
+      Tab(1).Control(16)=   "utxtEntry1(9)"
+      Tab(1).Control(17)=   "utxtEntry1(10)"
+      Tab(1).Control(18)=   "utxtExporter"
+      Tab(1).Control(19)=   "utxtBroker"
+      Tab(1).Control(20)=   "utxtRemark"
+      Tab(1).Control(21)=   "utxtCommodity"
+      Tab(1).Control(22)=   "utxtVessel"
+      Tab(1).Control(23)=   "utxtVatCode"
+      Tab(1).Control(24)=   "utxtWhfExmpt"
+      Tab(1).Control(25)=   "utxtWhfOnly"
+      Tab(1).Control(26)=   "utxtUGuarantee"
+      Tab(1).Control(27)=   "utxtWhfExmp"
+      Tab(1).Control(28)=   "utxtSBMAPermit"
       Tab(1).ControlCount=   29
       TabCaption(2)   =   "Payment"
       TabPicture(2)   =   "frmCCRde06.frx":0902
@@ -3502,11 +3526,11 @@ Begin VB.Form frmCCRde06
          EndProperty
          BeginProperty Panel5 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   6
-            TextSave        =   "6/4/2018"
+            TextSave        =   "06/18/2018"
          EndProperty
          BeginProperty Panel6 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
-            TextSave        =   "3:29 PM"
+            TextSave        =   "10:33 AM"
          EndProperty
       EndProperty
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -8918,6 +8942,7 @@ On Error GoTo errhd
         .Execute
     End With
     Set cmd = Nothing
+    Exit Sub
 errhd:
     MsgBox "Error in GrantOOGPermission" & vbNewLine & _
     "Error Number: " & err.Number & vbNewLine & _
@@ -8938,6 +8963,7 @@ On Error GoTo errhd
         .Execute
     End With
     Set cmd = Nothing
+    Exit Sub
 errhd:
     MsgBox "Error in GrantDGPermission" & vbNewLine & _
     "Error Number: " & err.Number & vbNewLine & _

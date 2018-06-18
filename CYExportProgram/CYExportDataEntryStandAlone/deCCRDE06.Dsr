@@ -3,8 +3,8 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
    ClientHeight    =   14040
    ClientLeft      =   0
    ClientTop       =   0
-   ClientWidth     =   22170
-   _ExtentX        =   39105
+   ClientWidth     =   18885
+   _ExtentX        =   33311
    _ExtentY        =   24765
    FolderFlags     =   7
    TypeLibGuid     =   "{9AB22BB0-E016-11D2-BD0C-00105A64485A}"
