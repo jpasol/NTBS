@@ -35,6 +35,7 @@ Begin VB.Form frmAllocation
       _ExtentY        =   19500
       _Version        =   393216
       Tabs            =   5
+      Tab             =   4
       TabsPerRow      =   5
       TabHeight       =   520
       BackColor       =   16777215
@@ -49,102 +50,96 @@ Begin VB.Form frmAllocation
       EndProperty
       TabCaption(0)   =   "Export "
       TabPicture(0)   =   "frmAllocation.frx":0000
-      Tab(0).ControlEnabled=   -1  'True
-      Tab(0).Control(0)=   "lblVersion(0)"
+      Tab(0).ControlEnabled=   0   'False
+      Tab(0).Control(0)=   "cmdRefresh(0)"
       Tab(0).Control(0).Enabled=   0   'False
-      Tab(0).Control(1)=   "cmdRefresh(0)"
-      Tab(0).Control(1).Enabled=   0   'False
-      Tab(0).Control(2)=   "grdAlloc(0)"
-      Tab(0).Control(2).Enabled=   0   'False
-      Tab(0).Control(3)=   "fraDetails(0)"
+      Tab(0).Control(1)=   "grdAlloc(0)"
+      Tab(0).Control(2)=   "fraDetails(0)"
+      Tab(0).Control(3)=   "cmdAdd(0)"
       Tab(0).Control(3).Enabled=   0   'False
-      Tab(0).Control(4)=   "cmdAdd(0)"
+      Tab(0).Control(4)=   "cmdEdit(0)"
       Tab(0).Control(4).Enabled=   0   'False
-      Tab(0).Control(5)=   "cmdEdit(0)"
+      Tab(0).Control(5)=   "cmdDel(0)"
       Tab(0).Control(5).Enabled=   0   'False
-      Tab(0).Control(6)=   "cmdDel(0)"
+      Tab(0).Control(6)=   "cmdNext(0)"
       Tab(0).Control(6).Enabled=   0   'False
-      Tab(0).Control(7)=   "cmdNext(0)"
+      Tab(0).Control(7)=   "cmdExit(0)"
       Tab(0).Control(7).Enabled=   0   'False
-      Tab(0).Control(8)=   "cmdExit(0)"
-      Tab(0).Control(8).Enabled=   0   'False
-      Tab(0).ControlCount=   9
+      Tab(0).ControlCount=   8
       TabCaption(1)   =   "CFS Import "
       TabPicture(1)   =   "frmAllocation.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "cmdExit(1)"
+      Tab(1).Control(0)=   "cmdRefresh(1)"
       Tab(1).Control(0).Enabled=   0   'False
-      Tab(1).Control(1)=   "cmdNext(1)"
-      Tab(1).Control(1).Enabled=   0   'False
-      Tab(1).Control(2)=   "cmdDel(1)"
-      Tab(1).Control(2).Enabled=   0   'False
-      Tab(1).Control(3)=   "cmdEdit(1)"
+      Tab(1).Control(1)=   "grdAlloc(1)"
+      Tab(1).Control(2)=   "fraDetails(1)"
+      Tab(1).Control(3)=   "cmdAdd(1)"
       Tab(1).Control(3).Enabled=   0   'False
-      Tab(1).Control(4)=   "cmdAdd(1)"
+      Tab(1).Control(4)=   "cmdEdit(1)"
       Tab(1).Control(4).Enabled=   0   'False
-      Tab(1).Control(5)=   "fraDetails(1)"
-      Tab(1).Control(6)=   "grdAlloc(1)"
-      Tab(1).Control(7)=   "cmdRefresh(1)"
+      Tab(1).Control(5)=   "cmdDel(1)"
+      Tab(1).Control(5).Enabled=   0   'False
+      Tab(1).Control(6)=   "cmdNext(1)"
+      Tab(1).Control(6).Enabled=   0   'False
+      Tab(1).Control(7)=   "cmdExit(1)"
       Tab(1).Control(7).Enabled=   0   'False
-      Tab(1).Control(8)=   "lblVersion(1)"
-      Tab(1).ControlCount=   9
+      Tab(1).ControlCount=   8
       TabCaption(2)   =   "CY Import "
       TabPicture(2)   =   "frmAllocation.frx":0038
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "cmdExit(2)"
+      Tab(2).Control(0)=   "cmdRefresh(2)"
       Tab(2).Control(0).Enabled=   0   'False
-      Tab(2).Control(1)=   "cmdNext(2)"
+      Tab(2).Control(1)=   "cmdAdd(2)"
       Tab(2).Control(1).Enabled=   0   'False
-      Tab(2).Control(2)=   "cmdDel(2)"
+      Tab(2).Control(2)=   "cmdEdit(2)"
       Tab(2).Control(2).Enabled=   0   'False
-      Tab(2).Control(3)=   "fraDetails(2)"
-      Tab(2).Control(4)=   "grdAlloc(2)"
-      Tab(2).Control(5)=   "cmdEdit(2)"
+      Tab(2).Control(3)=   "grdAlloc(2)"
+      Tab(2).Control(4)=   "fraDetails(2)"
+      Tab(2).Control(5)=   "cmdDel(2)"
       Tab(2).Control(5).Enabled=   0   'False
-      Tab(2).Control(6)=   "cmdAdd(2)"
+      Tab(2).Control(6)=   "cmdNext(2)"
       Tab(2).Control(6).Enabled=   0   'False
-      Tab(2).Control(7)=   "cmdRefresh(2)"
+      Tab(2).Control(7)=   "cmdExit(2)"
       Tab(2).Control(7).Enabled=   0   'False
-      Tab(2).Control(8)=   "lblVersion(2)"
-      Tab(2).ControlCount=   9
+      Tab(2).ControlCount=   8
       TabCaption(3)   =   "Empties"
       TabPicture(3)   =   "frmAllocation.frx":0054
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "cmdNext(3)"
+      Tab(3).Control(0)=   "cmdRefresh(3)"
       Tab(3).Control(0).Enabled=   0   'False
-      Tab(3).Control(1)=   "cmdDel(3)"
-      Tab(3).Control(1).Enabled=   0   'False
-      Tab(3).Control(2)=   "cmdEdit(3)"
-      Tab(3).Control(2).Enabled=   0   'False
-      Tab(3).Control(3)=   "cmdAdd(3)"
+      Tab(3).Control(1)=   "grdAlloc(3)"
+      Tab(3).Control(2)=   "fraDetails(3)"
+      Tab(3).Control(3)=   "cmdExit(3)"
       Tab(3).Control(3).Enabled=   0   'False
-      Tab(3).Control(4)=   "cmdExit(3)"
+      Tab(3).Control(4)=   "cmdAdd(3)"
       Tab(3).Control(4).Enabled=   0   'False
-      Tab(3).Control(5)=   "fraDetails(3)"
-      Tab(3).Control(6)=   "grdAlloc(3)"
-      Tab(3).Control(7)=   "cmdRefresh(3)"
+      Tab(3).Control(5)=   "cmdEdit(3)"
+      Tab(3).Control(5).Enabled=   0   'False
+      Tab(3).Control(6)=   "cmdDel(3)"
+      Tab(3).Control(6).Enabled=   0   'False
+      Tab(3).Control(7)=   "cmdNext(3)"
       Tab(3).Control(7).Enabled=   0   'False
-      Tab(3).Control(8)=   "lblVersion(3)"
-      Tab(3).ControlCount=   9
+      Tab(3).ControlCount=   8
       TabCaption(4)   =   "CY Special Service"
       TabPicture(4)   =   "frmAllocation.frx":0070
-      Tab(4).ControlEnabled=   0   'False
-      Tab(4).Control(0)=   "cmdExit(4)"
+      Tab(4).ControlEnabled=   -1  'True
+      Tab(4).Control(0)=   "cmdRefresh(4)"
       Tab(4).Control(0).Enabled=   0   'False
-      Tab(4).Control(1)=   "cmdNext(4)"
+      Tab(4).Control(1)=   "grdAlloc(4)"
       Tab(4).Control(1).Enabled=   0   'False
-      Tab(4).Control(2)=   "cmdDel(4)"
+      Tab(4).Control(2)=   "fraDetails(4)"
       Tab(4).Control(2).Enabled=   0   'False
-      Tab(4).Control(3)=   "cmdEdit(4)"
+      Tab(4).Control(3)=   "cmdAdd(4)"
       Tab(4).Control(3).Enabled=   0   'False
-      Tab(4).Control(4)=   "cmdAdd(4)"
+      Tab(4).Control(4)=   "cmdEdit(4)"
       Tab(4).Control(4).Enabled=   0   'False
-      Tab(4).Control(5)=   "fraDetails(4)"
-      Tab(4).Control(6)=   "grdAlloc(4)"
-      Tab(4).Control(7)=   "cmdRefresh(4)"
+      Tab(4).Control(5)=   "cmdDel(4)"
+      Tab(4).Control(5).Enabled=   0   'False
+      Tab(4).Control(6)=   "cmdNext(4)"
+      Tab(4).Control(6).Enabled=   0   'False
+      Tab(4).Control(7)=   "cmdExit(4)"
       Tab(4).Control(7).Enabled=   0   'False
-      Tab(4).Control(8)=   "lblVersion(4)"
-      Tab(4).ControlCount=   9
+      Tab(4).ControlCount=   8
       Begin VB.CommandButton cmdNext 
          Caption         =   "F11=Next"
          Height          =   735
@@ -179,7 +174,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F3=Exit"
          Height          =   735
          Index           =   4
-         Left            =   -62880
+         Left            =   12120
          TabIndex        =   81
          TabStop         =   0   'False
          Top             =   9600
@@ -189,7 +184,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F11=Next"
          Height          =   735
          Index           =   4
-         Left            =   -66360
+         Left            =   8640
          TabIndex        =   80
          TabStop         =   0   'False
          Top             =   9600
@@ -199,7 +194,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F8=Del"
          Height          =   735
          Index           =   4
-         Left            =   -68280
+         Left            =   6720
          TabIndex        =   79
          TabStop         =   0   'False
          Top             =   9600
@@ -209,7 +204,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F7=Edit"
          Height          =   735
          Index           =   4
-         Left            =   -70200
+         Left            =   4800
          TabIndex        =   78
          TabStop         =   0   'False
          Top             =   9600
@@ -219,7 +214,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F6=Add"
          Height          =   735
          Index           =   4
-         Left            =   -72120
+         Left            =   2880
          TabIndex        =   77
          TabStop         =   0   'False
          Top             =   9600
@@ -231,7 +226,7 @@ Begin VB.Form frmAllocation
          Enabled         =   0   'False
          Height          =   2775
          Index           =   4
-         Left            =   -74040
+         Left            =   960
          TabIndex        =   67
          Top             =   720
          Width           =   13095
@@ -751,7 +746,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F3=Exit"
          Height          =   735
          Index           =   0
-         Left            =   12120
+         Left            =   -62880
          TabIndex        =   10
          TabStop         =   0   'False
          Top             =   9600
@@ -781,7 +776,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F11=Next"
          Height          =   735
          Index           =   0
-         Left            =   8640
+         Left            =   -66360
          TabIndex        =   9
          TabStop         =   0   'False
          Top             =   9600
@@ -831,7 +826,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F8=Del"
          Height          =   735
          Index           =   0
-         Left            =   6720
+         Left            =   -68280
          TabIndex        =   8
          TabStop         =   0   'False
          Top             =   9600
@@ -841,7 +836,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F7=Edit"
          Height          =   735
          Index           =   0
-         Left            =   4800
+         Left            =   -70200
          TabIndex        =   7
          TabStop         =   0   'False
          Top             =   9600
@@ -851,7 +846,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F6=Add"
          Height          =   735
          Index           =   0
-         Left            =   2880
+         Left            =   -72120
          TabIndex        =   6
          TabStop         =   0   'False
          Top             =   9600
@@ -1345,7 +1340,7 @@ Begin VB.Form frmAllocation
          Enabled         =   0   'False
          Height          =   2775
          Index           =   0
-         Left            =   960
+         Left            =   -74040
          TabIndex        =   11
          Top             =   720
          Width           =   13095
@@ -1583,7 +1578,7 @@ Begin VB.Form frmAllocation
       Begin MSFlexGridLib.MSFlexGrid grdAlloc 
          Height          =   5295
          Index           =   0
-         Left            =   960
+         Left            =   -74040
          TabIndex        =   0
          TabStop         =   0   'False
          Top             =   3840
@@ -1665,7 +1660,7 @@ Begin VB.Form frmAllocation
       Begin MSFlexGridLib.MSFlexGrid grdAlloc 
          Height          =   5295
          Index           =   4
-         Left            =   -74040
+         Left            =   960
          TabIndex        =   75
          TabStop         =   0   'False
          Top             =   3840
@@ -1687,7 +1682,7 @@ Begin VB.Form frmAllocation
          Caption         =   "F5=Refresh"
          Height          =   735
          Index           =   0
-         Left            =   960
+         Left            =   -74040
          TabIndex        =   5
          TabStop         =   0   'False
          Top             =   9600
@@ -1747,111 +1742,11 @@ Begin VB.Form frmAllocation
          Caption         =   "F5=Refresh"
          Height          =   735
          Index           =   4
-         Left            =   -74040
+         Left            =   960
          TabIndex        =   76
          TabStop         =   0   'False
          Top             =   9600
          Width           =   1935
-      End
-      Begin VB.Label lblVersion 
-         Alignment       =   1  'Right Justify
-         Caption         =   "Label28"
-         BeginProperty Font 
-            Name            =   "Courier New"
-            Size            =   9.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H00C00000&
-         Height          =   255
-         Index           =   4
-         Left            =   -64440
-         TabIndex        =   120
-         Top             =   10560
-         Width           =   4335
-      End
-      Begin VB.Label lblVersion 
-         Alignment       =   1  'Right Justify
-         Caption         =   "Label28"
-         BeginProperty Font 
-            Name            =   "Courier New"
-            Size            =   9.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H00C00000&
-         Height          =   255
-         Index           =   3
-         Left            =   -64440
-         TabIndex        =   119
-         Top             =   10560
-         Width           =   4335
-      End
-      Begin VB.Label lblVersion 
-         Alignment       =   1  'Right Justify
-         Caption         =   "Label28"
-         BeginProperty Font 
-            Name            =   "Courier New"
-            Size            =   9.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H00C00000&
-         Height          =   255
-         Index           =   2
-         Left            =   -64440
-         TabIndex        =   118
-         Top             =   10560
-         Width           =   4335
-      End
-      Begin VB.Label lblVersion 
-         Alignment       =   1  'Right Justify
-         Caption         =   "Label28"
-         BeginProperty Font 
-            Name            =   "Courier New"
-            Size            =   9.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H00C00000&
-         Height          =   255
-         Index           =   1
-         Left            =   -64440
-         TabIndex        =   117
-         Top             =   10560
-         Width           =   4335
-      End
-      Begin VB.Label lblVersion 
-         Alignment       =   1  'Right Justify
-         Caption         =   "Label28"
-         BeginProperty Font 
-            Name            =   "Courier New"
-            Size            =   9.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H00C00000&
-         Height          =   255
-         Index           =   0
-         Left            =   10560
-         TabIndex        =   116
-         Top             =   10560
-         Width           =   4335
       End
    End
 End
@@ -1887,6 +1782,7 @@ Private Sub Form_Load()
         Call SetGrid
         Index = Index + 1
     Loop
+    Me.Caption = Me.Caption & " Version " & App.Major & "." & App.Minor & "." & App.Revision
 End Sub
 
 Private Sub Main()
@@ -1950,9 +1846,6 @@ Private Sub SetGrid()
             .ColAlignment(2) = flexAlignCenterCenter
             .ColAlignment(3) = flexAlignCenterCenter
             .ColAlignment(4) = flexAlignCenterCenter
-    End With
-    With App
-    lblVersion(Index).Caption = "Version " & .Major & "." & .Minor & "." & .Revision
     End With
     Call FillGrid
 End Sub
