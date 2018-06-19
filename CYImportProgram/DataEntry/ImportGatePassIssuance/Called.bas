@@ -1272,6 +1272,7 @@ Dim lsErrStr As String
 '        ";User ID=sa_ictsi;Password=Ictsi123"
 '
 
+
     gbNavis = True
     ConnectToNavis = True
    
