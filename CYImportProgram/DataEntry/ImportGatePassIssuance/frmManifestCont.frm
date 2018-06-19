@@ -1119,7 +1119,7 @@ Begin VB.Form frmManifestCont
             EndProperty
             CalendarBackColor=   16777215
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   77070339
+            Format          =   200933379
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtStorageFree 
@@ -1141,7 +1141,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   77070339
+            Format          =   200933379
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtEndStorage 
@@ -1163,7 +1163,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   77070339
+            Format          =   200933379
             CurrentDate     =   32874
          End
          Begin VB.Label lblManifest 
@@ -6870,6 +6870,8 @@ Private Sub InitializeOtherInfo()
 End Sub
 
 Private Sub Form_Load()
+Me.Caption = Me.Caption & " v" & App.Major & "." & App.Minor & "." & App.Revision
+
 On Error GoTo err
     Call LoadColumnNumbers
     Call DisableNextTabs
