@@ -46,6 +46,7 @@ Begin VB.Form frmManifestCont
       _ExtentY        =   19129
       _Version        =   393216
       Tabs            =   6
+      Tab             =   4
       TabsPerRow      =   6
       TabHeight       =   520
       BackColor       =   12632256
@@ -61,39 +62,23 @@ Begin VB.Form frmManifestCont
       EndProperty
       TabCaption(0)   =   "Permit"
       TabPicture(0)   =   "frmManifestCont.frx":0006
-      Tab(0).ControlEnabled=   -1  'True
+      Tab(0).ControlEnabled=   0   'False
       Tab(0).Control(0)=   "lblManifest(35)"
-      Tab(0).Control(0).Enabled=   0   'False
       Tab(0).Control(1)=   "lblManifest(36)"
-      Tab(0).Control(1).Enabled=   0   'False
       Tab(0).Control(2)=   "lblManifest(37)"
-      Tab(0).Control(2).Enabled=   0   'False
       Tab(0).Control(3)=   "lblManifest(29)"
-      Tab(0).Control(3).Enabled=   0   'False
       Tab(0).Control(4)=   "lblManifest(41)"
-      Tab(0).Control(4).Enabled=   0   'False
       Tab(0).Control(5)=   "lblManifest(42)"
-      Tab(0).Control(5).Enabled=   0   'False
       Tab(0).Control(6)=   "lblManifest(43)"
-      Tab(0).Control(6).Enabled=   0   'False
       Tab(0).Control(7)=   "lblManifest(74)"
-      Tab(0).Control(7).Enabled=   0   'False
       Tab(0).Control(8)=   "cmdNextBL"
-      Tab(0).Control(8).Enabled=   0   'False
       Tab(0).Control(9)=   "txtBL"
-      Tab(0).Control(9).Enabled=   0   'False
       Tab(0).Control(10)=   "txtRegistry"
-      Tab(0).Control(10).Enabled=   0   'False
       Tab(0).Control(11)=   "chkForExam"
-      Tab(0).Control(11).Enabled=   0   'False
       Tab(0).Control(12)=   "txtSBMAPermit"
-      Tab(0).Control(12).Enabled=   0   'False
       Tab(0).Control(13)=   "txtCustomPermit"
-      Tab(0).Control(13).Enabled=   0   'False
       Tab(0).Control(14)=   "txtTransactionType"
-      Tab(0).Control(14).Enabled=   0   'False
       Tab(0).Control(15)=   "txtCompCode"
-      Tab(0).Control(15).Enabled=   0   'False
       Tab(0).ControlCount=   16
       TabCaption(1)   =   "Header"
       TabPicture(1)   =   "frmManifestCont.frx":0022
@@ -123,38 +108,50 @@ Begin VB.Form frmManifestCont
       TabCaption(3)   =   "Container"
       TabPicture(3)   =   "frmManifestCont.frx":005A
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "lblManifest(14)"
-      Tab(3).Control(1)=   "lblManifest(11)"
-      Tab(3).Control(2)=   "lblManifest(16)"
-      Tab(3).Control(3)=   "lblManifest(15)"
-      Tab(3).Control(4)=   "mskAdvGPDate"
-      Tab(3).Control(5)=   "mskCRODate"
-      Tab(3).Control(6)=   "fraStorage"
-      Tab(3).Control(7)=   "fraOversize"
-      Tab(3).Control(8)=   "fraDetail"
-      Tab(3).Control(9)=   "fraPlug"
-      Tab(3).Control(10)=   "chkWeighing"
-      Tab(3).Control(11)=   "cboStorageStat"
-      Tab(3).Control(12)=   "cboDangClass"
-      Tab(3).Control(13)=   "cmdCompute"
-      Tab(3).Control(14)=   "cmdPreviousContainer"
-      Tab(3).Control(15)=   "cmdNextContainer"
+      Tab(3).Control(0)=   "cmdNextContainer"
+      Tab(3).Control(1)=   "cmdPreviousContainer"
+      Tab(3).Control(2)=   "cmdCompute"
+      Tab(3).Control(3)=   "cboDangClass"
+      Tab(3).Control(4)=   "cboStorageStat"
+      Tab(3).Control(5)=   "chkWeighing"
+      Tab(3).Control(6)=   "fraPlug"
+      Tab(3).Control(7)=   "fraDetail"
+      Tab(3).Control(8)=   "fraOversize"
+      Tab(3).Control(9)=   "fraStorage"
+      Tab(3).Control(10)=   "mskCRODate"
+      Tab(3).Control(11)=   "mskAdvGPDate"
+      Tab(3).Control(12)=   "lblManifest(15)"
+      Tab(3).Control(13)=   "lblManifest(16)"
+      Tab(3).Control(14)=   "lblManifest(11)"
+      Tab(3).Control(15)=   "lblManifest(14)"
       Tab(3).ControlCount=   16
       TabCaption(4)   =   "Charges"
       TabPicture(4)   =   "frmManifestCont.frx":0076
-      Tab(4).ControlEnabled=   0   'False
+      Tab(4).ControlEnabled=   -1  'True
       Tab(4).Control(0)=   "lblManifest(34)"
+      Tab(4).Control(0).Enabled=   0   'False
       Tab(4).Control(1)=   "lblManifest(71)"
+      Tab(4).Control(1).Enabled=   0   'False
       Tab(4).Control(2)=   "mskReeferHours"
+      Tab(4).Control(2).Enabled=   0   'False
       Tab(4).Control(3)=   "msfCharges"
+      Tab(4).Control(3).Enabled=   0   'False
       Tab(4).Control(4)=   "cmdPreviousCharges"
+      Tab(4).Control(4).Enabled=   0   'False
       Tab(4).Control(5)=   "cmdNextCharges"
+      Tab(4).Control(5).Enabled=   0   'False
       Tab(4).Control(6)=   "fraRunning"
+      Tab(4).Control(6).Enabled=   0   'False
       Tab(4).Control(7)=   "fraCharges"
+      Tab(4).Control(7).Enabled=   0   'False
       Tab(4).Control(8)=   "fraStorageInfo"
+      Tab(4).Control(8).Enabled=   0   'False
       Tab(4).Control(9)=   "fraExpand"
+      Tab(4).Control(9).Enabled=   0   'False
       Tab(4).Control(10)=   "cmdAnother"
+      Tab(4).Control(10).Enabled=   0   'False
       Tab(4).Control(11)=   "cmdViewGrid"
+      Tab(4).Control(11).Enabled=   0   'False
       Tab(4).ControlCount=   12
       TabCaption(5)   =   "Payment"
       TabPicture(5)   =   "frmManifestCont.frx":0092
@@ -173,7 +170,7 @@ Begin VB.Form frmManifestCont
             Strikethrough   =   0   'False
          EndProperty
          Height          =   405
-         Left            =   4440
+         Left            =   -70560
          MaxLength       =   30
          TabIndex        =   206
          Top             =   5160
@@ -190,7 +187,7 @@ Begin VB.Form frmManifestCont
             Strikethrough   =   0   'False
          EndProperty
          Height          =   405
-         Left            =   4440
+         Left            =   -70560
          MaxLength       =   1
          TabIndex        =   196
          Text            =   "F"
@@ -208,7 +205,7 @@ Begin VB.Form frmManifestCont
             Strikethrough   =   0   'False
          EndProperty
          Height          =   405
-         Left            =   4440
+         Left            =   -70560
          MaxLength       =   10
          TabIndex        =   185
          Top             =   3240
@@ -225,7 +222,7 @@ Begin VB.Form frmManifestCont
             Strikethrough   =   0   'False
          EndProperty
          Height          =   405
-         Left            =   4440
+         Left            =   -70560
          MaxLength       =   10
          TabIndex        =   184
          Top             =   2520
@@ -932,7 +929,7 @@ Begin VB.Form frmManifestCont
       Begin VB.CommandButton cmdViewGrid 
          Caption         =   "F9 &Grid"
          Height          =   495
-         Left            =   -62160
+         Left            =   12840
          TabIndex        =   142
          Top             =   7680
          Width           =   1935
@@ -940,7 +937,7 @@ Begin VB.Form frmManifestCont
       Begin VB.CommandButton cmdAnother 
          Caption         =   "F8 Next Container"
          Height          =   735
-         Left            =   -62160
+         Left            =   12840
          TabIndex        =   141
          Top             =   6840
          Width           =   1935
@@ -958,7 +955,7 @@ Begin VB.Form frmManifestCont
          EndProperty
          ForeColor       =   &H8000000D&
          Height          =   735
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   135
          Top             =   5880
          Width           =   11415
@@ -1069,7 +1066,7 @@ Begin VB.Form frmManifestCont
          EndProperty
          ForeColor       =   &H8000000D&
          Height          =   3015
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   124
          Top             =   6720
          Width           =   7095
@@ -1133,7 +1130,7 @@ Begin VB.Form frmManifestCont
             EndProperty
             CalendarBackColor=   16777215
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   182714371
+            Format          =   164233219
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtStorageFree 
@@ -1155,7 +1152,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   182714371
+            Format          =   164233219
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtEndStorage 
@@ -1177,7 +1174,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   182714371
+            Format          =   164233219
             CurrentDate     =   32874
          End
          Begin VB.Label lblManifest 
@@ -1295,7 +1292,7 @@ Begin VB.Form frmManifestCont
          EndProperty
          ForeColor       =   &H8000000D&
          Height          =   3015
-         Left            =   -67560
+         Left            =   7440
          TabIndex        =   113
          Top             =   6720
          Width           =   5295
@@ -1513,7 +1510,7 @@ Begin VB.Form frmManifestCont
          EndProperty
          ForeColor       =   &H8000000D&
          Height          =   855
-         Left            =   -63120
+         Left            =   11880
          TabIndex        =   111
          Top             =   5820
          Width           =   2895
@@ -1542,7 +1539,7 @@ Begin VB.Form frmManifestCont
       Begin VB.CommandButton cmdNextCharges 
          Caption         =   "F12 Payment"
          Height          =   400
-         Left            =   -63240
+         Left            =   11760
          TabIndex        =   110
          Top             =   10080
          Width           =   3015
@@ -1550,7 +1547,7 @@ Begin VB.Form frmManifestCont
       Begin VB.CommandButton cmdPreviousCharges 
          Caption         =   "F11 Container"
          Height          =   400
-         Left            =   -66480
+         Left            =   8520
          TabIndex        =   109
          Top             =   10080
          Width           =   3015
@@ -3460,7 +3457,7 @@ Begin VB.Form frmManifestCont
          EndProperty
          ForeColor       =   &H80000002&
          Height          =   345
-         Left            =   4440
+         Left            =   -70560
          TabIndex        =   7
          Top             =   6240
          Visible         =   0   'False
@@ -3477,7 +3474,7 @@ Begin VB.Form frmManifestCont
             Strikethrough   =   0   'False
          EndProperty
          Height          =   405
-         Left            =   4440
+         Left            =   -70560
          MaxLength       =   12
          TabIndex        =   5
          Top             =   5760
@@ -3494,7 +3491,7 @@ Begin VB.Form frmManifestCont
             Strikethrough   =   0   'False
          EndProperty
          Height          =   405
-         Left            =   4440
+         Left            =   -70560
          MaxLength       =   30
          TabIndex        =   4
          Top             =   4560
@@ -3504,7 +3501,7 @@ Begin VB.Form frmManifestCont
          BackColor       =   &H8000000A&
          Caption         =   "F12 Header"
          Height          =   400
-         Left            =   12480
+         Left            =   -62520
          Picture         =   "frmManifestCont.frx":098C
          TabIndex        =   0
          Top             =   9900
@@ -3578,7 +3575,7 @@ Begin VB.Form frmManifestCont
       End
       Begin MSFlexGridLib.MSFlexGrid msfCharges 
          Height          =   4935
-         Left            =   -74880
+         Left            =   120
          TabIndex        =   143
          Top             =   840
          Width           =   14535
@@ -3602,7 +3599,7 @@ Begin VB.Form frmManifestCont
       End
       Begin MSMask.MaskEdBox mskReeferHours 
          Height          =   405
-         Left            =   -72600
+         Left            =   2400
          TabIndex        =   144
          Top             =   9840
          Width           =   1455
@@ -3637,7 +3634,7 @@ Begin VB.Form frmManifestCont
          ForeColor       =   &H80000002&
          Height          =   375
          Index           =   74
-         Left            =   1680
+         Left            =   -73320
          TabIndex        =   207
          Top             =   5160
          Width           =   2655
@@ -3656,7 +3653,7 @@ Begin VB.Form frmManifestCont
          ForeColor       =   &H80000002&
          Height          =   375
          Index           =   43
-         Left            =   4920
+         Left            =   -70080
          TabIndex        =   197
          Top             =   3960
          Width           =   5895
@@ -3676,7 +3673,7 @@ Begin VB.Form frmManifestCont
          ForeColor       =   &H80000002&
          Height          =   375
          Index           =   42
-         Left            =   1320
+         Left            =   -73680
          TabIndex        =   195
          Top             =   3960
          Width           =   3015
@@ -3696,7 +3693,7 @@ Begin VB.Form frmManifestCont
          ForeColor       =   &H80000002&
          Height          =   375
          Index           =   41
-         Left            =   6600
+         Left            =   -68400
          TabIndex        =   194
          Top             =   5760
          Visible         =   0   'False
@@ -3717,7 +3714,7 @@ Begin VB.Form frmManifestCont
          ForeColor       =   &H80000002&
          Height          =   375
          Index           =   29
-         Left            =   1800
+         Left            =   -73200
          TabIndex        =   183
          Top             =   2520
          Width           =   2535
@@ -3736,7 +3733,7 @@ Begin VB.Form frmManifestCont
          ForeColor       =   &H8000000D&
          Height          =   735
          Index           =   71
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   146
          Top             =   480
          Width           =   14415
@@ -3755,7 +3752,7 @@ Begin VB.Form frmManifestCont
          ForeColor       =   &H8000000D&
          Height          =   375
          Index           =   34
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   145
          Top             =   9840
          Width           =   2055
@@ -3956,7 +3953,7 @@ Begin VB.Form frmManifestCont
          ForeColor       =   &H80000002&
          Height          =   375
          Index           =   37
-         Left            =   1200
+         Left            =   -73800
          TabIndex        =   6
          Top             =   3240
          Width           =   3135
@@ -3976,7 +3973,7 @@ Begin VB.Form frmManifestCont
          ForeColor       =   &H80000002&
          Height          =   375
          Index           =   36
-         Left            =   1320
+         Left            =   -73680
          TabIndex        =   3
          Top             =   5760
          Width           =   3015
@@ -3996,7 +3993,7 @@ Begin VB.Form frmManifestCont
          ForeColor       =   &H80000002&
          Height          =   375
          Index           =   35
-         Left            =   1680
+         Left            =   -73320
          TabIndex        =   2
          Top             =   4560
          Width           =   2655
@@ -4708,6 +4705,7 @@ Private Sub cmdAnother_Click()
     'sstMain.Tab = cTabOtherInfo
     
     'PRNH
+    Call InitializeSomeComputationVariables
     If cntIndex < cntCount - 1 Then
         sstMain.Tab = cTabContainer
         cntIndex = cntIndex + 1
@@ -8354,7 +8352,7 @@ Call Evaluate_ContainerNo
          
          cntIndex = cmbConNo.ListIndex
          
-         Call InitializeSomeComputationVariables
+         'Call InitializeSomeComputationVariables
          With msfCharges
             msfCharges.SetFocus
             msfCharges.Col = 1
