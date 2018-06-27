@@ -964,60 +964,60 @@ Begin VB.Form frmCYSCCR
          TabCaption(0)   =   "ARR"
          TabPicture(0)   =   "CYSCCR.frx":01BD
          Tab(0).ControlEnabled=   0   'False
-         Tab(0).Control(0)=   "cboDanger"
-         Tab(0).Control(1)=   "Frame6"
-         Tab(0).Control(2)=   "Frame7"
+         Tab(0).Control(0)=   "Label60"
+         Tab(0).Control(1)=   "lblArrPrevAmt"
+         Tab(0).Control(2)=   "Label73"
          Tab(0).Control(3)=   "Frame5"
-         Tab(0).Control(4)=   "Label73"
-         Tab(0).Control(5)=   "lblArrPrevAmt"
-         Tab(0).Control(6)=   "Label60"
+         Tab(0).Control(4)=   "Frame7"
+         Tab(0).Control(5)=   "Frame6"
+         Tab(0).Control(6)=   "cboDanger"
          Tab(0).ControlCount=   7
          TabCaption(1)   =   "STO"
          TabPicture(1)   =   "CYSCCR.frx":01D9
          Tab(1).ControlEnabled=   0   'False
-         Tab(1).Control(0)=   "lblStoPluginDate"
-         Tab(1).Control(1)=   "Label81"
-         Tab(1).Control(2)=   "lblStoPrevPay"
-         Tab(1).Control(3)=   "Label75"
-         Tab(1).Control(4)=   "Label57"
-         Tab(1).Control(5)=   "Label13"
-         Tab(1).Control(6)=   "Label49"
-         Tab(1).Control(7)=   "Label47"
-         Tab(1).Control(8)=   "lblStoEntryNo"
-         Tab(1).Control(9)=   "lblStoRegNo"
+         Tab(1).Control(0)=   "Frame2"
+         Tab(1).Control(1)=   "z"
+         Tab(1).Control(2)=   "txtStoContNo"
+         Tab(1).Control(3)=   "txtStoContSz"
+         Tab(1).Control(4)=   "txtSTOCCRNo"
+         Tab(1).Control(5)=   "txtStoExtDate"
+         Tab(1).Control(6)=   "mskExpStorageIN"
+         Tab(1).Control(7)=   "Label12"
+         Tab(1).Control(8)=   "lblStoValidUntil"
+         Tab(1).Control(9)=   "Label18"
          Tab(1).Control(10)=   "lblStoCCRNo"
-         Tab(1).Control(11)=   "Label18"
-         Tab(1).Control(12)=   "lblStoValidUntil"
-         Tab(1).Control(13)=   "Label12"
-         Tab(1).Control(14)=   "mskExpStorageIN"
-         Tab(1).Control(15)=   "txtStoExtDate"
-         Tab(1).Control(16)=   "txtSTOCCRNo"
-         Tab(1).Control(17)=   "txtStoContSz"
-         Tab(1).Control(18)=   "txtStoContNo"
-         Tab(1).Control(19)=   "z"
-         Tab(1).Control(20)=   "Frame2"
+         Tab(1).Control(11)=   "lblStoRegNo"
+         Tab(1).Control(12)=   "lblStoEntryNo"
+         Tab(1).Control(13)=   "Label47"
+         Tab(1).Control(14)=   "Label49"
+         Tab(1).Control(15)=   "Label13"
+         Tab(1).Control(16)=   "Label57"
+         Tab(1).Control(17)=   "Label75"
+         Tab(1).Control(18)=   "lblStoPrevPay"
+         Tab(1).Control(19)=   "Label81"
+         Tab(1).Control(20)=   "lblStoPluginDate"
          Tab(1).ControlCount=   21
          TabCaption(2)   =   "RFR"
          TabPicture(2)   =   "CYSCCR.frx":01F5
          Tab(2).ControlEnabled=   0   'False
-         Tab(2).Control(0)=   "lblRfrHrs"
-         Tab(2).Control(1)=   "Label78"
-         Tab(2).Control(2)=   "lblRfrPrevPay"
-         Tab(2).Control(3)=   "Label54"
-         Tab(2).Control(4)=   "Label37"
-         Tab(2).Control(5)=   "Label27"
-         Tab(2).Control(6)=   "lblRfrValidUntil"
-         Tab(2).Control(7)=   "Label10"
-         Tab(2).Control(8)=   "Label14"
-         Tab(2).Control(9)=   "Label15"
-         Tab(2).Control(10)=   "Label35"
-         Tab(2).Control(11)=   "txtRfrPlugInDate"
-         Tab(2).Control(12)=   "txtRfrRegNo"
-         Tab(2).Control(13)=   "txtRfrEntryNo"
-         Tab(2).Control(14)=   "txtRfrContSz"
-         Tab(2).Control(15)=   "txtRfrExtDate"
-         Tab(2).Control(16)=   "txtRfrContNo"
-         Tab(2).Control(17)=   "Frame8"
+         Tab(2).Control(0)=   "Frame8"
+         Tab(2).Control(1)=   "txtRfrContNo"
+         Tab(2).Control(2)=   "txtRfrExtDate"
+         Tab(2).Control(3)=   "txtRfrContSz"
+         Tab(2).Control(4)=   "txtRfrEntryNo"
+         Tab(2).Control(5)=   "txtRfrRegNo"
+         Tab(2).Control(6)=   "txtRfrPlugInDate"
+         Tab(2).Control(7)=   "Label35"
+         Tab(2).Control(8)=   "Label15"
+         Tab(2).Control(9)=   "Label14"
+         Tab(2).Control(10)=   "Label10"
+         Tab(2).Control(11)=   "lblRfrValidUntil"
+         Tab(2).Control(12)=   "Label27"
+         Tab(2).Control(13)=   "Label37"
+         Tab(2).Control(14)=   "Label54"
+         Tab(2).Control(15)=   "lblRfrPrevPay"
+         Tab(2).Control(16)=   "Label78"
+         Tab(2).Control(17)=   "lblRfrHrs"
          Tab(2).ControlCount=   18
          TabCaption(3)   =   "SOC"
          TabPicture(3)   =   "CYSCCR.frx":0211
@@ -1076,38 +1076,22 @@ Begin VB.Form frmCYSCCR
          TabCaption(5)   =   "OTH"
          TabPicture(5)   =   "CYSCCR.frx":0249
          Tab(5).ControlEnabled=   0   'False
-         Tab(5).Control(0)=   "Frame3"
-         Tab(5).Control(0).Enabled=   0   'False
-         Tab(5).Control(1)=   "txtOthVessel"
-         Tab(5).Control(1).Enabled=   0   'False
-         Tab(5).Control(2)=   "txtOthContSz"
-         Tab(5).Control(2).Enabled=   0   'False
-         Tab(5).Control(3)=   "txtOthContNo"
-         Tab(5).Control(3).Enabled=   0   'False
-         Tab(5).Control(4)=   "txtOTHCCRNo"
-         Tab(5).Control(4).Enabled=   0   'False
-         Tab(5).Control(5)=   "txtOthAmount"
-         Tab(5).Control(5).Enabled=   0   'False
-         Tab(5).Control(6)=   "txtOthEntryNo"
-         Tab(5).Control(6).Enabled=   0   'False
-         Tab(5).Control(7)=   "txtOthRegNo"
-         Tab(5).Control(7).Enabled=   0   'False
-         Tab(5).Control(8)=   "txtOthFulEmp"
-         Tab(5).Control(8).Enabled=   0   'False
-         Tab(5).Control(9)=   "Label42"
-         Tab(5).Control(9).Enabled=   0   'False
-         Tab(5).Control(10)=   "Label63"
-         Tab(5).Control(10).Enabled=   0   'False
-         Tab(5).Control(11)=   "Label7"
-         Tab(5).Control(11).Enabled=   0   'False
-         Tab(5).Control(12)=   "Label20"
-         Tab(5).Control(12).Enabled=   0   'False
-         Tab(5).Control(13)=   "Label40"
-         Tab(5).Control(13).Enabled=   0   'False
-         Tab(5).Control(14)=   "Label41"
-         Tab(5).Control(14).Enabled=   0   'False
-         Tab(5).Control(15)=   "Label72"
-         Tab(5).Control(15).Enabled=   0   'False
+         Tab(5).Control(0)=   "Label72"
+         Tab(5).Control(1)=   "Label41"
+         Tab(5).Control(2)=   "Label40"
+         Tab(5).Control(3)=   "Label20"
+         Tab(5).Control(4)=   "Label7"
+         Tab(5).Control(5)=   "Label63"
+         Tab(5).Control(6)=   "Label42"
+         Tab(5).Control(7)=   "txtOthFulEmp"
+         Tab(5).Control(8)=   "txtOthRegNo"
+         Tab(5).Control(9)=   "txtOthEntryNo"
+         Tab(5).Control(10)=   "txtOthAmount"
+         Tab(5).Control(11)=   "txtOTHCCRNo"
+         Tab(5).Control(12)=   "txtOthContNo"
+         Tab(5).Control(13)=   "txtOthContSz"
+         Tab(5).Control(14)=   "txtOthVessel"
+         Tab(5).Control(15)=   "Frame3"
          Tab(5).ControlCount=   16
          Begin VB.ComboBox cboDanger 
             Height          =   405
@@ -3796,6 +3780,9 @@ If KeyCode = vbKeyF2 Then
 End Sub
 
 Private Sub Form_Load()
+'<Version/>
+Me.Caption = Me.Caption & " v" & App.Major & "." & App.Minor & "." & App.Revision
+'</Version>
     ' connect to CTCS
     'Set clsCTCS = CreateObject("CTCS.cCTCS")
     'If Not clsCTCS.IsConnected Then clsCTCS.Connect
@@ -9571,7 +9558,13 @@ Private Sub lzSavePrint()
         
             End If
             'Save to Sparcs
-'            ConnectToNavis
+            
+            '<Reconnect/>
+            gcnnNavis.Close
+            Set gcnnNavis = Nothing
+            ConnectToNavis
+            '</Reconnect>
+            
             If strContainerNo <> "" Then
                 If Left(Trim(grdCCRTran.TextMatrix(n, enRateCode)), 5) = "MCRFC" Then
                     strGKey = GetGKey(strContainerNo, "INVOICED", "REEFER")
@@ -10288,17 +10281,17 @@ Dim lsErrStr As String
    '     ";Initial Catalog=apex" & _
     '    ";Integrated Security=SSPI"
         
-'    Set gcnnNavis = New ADODB.Connection
-'    gcnnNavis.Open "Provider=sqloledb" & _
-'        ";Data Source=sbitc-db" & _
-'        ";Initial Catalog=apex" & _
-'        ";User ID=tosadmin;Password=tosadmin"
-
     Set gcnnNavis = New ADODB.Connection
     gcnnNavis.Open "Provider=sqloledb" & _
-        ";Data Source=sbitc-dev" & _
+        ";Data Source=sbitc-db" & _
         ";Initial Catalog=apex" & _
-        ";User ID=sa_ictsi;password=Ictsi123"
+        ";User ID=tosadmin;Password=tosadmin"
+
+'    Set gcnnNavis = New ADODB.Connection
+'    gcnnNavis.Open "Provider=sqloledb" & _
+'        ";Data Source=sbitc-dev" & _
+'        ";Initial Catalog=apex" & _
+'        ";User ID=sa_ictsi;password=Ictsi123"
 
     gbNavis = True
     ConnectToNavis = True

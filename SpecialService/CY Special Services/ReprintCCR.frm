@@ -5,7 +5,7 @@ Begin VB.Form frmReprintCCR
    ClientHeight    =   2385
    ClientLeft      =   4275
    ClientTop       =   3525
-   ClientWidth     =   4980
+   ClientWidth     =   5010
    BeginProperty Font 
       Name            =   "Arial"
       Size            =   15
@@ -19,7 +19,7 @@ Begin VB.Form frmReprintCCR
    LinkTopic       =   "Form1"
    LockControls    =   -1  'True
    ScaleHeight     =   2385
-   ScaleWidth      =   4980
+   ScaleWidth      =   5010
    Begin VB.CommandButton cmdReprint 
       Caption         =   "Re&print"
       Enabled         =   0   'False
@@ -202,6 +202,9 @@ Private Sub cmdReprint_KeyPress(KeyAscii As Integer)
 End Sub
 
 Private Sub Form_Load()
+'<Version/>
+Me.Caption = Me.Caption & " v" & App.Major & "." & App.Minor & "." & App.Revision
+'</Version>
     'Set clsCCRReprint = CreateObject("CCRPR03.clsCCRPR03")
 End Sub
 
