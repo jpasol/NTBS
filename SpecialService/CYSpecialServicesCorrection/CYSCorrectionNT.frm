@@ -51,11 +51,11 @@ Begin VB.Form frmCYSCorrection
       TabCaption(0)   =   "CCR VOIDING && CORRECTION"
       TabPicture(0)   =   "CYSCorrectionNT.frx":014A
       Tab(0).ControlEnabled=   0   'False
-      Tab(0).Control(0)=   "cmdExit"
-      Tab(0).Control(1)=   "cmdVoid"
+      Tab(0).Control(0)=   "Frame1"
+      Tab(0).Control(1)=   "Frame2"
       Tab(0).Control(2)=   "Frame3"
-      Tab(0).Control(3)=   "Frame2"
-      Tab(0).Control(4)=   "Frame1"
+      Tab(0).Control(3)=   "cmdVoid"
+      Tab(0).Control(4)=   "cmdExit"
       Tab(0).ControlCount=   5
       TabCaption(1)   =   "PAYMENT CORRECTION"
       TabPicture(1)   =   "CYSCorrectionNT.frx":0166
@@ -1683,7 +1683,7 @@ Dim nAmtDue, nTotalChk As Currency
     With rst
         If Not .EOF Then
             .MoveFirst
-            
+On Error Resume Next
             nAmtDue = !cshamt + !chkamt1 + !chkamt2 + !chkamt3 + !chkamt4 + !chkamt5 + !adramt - !chgamt
             lblAmtDue = Format(nAmtDue, "#,###,##0.00")
             txtCshAmt = IIf(!cshamt > 0, Format(!cshamt, "#,###,##0.00"), "")
@@ -1704,6 +1704,7 @@ Dim nAmtDue, nTotalChk As Currency
             txtChkBank(2) = !chkbnk3
             txtChkBank(3) = !chkbnk4
             txtChkBank(4) = !chkbnk5
+
             nTotalChk = !chkamt1 + !chkamt2 + !chkamt3 + !chkamt4 + !chkamt5
             lblChkTot = Format(nTotalChk, "#,###,##0.00")
             
@@ -1715,22 +1716,15 @@ Dim nAmtDue, nTotalChk As Currency
             txtCustomer.Enabled = (curOldADRAmt = 0)
             
             txtCshAmt.SetFocus
-        
         End If
     End With
-        
-    On Error Resume Next
     rst.Close
     Set rst = Nothing
-    On Error GoTo 0
-    
     Exit Sub
 
 err_Get:
     MsgBox "Error accessing CCR Table/s ...", vbCritical
-    On Error Resume Next
     Set rst = Nothing
-    On Error GoTo 0
 End Sub
 
 Private Sub txtChkAmt_GotFocus(Index As Integer)
