@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{00025600-0000-0000-C000-000000000046}#5.2#0"; "crystl32.ocx"
+Object = "{00025600-0000-0000-C000-000000000046}#5.2#0"; "Crystl32.OCX"
 Begin VB.Form frmSubicINVReprint 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "CY Invoice Reprint"
