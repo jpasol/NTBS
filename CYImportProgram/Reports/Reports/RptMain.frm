@@ -509,13 +509,13 @@ Begin VB.Form frmRptMain
       EnableDrillDown =   -1  'True
       EnableAnimationControl=   0   'False
       EnableSelectExpertButton=   0   'False
-      EnableToolbar   =   0   'False
+      EnableToolbar   =   -1  'True
       DisplayBorder   =   -1  'True
       DisplayTabs     =   0   'False
       DisplayBackgroundEdge=   -1  'True
       SelectionFormula=   ""
       EnablePopupMenu =   0   'False
-      EnableExportButton=   0   'False
+      EnableExportButton=   -1  'True
       EnableSearchExpertButton=   0   'False
       EnableHelpButton=   0   'False
    End
