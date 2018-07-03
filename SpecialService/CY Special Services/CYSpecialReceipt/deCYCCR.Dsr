@@ -3,8 +3,8 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCYCCR
    ClientHeight    =   14040
    ClientLeft      =   0
    ClientTop       =   0
-   ClientWidth     =   24480
-   _ExtentX        =   43180
+   ClientWidth     =   21345
+   _ExtentX        =   37650
    _ExtentY        =   24765
    FolderFlags     =   7
    TypeLibGuid     =   "{0917860D-1236-11D3-BD7D-00105A64485A}"

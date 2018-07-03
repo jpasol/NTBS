@@ -4,7 +4,7 @@ Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "msmask32.ocx"
 Begin VB.Form frmCYSCCR 
    BorderStyle     =   3  'Fixed Dialog
-   Caption         =   "CY Special Services CCR Issuance v2"
+   Caption         =   "CY Special Services CCR Issuance"
    ClientHeight    =   10860
    ClientLeft      =   75
    ClientTop       =   660
@@ -7076,7 +7076,7 @@ Dim vatRate As Double
     
     If nTotalAmount > 0 Then
         ' new ccr
-        If bNewCCR Or (nCCRCounter > 11) Then '7
+        If bNewCCR Or (nCCRCounter > 7) Then '7
             bNewCCR = False
             nCCRCounter = 1
         Else
@@ -7209,7 +7209,7 @@ Private Sub lzComputeSOCLOLO(ByVal pContNo As String)
     nTotalAmount = curLOLORate
     If nTotalAmount > 0 Then
         ' new ccr
-        If bNewCCR Or (nCCRCounter > 11) Then '7
+        If bNewCCR Or (nCCRCounter > 7) Then '7
             bNewCCR = False
             nCCRCounter = 1
         Else
@@ -7296,7 +7296,7 @@ Private Sub lzComputeSOCStorage()
 
     If nTotalAmount > 0 Then
         ' new ccr
-        If bNewCCR Or (nCCRCounter > 11) Then '7
+        If bNewCCR Or (nCCRCounter > 7) Then '7
             bNewCCR = False
             nCCRCounter = 1
         Else
@@ -8245,7 +8245,7 @@ Dim vatRate As Double
         
     If nTotalAmount > 0 Then
         ' new ccr
-        If bNewCCR Or (nCCRCounter > 11) Then '7
+        If bNewCCR Or (nCCRCounter > 7) Then '7
             bNewCCR = False
             nCCRCounter = 1
         Else
@@ -8410,7 +8410,7 @@ Dim vatRate As Double
         
   If nTotalAmount > 0 Then
     ' new ccr
-    If bNewCCR Or (nCCRCounter > 11) Then '7
+    If bNewCCR Or (nCCRCounter > 7) Then '7
         bNewCCR = False
         nCCRCounter = 1
     Else
@@ -8578,7 +8578,7 @@ Dim vatRate As Double
         
     If nTotalAmount > 0 Then
         ' new ccr
-        If bNewCCR Or (nCCRCounter > 11) Then '7
+        If bNewCCR Or (nCCRCounter > 7) Then '7
             bNewCCR = False
             nCCRCounter = 1
         Else
@@ -8746,7 +8746,7 @@ Dim vatRate As Double
         
     If nTotalAmount > 0 Then
         ' new ccr
-        If bNewCCR Or (nCCRCounter > 11) Then '7
+        If bNewCCR Or (nCCRCounter > 7) Then '7
             bNewCCR = False
             nCCRCounter = 1
         Else
@@ -9383,7 +9383,6 @@ Private Sub lzSavePrint()
         vSeq = 0: vItem = 0: vCCR = vCCR - 1
         For n = 1 To (grdCCRTran.Rows - 2)
         
-        If (vSeq > 0) And (n > vSeq(8)) Then vSeq = vSeq + 1: vItem = 0 'increasing Sequence Number by 8 Containers
         
             If (grdCCRTran.TextMatrix(n, enRateCode) <> cVoid) Then
                 If (n = 1) Or (grdCCRTran.TextMatrix(n, enCCRTag) = "*") Then
@@ -9726,11 +9725,15 @@ Dim strChqAmt As String
 Dim strCshAmt As String
 Dim rsCCRPay As ADODB.Recordset
 Dim strAdrAmt As String
+Dim intMaxSeq As Integer
+Dim n As Integer
+
 
 Set rsCCRDetail = New ADODB.Recordset
-rsCCRDetail.Open "Select Max("
-        
-For n = 1 To rsCCRDetail
+rsCCRDetail.Open "Select Max(seqnum) from CCRdtl where refnum = '" & Trim(CStr(pRefnum)) & "'", gcnnBilling, adOpenDynamic, adLockOptimistic, adCmdText
+intMaxSeq = rsCCRDetail.Fields(0) 'get Max Sequence
+For n = 1 To intMaxSeq
+ctrCnt = 7
 On Error Resume Next
     Set rsCCRPay = New ADODB.Recordset
     rsCCRPay.Open "SELECT cusnam, userid From CCRPay WHERE refnum = " & Trim(CStr(pRefnum)), _
@@ -9742,8 +9745,8 @@ On Error Resume Next
     rsCCRPay.Close
     
 Set rsCCRDetail = New ADODB.Recordset
-rsCCRDetail.Open "SELECT * From CCRdtl WHERE refnum = " & Trim(CStr(pRefnum)) & "" _
-        & " order by seqnum, itmnum", _
+rsCCRDetail.Open "SELECT * From CCRdtl WHERE refnum = " & Trim(CStr(pRefnum)) & " and seqnum=" & n _
+        & " order by  itmnum", _
         gcnnBilling, adOpenDynamic, adLockOptimistic, adCmdText
 If rsCCRDetail.BOF <> True And rsCCRDetail.EOF <> True Then
     With rsCCRDetail
@@ -10005,7 +10008,7 @@ End If
 
 rsCCRDetail.Close
 Set rsCCRDetail = Nothing
-
+Next n
 End Sub
 
 
@@ -10287,17 +10290,17 @@ Dim lsErrStr As String
    '     ";Initial Catalog=apex" & _
     '    ";Integrated Security=SSPI"
         
-'    Set gcnnNavis = New ADODB.Connection
-'    gcnnNavis.Open "Provider=sqloledb" & _
-'        ";Data Source=sbitc-db" & _
-'        ";Initial Catalog=apex" & _
-'        ";User ID=tosadmin;Password=tosadmin"
-
     Set gcnnNavis = New ADODB.Connection
     gcnnNavis.Open "Provider=sqloledb" & _
-        ";Data Source=sbitc-dev" & _
+        ";Data Source=sbitc-db" & _
         ";Initial Catalog=apex" & _
-        ";User ID=sa_ictsi;password=Ictsi123"
+        ";User ID=tosadmin;Password=tosadmin"
+'
+'    Set gcnnNavis = New ADODB.Connection
+'    gcnnNavis.Open "Provider=sqloledb" & _
+'        ";Data Source=sbitc-dev" & _
+'        ";Initial Catalog=apex" & _
+'        ";User ID=sa_ictsi;password=Ictsi123"
 
     gbNavis = True
     ConnectToNavis = True
