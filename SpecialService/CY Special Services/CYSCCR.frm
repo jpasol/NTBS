@@ -9382,6 +9382,9 @@ Private Sub lzSavePrint()
     
         vSeq = 0: vItem = 0: vCCR = vCCR - 1
         For n = 1 To (grdCCRTran.Rows - 2)
+        
+        If (vSeq > 0) And (n > vSeq(8)) Then vSeq = vSeq + 1: vItem = 0 'increasing Sequence Number by 8 Containers
+        
             If (grdCCRTran.TextMatrix(n, enRateCode) <> cVoid) Then
                 If (n = 1) Or (grdCCRTran.TextMatrix(n, enCCRTag) = "*") Then
                     vSeq = vSeq + 1
@@ -9724,7 +9727,10 @@ Dim strCshAmt As String
 Dim rsCCRPay As ADODB.Recordset
 Dim strAdrAmt As String
 
-ctrCnt = 11
+Set rsCCRDetail = New ADODB.Recordset
+rsCCRDetail.Open "Select Max("
+        
+For n = 1 To rsCCRDetail
 On Error Resume Next
     Set rsCCRPay = New ADODB.Recordset
     rsCCRPay.Open "SELECT cusnam, userid From CCRPay WHERE refnum = " & Trim(CStr(pRefnum)), _
@@ -9737,7 +9743,7 @@ On Error Resume Next
     
 Set rsCCRDetail = New ADODB.Recordset
 rsCCRDetail.Open "SELECT * From CCRdtl WHERE refnum = " & Trim(CStr(pRefnum)) & "" _
-        & " order by itmnum", _
+        & " order by seqnum, itmnum", _
         gcnnBilling, adOpenDynamic, adLockOptimistic, adCmdText
 If rsCCRDetail.BOF <> True And rsCCRDetail.EOF <> True Then
     With rsCCRDetail
@@ -10281,17 +10287,17 @@ Dim lsErrStr As String
    '     ";Initial Catalog=apex" & _
     '    ";Integrated Security=SSPI"
         
-    Set gcnnNavis = New ADODB.Connection
-    gcnnNavis.Open "Provider=sqloledb" & _
-        ";Data Source=sbitc-db" & _
-        ";Initial Catalog=apex" & _
-        ";User ID=tosadmin;Password=tosadmin"
-
 '    Set gcnnNavis = New ADODB.Connection
 '    gcnnNavis.Open "Provider=sqloledb" & _
-'        ";Data Source=sbitc-dev" & _
+'        ";Data Source=sbitc-db" & _
 '        ";Initial Catalog=apex" & _
-'        ";User ID=sa_ictsi;password=Ictsi123"
+'        ";User ID=tosadmin;Password=tosadmin"
+
+    Set gcnnNavis = New ADODB.Connection
+    gcnnNavis.Open "Provider=sqloledb" & _
+        ";Data Source=sbitc-dev" & _
+        ";Initial Catalog=apex" & _
+        ";User ID=sa_ictsi;password=Ictsi123"
 
     gbNavis = True
     ConnectToNavis = True
