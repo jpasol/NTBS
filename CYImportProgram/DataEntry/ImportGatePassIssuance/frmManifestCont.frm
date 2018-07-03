@@ -98,20 +98,20 @@ Begin VB.Form frmManifestCont
       TabCaption(1)   =   "Header"
       TabPicture(1)   =   "frmManifestCont.frx":0022
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "lblManifest(2)"
-      Tab(1).Control(1)=   "lblManifest(0)"
-      Tab(1).Control(2)=   "lblManifest(1)"
-      Tab(1).Control(3)=   "lblManifest(4)"
-      Tab(1).Control(4)=   "lblManifest(5)"
-      Tab(1).Control(5)=   "mskGatePassNo"
-      Tab(1).Control(6)=   "txtBrokerNO"
-      Tab(1).Control(7)=   "txtCustomer"
-      Tab(1).Control(8)=   "cboVAT"
-      Tab(1).Control(9)=   "chkWharfageExempt"
-      Tab(1).Control(10)=   "chkWharfageOnly"
-      Tab(1).Control(11)=   "cboUnderGuarantee"
-      Tab(1).Control(12)=   "cmdPreviousHeader"
-      Tab(1).Control(13)=   "cmdNextHeader"
+      Tab(1).Control(0)=   "cmdNextHeader"
+      Tab(1).Control(1)=   "cmdPreviousHeader"
+      Tab(1).Control(2)=   "cboUnderGuarantee"
+      Tab(1).Control(3)=   "chkWharfageOnly"
+      Tab(1).Control(4)=   "chkWharfageExempt"
+      Tab(1).Control(5)=   "cboVAT"
+      Tab(1).Control(6)=   "txtCustomer"
+      Tab(1).Control(7)=   "txtBrokerNO"
+      Tab(1).Control(8)=   "mskGatePassNo"
+      Tab(1).Control(9)=   "lblManifest(5)"
+      Tab(1).Control(10)=   "lblManifest(4)"
+      Tab(1).Control(11)=   "lblManifest(1)"
+      Tab(1).Control(12)=   "lblManifest(0)"
+      Tab(1).Control(13)=   "lblManifest(2)"
       Tab(1).ControlCount=   14
       TabCaption(2)   =   "Other Info"
       TabPicture(2)   =   "frmManifestCont.frx":003E
@@ -123,38 +123,38 @@ Begin VB.Form frmManifestCont
       TabCaption(3)   =   "Container"
       TabPicture(3)   =   "frmManifestCont.frx":005A
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "lblManifest(14)"
-      Tab(3).Control(1)=   "lblManifest(11)"
-      Tab(3).Control(2)=   "lblManifest(16)"
-      Tab(3).Control(3)=   "lblManifest(15)"
-      Tab(3).Control(4)=   "mskAdvGPDate"
-      Tab(3).Control(5)=   "mskCRODate"
-      Tab(3).Control(6)=   "fraStorage"
-      Tab(3).Control(7)=   "fraOversize"
-      Tab(3).Control(8)=   "fraDetail"
-      Tab(3).Control(9)=   "fraPlug"
-      Tab(3).Control(10)=   "chkWeighing"
-      Tab(3).Control(11)=   "cboStorageStat"
-      Tab(3).Control(12)=   "cboDangClass"
-      Tab(3).Control(13)=   "cmdCompute"
-      Tab(3).Control(14)=   "cmdPreviousContainer"
-      Tab(3).Control(15)=   "cmdNextContainer"
+      Tab(3).Control(0)=   "cmdNextContainer"
+      Tab(3).Control(1)=   "cmdPreviousContainer"
+      Tab(3).Control(2)=   "cmdCompute"
+      Tab(3).Control(3)=   "cboDangClass"
+      Tab(3).Control(4)=   "cboStorageStat"
+      Tab(3).Control(5)=   "chkWeighing"
+      Tab(3).Control(6)=   "fraPlug"
+      Tab(3).Control(7)=   "fraDetail"
+      Tab(3).Control(8)=   "fraOversize"
+      Tab(3).Control(9)=   "fraStorage"
+      Tab(3).Control(10)=   "mskCRODate"
+      Tab(3).Control(11)=   "mskAdvGPDate"
+      Tab(3).Control(12)=   "lblManifest(15)"
+      Tab(3).Control(13)=   "lblManifest(16)"
+      Tab(3).Control(14)=   "lblManifest(11)"
+      Tab(3).Control(15)=   "lblManifest(14)"
       Tab(3).ControlCount=   16
       TabCaption(4)   =   "Charges"
       TabPicture(4)   =   "frmManifestCont.frx":0076
       Tab(4).ControlEnabled=   0   'False
-      Tab(4).Control(0)=   "lblManifest(34)"
-      Tab(4).Control(1)=   "lblManifest(71)"
-      Tab(4).Control(2)=   "mskReeferHours"
-      Tab(4).Control(3)=   "msfCharges"
-      Tab(4).Control(4)=   "cmdPreviousCharges"
-      Tab(4).Control(5)=   "cmdNextCharges"
-      Tab(4).Control(6)=   "fraRunning"
-      Tab(4).Control(7)=   "fraCharges"
-      Tab(4).Control(8)=   "fraStorageInfo"
-      Tab(4).Control(9)=   "fraExpand"
-      Tab(4).Control(10)=   "cmdAnother"
-      Tab(4).Control(11)=   "cmdViewGrid"
+      Tab(4).Control(0)=   "cmdViewGrid"
+      Tab(4).Control(1)=   "cmdAnother"
+      Tab(4).Control(2)=   "fraExpand"
+      Tab(4).Control(3)=   "fraStorageInfo"
+      Tab(4).Control(4)=   "fraCharges"
+      Tab(4).Control(5)=   "fraRunning"
+      Tab(4).Control(6)=   "cmdNextCharges"
+      Tab(4).Control(7)=   "cmdPreviousCharges"
+      Tab(4).Control(8)=   "msfCharges"
+      Tab(4).Control(9)=   "mskReeferHours"
+      Tab(4).Control(10)=   "lblManifest(71)"
+      Tab(4).Control(11)=   "lblManifest(34)"
       Tab(4).ControlCount=   12
       TabCaption(5)   =   "Payment"
       TabPicture(5)   =   "frmManifestCont.frx":0092
@@ -1133,7 +1133,7 @@ Begin VB.Form frmManifestCont
             EndProperty
             CalendarBackColor=   16777215
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   182714371
+            Format          =   130285571
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtStorageFree 
@@ -1155,7 +1155,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   182714371
+            Format          =   130285571
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtEndStorage 
@@ -1177,7 +1177,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   182714371
+            Format          =   130285571
             CurrentDate     =   32874
          End
          Begin VB.Label lblManifest 
@@ -4708,6 +4708,7 @@ Private Sub cmdAnother_Click()
     'sstMain.Tab = cTabOtherInfo
     
     'PRNH
+    Call InitializeSomeComputationVariables
     If cntIndex < cntCount - 1 Then
         sstMain.Tab = cTabContainer
         cntIndex = cntIndex + 1
@@ -8082,7 +8083,7 @@ Private Sub RetrieveLDD()
     'End If
 
     
-    strDate = Format(DateAdd("d", 7, CDate(dStorage)), "yyyy-mm-dd") 'CRODate = Last Discharge + 7 days by default
+    strDate = Format(DateAdd("d", 4, CDate(dStorage)), "yyyy-mm-dd") 'CRODate = Last Discharge + 7 days by default
     mskCRODate.Text = strDate
 End Sub
 
@@ -8354,7 +8355,7 @@ Call Evaluate_ContainerNo
          
          cntIndex = cmbConNo.ListIndex
          
-         Call InitializeSomeComputationVariables
+         'Call InitializeSomeComputationVariables
          With msfCharges
             msfCharges.SetFocus
             msfCharges.Col = 1
