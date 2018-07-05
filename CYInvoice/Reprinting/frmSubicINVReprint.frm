@@ -25,10 +25,10 @@ Begin VB.Form frmSubicINVReprint
    ScaleWidth      =   10830
    StartUpPosition =   2  'CenterScreen
    Begin CRVIEWERLibCtl.CRViewer CRViewer1 
-      Height          =   6135
+      Height          =   6015
       Left            =   0
       TabIndex        =   6
-      Top             =   1920
+      Top             =   2040
       Width           =   10815
       DisplayGroupTree=   -1  'True
       DisplayToolbar  =   -1  'True
@@ -177,7 +177,7 @@ Dim tmpInvNo As Long
         'CYInvoice.ReportFileName = App.Path & "\SubicInvoice.rpt"
         'CYInvoice.ParameterFields(1) = "InvoiceNo; " & Trim(tmpInvNo) & ";TRUE"
         SubicInvoice.DiscardSavedData
-        SubicInvoice.ParameterFields.GetItemByName("InvoiceNo").AddCurrentValue CInt(Trim(txtInvNum.Text))
+        SubicInvoice.ParameterFields.GetItemByName("InvoiceNo").AddCurrentValue CDbl(Trim(txtInvNum.Text))
         CRViewer1.ReportSource = SubicInvoice
         CRViewer1.ViewReport
         
