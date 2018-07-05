@@ -217,6 +217,10 @@ Private Sub cmdExit_Click()
     Unload Me
 End Sub
 
+Private Sub Form_Load()
+Me.Caption = Me.Caption & " v" & App.Major & "." & App.Minor & "." & App.Revision
+End Sub
+
 Private Sub Form_Resize()
 If ScaleHeight > CRViewer1.Top Then CRViewer1.Height = ScaleHeight - CRViewer1.Top
 CRViewer1.Width = ScaleWidth
