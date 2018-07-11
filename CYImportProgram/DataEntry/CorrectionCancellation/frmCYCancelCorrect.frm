@@ -40,9 +40,9 @@ Begin VB.Form frmCYCancelCorrect
       TabCaption(0)   =   "Correct Gatepass"
       TabPicture(0)   =   "frmCYCancelCorrect.frx":0000
       Tab(0).ControlEnabled=   0   'False
-      Tab(0).Control(0)=   "cmdSaveCorrectGatePass"
+      Tab(0).Control(0)=   "fraDetail"
       Tab(0).Control(1)=   "Frame1"
-      Tab(0).Control(2)=   "fraDetail"
+      Tab(0).Control(2)=   "cmdSaveCorrectGatePass"
       Tab(0).ControlCount=   3
       TabCaption(1)   =   "Cancel Gatepass"
       TabPicture(1)   =   "frmCYCancelCorrect.frx":001C
@@ -58,13 +58,12 @@ Begin VB.Form frmCYCancelCorrect
       TabPicture(2)   =   "frmCYCancelCorrect.frx":0038
       Tab(2).ControlEnabled=   0   'False
       Tab(2).Control(0)=   "fraPayment"
-      Tab(2).Control(0).Enabled=   0   'False
       Tab(2).ControlCount=   1
       TabCaption(3)   =   "View"
       TabPicture(3)   =   "frmCYCancelCorrect.frx":0054
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "Frame5"
-      Tab(3).Control(1)=   "Frame6"
+      Tab(3).Control(0)=   "Frame6"
+      Tab(3).Control(1)=   "Frame5"
       Tab(3).ControlCount=   2
       Begin VB.Frame Frame6 
          Caption         =   "Gatepass Detail"
@@ -2618,6 +2617,7 @@ Dim curPreviousCheck5 As Currency
 Dim strPreviousCustomerCode As String
 Dim lngControlNo As Long
 Dim intTabNumber As Integer
+Dim Regno As String
 
 Private Sub FieldAdvance(pKeyCode As Integer, pPreviousControl As Control, pNextControl As Control)
     Select Case pKeyCode
@@ -2699,7 +2699,29 @@ If IsNumeric(mskReference2) Then
     End If
 End Sub
 Private Sub CancelContainerGPS()
-
+    On Error GoTo err
+    
+    Dim cmdChkBillNo As ADODB.Command
+        
+    ' create command
+    Set cmdChkBillNo = New ADODB.Command
+    With cmdChkBillNo
+    Set .ActiveConnection = gcnnBilling
+        .CommandText = "sp_Manifest_cancelGpsNum"
+        .CommandType = adCmdStoredProc
+        
+        ' set parameters then execute
+        .Parameters("@@pRegNo").Type = adVarChar
+        .Parameters("@@pRegNo").Value = Regno
+        .Parameters("@@pRegNo").Direction = adParamInput
+        .Parameters("@@pConNo").Type = adVarChar
+        .Parameters("@@pConNo").Value = txtContainerNo2.Text
+        .Parameters("@@pConNo").Direction = adParamInput
+        .Execute
+    End With
+    Exit Sub
+err:
+    MsgBox err.Description, vbOKCancel, "Chk_Manifest"
 End Sub
 
 Private Sub cmdCancelGatepass_KeyDown(KeyCode As Integer, Shift As Integer)
@@ -2932,6 +2954,7 @@ Private Sub GetInfo2()
                 txtVesselCode2 = .Fields("vslcde")
                 txtBroker2 = .Fields("broker")
                 txtRemarks2 = .Fields("remark")
+                Regno = .Fields("regnum")
                 chkCustomsGuard2.Value = ConvertToNum(.Fields("cusgrd"))
                 cmdCancelGatepass.SetFocus
             End If
@@ -3754,6 +3777,10 @@ Private Sub Form_Activate()
     mskReference.SetFocus
 End Sub
 
+
+Private Sub Form_Load()
+Me.Caption = Me.Caption & " v" & App.Major & "." & App.Minor & "." & App.Revision
+End Sub
 
 Private Sub mskADRAmount_KeyDown(KeyCode As Integer, Shift As Integer)
     Call FieldAdvance(KeyCode, mskADRAmount, txtCustomerCode)
