@@ -1177,6 +1177,7 @@ Begin VB.Form frmManifestCont
             CustomFormat    =   "yyy-MM-dd"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             Format          =   181927939
 =======
             Format          =   139657219
@@ -1184,6 +1185,9 @@ Begin VB.Form frmManifestCont
 =======
             Format          =   181927939
 >>>>>>> parent of 2ff27c4... Saved
+=======
+            Format          =   139657219
+>>>>>>> parent of 17592e2... sAVED
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtStorageFree 
@@ -1207,6 +1211,7 @@ Begin VB.Form frmManifestCont
             CustomFormat    =   "yyy-MM-dd"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             Format          =   181927939
 =======
             Format          =   139657219
@@ -1214,6 +1219,9 @@ Begin VB.Form frmManifestCont
 =======
             Format          =   181927939
 >>>>>>> parent of 2ff27c4... Saved
+=======
+            Format          =   139657219
+>>>>>>> parent of 17592e2... sAVED
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtEndStorage 
@@ -1237,6 +1245,7 @@ Begin VB.Form frmManifestCont
             CustomFormat    =   "yyy-MM-dd"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             Format          =   181927939
 =======
             Format          =   139657219
@@ -1244,6 +1253,9 @@ Begin VB.Form frmManifestCont
 =======
             Format          =   181927939
 >>>>>>> parent of 2ff27c4... Saved
+=======
+            Format          =   139657219
+>>>>>>> parent of 17592e2... sAVED
             CurrentDate     =   32874
          End
          Begin VB.Label lblManifest 
@@ -6381,6 +6393,7 @@ Private Sub PrintGatePassDetail()
 =======
 >>>>>>> parent of 2ff27c4... Saved
             
+<<<<<<< HEAD
             strPayment = LiquidatePaymentTypes(2)
             Printer.Print Space(70);
             If strPayment <> "" Then
@@ -6413,6 +6426,32 @@ Private Sub PrintGatePassDetail()
                 Printer.Print Left(strPayment, 11);
                 Printer.Print Space(1);
 <<<<<<< HEAD
+                Printer.Print "AD" & vbCrLf;
+>>>>>>> parent of 17592e2... sAVED
+=======
+            strPayment = LiquidatePaymentTypes(7)
+            Printer.Print Space(70);
+                Printer.Print Left(strPayment, 11);
+                Printer.Print Space(1);
+                Printer.Print "CS" & vbCrLf;
+                
+            strPayment = CDbl(Trim(LiquidatePaymentTypes(2))): blnChk1Printed = True
+            strPayment = strPayment + CDbl(Trim(LiquidatePaymentTypes(3))): blnChk2Printed = True
+            strPayment = strPayment + CDbl(Trim(LiquidatePaymentTypes(4))): blnChk3Printed = True
+            strPayment = strPayment + CDbl(Trim(LiquidatePaymentTypes(5))): blnChk4Printed = True
+            strPayment = strPayment + CDbl(Trim(LiquidatePaymentTypes(6))): blnChk5Printed = True
+            
+            strPayment = CStr(Format(strPayment, "####,##0.00"))
+            strPayment = Left(strPayment & Space(11), 11)
+            
+            Printer.Print Left(strPayment, 11);
+            Printer.Print Space(1);
+            Printer.Print "CK" & vbCrLf;
+            
+            strPayment = LiquidatePaymentTypes(1)
+            Printer.Print Space(70);
+                Printer.Print Left(strPayment, 11);
+                Printer.Print Space(1);
                 Printer.Print "AD" & vbCrLf;
 >>>>>>> parent of 17592e2... sAVED
             
