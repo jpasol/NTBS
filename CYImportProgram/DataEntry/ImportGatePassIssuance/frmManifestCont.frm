@@ -64,37 +64,21 @@ Begin VB.Form frmManifestCont
       TabPicture(0)   =   "frmManifestCont.frx":0006
       Tab(0).ControlEnabled=   0   'False
       Tab(0).Control(0)=   "lblManifest(35)"
-      Tab(0).Control(0).Enabled=   0   'False
       Tab(0).Control(1)=   "lblManifest(36)"
-      Tab(0).Control(1).Enabled=   0   'False
       Tab(0).Control(2)=   "lblManifest(37)"
-      Tab(0).Control(2).Enabled=   0   'False
       Tab(0).Control(3)=   "lblManifest(29)"
-      Tab(0).Control(3).Enabled=   0   'False
       Tab(0).Control(4)=   "lblManifest(41)"
-      Tab(0).Control(4).Enabled=   0   'False
       Tab(0).Control(5)=   "lblManifest(42)"
-      Tab(0).Control(5).Enabled=   0   'False
       Tab(0).Control(6)=   "lblManifest(43)"
-      Tab(0).Control(6).Enabled=   0   'False
       Tab(0).Control(7)=   "lblManifest(74)"
-      Tab(0).Control(7).Enabled=   0   'False
       Tab(0).Control(8)=   "cmdNextBL"
-      Tab(0).Control(8).Enabled=   0   'False
       Tab(0).Control(9)=   "txtBL"
-      Tab(0).Control(9).Enabled=   0   'False
       Tab(0).Control(10)=   "txtRegistry"
-      Tab(0).Control(10).Enabled=   0   'False
       Tab(0).Control(11)=   "chkForExam"
-      Tab(0).Control(11).Enabled=   0   'False
       Tab(0).Control(12)=   "txtSBMAPermit"
-      Tab(0).Control(12).Enabled=   0   'False
       Tab(0).Control(13)=   "txtCustomPermit"
-      Tab(0).Control(13).Enabled=   0   'False
       Tab(0).Control(14)=   "txtTransactionType"
-      Tab(0).Control(14).Enabled=   0   'False
       Tab(0).Control(15)=   "txtCompCode"
-      Tab(0).Control(15).Enabled=   0   'False
       Tab(0).ControlCount=   16
       TabCaption(1)   =   "Header"
       TabPicture(1)   =   "frmManifestCont.frx":0022
@@ -1175,7 +1159,7 @@ Begin VB.Form frmManifestCont
             EndProperty
             CalendarBackColor=   16777215
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   181927939
+            Format          =   139657219
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtStorageFree 
@@ -1197,7 +1181,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   181927939
+            Format          =   139657219
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtEndStorage 
@@ -1219,7 +1203,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   181927939
+            Format          =   139657219
             CurrentDate     =   32874
          End
          Begin VB.Label lblManifest 
@@ -6350,68 +6334,34 @@ Private Sub PrintGatePassDetail()
             Else
                 Printer.Print "DC " & .DangerClass;
             End If
+            '<Payments/>
             
-            strPayment = LiquidatePaymentTypes(2)
+            strPayment = LiquidatePaymentTypes(7)
             Printer.Print Space(70);
-            If strPayment <> "" Then
                 Printer.Print Left(strPayment, 11);
                 Printer.Print Space(1);
-                Printer.Print "CK";
-                blnChk1Printed = True
-            Else
-                Printer.Print Space(14);
-                blnChk1Printed = False
-            End If
-            
-            strPayment = LiquidatePaymentTypes(3)
-            Printer.Print Space(20);
-            If strPayment <> "" Then
-                Printer.Print Left(strPayment, 11);
-                Printer.Print Space(1);
-                Printer.Print "CK";
-                blnChk2Printed = True
-            Else
-                Printer.Print Space(14);
-                blnChk2Printed = False
-            End If
+                Printer.Print "CS" & vbCrLf;
                 
-            Printer.Print Space(10);
-            Printer.Print
-            strPayment = LiquidatePaymentTypes(4)
+            strPayment = CDbl(Trim(LiquidatePaymentTypes(2))): blnChk1Printed = True
+            strPayment = strPayment + CDbl(Trim(LiquidatePaymentTypes(3))): blnChk2Printed = True
+            strPayment = strPayment + CDbl(Trim(LiquidatePaymentTypes(4))): blnChk3Printed = True
+            strPayment = strPayment + CDbl(Trim(LiquidatePaymentTypes(5))): blnChk4Printed = True
+            strPayment = strPayment + CDbl(Trim(LiquidatePaymentTypes(6))): blnChk5Printed = True
+            
+            strPayment = CStr(Format(strPayment, "####,##0.00"))
+            strPayment = Left(strPayment & Space(11), 11)
+            
+            Printer.Print Left(strPayment, 11);
+            Printer.Print Space(1);
+            Printer.Print "CK" & vbCrLf;
+            
+            strPayment = LiquidatePaymentTypes(1)
             Printer.Print Space(70);
-            If strPayment <> "" Then
                 Printer.Print Left(strPayment, 11);
                 Printer.Print Space(1);
-                Printer.Print "CK";
-                blnChk3Printed = True
-            Else
-                Printer.Print Space(14);
-                blnChk3Printed = False
-            End If
-            'Printer.Print
-            strPayment = LiquidatePaymentTypes(5)
-            Printer.Print Space(10);
-            If strPayment <> "" Then
-                Printer.Print Left(strPayment, 11);
-                Printer.Print Space(1);
-                Printer.Print "CK";
-                blnChk4Printed = True
-            Else
-                Printer.Print Space(14);
-                blnChk4Printed = False
-            End If
-            Printer.Print
-            strPayment = LiquidatePaymentTypes(6)
-            Printer.Print Space(70);
-            If strPayment <> "" Then
-                Printer.Print Left(strPayment, 11);
-                Printer.Print Space(1);
-                Printer.Print "CK"
-                blnChk5Printed = True
-            Else
-                Printer.Print Space(14)
-                blnChk5Printed = False
-            End If
+                Printer.Print "AD" & vbCrLf;
+            
+            
             
             Printer.Print Space(92);
             If blnChk1Printed Then
@@ -6436,15 +6386,6 @@ Private Sub PrintGatePassDetail()
             End If
             Printer.Print Space(5)
             
-            strPayment = LiquidatePaymentTypes(7)
-            Printer.Print Space(70);
-            If strPayment <> "" Then
-                Printer.Print Left(strPayment, 11);
-                Printer.Print Space(1);
-                Printer.Print "CS";
-            Else
-                Printer.Print Space(14);
-            End If
             Printer.Print Space(5);
             If blnChk1Printed Then
                 Printer.Print Left((Payment.CheckBnk1 & Space(10)), 10);
@@ -6468,6 +6409,7 @@ Private Sub PrintGatePassDetail()
             Else
                 Printer.Print Space(1)
             End If
+            '</Payments>
             Printer.Print
             Printer.Print
             Printer.Print Space(110);
@@ -6710,7 +6652,8 @@ Private Sub mskADRAmount_KeyDown(KeyCode As Integer, Shift As Integer)
     End If
 End Sub
 
-Private Sub mskADRNum_Change()
+
+Private Sub mskADRNum_KeyDown(KeyCode As Integer, Shift As Integer)
     If KeyCode = 13 Then
         Call mskADRNum_LostFocus
         If cmdSave.Enabled Then cmdSave.SetFocus
