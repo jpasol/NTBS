@@ -1176,10 +1176,14 @@ Begin VB.Form frmManifestCont
             CalendarBackColor=   16777215
             CustomFormat    =   "yyy-MM-dd"
 <<<<<<< HEAD
+<<<<<<< HEAD
             Format          =   181927939
 =======
             Format          =   139657219
 >>>>>>> parent of 17592e2... sAVED
+=======
+            Format          =   181927939
+>>>>>>> parent of 2ff27c4... Saved
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtStorageFree 
@@ -1202,10 +1206,14 @@ Begin VB.Form frmManifestCont
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
 <<<<<<< HEAD
+<<<<<<< HEAD
             Format          =   181927939
 =======
             Format          =   139657219
 >>>>>>> parent of 17592e2... sAVED
+=======
+            Format          =   181927939
+>>>>>>> parent of 2ff27c4... Saved
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtEndStorage 
@@ -1228,10 +1236,14 @@ Begin VB.Form frmManifestCont
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
 <<<<<<< HEAD
+<<<<<<< HEAD
             Format          =   181927939
 =======
             Format          =   139657219
 >>>>>>> parent of 17592e2... sAVED
+=======
+            Format          =   181927939
+>>>>>>> parent of 2ff27c4... Saved
             CurrentDate     =   32874
          End
          Begin VB.Label lblManifest 
@@ -6363,32 +6375,44 @@ Private Sub PrintGatePassDetail()
                 Printer.Print "DC " & .DangerClass;
             End If
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
             '<Payments/>
+=======
+>>>>>>> parent of 2ff27c4... Saved
             
-            strPayment = LiquidatePaymentTypes(7)
+            strPayment = LiquidatePaymentTypes(2)
             Printer.Print Space(70);
+            If strPayment <> "" Then
                 Printer.Print Left(strPayment, 11);
                 Printer.Print Space(1);
-                Printer.Print "CS" & vbCrLf;
+                Printer.Print "CK";
+                blnChk1Printed = True
+            Else
+                Printer.Print Space(14);
+                blnChk1Printed = False
+            End If
+            
+            strPayment = LiquidatePaymentTypes(3)
+            Printer.Print Space(20);
+            If strPayment <> "" Then
+                Printer.Print Left(strPayment, 11);
+                Printer.Print Space(1);
+                Printer.Print "CK";
+                blnChk2Printed = True
+            Else
+                Printer.Print Space(14);
+                blnChk2Printed = False
+            End If
                 
-            strPayment = CDbl(Trim(LiquidatePaymentTypes(2))): blnChk1Printed = True
-            strPayment = strPayment + CDbl(Trim(LiquidatePaymentTypes(3))): blnChk2Printed = True
-            strPayment = strPayment + CDbl(Trim(LiquidatePaymentTypes(4))): blnChk3Printed = True
-            strPayment = strPayment + CDbl(Trim(LiquidatePaymentTypes(5))): blnChk4Printed = True
-            strPayment = strPayment + CDbl(Trim(LiquidatePaymentTypes(6))): blnChk5Printed = True
-            
-            strPayment = CStr(Format(strPayment, "####,##0.00"))
-            strPayment = Left(strPayment & Space(11), 11)
-            
-            Printer.Print Left(strPayment, 11);
-            Printer.Print Space(1);
-            Printer.Print "CK" & vbCrLf;
-            
-            strPayment = LiquidatePaymentTypes(1)
+            Printer.Print Space(10);
+            Printer.Print
+            strPayment = LiquidatePaymentTypes(4)
             Printer.Print Space(70);
+            If strPayment <> "" Then
                 Printer.Print Left(strPayment, 11);
                 Printer.Print Space(1);
+<<<<<<< HEAD
                 Printer.Print "AD" & vbCrLf;
 >>>>>>> parent of 17592e2... sAVED
             
@@ -6423,6 +6447,8 @@ Private Sub PrintGatePassDetail()
             If strPayment <> "" Then
                 Printer.Print Left(strPayment, 11);
                 Printer.Print Space(1);
+=======
+>>>>>>> parent of 2ff27c4... Saved
                 Printer.Print "CK";
                 blnChk3Printed = True
             Else
