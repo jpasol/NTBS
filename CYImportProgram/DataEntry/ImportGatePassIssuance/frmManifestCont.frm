@@ -1159,7 +1159,7 @@ Begin VB.Form frmManifestCont
             EndProperty
             CalendarBackColor=   16777215
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   139657219
+            Format          =   229441539
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtStorageFree 
@@ -1181,7 +1181,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   139657219
+            Format          =   229441539
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtEndStorage 
@@ -1203,7 +1203,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   139657219
+            Format          =   229507075
             CurrentDate     =   32874
          End
          Begin VB.Label lblManifest 
@@ -6155,6 +6155,10 @@ End Sub
 Private Sub PrintGatePassDetail()
     Dim strToText As String
     Dim strPayment As String
+    Dim strCSHPayment As String
+    Dim strCHQPayment As String
+    Dim strADRPayment As String
+
     Dim blnChk1Printed As Boolean
     Dim blnChk2Printed As Boolean
     Dim blnChk3Printed As Boolean
@@ -6336,30 +6340,25 @@ Private Sub PrintGatePassDetail()
             End If
             '<Payments/>
             
-            strPayment = LiquidatePaymentTypes(7)
-            Printer.Print Space(70);
-                Printer.Print Left(strPayment, 11);
-                Printer.Print Space(1);
-                Printer.Print "CS" & vbCrLf;
-                
-            strPayment = CDbl(Trim(LiquidatePaymentTypes(2))): blnChk1Printed = True
-            strPayment = strPayment + CDbl(Trim(LiquidatePaymentTypes(3))): blnChk2Printed = True
-            strPayment = strPayment + CDbl(Trim(LiquidatePaymentTypes(4))): blnChk3Printed = True
-            strPayment = strPayment + CDbl(Trim(LiquidatePaymentTypes(5))): blnChk4Printed = True
-            strPayment = strPayment + CDbl(Trim(LiquidatePaymentTypes(6))): blnChk5Printed = True
+            strCSHPayment = Trim(LiquidatePaymentTypes(7))
+            strCHQPayment = CDbl(Trim(LiquidatePaymentTypes(2)))
+            strCHQPayment = strPayment + CDbl(Trim(LiquidatePaymentTypes(3)))
+            strCHQPayment = strPayment + CDbl(Trim(LiquidatePaymentTypes(4)))
+            strCHQPayment = strPayment + CDbl(Trim(LiquidatePaymentTypes(5)))
+            strCHQPayment = strPayment + CDbl(Trim(LiquidatePaymentTypes(6)))
+            strADRPayment = Trim(LiquidatePaymentTypes(1))
             
-            strPayment = CStr(Format(strPayment, "####,##0.00"))
-            strPayment = Left(strPayment & Space(11), 11)
+            strCSHPayment = strCSHPayment & "CS                   "
+            Printer.CurrentX = Printer.Width - Printer.TextWidth(strCSHPayment)
+            Printer.Print strCSHPayment
             
-            Printer.Print Left(strPayment, 11);
-            Printer.Print Space(1);
-            Printer.Print "CK" & vbCrLf;
+            strCSHPayment = strCSHPayment & "CK                   "
+            Printer.CurrentX = Printer.Width - Printer.TextWidth(strCSHPayment)
+            Printer.Print strCHQPayment
             
-            strPayment = LiquidatePaymentTypes(1)
-            Printer.Print Space(70);
-                Printer.Print Left(strPayment, 11);
-                Printer.Print Space(1);
-                Printer.Print "AD" & vbCrLf;
+            strCSHPayment = strCSHPayment & "AD                   "
+            Printer.CurrentX = Printer.Width - Printer.TextWidth(strCSHPayment)
+            Printer.Print strADRPayment
             
             
             
