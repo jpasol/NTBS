@@ -1260,17 +1260,17 @@ Dim lsErrStr As String
 '        ";User ID=tosadmin;Password=tosadmin"
 '
 'PRNH - Prod IP
-    gcnnNavis.Open "Provider=sqloledb" & _
-            ";Data Source=192.168.11.151" & _
-            ";Initial Catalog=apex" & _
-            ";User ID=tosadmin;Password=tosadmin"
+'    gcnnNavis.Open "Provider=sqloledb" & _
+'            ";Data Source=192.168.11.151" & _
+'            ";Initial Catalog=apex" & _
+'            ";User ID=tosadmin;Password=tosadmin"
 
 ''PRNH -Test
-'        gcnnNavis.Open "Provider=sqloledb" & _
-'        ";Data Source=192.168.11.155" & _
-'        ";Initial Catalog=apex" & _
-'        ";User ID=sa_ictsi;Password=Ictsi123"
-'
+        gcnnNavis.Open "Provider=sqloledb" & _
+        ";Data Source=192.168.11.155" & _
+        ";Initial Catalog=apex" & _
+        ";User ID=sa_ictsi;Password=Ictsi123"
+
 
 
     gbNavis = True
