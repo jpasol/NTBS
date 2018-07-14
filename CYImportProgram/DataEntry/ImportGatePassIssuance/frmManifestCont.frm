@@ -1159,7 +1159,7 @@ Begin VB.Form frmManifestCont
             EndProperty
             CalendarBackColor=   16777215
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   191692803
+            Format          =   96993283
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtStorageFree 
@@ -1181,7 +1181,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   191692803
+            Format          =   96993283
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtEndStorage 
@@ -1203,7 +1203,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   191692803
+            Format          =   96927747
             CurrentDate     =   32874
          End
          Begin VB.Label lblManifest 
@@ -5232,8 +5232,8 @@ updateQuery:
         updateQuery2 = updateQuery2 & Replace(mskADRAmount, ",", "") & "," 'adramt
         
         'PRNH - Removed ADR Validation
-        'updateQuery2 = updateQuery2 & lngControlNo & "," 'adrnum
-        updateQuery2 = updateQuery2 & "0" & "," 'adrnum=0
+        'updateQuery2 = updateQuery2 & mskADRNum & "," 'adrnum
+        updateQuery2 = updateQuery2 & mskADRNum & "," 'adrnum
         
         updateQuery2 = updateQuery2 & mskChange & "," 'chgamt
         updateQuery2 = updateQuery2 & "'" & txtTransactionType & "'," 'trntype
@@ -5804,8 +5804,13 @@ Private Sub Update_Manifest(ByVal strBillNo As String, ByVal strConNo As String,
 End Sub
 
 Private Sub PrintGatePass()
-    Call GetTotalPaymentAmounts
-    Call GetTotalChargePerDetail
+'    Call GetTotalPaymentAmounts
+'    Call GetTotalChargePerDetail
+    ImportPrint.Database.LogOnServer "P2SOLEDB.DLL", "SBITC-DEV", "SBITCBILLING", "sa_ictsi", "Ictsi123"
+    ImportPrint.DiscardSavedData
+    ImportPrint.ParameterFields("1").AddCurrentValue (lngReferenceNo)
+    ImportPrint.ParameterFields("2").AddCurrentValue (gbSupervisor)
+    ImportPrint.PrintOut False, 1
 End Sub
 
 Private Sub GetTotalPaymentAmounts()
