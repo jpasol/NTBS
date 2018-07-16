@@ -9836,8 +9836,8 @@ If rsCCRDetail.BOF <> True And rsCCRDetail.EOF <> True Then
         strValidation = Trim(Refn) & " " & Trim(Seqf) & " " & Trim(CCRf) & " " & Format(.Fields("sysdttm"), "YY-MM-DD hh:nn")
         vslName = .Fields("vslcde") & ""
         
-'        Printer.Font = "Courier 12cpi"
-        Printer.Font = "Courier"
+        Printer.Font = "Courier 12cpi"
+'        Printer.Font = "Courier"
         Printer.FontSize = 10
 
         Printer.Print " "
