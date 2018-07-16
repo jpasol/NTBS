@@ -1159,7 +1159,7 @@ Begin VB.Form frmManifestCont
             EndProperty
             CalendarBackColor=   16777215
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   191299587
+            Format          =   191823875
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtStorageFree 
@@ -1181,7 +1181,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   191299587
+            Format          =   191823875
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtEndStorage 
@@ -1203,7 +1203,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   191299587
+            Format          =   191823875
             CurrentDate     =   32874
          End
          Begin VB.Label lblManifest 
@@ -4280,6 +4280,7 @@ End Type
 '
 Private Type Payments
     ADR As Currency
+    ADRNum As Long
     CheckAmt1 As Currency
     CheckAmt2 As Currency
     CheckAmt3 As Currency
@@ -5233,7 +5234,7 @@ updateQuery:
         
         'PRNH - Removed ADR Validation
         'updateQuery2 = updateQuery2 & lngControlNo & "," 'adrnum
-        updateQuery2 = updateQuery2 & "0" & "," 'adrnum=0
+        updateQuery2 = updateQuery2 & mskADRNum & "," 'adrnum=0
         
         updateQuery2 = updateQuery2 & mskChange & "," 'chgamt
         updateQuery2 = updateQuery2 & "'" & txtTransactionType & "'," 'trntype
@@ -5823,6 +5824,8 @@ Private Sub GetTotalPaymentAmounts()
         txtLog.Text = txtLog.Text & "GetTotalPaymentAmounts: Start Sub" & vbCrLf
         .ADR = rstCYMPay.Fields("adramt")
         txtLog.Text = txtLog.Text & "GetTotalPaymentAmounts: Start Sub" & vbCrLf
+        .ADRNum = rstCYMPay.Fields("adrnum")
+        txtLog.Text = txtLog.Text & "GetTotalPaymentAmounts: Start Sub" & vbCrLf
         .CheckAmt1 = rstCYMPay.Fields("chkamt1")
         txtLog.Text = txtLog.Text & "GetTotalPaymentAmounts: Start Sub" & vbCrLf
         .CheckAmt2 = rstCYMPay.Fields("chkamt2")
@@ -6343,7 +6346,7 @@ Private Sub PrintGatePassDetail()
             If strPayment <> "" Then
                 Printer.Print Left(strPayment, 11);
                 Printer.Print Space(1);
-                Printer.Print "AD" & vbCrLf;
+                Printer.Print "AD" & "     " & Payment.ADRNum & vbCrLf;
             End If
             
             strPayment = LiquidatePaymentTypes(2)
