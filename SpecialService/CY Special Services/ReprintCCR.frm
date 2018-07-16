@@ -664,7 +664,11 @@ If rsCCRDetail.BOF <> True And rsCCRDetail.EOF <> True Then
             Printer.CurrentX = Printer.ScaleWidth - Printer.TextWidth(tmpString)
             Printer.Print tmpString
             
-            tmpString = strAdrAmt & " AD                  "
+            Dim strAdrnum As String
+            strAdrnum = " " & CLng(.Fields("adrnum")) & "                               "
+            If CLng(Trim(strAdrnum)) = 0 Then strAdrnum = Space(18)
+            strAdrnum = Left(strAdrnum, 18)
+            tmpString = strAdrAmt & " AD" & strAdrnum
             Printer.CurrentX = Printer.ScaleWidth - Printer.TextWidth(tmpString)
             Printer.Print tmpString
             

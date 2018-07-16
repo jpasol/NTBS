@@ -8,4 +8,3 @@ frmCustPick = 110, 110, 587, 553, , 88, 88, 565, 531, C
 modPaySettings = 46, 46, 801, 572, 
 frmCYSCCR = 1830, 1, 3662, 893, , -13, 1, 1420, 914, C
 cConnSparcs = 390, 40, 1194, 854, 
-CrystalReport1 = 0, 0, 0, 0, C, 208, 208, 1319, 832, C

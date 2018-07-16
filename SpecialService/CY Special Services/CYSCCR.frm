@@ -771,7 +771,7 @@ Begin VB.Form frmCYSCCR
          End
          Begin MSMask.MaskEdBox txtADRAmt 
             Height          =   390
-            Left            =   2280
+            Left            =   1080
             TabIndex        =   4
             Top             =   1560
             Width           =   2055
@@ -793,6 +793,41 @@ Begin VB.Form frmCYSCCR
             Format          =   "#,###,##0.00"
             PromptChar      =   " "
          End
+         Begin MSMask.MaskEdBox txtADRNum 
+            Height          =   390
+            Left            =   3240
+            TabIndex        =   219
+            Top             =   1560
+            Width           =   2055
+            _ExtentX        =   3625
+            _ExtentY        =   688
+            _Version        =   393216
+            ForeColor       =   16711680
+            AutoTab         =   -1  'True
+            MaxLength       =   12
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Arial"
+               Size            =   12
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            PromptChar      =   " "
+         End
+         Begin VB.Label Label85 
+            Alignment       =   2  'Center
+            Appearance      =   0  'Flat
+            BorderStyle     =   1  'Fixed Single
+            Caption         =   "ADR NO."
+            ForeColor       =   &H00004080&
+            Height          =   315
+            Left            =   3240
+            TabIndex        =   220
+            Top             =   1200
+            Width           =   2055
+         End
          Begin VB.Label Label82 
             Alignment       =   2  'Center
             Appearance      =   0  'Flat
@@ -800,7 +835,7 @@ Begin VB.Form frmCYSCCR
             Caption         =   "ADR AMT"
             ForeColor       =   &H00004080&
             Height          =   315
-            Left            =   2280
+            Left            =   1080
             TabIndex        =   209
             Top             =   1200
             Width           =   2055
@@ -4273,6 +4308,21 @@ Private Sub txtADRAmt_Change()
     lblChange.Caption = Format(lblChange.Caption, "###,###,##0.00")
 End Sub
 
+Private Sub txtADRAmt_KeyDown(KeyCode As Integer, Shift As Integer)
+If KeyCode = vbKeyReturn Then
+    txtADRNum.SetFocus
+End If
+End Sub
+
+Private Sub txtADRNum_GotFocus()
+txtADRNum.SelLength = Len(txtADRNum.Text)
+End Sub
+
+Private Sub txtADRNum_LostFocus()
+On Error Resume Next
+txtADRNum = CLng(txtADRNum.Text)
+End Sub
+
 Private Sub txtARRCCRNo_GotFocus()
     With txtARRCCRNo
         .BackColor = &HFFFFC0
@@ -4676,6 +4726,7 @@ Dim n As Integer
     
     'PRNH
     txtADRAmt.Text = ".00"
+    txtADRNum.Text = "0"
 End Sub
 
 Private Sub txtARROvzHgt_KeyPress(KeyAscii As Integer)
@@ -9320,7 +9371,7 @@ Private Sub lzSavePrint()
         .Parameters(5).Direction = adParamInput             '
         
         .Parameters(6).Type = adInteger
-        .Parameters(6).Value = 0
+        .Parameters(6).Value = txtADRNum.Text
         .Parameters(6).Direction = adParamInput             '
         .Parameters(7).Type = adCurrency
         .Parameters(7).Value = CCur("0" & lblChange)
@@ -9785,8 +9836,8 @@ If rsCCRDetail.BOF <> True And rsCCRDetail.EOF <> True Then
         strValidation = Trim(Refn) & " " & Trim(Seqf) & " " & Trim(CCRf) & " " & Format(.Fields("sysdttm"), "YY-MM-DD hh:nn")
         vslName = .Fields("vslcde") & ""
         
-        Printer.Font = "Courier 12cpi"
-'        Printer.Font = "Courier"
+'        Printer.Font = "Courier 12cpi"
+        Printer.Font = "Courier"
         Printer.FontSize = 10
 
         Printer.Print " "
@@ -9938,7 +9989,11 @@ If rsCCRDetail.BOF <> True And rsCCRDetail.EOF <> True Then
             Printer.CurrentX = Printer.ScaleWidth - Printer.TextWidth(tmpString)
             Printer.Print tmpString
             
-            tmpString = strAdrAmt & " AD                  "
+            Dim strAdrnum As String
+            strAdrnum = " " & CLng(.Fields("adrnum")) & "                               "
+            If CLng(Trim(strAdrnum)) = 0 Then strAdrnum = Space(18)
+            strAdrnum = Left(strAdrnum, 18)
+            tmpString = strAdrAmt & " AD" & strAdrnum
             Printer.CurrentX = Printer.ScaleWidth - Printer.TextWidth(tmpString)
             Printer.Print tmpString
             
@@ -10295,7 +10350,7 @@ Dim lsErrStr As String
         ";Data Source=sbitc-db" & _
         ";Initial Catalog=apex" & _
         ";User ID=tosadmin;Password=tosadmin"
-'
+
 '    Set gcnnNavis = New ADODB.Connection
 '    gcnnNavis.Open "Provider=sqloledb" & _
 '        ";Data Source=sbitc-dev" & _
