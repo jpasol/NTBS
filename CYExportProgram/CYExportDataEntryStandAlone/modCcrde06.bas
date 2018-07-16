@@ -42,6 +42,7 @@ Public Seqnum As Long
 Public Customer As String
 Public strCommodity As String
 Public AdrAmount As Single
+Public lngAdrnum As Long
 Public DE As New deCCRDE06
 Public strAdrAmt As String * 12
 Public strCashAmt As String * 12
