@@ -1,6 +1,7 @@
 VERSION 5.00
 Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "msmask32.ocx"
 Object = "{00025600-0000-0000-C000-000000000046}#5.2#0"; "Crystl32.OCX"
+Object = "{B816E96D-D151-4000-BADB-53A2D8F3FC65}#13.0#0"; "CRViewer.dll"
 Begin VB.Form frmReprint 
    Caption         =   "Reprint Gatepass"
    ClientHeight    =   9405
@@ -13,6 +14,42 @@ Begin VB.Form frmReprint
    ScaleWidth      =   15240
    StartUpPosition =   2  'CenterScreen
    WindowState     =   2  'Maximized
+   Begin CrystalActiveXReportViewerLib13Ctl.CrystalActiveXReportViewer CrxReprint 
+      Height          =   7455
+      Left            =   120
+      TabIndex        =   6
+      Top             =   1800
+      Width           =   15015
+      _cx             =   26485
+      _cy             =   13150
+      DisplayGroupTree=   -1  'True
+      DisplayToolbar  =   -1  'True
+      EnableGroupTree =   -1  'True
+      EnableNavigationControls=   -1  'True
+      EnableStopButton=   -1  'True
+      EnablePrintButton=   -1  'True
+      EnableZoomControl=   -1  'True
+      EnableCloseButton=   -1  'True
+      EnableProgressControl=   -1  'True
+      EnableSearchControl=   -1  'True
+      EnableRefreshButton=   -1  'True
+      EnableDrillDown =   -1  'True
+      EnableAnimationControl=   -1  'True
+      EnableSelectExpertButton=   0   'False
+      EnableToolbar   =   -1  'True
+      DisplayBorder   =   -1  'True
+      DisplayTabs     =   -1  'True
+      DisplayBackgroundEdge=   -1  'True
+      SelectionFormula=   ""
+      EnablePopupMenu =   -1  'True
+      EnableExportButton=   -1  'True
+      EnableSearchExpertButton=   0   'False
+      EnableHelpButton=   0   'False
+      LaunchHTTPHyperlinksInNewBrowser=   -1  'True
+      EnableLogonPrompts=   -1  'True
+      LocaleID        =   13321
+      EnableInteractiveParameterPrompting=   0   'False
+   End
    Begin Crystal.CrystalReport rptCYMPR01 
       Left            =   14640
       Top             =   240
@@ -1625,6 +1662,10 @@ End Sub
 
 Private Sub Form_Activate()
     mskReference.SetFocus
+End Sub
+
+Private Sub Form_Resize()
+CrxReprint.Width = CrxReprint.Width
 End Sub
 
 Private Sub mskReference_KeyDown(KeyCode As Integer, Shift As Integer)

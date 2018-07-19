@@ -6,6 +6,7 @@ Object={00025600-0000-0000-C000-000000000046}#5.2#0; Crystl32.OCX
 Form=frmReprint.frm
 Class=clsCYMPR01; CYMPR01.cls
 Module=modCommon; Common.bas
+Object={B816E96D-D151-4000-BADB-53A2D8F3FC65}#13.0#0; CRViewer.dll
 Startup="(None)"
 HelpFile=""
 Title="prjReprint"
