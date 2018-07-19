@@ -24,7 +24,7 @@ Begin VB.Form frmCYCancelCorrect
       _ExtentY        =   19129
       _Version        =   393216
       Tabs            =   4
-      Tab             =   1
+      Tab             =   2
       TabsPerRow      =   4
       TabHeight       =   520
       ForeColor       =   32768
@@ -46,7 +46,7 @@ Begin VB.Form frmCYCancelCorrect
       Tab(0).ControlCount=   3
       TabCaption(1)   =   "Cancel Gatepass"
       TabPicture(1)   =   "frmCYCancelCorrect.frx":001C
-      Tab(1).ControlEnabled=   -1  'True
+      Tab(1).ControlEnabled=   0   'False
       Tab(1).Control(0)=   "Frame3"
       Tab(1).Control(0).Enabled=   0   'False
       Tab(1).Control(1)=   "Frame4"
@@ -56,8 +56,9 @@ Begin VB.Form frmCYCancelCorrect
       Tab(1).ControlCount=   3
       TabCaption(2)   =   "Correct Payment"
       TabPicture(2)   =   "frmCYCancelCorrect.frx":0038
-      Tab(2).ControlEnabled=   0   'False
+      Tab(2).ControlEnabled=   -1  'True
       Tab(2).Control(0)=   "fraPayment"
+      Tab(2).Control(0).Enabled=   0   'False
       Tab(2).ControlCount=   1
       TabCaption(3)   =   "View"
       TabPicture(3)   =   "frmCYCancelCorrect.frx":0054
@@ -654,7 +655,7 @@ Begin VB.Form frmCYCancelCorrect
             Strikethrough   =   0   'False
          EndProperty
          Height          =   400
-         Left            =   12600
+         Left            =   -62400
          TabIndex        =   19
          Top             =   1920
          Width           =   2175
@@ -690,7 +691,7 @@ Begin VB.Form frmCYCancelCorrect
          EndProperty
          ForeColor       =   &H8000000D&
          Height          =   8055
-         Left            =   240
+         Left            =   -74760
          TabIndex        =   69
          Top             =   2400
          Width           =   14535
@@ -1110,7 +1111,7 @@ Begin VB.Form frmCYCancelCorrect
       End
       Begin VB.Frame Frame3 
          Height          =   1455
-         Left            =   240
+         Left            =   -74760
          TabIndex        =   66
          Top             =   840
          Width           =   6135
@@ -1218,20 +1219,20 @@ Begin VB.Form frmCYCancelCorrect
       End
       Begin VB.Frame fraPayment 
          Height          =   9855
-         Left            =   -74400
+         Left            =   600
          TabIndex        =   56
          Top             =   600
          Width           =   13815
          Begin MSMask.MaskEdBox mskADRNum 
             Height          =   375
-            Left            =   5400
+            Index           =   0
+            Left            =   7200
             TabIndex        =   99
             Top             =   6120
-            Width           =   1815
-            _ExtentX        =   3201
+            Width           =   1935
+            _ExtentX        =   3413
             _ExtentY        =   661
             _Version        =   393216
-            Enabled         =   0   'False
             MaxLength       =   8
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
                Name            =   "Arial"
@@ -1769,6 +1770,70 @@ Begin VB.Form frmCYCancelCorrect
                Strikethrough   =   0   'False
             EndProperty
             PromptChar      =   "_"
+         End
+         Begin MSMask.MaskEdBox mskADRNum 
+            Height          =   375
+            Index           =   1
+            Left            =   9240
+            TabIndex        =   133
+            Top             =   6120
+            Width           =   1935
+            _ExtentX        =   3413
+            _ExtentY        =   661
+            _Version        =   393216
+            MaxLength       =   8
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Arial"
+               Size            =   15
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            PromptChar      =   "_"
+         End
+         Begin MSMask.MaskEdBox mskADRNum 
+            Height          =   375
+            Index           =   2
+            Left            =   11280
+            TabIndex        =   131
+            Top             =   6120
+            Width           =   1935
+            _ExtentX        =   3413
+            _ExtentY        =   661
+            _Version        =   393216
+            MaxLength       =   8
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Arial"
+               Size            =   15
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            PromptChar      =   "_"
+         End
+         Begin VB.Label lblManifest 
+            Alignment       =   1  'Right Justify
+            Caption         =   "OR Number:"
+            BeginProperty Font 
+               Name            =   "Arial"
+               Size            =   15
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H8000000D&
+            Height          =   375
+            Index           =   2
+            Left            =   5400
+            TabIndex        =   132
+            Top             =   6120
+            Width           =   1695
          End
          Begin VB.Label lblManifest 
             Alignment       =   1  'Right Justify
@@ -3015,7 +3080,9 @@ Private Sub cmdGetCorrectPayment_Click()
             txtBank(4) = .Fields("chkbnk5")
             '
             mskADRAmount = .Fields("adramt")
-            mskADRNum = .Fields("adrnum")
+            mskADRNum(0) = .Fields("adrnum")
+            mskADRNum(1) = .Fields("adrnum2")
+            mskADRNum(2) = .Fields("adrnum3")
             mskChange = .Fields("chgamt")
 '            mskAmountToPay = CCur(mskCashAmount) + CCur(mskCheckAmount(0)) + CCur(mskCheckAmount(1)) _
 '                                + CCur(mskCheckAmount(2)) + CCur(mskCheckAmount(3)) + CCur(mskCheckAmount(4)) _
@@ -3052,11 +3119,15 @@ mskAmountToPay = 0
     
     End With
     mskADRAmount.Enabled = True
-    mskADRNum.Enabled = True
+    mskADRNum(0).Enabled = True
+    mskADRNum(1).Enabled = True
+    mskADRNum(2).Enabled = True
     On Error GoTo Continue
     txtCustomerCode = CLng(txtCustomerCode)
     mskADRAmount.Enabled = False
-    mskADRNum.Enabled = False
+    mskADRNum(0).Enabled = False
+    mskADRNum(1).Enabled = False
+    mskADRNum(2).Enabled = False
 Continue:
 End Sub
 
@@ -3685,7 +3756,9 @@ Private Sub InitializeCorrectPayment()
     txtBank(3) = ""
     txtBank(4) = ""
     mskADRAmount = 0
-    mskADRNum = ""
+    mskADRNum(0) = 0
+    mskADRNum(1) = 0
+    mskADRNum(2) = 0
     mskChange = 0
     txtCustomerCode = ""
     txtCustomerName = ""
@@ -3744,7 +3817,9 @@ Private Sub SaveCorrectPayment()
         .Fields("cusnam") = txtCustomerName
         .Fields("cshamt") = CCur(mskCashAmount)
         .Fields("adramt") = CCur(mskADRAmount)
-        '.Fields("adrnum") = lngControlNo
+        .Fields("adrnum") = mskADRNum(0)
+        .Fields("adrnum2") = mskADRNum(1)
+        .Fields("adrnum3") = mskADRNum(2)
         .Fields("chgamt") = CCur(mskChange)
         .Fields("chkno1") = "" & mskCheckNo(0)
         .Fields("chkno2") = "" & mskCheckNo(1)
@@ -3783,7 +3858,7 @@ Me.Caption = Me.Caption & " v" & App.Major & "." & App.Minor & "." & App.Revisio
 End Sub
 
 Private Sub mskADRAmount_KeyDown(KeyCode As Integer, Shift As Integer)
-    Call FieldAdvance(KeyCode, mskADRAmount, txtCustomerCode)
+    Call FieldAdvance(KeyCode, mskADRAmount, mskADRNum(0))
 End Sub
 Private Function NonNumtoZero(variable As Object)
     If Not IsNumeric(variable) Then
@@ -3810,6 +3885,22 @@ Private Sub mskADRAmount_LostFocus()
     mskADRAmount = Format(mskADRAmount, "###,###,##0.00")
 End Sub
 
+Private Sub mskADRNum_GotFocus(Index As Integer)
+    mskADRNum(Index).SelLength = Len(mskADRNum(Index))
+End Sub
+
+Private Sub mskADRNum_KeyDown(Index As Integer, KeyCode As Integer, Shift As Integer)
+    Call FieldAdvance(KeyCode, IIf((Index = 0), mskADRAmount, mskADRNum(Index)), IIf(Index < 2, mskADRNum(Index + 1), txtCustomerCode))
+End Sub
+
+Private Sub mskADRNum_LostFocus(Index As Integer)
+    On Error GoTo zero
+    mskADRNum(Index) = CLng(mskADRNum(Index))
+    Exit Sub
+zero:
+    mskADRNum(Index) = 0
+End Sub
+
 Private Sub mskCashAmount_KeyDown(KeyCode As Integer, Shift As Integer)
     Call FieldAdvance(KeyCode, cmdGetCorrectPayment, mskCheckAmount(0))
 End Sub
@@ -3834,27 +3925,27 @@ Private Sub SumPaymentTypes()
 End Sub
 
 
-Private Sub mskCheckAmount_KeyDown(index As Integer, KeyCode As Integer, Shift As Integer)
-    Select Case index
+Private Sub mskCheckAmount_KeyDown(Index As Integer, KeyCode As Integer, Shift As Integer)
+    Select Case Index
         Case 0
-            Call FieldAdvance(KeyCode, mskCashAmount, mskCheckNo(index))
+            Call FieldAdvance(KeyCode, mskCashAmount, mskCheckNo(Index))
         Case 1, 2, 3, 4
-            Call FieldAdvance(KeyCode, mskCheckAmount(index - 1), mskCheckNo(index))
+            Call FieldAdvance(KeyCode, mskCheckAmount(Index - 1), mskCheckNo(Index))
     End Select
 End Sub
 
-Private Sub mskCheckAmount_LostFocus(index As Integer)
-    If Not IsNumeric(mskCheckAmount(index)) Then mskCheckAmount(index) = 0
-    mskCheckAmount(index) = Format(mskCheckAmount(index), "###,###,##0.00")
+Private Sub mskCheckAmount_LostFocus(Index As Integer)
+    If Not IsNumeric(mskCheckAmount(Index)) Then mskCheckAmount(Index) = 0
+    mskCheckAmount(Index) = Format(mskCheckAmount(Index), "###,###,##0.00")
     Call SumPaymentTypes
 End Sub
 
-Private Sub mskCheckNo_KeyDown(index As Integer, KeyCode As Integer, Shift As Integer)
-    Call FieldAdvance(KeyCode, mskCheckAmount(index), txtBank(index))
+Private Sub mskCheckNo_KeyDown(Index As Integer, KeyCode As Integer, Shift As Integer)
+    Call FieldAdvance(KeyCode, mskCheckAmount(Index), txtBank(Index))
 End Sub
 
-Private Sub mskCheckNo_LostFocus(index As Integer)
-    If Not IsNumeric(mskCheckNo(index)) Then mskCheckNo(index) = 0
+Private Sub mskCheckNo_LostFocus(Index As Integer)
+    If Not IsNumeric(mskCheckNo(Index)) Then mskCheckNo(Index) = 0
 End Sub
 
 Private Sub mskGatePassNo_KeyDown(KeyCode As Integer, Shift As Integer)
@@ -3920,17 +4011,17 @@ Private Sub sstMain_KeyDown(KeyCode As Integer, Shift As Integer)
     End If
 End Sub
 
-Private Sub txtBank_KeyDown(index As Integer, KeyCode As Integer, Shift As Integer)
-    Select Case index
+Private Sub txtBank_KeyDown(Index As Integer, KeyCode As Integer, Shift As Integer)
+    Select Case Index
         Case 0, 1, 2, 3
-            Call FieldAdvance(KeyCode, mskCheckNo(index), mskCheckAmount(index + 1))
+            Call FieldAdvance(KeyCode, mskCheckNo(Index), mskCheckAmount(Index + 1))
         Case 4
-            Call FieldAdvance(KeyCode, mskCheckNo(index), txtCustomerCode)
+            Call FieldAdvance(KeyCode, mskCheckNo(Index), txtCustomerCode)
     End Select
 End Sub
 
-Private Sub txtBank_LostFocus(index As Integer)
-    txtBank(index) = "" & txtBank(index)
+Private Sub txtBank_LostFocus(Index As Integer)
+    txtBank(Index) = "" & txtBank(Index)
 End Sub
 
 Private Sub txtBoatNote_KeyDown(KeyCode As Integer, Shift As Integer)
