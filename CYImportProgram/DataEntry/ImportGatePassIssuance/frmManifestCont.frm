@@ -64,82 +64,143 @@ Begin VB.Form frmManifestCont
       TabPicture(0)   =   "frmManifestCont.frx":0006
       Tab(0).ControlEnabled=   0   'False
       Tab(0).Control(0)=   "lblManifest(35)"
+      Tab(0).Control(0).Enabled=   0   'False
       Tab(0).Control(1)=   "lblManifest(36)"
+      Tab(0).Control(1).Enabled=   0   'False
       Tab(0).Control(2)=   "lblManifest(37)"
+      Tab(0).Control(2).Enabled=   0   'False
       Tab(0).Control(3)=   "lblManifest(29)"
+      Tab(0).Control(3).Enabled=   0   'False
       Tab(0).Control(4)=   "lblManifest(41)"
+      Tab(0).Control(4).Enabled=   0   'False
       Tab(0).Control(5)=   "lblManifest(42)"
+      Tab(0).Control(5).Enabled=   0   'False
       Tab(0).Control(6)=   "lblManifest(43)"
+      Tab(0).Control(6).Enabled=   0   'False
       Tab(0).Control(7)=   "lblManifest(74)"
+      Tab(0).Control(7).Enabled=   0   'False
       Tab(0).Control(8)=   "cmdNextBL"
+      Tab(0).Control(8).Enabled=   0   'False
       Tab(0).Control(9)=   "txtBL"
+      Tab(0).Control(9).Enabled=   0   'False
       Tab(0).Control(10)=   "txtRegistry"
+      Tab(0).Control(10).Enabled=   0   'False
       Tab(0).Control(11)=   "chkForExam"
+      Tab(0).Control(11).Enabled=   0   'False
       Tab(0).Control(12)=   "txtSBMAPermit"
+      Tab(0).Control(12).Enabled=   0   'False
       Tab(0).Control(13)=   "txtCustomPermit"
+      Tab(0).Control(13).Enabled=   0   'False
       Tab(0).Control(14)=   "txtTransactionType"
+      Tab(0).Control(14).Enabled=   0   'False
       Tab(0).Control(15)=   "txtCompCode"
+      Tab(0).Control(15).Enabled=   0   'False
       Tab(0).ControlCount=   16
       TabCaption(1)   =   "Header"
       TabPicture(1)   =   "frmManifestCont.frx":0022
       Tab(1).ControlEnabled=   0   'False
       Tab(1).Control(0)=   "lblManifest(2)"
+      Tab(1).Control(0).Enabled=   0   'False
       Tab(1).Control(1)=   "lblManifest(0)"
+      Tab(1).Control(1).Enabled=   0   'False
       Tab(1).Control(2)=   "lblManifest(1)"
+      Tab(1).Control(2).Enabled=   0   'False
       Tab(1).Control(3)=   "lblManifest(4)"
+      Tab(1).Control(3).Enabled=   0   'False
       Tab(1).Control(4)=   "lblManifest(5)"
+      Tab(1).Control(4).Enabled=   0   'False
       Tab(1).Control(5)=   "mskGatePassNo"
+      Tab(1).Control(5).Enabled=   0   'False
       Tab(1).Control(6)=   "txtBrokerNO"
+      Tab(1).Control(6).Enabled=   0   'False
       Tab(1).Control(7)=   "txtCustomer"
+      Tab(1).Control(7).Enabled=   0   'False
       Tab(1).Control(8)=   "cboVAT"
+      Tab(1).Control(8).Enabled=   0   'False
       Tab(1).Control(9)=   "chkWharfageExempt"
+      Tab(1).Control(9).Enabled=   0   'False
       Tab(1).Control(10)=   "chkWharfageOnly"
+      Tab(1).Control(10).Enabled=   0   'False
       Tab(1).Control(11)=   "cboUnderGuarantee"
+      Tab(1).Control(11).Enabled=   0   'False
       Tab(1).Control(12)=   "cmdPreviousHeader"
+      Tab(1).Control(12).Enabled=   0   'False
       Tab(1).Control(13)=   "cmdNextHeader"
+      Tab(1).Control(13).Enabled=   0   'False
       Tab(1).ControlCount=   14
       TabCaption(2)   =   "Other Info"
       TabPicture(2)   =   "frmManifestCont.frx":003E
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "cmdNextOtherInfo"
+      Tab(2).Control(0)=   "fraOther"
+      Tab(2).Control(0).Enabled=   0   'False
       Tab(2).Control(1)=   "cmdPreviousOtherInfo"
-      Tab(2).Control(2)=   "fraOther"
+      Tab(2).Control(1).Enabled=   0   'False
+      Tab(2).Control(2)=   "cmdNextOtherInfo"
+      Tab(2).Control(2).Enabled=   0   'False
       Tab(2).ControlCount=   3
       TabCaption(3)   =   "Container"
       TabPicture(3)   =   "frmManifestCont.frx":005A
       Tab(3).ControlEnabled=   0   'False
       Tab(3).Control(0)=   "lblManifest(14)"
+      Tab(3).Control(0).Enabled=   0   'False
       Tab(3).Control(1)=   "lblManifest(11)"
+      Tab(3).Control(1).Enabled=   0   'False
       Tab(3).Control(2)=   "lblManifest(16)"
+      Tab(3).Control(2).Enabled=   0   'False
       Tab(3).Control(3)=   "lblManifest(15)"
+      Tab(3).Control(3).Enabled=   0   'False
       Tab(3).Control(4)=   "mskAdvGPDate"
+      Tab(3).Control(4).Enabled=   0   'False
       Tab(3).Control(5)=   "mskCRODate"
+      Tab(3).Control(5).Enabled=   0   'False
       Tab(3).Control(6)=   "fraStorage"
+      Tab(3).Control(6).Enabled=   0   'False
       Tab(3).Control(7)=   "fraOversize"
+      Tab(3).Control(7).Enabled=   0   'False
       Tab(3).Control(8)=   "fraDetail"
+      Tab(3).Control(8).Enabled=   0   'False
       Tab(3).Control(9)=   "fraPlug"
+      Tab(3).Control(9).Enabled=   0   'False
       Tab(3).Control(10)=   "chkWeighing"
+      Tab(3).Control(10).Enabled=   0   'False
       Tab(3).Control(11)=   "cboStorageStat"
+      Tab(3).Control(11).Enabled=   0   'False
       Tab(3).Control(12)=   "cboDangClass"
+      Tab(3).Control(12).Enabled=   0   'False
       Tab(3).Control(13)=   "cmdCompute"
+      Tab(3).Control(13).Enabled=   0   'False
       Tab(3).Control(14)=   "cmdPreviousContainer"
+      Tab(3).Control(14).Enabled=   0   'False
       Tab(3).Control(15)=   "cmdNextContainer"
+      Tab(3).Control(15).Enabled=   0   'False
       Tab(3).ControlCount=   16
       TabCaption(4)   =   "Charges"
       TabPicture(4)   =   "frmManifestCont.frx":0076
       Tab(4).ControlEnabled=   0   'False
       Tab(4).Control(0)=   "lblManifest(34)"
+      Tab(4).Control(0).Enabled=   0   'False
       Tab(4).Control(1)=   "lblManifest(71)"
+      Tab(4).Control(1).Enabled=   0   'False
       Tab(4).Control(2)=   "mskReeferHours"
+      Tab(4).Control(2).Enabled=   0   'False
       Tab(4).Control(3)=   "msfCharges"
+      Tab(4).Control(3).Enabled=   0   'False
       Tab(4).Control(4)=   "cmdPreviousCharges"
+      Tab(4).Control(4).Enabled=   0   'False
       Tab(4).Control(5)=   "cmdNextCharges"
+      Tab(4).Control(5).Enabled=   0   'False
       Tab(4).Control(6)=   "fraRunning"
+      Tab(4).Control(6).Enabled=   0   'False
       Tab(4).Control(7)=   "fraCharges"
+      Tab(4).Control(7).Enabled=   0   'False
       Tab(4).Control(8)=   "fraStorageInfo"
+      Tab(4).Control(8).Enabled=   0   'False
       Tab(4).Control(9)=   "fraExpand"
+      Tab(4).Control(9).Enabled=   0   'False
       Tab(4).Control(10)=   "cmdAnother"
+      Tab(4).Control(10).Enabled=   0   'False
       Tab(4).Control(11)=   "cmdViewGrid"
+      Tab(4).Control(11).Enabled=   0   'False
       Tab(4).ControlCount=   12
       TabCaption(5)   =   "Payment"
       TabPicture(5)   =   "frmManifestCont.frx":0092
@@ -701,11 +762,54 @@ Begin VB.Form frmManifestCont
          End
          Begin MSMask.MaskEdBox mskADRNum 
             Height          =   405
+            Index           =   0
             Left            =   6960
-            TabIndex        =   208
+            TabIndex        =   209
             Top             =   4800
-            Width           =   2295
-            _ExtentX        =   4048
+            Width           =   1935
+            _ExtentX        =   3413
+            _ExtentY        =   714
+            _Version        =   393216
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Arial"
+               Size            =   12
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            PromptChar      =   "_"
+         End
+         Begin MSMask.MaskEdBox mskADRNum 
+            Height          =   405
+            Index           =   1
+            Left            =   9000
+            TabIndex        =   210
+            Top             =   4800
+            Width           =   1935
+            _ExtentX        =   3413
+            _ExtentY        =   714
+            _Version        =   393216
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Arial"
+               Size            =   12
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            PromptChar      =   "_"
+         End
+         Begin MSMask.MaskEdBox mskADRNum 
+            Height          =   405
+            Index           =   2
+            Left            =   11040
+            TabIndex        =   211
+            Top             =   4800
+            Width           =   1935
+            _ExtentX        =   3413
             _ExtentY        =   714
             _Version        =   393216
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -735,7 +839,7 @@ Begin VB.Form frmManifestCont
             Height          =   375
             Index           =   75
             Left            =   4800
-            TabIndex        =   209
+            TabIndex        =   208
             Top             =   4800
             Width           =   2055
          End
@@ -1159,7 +1263,7 @@ Begin VB.Form frmManifestCont
             EndProperty
             CalendarBackColor=   16777215
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   141164547
+            Format          =   233766915
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtStorageFree 
@@ -1181,7 +1285,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   141164547
+            Format          =   233766915
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtEndStorage 
@@ -1203,7 +1307,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   141623299
+            Format          =   233766915
             CurrentDate     =   32874
          End
          Begin VB.Label lblManifest 
@@ -5130,7 +5234,9 @@ Private Sub InitializePayment()
     txtBank(4) = ""
     
     mskADRAmount = 0
-    mskADRNum = 0
+    mskADRNum(0) = 0
+    mskADRNum(1) = 0
+    mskADRNum(2) = 0
     mskChange = 0
     txtCustomerCode = ""
     txtCustomerName = ""
@@ -5215,7 +5321,7 @@ Private Function SaveHeaders() As Boolean
     
     rsCYMPay.ActiveConnection = gcnnBilling
 updateQuery:
-    updateQuery = "INSERT INTO CYMPAY (Refnum,cuscde,cusnam,phpamt,cshamt,adramt,adrnum,chgamt,trntype,chkno1,chkno2,chkno3,chkno4,chkno5," & _
+    updateQuery = "INSERT INTO CYMPAY (Refnum,cuscde,cusnam,phpamt,cshamt,adramt,adrnum,adrnum2,adrnum3,chgamt,trntype,chkno1,chkno2,chkno3,chkno4,chkno5," & _
                     "chkamt1,chkamt2,chkamt3,chkamt4,chkamt5,chkbnk1,chkbnk2,chkbnk3,chkbnk4,chkbnk5,status,rectag,userid,sysdttm,updcde) "
     
     updateQuery2 = "VALUES("
@@ -5233,7 +5339,10 @@ updateQuery:
         
         'PRNH - Removed ADR Validation
         'updateQuery2 = updateQuery2 & mskADRNum & "," 'adrnum
-        updateQuery2 = updateQuery2 & mskADRNum & "," 'adrnum
+               
+        updateQuery2 = updateQuery2 & mskADRNum(0) & "," 'adrnum1
+        updateQuery2 = updateQuery2 & mskADRNum(1) & "," 'adrnum2
+        updateQuery2 = updateQuery2 & mskADRNum(2) & "," 'adrnum3
         
         updateQuery2 = updateQuery2 & mskChange & "," 'chgamt
         updateQuery2 = updateQuery2 & "'" & txtTransactionType & "'," 'trntype
@@ -5806,7 +5915,6 @@ End Sub
 Private Sub PrintGatePass()
 '    Call GetTotalPaymentAmounts
 '    Call GetTotalChargePerDetail
-    ImportPrint.Database.LogOnServer "P2SOLEDB.DLL", "SBITC-DEV", "SBITCBILLING", "sa_ictsi", "Ictsi123"
     ImportPrint.DiscardSavedData
     ImportPrint.ParameterFields("1").AddCurrentValue (lngReferenceNo)
     ImportPrint.ParameterFields("2").AddCurrentValue (gbSupervisor)
@@ -6705,22 +6813,31 @@ End Function
 
 Private Sub mskADRAmount_KeyDown(KeyCode As Integer, Shift As Integer)
     If KeyCode = 13 Then
-        Call mskADRAmount_LostFocus
-        mskADRNum.SetFocus
+        If mskADRAmount > 0 Then mskADRNum(0).SetFocus Else cmdSave.SetFocus
     End If
 End Sub
 
+Private Sub mskADRNum_GotFocus(Index As Integer)
+    mskADRNum(Index).SelLength = Len(mskADRNum(Index))
+End Sub
 
-Private Sub mskADRNum_KeyDown(KeyCode As Integer, Shift As Integer)
+Private Sub mskADRNum_KeyDown(Index As Integer, KeyCode As Integer, Shift As Integer)
+    With mskADRNum(Index)
     If KeyCode = 13 Then
-        Call mskADRNum_LostFocus
-        If cmdSave.Enabled Then cmdSave.SetFocus
+        If .Text <> 0 And .Text <> "" And Index < 2 Then
+            mskADRNum(Index + 1).SetFocus
+        Else
+            If cmdSave.Enabled Then cmdSave.SetFocus
+        End If
     End If
+    End With
 End Sub
 
-Private Sub mskADRNum_LostFocus()
-    If Not IsNumeric(mskADRNum) Then
-            mskADRNum = 0
+Private Sub mskADRNum_LostFocus(Index As Integer)
+    If Not IsNumeric(mskADRNum(Index)) Then
+        mskADRNum(Index) = 0
+    Else
+        mskADRNum(Index) = CLng(mskADRNum(Index))
     End If
 End Sub
 
@@ -6940,7 +7057,7 @@ End Sub
 
 Private Sub Form_Load()
 Me.Caption = Me.Caption & " v" & App.Major & "." & App.Minor & "." & App.Revision
-
+ImportPrint.Database.LogOnServer "P2SODBC.DLL", CStr(gcnnBilling.Properties("Data Source").Value), CStr(gcnnBilling.Properties("Initial Catalog"))
 On Error GoTo err
     Call LoadColumnNumbers
     Call DisableNextTabs

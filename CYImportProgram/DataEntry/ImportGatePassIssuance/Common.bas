@@ -11,7 +11,6 @@ Public gbConnected As Boolean
 Public gbNavis As Boolean
 Public gsCaption As String
 Public gbSupervisor As String
-
 Public dStorage As Date
 Public dReefer As Date
 
