@@ -64,37 +64,21 @@ Begin VB.Form frmManifestCont
       TabPicture(0)   =   "frmManifestCont.frx":0006
       Tab(0).ControlEnabled=   0   'False
       Tab(0).Control(0)=   "lblManifest(35)"
-      Tab(0).Control(0).Enabled=   0   'False
       Tab(0).Control(1)=   "lblManifest(36)"
-      Tab(0).Control(1).Enabled=   0   'False
       Tab(0).Control(2)=   "lblManifest(37)"
-      Tab(0).Control(2).Enabled=   0   'False
       Tab(0).Control(3)=   "lblManifest(29)"
-      Tab(0).Control(3).Enabled=   0   'False
       Tab(0).Control(4)=   "lblManifest(41)"
-      Tab(0).Control(4).Enabled=   0   'False
       Tab(0).Control(5)=   "lblManifest(42)"
-      Tab(0).Control(5).Enabled=   0   'False
       Tab(0).Control(6)=   "lblManifest(43)"
-      Tab(0).Control(6).Enabled=   0   'False
       Tab(0).Control(7)=   "lblManifest(74)"
-      Tab(0).Control(7).Enabled=   0   'False
       Tab(0).Control(8)=   "cmdNextBL"
-      Tab(0).Control(8).Enabled=   0   'False
       Tab(0).Control(9)=   "txtBL"
-      Tab(0).Control(9).Enabled=   0   'False
       Tab(0).Control(10)=   "txtRegistry"
-      Tab(0).Control(10).Enabled=   0   'False
       Tab(0).Control(11)=   "chkForExam"
-      Tab(0).Control(11).Enabled=   0   'False
       Tab(0).Control(12)=   "txtSBMAPermit"
-      Tab(0).Control(12).Enabled=   0   'False
       Tab(0).Control(13)=   "txtCustomPermit"
-      Tab(0).Control(13).Enabled=   0   'False
       Tab(0).Control(14)=   "txtTransactionType"
-      Tab(0).Control(14).Enabled=   0   'False
       Tab(0).Control(15)=   "txtCompCode"
-      Tab(0).Control(15).Enabled=   0   'False
       Tab(0).ControlCount=   16
       TabCaption(1)   =   "Header"
       TabPicture(1)   =   "frmManifestCont.frx":0022
@@ -1218,7 +1202,7 @@ Begin VB.Form frmManifestCont
             EndProperty
             CalendarBackColor=   16777215
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   142737411
+            Format          =   143327235
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtStorageFree 
@@ -1240,7 +1224,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   142737411
+            Format          =   143327235
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtEndStorage 
@@ -1262,7 +1246,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   142737411
+            Format          =   143327235
             CurrentDate     =   32874
          End
          Begin VB.Label lblManifest 
@@ -5871,6 +5855,7 @@ Private Sub PrintGatePass()
 '    Call GetTotalPaymentAmounts
 '    Call GetTotalChargePerDetail
     ImportPrint.DiscardSavedData
+    ImportPrint.DisplayProgressDialog = False
     ImportPrint.ParameterFields("1").AddCurrentValue (lngReferenceNo)
     ImportPrint.ParameterFields("2").AddCurrentValue (gbSupervisor)
     ImportPrint.PrintOut False, 1
