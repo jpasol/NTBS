@@ -319,8 +319,13 @@ Dim dtmDateFrom As Date
 Dim dtmDateTo As Date
 
 Private Sub cmdReprint_Click()
-    Call GetTotalPaymentAmounts
-    Call GetTotalChargePerDetail
+'    Call GetTotalPaymentAmounts
+'    Call GetTotalChargePerDetail
+ImportPrint.DiscardSavedData
+ImportPrint.ParameterFields(1).AddCurrentValue CLng(mskReference)
+ImportPrint.ParameterFields(2).AddCurrentValue gbSupervisor
+CrxReprint.ReportSource = ImportPrint
+CrxReprint.ViewReport
 End Sub
 
 Private Function LiquidatePaymentTypes(pType As Integer) As String
@@ -1664,8 +1669,13 @@ Private Sub Form_Activate()
     mskReference.SetFocus
 End Sub
 
+Private Sub Form_Load()
+ImportPrint.Database.LogOnServer "P2SODBC.DLL", gcnnBilling.Properties("Data Source").Value, gcnnBilling.Properties("Initial Catalog").Value
+End Sub
+
 Private Sub Form_Resize()
-CrxReprint.Width = CrxReprint.Width
+CrxReprint.Width = Me.ScaleWidth - 120
+CrxReprint.Height = Me.ScaleHeight - 1800
 End Sub
 
 Private Sub mskReference_KeyDown(KeyCode As Integer, Shift As Integer)
