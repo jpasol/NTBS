@@ -14,6 +14,23 @@ Begin VB.Form frmReprint
    ScaleWidth      =   15240
    StartUpPosition =   2  'CenterScreen
    WindowState     =   2  'Maximized
+   Begin VB.CommandButton cmdDisplay 
+      Caption         =   "&Display"
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   15
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   400
+      Left            =   4920
+      TabIndex        =   7
+      Top             =   480
+      Width           =   1575
+   End
    Begin CrystalActiveXReportViewerLib13Ctl.CrystalActiveXReportViewer CrxReprint 
       Height          =   7455
       Left            =   120
@@ -22,7 +39,7 @@ Begin VB.Form frmReprint
       Width           =   15015
       _cx             =   26485
       _cy             =   13150
-      DisplayGroupTree=   -1  'True
+      DisplayGroupTree=   0   'False
       DisplayToolbar  =   -1  'True
       EnableGroupTree =   -1  'True
       EnableNavigationControls=   -1  'True
@@ -110,6 +127,7 @@ Begin VB.Form frmReprint
       End
       Begin MSMask.MaskEdBox mskSequence 
          Height          =   405
+         Index           =   0
          Left            =   2640
          TabIndex        =   3
          Top             =   840
@@ -129,6 +147,46 @@ Begin VB.Form frmReprint
          EndProperty
          Format          =   "##"
          PromptChar      =   " "
+      End
+      Begin MSMask.MaskEdBox mskSequence 
+         Height          =   405
+         Index           =   1
+         Left            =   3480
+         TabIndex        =   8
+         Top             =   840
+         Width           =   495
+         _ExtentX        =   873
+         _ExtentY        =   714
+         _Version        =   393216
+         MaxLength       =   2
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Format          =   "##"
+         PromptChar      =   " "
+      End
+      Begin VB.Label Label1 
+         Caption         =   "-"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   375
+         Left            =   3240
+         TabIndex        =   9
+         Top             =   840
+         Width           =   135
       End
       Begin VB.Label lblMain 
          Alignment       =   1  'Right Justify
@@ -318,14 +376,22 @@ Dim curADRReefer As Currency
 Dim dtmDateFrom As Date
 Dim dtmDateTo As Date
 
-Private Sub cmdReprint_Click()
-'    Call GetTotalPaymentAmounts
-'    Call GetTotalChargePerDetail
+Private Sub cmdDisplay_Click()
 ImportPrint.DiscardSavedData
 ImportPrint.ParameterFields(1).AddCurrentValue CLng(mskReference)
 ImportPrint.ParameterFields(2).AddCurrentValue gbSupervisor
+
 CrxReprint.ReportSource = ImportPrint
 CrxReprint.ViewReport
+
+End Sub
+
+Private Sub cmdReprint_Click()
+'    Call GetTotalPaymentAmounts
+'    Call GetTotalChargePerDetail
+If mskSequence(1) < mskSequence(0) Then mskSequence(1).SetFocus
+ImportPrint.PrintOut True, 1, False, CLng(mskSequence(0)), CLng(mskSequence(1))
+Initialize
 End Sub
 
 Private Function LiquidatePaymentTypes(pType As Integer) As String
@@ -950,6 +1016,13 @@ ErrPrinting:
     End If
 
 End Sub
+Private Sub Initialize()
+mskReference = ""
+mskSequence(0) = ""
+mskSequence(1) = ""
+cmdReprint.Enabled = False
+End Sub
+
 Private Sub PrintGatePass()
     Dim strToText As String
     Dim strPayment As String
@@ -1665,12 +1738,19 @@ Private Sub GetTotalPaymentAmounts()
     rstCYMPay.Close
 End Sub
 
+Private Sub CrxReprint_DownloadFinished(ByVal loadingType As CrystalActiveXReportViewerLib13Ctl.CRLoadingType)
+CrxReprint.ShowNthPage CLng(mskSequence(0))
+cmdReprint.Enabled = True
+cmdReprint.SetFocus
+End Sub
+
 Private Sub Form_Activate()
     mskReference.SetFocus
 End Sub
-
 Private Sub Form_Load()
 ImportPrint.Database.LogOnServer "P2SODBC.DLL", gcnnBilling.Properties("Data Source").Value, gcnnBilling.Properties("Initial Catalog").Value
+Initialize
+ImportPrint.DisplayProgressDialog = False
 End Sub
 
 Private Sub Form_Resize()
@@ -1679,15 +1759,19 @@ CrxReprint.Height = Me.ScaleHeight - 1800
 End Sub
 
 Private Sub mskReference_KeyDown(KeyCode As Integer, Shift As Integer)
-    Call FieldAdvance(KeyCode, mskReference, mskSequence)
+    Call FieldAdvance(KeyCode, mskReference, cmdDisplay)
 End Sub
 
-Private Sub mskSequence_KeyDown(KeyCode As Integer, Shift As Integer)
+Private Sub mskSequence_GotFocus(Index As Integer)
+mskSequence(Index).SelLength = Len(mskSequence(Index))
+End Sub
+
+Private Sub mskSequence_KeyDown(Index As Integer, KeyCode As Integer, Shift As Integer)
     If KeyCode = vbKeyReturn Then
         'Call cmdReprint_Click
-        cmdReprint.SetFocus
+        If Index = 0 Then mskSequence(1).SetFocus Else cmdReprint.SetFocus
     Else
-        Call FieldAdvance(KeyCode, mskReference, cmdReprint)
+        Call FieldAdvance(KeyCode, IIf(Index = 0, mskReference, mskSequence(0)), IIf(Index = 0, mskSequence(1), cmdReprint))
     End If
 End Sub
 
