@@ -389,9 +389,8 @@ End Sub
 Private Sub cmdReprint_Click()
 '    Call GetTotalPaymentAmounts
 '    Call GetTotalChargePerDetail
-If mskSequence(1) < mskSequence(0) Then mskSequence(1).SetFocus
 ImportPrint.PrintOut True, 1, False, CLng(mskSequence(0)), CLng(mskSequence(1))
-Initialize
+If ImportPrint.PrintingStatus.Progress = crPrintingInProgress Or ImportPrint.PrintingStatus.Progress = crPrintingCompleted Then Initialize
 End Sub
 
 Private Function LiquidatePaymentTypes(pType As Integer) As String
@@ -658,11 +657,11 @@ Private Sub GetTotalChargePerDetail()
             End Select
             .DueICTSIWords = .DueICTSI - .Wharfage
             
-            If .Sequence < CInt(mskSequence) Then
+            If .Sequence < CInt(mskSequence(0)) Then
                 Call FauxPrintGatepass
             End If
 
-            If .Sequence = CInt(mskSequence) Then
+            If .Sequence = CInt(mskSequence(0)) Then
                 Call PrintGatePass
             End If
            
@@ -1018,9 +1017,10 @@ ErrPrinting:
 End Sub
 Private Sub Initialize()
 mskReference = ""
-mskSequence(0) = ""
-mskSequence(1) = ""
+mskSequence(0) = 1
+mskSequence(1) = 1
 cmdReprint.Enabled = False
+mskReference.SetFocus
 End Sub
 
 Private Sub PrintGatePass()
@@ -1741,15 +1741,15 @@ End Sub
 Private Sub CrxReprint_DownloadFinished(ByVal loadingType As CrystalActiveXReportViewerLib13Ctl.CRLoadingType)
 CrxReprint.ShowNthPage CLng(mskSequence(0))
 cmdReprint.Enabled = True
-cmdReprint.SetFocus
+mskSequence(0).SetFocus
 End Sub
 
 Private Sub Form_Activate()
-    mskReference.SetFocus
+Initialize
 End Sub
+
 Private Sub Form_Load()
 ImportPrint.Database.LogOnServer "P2SODBC.DLL", gcnnBilling.Properties("Data Source").Value, gcnnBilling.Properties("Initial Catalog").Value
-Initialize
 ImportPrint.DisplayProgressDialog = False
 End Sub
 
@@ -1759,7 +1759,7 @@ CrxReprint.Height = Me.ScaleHeight - 1800
 End Sub
 
 Private Sub mskReference_KeyDown(KeyCode As Integer, Shift As Integer)
-    Call FieldAdvance(KeyCode, mskReference, cmdDisplay)
+Call FieldAdvance(KeyCode, mskReference, cmdDisplay)
 End Sub
 
 Private Sub mskSequence_GotFocus(Index As Integer)
@@ -2017,3 +2017,10 @@ Private Sub FieldAdvance(pKeyCode As Integer, pPreviousControl As Control, pNext
     End Select
 End Sub
 
+Private Sub mskSequence_LostFocus(Index As Integer)
+On Error GoTo parse
+mskSequence(Index) = CLng(mskSequence(Index))
+Exit Sub
+parse:
+mskSequence(Index) = 0
+End Sub
