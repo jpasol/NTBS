@@ -1,7 +1,7 @@
 VERSION 5.00
 Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "msmask32.ocx"
 Object = "{00025600-0000-0000-C000-000000000046}#5.2#0"; "Crystl32.OCX"
-Object = "{B816E96D-D151-4000-BADB-53A2D8F3FC65}#13.0#0"; "CRViewer.dll"
+Object = "{3C62B3DD-12BE-4941-A787-EA25415DCD27}#10.0#0"; "crviewer.dll"
 Begin VB.Form frmReprint 
    Caption         =   "Reprint Gatepass"
    ClientHeight    =   9405
@@ -14,34 +14,18 @@ Begin VB.Form frmReprint
    ScaleWidth      =   15240
    StartUpPosition =   2  'CenterScreen
    WindowState     =   2  'Maximized
-   Begin VB.CommandButton cmdDisplay 
-      Caption         =   "&Display"
-      BeginProperty Font 
-         Name            =   "Arial"
-         Size            =   15
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   400
-      Left            =   4920
-      TabIndex        =   7
-      Top             =   480
-      Width           =   1575
-   End
-   Begin CrystalActiveXReportViewerLib13Ctl.CrystalActiveXReportViewer CrxReprint 
-      Height          =   7455
+   Begin CrystalActiveXReportViewerLib10Ctl.CrystalActiveXReportViewer crxReprint 
+      Height          =   7575
       Left            =   120
-      TabIndex        =   6
+      TabIndex        =   9
       Top             =   1800
       Width           =   15015
+      lastProp        =   600
       _cx             =   26485
-      _cy             =   13150
-      DisplayGroupTree=   0   'False
+      _cy             =   13361
+      DisplayGroupTree=   -1  'True
       DisplayToolbar  =   -1  'True
-      EnableGroupTree =   -1  'True
+      EnableGroupTree =   0   'False
       EnableNavigationControls=   -1  'True
       EnableStopButton=   -1  'True
       EnablePrintButton=   -1  'True
@@ -64,8 +48,23 @@ Begin VB.Form frmReprint
       EnableHelpButton=   0   'False
       LaunchHTTPHyperlinksInNewBrowser=   -1  'True
       EnableLogonPrompts=   -1  'True
-      LocaleID        =   13321
-      EnableInteractiveParameterPrompting=   0   'False
+   End
+   Begin VB.CommandButton cmdDisplay 
+      Caption         =   "&Display"
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   15
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   400
+      Left            =   4920
+      TabIndex        =   6
+      Top             =   480
+      Width           =   1575
    End
    Begin Crystal.CrystalReport rptCYMPR01 
       Left            =   14640
@@ -152,7 +151,7 @@ Begin VB.Form frmReprint
          Height          =   405
          Index           =   1
          Left            =   3480
-         TabIndex        =   8
+         TabIndex        =   7
          Top             =   840
          Width           =   495
          _ExtentX        =   873
@@ -184,7 +183,7 @@ Begin VB.Form frmReprint
          EndProperty
          Height          =   375
          Left            =   3240
-         TabIndex        =   9
+         TabIndex        =   8
          Top             =   840
          Width           =   135
       End
@@ -381,8 +380,8 @@ ImportPrint.DiscardSavedData
 ImportPrint.ParameterFields(1).AddCurrentValue CLng(mskReference)
 ImportPrint.ParameterFields(2).AddCurrentValue gbSupervisor
 
-CrxReprint.ReportSource = ImportPrint
-CrxReprint.ViewReport
+crxReprint.ReportSource = ImportPrint
+crxReprint.ViewReport
 
 End Sub
 
@@ -1738,10 +1737,13 @@ Private Sub GetTotalPaymentAmounts()
     rstCYMPay.Close
 End Sub
 
-Private Sub CrxReprint_DownloadFinished(ByVal loadingType As CrystalActiveXReportViewerLib13Ctl.CRLoadingType)
-CrxReprint.ShowNthPage CLng(mskSequence(0))
+Private Sub crxReprint_DownloadFinished(ByVal loadingType As CrystalActiveXReportViewerLib10Ctl.CRLoadingType)
+On Error Resume Next
+If loadingType = crLoadingQueryInfo Then
+crxReprint.ShowNthPage CLng(mskSequence(0))
 cmdReprint.Enabled = True
 mskSequence(0).SetFocus
+End If
 End Sub
 
 Private Sub Form_Activate()
@@ -1754,8 +1756,8 @@ ImportPrint.DisplayProgressDialog = False
 End Sub
 
 Private Sub Form_Resize()
-CrxReprint.Width = Me.ScaleWidth - 120
-CrxReprint.Height = Me.ScaleHeight - 1800
+crxReprint.Width = Me.ScaleWidth - 120
+crxReprint.Height = Me.ScaleHeight - 1800
 End Sub
 
 Private Sub mskReference_KeyDown(KeyCode As Integer, Shift As Integer)
