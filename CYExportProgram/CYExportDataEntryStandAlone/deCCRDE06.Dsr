@@ -858,7 +858,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommandName     =   "getPrevCCRPayment"
       CommDispId      =   1036
       RsDispId        =   1105
-      CommandText     =   $"deCCRDE06.dsx":0088
+      CommandText     =   $"deCCRDE06.dsx":008E
       ActiveConnectionName=   "Billing_NCT2"
       CommandType     =   1
       IsRSReturning   =   -1  'True
@@ -1029,7 +1029,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommandName     =   "prtCCRPAY"
       CommDispId      =   1077
       RsDispId        =   1082
-      CommandText     =   $"deCCRDE06.dsx":0129
+      CommandText     =   $"deCCRDE06.dsx":012F
       ActiveConnectionName=   "Billing_NCT2"
       CommandType     =   1
       IsRSReturning   =   -1  'True
@@ -1843,7 +1843,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommandName     =   "getTotal"
       CommDispId      =   1115
       RsDispId        =   1233
-      CommandText     =   $"deCCRDE06.dsx":026B
+      CommandText     =   $"deCCRDE06.dsx":0271
       ActiveConnectionName=   "Billing_NCT2"
       CommandType     =   1
       IsRSReturning   =   -1  'True
@@ -1885,7 +1885,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRDE06
       CommandName     =   "getCCRList"
       CommDispId      =   1122
       RsDispId        =   1127
-      CommandText     =   $"deCCRDE06.dsx":0353
+      CommandText     =   $"deCCRDE06.dsx":0359
       ActiveConnectionName=   "Billing_NCT2"
       CommandType     =   1
       IsRSReturning   =   -1  'True
