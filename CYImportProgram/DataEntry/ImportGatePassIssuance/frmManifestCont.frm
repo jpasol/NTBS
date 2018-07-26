@@ -1202,7 +1202,7 @@ Begin VB.Form frmManifestCont
             EndProperty
             CalendarBackColor=   16777215
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   36700163
+            Format          =   231931907
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtStorageFree 
@@ -1224,7 +1224,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   36700163
+            Format          =   231931907
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtEndStorage 
@@ -1246,7 +1246,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   36700163
+            Format          =   231931907
             CurrentDate     =   32874
          End
          Begin VB.Label lblManifest 
@@ -5854,11 +5854,30 @@ End Sub
 Private Sub PrintGatePass()
 '    Call GetTotalPaymentAmounts
 '    Call GetTotalChargePerDetail
-    ImportPrint.DiscardSavedData
-    ImportPrint.DisplayProgressDialog = False
-    ImportPrint.ParameterFields("1").AddCurrentValue (lngReferenceNo)
-    ImportPrint.ParameterFields("2").AddCurrentValue (gbSupervisor)
-    ImportPrint.PrintOut False, 1
+Dim rsPay As New ADODB.Recordset
+Dim totChk As Double
+
+rsPay.Open "Select cshamt, adramt, chkamt1, chkamt2,chkamt3,chkamt4,chkamt5 from CYMPAY where Refnum=" & lngReferenceNo, gcnnBilling
+
+totChk = rsPay.Fields("chkamt1") + _
+            rsPay.Fields("chkamt2") + _
+            rsPay.Fields("chkamt3") + _
+            rsPay.Fields("chkamt4") + _
+            rsPay.Fields("chkamt5")
+
+ImportPrint.DisplayProgressDialog = False
+
+ImportPrint.DiscardSavedData
+ImportPrint.ParameterFields(1).AddCurrentValue CLng(lngReferenceNo)
+ImportPrint.ParameterFields(2).AddCurrentValue gbSupervisor
+ImportPrint.ParameterFields(3).AddCurrentValue CDbl(rsPay.Fields("cshamt"))
+ImportPrint.ParameterFields(4).AddCurrentValue totChk
+ImportPrint.ParameterFields(5).AddCurrentValue CDbl(rsPay.Fields("adramt"))
+ImportPrint.PrintOut False, 1
+
+rsPay.Close
+Set rsPay = Nothing
+
 End Sub
 
 Private Sub GetTotalPaymentAmounts()
