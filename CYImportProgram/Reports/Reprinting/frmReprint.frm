@@ -376,13 +376,33 @@ Dim dtmDateFrom As Date
 Dim dtmDateTo As Date
 
 Private Sub cmdDisplay_Click()
+Dim rsPay As New ADODB.Recordset
+Dim totChk As Double
+cmdDisplay.Enabled = False
+rsPay.Open "Select cshamt, adramt, chkamt1, chkamt2,chkamt3,chkamt4,chkamt5 from CYMPAY where Refnum=" & mskReference, gcnnBilling
+If Not (rsPay.EOF And rsPay.BOF) Then
+totChk = rsPay.Fields("chkamt1") + _
+            rsPay.Fields("chkamt2") + _
+            rsPay.Fields("chkamt3") + _
+            rsPay.Fields("chkamt4") + _
+            rsPay.Fields("chkamt5")
+
+
 ImportPrint.DiscardSavedData
 ImportPrint.ParameterFields(1).AddCurrentValue CLng(mskReference)
 ImportPrint.ParameterFields(2).AddCurrentValue gbSupervisor
+ImportPrint.ParameterFields(3).AddCurrentValue CDbl(rsPay.Fields("cshamt"))
+ImportPrint.ParameterFields(4).AddCurrentValue totChk
+ImportPrint.ParameterFields(5).AddCurrentValue CDbl(rsPay.Fields("adramt"))
+
+rsPay.Close
+Set rsPay = Nothing
 
 crxReprint.ReportSource = ImportPrint
 crxReprint.ViewReport
-
+Else
+MsgBox "No Records Found"
+End If
 End Sub
 
 Private Sub cmdReprint_Click()
@@ -1018,7 +1038,6 @@ Private Sub Initialize()
 mskReference = ""
 mskSequence(0) = 1
 mskSequence(1) = 1
-cmdReprint.Enabled = False
 mskReference.SetFocus
 End Sub
 
@@ -1738,12 +1757,8 @@ Private Sub GetTotalPaymentAmounts()
 End Sub
 
 Private Sub crxReprint_DownloadFinished(ByVal loadingType As CrystalActiveXReportViewerLib10Ctl.CRLoadingType)
-On Error Resume Next
-If loadingType = crLoadingQueryInfo Then
-crxReprint.ShowNthPage CLng(mskSequence(0))
-cmdReprint.Enabled = True
-mskSequence(0).SetFocus
-End If
+cmdDisplay.Enabled = True
+cmdReprint.SetFocus
 End Sub
 
 Private Sub Form_Activate()
@@ -1760,6 +1775,11 @@ crxReprint.Width = Me.ScaleWidth - 120
 crxReprint.Height = Me.ScaleHeight - 1800
 End Sub
 
+Private Sub mskReference_GotFocus()
+mskReference.SelLength = Len(mskReference)
+cmdDisplay.Enabled = True
+End Sub
+
 Private Sub mskReference_KeyDown(KeyCode As Integer, Shift As Integer)
 Call FieldAdvance(KeyCode, mskReference, cmdDisplay)
 End Sub
@@ -1771,7 +1791,7 @@ End Sub
 Private Sub mskSequence_KeyDown(Index As Integer, KeyCode As Integer, Shift As Integer)
     If KeyCode = vbKeyReturn Then
         'Call cmdReprint_Click
-        If Index = 0 Then mskSequence(1).SetFocus Else cmdReprint.SetFocus
+        If Index = 0 Then mskSequence(1).SetFocus Else If Index = 1 And cmdReprint.Enabled = True Then cmdReprint.SetFocus Else cmdDisplay.SetFocus
     Else
         Call FieldAdvance(KeyCode, IIf(Index = 0, mskReference, mskSequence(0)), IIf(Index = 0, mskSequence(1), cmdReprint))
     End If
