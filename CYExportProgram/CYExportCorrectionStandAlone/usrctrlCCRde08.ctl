@@ -99,9 +99,7 @@ Begin VB.UserControl usrctrlCCRde08
       TabPicture(0)   =   "usrctrlCCRde08.ctx":0000
       Tab(0).ControlEnabled=   0   'False
       Tab(0).Control(0)=   "Frame12"
-      Tab(0).Control(0).Enabled=   0   'False
       Tab(0).Control(1)=   "Frame3"
-      Tab(0).Control(1).Enabled=   0   'False
       Tab(0).Control(2)=   "cmdClose1"
       Tab(0).Control(2).Enabled=   0   'False
       Tab(0).Control(3)=   "cmdCancel1"
@@ -112,80 +110,51 @@ Begin VB.UserControl usrctrlCCRde08
       TabCaption(1)   =   "DETAILS"
       TabPicture(1)   =   "usrctrlCCRde08.ctx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "Label39"
-      Tab(1).Control(0).Enabled=   0   'False
-      Tab(1).Control(1)=   "Frame13"
-      Tab(1).Control(1).Enabled=   0   'False
-      Tab(1).Control(2)=   "Frame5"
+      Tab(1).Control(0)=   "utxtDetEntnum(1)"
+      Tab(1).Control(1)=   "utxtDetEntnum(0)"
+      Tab(1).Control(2)=   "cmdSave2"
       Tab(1).Control(2).Enabled=   0   'False
-      Tab(1).Control(3)=   "utxtDetTeller1"
+      Tab(1).Control(3)=   "cmdCancel2"
       Tab(1).Control(3).Enabled=   0   'False
-      Tab(1).Control(4)=   "utxtDetDteTme"
+      Tab(1).Control(4)=   "cmdClose2"
       Tab(1).Control(4).Enabled=   0   'False
-      Tab(1).Control(5)=   "cmdClose2"
-      Tab(1).Control(5).Enabled=   0   'False
-      Tab(1).Control(6)=   "cmdCancel2"
-      Tab(1).Control(6).Enabled=   0   'False
-      Tab(1).Control(7)=   "cmdSave2"
-      Tab(1).Control(7).Enabled=   0   'False
-      Tab(1).Control(8)=   "utxtDetEntnum(0)"
-      Tab(1).Control(8).Enabled=   0   'False
-      Tab(1).Control(9)=   "utxtDetEntnum(1)"
-      Tab(1).Control(9).Enabled=   0   'False
+      Tab(1).Control(5)=   "utxtDetDteTme"
+      Tab(1).Control(6)=   "utxtDetTeller1"
+      Tab(1).Control(7)=   "Frame5"
+      Tab(1).Control(8)=   "Frame13"
+      Tab(1).Control(9)=   "Label39"
       Tab(1).ControlCount=   10
       TabCaption(2)   =   "CANCELLATION"
       TabPicture(2)   =   "usrctrlCCRde08.ctx":0038
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "Label40"
+      Tab(2).Control(0)=   "cmdSave3"
       Tab(2).Control(0).Enabled=   0   'False
-      Tab(2).Control(1)=   "Frame14"
+      Tab(2).Control(1)=   "cmdCancel3"
       Tab(2).Control(1).Enabled=   0   'False
-      Tab(2).Control(2)=   "Frame6"
+      Tab(2).Control(2)=   "cmdClose3"
       Tab(2).Control(2).Enabled=   0   'False
-      Tab(2).Control(3)=   "utxtCnlSeqnum"
-      Tab(2).Control(3).Enabled=   0   'False
-      Tab(2).Control(4)=   "utxtCnlRefnum"
-      Tab(2).Control(4).Enabled=   0   'False
-      Tab(2).Control(5)=   "utxtCnlExporter"
-      Tab(2).Control(5).Enabled=   0   'False
-      Tab(2).Control(6)=   "utxtCnlBroker"
-      Tab(2).Control(6).Enabled=   0   'False
-      Tab(2).Control(7)=   "utxtCnlCommodity"
-      Tab(2).Control(7).Enabled=   0   'False
-      Tab(2).Control(8)=   "utxtCnlVessel"
-      Tab(2).Control(8).Enabled=   0   'False
-      Tab(2).Control(9)=   "utxtCnlCCRNum"
-      Tab(2).Control(9).Enabled=   0   'False
-      Tab(2).Control(10)=   "utxtCnlEntnum10"
-      Tab(2).Control(10).Enabled=   0   'False
-      Tab(2).Control(11)=   "utxtCnlEntnum1"
-      Tab(2).Control(11).Enabled=   0   'False
+      Tab(2).Control(3)=   "utxtCnlTeller2"
+      Tab(2).Control(4)=   "utxtCnlDteTme"
+      Tab(2).Control(5)=   "utxtCnlEntnum2"
+      Tab(2).Control(6)=   "utxtCnlEntnum3"
+      Tab(2).Control(7)=   "utxtCnlEntnum4"
+      Tab(2).Control(8)=   "utxtCnlEntnum5"
+      Tab(2).Control(9)=   "utxtCnlEntnum6"
+      Tab(2).Control(10)=   "utxtCnlEntnum7"
+      Tab(2).Control(11)=   "utxtCnlEntnum8"
       Tab(2).Control(12)=   "utxtCnlEntnum9"
-      Tab(2).Control(12).Enabled=   0   'False
-      Tab(2).Control(13)=   "utxtCnlEntnum8"
-      Tab(2).Control(13).Enabled=   0   'False
-      Tab(2).Control(14)=   "utxtCnlEntnum7"
-      Tab(2).Control(14).Enabled=   0   'False
-      Tab(2).Control(15)=   "utxtCnlEntnum6"
-      Tab(2).Control(15).Enabled=   0   'False
-      Tab(2).Control(16)=   "utxtCnlEntnum5"
-      Tab(2).Control(16).Enabled=   0   'False
-      Tab(2).Control(17)=   "utxtCnlEntnum4"
-      Tab(2).Control(17).Enabled=   0   'False
-      Tab(2).Control(18)=   "utxtCnlEntnum3"
-      Tab(2).Control(18).Enabled=   0   'False
-      Tab(2).Control(19)=   "utxtCnlEntnum2"
-      Tab(2).Control(19).Enabled=   0   'False
-      Tab(2).Control(20)=   "utxtCnlDteTme"
-      Tab(2).Control(20).Enabled=   0   'False
-      Tab(2).Control(21)=   "utxtCnlTeller2"
-      Tab(2).Control(21).Enabled=   0   'False
-      Tab(2).Control(22)=   "cmdClose3"
-      Tab(2).Control(22).Enabled=   0   'False
-      Tab(2).Control(23)=   "cmdCancel3"
-      Tab(2).Control(23).Enabled=   0   'False
-      Tab(2).Control(24)=   "cmdSave3"
-      Tab(2).Control(24).Enabled=   0   'False
+      Tab(2).Control(13)=   "utxtCnlEntnum1"
+      Tab(2).Control(14)=   "utxtCnlEntnum10"
+      Tab(2).Control(15)=   "utxtCnlCCRNum"
+      Tab(2).Control(16)=   "utxtCnlVessel"
+      Tab(2).Control(17)=   "utxtCnlCommodity"
+      Tab(2).Control(18)=   "utxtCnlBroker"
+      Tab(2).Control(19)=   "utxtCnlExporter"
+      Tab(2).Control(20)=   "utxtCnlRefnum"
+      Tab(2).Control(21)=   "utxtCnlSeqnum"
+      Tab(2).Control(22)=   "Frame6"
+      Tab(2).Control(23)=   "Frame14"
+      Tab(2).Control(24)=   "Label40"
       Tab(2).ControlCount=   25
       TabCaption(3)   =   "PAYMENT"
       TabPicture(3)   =   "usrctrlCCRde08.ctx":0054
@@ -247,53 +216,29 @@ Begin VB.UserControl usrctrlCCRde08
       TabPicture(4)   =   "usrctrlCCRde08.ctx":0070
       Tab(4).ControlEnabled=   0   'False
       Tab(4).Control(0)=   "Label65"
-      Tab(4).Control(0).Enabled=   0   'False
       Tab(4).Control(1)=   "Frame19"
-      Tab(4).Control(1).Enabled=   0   'False
       Tab(4).Control(2)=   "Frame16"
-      Tab(4).Control(2).Enabled=   0   'False
       Tab(4).Control(3)=   "utxtRefPrefix"
-      Tab(4).Control(3).Enabled=   0   'False
       Tab(4).Control(4)=   "utxtRefCntno"
-      Tab(4).Control(4).Enabled=   0   'False
       Tab(4).Control(5)=   "utxtRefSeq"
-      Tab(4).Control(5).Enabled=   0   'False
       Tab(4).Control(6)=   "utxtRefRefNum"
-      Tab(4).Control(6).Enabled=   0   'False
       Tab(4).Control(7)=   "utxtRefExporter"
-      Tab(4).Control(7).Enabled=   0   'False
       Tab(4).Control(8)=   "utxtRefBroker"
-      Tab(4).Control(8).Enabled=   0   'False
       Tab(4).Control(9)=   "utxtRefCommodity"
-      Tab(4).Control(9).Enabled=   0   'False
       Tab(4).Control(10)=   "utxtRefVessel"
-      Tab(4).Control(10).Enabled=   0   'False
       Tab(4).Control(11)=   "utxtRefCCR"
-      Tab(4).Control(11).Enabled=   0   'False
       Tab(4).Control(12)=   "utxtRefEntno(0)"
-      Tab(4).Control(12).Enabled=   0   'False
       Tab(4).Control(13)=   "utxtRefDate"
-      Tab(4).Control(13).Enabled=   0   'False
       Tab(4).Control(14)=   "utxtRefTeller"
-      Tab(4).Control(14).Enabled=   0   'False
       Tab(4).Control(15)=   "utxtRefEntno(1)"
-      Tab(4).Control(15).Enabled=   0   'False
       Tab(4).Control(16)=   "utxtRefEntno(2)"
-      Tab(4).Control(16).Enabled=   0   'False
       Tab(4).Control(17)=   "utxtRefEntno(3)"
-      Tab(4).Control(17).Enabled=   0   'False
       Tab(4).Control(18)=   "utxtRefEntno(4)"
-      Tab(4).Control(18).Enabled=   0   'False
       Tab(4).Control(19)=   "utxtRefEntno(5)"
-      Tab(4).Control(19).Enabled=   0   'False
       Tab(4).Control(20)=   "utxtRefEntno(6)"
-      Tab(4).Control(20).Enabled=   0   'False
       Tab(4).Control(21)=   "utxtRefEntno(7)"
-      Tab(4).Control(21).Enabled=   0   'False
       Tab(4).Control(22)=   "utxtRefEntno(8)"
-      Tab(4).Control(22).Enabled=   0   'False
       Tab(4).Control(23)=   "utxtRefEntno(9)"
-      Tab(4).Control(23).Enabled=   0   'False
       Tab(4).Control(24)=   "cmdSave5"
       Tab(4).Control(24).Enabled=   0   'False
       Tab(4).Control(25)=   "cmdCancel5"
@@ -3540,7 +3485,6 @@ If strResponse = True Then
 End If
 End Sub
 
-
 Private Sub cmdPayment_Click()
     With CorrectionTab
         .Visible = True
@@ -4090,10 +4034,8 @@ End Sub
 
 Private Sub utxtAdrNum_KeyDown(Index As Integer, KeyCode As Integer, Shift As Integer)
 With utxtAdrNum(Index)
-If .Value > 0 And Index < 2 Then
-utxtAdrNum(Index + 1).SetFocus
-Else
-cmdSave1.SetFocus
+If KeyCode = vbKeyReturn Then
+If .Value > 0 And Index < 2 Then utxtAdrNum(Index + 1).SetFocus Else cmdSave1.SetFocus
 End If
 End With
 End Sub
@@ -4841,9 +4783,9 @@ With PassedRcrdSet
 End With
 End Sub
 
-Private Function parse(var As Variant) As Variant
+Private Function parse(variable As Variant) As Variant
 On Error GoTo parse
-parse = CStr(var)
+parse = CStr(variable)
 Exit Function
 parse:
 parse = ""
@@ -5093,6 +5035,10 @@ EvaluateChange = sngTotalAmt - sngPymTotalAmt
 
 End Function
 
+Private Sub utxtPymAdr_GotFocus()
+utxtPymAdr.SelLength = Len(utxtPymAdr.Value)
+End Sub
+
 Private Sub utxtPymAdr_KeyDown(KeyCode As Integer, Shift As Integer)
 If KeyCode = 39 Then
         utxtCustNo.SetFocus
@@ -5116,9 +5062,11 @@ End Sub
 Private Sub utxtPymAdr_LostFocus()
 On Error GoTo parse
     utxtPymAdr.Value = Format(CCur(utxtPymAdr.Value), "###,###,##0.00")
+    If CLng(utxtPymAdr.Value) = 0 Then utxtAdrNum(0).Value = 0: utxtAdrNum(1).Value = 0: utxtAdrNum(2).Value = 0 'Delete ADR Numbers on 0
     Exit Sub
 parse:
     utxtPymAdr.Value = Format(0, "###,###,##0.00")
+    If CLng(utxtPymAdr.Value) = 0 Then utxtAdrNum(0).Value = 0: utxtAdrNum(1).Value = 0: utxtAdrNum(2).Value = 0 'Delete ADR Numbers on 0
 End Sub
 
 Private Sub utxtPymChq_Change(Index As Integer)
@@ -5309,15 +5257,9 @@ Next
     AdrBalance = 0
 End Sub
 Private Sub UpdatePayment(lngRefno As Long)
-Dim lngAdrnum As Long
-Dim lngAdrnum2 As Long
-Dim lngAdrnum3 As Long
-Dim intCtr As Integer
-Dim lngAdrChk As Long
 
-lngAdrChk = 0
-intCtr = 0
-lngAdrnum = 0
+Dim intCtr As Integer
+
 utxtCustNo.Value = ReturnLong(CStr((utxtCustNo.Value)))
 If utxtCustNo.Value = 0 Then
     utxtCustNo.Value = 0
@@ -5353,18 +5295,15 @@ End If
 '        End If
 '    End If
 '    Else
-        lngAdrnum = lngPymADRNum
-        lngAdrnum2 = lngPymADRNum2
-        lngAdrnum3 = lngPymADRNum3
 'End If
     utxtPymCash.Value = ReturnSingle(CStr(utxtPymCash.Value))
     For intCtr = 0 To 4
         utxtPymChq(intCtr).Value = ReturnSingle(CStr((utxtPymChq(intCtr).Value)))
     Next
     
-DE.CCRPay CSng(utxtPymCash.Value), CSng(utxtPymChq(0).Value), utxtPymChqNum(0).Text, utxtPymChqBnk(0).Text, CSng(utxtPymChq(1).Value), utxtPymChqNum(1).Text, utxtPymChqBnk(1).Text, _
-        CSng(utxtPymChq(2).Value), utxtPymChqNum(2).Text, utxtPymChqBnk(2).Text, CSng(utxtPymChq(3).Value), utxtPymChqNum(3).Text, utxtPymChqBnk(3).Text, CSng(utxtPymChq(4).Value), _
-        utxtPymChqNum(4).Text, utxtPymChqBnk(4).Text, CSng(utxtChange.Value), utxtCustNo.Value, Trim(utxtCustName.Text), CSng(utxtPymAdr.Value), lngAdrnum, lngAdrnum2, lngAdrnum3, lngRefno
+DE.CCRPay CCur(utxtPymCash.Value), CCur(utxtPymChq(0).Value), utxtPymChqNum(0).Text, utxtPymChqBnk(0).Text, CCur(utxtPymChq(1).Value), utxtPymChqNum(1).Text, utxtPymChqBnk(1).Text, _
+        CCur(utxtPymChq(2).Value), utxtPymChqNum(2).Text, utxtPymChqBnk(2).Text, CCur(utxtPymChq(3).Value), utxtPymChqNum(3).Text, utxtPymChqBnk(3).Text, CCur(utxtPymChq(4).Value), _
+        utxtPymChqNum(4).Text, utxtPymChqBnk(4).Text, CCur(utxtChange.Value), utxtCustNo.Value, Trim(utxtCustName.Text), CCur(utxtPymAdr.Value), utxtAdrNum(0).Value, utxtAdrNum(1).Value, utxtAdrNum(2).Value, lngRefno
 End Sub
 Private Sub ClearPaymentVariables()
     sngPymCheque = 0
@@ -5673,7 +5612,8 @@ Call ClearPaymentVariables
 DE.Rtvdetails lngRefno, lngSeqno
 Set rstDetails = DE.rsRtvDetails
 With rstDetails
-    Do While Not .EOF
+    If Not (.EOF And .BOF) Then MsgBox "No Payment to Cancel": Exit Sub
+    Do While Not (.EOF And .BOF)
         sngTotalAmt = sngTotalAmt + .Fields("arramt") + .Fields("ovzamt") + .Fields("dgramt") + .Fields("arrvat") - _
                 .Fields("arrtax") + ReturnCurrency(.Fields("wghamt"))
         If .Fields("whfcde") = 0 Then

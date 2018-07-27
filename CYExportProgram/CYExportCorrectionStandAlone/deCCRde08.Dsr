@@ -1,11 +1,11 @@
 VERSION 5.00
 Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08 
-   ClientHeight    =   14040
+   ClientHeight    =   10485
    ClientLeft      =   0
    ClientTop       =   0
-   ClientWidth     =   22155
-   _ExtentX        =   39079
-   _ExtentY        =   24765
+   ClientWidth     =   20940
+   _ExtentX        =   36936
+   _ExtentY        =   18494
    FolderFlags     =   5
    TypeLibGuid     =   "{D300CD6F-EBEB-11D2-BD1F-00105A64485A}"
    TypeInfoGuid    =   "{D300CD70-EBEB-11D2-BD1F-00105A64485A}"
@@ -849,7 +849,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       CommandName     =   "UpdateCntNum"
       CommDispId      =   1012
       RsDispId        =   -1
-      CommandText     =   $"deCCRde08.dsx":0091
+      CommandText     =   $"deCCRde08.dsx":008F
       ActiveConnectionName=   "Billing"
       CommandType     =   1
       NumFields       =   0
@@ -985,7 +985,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       CommandName     =   "UpdateDtlCCR"
       CommDispId      =   1028
       RsDispId        =   -1
-      CommandText     =   $"deCCRde08.dsx":00F9
+      CommandText     =   $"deCCRde08.dsx":00F7
       ActiveConnectionName=   "Billing"
       CommandType     =   1
       NumFields       =   0
@@ -1176,7 +1176,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       CommandName     =   "UpdateCCRAlloc"
       CommDispId      =   1040
       RsDispId        =   -1
-      CommandText     =   $"deCCRde08.dsx":019F
+      CommandText     =   $"deCCRde08.dsx":019D
       ActiveConnectionName=   "Billing"
       CommandType     =   1
       NumFields       =   0
@@ -1220,7 +1220,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       CommandName     =   "ChkPayment"
       CommDispId      =   1042
       RsDispId        =   1048
-      CommandText     =   $"deCCRde08.dsx":01E9
+      CommandText     =   $"deCCRde08.dsx":01E7
       ActiveConnectionName=   "Billing"
       CommandType     =   1
       IsRSReturning   =   -1  'True
@@ -1349,7 +1349,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       CommandName     =   "SelectContainer"
       CommDispId      =   1051
       RsDispId        =   1082
-      CommandText     =   $"deCCRde08.dsx":0215
+      CommandText     =   $"deCCRde08.dsx":0213
       ActiveConnectionName=   "Billing"
       CommandType     =   1
       IsRSReturning   =   -1  'True
@@ -1470,7 +1470,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       CommandName     =   "UpdateOVRCCR"
       CommDispId      =   1061
       RsDispId        =   -1
-      CommandText     =   $"deCCRde08.dsx":02CD
+      CommandText     =   $"deCCRde08.dsx":02CB
       ActiveConnectionName=   "Billing"
       CommandType     =   1
       NumFields       =   0
@@ -2064,16 +2064,15 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       CommandName     =   "CCRPay"
       CommDispId      =   1094
       RsDispId        =   -1
-      CommandText     =   $"deCCRde08.dsx":0300
+      CommandText     =   $"deCCRde08.dsx":02FE
       ActiveConnectionName=   "Billing"
       CommandType     =   1
       Locktype        =   3
       NumFields       =   0
       NumGroups       =   0
-      ParamCount      =   22
+      ParamCount      =   24
       BeginProperty P1 
          RealName        =   "Param1"
-         UserName        =   "cash"
          Direction       =   1
          Precision       =   10
          Scale           =   2
@@ -2084,7 +2083,6 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       EndProperty
       BeginProperty P2 
          RealName        =   "Param2"
-         UserName        =   "chkamt1"
          Direction       =   1
          Precision       =   10
          Scale           =   2
@@ -2095,7 +2093,6 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       EndProperty
       BeginProperty P3 
          RealName        =   "Param3"
-         UserName        =   "chkno1"
          Direction       =   1
          Precision       =   0
          Scale           =   0
@@ -2106,7 +2103,6 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       EndProperty
       BeginProperty P4 
          RealName        =   "Param4"
-         UserName        =   "chkbk1"
          Direction       =   1
          Precision       =   0
          Scale           =   0
@@ -2117,7 +2113,6 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       EndProperty
       BeginProperty P5 
          RealName        =   "Param5"
-         UserName        =   "chkamt2"
          Direction       =   1
          Precision       =   10
          Scale           =   2
@@ -2128,7 +2123,6 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       EndProperty
       BeginProperty P6 
          RealName        =   "Param6"
-         UserName        =   "chkno2"
          Direction       =   1
          Precision       =   0
          Scale           =   0
@@ -2139,7 +2133,6 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       EndProperty
       BeginProperty P7 
          RealName        =   "Param7"
-         UserName        =   "chkbk2"
          Direction       =   1
          Precision       =   0
          Scale           =   0
@@ -2150,7 +2143,6 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       EndProperty
       BeginProperty P8 
          RealName        =   "Param8"
-         UserName        =   "chkamt3"
          Direction       =   1
          Precision       =   10
          Scale           =   2
@@ -2161,7 +2153,6 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       EndProperty
       BeginProperty P9 
          RealName        =   "Param9"
-         UserName        =   "chkno3"
          Direction       =   1
          Precision       =   0
          Scale           =   0
@@ -2172,7 +2163,6 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       EndProperty
       BeginProperty P10 
          RealName        =   "Param10"
-         UserName        =   "chkbk3"
          Direction       =   1
          Precision       =   0
          Scale           =   0
@@ -2183,7 +2173,6 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       EndProperty
       BeginProperty P11 
          RealName        =   "Param11"
-         UserName        =   "chkamt4"
          Direction       =   1
          Precision       =   10
          Scale           =   2
@@ -2194,7 +2183,6 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       EndProperty
       BeginProperty P12 
          RealName        =   "Param12"
-         UserName        =   "chkno4"
          Direction       =   1
          Precision       =   0
          Scale           =   0
@@ -2205,7 +2193,6 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       EndProperty
       BeginProperty P13 
          RealName        =   "Param13"
-         UserName        =   "chkbk4"
          Direction       =   1
          Precision       =   0
          Scale           =   0
@@ -2216,7 +2203,6 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       EndProperty
       BeginProperty P14 
          RealName        =   "Param14"
-         UserName        =   "chkamt5"
          Direction       =   1
          Precision       =   10
          Scale           =   2
@@ -2227,7 +2213,6 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       EndProperty
       BeginProperty P15 
          RealName        =   "Param15"
-         UserName        =   "chkno5"
          Direction       =   1
          Precision       =   0
          Scale           =   0
@@ -2238,7 +2223,6 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       EndProperty
       BeginProperty P16 
          RealName        =   "Param16"
-         UserName        =   "chkbk5"
          Direction       =   1
          Precision       =   0
          Scale           =   0
@@ -2249,7 +2233,6 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       EndProperty
       BeginProperty P17 
          RealName        =   "Param17"
-         UserName        =   "chgamt"
          Direction       =   1
          Precision       =   9
          Scale           =   2
@@ -2260,7 +2243,6 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       EndProperty
       BeginProperty P18 
          RealName        =   "Param18"
-         UserName        =   "cuscde"
          Direction       =   1
          Precision       =   0
          Scale           =   0
@@ -2271,7 +2253,6 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       EndProperty
       BeginProperty P19 
          RealName        =   "Param19"
-         UserName        =   "cusnam"
          Direction       =   1
          Precision       =   0
          Scale           =   0
@@ -2282,7 +2263,6 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       EndProperty
       BeginProperty P20 
          RealName        =   "Param20"
-         UserName        =   "adramt"
          Direction       =   1
          Precision       =   10
          Scale           =   2
@@ -2293,7 +2273,6 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       EndProperty
       BeginProperty P21 
          RealName        =   "Param21"
-         UserName        =   "adrnum"
          Direction       =   1
          Precision       =   8
          Scale           =   0
@@ -2304,7 +2283,26 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       EndProperty
       BeginProperty P22 
          RealName        =   "Param22"
-         UserName        =   "reference"
+         Direction       =   1
+         Precision       =   8
+         Scale           =   0
+         Size            =   19
+         DataType        =   131
+         HostType        =   8
+         Required        =   -1  'True
+      EndProperty
+      BeginProperty P23 
+         RealName        =   "Param23"
+         Direction       =   1
+         Precision       =   8
+         Scale           =   0
+         Size            =   19
+         DataType        =   131
+         HostType        =   8
+         Required        =   -1  'True
+      EndProperty
+      BeginProperty P24 
+         RealName        =   "Param24"
          Direction       =   1
          Precision       =   8
          Scale           =   0
@@ -2515,7 +2513,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCCRde08
       CommandName     =   "RefundUpdate"
       CommDispId      =   1115
       RsDispId        =   -1
-      CommandText     =   $"deCCRde08.dsx":0426
+      CommandText     =   $"deCCRde08.dsx":0445
       ActiveConnectionName=   "Billing"
       CommandType     =   1
       NumFields       =   0
