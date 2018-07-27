@@ -126,6 +126,87 @@ Begin VB.Form frmCYSCorrection
          TabIndex        =   39
          Top             =   1425
          Width           =   8865
+         Begin VB.Frame Frame6 
+            Caption         =   "OR NUMBERS"
+            Height          =   2055
+            Left            =   4200
+            TabIndex        =   55
+            Top             =   2760
+            Visible         =   0   'False
+            Width           =   2295
+            Begin MSMask.MaskEdBox utxtAdrNum 
+               Height          =   375
+               Index           =   0
+               Left            =   120
+               TabIndex        =   56
+               Top             =   480
+               Width           =   2055
+               _ExtentX        =   3625
+               _ExtentY        =   661
+               _Version        =   393216
+               ForeColor       =   16711680
+               AutoTab         =   -1  'True
+               MaxLength       =   8
+               BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+                  Name            =   "Arial"
+                  Size            =   15
+                  Charset         =   0
+                  Weight          =   400
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               PromptChar      =   " "
+            End
+            Begin MSMask.MaskEdBox utxtAdrNum 
+               Height          =   375
+               Index           =   1
+               Left            =   120
+               TabIndex        =   57
+               Top             =   960
+               Width           =   2055
+               _ExtentX        =   3625
+               _ExtentY        =   661
+               _Version        =   393216
+               ForeColor       =   16711680
+               AutoTab         =   -1  'True
+               MaxLength       =   8
+               BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+                  Name            =   "Arial"
+                  Size            =   15
+                  Charset         =   0
+                  Weight          =   400
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               PromptChar      =   " "
+            End
+            Begin MSMask.MaskEdBox utxtAdrNum 
+               Height          =   375
+               Index           =   2
+               Left            =   120
+               TabIndex        =   58
+               Top             =   1440
+               Width           =   2055
+               _ExtentX        =   3625
+               _ExtentY        =   661
+               _Version        =   393216
+               ForeColor       =   16711680
+               AutoTab         =   -1  'True
+               MaxLength       =   8
+               BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+                  Name            =   "Arial"
+                  Size            =   15
+                  Charset         =   0
+                  Weight          =   400
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               PromptChar      =   " "
+            End
+         End
          Begin MSMask.MaskEdBox txtCshAmt 
             Height          =   390
             Left            =   3225
@@ -512,9 +593,9 @@ Begin VB.Form frmCYSCorrection
          End
          Begin MSMask.MaskEdBox txtCusCode 
             Height          =   390
-            Left            =   2175
+            Left            =   4335
             TabIndex        =   27
-            Top             =   4725
+            Top             =   4800
             Width           =   1365
             _ExtentX        =   2408
             _ExtentY        =   688
@@ -534,13 +615,13 @@ Begin VB.Form frmCYSCorrection
             PromptChar      =   " "
          End
          Begin MSMask.MaskEdBox txtADRAmt 
-            Height          =   390
-            Left            =   150
+            Height          =   375
+            Left            =   120
             TabIndex        =   26
-            Top             =   4725
-            Width           =   1965
-            _ExtentX        =   3466
-            _ExtentY        =   688
+            Top             =   4800
+            Width           =   2055
+            _ExtentX        =   3625
+            _ExtentY        =   661
             _Version        =   393216
             ForeColor       =   16711680
             AutoTab         =   -1  'True
@@ -559,11 +640,11 @@ Begin VB.Form frmCYSCorrection
          End
          Begin MSMask.MaskEdBox txtCustomer 
             Height          =   390
-            Left            =   3600
+            Left            =   5760
             TabIndex        =   28
-            Top             =   4725
-            Width           =   5115
-            _ExtentX        =   9022
+            Top             =   4800
+            Width           =   3000
+            _ExtentX        =   5292
             _ExtentY        =   688
             _Version        =   393216
             ForeColor       =   -2147483641
@@ -582,6 +663,41 @@ Begin VB.Form frmCYSCorrection
             Format          =   "#,###,##0.00"
             PromptChar      =   " "
          End
+         Begin MSMask.MaskEdBox utxtAdrNumAll 
+            Height          =   375
+            Left            =   2220
+            TabIndex        =   54
+            Top             =   4800
+            Width           =   1995
+            _ExtentX        =   3519
+            _ExtentY        =   661
+            _Version        =   393216
+            ForeColor       =   16711680
+            AutoTab         =   -1  'True
+            MaxLength       =   12
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Arial"
+               Size            =   15
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            PromptChar      =   " "
+         End
+         Begin VB.Label Label1 
+            Alignment       =   2  'Center
+            Appearance      =   0  'Flat
+            BorderStyle     =   1  'Fixed Single
+            Caption         =   "OR NUMBER"
+            ForeColor       =   &H00004080&
+            Height          =   315
+            Left            =   2220
+            TabIndex        =   53
+            Top             =   4440
+            Width           =   1995
+         End
          Begin VB.Label Label3 
             Alignment       =   2  'Center
             Appearance      =   0  'Flat
@@ -589,10 +705,10 @@ Begin VB.Form frmCYSCorrection
             Caption         =   "CUSTOMER NAME"
             ForeColor       =   &H00004080&
             Height          =   315
-            Left            =   3600
+            Left            =   5760
             TabIndex        =   52
-            Top             =   4350
-            Width           =   5115
+            Top             =   4440
+            Width           =   3015
          End
          Begin VB.Label Label2 
             Alignment       =   2  'Center
@@ -601,10 +717,10 @@ Begin VB.Form frmCYSCorrection
             Caption         =   "ADR AMOUNT"
             ForeColor       =   &H00004080&
             Height          =   315
-            Left            =   150
+            Left            =   120
             TabIndex        =   50
-            Top             =   4350
-            Width           =   1965
+            Top             =   4440
+            Width           =   2055
          End
          Begin VB.Label Label55 
             Alignment       =   2  'Center
@@ -613,9 +729,9 @@ Begin VB.Form frmCYSCorrection
             Caption         =   "CODE"
             ForeColor       =   &H00004080&
             Height          =   315
-            Left            =   2175
+            Left            =   4335
             TabIndex        =   49
-            Top             =   4350
+            Top             =   4440
             Width           =   1365
          End
          Begin VB.Label lblChkTot 
@@ -1076,7 +1192,7 @@ Private Sub txtADRAmt_GotFocus()
     With txtADRAmt
         .BackColor = vbInfoBackground
         .SelStart = 0
-        .SelLength = Len(Trim(.Text))
+        .SelLength = Len(.Text)
     End With
 End Sub
 
@@ -1118,7 +1234,7 @@ End Sub
 
 Private Sub txtADRAmt_LostFocus()
     txtADRAmt.BackColor = vbWindowBackground
-'    If (CCur("0" & Trim(txtADRAmt)) = 0) Then txtCusCode = Space(txtCusCode.MaxLength)
+    If (CCur("0" & Trim(txtADRAmt)) = 0) Then utxtAdrNum(0) = "0": utxtAdrNum(1) = 0: utxtAdrNum(2) = 0: utxtAdrNumAll_LostFocus
     Call lzComputePay
 End Sub
 
@@ -2392,3 +2508,35 @@ Dim prmGetCustomer As ADODB.Parameter
      End With
     
 End Function
+
+Private Sub utxtAdrNum_GotFocus(Index As Integer)
+With utxtAdrNum(Index)
+.SelLength = Len(.Text)
+End With
+End Sub
+
+Private Sub utxtAdrNum_KeyDown(Index As Integer, KeyCode As Integer, Shift As Integer)
+If KeyCode = vbKeyReturn Then
+If Index > 2 And CLng(utxtAdrNum(Index)) > 0 Then utxtAdrNum(Index + 1).SetFocus Else cmdSave.SetFocus
+End If
+End Sub
+
+Private Sub utxtAdrNum_LostFocus(Index As Integer)
+If ActiveControl <> utxtAdrNum(0) And ActiveControl <> utxtAdrNum(1) And ActiveControl <> utxtAdrNum(2) Then Frame6.Visible = False
+On Error GoTo parse
+utxtAdrNum(Index) = CLng(utxtAdrNum(Index))
+utxtAdrNumAll_LostFocus
+Exit Sub
+parse:
+utxtAdrNum(Index) = 0
+utxtAdrNumAll_LostFocus
+End Sub
+
+Private Sub utxtAdrNumAll_GotFocus()
+Frame6.Visible = True
+utxtAdrNum(0).SetFocus
+End Sub
+
+Private Sub utxtAdrNumAll_LostFocus()
+utxtAdrNumAll = utxtAdrNum(0) & " / " & utxtAdrNum(1) & " / " & utxtAdrNum(2)
+End Sub
