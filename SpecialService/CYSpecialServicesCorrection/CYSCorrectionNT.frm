@@ -1774,6 +1774,10 @@ Dim n As Integer
     lblChkTot = ""
     txtCusCode = Space(txtCusCode.MaxLength)
     txtADRAmt = ""
+    utxtAdrNumAll = ""
+    utxtAdrNum(0) = ""
+    utxtAdrNum(1) = ""
+    utxtAdrNum(2) = ""
     lblChange = ""
     txtCustomer = Space(txtCustomer.MaxLength)
     cmdSave.Enabled = False
@@ -1827,7 +1831,10 @@ On Error Resume Next
             txtCusCode = !cuscde
             txtADRAmt = IIf(!adramt > 0, Format(!adramt, "#,###,##0.00"), "")
             curOldADRAmt = !adramt
-            nOldADRNo = !adrnum
+            utxtAdrNum(0) = !adrnum
+            utxtAdrNum(1) = !adrnum2
+            utxtAdrNum(2) = !adrnum3
+            utxtAdrNumAll_LostFocus
             txtCustomer = !cusnam
             txtCustomer.Enabled = (curOldADRAmt = 0)
             
@@ -2199,7 +2206,7 @@ Dim sSQL As String
 Dim n As Integer
 Dim dLogDate As Date
 Dim curADRAmt As Currency
-Dim vADRNum As Long
+
 '
 '    vADRNum = 0
 '    curADRAmt = CCur("0" & txtADRAmt)
@@ -2253,6 +2260,8 @@ Dim vADRNum As Long
         rstLog!cshamt = rst!cshamt
         rstLog!adramt = rst!adramt
         rstLog!adrnum = rst!adrnum
+        rstLog!adrnum2 = rst!adrnum2
+        rstLog!adrnum3 = rst!adrnum3
         rstLog!chgamt = rst!chgamt
         rstLog!chkno1 = rst!chkno1
         rstLog!chkno2 = rst!chkno2
@@ -2282,7 +2291,9 @@ Dim vADRNum As Long
         rst!cusnam = Left(Trim(txtCustomer), 40)
         rst!cshamt = CCur("0" & txtCshAmt)
         rst!adramt = CCur("0" & txtADRAmt)
-        rst!adrnum = vADRNum
+        rst!adrnum = utxtAdrNum(0)
+        rst!adrnum2 = utxtAdrNum(1)
+        rst!adrnum3 = utxtAdrNum(2)
         rst!chgamt = CCur("0" & lblChange)
         rst!chkno1 = txtChkNo(0)
         rst!chkno2 = txtChkNo(1)
@@ -2310,6 +2321,8 @@ Dim vADRNum As Long
         rstLog!cshamt = rst!cshamt
         rstLog!adramt = rst!adramt
         rstLog!adrnum = rst!adrnum
+        rstLog!adrnum2 = rst!adrnum2
+        rstLog!adrnum3 = rst!adrnum3
         rstLog!chgamt = rst!chgamt
         rstLog!chkno1 = rst!chkno1
         rstLog!chkno2 = rst!chkno2
