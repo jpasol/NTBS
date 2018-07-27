@@ -408,7 +408,7 @@ NumToTextError:
 End Function
 
 
-Private Sub OutCCRPC(pRefnum As Long, pCCRNum As Long)
+Private Sub OutCCRPC(pRefnum As Long, pCCrnum As Long)
 ' *************************
 ' ** Printing of receipt **
 ' *************************
@@ -454,9 +454,21 @@ Dim strChqAmt As String
 Dim strCshAmt As String
 Dim rsCCRPay As ADODB.Recordset
 Dim strAdrAmt As String
+Dim intMaxSeq As Integer
+Dim n As Integer
+Dim adrnum As String    'ADR String
+Dim pAdrnum As Long     'ADRNUM 1
+Dim pAdrnum2 As Long    'ADRNUM 2
+Dim pAdrnum3 As Long    'ADRNUM 3
 
-ctrCnt = 11
 
+Set rsCCRDetail = New ADODB.Recordset
+rsCCRDetail.Open "Select Max(seqnum) from CCRdtl where refnum = '" & Trim(CStr(pRefnum)) & "' and ccrnum ='" & Trim(pCCrnum) & "'", gcnnBilling, adOpenDynamic, adLockOptimistic, adCmdText
+'intMaxSeq = rsCCRDetail.Fields(0) 'get Max Sequence
+If IsNull(rsCCRDetail.Fields(0)) Then MsgBox "Record not Found": Exit Sub Else n = rsCCRDetail.Fields(0) 'Modified to Get Specific Sequence
+'For n = 1 To intMaxSeq 'Disabled for Single Printing
+ctrCnt = 7 '8th Container
+On Error Resume Next
     Set rsCCRPay = New ADODB.Recordset
     rsCCRPay.Open "SELECT cusnam, userid From CCRPay WHERE refnum = " & Trim(CStr(pRefnum)), _
             gcnnBilling, adOpenDynamic, adLockOptimistic, adCmdText
@@ -467,12 +479,8 @@ ctrCnt = 11
     rsCCRPay.Close
     
 Set rsCCRDetail = New ADODB.Recordset
-'rsCCRDetail.Open "SELECT * From CCRdtl WHERE refnum = " & Trim(CStr(pRefnum)) & "" _
-'        & " order by itmnum", _
-'        gcnnBilling, adOpenDynamic, adLockOptimistic, adCmdText
-rsCCRDetail.Open "SELECT * From CCRdtl WHERE refnum = " & Trim(CStr(pRefnum)) & "" _
-        & " AND ccrnum = " & Trim(CStr(pCCRNum)) & "" _
-        & " order by itmnum", _
+rsCCRDetail.Open "SELECT * From CCRdtl WHERE refnum = " & Trim(CStr(pRefnum)) & " and seqnum=" & n _
+        & " order by  itmnum", _
         gcnnBilling, adOpenDynamic, adLockOptimistic, adCmdText
 If rsCCRDetail.BOF <> True And rsCCRDetail.EOF <> True Then
     With rsCCRDetail
@@ -563,14 +571,14 @@ If rsCCRDetail.BOF <> True And rsCCRDetail.EOF <> True Then
                 sValidUntil = .Fields("enstodttm") & IIf(.Fields("chargetyp") = "IMRF", .Fields("rfrhrs"), "")
             End If
             
-            Amount = CDbl(.Fields("amt")) + CDbl(.Fields("dgramt")) + CDbl(.Fields("ovzamt")) + CDbl(.Fields("vatamt")) - CDbl(.Fields("wtax"))
+            Amount = CSng(.Fields("amt")) + CSng(.Fields("dgramt")) + CSng(.Fields("ovzamt")) + CSng(.Fields("vatamt")) - CSng(.Fields("wtax"))
             'Printer.Print Space(2) & strSize & Space(1) & strCtnnum & Space(2) & RevTonnage & Space(2) & strArrastre & Space(29) & strArrastre
             'sharon 05Nov2009 Printer.Print Space(2) & strSize & Space(1) & strCtnnum & Space(2) & RevTonnage & Space(2) & strArrastre & Space(2) & strWgh & Space(26) & Format(CDbl(strArrastre) + CDbl(strWgh), "###,###,###.#0")
             'printing of container numbers, container size, amount, rate code and rate description
             Printer.Print Space(2) & strSize & Space(1) & strCtnnum & Space(2) & sDays & Space(2) & sRateDescription & Space(2) & docRefNo & Space(2) & sValidUntilText & Space(2); sValidUntil & Space(6) & Format(CDbl(Amount), "###,###,###.#0")
             TotalAmount = TotalAmount + Amount
-            TotalVatAmount = TotalVatAmount + CDbl(.Fields("vatamt"))
-            TotalTaxAmount = TotalTaxAmount + CDbl(.Fields("wtax"))
+            TotalVatAmount = TotalVatAmount + CSng(.Fields("vatamt"))
+            TotalTaxAmount = TotalTaxAmount + CSng(.Fields("wtax"))
             strRemarks = Trim(.Fields("remark"))
             ctrCnt = ctrCnt - 1
             .MoveNext
@@ -629,19 +637,19 @@ If rsCCRDetail.BOF <> True And rsCCRDetail.EOF <> True Then
         With rsCCRPay
         'get the Header/footer data
             If IsNull(.Fields("chkamt1")) = False Then
-                TotalCheckAmount = TotalCheckAmount + CCur(.Fields("chkamt1"))
+                TotalCheckAmount = TotalCheckAmount + CSng(.Fields("chkamt1"))
             End If
             If IsNull(.Fields("chkamt2")) = False Then
-                TotalCheckAmount = TotalCheckAmount + CCur(.Fields("chkamt2"))
+                TotalCheckAmount = TotalCheckAmount + CSng(.Fields("chkamt2"))
             End If
             If IsNull(.Fields("chkamt3")) = False Then
-                TotalCheckAmount = TotalCheckAmount + CCur(.Fields("chkamt3"))
+                TotalCheckAmount = TotalCheckAmount + CSng(.Fields("chkamt3"))
             End If
             If IsNull(.Fields("chkamt4")) = False Then
-                TotalCheckAmount = TotalCheckAmount + CCur(.Fields("chkamt4"))
+                TotalCheckAmount = TotalCheckAmount + CSng(.Fields("chkamt4"))
             End If
             If IsNull(.Fields("chkamt5")) = False Then
-                TotalCheckAmount = TotalCheckAmount + CCur(.Fields("chkamt5"))
+                TotalCheckAmount = TotalCheckAmount + CSng(.Fields("chkamt5"))
             End If
             
             strChqAmt = Format(TotalCheckAmount, "###,###.00")
@@ -664,12 +672,21 @@ If rsCCRDetail.BOF <> True And rsCCRDetail.EOF <> True Then
             Printer.CurrentX = Printer.ScaleWidth - Printer.TextWidth(tmpString)
             Printer.Print tmpString
             
-            Dim strAdrnum As String
-            strAdrnum = " " & CLng(.Fields("adrnum")) & "                               "
-            If CLng(Trim(strAdrnum)) = 0 Then strAdrnum = Space(18)
-            strAdrnum = Left(strAdrnum, 18)
-            tmpString = strAdrAmt & " AD" & strAdrnum
-            Printer.CurrentX = Printer.ScaleWidth - Printer.TextWidth(tmpString)
+            ''''''''''''''''''''''''''''''''''''''''
+            pAdrnum = CLng(.Fields("adrnum"))   'Set ADRNUM
+            pAdrnum2 = CLng(.Fields("adrnum2")) '2
+            pAdrnum3 = CLng(.Fields("adrnum3")) '3
+            ''''''''''''''''''''''''''''''''''''''''
+            
+            adrnum = " "                                                                        'Empty
+            If pAdrnum > 0 Then adrnum = adrnum & pAdrnum                                       'Check 1 if >0
+            If pAdrnum2 > 0 Then adrnum = adrnum & " / " & pAdrnum2                             'Check 2
+            If pAdrnum3 > 0 Then adrnum = adrnum & " / " & pAdrnum3                             'Check3
+            If Len(adrnum) <= 18 Then adrnum = adrnum & Space(18): adrnum = Left(adrnum, 18) _
+            Else adrnum = adrnum & Space(5)                                                     'Space 18 then Read 18
+            tmpString = strAdrAmt & " AD" & adrnum                                              'Add AD for Printing
+            
+            Printer.CurrentX = Printer.ScaleWidth - Printer.TextWidth(tmpString)                'Start from left adjusted by 18 spaces
             Printer.Print tmpString
             
 '            tmpString = strAdrAmt & " AD"
@@ -733,14 +750,15 @@ If rsCCRDetail.BOF <> True And rsCCRDetail.EOF <> True Then
     
     Printer.FontSize = 10
     Printer.EndDoc
-Else
-MsgBox "Reference/CCR # not found!", vbExclamation, "Error"
 
 End If
 
 rsCCRDetail.Close
 Set rsCCRDetail = Nothing
-
+'Next n
 End Sub
+
+
+
 
 
