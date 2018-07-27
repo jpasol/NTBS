@@ -1,11 +1,11 @@
 VERSION 5.00
 Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT 
-   ClientHeight    =   14040
+   ClientHeight    =   10485
    ClientLeft      =   0
    ClientTop       =   0
-   ClientWidth     =   22155
-   _ExtentX        =   39079
-   _ExtentY        =   24765
+   ClientWidth     =   20940
+   _ExtentX        =   36936
+   _ExtentY        =   18494
    FolderFlags     =   1
    TypeLibGuid     =   "{2D835FC3-0BA4-11D3-BD67-00105A64485A}"
    TypeInfoGuid    =   "{2D835FC4-0BA4-11D3-BD67-00105A64485A}"
@@ -16,7 +16,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
       ConnectionName  =   "Billing"
       ConnDispId      =   1001
       SourceOfData    =   3
-      ConnectionSource=   "Provider=SQLOLEDB.1;Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=sbitcbilling;Data Source=SBITC-DEV"
+      ConnectionSource=   "Provider=SQLOLEDB.1;Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=billing;Data Source=sbitcbilling"
       Expanded        =   -1  'True
       IsSQL           =   -1  'True
       QuoteChar       =   34

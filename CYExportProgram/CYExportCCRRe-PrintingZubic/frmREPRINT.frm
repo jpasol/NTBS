@@ -1,7 +1,7 @@
 VERSION 5.00
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
 Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "MSFLXGRD.OCX"
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "tabctl32.OCX"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Begin VB.Form frmREPRINT 
    BorderStyle     =   0  'None
    Caption         =   "( SUBIC - ZCCRCYREPRT ) CY Export CCR Re-Printing"
@@ -58,11 +58,11 @@ Begin VB.Form frmREPRINT
          EndProperty
          BeginProperty Panel5 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   6
-            TextSave        =   "5/8/2018"
+            TextSave        =   "07/27/2018"
          EndProperty
          BeginProperty Panel6 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
-            TextSave        =   "10:39 AM"
+            TextSave        =   "3:53 PM"
          EndProperty
       EndProperty
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -534,6 +534,9 @@ End Sub
 Private Sub Form_Unload(Cancel As Integer)
     Set CCR = Nothing
 End Sub
+
+
+
 Private Sub txtTab_Change(Index As Integer)
     txtReference.Caption = " "
 End Sub
@@ -654,14 +657,14 @@ Public Sub ByCCR()
     txtTab(1).Enabled = True
 End Sub
 Public Function ReadAndPrintFlxRef() As Boolean
-    Dim x As Integer
+    Dim X As Integer
     If flxR > 1 Then
         With flxRef
-            For x = 1 To (flxR - 1)
-                If Trim(.TextMatrix(x, 0)) = "1" Then
-                    CCR.CCRNumber = CLng(Trim(.TextMatrix(x, 3)))
-                    CCR.PrintCCR CLng(Trim(.TextMatrix(x, 1)))
-                    .TextMatrix(x, 0) = " "
+            For X = 1 To (flxR - 1)
+                If Trim(.TextMatrix(X, 0)) = "1" Then
+                    CCR.CCRNumber = CLng(Trim(.TextMatrix(X, 3)))
+                    CCR.PrintCCR CLng(Trim(.TextMatrix(X, 1)))
+                    .TextMatrix(X, 0) = " "
                 End If
             Next
         End With

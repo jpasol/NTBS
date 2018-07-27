@@ -10,6 +10,7 @@ Public Customer As String
 Public strCommodity As String
 Public AdrAmount As Single
 
+
 Public strAdrAmt As String * 12
 Public strCashAmt As String * 12
 
