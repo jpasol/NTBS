@@ -3607,11 +3607,11 @@ Begin VB.Form frmCCRde06
          EndProperty
          BeginProperty Panel5 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   6
-            TextSave        =   "07/25/2018"
+            TextSave        =   "07/27/2018"
          EndProperty
          BeginProperty Panel6 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
-            TextSave        =   "1:33 PM"
+            TextSave        =   "2:00 PM"
          EndProperty
       EndProperty
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -8297,6 +8297,8 @@ Dim remark3 As String
 Dim UserName As String
 Dim strValidation As String * 35
 Dim RevTonnage As String * 16
+Dim adrnum As String
+
 ctrCnt = 11
 On Error Resume Next
 WhfRteAmt = 0
@@ -8355,7 +8357,7 @@ If CD.BOF <> True And CD.EOF <> True Then
         strValidation = Trim(Refn) & " " & Trim(Seqf) & " " & Trim(CCRf) & " " & Format(.Fields("sysdttm"), "YY-MM-DD hh:nn")
         vslName = .Fields("vslcde") & ""
         Printer.Font = "Courier 12cpi"
-        Printer.Font = "Courier"
+'        Printer.Font = "Courier"
         Printer.FontSize = 10
 '        If Printer.Height > Printer.Width Then
 '            Printer.Orientation = vbPRORPortrait
@@ -8516,14 +8518,15 @@ If CD.BOF <> True And CD.EOF <> True Then
         Printer.CurrentX = Printer.ScaleWidth - Printer.TextWidth(tmpString)
         Printer.Print tmpString
         
-        Dim adrnum As String
-        adrnum = " " & pAdrNum
-        If pAdrNum2 > 0 Then adrnum = adrnum & " / " & pAdrNum2
-        If pAdrNum3 > 0 Then adrnum = adrnum & " / " & pAdrNum3
-        If Len(adrnum) <= 18 Then adrnum = adrnum & Space(18): adrnum = Left(adrnum, 18)
-        tmpString = strAdrAmt & " AD" & adrnum
-        
-        Printer.CurrentX = Printer.ScaleWidth - Printer.TextWidth(tmpString)
+        adrnum = " "                                                                        'Empty
+        If pAdrNum > 0 Then adrnum = adrnum & pAdrNum                                       'Check 1 if >0
+        If pAdrNum2 > 0 Then adrnum = adrnum & " / " & pAdrNum2                             'Check 2
+        If pAdrNum3 > 0 Then adrnum = adrnum & " / " & pAdrNum3                             'Check3
+        If Len(adrnum) <= 18 Then adrnum = adrnum & Space(18): adrnum = Left(adrnum, 18) _
+        Else adrnum = adrnum & Space(5)                                                     'Space 18 then Read 18
+        tmpString = strAdrAmt & " AD" & adrnum                                              'Add AD for Printing
+
+        Printer.CurrentX = Printer.ScaleWidth - Printer.TextWidth(tmpString)                'Start from left adjusted by 18 spaces
         Printer.Print tmpString
 
 
