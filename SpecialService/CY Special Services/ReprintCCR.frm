@@ -467,7 +467,7 @@ rsCCRDetail.Open "Select Max(seqnum) from CCRdtl where refnum = '" & Trim(CStr(p
 'intMaxSeq = rsCCRDetail.Fields(0) 'get Max Sequence
 If IsNull(rsCCRDetail.Fields(0)) Then MsgBox "Record not Found": Exit Sub Else n = rsCCRDetail.Fields(0) 'Modified to Get Specific Sequence
 'For n = 1 To intMaxSeq 'Disabled for Single Printing
-ctrCnt = 7 '8th Container
+ctrCnt = 11 'New Lines
 On Error Resume Next
     Set rsCCRPay = New ADODB.Recordset
     rsCCRPay.Open "SELECT cusnam, userid From CCRPay WHERE refnum = " & Trim(CStr(pRefnum)), _
