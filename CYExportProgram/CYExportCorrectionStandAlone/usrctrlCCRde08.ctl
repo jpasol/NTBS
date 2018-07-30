@@ -5153,7 +5153,7 @@ Private Sub MovePaymentToVariables(rstPay As Recordset)
 Dim rstDetails As adodb.Recordset
 DE.getDetails ReturnLong(utxtPymReference.Value)
 Set rstDetails = DE.rsgetDetails
-
+On Error Resume Next
 Call ClearPaymentVariables
 sngPymAmtPay = 0
 sngPymCash = 0
