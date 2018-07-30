@@ -363,7 +363,10 @@ Public Function PrintCCR(pRefnum As Long) As Boolean
     Dim lngAdrNum As Long
     Dim lngAdrNum2 As Long
     Dim lngAdrNum3 As Long
-            
+    lngAdrNum = 0
+    lngAdrNum2 = 0
+    lngAdrNum3 = 0
+    On Error Resume Next
     If ADR.Fields("adramt") <> 0 Or Not IsNull(ADR.Fields("adramt")) Then
         AdrAmt = ADR.Fields("adramt")
         lngAdrNum = ADR.Fields("adrnum")
