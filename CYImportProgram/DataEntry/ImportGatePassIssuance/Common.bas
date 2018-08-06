@@ -14,6 +14,8 @@ Public gbSupervisor As String
 Public dStorage As Date
 Public dReefer As Date
 
+Public rteCode As String
+
 ' INI variables
 Public gINIServer As String * 20
 Public gINIDatabase As String * 20
