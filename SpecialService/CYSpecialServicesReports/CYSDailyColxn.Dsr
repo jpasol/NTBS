@@ -1,9 +1,9 @@
 VERSION 5.00
 Begin {BD4B4E61-F7B8-11D0-964D-00A0C9273C2A} rptDailyColxn 
-   ClientHeight    =   14040
+   ClientHeight    =   10485
    ClientLeft      =   0
    ClientTop       =   0
-   ClientWidth     =   22155
+   ClientWidth     =   20940
    OleObjectBlob   =   "CYSDailyColxn.dsx":0000
 End
 Attribute VB_Name = "rptDailyColxn"

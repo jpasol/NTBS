@@ -1,8 +1,8 @@
 cCYSRPT = 44, 44, 545, 519, Z
 modCommon = 110, 110, 606, 585, 
-rptSOInquiry = 0, 0, 0, 0, C, 22, 22, 738, 720, C
-rptStoColxn = 23, 23, 504, 486, , 44, 44, 828, 734, C
-rptMonthly = 0, 0, 0, 0, C, 154, 154, 882, 852, C
-rptSOList = 0, 0, 0, 0, C, 66, 66, 785, 790, C
+rptSOInquiry = 0, 0, 0, 0, C, 22, 22, 738, 720, CZ
+rptStoColxn = 23, 23, 504, 486, , 44, 44, 828, 734, CZ
+rptMonthly = 0, 0, 0, 0, C, 154, 154, 882, 852, CZ
+rptSOList = 0, 0, 0, 0, C, 66, 66, 785, 790, CZ
 frmRptMain = 88, 88, 561, 563, , 66, 66, 539, 541, CZ
-rptDailyColxn = 44, 44, 770, 491, C, 88, 88, 1573, 1055, C
+rptDailyColxn = 44, 44, 770, 491, C, 88, 88, 1492, 818, C
