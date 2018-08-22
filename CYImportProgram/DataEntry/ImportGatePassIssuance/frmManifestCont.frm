@@ -63,47 +63,47 @@ Begin VB.Form frmManifestCont
       TabCaption(0)   =   "Permit"
       TabPicture(0)   =   "frmManifestCont.frx":0006
       Tab(0).ControlEnabled=   0   'False
-      Tab(0).Control(0)=   "txtCompCode"
-      Tab(0).Control(1)=   "txtTransactionType"
-      Tab(0).Control(2)=   "txtCustomPermit"
-      Tab(0).Control(3)=   "txtSBMAPermit"
-      Tab(0).Control(4)=   "chkForExam"
-      Tab(0).Control(5)=   "txtRegistry"
-      Tab(0).Control(6)=   "txtBL"
-      Tab(0).Control(7)=   "cmdNextBL"
-      Tab(0).Control(8)=   "lblManifest(74)"
-      Tab(0).Control(9)=   "lblManifest(43)"
-      Tab(0).Control(10)=   "lblManifest(42)"
-      Tab(0).Control(11)=   "lblManifest(41)"
-      Tab(0).Control(12)=   "lblManifest(29)"
-      Tab(0).Control(13)=   "lblManifest(37)"
-      Tab(0).Control(14)=   "lblManifest(36)"
-      Tab(0).Control(15)=   "lblManifest(35)"
+      Tab(0).Control(0)=   "lblManifest(35)"
+      Tab(0).Control(1)=   "lblManifest(36)"
+      Tab(0).Control(2)=   "lblManifest(37)"
+      Tab(0).Control(3)=   "lblManifest(29)"
+      Tab(0).Control(4)=   "lblManifest(41)"
+      Tab(0).Control(5)=   "lblManifest(42)"
+      Tab(0).Control(6)=   "lblManifest(43)"
+      Tab(0).Control(7)=   "lblManifest(74)"
+      Tab(0).Control(8)=   "cmdNextBL"
+      Tab(0).Control(9)=   "txtBL"
+      Tab(0).Control(10)=   "txtRegistry"
+      Tab(0).Control(11)=   "chkForExam"
+      Tab(0).Control(12)=   "txtSBMAPermit"
+      Tab(0).Control(13)=   "txtCustomPermit"
+      Tab(0).Control(14)=   "txtTransactionType"
+      Tab(0).Control(15)=   "txtCompCode"
       Tab(0).ControlCount=   16
       TabCaption(1)   =   "Header"
       TabPicture(1)   =   "frmManifestCont.frx":0022
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "cmdNextHeader"
-      Tab(1).Control(1)=   "cmdPreviousHeader"
-      Tab(1).Control(2)=   "cboUnderGuarantee"
-      Tab(1).Control(3)=   "chkWharfageOnly"
-      Tab(1).Control(4)=   "chkWharfageExempt"
-      Tab(1).Control(5)=   "cboVAT"
-      Tab(1).Control(6)=   "txtCustomer"
-      Tab(1).Control(7)=   "txtBrokerNO"
-      Tab(1).Control(8)=   "mskGatePassNo"
-      Tab(1).Control(9)=   "lblManifest(5)"
-      Tab(1).Control(10)=   "lblManifest(4)"
-      Tab(1).Control(11)=   "lblManifest(1)"
-      Tab(1).Control(12)=   "lblManifest(0)"
-      Tab(1).Control(13)=   "lblManifest(2)"
+      Tab(1).Control(0)=   "lblManifest(2)"
+      Tab(1).Control(1)=   "lblManifest(0)"
+      Tab(1).Control(2)=   "lblManifest(1)"
+      Tab(1).Control(3)=   "lblManifest(4)"
+      Tab(1).Control(4)=   "lblManifest(5)"
+      Tab(1).Control(5)=   "mskGatePassNo"
+      Tab(1).Control(6)=   "txtBrokerNO"
+      Tab(1).Control(7)=   "txtCustomer"
+      Tab(1).Control(8)=   "cboVAT"
+      Tab(1).Control(9)=   "chkWharfageExempt"
+      Tab(1).Control(10)=   "chkWharfageOnly"
+      Tab(1).Control(11)=   "cboUnderGuarantee"
+      Tab(1).Control(12)=   "cmdPreviousHeader"
+      Tab(1).Control(13)=   "cmdNextHeader"
       Tab(1).ControlCount=   14
       TabCaption(2)   =   "Other Info"
       TabPicture(2)   =   "frmManifestCont.frx":003E
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "cmdNextOtherInfo"
+      Tab(2).Control(0)=   "fraOther"
       Tab(2).Control(1)=   "cmdPreviousOtherInfo"
-      Tab(2).Control(2)=   "fraOther"
+      Tab(2).Control(2)=   "cmdNextOtherInfo"
       Tab(2).ControlCount=   3
       TabCaption(3)   =   "Container"
       TabPicture(3)   =   "frmManifestCont.frx":005A
@@ -144,23 +144,36 @@ Begin VB.Form frmManifestCont
       TabCaption(4)   =   "Charges"
       TabPicture(4)   =   "frmManifestCont.frx":0076
       Tab(4).ControlEnabled=   0   'False
-      Tab(4).Control(0)=   "cmdViewGrid"
-      Tab(4).Control(1)=   "cmdAnother"
-      Tab(4).Control(2)=   "fraExpand"
-      Tab(4).Control(3)=   "fraStorageInfo"
-      Tab(4).Control(4)=   "fraCharges"
-      Tab(4).Control(5)=   "fraRunning"
-      Tab(4).Control(6)=   "cmdNextCharges"
-      Tab(4).Control(7)=   "cmdPreviousCharges"
-      Tab(4).Control(8)=   "msfCharges"
-      Tab(4).Control(9)=   "mskReeferHours"
-      Tab(4).Control(10)=   "lblManifest(71)"
-      Tab(4).Control(11)=   "lblManifest(34)"
+      Tab(4).Control(0)=   "lblManifest(34)"
+      Tab(4).Control(0).Enabled=   0   'False
+      Tab(4).Control(1)=   "lblManifest(71)"
+      Tab(4).Control(1).Enabled=   0   'False
+      Tab(4).Control(2)=   "mskReeferHours"
+      Tab(4).Control(2).Enabled=   0   'False
+      Tab(4).Control(3)=   "msfCharges"
+      Tab(4).Control(3).Enabled=   0   'False
+      Tab(4).Control(4)=   "cmdPreviousCharges"
+      Tab(4).Control(4).Enabled=   0   'False
+      Tab(4).Control(5)=   "cmdNextCharges"
+      Tab(4).Control(5).Enabled=   0   'False
+      Tab(4).Control(6)=   "fraRunning"
+      Tab(4).Control(6).Enabled=   0   'False
+      Tab(4).Control(7)=   "fraCharges"
+      Tab(4).Control(7).Enabled=   0   'False
+      Tab(4).Control(8)=   "fraStorageInfo"
+      Tab(4).Control(8).Enabled=   0   'False
+      Tab(4).Control(9)=   "fraExpand"
+      Tab(4).Control(9).Enabled=   0   'False
+      Tab(4).Control(10)=   "cmdAnother"
+      Tab(4).Control(10).Enabled=   0   'False
+      Tab(4).Control(11)=   "cmdViewGrid"
+      Tab(4).Control(11).Enabled=   0   'False
       Tab(4).ControlCount=   12
       TabCaption(5)   =   "Payment"
       TabPicture(5)   =   "frmManifestCont.frx":0092
       Tab(5).ControlEnabled=   0   'False
       Tab(5).Control(0)=   "fraPayment"
+      Tab(5).Control(0).Enabled=   0   'False
       Tab(5).ControlCount=   1
       Begin VB.TextBox txtCompCode 
          Enabled         =   0   'False
@@ -1217,7 +1230,7 @@ Begin VB.Form frmManifestCont
             EndProperty
             CalendarBackColor=   16777215
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   310312963
+            Format          =   220659715
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtStorageFree 
@@ -1239,7 +1252,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   310312963
+            Format          =   220659715
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtEndStorage 
@@ -1261,7 +1274,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   310312963
+            Format          =   220659715
             CurrentDate     =   32874
          End
          Begin VB.Label lblManifest 
@@ -4792,8 +4805,8 @@ Private Sub cmdAnother_Click()
     'sstMain.Tab = cTabOtherInfo
     
     'PRNH
-    Call InitializeSomeComputationVariables
     If cntIndex < cntCount - 1 Then
+        Call InitializeSomeComputationVariables
         sstMain.Tab = cTabContainer
         cntIndex = cntIndex + 1
         cmbConNo.ListIndex = cntIndex
@@ -9228,7 +9241,7 @@ Private Sub ComputeStorage()
         mskPayableDays = CCur(mskPayableDays) 'sharon + 10
     End If
 
-    If CCur(mskRevenueTon) > 0 Then
+    If CCur(mskRevenueTon) > 0 And Left(cboStorageStat, 1) <> "8" Then 'No Storage Flat Rack
         Select Case txtContainer(1)
             Case "20"
                 curOHRate = SearchInRates("STOOH1", Trim(txtContainer(1)))
