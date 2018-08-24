@@ -1,9 +1,9 @@
 VERSION 5.00
 Begin {BD4B4E61-F7B8-11D0-964D-00A0C9273C2A} SubicInvoice 
-   ClientHeight    =   8895
+   ClientHeight    =   10485
    ClientLeft      =   0
    ClientTop       =   0
-   ClientWidth     =   16545
+   ClientWidth     =   20940
    OleObjectBlob   =   "SubicInvoice.dsx":0000
 End
 Attribute VB_Name = "SubicInvoice"
