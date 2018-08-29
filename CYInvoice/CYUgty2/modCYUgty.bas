@@ -17,8 +17,8 @@ Public Declare Function WNetGetUser Lib "mpr" Alias "WNetGetUserA" (ByVal lpName
 
 Public Sub ConnectToBilling()
 Dim gConnStr As String
-    gConnStr = "Provider=SQLOLEDB;Data Source=SBITCBILLING;Initial Catalog=Billing;Integrated Security=SSPI"
-    'gConnStr = "Provider=SQLOLEDB;Data Source=SBITC-DEV;Initial Catalog=billing-ntbs-11162017;Integrated Security=SSPI"
+    'gConnStr = "Provider=SQLOLEDB;Data Source=SBITCBILLING;Initial Catalog=Billing;Integrated Security=SSPI"
+    gConnStr = "Provider=SQLOLEDB;Data Source=SBITC-DEV;Initial Catalog=sbitcbilling;Integrated Security=SSPI"
     Set gcnnBilling = New ADODB.Connection
     gcnnBilling.Open gConnStr
     gbConnected = True
