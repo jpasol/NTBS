@@ -1,12 +1,12 @@
 VERSION 5.00
-Object = "{C4847593-972C-11D0-9567-00A0C9273C2A}#8.0#0"; "CRVIEWER.DLL"
+Object = "{C4847593-972C-11D0-9567-00A0C9273C2A}#8.0#0"; "crviewer.dll"
 Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "msmask32.ocx"
-Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
+Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "comctl32.ocx"
 Begin VB.Form frmCYUgty 
    Caption         =   "SBITC Extraction of Underguarantee Bill"
    ClientHeight    =   10455
    ClientLeft      =   165
-   ClientTop       =   855
+   ClientTop       =   810
    ClientWidth     =   15240
    BeginProperty Font 
       Name            =   "MS Sans Serif"
@@ -289,12 +289,21 @@ Private Function ValidInvNum() As Boolean
 
 
 Private Sub Form_Load()
+    Me.Caption = Me.Caption & " v" & App.Major & "." & App.Minor & "." & App.Revision
     mskStrDte.Text = Format(Now, "YYYY/MM/DD")
     mskEndDte.Text = Format(Now, "YYYY/MM/DD")
     ChrgTyp = EX    ' set default to export
     ConnectToBilling
 End Sub
 
+
+Private Sub Form_Resize()
+CRViewer.Width = Me.ScaleWidth - CRViewer.Left
+CRViewer.Height = Me.ScaleHeight - CRViewer.Top - ProgressBar1.Height
+
+ProgressBar1.Width = Me.ScaleWidth - ProgressBar1.Left
+ProgressBar1.Top = CRViewer.Top + CRViewer.Height
+End Sub
 
 Private Sub mnuChgTyp_Click(Index As Integer)
     Select Case Index
@@ -782,13 +791,13 @@ Private Sub SaveINVCYB(pRefNum As Long, pItmNum As Integer, pRteCde As String, _
                 Case ""
                     .Fields("dyshrs") = 1
                 Case "STO"
-                    .Fields("rtedsc") = .Fields("rtedsc") & "-" & intStoDys & " DAY(S)"
+                    .Fields("rtedsc") = Left(.Fields("rtedsc") & "-" & intStoDys & " DAY(S)", 60)
                     .Fields("dyshrs") = intStoDys
                 Case "RFR"
-                    .Fields("rtedsc") = .Fields("rtedsc") & "-" & intRfrHrs & " HR(S)"
+                    .Fields("rtedsc") = Left(.Fields("rtedsc") & "-" & intRfrHrs & " HR(S)", 60)
                     .Fields("dyshrs") = intRfrHrs / 6
                 Case "WGH"
-                    .Fields("rtedsc") = .Fields("rtedsc") & " W/ADDL. WEIGHING CHARGE"
+                    .Fields("rtedsc") = Left(.Fields("rtedsc") & " W/ADDL. WEIGHING CHARGE", 60)
             End Select
             If pInvVat = 0 And pInvTax = 0 Then
                 pVatCde = "0"
