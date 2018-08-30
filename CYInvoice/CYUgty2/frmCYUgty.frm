@@ -853,9 +853,9 @@ Private Sub PreviewOutput(pLstInv As Long)
     Dim crInvoice As New crSubicRpt
     'Dim crInvoice As New CrystalReport1
     Dim tmpStartInv As Long
-
+    
     tmpStartInv = CLng(txtInvNum)
-
+    On Error Resume Next
     Do Until tmpStartInv > pLstInv
         crInvoice.ParameterFields(1).AddCurrentValue (tmpStartInv)
         crInvoice.ParameterFields(2).AddCurrentValue (Combo1.Text)
@@ -863,6 +863,7 @@ Private Sub PreviewOutput(pLstInv As Long)
         If ProgressBar1.Value > 90 Then ProgressBar1.Value = 0
         ProgressBar1.Value = ProgressBar1.Value + 2
     Loop
+    On Error GoTo 0
     'CRViewer.ReportSource = crInvoice
     CRViewer.ReportSource = crInvoice
     ProgressBar1.Value = 100
