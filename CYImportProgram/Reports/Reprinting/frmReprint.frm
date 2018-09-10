@@ -378,22 +378,23 @@ Dim dtmDateTo As Date
 Private Sub cmdDisplay_Click()
 Dim rsPay As New ADODB.Recordset
 Dim totChk As Double
+Dim totADR As Double
 cmdDisplay.Enabled = False
-rsPay.Open "Select cshamt, adramt, chkamt1, chkamt2,chkamt3,chkamt4,chkamt5 from CYMPAY where Refnum=" & mskReference, gcnnBilling
+rsPay.Open "Select cshamt, adramt,adramt2,adramt3, chkamt1, chkamt2,chkamt3,chkamt4,chkamt5 from CYMPAY where Refnum=" & mskReference, gcnnBilling
 If Not (rsPay.EOF And rsPay.BOF) Then
 totChk = rsPay.Fields("chkamt1") + _
             rsPay.Fields("chkamt2") + _
             rsPay.Fields("chkamt3") + _
             rsPay.Fields("chkamt4") + _
             rsPay.Fields("chkamt5")
-
+totADR = CDbl(rsPay.Fields("adramt")) + CDbl(rsPay.Fields("adramt2")) + CDbl(rsPay.Fields("adramt3"))
 
 ImportPrint.DiscardSavedData
 ImportPrint.ParameterFields(1).AddCurrentValue CLng(mskReference)
 ImportPrint.ParameterFields(2).AddCurrentValue gbSupervisor
 ImportPrint.ParameterFields(3).AddCurrentValue CDbl(rsPay.Fields("cshamt"))
 ImportPrint.ParameterFields(4).AddCurrentValue totChk
-ImportPrint.ParameterFields(5).AddCurrentValue CDbl(rsPay.Fields("adramt"))
+ImportPrint.ParameterFields(5).AddCurrentValue totADR
 
 rsPay.Close
 Set rsPay = Nothing
