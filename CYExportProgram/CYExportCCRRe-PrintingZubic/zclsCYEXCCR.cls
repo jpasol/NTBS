@@ -368,7 +368,7 @@ Public Function PrintCCR(pRefnum As Long) As Boolean
     lngAdrNum3 = 0
     On Error Resume Next
     If ADR.Fields("adramt") <> 0 Or Not IsNull(ADR.Fields("adramt")) Then
-        AdrAmt = ADR.Fields("adramt")
+        AdrAmt = ADR.Fields("adramt") + ADR.Fields("adramt2") + ADR.Fields("adramt3")
         lngAdrNum = ADR.Fields("adrnum")
         lngAdrNum2 = ADR.Fields("adrnum2")
         lngAdrNum3 = ADR.Fields("adrnum3")
