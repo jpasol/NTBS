@@ -24,6 +24,15 @@ Begin VB.Form frmSubicINVReprint
    ScaleHeight     =   8055
    ScaleWidth      =   10830
    StartUpPosition =   2  'CenterScreen
+   Begin VB.ComboBox cmbComp 
+      Height          =   465
+      ItemData        =   "frmSubicINVReprint.frx":0000
+      Left            =   3960
+      List            =   "frmSubicINVReprint.frx":000A
+      TabIndex        =   8
+      Top             =   960
+      Width           =   1815
+   End
    Begin CRVIEWERLibCtl.CRViewer CRViewer1 
       Height          =   6015
       Left            =   0
@@ -83,7 +92,7 @@ Begin VB.Form frmSubicINVReprint
       Left            =   3960
       MaxLength       =   2
       TabIndex        =   1
-      Top             =   1080
+      Top             =   1560
       Visible         =   0   'False
       Width           =   495
    End
@@ -106,6 +115,14 @@ Begin VB.Form frmSubicINVReprint
       WindowShowExportBtn=   0   'False
       WindowShowProgressCtls=   0   'False
    End
+   Begin VB.Label Label1 
+      Caption         =   "Company Code"
+      Height          =   495
+      Left            =   1680
+      TabIndex        =   7
+      Top             =   960
+      Width           =   2175
+   End
    Begin VB.Label Label3 
       Caption         =   "Invoice Number"
       Height          =   495
@@ -119,7 +136,7 @@ Begin VB.Form frmSubicINVReprint
       Height          =   375
       Left            =   720
       TabIndex        =   4
-      Top             =   1080
+      Top             =   1560
       Visible         =   0   'False
       Width           =   3135
    End
@@ -177,7 +194,10 @@ Dim tmpInvNo As Long
         'CYInvoice.ReportFileName = App.Path & "\SubicInvoice.rpt"
         'CYInvoice.ParameterFields(1) = "InvoiceNo; " & Trim(tmpInvNo) & ";TRUE"
         SubicInvoice.DiscardSavedData
-        SubicInvoice.ParameterFields.GetItemByName("InvoiceNo").AddCurrentValue CDbl(Trim(txtInvNum.Text))
+        On Error Resume Next
+        SubicInvoice.ParameterFields.GetItemByName("INVOICENUMBER").AddCurrentValue CDbl(Trim(txtInvNum.Text))
+        SubicInvoice.ParameterFields.GetItemByName("COMPANYCODE").AddCurrentValue cmbComp.Text
+        On Error GoTo 0
         CRViewer1.ReportSource = SubicInvoice
         CRViewer1.ViewReport
         
@@ -219,6 +239,7 @@ End Sub
 
 Private Sub Form_Load()
 Me.Caption = Me.Caption & " v" & App.Major & "." & App.Minor & "." & App.Revision
+cmbComp.ListIndex = 0
 End Sub
 
 Private Sub Form_Resize()
