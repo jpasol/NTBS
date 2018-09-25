@@ -1230,7 +1230,7 @@ Begin VB.Form frmManifestCont
             EndProperty
             CalendarBackColor=   16777215
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   173998083
+            Format          =   227213315
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtStorageFree 
@@ -1252,7 +1252,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   174063619
+            Format          =   227213315
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtEndStorage 
@@ -1274,7 +1274,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   174063619
+            Format          =   227213315
             CurrentDate     =   32874
          End
          Begin VB.Label lblManifest 
@@ -9214,7 +9214,7 @@ Private Sub ComputeStorage()
            'curStorageBasic = SearchInRates("IMST", Trim(txtContainer(1)))
             Select Case txtContainer(1)
                 Case "20"
-                    Select Case mskPayableDays
+                    Select Case CLng(mskPayableDays)
                     Case 1 To 9
                         curStorageBasic = SearchInRates("STOIM1", Trim(txtContainer(1)))
                     Case 10 To 19
@@ -9236,7 +9236,7 @@ Private Sub ComputeStorage()
                         curStorageBasic = SearchInRates("STOIPG", Trim(txtContainer(1)))
                     End Select
                 Case "45"
-                    Select Case mskPayableDays
+                    Select Case CLng(mskPayableDays)
                     Case 1 To 9
                         curStorageBasic = SearchInRates("STOIM3", Trim(txtContainer(1)))
                     Case 10 To 19
