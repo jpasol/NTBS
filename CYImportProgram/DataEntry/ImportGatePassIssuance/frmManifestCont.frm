@@ -1230,7 +1230,7 @@ Begin VB.Form frmManifestCont
             EndProperty
             CalendarBackColor=   16777215
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   220659715
+            Format          =   173998083
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtStorageFree 
@@ -1252,7 +1252,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   220659715
+            Format          =   174063619
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtEndStorage 
@@ -1274,7 +1274,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   220659715
+            Format          =   174063619
             CurrentDate     =   32874
          End
          Begin VB.Label lblManifest 
@@ -9121,58 +9121,7 @@ Private Sub ComputeStorage()
     Dim curOHRate As Currency
     
     curPHPAmount = SearchInRates("STO$RT", "")
-    If Left(cboStorageStat.Text, 1) = "6" And Left(txtRelayContainer, 1) = "E" Then
-       'curStorageBasic = SearchInRates("EXST", Trim(txtContainer(1)))
-        Select Case txtContainer(1)
-            Case "20"
-                curStorageBasic = SearchInRates("STOEX1", Trim(txtContainer(1)))
-            Case "40"
-                curStorageBasic = SearchInRates("STOEX2", Trim(txtContainer(1)))
-            Case "45"
-                curStorageBasic = SearchInRates("STOEX3", Trim(txtContainer(1)))
-        End Select
-    ElseIf Left(cboStorageStat.Text, 1) = "7" Then
-        Select Case txtContainer(1)
-            Case "20"
-                curStorageBasic = SearchInRates("STOFT1", Trim(txtContainer(1)))
-            Case "40"
-                curStorageBasic = SearchInRates("STOFT2", Trim(txtContainer(1)))
-            Case "45"
-                curStorageBasic = SearchInRates("STOFT3", Trim(txtContainer(1)))
-        End Select
-    ElseIf Left(cboStorageStat.Text, 1) <> "8" Then
-        If txtTransactionType = "F" Then
-           'curStorageBasic = SearchInRates("IMST", Trim(txtContainer(1)))
-            Select Case txtContainer(1)
-                Case "20"
-                    curStorageBasic = SearchInRates("STOIM1", Trim(txtContainer(1)))
-                Case "40"
-                    curStorageBasic = SearchInRates("STOIM2", Trim(txtContainer(1)))
-                Case "45"
-                    curStorageBasic = SearchInRates("STOIM3", Trim(txtContainer(1)))
-            End Select
-        Else
-            'curStorageBasic = SearchInRates("IMSTD", Trim(txtContainer(1)))
-            Select Case txtContainer(1)
-                Case "20"
-                    curStorageBasic = SearchInRates("STODO1", Trim(txtContainer(1)))
-                Case "40"
-                    curStorageBasic = SearchInRates("STODO2", Trim(txtContainer(1)))
-                Case "45"
-                    curStorageBasic = SearchInRates("STODO3", Trim(txtContainer(1)))
-            End Select
-        End If
-        If blnReefer Then
-            Select Case txtContainer(1)
-                Case "20"
-                    curStorageBasic = SearchInRates("STOIM4", Trim(txtContainer(1)))
-                Case "40"
-                    curStorageBasic = SearchInRates("STOIM5", Trim(txtContainer(1)))
-                Case "45"
-                    curStorageBasic = SearchInRates("STOIM6", Trim(txtContainer(1)))
-            End Select
-        End If
-    End If
+
     
     'start storage date
     Select Case Left(cboStorageStat, 1)
@@ -9240,6 +9189,87 @@ Private Sub ComputeStorage()
     Else
         mskPayableDays = CCur(mskPayableDays) 'sharon + 10
     End If
+''''''''''''''''''''''''''''''''''Placed Later to Use payable days as selector'''''''''''''''''
+    If Left(cboStorageStat.Text, 1) = "6" And Left(txtRelayContainer, 1) = "E" Then
+       'curStorageBasic = SearchInRates("EXST", Trim(txtContainer(1)))
+        Select Case txtContainer(1)
+            Case "20"
+                curStorageBasic = SearchInRates("STOEX1", Trim(txtContainer(1)))
+            Case "40"
+                curStorageBasic = SearchInRates("STOEX2", Trim(txtContainer(1)))
+            Case "45"
+                curStorageBasic = SearchInRates("STOEX3", Trim(txtContainer(1)))
+        End Select
+    ElseIf Left(cboStorageStat.Text, 1) = "7" Then
+        Select Case txtContainer(1)
+            Case "20"
+                curStorageBasic = SearchInRates("STOFT1", Trim(txtContainer(1)))
+            Case "40"
+                curStorageBasic = SearchInRates("STOFT2", Trim(txtContainer(1)))
+            Case "45"
+                curStorageBasic = SearchInRates("STOFT3", Trim(txtContainer(1)))
+        End Select
+    ElseIf Left(cboStorageStat.Text, 1) <> "8" Then
+        If txtTransactionType = "F" Then
+           'curStorageBasic = SearchInRates("IMST", Trim(txtContainer(1)))
+            Select Case txtContainer(1)
+                Case "20"
+                    Select Case mskPayableDays
+                    Case 1 To 9
+                        curStorageBasic = SearchInRates("STOIM1", Trim(txtContainer(1)))
+                    Case 10 To 19
+                        curStorageBasic = SearchInRates("STOIPA", Trim(txtContainer(1)))
+                    Case 20 To 29
+                        curStorageBasic = SearchInRates("STOIPC", Trim(txtContainer(1)))
+                    Case Is >= 30
+                        curStorageBasic = SearchInRates("STOIPF", Trim(txtContainer(1)))
+                    End Select
+                Case "40"
+                    Select Case CLng(mskPayableDays)
+                    Case 1 To 9
+                        curStorageBasic = SearchInRates("STOIM2", Trim(txtContainer(1)))
+                    Case 10 To 19
+                        curStorageBasic = SearchInRates("STOIPB", Trim(txtContainer(1)))
+                    Case 20 To 29
+                        curStorageBasic = SearchInRates("STOIPD", Trim(txtContainer(1)))
+                    Case Is >= 30
+                        curStorageBasic = SearchInRates("STOIPG", Trim(txtContainer(1)))
+                    End Select
+                Case "45"
+                    Select Case mskPayableDays
+                    Case 1 To 9
+                        curStorageBasic = SearchInRates("STOIM3", Trim(txtContainer(1)))
+                    Case 10 To 19
+                        ''''''''''''''''''''N/A'''''''''''''''''''''
+                    Case 20 To 29
+                        ''''''''''''''''''''N/A'''''''''''''''''''''
+                    Case Is >= 30
+                        curStorageBasic = SearchInRates("STOIPH", Trim(txtContainer(1)))
+                    End Select
+            End Select
+        Else
+            'curStorageBasic = SearchInRates("IMSTD", Trim(txtContainer(1)))
+            Select Case txtContainer(1)
+                Case "20"
+                    curStorageBasic = SearchInRates("STODO1", Trim(txtContainer(1)))
+                Case "40"
+                    curStorageBasic = SearchInRates("STODO2", Trim(txtContainer(1)))
+                Case "45"
+                    curStorageBasic = SearchInRates("STODO3", Trim(txtContainer(1)))
+            End Select
+        End If
+        If blnReefer Then
+            Select Case txtContainer(1)
+                Case "20"
+                    curStorageBasic = SearchInRates("STOIM4", Trim(txtContainer(1)))
+                Case "40"
+                    curStorageBasic = SearchInRates("STOIM5", Trim(txtContainer(1)))
+                Case "45"
+                    curStorageBasic = SearchInRates("STOIM6", Trim(txtContainer(1)))
+            End Select
+        End If
+    End If
+''''''''''''''''''''''''''''''''''Placed Later to Use payable days as selector'''''''''''''''''
 
     If CCur(mskRevenueTon) > 0 And Left(cboStorageStat, 1) <> "8" Then 'No Storage Flat Rack
         Select Case txtContainer(1)
