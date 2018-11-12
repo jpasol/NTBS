@@ -1,5 +1,5 @@
 [Root]
-Most Recent Package=Subic NT Billing System
+Most Recent Package=Main
 
 
 [Package|Subic NT Billing System|CY Import Main Setup]
@@ -360,3 +360,265 @@ Icon1=Main.exe
 Title1=Subic NT Billing System
 StartIn1=$(AppPath)
 Key1=Icon2
+
+
+[Package|NTBS-Main.dep|Main]
+Icon1=Main.exe
+Title1=Main
+StartIn1=$(AppPath)
+Key1=Icon1
+
+[Package|NTBS-Main.dep|Root]
+SubWizProgID=PDWizard.DepPkgSubWiz
+BuildFolder=C:\Users\JPasol\Desktop\Repository\August Save\Billing\NTBS\SubicMainMenu\Package
+
+[Package|NTBS-Main.dep|Configure DAO ISAMs]
+Applicable=No
+
+[Package|NTBS-Main.dep|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|NTBS-Main.dep|Files Found]
+
+[Package|NTBS-Main.dep|Files Released]
+
+[Package|NTBS-Main.dep|Missing Dependency Information]
+C:\Windows\SysWOW64\cNewMenu6.dll=
+C:\Users\JPasol\Desktop\Repository\August Save\Billing\NTBS\SubicMainMenu\cNewMenu.dll=
+C:\Windows\SysWOW64\SSubTmr.dll=
+C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_5.82.17134.112_none_40fcc05845145445\comctl32.dll=
+
+[Package|NTBS-Main.dep|Out-of-Date Dependency Information]
+C:\Windows\SysWOW64\msstdfmt.dll=
+C:\Windows\SysWOW64\MSCOMCTL.OCX=
+
+[Package|NTBS-Main.dep|Files Added]
+c:\windows\system32\msvbvm50.dll=
+c:\users\jpasol\desktop\repository\august save\billing\ntbs\subicmainmenu\ntbs.ini=
+
+[Package|NTBS-Main.dep|Files Removed]
+
+[Package|NTBS-Main.dep|Files In Project]
+C:\Users\JPasol\Desktop\Repository\August Save\Billing\NTBS\SubicMainMenu\Main.exe=Yes
+C:\Windows\System32\msvbvm60.dll=Yes
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=Yes
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=Yes
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=Yes
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=Yes
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_5.82.17134.112_none_40fcc05845145445\comctl32.dll=Yes
+C:\Windows\SysWOW64\SSubTmr.dll=Yes
+C:\Users\JPasol\Desktop\Repository\August Save\Billing\NTBS\SubicMainMenu\cNewMenu.dll=Yes
+C:\Windows\SysWOW64\cNewMenu6.dll=Yes
+C:\Windows\SysWOW64\MSCOMCTL.OCX=Yes
+C:\Windows\SysWOW64\MSADODC.OCX=Yes
+C:\Windows\SysWOW64\msstdfmt.dll=Yes
+C:\Windows\SysWOW64\msmask32.ocx=Yes
+C:\Windows\SysWOW64\MSCOMCT2.OCX=Yes
+C:\Windows\SysWOW64\COMCT332.OCX=Yes
+C:\Users\JPasol\Desktop\Source Files\NTBS Installer\DLL - (07-12-2016)\OCX - Wtih Registry\MSFLXGRD.OCX=Yes
+C:\Windows\SysWOW64\TABCTL32.OCX=Yes
+C:\Windows\SysWOW64\COMDLG32.OCX=Yes
+C:\Windows\SysWOW64\COMCTL32.OCX=Yes
+C:\Windows\System32\msvbvm50.dll=Yes
+C:\Users\JPasol\Desktop\Repository\August Save\Billing\NTBS\SubicMainMenu\NTBS.ini=Yes
+C:\Program Files (x86)\Common Files\system\ado\msado21.tlb=Yes
+
+[Package|NTBS-Main.dep|Configure Registry Files]
+Applicable=No
+
+[Package|NTBS-Main.dep|Configure Remote Servers]
+Applicable=No
+
+[Package|NTBS-Main.dep|Install Locations]
+C:\Users\JPasol\Desktop\Repository\August Save\Billing\NTBS\SubicMainMenu\Main.exe=$(AppPath)
+C:\Windows\System32\msvbvm60.dll=$(WinSysPathSysFile)
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=$(WinSysPathSysFile)
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=$(WinSysPathSysFile)
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=$(WinSysPathSysFile)
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=$(WinSysPathSysFile)
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_5.82.17134.112_none_40fcc05845145445\comctl32.dll=$(WinSysPath)
+C:\Windows\SysWOW64\SSubTmr.dll=$(WinSysPath)
+C:\Users\JPasol\Desktop\Repository\August Save\Billing\NTBS\SubicMainMenu\cNewMenu.dll=$(WinSysPath)
+C:\Windows\SysWOW64\cNewMenu6.dll=$(WinSysPath)
+C:\Windows\SysWOW64\MSCOMCTL.OCX=$(WinSysPath)
+C:\Windows\SysWOW64\MSADODC.OCX=$(WinSysPath)
+C:\Windows\SysWOW64\msstdfmt.dll=$(WinSysPath)
+C:\Windows\SysWOW64\msmask32.ocx=$(WinSysPath)
+C:\Windows\SysWOW64\MSCOMCT2.OCX=$(WinSysPath)
+C:\Windows\SysWOW64\COMCT332.OCX=$(WinSysPath)
+C:\Users\JPasol\Desktop\Source Files\NTBS Installer\DLL - (07-12-2016)\OCX - Wtih Registry\MSFLXGRD.OCX=$(WinSysPath)
+C:\Windows\SysWOW64\TABCTL32.OCX=$(WinSysPath)
+C:\Windows\SysWOW64\COMDLG32.OCX=$(WinSysPath)
+C:\Windows\SysWOW64\COMCTL32.OCX=$(WinSysPath)
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=$(AppPath)
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\Windows\System32\VB6STKIT.DLL=$(WinSysPathSysFile)
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+C:\Windows\System32\msvbvm50.dll=$(WinSysPathSysFile)
+C:\Users\JPasol\Desktop\Repository\August Save\Billing\NTBS\SubicMainMenu\NTBS.ini=$(AppPath)
+C:\Program Files (x86)\Common Files\system\ado\msado21.tlb=$(CommonFilesSys)\ADO
+
+[Package|NTBS-Main.dep|Configure Shared Files]
+Applicable=Yes
+C:\Users\JPasol\Desktop\Repository\August Save\Billing\NTBS\SubicMainMenu\Main.exe=No
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=No
+C:\Users\JPasol\Desktop\Repository\August Save\Billing\NTBS\SubicMainMenu\NTBS.ini=No
+
+[Package|NTBS-Main.dep|Distribution]
+Type=single
+Size=
+Title=Main
+
+[Package|NTBS-Main.dep|IconGroups]
+Group0=NTBS
+PrivateGroup0=0
+Parent0=$(Programs)
+
+[Package|NTBS-Main.dep|DepFile]
+DepCabFile=Main.CAB
+DepCabRun=Main.INF
+
+[Package|NTBS-Main.dep|Package]
+PackageFolder=C:\Users\JPasol\Desktop\Repository\August Save\Billing\NTBS\SubicMainMenu\Package
+ProjectFolder=C:\Users\JPasol\Desktop\Repository\August Save\Billing\NTBS\SubicMainMenu
+ServerSideCab=
+File1=C:\Users\JPasol\Desktop\Repository\August Save\Billing\NTBS\SubicMainMenu\Package\Main.DEP
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz
+
+[Package|Main|Main]
+Icon1=Main.exe
+Title1=Main
+StartIn1=$(AppPath)
+Key1=Icon1
+
+[Package|Main|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=C:\Users\JPasol\Desktop\Repository\August Save\Billing\NTBS\SubicMainMenu\Package
+
+[Package|Main|Configure DAO ISAMs]
+Applicable=No
+
+[Package|Main|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|Main|Files Found]
+
+[Package|Main|Files Released]
+
+[Package|Main|Missing Dependency Information]
+C:\Windows\SysWOW64\cNewMenu6.dll=
+C:\Users\JPasol\Desktop\Repository\August Save\Billing\NTBS\SubicMainMenu\cNewMenu.dll=
+C:\Windows\SysWOW64\SSubTmr.dll=
+C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_5.82.17134.112_none_40fcc05845145445\comctl32.dll=
+\\192.168.11.150\SBITC-IT Depository Folder\Billing Applications\NTBS\DLL - (07-12-2016)\OCX - Wtih Registry\comct232.ocx=
+
+[Package|Main|Out-of-Date Dependency Information]
+C:\Windows\SysWOW64\msstdfmt.dll=
+C:\Windows\SysWOW64\MSCOMCTL.OCX=
+
+[Package|Main|Files Added]
+c:\windows\system32\msvbvm50.dll=
+c:\users\jpasol\desktop\repository\august save\billing\ntbs\subicmainmenu\ntbs.ini=
+\\192.168.11.150\SBITC-IT Depository Folder\Billing Applications\NTBS\DLL - (07-12-2016)\OCX - Wtih Registry\comct232.ocx=
+
+[Package|Main|Files Removed]
+
+[Package|Main|Files In Project]
+C:\Users\JPasol\Desktop\Repository\August Save\Billing\NTBS\SubicMainMenu\Main.exe=Yes
+C:\Windows\System32\msvbvm60.dll=Yes
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=Yes
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=Yes
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=Yes
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=Yes
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_5.82.17134.112_none_40fcc05845145445\comctl32.dll=Yes
+C:\Windows\SysWOW64\SSubTmr.dll=Yes
+C:\Users\JPasol\Desktop\Repository\August Save\Billing\NTBS\SubicMainMenu\cNewMenu.dll=Yes
+C:\Windows\SysWOW64\cNewMenu6.dll=Yes
+C:\Windows\SysWOW64\MSCOMCTL.OCX=Yes
+C:\Windows\SysWOW64\MSADODC.OCX=Yes
+C:\Windows\SysWOW64\msstdfmt.dll=Yes
+C:\Windows\SysWOW64\msmask32.ocx=Yes
+C:\Windows\SysWOW64\MSCOMCT2.OCX=Yes
+C:\Windows\SysWOW64\COMCT332.OCX=Yes
+C:\Users\JPasol\Desktop\Source Files\NTBS Installer\DLL - (07-12-2016)\OCX - Wtih Registry\MSFLXGRD.OCX=Yes
+C:\Windows\SysWOW64\TABCTL32.OCX=Yes
+C:\Windows\SysWOW64\COMDLG32.OCX=Yes
+C:\Windows\SysWOW64\COMCTL32.OCX=Yes
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=Yes
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\Windows\System32\VB6STKIT.DLL=Yes
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+C:\Windows\System32\msvbvm50.dll=Yes
+C:\Users\JPasol\Desktop\Repository\August Save\Billing\NTBS\SubicMainMenu\NTBS.ini=Yes
+\\192.168.11.150\SBITC-IT Depository Folder\Billing Applications\NTBS\DLL - (07-12-2016)\OCX - Wtih Registry\comct232.ocx=Yes
+
+[Package|Main|Configure Registry Files]
+Applicable=No
+
+[Package|Main|Configure Remote Servers]
+Applicable=No
+
+[Package|Main|Install Locations]
+C:\Users\JPasol\Desktop\Repository\August Save\Billing\NTBS\SubicMainMenu\Main.exe=$(AppPath)
+C:\Windows\System32\msvbvm60.dll=$(WinSysPathSysFile)
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=$(WinSysPathSysFile)
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=$(WinSysPathSysFile)
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=$(WinSysPathSysFile)
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=$(WinSysPathSysFile)
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_5.82.17134.112_none_40fcc05845145445\comctl32.dll=$(WinSysPath)
+C:\Windows\SysWOW64\SSubTmr.dll=$(WinSysPath)
+C:\Users\JPasol\Desktop\Repository\August Save\Billing\NTBS\SubicMainMenu\cNewMenu.dll=$(WinSysPath)
+C:\Windows\SysWOW64\cNewMenu6.dll=$(WinSysPath)
+C:\Windows\SysWOW64\MSCOMCTL.OCX=$(WinSysPath)
+C:\Windows\SysWOW64\MSADODC.OCX=$(WinSysPath)
+C:\Windows\SysWOW64\msstdfmt.dll=$(WinSysPath)
+C:\Windows\SysWOW64\msmask32.ocx=$(WinSysPath)
+C:\Windows\SysWOW64\MSCOMCT2.OCX=$(WinSysPath)
+C:\Windows\SysWOW64\COMCT332.OCX=$(WinSysPath)
+C:\Users\JPasol\Desktop\Source Files\NTBS Installer\DLL - (07-12-2016)\OCX - Wtih Registry\MSFLXGRD.OCX=$(WinSysPath)
+C:\Windows\SysWOW64\TABCTL32.OCX=$(WinSysPath)
+C:\Windows\SysWOW64\COMDLG32.OCX=$(WinSysPath)
+C:\Windows\SysWOW64\COMCTL32.OCX=$(WinSysPath)
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=$(AppPath)
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\Windows\System32\VB6STKIT.DLL=$(WinSysPathSysFile)
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+C:\Windows\System32\msvbvm50.dll=$(WinSysPathSysFile)
+C:\Users\JPasol\Desktop\Repository\August Save\Billing\NTBS\SubicMainMenu\NTBS.ini=$(AppPath)
+\\192.168.11.150\SBITC-IT Depository Folder\Billing Applications\NTBS\DLL - (07-12-2016)\OCX - Wtih Registry\comct232.ocx=$(WinSysPath)
+
+[Package|Main|Configure Shared Files]
+Applicable=Yes
+C:\Users\JPasol\Desktop\Repository\August Save\Billing\NTBS\SubicMainMenu\Main.exe=No
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=No
+C:\Users\JPasol\Desktop\Repository\August Save\Billing\NTBS\SubicMainMenu\NTBS.ini=No
+
+[Package|Main|Distribution]
+Type=single
+Size=
+Title=NTBS Main Menu
+
+[Package|Main|Package]
+PackageFolder=C:\Users\JPasol\Desktop\Repository\August Save\Billing\NTBS\SubicMainMenu\Package
+ProjectFolder=C:\Users\JPasol\Desktop\Repository\August Save\Billing\NTBS\SubicMainMenu
+ServerSideCab=
+File1=C:\Users\JPasol\Desktop\Repository\August Save\Billing\NTBS\SubicMainMenu\Package\setup.exe
+File2=C:\Users\JPasol\Desktop\Repository\August Save\Billing\NTBS\SubicMainMenu\Package\Setup.Lst
+File3=C:\Users\JPasol\Desktop\Repository\August Save\Billing\NTBS\SubicMainMenu\Package\Main.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz
+
+[Package|Main|IconGroups]
+Group0=NTBS
+PrivateGroup0=0
+Parent0=$(Programs)
