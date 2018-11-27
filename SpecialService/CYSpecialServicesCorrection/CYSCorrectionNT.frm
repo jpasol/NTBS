@@ -52,10 +52,15 @@ Begin VB.Form frmCYSCorrection
       TabPicture(0)   =   "CYSCorrectionNT.frx":014A
       Tab(0).ControlEnabled=   0   'False
       Tab(0).Control(0)=   "Frame1"
+      Tab(0).Control(0).Enabled=   0   'False
       Tab(0).Control(1)=   "Frame2"
+      Tab(0).Control(1).Enabled=   0   'False
       Tab(0).Control(2)=   "Frame3"
+      Tab(0).Control(2).Enabled=   0   'False
       Tab(0).Control(3)=   "cmdVoid"
+      Tab(0).Control(3).Enabled=   0   'False
       Tab(0).Control(4)=   "cmdExit"
+      Tab(0).Control(4).Enabled=   0   'False
       Tab(0).ControlCount=   5
       TabCaption(1)   =   "PAYMENT CORRECTION"
       TabPicture(1)   =   "CYSCorrectionNT.frx":0166
@@ -1787,13 +1792,24 @@ End Sub
 Private Sub lzGetPay()
 Dim wait As New CWaitCursor
 Dim rst As ADODB.Recordset
+Dim rstSales As ADODB.Recordset 'Sales Recordset
 Dim sSQL As String
+Dim slsSql As String
 Dim n As Integer
 Dim nAmtDue, nTotalChk As Currency
 
     wait.SetCursor
     'On Error GoTo err_Get
     On Error GoTo 0
+    
+    'get sales/
+    Set rstSales = New ADODB.Recordset
+    slsSql = "SELECT * FROM ccrdtl"
+    slsSql = slsSql & " WHERE refnum = " & Trim(txtPayRefNo)
+    slsSql = slsSql & " AND ccrtyp = '2'"
+    rstSales.Open slsSql, gcnnBilling, adOpenStatic, adLockReadOnly, adCmdText
+    '/get sales'
+    
     Set rst = New ADODB.Recordset
     sSQL = "SELECT * FROM CCRPay"
     sSQL = sSQL & " WHERE refnum = " & Trim(txtPayRefNo)
@@ -1804,7 +1820,10 @@ Dim nAmtDue, nTotalChk As Currency
         If Not .EOF Then
             .MoveFirst
 On Error Resume Next
-            nAmtDue = !cshamt + !chkamt1 + !chkamt2 + !chkamt3 + !chkamt4 + !chkamt5 + !adramt - !chgamt
+        With rstSales
+            'nAmtDue = !cshamt + !chkamt1 + !chkamt2 + !chkamt3 + !chkamt4 + !chkamt5 + !adramt - !chgamt '11272018 removed due to cash retrieval, should be sales
+            nAmtDue = !amt + !vatamt + !dgramt + !revton + !ovzamt - !wtax
+            End With
             lblAmtDue = Format(nAmtDue, "#,###,##0.00")
             txtCshAmt = IIf(!cshamt > 0, Format(!cshamt, "#,###,##0.00"), "")
             lblChange = IIf(!chgamt > 0, Format(!chgamt, "#,###,##0.00"), "")
