@@ -51,16 +51,11 @@ Begin VB.Form frmCYSCorrection
       TabCaption(0)   =   "CCR VOIDING && CORRECTION"
       TabPicture(0)   =   "CYSCorrectionNT.frx":014A
       Tab(0).ControlEnabled=   0   'False
-      Tab(0).Control(0)=   "Frame1"
-      Tab(0).Control(0).Enabled=   0   'False
-      Tab(0).Control(1)=   "Frame2"
-      Tab(0).Control(1).Enabled=   0   'False
+      Tab(0).Control(0)=   "cmdExit"
+      Tab(0).Control(1)=   "cmdVoid"
       Tab(0).Control(2)=   "Frame3"
-      Tab(0).Control(2).Enabled=   0   'False
-      Tab(0).Control(3)=   "cmdVoid"
-      Tab(0).Control(3).Enabled=   0   'False
-      Tab(0).Control(4)=   "cmdExit"
-      Tab(0).Control(4).Enabled=   0   'False
+      Tab(0).Control(3)=   "Frame2"
+      Tab(0).Control(4)=   "Frame1"
       Tab(0).ControlCount=   5
       TabCaption(1)   =   "PAYMENT CORRECTION"
       TabPicture(1)   =   "CYSCorrectionNT.frx":0166
@@ -1154,6 +1149,7 @@ Private Sub Form_Load()
     
     'initialize
     Call lzInitialize
+    Me.Caption = Me.Caption & " v" & App.Major & "." & App.Minor & "." & App.Revision
 
 End Sub
 
@@ -1823,7 +1819,7 @@ On Error Resume Next
         With rstSales
             'nAmtDue = !cshamt + !chkamt1 + !chkamt2 + !chkamt3 + !chkamt4 + !chkamt5 + !adramt - !chgamt '11272018 removed due to cash retrieval, should be sales
             nAmtDue = !amt + !vatamt + !dgramt + !revton + !ovzamt - !wtax
-            End With
+        End With
             lblAmtDue = Format(nAmtDue, "#,###,##0.00")
             txtCshAmt = IIf(!cshamt > 0, Format(!cshamt, "#,###,##0.00"), "")
             lblChange = IIf(!chgamt > 0, Format(!chgamt, "#,###,##0.00"), "")
