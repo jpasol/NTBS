@@ -833,7 +833,7 @@ End Function
 '    End With
 'End Function
 
-Public Function lzSplitForExam(ByVal pContNo As String, ByVal pRegNum As String) As Boolean
+Public Function lzSplitForExam(ByVal pContNo As String, ByVal pRegnum As String) As Boolean
                                                         
 Dim cmd As ADODB.Command
 Dim prm As ADODB.Parameter
@@ -853,7 +853,7 @@ Dim prm As ADODB.Parameter
         .Parameters(1).Direction = adParamInput
     
         .Parameters(2).Type = adChar
-        .Parameters(2).Value = pRegNum
+        .Parameters(2).Value = pRegnum
         .Parameters(2).Direction = adParamInput
      
         .Execute
@@ -1260,16 +1260,16 @@ Dim lsErrStr As String
 '        ";User ID=tosadmin;Password=tosadmin"
 '
 'PRNH - Prod IP
-    gcnnNavis.Open "Provider=sqloledb" & _
-            ";Data Source=192.168.11.151" & _
-            ";Initial Catalog=apex" & _
-            ";User ID=tosadmin;Password=tosadmin"
+'    gcnnNavis.Open "Provider=sqloledb" & _
+'            ";Data Source=192.168.11.151" & _
+'            ";Initial Catalog=apex" & _
+'            ";User ID=tosadmin;Password=tosadmin"
 
 ''PRNH -Test
-'        gcnnNavis.Open "Provider=sqloledb" & _
-'        ";Data Source=192.168.11.155" & _
-'        ";Initial Catalog=apex" & _
-'        ";User ID=sa_ictsi;Password=Ictsi123"
+        gcnnNavis.Open "Provider=sqloledb" & _
+        ";Data Source=192.168.11.155" & _
+        ";Initial Catalog=apex" & _
+        ";User ID=sa_ictsi;Password=Ictsi123"
 
 
 
