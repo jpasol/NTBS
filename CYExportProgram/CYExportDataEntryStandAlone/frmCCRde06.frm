@@ -59,7 +59,6 @@ Begin VB.Form frmCCRde06
       _ExtentY        =   20135
       _Version        =   393216
       TabOrientation  =   1
-      Tab             =   2
       TabHeight       =   882
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Arial"
@@ -72,20 +71,31 @@ Begin VB.Form frmCCRde06
       EndProperty
       TabCaption(0)   =   "Details"
       TabPicture(0)   =   "frmCCRde06.frx":08CA
-      Tab(0).ControlEnabled=   0   'False
+      Tab(0).ControlEnabled=   -1  'True
       Tab(0).Control(0)=   "txtTotDue"
+      Tab(0).Control(0).Enabled=   0   'False
       Tab(0).Control(1)=   "txtPpaTotal"
+      Tab(0).Control(1).Enabled=   0   'False
       Tab(0).Control(2)=   "txtIctsiDue"
+      Tab(0).Control(2).Enabled=   0   'False
       Tab(0).Control(3)=   "lblNoCnt"
+      Tab(0).Control(3).Enabled=   0   'False
       Tab(0).Control(4)=   "Label50"
+      Tab(0).Control(4).Enabled=   0   'False
       Tab(0).Control(5)=   "Label19"
+      Tab(0).Control(5).Enabled=   0   'False
       Tab(0).Control(6)=   "Label20"
+      Tab(0).Control(6).Enabled=   0   'False
       Tab(0).Control(7)=   "Label21"
+      Tab(0).Control(7).Enabled=   0   'False
       Tab(0).Control(8)=   "Text1"
       Tab(0).Control(8).Enabled=   0   'False
       Tab(0).Control(9)=   "Frame4"
+      Tab(0).Control(9).Enabled=   0   'False
       Tab(0).Control(10)=   "frmCCRde06"
+      Tab(0).Control(10).Enabled=   0   'False
       Tab(0).Control(11)=   "flexDetails"
+      Tab(0).Control(11).Enabled=   0   'False
       Tab(0).Control(12)=   "cmdEdit"
       Tab(0).Control(12).Enabled=   0   'False
       Tab(0).Control(13)=   "cmdHeader"
@@ -105,18 +115,31 @@ Begin VB.Form frmCCRde06
       Tab(0).Control(20)=   "cmdPayment"
       Tab(0).Control(20).Enabled=   0   'False
       Tab(0).Control(21)=   "utxtPref"
+      Tab(0).Control(21).Enabled=   0   'False
       Tab(0).Control(22)=   "utxtSze"
+      Tab(0).Control(22).Enabled=   0   'False
       Tab(0).Control(23)=   "utxtFEmp"
+      Tab(0).Control(23).Enabled=   0   'False
       Tab(0).Control(24)=   "utxtTshipMnt"
+      Tab(0).Control(24).Enabled=   0   'False
       Tab(0).Control(25)=   "utxtDollar"
+      Tab(0).Control(25).Enabled=   0   'False
       Tab(0).Control(26)=   "utxtLength"
+      Tab(0).Control(26).Enabled=   0   'False
       Tab(0).Control(27)=   "utxtWidth"
+      Tab(0).Control(27).Enabled=   0   'False
       Tab(0).Control(28)=   "utxtHeight"
+      Tab(0).Control(28).Enabled=   0   'False
       Tab(0).Control(29)=   "utxtUMS"
+      Tab(0).Control(29).Enabled=   0   'False
       Tab(0).Control(30)=   "utxtNumDangr"
+      Tab(0).Control(30).Enabled=   0   'False
       Tab(0).Control(31)=   "flexDangerClass"
+      Tab(0).Control(31).Enabled=   0   'False
       Tab(0).Control(32)=   "flexTshipMnt"
+      Tab(0).Control(32).Enabled=   0   'False
       Tab(0).Control(33)=   "utxtNo"
+      Tab(0).Control(33).Enabled=   0   'False
       Tab(0).ControlCount=   34
       TabCaption(1)   =   "Header"
       TabPicture(1)   =   "frmCCRde06.frx":08E6
@@ -154,11 +177,9 @@ Begin VB.Form frmCCRde06
       Tab(1).ControlCount=   29
       TabCaption(2)   =   "Payment"
       TabPicture(2)   =   "frmCCRde06.frx":0902
-      Tab(2).ControlEnabled=   -1  'True
+      Tab(2).ControlEnabled=   0   'False
       Tab(2).Control(0)=   "Frame8"
-      Tab(2).Control(0).Enabled=   0   'False
       Tab(2).Control(1)=   "Frame6"
-      Tab(2).Control(1).Enabled=   0   'False
       Tab(2).Control(2)=   "cmdPrint"
       Tab(2).Control(2).Enabled=   0   'False
       Tab(2).Control(3)=   "cmdPymBack"
@@ -166,49 +187,29 @@ Begin VB.Form frmCCRde06
       Tab(2).Control(4)=   "cmdPymCancel"
       Tab(2).Control(4).Enabled=   0   'False
       Tab(2).Control(5)=   "utxtCCRNo"
-      Tab(2).Control(5).Enabled=   0   'False
       Tab(2).Control(6)=   "utxtCsh"
-      Tab(2).Control(6).Enabled=   0   'False
       Tab(2).Control(7)=   "utxtChq(0)"
-      Tab(2).Control(7).Enabled=   0   'False
       Tab(2).Control(8)=   "utxtChq(1)"
-      Tab(2).Control(8).Enabled=   0   'False
       Tab(2).Control(9)=   "utxtChq(2)"
-      Tab(2).Control(9).Enabled=   0   'False
       Tab(2).Control(10)=   "utxtChq(3)"
-      Tab(2).Control(10).Enabled=   0   'False
       Tab(2).Control(11)=   "utxtChq(4)"
-      Tab(2).Control(11).Enabled=   0   'False
       Tab(2).Control(12)=   "utxtChqBnk(0)"
-      Tab(2).Control(12).Enabled=   0   'False
       Tab(2).Control(13)=   "utxtChqBnk(1)"
-      Tab(2).Control(13).Enabled=   0   'False
       Tab(2).Control(14)=   "utxtChqBnk(2)"
-      Tab(2).Control(14).Enabled=   0   'False
       Tab(2).Control(15)=   "utxtChqBnk(3)"
-      Tab(2).Control(15).Enabled=   0   'False
       Tab(2).Control(16)=   "utxtChqBnk(4)"
-      Tab(2).Control(16).Enabled=   0   'False
       Tab(2).Control(17)=   "utxtCustNo"
-      Tab(2).Control(17).Enabled=   0   'False
       Tab(2).Control(18)=   "utxtCustName"
-      Tab(2).Control(18).Enabled=   0   'False
       Tab(2).Control(19)=   "utxtChqNo(0)"
-      Tab(2).Control(19).Enabled=   0   'False
       Tab(2).Control(20)=   "utxtChqNo(1)"
-      Tab(2).Control(20).Enabled=   0   'False
       Tab(2).Control(21)=   "utxtChqNo(2)"
-      Tab(2).Control(21).Enabled=   0   'False
       Tab(2).Control(22)=   "utxtChqNo(3)"
-      Tab(2).Control(22).Enabled=   0   'False
       Tab(2).Control(23)=   "utxtChqNo(4)"
-      Tab(2).Control(23).Enabled=   0   'False
       Tab(2).Control(24)=   "utxtAdrAmt"
-      Tab(2).Control(24).Enabled=   0   'False
       Tab(2).ControlCount=   25
       Begin CCRDE06.utxtNumBilling utxtAdrAmt 
          Height          =   420
-         Left            =   2760
+         Left            =   -72240
          TabIndex        =   58
          Top             =   7200
          Width           =   2415
@@ -255,7 +256,7 @@ Begin VB.Form frmCCRde06
       End
       Begin CCRDE06.pText utxtNo 
          Height          =   420
-         Left            =   -69960
+         Left            =   5040
          TabIndex        =   1
          Top             =   720
          Width           =   1815
@@ -274,7 +275,7 @@ Begin VB.Form frmCCRde06
       End
       Begin MSFlexGridLib.MSFlexGrid flexTshipMnt 
          Height          =   495
-         Left            =   -70560
+         Left            =   4440
          TabIndex        =   86
          Top             =   2400
          Width           =   5055
@@ -298,7 +299,7 @@ Begin VB.Form frmCCRde06
       End
       Begin MSFlexGridLib.MSFlexGrid flexDangerClass 
          Height          =   495
-         Left            =   -70560
+         Left            =   4440
          TabIndex        =   87
          Top             =   1920
          Width           =   5055
@@ -323,7 +324,7 @@ Begin VB.Form frmCCRde06
       Begin CCRDE06.utxtTextBilling utxtChqNo 
          Height          =   420
          Index           =   4
-         Left            =   5400
+         Left            =   -69600
          TabIndex        =   55
          Top             =   5640
          Width           =   2655
@@ -343,7 +344,7 @@ Begin VB.Form frmCCRde06
       Begin CCRDE06.utxtTextBilling utxtChqNo 
          Height          =   420
          Index           =   3
-         Left            =   5400
+         Left            =   -69600
          TabIndex        =   52
          Top             =   5160
          Width           =   2655
@@ -363,7 +364,7 @@ Begin VB.Form frmCCRde06
       Begin CCRDE06.utxtTextBilling utxtChqNo 
          Height          =   420
          Index           =   2
-         Left            =   5400
+         Left            =   -69600
          TabIndex        =   49
          Top             =   4680
          Width           =   2655
@@ -383,7 +384,7 @@ Begin VB.Form frmCCRde06
       Begin CCRDE06.utxtTextBilling utxtChqNo 
          Height          =   420
          Index           =   1
-         Left            =   5400
+         Left            =   -69600
          TabIndex        =   46
          Top             =   4200
          Width           =   2655
@@ -403,7 +404,7 @@ Begin VB.Form frmCCRde06
       Begin CCRDE06.utxtTextBilling utxtChqNo 
          Height          =   420
          Index           =   0
-         Left            =   5400
+         Left            =   -69600
          TabIndex        =   43
          Top             =   3720
          Width           =   2655
@@ -445,7 +446,7 @@ Begin VB.Form frmCCRde06
       End
       Begin CCRDE06.utxtTextBilling utxtCustName 
          Height          =   420
-         Left            =   5400
+         Left            =   -69600
          TabIndex        =   63
          Top             =   6600
          Width           =   6495
@@ -466,7 +467,7 @@ Begin VB.Form frmCCRde06
       End
       Begin CCRDE06.utxtNumBilling utxtCustNo 
          Height          =   420
-         Left            =   2760
+         Left            =   -72240
          TabIndex        =   57
          Top             =   6600
          Width           =   2415
@@ -490,7 +491,7 @@ Begin VB.Form frmCCRde06
       Begin CCRDE06.utxtTextBilling utxtChqBnk 
          Height          =   420
          Index           =   4
-         Left            =   8280
+         Left            =   -66720
          TabIndex        =   56
          Top             =   5640
          Width           =   2655
@@ -511,7 +512,7 @@ Begin VB.Form frmCCRde06
       Begin CCRDE06.utxtTextBilling utxtChqBnk 
          Height          =   420
          Index           =   3
-         Left            =   8280
+         Left            =   -66720
          TabIndex        =   53
          Top             =   5160
          Width           =   2655
@@ -532,7 +533,7 @@ Begin VB.Form frmCCRde06
       Begin CCRDE06.utxtTextBilling utxtChqBnk 
          Height          =   420
          Index           =   2
-         Left            =   8280
+         Left            =   -66720
          TabIndex        =   50
          Top             =   4680
          Width           =   2655
@@ -553,7 +554,7 @@ Begin VB.Form frmCCRde06
       Begin CCRDE06.utxtTextBilling utxtChqBnk 
          Height          =   420
          Index           =   1
-         Left            =   8280
+         Left            =   -66720
          TabIndex        =   47
          Top             =   4200
          Width           =   2655
@@ -574,7 +575,7 @@ Begin VB.Form frmCCRde06
       Begin CCRDE06.utxtTextBilling utxtChqBnk 
          Height          =   420
          Index           =   0
-         Left            =   8280
+         Left            =   -66720
          TabIndex        =   44
          Top             =   3720
          Width           =   2655
@@ -595,7 +596,7 @@ Begin VB.Form frmCCRde06
       Begin CCRDE06.utxtNumBilling utxtChq 
          Height          =   420
          Index           =   4
-         Left            =   2760
+         Left            =   -72240
          TabIndex        =   54
          Top             =   5640
          Width           =   2415
@@ -620,7 +621,7 @@ Begin VB.Form frmCCRde06
       Begin CCRDE06.utxtNumBilling utxtChq 
          Height          =   420
          Index           =   3
-         Left            =   2760
+         Left            =   -72240
          TabIndex        =   51
          Top             =   5160
          Width           =   2415
@@ -645,7 +646,7 @@ Begin VB.Form frmCCRde06
       Begin CCRDE06.utxtNumBilling utxtChq 
          Height          =   420
          Index           =   2
-         Left            =   2760
+         Left            =   -72240
          TabIndex        =   48
          Top             =   4680
          Width           =   2415
@@ -670,7 +671,7 @@ Begin VB.Form frmCCRde06
       Begin CCRDE06.utxtNumBilling utxtChq 
          Height          =   420
          Index           =   1
-         Left            =   2760
+         Left            =   -72240
          TabIndex        =   45
          Top             =   4200
          Width           =   2415
@@ -695,7 +696,7 @@ Begin VB.Form frmCCRde06
       Begin CCRDE06.utxtNumBilling utxtChq 
          Height          =   420
          Index           =   0
-         Left            =   2760
+         Left            =   -72240
          TabIndex        =   42
          Top             =   3720
          Width           =   2415
@@ -719,7 +720,7 @@ Begin VB.Form frmCCRde06
       End
       Begin CCRDE06.utxtNumBilling utxtCsh 
          Height          =   420
-         Left            =   2760
+         Left            =   -72240
          TabIndex        =   41
          Top             =   3240
          Width           =   2415
@@ -743,7 +744,7 @@ Begin VB.Form frmCCRde06
       End
       Begin CCRDE06.utxtNumBilling utxtCCRNo 
          Height          =   975
-         Left            =   2760
+         Left            =   -72240
          TabIndex        =   39
          Top             =   1200
          Width           =   4335
@@ -948,7 +949,7 @@ Begin VB.Form frmCCRde06
       End
       Begin CCRDE06.utxtNumBilling utxtNumDangr 
          Height          =   420
-         Left            =   -71280
+         Left            =   3720
          TabIndex        =   4
          Top             =   1920
          Width           =   495
@@ -968,7 +969,7 @@ Begin VB.Form frmCCRde06
       End
       Begin CCRDE06.utxtTextBilling utxtUMS 
          Height          =   420
-         Left            =   -63240
+         Left            =   11760
          TabIndex        =   10
          Top             =   3000
          Width           =   495
@@ -988,7 +989,7 @@ Begin VB.Form frmCCRde06
       End
       Begin CCRDE06.utxtNumBilling utxtHeight 
          Height          =   420
-         Left            =   -65640
+         Left            =   9360
          TabIndex        =   9
          Top             =   3000
          Width           =   1455
@@ -1010,7 +1011,7 @@ Begin VB.Form frmCCRde06
       End
       Begin CCRDE06.utxtNumBilling utxtWidth 
          Height          =   420
-         Left            =   -68520
+         Left            =   6480
          TabIndex        =   8
          Top             =   3000
          Width           =   1455
@@ -1032,7 +1033,7 @@ Begin VB.Form frmCCRde06
       End
       Begin CCRDE06.utxtNumBilling utxtLength 
          Height          =   420
-         Left            =   -71280
+         Left            =   3720
          TabIndex        =   7
          Top             =   3000
          Width           =   1575
@@ -1054,7 +1055,7 @@ Begin VB.Form frmCCRde06
       End
       Begin CCRDE06.utxtNumBilling utxtDollar 
          Height          =   420
-         Left            =   -68400
+         Left            =   6600
          TabIndex        =   6
          Top             =   2400
          Width           =   1095
@@ -1077,7 +1078,7 @@ Begin VB.Form frmCCRde06
       End
       Begin CCRDE06.utxtTextBilling utxtTshipMnt 
          Height          =   420
-         Left            =   -71280
+         Left            =   3720
          TabIndex        =   5
          Top             =   2400
          Width           =   495
@@ -1097,7 +1098,7 @@ Begin VB.Form frmCCRde06
       End
       Begin CCRDE06.utxtTextBilling utxtFEmp 
          Height          =   420
-         Left            =   -66360
+         Left            =   8640
          TabIndex        =   3
          Top             =   1320
          Width           =   495
@@ -1117,7 +1118,7 @@ Begin VB.Form frmCCRde06
       End
       Begin CCRDE06.utxtNumBilling utxtSze 
          Height          =   420
-         Left            =   -71280
+         Left            =   3720
          TabIndex        =   2
          Top             =   1320
          Width           =   495
@@ -1137,7 +1138,7 @@ Begin VB.Form frmCCRde06
       End
       Begin CCRDE06.utxtTextBilling utxtPref 
          Height          =   420
-         Left            =   -71280
+         Left            =   3720
          TabIndex        =   0
          Top             =   720
          Width           =   1095
@@ -1548,7 +1549,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   690
-         Left            =   10920
+         Left            =   -64080
          Style           =   1  'Graphical
          TabIndex        =   77
          TabStop         =   0   'False
@@ -1567,7 +1568,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   690
-         Left            =   360
+         Left            =   -74640
          Style           =   1  'Graphical
          TabIndex        =   76
          TabStop         =   0   'False
@@ -1587,7 +1588,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   690
-         Left            =   -63480
+         Left            =   11520
          Style           =   1  'Graphical
          TabIndex        =   73
          TabStop         =   0   'False
@@ -1607,7 +1608,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   690
-         Left            =   -70920
+         Left            =   4080
          TabIndex        =   69
          TabStop         =   0   'False
          Top             =   9360
@@ -1626,7 +1627,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   690
-         Left            =   -74520
+         Left            =   480
          Style           =   1  'Graphical
          TabIndex        =   67
          TabStop         =   0   'False
@@ -1645,7 +1646,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   690
-         Left            =   -67080
+         Left            =   7920
          Style           =   1  'Graphical
          TabIndex        =   71
          TabStop         =   0   'False
@@ -1664,7 +1665,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   345
-         Left            =   -65400
+         Left            =   9600
          TabIndex        =   85
          TabStop         =   0   'False
          Top             =   1440
@@ -1683,7 +1684,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   690
-         Left            =   -70920
+         Left            =   4080
          Style           =   1  'Graphical
          TabIndex        =   68
          TabStop         =   0   'False
@@ -1702,7 +1703,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   690
-         Left            =   10920
+         Left            =   -64080
          Style           =   1  'Graphical
          TabIndex        =   62
          TabStop         =   0   'False
@@ -1740,7 +1741,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   690
-         Left            =   -74520
+         Left            =   480
          Style           =   1  'Graphical
          TabIndex        =   66
          TabStop         =   0   'False
@@ -1760,7 +1761,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   690
-         Left            =   -63480
+         Left            =   11520
          Style           =   1  'Graphical
          TabIndex        =   72
          TabStop         =   0   'False
@@ -1780,7 +1781,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   690
-         Left            =   -67080
+         Left            =   7920
          Style           =   1  'Graphical
          TabIndex        =   70
          TabStop         =   0   'False
@@ -1789,7 +1790,7 @@ Begin VB.Form frmCCRde06
       End
       Begin MSFlexGridLib.MSFlexGrid flexDetails 
          Height          =   4095
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   88
          TabStop         =   0   'False
          Top             =   3600
@@ -1829,7 +1830,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   3375
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   110
          Top             =   120
          Width           =   14775
@@ -2168,7 +2169,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   1815
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   109
          Top             =   8400
          Width           =   14895
@@ -2184,7 +2185,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   1755
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   127
          Top             =   8400
          Width           =   14895
@@ -2776,7 +2777,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   8295
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   129
          Top             =   120
          Width           =   14895
@@ -3206,7 +3207,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   4095
-         Left            =   -74400
+         Left            =   600
          TabIndex        =   11
          TabStop         =   0   'False
          Top             =   3600
@@ -3225,7 +3226,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   285
-         Left            =   -64320
+         Left            =   10680
          TabIndex        =   158
          Top             =   7380
          Visible         =   0   'False
@@ -3243,7 +3244,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   330
-         Left            =   -65640
+         Left            =   9360
          TabIndex        =   157
          Top             =   6900
          Visible         =   0   'False
@@ -3261,7 +3262,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   330
-         Left            =   -64560
+         Left            =   10440
          TabIndex        =   156
          Top             =   7860
          Width           =   1935
@@ -3298,7 +3299,7 @@ Begin VB.Form frmCCRde06
             Strikethrough   =   0   'False
          EndProperty
          Height          =   375
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   154
          Top             =   7800
          Width           =   1815
@@ -3317,7 +3318,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          ForeColor       =   &H00C00000&
          Height          =   420
-         Left            =   -72840
+         Left            =   2160
          TabIndex        =   15
          Top             =   7800
          Width           =   735
@@ -3336,7 +3337,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          ForeColor       =   &H00800000&
          Height          =   420
-         Left            =   -62520
+         Left            =   12480
          TabIndex        =   12
          Top             =   6840
          Visible         =   0   'False
@@ -3357,7 +3358,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          ForeColor       =   &H00800000&
          Height          =   420
-         Left            =   -62520
+         Left            =   12480
          TabIndex        =   13
          Top             =   7320
          Visible         =   0   'False
@@ -3377,7 +3378,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          ForeColor       =   &H00800000&
          Height          =   420
-         Left            =   -62520
+         Left            =   12480
          TabIndex        =   14
          Top             =   7800
          Width           =   2535
@@ -3607,11 +3608,11 @@ Begin VB.Form frmCCRde06
          EndProperty
          BeginProperty Panel5 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   6
-            TextSave        =   "07/27/2018"
+            TextSave        =   "12/15/2018"
          EndProperty
          BeginProperty Panel6 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
-            TextSave        =   "2:00 PM"
+            TextSave        =   "10:40 AM"
          EndProperty
       EndProperty
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -4320,6 +4321,7 @@ utxtAdrNum(Index).Value = 0
 End If
 End Sub
 
+
 Private Sub utxtCommodity_Change()
     Call CheckPaymentOk
 End Sub
@@ -4858,6 +4860,7 @@ Private Sub sstMain_Click(PreviousTab As Integer)
             Call CheckPaymentOk
             utxtPref.SetFocus
         Case 1
+            Call cmdHeader_Click 'added jpasol 12152018 to proc cmdheader_click when changing to headter tab
             Call Tab00off(False)
             Call Tab01off(True)
             Call Tab02off(False)
@@ -5896,7 +5899,7 @@ Dim lngCtrRow As Long
 lngCtrRow = 0
     Do While Not (lngCtrRow = lngRow)
         lngCtrRow = lngCtrRow + 1
-            If Trim(flexDetails.TextMatrix(lngCtrRow, 7)) = "Y" Then
+            If Trim(flexDetails.TextMatrix(lngCtrRow, 7)) = "Y" Then ' if UG , 0 all
                 sngIctArr = 0
                 sngIctVat = 0
                 sngIctWtax = 0
@@ -5906,7 +5909,8 @@ lngCtrRow = 0
                 sngIctWtax = sngIctWtax + Trim(flexDetails.TextMatrix(lngCtrRow, 5))
                 sngIctWgh = sngIctWgh + Trim(flexDetails.TextMatrix(lngCtrRow, 6))
             End If
-            If Trim(flexDetails.TextMatrix(lngCtrRow, 7)) = "Y" Then
+            
+            If Trim(flexDetails.TextMatrix(lngCtrRow, 7)) = "Y" Then 'WHY 2 UG ?????
                 sngIctTot = sngIctTot + 0
              Else
                 sngIctTot = sngIctArr + sngIctWgh + sngIctVat - sngIctWtax
@@ -9115,17 +9119,18 @@ Private Sub CheckContainerInNAVIS(ByVal cntNum As String)
     On Error GoTo err
     Set rstExp = New ADODB.Recordset
     
-    With rstExp
+    With rstExp 'modified for faster searching, uses gkey to gkey instead of id to id 12142018
         strQuery = "SET NOCOUNT ON; select a.id,  CAST(ROUND(d.length_mm * 0.00328083, 0) AS INTEGER) AS contsize," & _
             "a.freight_kind , e.flex_string02, a.category " & _
             "from inv_unit a " & _
+            "inner join [inv_unit_equip] ueq on a.gkey = ueq.unit_gkey " & _
             "inner join inv_unit_fcy_visit b on b.unit_gkey=a.gkey " & _
             "inner join argo_carrier_visit c on c.gkey=b.actual_ob_cv " & _
-            "INNER JOIN ref_equipment d ON a.id = d.id_full " & _
+            "INNER JOIN ref_equipment d ON ueq.[eq_gkey] = d.gkey " & _
             "INNER JOIN vsl_vessel_visit_details e on c.cvcvd_gkey = e.vvd_gkey " & _
             "where a.category in ('EXPRT','TRNSHP') and a.visit_state='1ACTIVE' and " & _
             "a.id = '" & cntNum & "'"
-
+            
         .Open strQuery, gcnnNavis, adOpenForwardOnly, adLockReadOnly
             
         If Not .BOF = True Or Not .EOF = True Then
