@@ -676,7 +676,7 @@ On Error Resume Next
 WhfRteAmt = 0
 Set CD = New ADODB.Recordset
 CD.Open "SELECT * From ccrcyx WHERE refnum = " & Trim(CStr(pRefnum)) & "" _
-        & " AND seqnum = " & Trim(CStr(pSeqnum)) & " order by itmnum", _
+        & " AND seqnum = " & Trim(CStr(pSeqnum)) & " AND CompanyCode IS NOT NULL order by itmnum", _
         zdeCCRCYREPRT.Billing.ConnectionString, adOpenDynamic, adLockOptimistic, adCmdText
 If CD.BOF <> True And CD.EOF <> True Then
     With CD

@@ -58,11 +58,11 @@ Begin VB.Form frmREPRINT
          EndProperty
          BeginProperty Panel5 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   6
-            TextSave        =   "07/27/2018"
+            TextSave        =   "01/04/2019"
          EndProperty
          BeginProperty Panel6 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
-            TextSave        =   "3:53 PM"
+            TextSave        =   "11:48 AM"
          EndProperty
       EndProperty
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -562,6 +562,7 @@ If KeyCode = vbKeyReturn Then
             txtTab(0).SetFocus
         End If
     Else
+        
         If FillGridByCCR Then
             Tab0 (False)
             Tab1 (False)
