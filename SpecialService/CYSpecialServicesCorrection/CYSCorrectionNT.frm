@@ -33,6 +33,7 @@ Begin VB.Form frmCYSCorrection
       _ExtentY        =   13256
       _Version        =   393216
       Tabs            =   2
+      Tab             =   1
       TabsPerRow      =   2
       TabHeight       =   794
       WordWrap        =   0   'False
@@ -49,21 +50,16 @@ Begin VB.Form frmCYSCorrection
       EndProperty
       TabCaption(0)   =   "CCR VOIDING && CORRECTION"
       TabPicture(0)   =   "CYSCorrectionNT.frx":014A
-      Tab(0).ControlEnabled=   -1  'True
+      Tab(0).ControlEnabled=   0   'False
       Tab(0).Control(0)=   "Frame1"
-      Tab(0).Control(0).Enabled=   0   'False
       Tab(0).Control(1)=   "Frame2"
-      Tab(0).Control(1).Enabled=   0   'False
       Tab(0).Control(2)=   "Frame3"
-      Tab(0).Control(2).Enabled=   0   'False
       Tab(0).Control(3)=   "cmdVoid"
-      Tab(0).Control(3).Enabled=   0   'False
       Tab(0).Control(4)=   "cmdExit"
-      Tab(0).Control(4).Enabled=   0   'False
       Tab(0).ControlCount=   5
       TabCaption(1)   =   "PAYMENT CORRECTION"
       TabPicture(1)   =   "CYSCorrectionNT.frx":0166
-      Tab(1).ControlEnabled=   0   'False
+      Tab(1).ControlEnabled=   -1  'True
       Tab(1).Control(0)=   "cmdSave"
       Tab(1).Control(0).Enabled=   0   'False
       Tab(1).Control(1)=   "Command1"
@@ -86,7 +82,7 @@ Begin VB.Form frmCYSCorrection
          EndProperty
          ForeColor       =   &H00004080&
          Height          =   840
-         Left            =   -74775
+         Left            =   225
          TabIndex        =   51
          Top             =   600
          Width           =   3315
@@ -126,7 +122,7 @@ Begin VB.Form frmCYSCorrection
          EndProperty
          ForeColor       =   &H00004080&
          Height          =   5265
-         Left            =   -74775
+         Left            =   225
          TabIndex        =   39
          Top             =   1425
          Width           =   8865
@@ -842,7 +838,7 @@ Begin VB.Form frmCYSCorrection
       Begin VB.CommandButton Command1 
          Caption         =   "E&xit"
          Height          =   465
-         Left            =   -67350
+         Left            =   7650
          TabIndex        =   30
          Top             =   6825
          Width           =   1365
@@ -851,7 +847,7 @@ Begin VB.Form frmCYSCorrection
          Caption         =   "&Save"
          Enabled         =   0   'False
          Height          =   465
-         Left            =   -68850
+         Left            =   6150
          TabIndex        =   29
          Top             =   6825
          Width           =   1365
@@ -859,7 +855,7 @@ Begin VB.Form frmCYSCorrection
       Begin VB.CommandButton cmdExit 
          Caption         =   "E&xit"
          Height          =   465
-         Left            =   7650
+         Left            =   -67350
          TabIndex        =   7
          Top             =   6825
          Width           =   1365
@@ -868,7 +864,7 @@ Begin VB.Form frmCYSCorrection
          Caption         =   "&Void"
          Enabled         =   0   'False
          Height          =   465
-         Left            =   6150
+         Left            =   -68850
          TabIndex        =   6
          Top             =   6825
          Width           =   1365
@@ -886,7 +882,7 @@ Begin VB.Form frmCYSCorrection
          EndProperty
          ForeColor       =   &H00004080&
          Height          =   840
-         Left            =   4650
+         Left            =   -70350
          TabIndex        =   35
          Top             =   600
          Width           =   3540
@@ -937,7 +933,7 @@ Begin VB.Form frmCYSCorrection
          EndProperty
          ForeColor       =   &H00004080&
          Height          =   5115
-         Left            =   225
+         Left            =   -74775
          TabIndex        =   33
          Top             =   1575
          Width           =   8790
@@ -1011,7 +1007,7 @@ Begin VB.Form frmCYSCorrection
          EndProperty
          ForeColor       =   &H00004080&
          Height          =   840
-         Left            =   225
+         Left            =   -74775
          TabIndex        =   32
          Top             =   600
          Width           =   4140
@@ -1822,7 +1818,10 @@ Dim nAmtDue, nTotalChk As Currency
 On Error Resume Next
         With rstSales
             'nAmtDue = !cshamt + !chkamt1 + !chkamt2 + !chkamt3 + !chkamt4 + !chkamt5 + !adramt - !chgamt '11272018 removed due to cash retrieval, should be sales
+            While Not .EOF
             nAmtDue = !amt + !vatamt + !dgramt + !revton + !ovzamt - !wtax
+            .MoveNext
+            Wend
         End With
             lblAmtDue = Format(nAmtDue, "#,###,##0.00")
             txtCshAmt = IIf(!cshamt > 0, Format(!cshamt, "#,###,##0.00"), "")
