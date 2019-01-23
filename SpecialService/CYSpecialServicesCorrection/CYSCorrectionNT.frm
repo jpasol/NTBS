@@ -1819,7 +1819,7 @@ On Error Resume Next
         With rstSales
             'nAmtDue = !cshamt + !chkamt1 + !chkamt2 + !chkamt3 + !chkamt4 + !chkamt5 + !adramt - !chgamt '11272018 removed due to cash retrieval, should be sales
             While Not .EOF
-            nAmtDue = !amt + !vatamt + !dgramt + !revton + !ovzamt - !wtax
+            nAmtDue = nAmtDue + !amt + !vatamt + !dgramt + !revton + !ovzamt - !wtax
             .MoveNext
             Wend
         End With
