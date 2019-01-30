@@ -216,7 +216,7 @@ ErrCatcher1:
         MsgBox "Error: " & err.Number & vbCrLf & "Description:" & err.Description, vbOKOnly, "gzGetControlNo"
         frmManifestCont.txtLog.Text = frmManifestCont.txtLog.Text & " *ERROR* gzGetControlNo: Error No:" & err.Number & " " & vbCrLf
         frmManifestCont.txtLog.Text = frmManifestCont.txtLog.Text & " *ERROR* gzGetControlNo: Error Description:" & err.Description & " " & vbCrLf
-        err.Clear
+        err.Raise err.Number, err.Source, err.Description, err.HelpFile, err.HelpContext
     End If
 End Function
 
@@ -375,10 +375,11 @@ Public Sub gzApplyCYMGP(ByVal pUser As String, ByVal pGatePassNo As Long, ByVal 
     On Error GoTo err
     
     ' create command
+ApplyCYMgp:
     Set cmdApplyCYMGP = New ADODB.Command
     With cmdApplyCYMGP
         Set .ActiveConnection = gcnnBilling
-ApplyCYMgp:
+
         .CommandText = "up_applycymgp"
         .CommandType = adCmdStoredProc
     
@@ -395,10 +396,6 @@ ApplyCYMgp:
     Exit Sub
 err:
     MsgBox err.Description, vbOKOnly, "gzApplyCYMGP"
-    Dim dc As clsCYMDE01
-    dc.Disconnect
-    dc.ConnectByStr (pCnnStr2)
-    cmdApplyCYMGP.ActiveConnection = gcnnBilling
     GoTo ApplyCYMgp
 End Sub
 
@@ -1260,16 +1257,16 @@ Dim lsErrStr As String
 '        ";User ID=tosadmin;Password=tosadmin"
 '
 'PRNH - Prod IP
-'    gcnnNavis.Open "Provider=sqloledb" & _
-'            ";Data Source=192.168.11.151" & _
-'            ";Initial Catalog=apex" & _
-'            ";User ID=tosadmin;Password=tosadmin"
+    gcnnNavis.Open "Provider=sqloledb" & _
+            ";Data Source=192.168.11.151" & _
+            ";Initial Catalog=apex" & _
+            ";User ID=tosadmin;Password=tosadmin"
 
-''PRNH -Test
-        gcnnNavis.Open "Provider=sqloledb" & _
-        ";Data Source=192.168.11.155" & _
-        ";Initial Catalog=apex" & _
-        ";User ID=sa_ictsi;Password=Ictsi123"
+'''PRNH -Test
+'        gcnnNavis.Open "Provider=sqloledb" & _
+'        ";Data Source=192.168.11.155" & _
+'        ";Initial Catalog=apex" & _
+'        ";User ID=sa_ictsi;Password=Ictsi123"
 
 
 
