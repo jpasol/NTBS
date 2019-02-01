@@ -1128,7 +1128,6 @@ Err_PW:
     SavePaidThruDay = "Error: SavePaidThruDay" & err.Number & " - " & err.Description
 End Function
 Public Sub ReleaseHoldalt(ByVal pContNum As String, ByVal Registry As String)
-Release:
 On Error GoTo errhd
     Dim rsrelease As New ADODB.Recordset
     Dim cmdInsert As New ADODB.Command
@@ -1139,7 +1138,7 @@ On Error GoTo errhd
     Dim datenow As Date
     
     datenow = gzGetSysDate
-
+    
     cmdInsert.ActiveConnection = gcnnNavis
     With rsrelease
     
@@ -1258,19 +1257,11 @@ On Error GoTo errhd
     
     Exit Sub
 errhd:
-    Dim intresult As Integer
-    intresult = MsgBox("Error writing in ReleaseHold..." & vbNewLine & _
+    MsgBox "Error writing in ReleaseHold..." & vbNewLine & _
                     "Error: " & err.Number & _
-                    err.Description, vbExclamation + vbAbortRetryIgnore, "Error!")
-    Select Case intresult
-        Case vbAbort
-            err.Raise err.Number, err.Source, err.Description, err.HelpFile, err.HelpContext
-            Exit Sub
-        Case vbRetry
-            GoTo Release
-        Case vbIgnore
-            Exit Sub
-    End Select
+                    err.Description, vbExclamation + vbOKOnly, "Error!"
+
+
 End Sub
 
 
