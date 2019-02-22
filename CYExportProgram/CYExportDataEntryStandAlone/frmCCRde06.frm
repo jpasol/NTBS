@@ -1,13 +1,13 @@
 VERSION 5.00
 Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "MSFLXGRD.OCX"
 Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.1#0"; "MSCOMCTL.OCX"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmCCRde06 
    BorderStyle     =   1  'Fixed Single
    Caption         =   " ( SBMA SUBIC - CCRDE06 )  CY Export Data Entry"
    ClientHeight    =   11850
    ClientLeft      =   150
-   ClientTop       =   720
+   ClientTop       =   795
    ClientWidth     =   15525
    BeginProperty Font 
       Name            =   "Arial"
@@ -41,7 +41,7 @@ Begin VB.Form frmCCRde06
       EndProperty
       Height          =   540
       Left            =   10920
-      TabIndex        =   165
+      TabIndex        =   168
       TabStop         =   0   'False
       Top             =   120
       Visible         =   0   'False
@@ -51,7 +51,7 @@ Begin VB.Form frmCCRde06
       CausesValidation=   0   'False
       Height          =   11415
       Left            =   0
-      TabIndex        =   81
+      TabIndex        =   84
       TabStop         =   0   'False
       Top             =   0
       Width           =   15375
@@ -178,35 +178,60 @@ Begin VB.Form frmCCRde06
       TabCaption(2)   =   "Payment"
       TabPicture(2)   =   "frmCCRde06.frx":0902
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "utxtChqNo(4)"
-      Tab(2).Control(1)=   "utxtChqNo(3)"
-      Tab(2).Control(2)=   "utxtChqNo(2)"
-      Tab(2).Control(3)=   "utxtChqNo(1)"
-      Tab(2).Control(4)=   "utxtChqNo(0)"
-      Tab(2).Control(5)=   "utxtAdrAmt"
-      Tab(2).Control(6)=   "utxtCustName"
-      Tab(2).Control(7)=   "utxtCustNo"
-      Tab(2).Control(8)=   "utxtChqBnk(4)"
-      Tab(2).Control(9)=   "utxtChqBnk(3)"
-      Tab(2).Control(10)=   "utxtChqBnk(2)"
-      Tab(2).Control(11)=   "utxtChqBnk(1)"
+      Tab(2).Control(0)=   "Frame8"
+      Tab(2).Control(1)=   "Frame6"
+      Tab(2).Control(2)=   "cmdPrint"
+      Tab(2).Control(2).Enabled=   0   'False
+      Tab(2).Control(3)=   "cmdPymBack"
+      Tab(2).Control(3).Enabled=   0   'False
+      Tab(2).Control(4)=   "cmdPymCancel"
+      Tab(2).Control(4).Enabled=   0   'False
+      Tab(2).Control(5)=   "utxtCCRNo"
+      Tab(2).Control(6)=   "utxtCsh"
+      Tab(2).Control(7)=   "utxtChq(0)"
+      Tab(2).Control(8)=   "utxtChq(1)"
+      Tab(2).Control(9)=   "utxtChq(2)"
+      Tab(2).Control(10)=   "utxtChq(3)"
+      Tab(2).Control(11)=   "utxtChq(4)"
       Tab(2).Control(12)=   "utxtChqBnk(0)"
-      Tab(2).Control(13)=   "utxtChq(4)"
-      Tab(2).Control(14)=   "utxtChq(3)"
-      Tab(2).Control(15)=   "utxtChq(2)"
-      Tab(2).Control(16)=   "utxtChq(1)"
-      Tab(2).Control(17)=   "utxtChq(0)"
-      Tab(2).Control(18)=   "utxtCsh"
-      Tab(2).Control(19)=   "utxtCCRNo"
-      Tab(2).Control(20)=   "cmdPymCancel"
-      Tab(2).Control(20).Enabled=   0   'False
-      Tab(2).Control(21)=   "cmdPymBack"
-      Tab(2).Control(21).Enabled=   0   'False
-      Tab(2).Control(22)=   "cmdPrint"
-      Tab(2).Control(22).Enabled=   0   'False
-      Tab(2).Control(23)=   "Frame6"
-      Tab(2).Control(24)=   "Frame8"
+      Tab(2).Control(13)=   "utxtChqBnk(1)"
+      Tab(2).Control(14)=   "utxtChqBnk(2)"
+      Tab(2).Control(15)=   "utxtChqBnk(3)"
+      Tab(2).Control(16)=   "utxtChqBnk(4)"
+      Tab(2).Control(17)=   "utxtCustNo"
+      Tab(2).Control(18)=   "utxtCustName"
+      Tab(2).Control(19)=   "utxtChqNo(0)"
+      Tab(2).Control(20)=   "utxtChqNo(1)"
+      Tab(2).Control(21)=   "utxtChqNo(2)"
+      Tab(2).Control(22)=   "utxtChqNo(3)"
+      Tab(2).Control(23)=   "utxtChqNo(4)"
+      Tab(2).Control(24)=   "utxtAdrAmt"
       Tab(2).ControlCount=   25
+      Begin CCRDE06.utxtNumBilling utxtAdrAmt 
+         Height          =   420
+         Left            =   -72240
+         TabIndex        =   58
+         Top             =   7200
+         Width           =   2415
+         _ExtentX        =   4260
+         _ExtentY        =   741
+         BackColor       =   -2147483633
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   15
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         MaxLength       =   14
+         Alignment       =   1
+         Maskformat      =   "###,###,###.00"
+         Maskformat      =   "###,###,###.00"
+         DecimalPlaces   =   2
+         Last            =   -1  'True
+      End
       Begin CCRDE06.utxtTextBilling utxtSBMAPermit 
          Height          =   420
          Left            =   -66840
@@ -251,7 +276,7 @@ Begin VB.Form frmCCRde06
       Begin MSFlexGridLib.MSFlexGrid flexTshipMnt 
          Height          =   495
          Left            =   4440
-         TabIndex        =   83
+         TabIndex        =   86
          Top             =   2400
          Width           =   5055
          _ExtentX        =   8916
@@ -275,7 +300,7 @@ Begin VB.Form frmCCRde06
       Begin MSFlexGridLib.MSFlexGrid flexDangerClass 
          Height          =   495
          Left            =   4440
-         TabIndex        =   84
+         TabIndex        =   87
          Top             =   1920
          Width           =   5055
          _ExtentX        =   8916
@@ -419,35 +444,10 @@ Begin VB.Form frmCCRde06
          EndProperty
          MaxLength       =   1
       End
-      Begin CCRDE06.utxtNumBilling utxtAdrAmt 
-         Height          =   420
-         Left            =   -72240
-         TabIndex        =   58
-         Top             =   7200
-         Width           =   2415
-         _ExtentX        =   4260
-         _ExtentY        =   741
-         BackColor       =   -2147483633
-         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Arial"
-            Size            =   15
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         MaxLength       =   14
-         Alignment       =   1
-         Maskformat      =   "###,###,###.00"
-         Maskformat      =   "###,###,###.00"
-         DecimalPlaces   =   2
-         Last            =   -1  'True
-      End
       Begin CCRDE06.utxtTextBilling utxtCustName 
          Height          =   420
          Left            =   -69600
-         TabIndex        =   59
+         TabIndex        =   63
          Top             =   6600
          Width           =   6495
          _ExtentX        =   11456
@@ -1380,7 +1380,7 @@ Begin VB.Form frmCCRde06
          Height          =   420
          Index           =   8
          Left            =   -69840
-         TabIndex        =   61
+         TabIndex        =   65
          Top             =   5880
          Width           =   1455
          _ExtentX        =   2566
@@ -1407,7 +1407,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          Height          =   1335
          Left            =   -74760
-         TabIndex        =   103
+         TabIndex        =   106
          Top             =   5760
          Width           =   14775
          Begin VB.Frame FrameCust 
@@ -1424,7 +1424,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   975
             Left            =   5160
-            TabIndex        =   167
+            TabIndex        =   170
             Top             =   240
             Visible         =   0   'False
             Width           =   9375
@@ -1491,7 +1491,7 @@ Begin VB.Form frmCCRde06
                ForeColor       =   &H00800080&
                Height          =   450
                Left            =   0
-               TabIndex        =   169
+               TabIndex        =   172
                Top             =   0
                Width           =   2415
             End
@@ -1513,7 +1513,7 @@ Begin VB.Form frmCCRde06
                ForeColor       =   &H00800080&
                Height          =   450
                Left            =   2640
-               TabIndex        =   168
+               TabIndex        =   171
                Top             =   0
                Width           =   6495
             End
@@ -1532,7 +1532,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   375
             Left            =   1200
-            TabIndex        =   104
+            TabIndex        =   107
             Top             =   360
             Width           =   3615
          End
@@ -1551,7 +1551,7 @@ Begin VB.Form frmCCRde06
          Height          =   690
          Left            =   -64080
          Style           =   1  'Graphical
-         TabIndex        =   74
+         TabIndex        =   77
          TabStop         =   0   'False
          Top             =   9360
          Width           =   3855
@@ -1570,7 +1570,7 @@ Begin VB.Form frmCCRde06
          Height          =   690
          Left            =   -74640
          Style           =   1  'Graphical
-         TabIndex        =   72
+         TabIndex        =   76
          TabStop         =   0   'False
          Top             =   8640
          Width           =   2775
@@ -1590,7 +1590,7 @@ Begin VB.Form frmCCRde06
          Height          =   690
          Left            =   11520
          Style           =   1  'Graphical
-         TabIndex        =   69
+         TabIndex        =   73
          TabStop         =   0   'False
          Top             =   9360
          Width           =   3400
@@ -1609,7 +1609,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          Height          =   690
          Left            =   4080
-         TabIndex        =   65
+         TabIndex        =   69
          TabStop         =   0   'False
          Top             =   9360
          Width           =   3400
@@ -1629,7 +1629,7 @@ Begin VB.Form frmCCRde06
          Height          =   690
          Left            =   480
          Style           =   1  'Graphical
-         TabIndex        =   63
+         TabIndex        =   67
          TabStop         =   0   'False
          Top             =   9360
          Width           =   3400
@@ -1648,7 +1648,7 @@ Begin VB.Form frmCCRde06
          Height          =   690
          Left            =   7920
          Style           =   1  'Graphical
-         TabIndex        =   67
+         TabIndex        =   71
          TabStop         =   0   'False
          Top             =   9360
          Width           =   3400
@@ -1666,7 +1666,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          Height          =   345
          Left            =   9600
-         TabIndex        =   82
+         TabIndex        =   85
          TabStop         =   0   'False
          Top             =   1440
          Visible         =   0   'False
@@ -1686,7 +1686,7 @@ Begin VB.Form frmCCRde06
          Height          =   690
          Left            =   4080
          Style           =   1  'Graphical
-         TabIndex        =   64
+         TabIndex        =   68
          TabStop         =   0   'False
          Top             =   8640
          Width           =   3400
@@ -1705,7 +1705,7 @@ Begin VB.Form frmCCRde06
          Height          =   690
          Left            =   -64080
          Style           =   1  'Graphical
-         TabIndex        =   73
+         TabIndex        =   62
          TabStop         =   0   'False
          Top             =   8640
          Width           =   3855
@@ -1724,7 +1724,7 @@ Begin VB.Form frmCCRde06
          Height          =   675
          Left            =   -65880
          Style           =   1  'Graphical
-         TabIndex        =   70
+         TabIndex        =   74
          TabStop         =   0   'False
          Top             =   9120
          Width           =   2775
@@ -1743,7 +1743,7 @@ Begin VB.Form frmCCRde06
          Height          =   690
          Left            =   480
          Style           =   1  'Graphical
-         TabIndex        =   62
+         TabIndex        =   66
          TabStop         =   0   'False
          Top             =   8640
          Width           =   3400
@@ -1763,7 +1763,7 @@ Begin VB.Form frmCCRde06
          Height          =   690
          Left            =   11520
          Style           =   1  'Graphical
-         TabIndex        =   68
+         TabIndex        =   72
          TabStop         =   0   'False
          Top             =   8640
          Width           =   3400
@@ -1783,7 +1783,7 @@ Begin VB.Form frmCCRde06
          Height          =   690
          Left            =   7920
          Style           =   1  'Graphical
-         TabIndex        =   66
+         TabIndex        =   70
          TabStop         =   0   'False
          Top             =   8640
          Width           =   3400
@@ -1791,7 +1791,7 @@ Begin VB.Form frmCCRde06
       Begin MSFlexGridLib.MSFlexGrid flexDetails 
          Height          =   4095
          Left            =   240
-         TabIndex        =   85
+         TabIndex        =   88
          TabStop         =   0   'False
          Top             =   3600
          Width           =   14775
@@ -1831,7 +1831,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          Height          =   3375
          Left            =   240
-         TabIndex        =   107
+         TabIndex        =   110
          Top             =   120
          Width           =   14775
          Begin VB.CheckBox chkWeighing 
@@ -1847,7 +1847,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   435
             Left            =   12840
-            TabIndex        =   170
+            TabIndex        =   173
             Top             =   2880
             Value           =   1  'Checked
             Width           =   1815
@@ -1864,7 +1864,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   135
             Left            =   120
-            TabIndex        =   110
+            TabIndex        =   113
             Top             =   960
             Width           =   14535
          End
@@ -1880,7 +1880,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   135
             Left            =   120
-            TabIndex        =   109
+            TabIndex        =   112
             Top             =   1560
             Width           =   14535
          End
@@ -1896,7 +1896,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   135
             Left            =   120
-            TabIndex        =   108
+            TabIndex        =   111
             Top             =   2640
             Width           =   14535
          End
@@ -1912,7 +1912,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   345
             Left            =   11520
-            TabIndex        =   172
+            TabIndex        =   175
             Top             =   1800
             Width           =   2175
          End
@@ -1929,7 +1929,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   345
             Left            =   9360
-            TabIndex        =   171
+            TabIndex        =   174
             Top             =   1800
             Width           =   2175
          End
@@ -1946,7 +1946,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   450
             Left            =   4320
-            TabIndex        =   123
+            TabIndex        =   126
             Top             =   1200
             Width           =   3975
          End
@@ -1963,7 +1963,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   330
             Left            =   10800
-            TabIndex        =   122
+            TabIndex        =   125
             Top             =   2880
             Width           =   2655
          End
@@ -1980,7 +1980,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   330
             Left            =   7920
-            TabIndex        =   121
+            TabIndex        =   124
             Top             =   2880
             Width           =   1095
          End
@@ -1997,7 +1997,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   330
             Left            =   5280
-            TabIndex        =   120
+            TabIndex        =   123
             Top             =   2880
             Width           =   855
          End
@@ -2014,7 +2014,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   285
             Left            =   4200
-            TabIndex        =   119
+            TabIndex        =   122
             Top             =   2400
             Width           =   2175
          End
@@ -2031,7 +2031,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   330
             Left            =   2400
-            TabIndex        =   118
+            TabIndex        =   121
             Top             =   2880
             Width           =   975
          End
@@ -2048,7 +2048,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   345
             Left            =   240
-            TabIndex        =   117
+            TabIndex        =   120
             Top             =   2880
             Width           =   1575
          End
@@ -2065,7 +2065,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   435
             Left            =   120
-            TabIndex        =   116
+            TabIndex        =   119
             Top             =   2280
             Width           =   3255
          End
@@ -2082,7 +2082,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   345
             Left            =   960
-            TabIndex        =   115
+            TabIndex        =   118
             Top             =   1800
             Width           =   2415
          End
@@ -2099,7 +2099,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   405
             Left            =   2280
-            TabIndex        =   114
+            TabIndex        =   117
             Top             =   1200
             Width           =   1095
          End
@@ -2116,7 +2116,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   315
             Left            =   240
-            TabIndex        =   113
+            TabIndex        =   116
             Top             =   600
             Width           =   3135
          End
@@ -2136,7 +2136,7 @@ Begin VB.Form frmCCRde06
             ForeColor       =   &H00FFFFFF&
             Height          =   375
             Left            =   0
-            TabIndex        =   112
+            TabIndex        =   115
             Top             =   120
             Width           =   14775
          End
@@ -2153,7 +2153,7 @@ Begin VB.Form frmCCRde06
             ForeColor       =   &H00800000&
             Height          =   420
             Left            =   6720
-            TabIndex        =   111
+            TabIndex        =   114
             Top             =   600
             Width           =   7815
          End
@@ -2170,7 +2170,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          Height          =   1815
          Left            =   240
-         TabIndex        =   106
+         TabIndex        =   109
          Top             =   8400
          Width           =   14895
       End
@@ -2186,7 +2186,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          Height          =   1755
          Left            =   -74880
-         TabIndex        =   124
+         TabIndex        =   127
          Top             =   8400
          Width           =   14895
          Begin VB.Label lblSaveMessage 
@@ -2203,7 +2203,7 @@ Begin VB.Form frmCCRde06
             ForeColor       =   &H00800000&
             Height          =   540
             Left            =   240
-            TabIndex        =   125
+            TabIndex        =   128
             Top             =   1080
             Width           =   8655
          End
@@ -2221,7 +2221,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          Height          =   855
          Left            =   -74760
-         TabIndex        =   140
+         TabIndex        =   143
          Top             =   4800
          Visible         =   0   'False
          Width           =   14775
@@ -2242,7 +2242,7 @@ Begin VB.Form frmCCRde06
             ForeColor       =   &H00FFFFFF&
             Height          =   375
             Left            =   0
-            TabIndex        =   150
+            TabIndex        =   153
             Top             =   0
             Width           =   14775
          End
@@ -2261,7 +2261,7 @@ Begin VB.Form frmCCRde06
             ForeColor       =   &H00800080&
             Height          =   255
             Left            =   5760
-            TabIndex        =   147
+            TabIndex        =   150
             Top             =   360
             Width           =   495
          End
@@ -2280,7 +2280,7 @@ Begin VB.Form frmCCRde06
             ForeColor       =   &H00800080&
             Height          =   255
             Left            =   11280
-            TabIndex        =   146
+            TabIndex        =   149
             Top             =   480
             Width           =   495
          End
@@ -2299,7 +2299,7 @@ Begin VB.Form frmCCRde06
             ForeColor       =   &H00800080&
             Height          =   255
             Left            =   9120
-            TabIndex        =   145
+            TabIndex        =   148
             Top             =   360
             Width           =   495
          End
@@ -2318,7 +2318,7 @@ Begin VB.Form frmCCRde06
             ForeColor       =   &H00800080&
             Height          =   255
             Left            =   7440
-            TabIndex        =   144
+            TabIndex        =   147
             Top             =   360
             Width           =   495
          End
@@ -2337,7 +2337,7 @@ Begin VB.Form frmCCRde06
             ForeColor       =   &H00800080&
             Height          =   255
             Left            =   5760
-            TabIndex        =   143
+            TabIndex        =   146
             Top             =   480
             Width           =   495
          End
@@ -2356,7 +2356,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   375
             Left            =   1200
-            TabIndex        =   142
+            TabIndex        =   145
             Top             =   600
             Width           =   3255
          End
@@ -2375,7 +2375,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   375
             Left            =   1200
-            TabIndex        =   141
+            TabIndex        =   144
             Top             =   360
             Width           =   3615
          End
@@ -2393,7 +2393,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   255
             Left            =   5520
-            TabIndex        =   149
+            TabIndex        =   152
             Top             =   360
             Width           =   9015
          End
@@ -2411,7 +2411,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   255
             Left            =   5520
-            TabIndex        =   148
+            TabIndex        =   151
             Top             =   480
             Width           =   4575
          End
@@ -2428,7 +2428,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          Height          =   1215
          Left            =   -74760
-         TabIndex        =   94
+         TabIndex        =   97
          Top             =   3600
          Width           =   14775
          Begin VB.Label Label63 
@@ -2445,7 +2445,7 @@ Begin VB.Form frmCCRde06
             ForeColor       =   &H00800080&
             Height          =   375
             Left            =   6120
-            TabIndex        =   166
+            TabIndex        =   169
             Top             =   720
             Width           =   375
          End
@@ -2465,7 +2465,7 @@ Begin VB.Form frmCCRde06
             ForeColor       =   &H00FFFFFF&
             Height          =   375
             Left            =   0
-            TabIndex        =   102
+            TabIndex        =   105
             Top             =   0
             Width           =   14775
          End
@@ -2483,7 +2483,7 @@ Begin VB.Form frmCCRde06
             ForeColor       =   &H00800080&
             Height          =   375
             Left            =   2520
-            TabIndex        =   100
+            TabIndex        =   103
             Top             =   360
             Width           =   375
          End
@@ -2501,7 +2501,7 @@ Begin VB.Form frmCCRde06
             ForeColor       =   &H00800080&
             Height          =   375
             Left            =   5520
-            TabIndex        =   99
+            TabIndex        =   102
             Top             =   360
             Width           =   375
          End
@@ -2519,7 +2519,7 @@ Begin VB.Form frmCCRde06
             ForeColor       =   &H00800080&
             Height          =   375
             Left            =   1080
-            TabIndex        =   98
+            TabIndex        =   101
             Top             =   360
             Width           =   495
          End
@@ -2537,7 +2537,7 @@ Begin VB.Form frmCCRde06
             ForeColor       =   &H00800080&
             Height          =   375
             Left            =   1080
-            TabIndex        =   96
+            TabIndex        =   99
             Top             =   720
             Width           =   495
          End
@@ -2555,7 +2555,7 @@ Begin VB.Form frmCCRde06
             ForeColor       =   &H00800080&
             Height          =   375
             Left            =   4680
-            TabIndex        =   95
+            TabIndex        =   98
             Top             =   720
             Width           =   375
          End
@@ -2572,7 +2572,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   375
             Left            =   1440
-            TabIndex        =   101
+            TabIndex        =   104
             Top             =   360
             Width           =   13095
          End
@@ -2589,7 +2589,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   255
             Left            =   1320
-            TabIndex        =   97
+            TabIndex        =   100
             Top             =   720
             Width           =   13095
          End
@@ -2606,7 +2606,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          Height          =   1215
          Left            =   -74760
-         TabIndex        =   105
+         TabIndex        =   108
          Top             =   8880
          Width           =   14775
          Begin VB.CommandButton cmdNewCCR 
@@ -2623,7 +2623,7 @@ Begin VB.Form frmCCRde06
             Height          =   690
             Left            =   11760
             Style           =   1  'Graphical
-            TabIndex        =   71
+            TabIndex        =   75
             TabStop         =   0   'False
             Top             =   240
             Width           =   2775
@@ -2641,7 +2641,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          Height          =   1815
          Left            =   -74760
-         TabIndex        =   92
+         TabIndex        =   95
          Top             =   7080
          Width           =   14775
          Begin VB.Label Label33 
@@ -2660,7 +2660,7 @@ Begin VB.Form frmCCRde06
             ForeColor       =   &H00FFFFFF&
             Height          =   375
             Left            =   0
-            TabIndex        =   93
+            TabIndex        =   96
             Top             =   120
             Width           =   14775
          End
@@ -2677,7 +2677,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          Height          =   2895
          Left            =   -74760
-         TabIndex        =   86
+         TabIndex        =   89
          Top             =   600
          Width           =   14775
          Begin VB.Label Label13 
@@ -2693,7 +2693,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   330
             Left            =   480
-            TabIndex        =   91
+            TabIndex        =   94
             Top             =   840
             Width           =   1935
          End
@@ -2710,7 +2710,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   330
             Left            =   720
-            TabIndex        =   90
+            TabIndex        =   93
             Top             =   2280
             Width           =   1095
          End
@@ -2727,7 +2727,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   330
             Left            =   720
-            TabIndex        =   89
+            TabIndex        =   92
             Top             =   1320
             Width           =   1695
          End
@@ -2744,7 +2744,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   330
             Left            =   360
-            TabIndex        =   88
+            TabIndex        =   91
             Top             =   360
             Width           =   2295
          End
@@ -2761,7 +2761,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   330
             Left            =   720
-            TabIndex        =   87
+            TabIndex        =   90
             Top             =   1800
             Width           =   1695
          End
@@ -2778,9 +2778,133 @@ Begin VB.Form frmCCRde06
          EndProperty
          Height          =   8295
          Left            =   -74880
-         TabIndex        =   126
+         TabIndex        =   129
          Top             =   120
          Width           =   14895
+         Begin CCRDE06.utxtNumBilling utxtAdrNum 
+            CausesValidation=   0   'False
+            Height          =   420
+            Index           =   0
+            Left            =   7200
+            TabIndex        =   59
+            Top             =   7080
+            Width           =   2175
+            _ExtentX        =   4260
+            _ExtentY        =   741
+            BackColor       =   -2147483633
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Arial"
+               Size            =   15
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            MaxLength       =   14
+            Alignment       =   1
+            Maskformat      =   "###,###,###.00"
+            Maskformat      =   "###,###,###.00"
+            IncludeDecimal  =   0   'False
+            DecimalPlaces   =   2
+            Last            =   -1  'True
+         End
+         Begin CCRDE06.utxtNumBilling utxtAdrNum 
+            CausesValidation=   0   'False
+            Height          =   420
+            Index           =   1
+            Left            =   9480
+            TabIndex        =   60
+            Top             =   7080
+            Width           =   2175
+            _ExtentX        =   4260
+            _ExtentY        =   741
+            BackColor       =   -2147483633
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Arial"
+               Size            =   15
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            MaxLength       =   14
+            Alignment       =   1
+            Maskformat      =   "###,###,###.00"
+            Maskformat      =   "###,###,###.00"
+            IncludeDecimal  =   0   'False
+            DecimalPlaces   =   2
+            Last            =   -1  'True
+         End
+         Begin CCRDE06.utxtNumBilling utxtAdrNum 
+            CausesValidation=   0   'False
+            Height          =   420
+            Index           =   2
+            Left            =   11760
+            TabIndex        =   61
+            Top             =   7080
+            Width           =   2175
+            _ExtentX        =   4260
+            _ExtentY        =   741
+            BackColor       =   -2147483633
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Arial"
+               Size            =   15
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            MaxLength       =   14
+            Alignment       =   1
+            Maskformat      =   "###,###,###.00"
+            Maskformat      =   "###,###,###.00"
+            IncludeDecimal  =   0   'False
+            DecimalPlaces   =   2
+            Last            =   -1  'True
+         End
+         Begin VB.Label Label25 
+            Caption         =   "OR Number"
+            Enabled         =   0   'False
+            BeginProperty Font 
+               Name            =   "Arial"
+               Size            =   15
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00000000&
+            Height          =   330
+            Index           =   1
+            Left            =   5280
+            TabIndex        =   194
+            Top             =   7080
+            Width           =   1815
+         End
+         Begin VB.Label Label25 
+            Caption         =   "ADR Amount"
+            Enabled         =   0   'False
+            BeginProperty Font 
+               Name            =   "Arial"
+               Size            =   15
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00000000&
+            Height          =   330
+            Index           =   0
+            Left            =   600
+            TabIndex        =   136
+            Top             =   7080
+            Width           =   1815
+         End
          Begin VB.Label utxtAmtPay 
             Alignment       =   1  'Right Justify
             BorderStyle     =   1  'Fixed Single
@@ -2818,7 +2942,7 @@ Begin VB.Form frmCCRde06
             ForeColor       =   &H00800080&
             Height          =   450
             Left            =   2640
-            TabIndex        =   139
+            TabIndex        =   142
             Top             =   600
             Width           =   4335
          End
@@ -2840,7 +2964,7 @@ Begin VB.Form frmCCRde06
             ForeColor       =   &H00800080&
             Height          =   450
             Left            =   5280
-            TabIndex        =   138
+            TabIndex        =   141
             Top             =   6000
             Width           =   6495
          End
@@ -2862,7 +2986,7 @@ Begin VB.Form frmCCRde06
             ForeColor       =   &H00800080&
             Height          =   450
             Left            =   2640
-            TabIndex        =   137
+            TabIndex        =   140
             Top             =   2640
             Width           =   2415
          End
@@ -2882,7 +3006,7 @@ Begin VB.Form frmCCRde06
             ForeColor       =   &H00000000&
             Height          =   330
             Left            =   480
-            TabIndex        =   136
+            TabIndex        =   139
             Top             =   2160
             Width           =   2055
          End
@@ -2902,7 +3026,7 @@ Begin VB.Form frmCCRde06
             ForeColor       =   &H00000000&
             Height          =   330
             Left            =   1440
-            TabIndex        =   135
+            TabIndex        =   138
             Top             =   3120
             Width           =   855
          End
@@ -2922,28 +3046,9 @@ Begin VB.Form frmCCRde06
             ForeColor       =   &H00000000&
             Height          =   330
             Left            =   1080
-            TabIndex        =   134
+            TabIndex        =   137
             Top             =   3600
             Width           =   1455
-         End
-         Begin VB.Label Label25 
-            Caption         =   "ADR Amount"
-            Enabled         =   0   'False
-            BeginProperty Font 
-               Name            =   "Arial"
-               Size            =   15
-               Charset         =   0
-               Weight          =   700
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00000000&
-            Height          =   330
-            Left            =   600
-            TabIndex        =   133
-            Top             =   7080
-            Width           =   1815
          End
          Begin VB.Label Label24 
             Alignment       =   2  'Center
@@ -2961,7 +3066,7 @@ Begin VB.Form frmCCRde06
             ForeColor       =   &H00000000&
             Height          =   330
             Left            =   1320
-            TabIndex        =   132
+            TabIndex        =   135
             Top             =   7560
             Width           =   1215
          End
@@ -2983,7 +3088,7 @@ Begin VB.Form frmCCRde06
             ForeColor       =   &H00800080&
             Height          =   450
             Left            =   2640
-            TabIndex        =   131
+            TabIndex        =   134
             Top             =   6000
             Width           =   2415
          End
@@ -3003,7 +3108,7 @@ Begin VB.Form frmCCRde06
             ForeColor       =   &H00FFFFFF&
             Height          =   375
             Left            =   0
-            TabIndex        =   130
+            TabIndex        =   133
             Top             =   120
             Width           =   14895
          End
@@ -3021,7 +3126,7 @@ Begin VB.Form frmCCRde06
             ForeColor       =   &H00800000&
             Height          =   1020
             Left            =   7080
-            TabIndex        =   129
+            TabIndex        =   132
             Top             =   600
             Width           =   7455
          End
@@ -3043,7 +3148,7 @@ Begin VB.Form frmCCRde06
             ForeColor       =   &H00800080&
             Height          =   450
             Left            =   5280
-            TabIndex        =   128
+            TabIndex        =   131
             Top             =   3120
             Width           =   2655
          End
@@ -3065,7 +3170,7 @@ Begin VB.Form frmCCRde06
             ForeColor       =   &H00800080&
             Height          =   450
             Left            =   8160
-            TabIndex        =   127
+            TabIndex        =   130
             Top             =   3120
             Width           =   2655
          End
@@ -3084,7 +3189,7 @@ Begin VB.Form frmCCRde06
             ForeColor       =   &H00800000&
             Height          =   420
             Left            =   2640
-            TabIndex        =   60
+            TabIndex        =   64
             Top             =   7560
             Width           =   2415
          End
@@ -3122,7 +3227,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          Height          =   285
          Left            =   10680
-         TabIndex        =   155
+         TabIndex        =   158
          Top             =   7380
          Visible         =   0   'False
          Width           =   1695
@@ -3140,7 +3245,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          Height          =   330
          Left            =   9360
-         TabIndex        =   154
+         TabIndex        =   157
          Top             =   6900
          Visible         =   0   'False
          Width           =   3015
@@ -3158,7 +3263,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          Height          =   330
          Left            =   10440
-         TabIndex        =   153
+         TabIndex        =   156
          Top             =   7860
          Width           =   1935
       End
@@ -3178,7 +3283,7 @@ Begin VB.Form frmCCRde06
          ForeColor       =   &H00FFFFFF&
          Height          =   375
          Left            =   -74760
-         TabIndex        =   152
+         TabIndex        =   155
          Top             =   240
          Width           =   14775
       End
@@ -3195,7 +3300,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          Height          =   375
          Left            =   240
-         TabIndex        =   151
+         TabIndex        =   154
          Top             =   7800
          Width           =   1815
       End
@@ -3291,7 +3396,7 @@ Begin VB.Form frmCCRde06
       EndProperty
       Height          =   3015
       Left            =   0
-      TabIndex        =   156
+      TabIndex        =   159
       Top             =   6240
       Width           =   15015
       Begin VB.TextBox utxtWorkStn 
@@ -3308,7 +3413,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          Height          =   420
          Left            =   3240
-         TabIndex        =   189
+         TabIndex        =   192
          TabStop         =   0   'False
          Top             =   360
          Width           =   4935
@@ -3316,7 +3421,7 @@ Begin VB.Form frmCCRde06
       Begin CCRDE06.utxtTextBilling txtTranMode 
          Height          =   420
          Left            =   3240
-         TabIndex        =   158
+         TabIndex        =   161
          Top             =   1800
          Width           =   615
          _ExtentX        =   1085
@@ -3335,7 +3440,7 @@ Begin VB.Form frmCCRde06
       Begin CCRDE06.utxtTextBilling txtSupervisor 
          Height          =   420
          Left            =   3240
-         TabIndex        =   157
+         TabIndex        =   160
          Top             =   1320
          Width           =   4215
          _ExtentX        =   7435
@@ -3366,7 +3471,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          Height          =   420
          Left            =   3240
-         TabIndex        =   164
+         TabIndex        =   167
          TabStop         =   0   'False
          Top             =   840
          Width           =   4215
@@ -3383,7 +3488,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          Height          =   405
          Left            =   3240
-         TabIndex        =   159
+         TabIndex        =   162
          Top             =   2280
          Width           =   9615
       End
@@ -3400,7 +3505,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          Height          =   255
          Left            =   360
-         TabIndex        =   190
+         TabIndex        =   193
          Top             =   360
          Width           =   2175
       End
@@ -3417,7 +3522,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          Height          =   255
          Left            =   360
-         TabIndex        =   163
+         TabIndex        =   166
          Top             =   1320
          Width           =   1935
       End
@@ -3434,7 +3539,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          Height          =   255
          Left            =   360
-         TabIndex        =   162
+         TabIndex        =   165
          Top             =   840
          Width           =   1095
       End
@@ -3451,7 +3556,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          Height          =   375
          Left            =   360
-         TabIndex        =   161
+         TabIndex        =   164
          Top             =   1800
          Width           =   9015
       End
@@ -3468,7 +3573,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          Height          =   255
          Left            =   360
-         TabIndex        =   160
+         TabIndex        =   163
          Top             =   2280
          Width           =   2415
       End
@@ -3477,7 +3582,7 @@ Begin VB.Form frmCCRde06
       Align           =   2  'Align Bottom
       Height          =   375
       Left            =   0
-      TabIndex        =   78
+      TabIndex        =   81
       Top             =   11475
       Width           =   15525
       _ExtentX        =   27384
@@ -3503,11 +3608,11 @@ Begin VB.Form frmCCRde06
          EndProperty
          BeginProperty Panel5 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   6
-            TextSave        =   "11/6/2017"
+            TextSave        =   "12/15/2018"
          EndProperty
          BeginProperty Panel6 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
-            TextSave        =   "3:27 PM"
+            TextSave        =   "10:40 AM"
          EndProperty
       EndProperty
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -3532,7 +3637,7 @@ Begin VB.Form frmCCRde06
       EndProperty
       Height          =   3135
       Left            =   120
-      TabIndex        =   80
+      TabIndex        =   83
       Top             =   3000
       Width           =   15015
       Begin VB.Frame Frame17 
@@ -3548,7 +3653,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          Height          =   1335
          Left            =   120
-         TabIndex        =   182
+         TabIndex        =   185
          Top             =   1680
          Width           =   13095
          Begin VB.TextBox utxtLastCCRISI 
@@ -3565,7 +3670,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   420
             Left            =   3000
-            TabIndex        =   187
+            TabIndex        =   190
             TabStop         =   0   'False
             Top             =   840
             Width           =   3615
@@ -3584,7 +3689,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   420
             Left            =   6720
-            TabIndex        =   186
+            TabIndex        =   189
             TabStop         =   0   'False
             Top             =   840
             Width           =   5535
@@ -3603,7 +3708,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   420
             Left            =   3000
-            TabIndex        =   184
+            TabIndex        =   187
             TabStop         =   0   'False
             Top             =   360
             Width           =   3615
@@ -3622,7 +3727,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   420
             Left            =   6720
-            TabIndex        =   183
+            TabIndex        =   186
             TabStop         =   0   'False
             Top             =   360
             Width           =   5535
@@ -3641,7 +3746,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   255
             Left            =   480
-            TabIndex        =   188
+            TabIndex        =   191
             Top             =   960
             Width           =   2415
          End
@@ -3659,7 +3764,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   255
             Left            =   480
-            TabIndex        =   185
+            TabIndex        =   188
             Top             =   480
             Width           =   2415
          End
@@ -3677,7 +3782,7 @@ Begin VB.Form frmCCRde06
          EndProperty
          Height          =   1335
          Left            =   120
-         TabIndex        =   173
+         TabIndex        =   176
          Top             =   240
          Width           =   13095
          Begin VB.TextBox utxtStrtCCRISI 
@@ -3694,7 +3799,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   420
             Left            =   3000
-            TabIndex        =   179
+            TabIndex        =   182
             TabStop         =   0   'False
             Top             =   840
             Width           =   3615
@@ -3713,7 +3818,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   420
             Left            =   6960
-            TabIndex        =   178
+            TabIndex        =   181
             TabStop         =   0   'False
             Top             =   840
             Width           =   4455
@@ -3732,7 +3837,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   420
             Left            =   3000
-            TabIndex        =   175
+            TabIndex        =   178
             TabStop         =   0   'False
             Top             =   360
             Width           =   3615
@@ -3751,7 +3856,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   420
             Left            =   6960
-            TabIndex        =   174
+            TabIndex        =   177
             TabStop         =   0   'False
             Top             =   360
             Width           =   4455
@@ -3770,7 +3875,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   255
             Left            =   120
-            TabIndex        =   181
+            TabIndex        =   184
             Top             =   960
             Width           =   2775
          End
@@ -3787,7 +3892,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   255
             Left            =   6720
-            TabIndex        =   180
+            TabIndex        =   183
             Top             =   960
             Width           =   135
          End
@@ -3805,7 +3910,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   255
             Left            =   120
-            TabIndex        =   177
+            TabIndex        =   180
             Top             =   480
             Width           =   2775
          End
@@ -3822,7 +3927,7 @@ Begin VB.Form frmCCRde06
             EndProperty
             Height          =   255
             Left            =   6720
-            TabIndex        =   176
+            TabIndex        =   179
             Top             =   480
             Width           =   135
          End
@@ -3840,7 +3945,7 @@ Begin VB.Form frmCCRde06
       EndProperty
       Height          =   1215
       Left            =   120
-      TabIndex        =   79
+      TabIndex        =   82
       Top             =   9240
       Width           =   15015
       Begin VB.CommandButton cmdExit1 
@@ -3857,7 +3962,7 @@ Begin VB.Form frmCCRde06
          Height          =   810
          Left            =   240
          Style           =   1  'Graphical
-         TabIndex        =   76
+         TabIndex        =   79
          TabStop         =   0   'False
          Top             =   240
          Width           =   2415
@@ -3876,7 +3981,7 @@ Begin VB.Form frmCCRde06
          Height          =   810
          Left            =   10680
          Style           =   1  'Graphical
-         TabIndex        =   77
+         TabIndex        =   80
          TabStop         =   0   'False
          Top             =   240
          Width           =   4215
@@ -3896,7 +4001,7 @@ Begin VB.Form frmCCRde06
       ForeColor       =   &H00800000&
       Height          =   375
       Left            =   120
-      TabIndex        =   75
+      TabIndex        =   78
       Top             =   2520
       Width           =   7575
    End
@@ -4044,7 +4149,7 @@ End Sub
 
 
 Private Sub Form_Load()
-
+Me.Caption = Me.Caption & " v" & App.Major & "." & App.Minor & "." & App.Revision
 Call Main
     txtSupervisor.Text = gSuprvsr
     Call StartInitialization
@@ -4053,6 +4158,12 @@ Call Main
     SB.Visible = False
     blnExit = True
     ChangePinter.Enabled = False
+    utxtAdrNum(0).MaxLength = 8
+    utxtAdrNum(1).MaxLength = 8
+    utxtAdrNum(2).MaxLength = 8
+    utxtAdrNum(0).Maskformat = "####"
+    utxtAdrNum(1).Maskformat = "####"
+    utxtAdrNum(2).Maskformat = "####"
 End Sub
 
 Private Sub Main()
@@ -4069,13 +4180,13 @@ Private Sub Main()
 '        ";Initial Catalog=BILLING" & _
 '        ";Integrated Security=SSPI"
 '        ";UID=tosadmin; password=password"
-
+'
 
 '         gConnStr = "Provider=sqloledb" & _
 '        ";Data Source=sbitc-dev" & _
 '        ";Initial Catalog=sbitcbilling" & _
 '        ";UID=sa_ictsi; password=Ictsi123"
-        
+
        '";Integrated Security=SSPI"
     Set mp = New clsCCRde06
     mp.Userid = gzCurrentUser
@@ -4096,6 +4207,7 @@ End Function
 
 Public Sub ReadConfig()
 Dim Xcnt As Integer
+On Error Resume Next
 Open App.Path & "\" & "Conn.cfg" For Binary Access Read As #1
 
 Do While Not EOF(1)
@@ -4137,6 +4249,7 @@ ErrgetUserId:
     Beep
     MsgBox "Contact any MIS Support Staff", vbExclamation + vbCritical, "Error Connection"
 End Sub
+
 
 Private Sub MainExit_Click()
     Call cmdExit1_Click
@@ -4186,6 +4299,26 @@ Private Sub txtTranMode_KeyPress(KeyAscii As Integer)
             Beep
     End Select
     KeyAscii = 0
+End Sub
+
+Private Sub utxtAdrNum_GotFocus(Index As Integer)
+With utxtAdrNum(Index)
+.SelLength = Len(.Value)
+End With
+End Sub
+
+Private Sub utxtAdrNum_KeyDown(Index As Integer, KeyCode As Integer, Shift As Integer)
+If KeyCode = vbKeyReturn And Index < 2 Then
+If utxtAdrNum(Index).Value > 0 Then utxtAdrNum(Index + 1).SetFocus Else cmdPrint.SetFocus
+End If
+End Sub
+
+Private Sub utxtAdrNum_LostFocus(Index As Integer)
+If IsNumeric(utxtAdrNum(Index).Value) Then
+utxtAdrNum(Index).Value = CLng(utxtAdrNum(Index).Value)
+Else
+utxtAdrNum(Index).Value = 0
+End If
 End Sub
 
 
@@ -4613,8 +4746,8 @@ Private Sub cmdPrint_Click()
         lblSaveMessage.Caption = "Transaction being Saved. Please Wait . . . . . . "
         lblSaveMessage.Refresh
                                       
-        If SaveToCCRPay Then
-             If SavetoCCRCyx Then
+        If SavetoCCRCyx Then
+             If SaveToCCRPay Then
                 mvarCCRNumber = 0
                 lblSaveMessage.Caption = "Printing . . . Please Wait . . . . . . "
                 lblSaveMessage.Refresh
@@ -4640,7 +4773,7 @@ Private Sub cmdPrint_Click()
     Exit Sub
 ErrorSave:
     Beep
-    MsgBox "Error : " & intError.Number & " - " & intError.Description & " Transaction Failed", vbExclamation
+    MsgBox "Error : " & intError.Number & " - " & intError.Description & " Transaction Failed: cmdPrint_Click()", vbExclamation
 End Sub
 Private Sub cmdPymBack_Click()
     sstMain.Tab = 0
@@ -4727,6 +4860,7 @@ Private Sub sstMain_Click(PreviousTab As Integer)
             Call CheckPaymentOk
             utxtPref.SetFocus
         Case 1
+            Call cmdHeader_Click 'added jpasol 12152018 to proc cmdheader_click when changing to headter tab
             Call Tab00off(False)
             Call Tab01off(True)
             Call Tab02off(False)
@@ -5310,10 +5444,10 @@ End Sub
 Private Sub utxtAdrAmt_Change()
     Dim strAdrMsg1 As String
     Dim strAdrMsg2 As String
-    Dim intResponse As Integer
+    Dim intresponse As Integer
     strAdrMsg1 = ""
     strAdrMsg2 = ""
-    intResponse = 0
+    intresponse = 0
     If blnnumberin Then
         If IsNumeric(utxtAdrAmt.Value) Then
 '            If CCur(utxtAdrAmt.Value) > sngAdrBalance Then
@@ -5332,7 +5466,7 @@ Private Sub utxtAdrAmt_Change()
                     utxtCustName.Text = Trim(utxtCustName.Text)
                     strAdrMsg1 = utxtAdrAmt.Value & " is greater than the Total Amount to be paid "
                     strAdrMsg2 = utxtCustName.Text
-                    intResponse = MsgBox(strAdrMsg1 & strAdrMsg2, vbOKOnly, "ADR Amount Error Message")
+                    intresponse = MsgBox(strAdrMsg1 & strAdrMsg2, vbOKOnly, "ADR Amount Error Message")
                     utxtAdrAmt.Value = sngPreviousADR
                     utxtAdrAmt.SelStart = 0
                     utxtAdrAmt.SelLength = utxtAdrAmt.Value
@@ -5379,6 +5513,10 @@ Private Sub utxtAdrAmt_KeyDown(KeyCode As Integer, Shift As Integer)
 '            utxtAdrAmt.Value = ".00"
 '        End If
 '    End If
+If KeyCode = vbKeyReturn Then
+utxtAdrNum(0).SetFocus
+End If
+
 End Sub
 Private Sub utxtCsh_Change()
     utxtChange.Caption = EvaluateChange
@@ -5761,7 +5899,7 @@ Dim lngCtrRow As Long
 lngCtrRow = 0
     Do While Not (lngCtrRow = lngRow)
         lngCtrRow = lngCtrRow + 1
-            If Trim(flexDetails.TextMatrix(lngCtrRow, 7)) = "Y" Then
+            If Trim(flexDetails.TextMatrix(lngCtrRow, 7)) = "Y" Then ' if UG , 0 all
                 sngIctArr = 0
                 sngIctVat = 0
                 sngIctWtax = 0
@@ -5771,7 +5909,8 @@ lngCtrRow = 0
                 sngIctWtax = sngIctWtax + Trim(flexDetails.TextMatrix(lngCtrRow, 5))
                 sngIctWgh = sngIctWgh + Trim(flexDetails.TextMatrix(lngCtrRow, 6))
             End If
-            If Trim(flexDetails.TextMatrix(lngCtrRow, 7)) = "Y" Then
+            
+            If Trim(flexDetails.TextMatrix(lngCtrRow, 7)) = "Y" Then 'WHY 2 UG ?????
                 sngIctTot = sngIctTot + 0
              Else
                 sngIctTot = sngIctArr + sngIctWgh + sngIctVat - sngIctWtax
@@ -6301,6 +6440,9 @@ Private Sub Clear_PaymentTotals()
     utxtAmtPay.Caption = ".00"
     utxtCsh.Value = ".00"
     utxtAdrAmt.Value = ".00"
+    utxtAdrNum(0).Value = 0
+    utxtAdrNum(1).Value = 0
+    utxtAdrNum(2).Value = 0
     utxtChange.Caption = ".00"
     utxtCustName.Text = ""
     utxtCustNo.Value = ""
@@ -6320,6 +6462,7 @@ End Function
 
 'PRNH -With Company Code
 Public Function GetNextCCRNumber(ByVal compCode As String) As Long
+On Error GoTo errhd
 Dim NxtNo As Long
 Dim tp As Recordset
 Dim StartCCR As Long
@@ -6404,6 +6547,11 @@ GetNextCCRNumber = NxtNo
 'Set tp = Nothing
 'GetNextCCRNumber = NxtNo
 '
+Exit Function
+errhd:
+    MsgBox "Error in GetNextCCRNumber" & vbNewLine & _
+    "Error Number: " & err.Number & vbNewLine & _
+    "Error Description: " & err.Description, vbExclamation + vbOKOnly, "Error! GetNextCCRNumber"
 End Function
 
 Public Function GetPrevCCRPay(strContNum As String, ByRef lngPrevCCR As Long, _
@@ -6487,13 +6635,19 @@ Private Function SavetoCCRCyx() As Boolean
     Dim strDGGranted As String
     Dim N4CurrentCategory As String
     Dim bHasUnitOut As Boolean
-
+    Dim Tries As Integer
+    Tries = 0
+    On Error GoTo errorHD
+    strDate = zGetSysDate
+    strDate = Format(strDate, "yyyy-mm-dd Hh:Nn:ss")
+start:
     For X = 1 To 100
         CCRList(X).CCRnum = 0
         CCRList(X).Refnum = 0
         CCRList(X).Seqnum = 0
         CCRList(X).Cusnam = ""
     Next
+    
     lRef = 1
     strContNo = ""
     SavetoCCRCyx = False
@@ -6531,14 +6685,13 @@ Private Function SavetoCCRCyx() As Boolean
                 'PRNH - Old
                 'ApplyCCR (lngCCR)
                 'with Company Code
+                If Tries = 0 Then
                 Call ApplyCCR(lngCCR, .TextMatrix(lngTempRow, 45))
-                
                 ' ** now get the next ccr available
                 'PRNH-Old
                 'lngCCR = GetNextCCRNumber
                 'with Company Code
                 lngCCR = GetNextCCRNumber(.TextMatrix(lngTempRow, 45))
-                
                 
                 Do Until lngCCR > 0
                     'PRNH-Old
@@ -6548,6 +6701,7 @@ Private Function SavetoCCRCyx() As Boolean
                     
                     Call MsgCheck(lngCCR)
                 Loop
+                End If
                 lngTempSeq = lngTempSeq + 1
                 lngTempItem = 0
                 lRef = lRef + 1
@@ -6748,6 +6902,7 @@ Private Function SavetoCCRCyx() As Boolean
 '            If (ReleaseHold(rstCCRCyx.Fields("cntnum")) = "0") Then
 '                UpdateIsN4BillingPermissionGrantedStatus (rstCCRCyx.Fields("cntnum"))
 '            End If
+            If Tries = 0 Then
 
             Call GetContainerLastestCategory(strContNo, N4CurrentCategory, bHasUnitOut)
             
@@ -6770,21 +6925,40 @@ Private Function SavetoCCRCyx() As Boolean
                     End If
                 End If
             End If
-
-
+        End If
         Loop
         'PRNH - Removed due to Company Code extraction
         'ApplyCCR (lngCCR)
         'PRNH - Company code
         'Call ApplyCCR(lngCCR, .TextMatrix(lngTempRow, 45))
+        If Tries = 0 Then
         Call ApplyCCR(lngCCR, .TextMatrix(1, 45))
+        End If
     End With
     rstCCRCyx.Close
     Set rstCCRCyx = Nothing
     SavetoCCRCyx = True
     Exit Function
-ErrorHd:
+errorHD:
+    intresponse = MsgBox("Error in SaveToCCRPay" & vbNewLine & _
+    "Error Number: " & err.Number & vbNewLine & _
+    "Error Description: " & err.Description, vbExclamation + vbDefaultButton2 + vbAbortRetryIgnore, "Error!")
+    
+    If intresponse = vbAbort Then
+    rstCCRCyx.CancelUpdate
+    rstCCRCyx.Close
     SavetoCCRCyx = False
+    Else
+    
+    Dim dc As New clsCCRde06
+    rstCCRCyx.CancelUpdate
+    rstCCRCyx.Close
+    dc.Disconnect
+    dc.ConnectByStr (pCnnStr2)
+    Tries = Tries + 1
+    GoTo start
+    End If
+    
 End Function
 
 Public Function SaveToCCRPay() As Boolean
@@ -6794,6 +6968,9 @@ Public Function SaveToCCRPay() As Boolean
     Dim lngCtrX As Long
     Dim lngAdr As Long
     Dim lngAdrControl As Long
+    lngAdrControl = 0
+    On Error GoTo errorHD
+start:
     Dim rstCCRPay As ADODB.Recordset
     Set rstCCRPay = New ADODB.Recordset
     rstCCRPay.CursorType = adOpenDynamic
@@ -6804,7 +6981,6 @@ Public Function SaveToCCRPay() As Boolean
     sngChange = 0
     sngAdramt = 0
     lngCtrX = 0
-    lngAdrControl = 0
     If ReturnCurrency(utxtCsh.Value) > 0 Then
         sngTotalCsh = sngTotalCsh + CCur(utxtCsh.Value)
     End If
@@ -6814,6 +6990,8 @@ Public Function SaveToCCRPay() As Boolean
     If Len(utxtChange.Caption) > 0 Then
         sngChange = utxtChange.Caption
     End If
+    
+    If lngAdrControl = 0 Then 'if block to skip adrcontrol function if already obtained
     If ReturnLong(utxtCustNo.Value) > 0 And ReturnCurrency(CStr(sngAdramt)) > 0 Then
             lngAdrControl = DE.ApllyADR(Trim(utxtCustNo.Value), "CCR", lngRefnum, sngAdramt, "", Trim(gUserID))
             If lngAdrControl <= 0 Then
@@ -6821,10 +6999,11 @@ Public Function SaveToCCRPay() As Boolean
                 Exit Function
             End If
     End If
+    End If
+    
     With rstCCRPay
         .AddNew
-        strDate = zGetSysDate
-        strDate = Format(strDate, "yyyy-mm-dd Hh:Nn:ss")
+
         '.Fields ("")
         If Len(utxtCustNo.Value) > 0 Then
             .Fields("cuscde") = utxtCustNo.Value
@@ -6841,7 +7020,11 @@ Public Function SaveToCCRPay() As Boolean
         
         'PRNH - Removed ADR Validations
         'If ReturnLong(utxtCustNo.Value) > 0 And ReturnCurrency(CStr(utxtAdrAmt.Value)) > 0 Then
-            .Fields("adrnum") = 0 'lngAdrControl - No data yet
+
+            .Fields("adrnum") = utxtAdrNum(0).Value
+            .Fields("adrnum2") = utxtAdrNum(1).Value
+            .Fields("adrnum3") = utxtAdrNum(2).Value
+            
             .Fields("adramt") = ReturnCurrency(utxtAdrAmt.Value)
         'Else
         '    .Fields("adramt") = 0
@@ -6919,8 +7102,23 @@ Public Function SaveToCCRPay() As Boolean
     Set rstCCRPay = Nothing
     SaveToCCRPay = True
     Exit Function
-ErrorHd:
+errorHD:
+    intresponse = MsgBox("Error in SaveToCCRPay" & vbNewLine & _
+    "Error Number: " & err.Number & vbNewLine & _
+    "Error Description: " & err.Description, vbExclamation + vbDefaultButton2 + vbAbortRetryIgnore, "Error!")
+    
+    If intresponse = vbAbort Then
+    rstCCRPay.CancelUpdate
+    rstCCRPay.Close
     SaveToCCRPay = False
+    Else
+    rstCCRPay.CancelUpdate
+    rstCCRPay.Close
+    Dim dc As New clsCCRde06
+    dc.Disconnect
+    dc.ConnectByStr (pCnnStr2)
+    GoTo start
+    End If
 End Function
 
 Private Sub SaveToExpor21()
@@ -7412,6 +7610,7 @@ End Sub
 
 'PRNH - With Company Code
 Public Sub ApplyCCR(CTA As Long, compCode As String)
+On Error GoTo errhd
     'PRNH - Company Code
     Dim NDate As Date
     Dim NxtNo As Long
@@ -7445,6 +7644,11 @@ break:
         End If
     End With
     Set tp = Nothing
+    Exit Sub
+errhd:
+    MsgBox "Error in ApplyCCR" & vbNewLine & _
+    "Error Number: " & err.Number & vbNewLine & _
+    "Error Description: " & err.Description, vbExclamation + vbOKOnly, "Error! ApplyCCR"
 End Sub
 
 'PRNH - OLD
@@ -7494,9 +7698,15 @@ Public Function PrintCCR(pRefnum As Long) As Boolean
     CashAmt = 0
     ChkAmount = 0
     AdrAmount = 0
+    lngAdrnum = 0
+    lngAdrnum2 = 0
+    lngAdrnum3 = 0
     CashAmount = 0
     If ADR.Fields("adramt") <> 0 Or Not IsNull(ADR.Fields("adramt")) Then
         AdrAmt = ADR.Fields("adramt")
+        lngAdrnum = ADR.Fields("adrnum")
+        lngAdrnum2 = ADR.Fields("adrnum2")
+        lngAdrnum3 = ADR.Fields("adrnum3")
     End If
     If ADR.Fields("chkamt1") <> 0 Or Not IsNull(ADR.Fields("chkamt1")) Then
         ChkAmt1 = ADR.Fields("chkamt1")
@@ -7715,12 +7925,12 @@ NextCCRTag:
         If mvarCCRNumber <> 0 Then
             If CCRList(X).CCRnum = mvarCCRNumber Then
                 Call OutCCRPC(CCRList(X).Refnum, CCRList(X).Seqnum, _
-                    CCRList(X).Cusnam, strAdrAmt, strCshAmt, strChqAmt, _
+                    CCRList(X).Cusnam, strAdrAmt, lngAdrnum, lngAdrnum2, lngAdrnum3, strCshAmt, strChqAmt, _
                     blnChkno1, blnChkno2, blnChkno3, blnChkno4, blnChkno5)
             End If
         Else
             Call OutCCRPC(CCRList(X).Refnum, CCRList(X).Seqnum, _
-                CCRList(X).Cusnam & "", strAdrAmt, strCshAmt, strChqAmt, _
+                CCRList(X).Cusnam & "", strAdrAmt, lngAdrnum, lngAdrnum2, lngAdrnum3, strCshAmt, strChqAmt, _
                 blnChkno1, blnChkno2, blnChkno3, blnChkno4, blnChkno5)
         End If
         DETTl.Close
@@ -8035,7 +8245,7 @@ End Function
 '
 'End Sub
 
-Private Sub OutCCRPC(pRefnum As Long, pSeqnum As Long, pCustomer As String, pAdrAmt As String, pCashAmt As String, _
+Private Sub OutCCRPC(pRefnum As Long, pSeqnum As Long, pCustomer As String, pAdrAmt As String, pAdrNum As Long, pAdrNum2 As Long, pAdrNum3 As Long, pCashAmt As String, _
                                  pChqAmt As String, pChkno1 As Boolean, pChkno2 As Boolean, pChkno3 As Boolean, pChkno4 As Boolean, _
                                  pChkno5 As Boolean)
 ' *************************
@@ -8091,6 +8301,8 @@ Dim remark3 As String
 Dim UserName As String
 Dim strValidation As String * 35
 Dim RevTonnage As String * 16
+Dim adrnum As String
+
 ctrCnt = 11
 On Error Resume Next
 WhfRteAmt = 0
@@ -8149,6 +8361,7 @@ If CD.BOF <> True And CD.EOF <> True Then
         strValidation = Trim(Refn) & " " & Trim(Seqf) & " " & Trim(CCRf) & " " & Format(.Fields("sysdttm"), "YY-MM-DD hh:nn")
         vslName = .Fields("vslcde") & ""
         Printer.Font = "Courier 12cpi"
+'        Printer.Font = "Courier"
         Printer.FontSize = 10
 '        If Printer.Height > Printer.Width Then
 '            Printer.Orientation = vbPRORPortrait
@@ -8295,10 +8508,32 @@ If CD.BOF <> True And CD.EOF <> True Then
             Printer.Print "  FOREIGN " & Space(36) & Word3
         End If
         Printer.Print " "
-        tmpString = strChqAmt & " CK    " & strCshAmt & " CS"
-        Printer.Print Space(44) & tmpString
-        tmpString = strAdrAmt & " AD"
+'        tmpString = strChqAmt & " CK    " & strCshAmt & " CS"
+'        Printer.Print Space(44) & tmpString
+'        tmpString = strAdrAmt & " AD"
         Printer.Print Space(5) & UserName  ' & Space(26) & tmpString
+        
+            
+        tmpString = strCshAmt & " CS                  "
+        Printer.CurrentX = Printer.ScaleWidth - Printer.TextWidth(tmpString)
+        Printer.Print tmpString
+          
+        tmpString = strChqAmt & " CK                  "
+        Printer.CurrentX = Printer.ScaleWidth - Printer.TextWidth(tmpString)
+        Printer.Print tmpString
+        
+        adrnum = " "                                                                        'Empty
+        If pAdrNum > 0 Then adrnum = adrnum & pAdrNum                                       'Check 1 if >0
+        If pAdrNum2 > 0 Then adrnum = adrnum & " / " & pAdrNum2                             'Check 2
+        If pAdrNum3 > 0 Then adrnum = adrnum & " / " & pAdrNum3                             'Check3
+        If Len(adrnum) <= 18 Then adrnum = adrnum & Space(18): adrnum = Left(adrnum, 18) _
+        Else adrnum = adrnum & Space(5)                                                     'Space 18 then Read 18
+        tmpString = strAdrAmt & " AD" & adrnum                                              'Add AD for Printing
+
+        Printer.CurrentX = Printer.ScaleWidth - Printer.TextWidth(tmpString)                'Start from left adjusted by 18 spaces
+        Printer.Print tmpString
+
+
         If blnChkno1 Then
             tmp1 = StrChk1
         Else
@@ -8803,16 +9038,16 @@ Dim lsErrStr As String
     'Call ReadConfig
     gcnnNavis.Open sqlConNavis
     
-    gcnnNavis.Open "Provider=sqloledb" & _
-        ";Data Source=sbitc-db" & _
-        ";Initial Catalog=apex" & _
-        ";User ID=tosadmin;Password=tosadmin"
-
+'    gcnnNavis.Open "Provider=sqloledb" & _
+'        ";Data Source=sbitc-db" & _
+'        ";Initial Catalog=apex" & _
+'        ";User ID=tosadmin;Password=tosadmin"
+'
 '    gcnnNavis.Open "Provider=sqloledb" & _
 '        ";Data Source=sbitc-dev" & _
 '        ";Initial Catalog=apex" & _
 '        ";User ID=tosadmin;Password=password"
-    
+
     '";Integrated Security=SSPI"
     gbNavis = True
     ConnectToNavis = True
@@ -8831,6 +9066,7 @@ err_Connect:
 End Function
 
 Private Sub GrantOOGPermission(ByVal strContNo As String, ByVal intCCRNum As String)
+On Error GoTo errhd
     Dim cmd As ADODB.Command
     
     Set cmd = New ADODB.Command
@@ -8844,8 +9080,14 @@ Private Sub GrantOOGPermission(ByVal strContNo As String, ByVal intCCRNum As Str
         .Execute
     End With
     Set cmd = Nothing
+    Exit Sub
+errhd:
+    MsgBox "Error in GrantOOGPermission" & vbNewLine & _
+    "Error Number: " & err.Number & vbNewLine & _
+    "Error Description: " & err.Description, vbExclamation + vbOKOnly, "Error! GrantOOGPermission"
 End Sub
 Private Sub GrantDGPermission(ByVal strContNo As String, ByVal intCCRNum As String)
+On Error GoTo errhd
     Dim cmd As ADODB.Command
     
     Set cmd = New ADODB.Command
@@ -8859,6 +9101,11 @@ Private Sub GrantDGPermission(ByVal strContNo As String, ByVal intCCRNum As Stri
         .Execute
     End With
     Set cmd = Nothing
+    Exit Sub
+errhd:
+    MsgBox "Error in GrantDGPermission" & vbNewLine & _
+    "Error Number: " & err.Number & vbNewLine & _
+    "Error Description: " & err.Description, vbExclamation + vbOKOnly, "Error! GrantDGPermission"
 End Sub
 
 'PRNH - Query for checking and extracting container number and its details in NAVIS
@@ -8872,17 +9119,18 @@ Private Sub CheckContainerInNAVIS(ByVal cntNum As String)
     On Error GoTo err
     Set rstExp = New ADODB.Recordset
     
-    With rstExp
+    With rstExp 'modified for faster searching, uses gkey to gkey instead of id to id 12142018
         strQuery = "SET NOCOUNT ON; select a.id,  CAST(ROUND(d.length_mm * 0.00328083, 0) AS INTEGER) AS contsize," & _
             "a.freight_kind , e.flex_string02, a.category " & _
             "from inv_unit a " & _
+            "inner join [inv_unit_equip] ueq on a.gkey = ueq.unit_gkey " & _
             "inner join inv_unit_fcy_visit b on b.unit_gkey=a.gkey " & _
             "inner join argo_carrier_visit c on c.gkey=b.actual_ob_cv " & _
-            "INNER JOIN ref_equipment d ON a.id = d.id_full " & _
+            "INNER JOIN ref_equipment d ON ueq.[eq_gkey] = d.gkey " & _
             "INNER JOIN vsl_vessel_visit_details e on c.cvcvd_gkey = e.vvd_gkey " & _
             "where a.category in ('EXPRT','TRNSHP') and a.visit_state='1ACTIVE' and " & _
             "a.id = '" & cntNum & "'"
-
+            
         .Open strQuery, gcnnNavis, adOpenForwardOnly, adLockReadOnly
             
         If Not .BOF = True Or Not .EOF = True Then

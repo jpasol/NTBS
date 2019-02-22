@@ -10,6 +10,7 @@ Public gConnStr As String
 Public gbConnected As Boolean
 Public gbNavis As Boolean
 Public gsCaption As String
+Public pCnnStr2 As String
 
 ' INI variables
 
@@ -41,6 +42,9 @@ Public Seqnum As Long
 Public Customer As String
 Public strCommodity As String
 Public AdrAmount As Single
+Public lngAdrnum As Long
+Public lngAdrnum2 As Long
+Public lngAdrnum3 As Long
 Public DE As New deCCRDE06
 Public strAdrAmt As String * 12
 Public strCashAmt As String * 12
@@ -74,6 +78,8 @@ Public blnChkno2 As Boolean
 Public blnChkno3 As Boolean
 Public blnChkno4 As Boolean
 Public blnChkno5 As Boolean
+
+Public intresponse As Variant
 
 Public lngRcount As Long
 '   **  Parameter Passed
@@ -227,6 +233,7 @@ ctrArr = 0
 End Function
 
 Public Function UpdateIsN4BillingPermissionGrantedStatus(ByVal unitId As String) As String
+On Error GoTo errorHD
     Dim rstN4Status As ADODB.Recordset
     Dim strUpdateStatus As String
     
@@ -238,7 +245,12 @@ Public Function UpdateIsN4BillingPermissionGrantedStatus(ByVal unitId As String)
                     "WHERE cntnum = '" & unitId & "' and IsN4BillingPermissionGranted = 0 "
                     
     rstN4Status.Open strUpdateStatus, gcnnBilling, adOpenForwardOnly, adLockReadOnly
-    
+    Exit Function
    ' GetGKey = rstGKey.Fields(0)
+errorHD:
+    MsgBox "Error in UpdateIsN4BillingPermissionGrantedStatus" & vbNewLine & _
+    "Error Number: " & err.Number & vbNewLine & _
+    "Error Description: " & err.Description, vbExclamation + vbOKOnly, "Error! UpdateIsN4BillingPermissionGrantedStatus"
 End Function
+
 

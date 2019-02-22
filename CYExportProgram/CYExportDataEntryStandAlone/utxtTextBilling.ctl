@@ -12,7 +12,7 @@ Begin VB.UserControl utxtTextBilling
    Begin VB.TextBox Text1 
       BackColor       =   &H8000000F&
       BeginProperty Font 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   15
          Charset         =   0
          Weight          =   400
