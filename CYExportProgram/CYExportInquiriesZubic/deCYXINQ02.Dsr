@@ -1103,11 +1103,11 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCYXINQ02
       CommandName     =   "CCR"
       CommDispId      =   1180
       RsDispId        =   1186
-      CommandText     =   "SELECT * FROM ccrcyx WHERE ccrnum = ?"
+      CommandText     =   "SELECT * FROM ccrcyx WHERE ccrnum = ? AND CompanyCode IS NOT NULL"
       ActiveConnectionName=   "Billing"
       CommandType     =   1
       IsRSReturning   =   -1  'True
-      NumFields       =   40
+      NumFields       =   46
       BeginProperty Field1 
          Precision       =   8
          Size            =   19
@@ -1174,7 +1174,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCYXINQ02
       EndProperty
       BeginProperty Field9 
          Precision       =   0
-         Size            =   7
+         Size            =   12
          Scale           =   0
          Type            =   129
          Name            =   "vslcde"
@@ -1427,6 +1427,54 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCYXINQ02
          Type            =   135
          Name            =   "outdttm"
          Caption         =   "outdttm"
+      EndProperty
+      BeginProperty Field41 
+         Precision       =   0
+         Size            =   20
+         Scale           =   0
+         Type            =   129
+         Name            =   "supvsr"
+         Caption         =   "supvsr"
+      EndProperty
+      BeginProperty Field42 
+         Precision       =   0
+         Size            =   2
+         Scale           =   0
+         Type            =   11
+         Name            =   "IsN4BillingPermissionGranted"
+         Caption         =   "IsN4BillingPermissionGranted"
+      EndProperty
+      BeginProperty Field43 
+         Precision       =   8
+         Size            =   19
+         Scale           =   2
+         Type            =   131
+         Name            =   "wghamt"
+         Caption         =   "wghamt"
+      EndProperty
+      BeginProperty Field44 
+         Precision       =   0
+         Size            =   2
+         Scale           =   0
+         Type            =   11
+         Name            =   "IsN4BillingDGPermissionGranted"
+         Caption         =   "IsN4BillingDGPermissionGranted"
+      EndProperty
+      BeginProperty Field45 
+         Precision       =   0
+         Size            =   2
+         Scale           =   0
+         Type            =   11
+         Name            =   "IsN4BillingOOGPermissionGranted"
+         Caption         =   "IsN4BillingOOGPermissionGranted"
+      EndProperty
+      BeginProperty Field46 
+         Precision       =   0
+         Size            =   5
+         Scale           =   0
+         Type            =   202
+         Name            =   "CompanyCode"
+         Caption         =   "CompanyCode"
       EndProperty
       NumGroups       =   0
       ParamCount      =   1

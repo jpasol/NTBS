@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "MSFLXGRD.OCX"
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
 Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Begin VB.Form frmCYXINQ02 
    BackColor       =   &H00C0C0C0&
@@ -8,10 +8,10 @@ Begin VB.Form frmCYXINQ02
    Caption         =   "( SUBIC Version CYXINQ02 ) CY Export Teller Collection Inquiry"
    ClientHeight    =   10800
    ClientLeft      =   150
-   ClientTop       =   720
+   ClientTop       =   795
    ClientWidth     =   15270
    BeginProperty Font 
-      Name            =   "IBM3270 - 1254"
+      Name            =   "Arial"
       Size            =   15
       Charset         =   0
       Weight          =   400
@@ -50,7 +50,7 @@ Begin VB.Form frmCYXINQ02
          EndProperty
          BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             AutoSize        =   1
-            Object.Width           =   12674
+            Object.Width           =   12409
          EndProperty
          BeginProperty Panel4 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             AutoSize        =   2
@@ -62,14 +62,13 @@ Begin VB.Form frmCYXINQ02
          BeginProperty Panel5 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   6
             AutoSize        =   2
-            Object.Width           =   2619
-            TextSave        =   "7/11/00"
+            Object.Width           =   2963
+            TextSave        =   "02/22/2019"
          EndProperty
          BeginProperty Panel6 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             AutoSize        =   2
-            Object.Width           =   2619
-            TextSave        =   "8:42 AM"
+            TextSave        =   "1:58 PM"
          EndProperty
       EndProperty
    End
@@ -113,7 +112,7 @@ Begin VB.Form frmCYXINQ02
                Name            =   "Arial Black"
                Size            =   24
                Charset         =   0
-               Weight          =   700
+               Weight          =   900
                Underline       =   0   'False
                Italic          =   0   'False
                Strikethrough   =   0   'False
@@ -218,7 +217,7 @@ Begin VB.Form frmCYXINQ02
             _ExtentY        =   741
             BackColor       =   -2147483633
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   15
                Charset         =   0
                Weight          =   400
@@ -237,7 +236,7 @@ Begin VB.Form frmCYXINQ02
             _ExtentY        =   741
             BackColor       =   -2147483633
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   15
                Charset         =   0
                Weight          =   400
@@ -256,7 +255,7 @@ Begin VB.Form frmCYXINQ02
             _ExtentY        =   741
             BackColor       =   -2147483633
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   15
                Charset         =   0
                Weight          =   400
@@ -328,7 +327,7 @@ Begin VB.Form frmCYXINQ02
          Begin VB.Label Label16 
             Caption         =   "<Enter> - Retrieve Records"
             BeginProperty Font 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   13.5
                Charset         =   0
                Weight          =   400
@@ -549,7 +548,7 @@ Begin VB.Form frmCYXINQ02
             BorderStyle     =   1  'Fixed Single
             Caption         =   "CCR Number"
             BeginProperty Font 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   16.5
                Charset         =   0
                Weight          =   700
@@ -579,7 +578,7 @@ Begin VB.Form frmCYXINQ02
             BorderStyle     =   1  'Fixed Single
             Caption         =   " (1) - View CCR Computation Details"
             BeginProperty Font 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   13.5
                Charset         =   0
                Weight          =   400
@@ -1177,7 +1176,7 @@ Begin VB.Form frmCYXINQ02
             BorderStyle     =   1  'Fixed Single
             Caption         =   "CCR PARTICULARS"
             BeginProperty Font 
-               Name            =   "IBM3270 - 1254"
+               Name            =   "Arial"
                Size            =   15
                Charset         =   0
                Weight          =   700
@@ -1199,7 +1198,7 @@ Begin VB.Form frmCYXINQ02
          BorderStyle     =   1  'Fixed Single
          Caption         =   "PAYMENT TRANSACTION PARTICULARS INQUIRY"
          BeginProperty Font 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   16.5
             Charset         =   0
             Weight          =   700
@@ -1264,6 +1263,7 @@ Private Sub cmdTab_Click()
         Call NewCCR
     End If
 End Sub
+
 Private Sub FileExit_Click()
     Unload Me
 End Sub

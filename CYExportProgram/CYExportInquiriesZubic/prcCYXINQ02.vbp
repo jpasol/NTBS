@@ -1,7 +1,7 @@
 Type=Exe
-Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#C:\WINDOWS\System32\stdole2.tlb#OLE Automation
-Reference=*\G{00000205-0000-0010-8000-00AA006D2EA4}#2.5#0#C:\Program Files\Common Files\system\ado\msado25.tlb#Microsoft ActiveX Data Objects 2.0 Library
-Reference=*\G{31D0FCC9-635B-11D4-A188-0050DA63A28C}#7.0#0#..\..\..\SUBICNewProgram\CYExportProgram\CYExportInquiriesZubic\CYXINQ02.dll#CY SUBIC Export Inquiry System 
+Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\..\..\..\Windows\SysWOW64\stdole2.tlb#OLE Automation
+Reference=*\G{00000205-0000-0010-8000-00AA006D2EA4}#2.5#0#..\..\..\..\..\..\..\Program Files (x86)\Common Files\System\ado\msado25.tlb#Microsoft ActiveX Data Objects 2.0 Library
+Reference=*\G{31D0FCC9-635B-11D4-A188-0050DA63A28C}#7.0#0#..\..\..\..\..\..\..\WINDOWS\SysWow64\CYXINQ02.dll#CY SUBIC Export Inquiry System 
 Module=prcmodCYXINQ02; prcmodCYXINQ02.bas
 Startup="Sub Main"
 ExeName32="prcCYXINQ02.exe"
