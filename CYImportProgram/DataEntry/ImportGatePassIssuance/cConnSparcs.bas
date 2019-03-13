@@ -955,8 +955,10 @@ Public Function getLDD(ByVal regNum As String) As String
         "INNER JOIN ref_carrier_service AS rcs ON avd.service = rcs.gkey " & _
         "INNER JOIN inv_unit_fcy_visit AS iufv ON iufv.actual_ib_cv = acv.gkey " & _
         "INNER JOIN inv_unit AS iu ON iu.gkey = iufv.unit_gkey " & _
-        "INNER JOIN ref_equipment AS req ON iu.id = req.id_full " & _
+        "INNER JOIN inv_unit_equip AS ueq on ueq.unit_gkey = iu.gkey " & _
+        "INNER JOIN ref_equipment AS req ON req.gkey = ueq.eq_gkey " & _
         "WHERE vvv.flex_string01 = '" & regNum & "'"
+
 
     rstLDD.Open strLDD, gcnnNavis, adOpenForwardOnly, adLockReadOnly
     
