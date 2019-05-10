@@ -512,7 +512,17 @@ SaveINVICTex:
                         If tmpItmNum = 1 Then prvVATCde = .Fields("vatcde")
                         
                         tmpRteCde = ""
-                        If Not IsNull(.Fields("plugin")) And Not IsNull(.Fields("plugou")) Then
+                        
+                        
+                        
+                        Dim plugIn As Date
+                        Dim plugOut As Date
+                        plugIn = .Fields("plugin").Value
+                        plugOut = .Fields("plugou").Value
+                        
+                        
+                        
+                        If CDbl(plugIn) > 0 And CDbl(plugOut) > 0 Then
                           ' if storage has plugin and plugout use rate code for
                           '     import storage reefer containers
                           Select Case Trim(.Fields("cntsze"))
@@ -556,8 +566,11 @@ SaveINVICTex:
                         tmpItmNum = tmpItmNum + 1
                         If tmpItmNum = 1 Then prvVATCde = .Fields("vatcde")
                         
+                        plugIn = .Fields("plugin").Value
+                        plugOut = .Fields("plugou").Value
+                        
                         intRfrHrs = 0
-                        If Not IsNull(.Fields("plugin")) And Not IsNull(.Fields("plugou")) Then
+                        If CDbl(plugIn) > 0 And CDbl(plugOut) > 0 Then
                             intRfrHrs = Fix(DateDiff("h", .Fields("plugin"), .Fields("plugou")))
                         End If
 
@@ -574,7 +587,7 @@ SaveINVICTex:
                             Case "40"
                               tmpRteCde = "MCRFC3"
                             Case "45"
-                              tmpRteCde = "MCRFC6"
+                              tmpRteCde = "MCRFC7"
                           End Select
                         End If
                         
@@ -853,7 +866,7 @@ Private Sub PreviewOutput(pLstInv As Long)
     Dim crInvoice As New crSubicRpt
     'Dim crInvoice As New CrystalReport1
     Dim tmpStartInv As Long
-    
+
     tmpStartInv = CLng(txtInvNum)
     On Error Resume Next
     Do Until tmpStartInv > pLstInv
