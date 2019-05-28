@@ -1397,6 +1397,8 @@ Err_PW:
 
 End Function
 
+
+
 Public Function ReleaseHold(ByVal pContNum As String)
  On Error GoTo errhd
     Dim objDom As Object
@@ -1793,7 +1795,7 @@ ERR_Handler:
     ReleaseOOGHold = "Error: " & err.Number & " - " & err.Description
 End Function
 
-Public Function GKeyHasUnitOut(Unit_GKey As String) As Boolean
+Public Function GKeyHasUnitOut(unit_gkey As String) As Boolean
     Dim rsGKey As ADODB.Recordset
     Dim strQuery As String
     Dim bResult As Boolean
@@ -1802,7 +1804,7 @@ Public Function GKeyHasUnitOut(Unit_GKey As String) As Boolean
 
     bResult = False
     
-    strQuery = "SELECT unit_gkey FROM argo_chargeable_unit_events WHERE unit_gkey='" & Unit_GKey & "' AND event_type LIKE 'UNIT_OUT%' AND status <> 'CANCELLED' "
+    strQuery = "SELECT unit_gkey FROM argo_chargeable_unit_events WHERE unit_gkey='" & unit_gkey & "' AND event_type LIKE 'UNIT_OUT%' AND status <> 'CANCELLED' "
     
     rsGKey.Open strQuery, gcnnNavis, adOpenForwardOnly, adLockReadOnly
     
@@ -1831,12 +1833,18 @@ Do While Not EOF(1)
     End Select
 Loop
 End Sub
+Public Function releasen4(ByVal equipID As String, ByRef unit_gkey As String, strDate As String)
+n4Release = "INSERT INTO srv_flags (flag_type_gkey, applied_to_class, applied_to_gkey, applied_to_natural_key, placed_time, placed_by, " & _
+" operator_gkey,complex_gkey, created, creator) VALUES " & _
+" (18, 'UNIT', '" & unit_gkey & "', '" & equipID & "', '" & strDate & "','n4api' ,1 , 1, '" & strDate & "' ,'n4api')"
+ gcnnNavis.Execute n4Release, dbFailOnError
+End Function
 
-Public Sub GetContainerLastestCategory(ByVal ContainerNo As String, ByRef Category As String, ByRef HasUnitOut As Boolean)
+Public Sub GetContainerLastestCategory(ByVal ContainerNo As String, ByRef Category As String, ByRef HasUnitOut As Boolean, ByRef unit_gkey As String)
 On Error GoTo errhd
     Dim rsGKey As ADODB.Recordset
     Dim strQuery As String
-    Dim Unit_GKey As String
+    Dim equipment_id As String
     
     Set rsGKey = New ADODB.Recordset
 
@@ -1848,10 +1856,10 @@ On Error GoTo errhd
     
     If Not rsGKey.BOF Or Not rsGKey.EOF Then
         Category = rsGKey.Fields(0)
-        Unit_GKey = rsGKey.Fields(1)
+        unit_gkey = rsGKey.Fields(1)
     End If
     
-    HasUnitOut = GKeyHasUnitOut(Unit_GKey)
+    HasUnitOut = GKeyHasUnitOut(unit_gkey)
     
     rsGKey.Close
     Set rsGKey = Nothing
