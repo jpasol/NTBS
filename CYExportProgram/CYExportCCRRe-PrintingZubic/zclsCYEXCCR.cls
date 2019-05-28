@@ -360,10 +360,18 @@ Public Function PrintCCR(pRefnum As Long) As Boolean
     ChkAmount = 0
     AdrAmount = 0
     CashAmount = 0
-    
-    
+    Dim lngAdrNum As Long
+    Dim lngAdrNum2 As Long
+    Dim lngAdrNum3 As Long
+    lngAdrNum = 0
+    lngAdrNum2 = 0
+    lngAdrNum3 = 0
+    On Error Resume Next
     If ADR.Fields("adramt") <> 0 Or Not IsNull(ADR.Fields("adramt")) Then
-        AdrAmt = ADR.Fields("adramt")
+        AdrAmt = ADR.Fields("adramt") + ADR.Fields("adramt2") + ADR.Fields("adramt3")
+        lngAdrNum = ADR.Fields("adrnum")
+        lngAdrNum2 = ADR.Fields("adrnum2")
+        lngAdrNum3 = ADR.Fields("adrnum3")
     End If
     If ADR.Fields("chkamt1") <> 0 Or Not IsNull(ADR.Fields("chkamt1")) Then
         ChkAmt1 = ADR.Fields("chkamt1")
@@ -419,9 +427,9 @@ Public Function PrintCCR(pRefnum As Long) As Boolean
             blnChkno5 = False
             DE.getTotal .Fields("refnum"), .Fields("seqnum")
             Set DETTl = DE.rsgetTotal
-            DetailTl = DETTl.Fields("TotalAmt")
-            DetailAmt = DETTl.Fields("TotalAmt")
-            TotalAmt = DETTl.Fields("totalamt")
+            DetailTl = parsenull(DETTl.Fields("TotalAmt"))
+            DetailAmt = parsenull(DETTl.Fields("TotalAmt"))
+            TotalAmt = parsenull(DETTl.Fields("totalamt"))
             '   **  Checks Liquidation of ADR, Cheque and Cash
             '   ** Liquidation of ADR
             If AdrAmt <> 0 Then
@@ -589,11 +597,11 @@ Public Function PrintCCR(pRefnum As Long) As Boolean
 NextCCRTag:
             If mvarCCRNumber <> 0 Then
                 If .Fields("ccrnum") = mvarCCRNumber Then
-                    Call OutCCRPC(.Fields("refnum"), .Fields("seqnum"), .Fields("cusnam"), strAdrAmt, strCshAmt, strChqAmt, _
+                    Call OutCCRPC(.Fields("refnum"), .Fields("seqnum"), .Fields("cusnam"), strAdrAmt, lngAdrNum, lngAdrNum2, lngAdrNum3, strCshAmt, strChqAmt, _
                                 blnChkno1, blnChkno2, blnChkno3, blnChkno4, blnChkno5)
                 End If
             Else
-                Call OutCCRPC(.Fields("refnum"), .Fields("seqnum"), .Fields("cusnam") & "", strAdrAmt, strCshAmt, strChqAmt, _
+                Call OutCCRPC(.Fields("refnum"), .Fields("seqnum"), .Fields("cusnam") & "", strAdrAmt, lngAdrNum, lngAdrNum2, lngAdrNum3, strCshAmt, strChqAmt, _
                     blnChkno1, blnChkno2, blnChkno3, blnChkno4, blnChkno5)
             End If
             .MoveNext
@@ -604,9 +612,12 @@ NextCCRTag:
         Set CRL = Nothing
     End With
 End Function
-Private Sub OutCCRPC(pRefnum As Long, pSeqnum As Long, pCustomer As String, pAdrAmt As String, pCashAmt As String, _
+Private Sub OutCCRPC(pRefnum As Long, pSeqnum As Long, pCustomer As String, pAdrAmt As String, pAdrNum As Long, pAdrNum2 As Long, pAdrNum3 As Long, pCashAmt As String, _
                                  pChqAmt As String, pChkno1 As Boolean, pChkno2 As Boolean, pChkno3 As Boolean, pChkno4 As Boolean, _
                                  pChkno5 As Boolean)
+' *************************
+' ** Printing of receipt **
+' *************************
 Dim ctrCnt As Integer
 Dim tmp1 As String * 30
 Dim tmp2 As String * 30
@@ -620,48 +631,68 @@ Dim Seqf As String * 10
 Dim CCRf As String * 10
 Dim DateTime As String
 Dim strExporter As String * 30
-Dim strSize As String * 3
+Dim strSize As String * 4
 Dim strCtnnum As String * 12
 Dim strArrastre As String * 12
 Dim strWArrastre As String * 12
 Dim strWharfage As String * 12
 Dim strTArrastre As String * 12
+
+Dim strWgh As String * 9
+Dim strWeighing As String * 9
+Dim sngWeighTotal As Currency
+
+
 Dim strTWArrastre As String * 12
 Dim strTWharfage As String * 12
 Dim sngArrastre As Currency
 Dim sngWArrastre  As Currency
+
 Dim sngWharfage As Currency
-Dim sngTArrastre As Single
-Dim sngTWArrastre As Single
-Dim sngTWharfage As Single
-Dim sngVat As Single
-Dim sngWtx As Single
+Dim sngTArrastre As Currency
+Dim sngTWArrastre As Currency
+Dim sngTWharfage As Currency
+Dim sngWeighing As Currency
+Dim sngVat As Currency
+Dim sngWtx As Currency
+Dim sngWgh As Currency
 Dim vslName As String * 10
-Dim x As Integer
+Dim X As Integer
 Dim strRemarks As String * 15
 Dim strRemarks30 As String * 36
-Dim strRemarkOut As String * 16
-Dim CD As Recordset
+Dim CD As ADODB.Recordset
 Dim WhfRteAmt As Currency
+Dim strRemarkOut As String * 16
 Dim remark1 As String
 Dim remark2  As String
 Dim remark3 As String
 Dim UserName As String
 Dim strValidation As String * 35
 Dim RevTonnage As String * 16
-WhfRteAmt = 0
+Dim adrnum As String
+
 ctrCnt = 11
-DE.CCRDetails pRefnum, pSeqnum
-Set CD = DE.rsCCRDetails
-If CD.RecordCount > 0 Then
+On Error Resume Next
+WhfRteAmt = 0
+Set CD = New ADODB.Recordset
+CD.Open "SELECT * From ccrcyx WHERE refnum = " & Trim(CStr(pRefnum)) & "" _
+        & " AND seqnum = " & Trim(CStr(pSeqnum)) & " AND CompanyCode IS NOT NULL order by itmnum", _
+        zdeCCRCYREPRT.Billing.ConnectionString, adOpenDynamic, adLockOptimistic, adCmdText
+If CD.BOF <> True And CD.EOF <> True Then
     With CD
         Select Case .Fields("vatcde")
-        Case "0"
+        Case "1"
             remark1 = "0Vat"
         Case "2"
             remark1 = "1%Less"
         Case "3"
-            remark1 = "6%Whd"
+            remark1 = "10%Vat"
+        Case "4"
+            remark1 = "1%Less"
+        Case "5"
+            remark1 = "6%Vat"
+        Case "6"
+            remark1 = "1%Less"
         Case Else
             remark1 = " "
         End Select
@@ -686,7 +717,6 @@ If CD.RecordCount > 0 Then
         Else
             remark3 = " "
         End If
-        'UserName = Trim(UCase(.Fields("userid") & ""))
         UserName = Trim(UCase(.Fields("userid") & "")) & Space(8) & Trim(UCase(.Fields("supvsr") & ""))
         Refn = Format(.Fields("refnum"), "000000")
         Seqf = Trim(Format(.Fields("seqnum"), "0000"))
@@ -695,15 +725,13 @@ If CD.RecordCount > 0 Then
         strExporter = Mid(.Fields("broker"), 1, 15) & "/" & Mid(.Fields("exprtr"), 1, 15)
         strRemarks = Mid(.Fields("remark") & "", 1, 15)
         strRemarkOut = Trim(Mid(remark1, 1, 6)) & Trim(Mid(remark2, 1, 7)) & Trim(Mid(remark3, 1, 3))
-        strEntry = .Fields("entnum") & ""
+        strEntry = .Fields("entnum")
         strValidation = Trim(Refn) & " " & Trim(Seqf) & " " & Trim(CCRf) & " " & Format(.Fields("sysdttm"), "YY-MM-DD hh:nn")
         vslName = .Fields("vslcde") & ""
         Printer.Font = "Courier 12cpi"
+'        Printer.Font = "Courier"
         Printer.FontSize = 10
         Printer.Print " "
-        'Printer.Print Space(23) & "REF " & Refn & " SEQ " & Seqf & Space(2) & CCRf
-        'Printer.Print " "
-        'Printer.Print " "
         Printer.Print Space(74) & DateTime
         Printer.Print " "
         Printer.Print " "
@@ -722,11 +750,15 @@ If CD.RecordCount > 0 Then
         Printer.Print " "
         Printer.Print " "
         Printer.Print Space(2) & .Fields("commod")
+
+
         If CSng(.Fields("dolrte")) > 0 Then
             WhfRteAmt = CSng(.Fields("dolrte"))
         End If
         sngVat = 0
         sngWtx = 0
+        sngWeighTotal = 0
+
         Do While Not .EOF
             If .Fields("vatcde") <> "1" Then
                 sngVat = sngVat + CSng(.Fields("arrvat"))
@@ -738,6 +770,9 @@ If CD.RecordCount > 0 Then
             sngWArrastre = CSng(.Fields("arramt")) + CSng(.Fields("ovzamt")) + CSng(.Fields("dgramt"))
             sngTArrastre = sngTArrastre + sngArrastre
             sngTWArrastre = sngTWArrastre + sngWArrastre
+            sngWgh = CSng(.Fields("wghamt"))
+            sngWeighing = sngWeighing + sngWgh
+            sngWeighTotal = sngWeighTotal + sngWgh
             If .Fields("whfcde") = "0" Then
                 sngWharfage = CSng(.Fields("whfamt"))
             Else
@@ -759,6 +794,11 @@ If CD.RecordCount > 0 Then
             Else
                 strWharfage = " "
             End If
+            If sngWgh > 0 Then
+                strWgh = Format(sngWgh, "##,###.#0")
+            Else
+                strWgh = 0
+            End If
             strSize = .Fields("cntsze")
             strCtnnum = .Fields("cntnum")
             If CSng(.Fields("ovzamt")) > 0 Then
@@ -766,12 +806,12 @@ If CD.RecordCount > 0 Then
             Else
                 RevTonnage = ""
             End If
-            Printer.Print Space(2) & strSize & Space(1) & strCtnnum & Space(2) & RevTonnage & Space(2) & strArrastre & Space(29) & strArrastre
+            Printer.Print Space(2) & strSize & Space(1) & strCtnnum & Space(2) & RevTonnage & Space(2) & strArrastre & Space(2) & strWgh & Space(20) & Format(CDbl(strArrastre) + CDbl(strWgh), "###,###,###.#0")
             ctrCnt = ctrCnt - 1
             .MoveNext
         Loop
         If ctrCnt > 0 Then
-            For x = 1 To ctrCnt
+            For X = 1 To ctrCnt
                 Printer.Print " "
             Next
         End If
@@ -799,11 +839,10 @@ If CD.RecordCount > 0 Then
         Else
             tmpString = "ZERO RATED VAT"
         End If
-        'Printer.Print " "  ' 3
         Printer.Print " "  ' 3
         Printer.Print " "  ' 3
-        Printer.Print Space(6) & Space(15) & Space(17) & Space(17) & Trim(tmpString) & Space(10) & strTArrastre
-        tmpString = NumToText(CCur(sngTArrastre))
+        Printer.Print Space(6) & Space(15) & Space(17) & Space(17) & Trim(tmpString) & Space(10) & Format(CDbl(strTArrastre) + CDbl(sngWeighTotal), "###,###,###.#0")
+        tmpString = NumToText(CCur(sngTArrastre) + sngWeighTotal)
         Word1 = Mid(tmpString, 1, 35)
         If Len(Trim(Mid(tmpString, 35, 1))) <> 0 And Len(Trim(Mid(tmpString, 36, 1))) <> 0 Then
             Word1 = Trim(Word1) & "-"
@@ -817,17 +856,36 @@ If CD.RecordCount > 0 Then
         Printer.Print " "
         Printer.Print Space(46) & Word1
         Printer.Print Space(2) & strRemarks & Space(6) & strRemarkOut & Space(7) & Word2
-        
+
         If DomesticMode Then
             Printer.Print "  DOMESTIC" & Space(36) & Word3
         Else
             Printer.Print "  FOREIGN " & Space(36) & Word3
         End If
         Printer.Print " "
-        tmpString = strChqAmt & " CK    " & strCshAmt & " CS"
-        Printer.Print Space(44) & tmpString
-        tmpString = strAdrAmt & " AD"
-        Printer.Print Space(5) & UserName  ' & Space(26) & tmpString
+        Printer.Print Space(5) & UserName
+        
+            
+        tmpString = strCshAmt & " CS                  "
+        Printer.CurrentX = Printer.ScaleWidth - Printer.TextWidth(tmpString)
+        Printer.Print tmpString
+          
+        tmpString = strChqAmt & " CK                  "
+        Printer.CurrentX = Printer.ScaleWidth - Printer.TextWidth(tmpString)
+        Printer.Print tmpString
+        
+        adrnum = " "                                                                        'Empty
+        If pAdrNum > 0 Then adrnum = adrnum & pAdrNum                                       'Check 1 if >0
+        If pAdrNum2 > 0 Then adrnum = adrnum & " / " & pAdrNum2                             'Check 2
+        If pAdrNum3 > 0 Then adrnum = adrnum & " / " & pAdrNum3                             'Check3
+        If Len(adrnum) <= 18 Then adrnum = adrnum & Space(18): adrnum = Left(adrnum, 18) _
+        Else adrnum = adrnum & Space(5)                                                     'Space 18 then Read 18
+        tmpString = strAdrAmt & " AD" & adrnum                                              'Add AD for Printing
+
+        Printer.CurrentX = Printer.ScaleWidth - Printer.TextWidth(tmpString)                'Start from left adjusted by 18 spaces
+        Printer.Print tmpString
+
+
         If blnChkno1 Then
             tmp1 = StrChk1
         Else
@@ -870,179 +928,15 @@ If CD.RecordCount > 0 Then
         Printer.Print Space(5) & "REF " & Refn & " SEQ " & Seqf & Space(2) & CCRf
         Printer.FontSize = 10
         Printer.EndDoc
-        
-'        Printer.Print " "
-'        Printer.Print Space(23) & "REF " & Refn & " SEQ " & Seqf & Space(2) & CCRf
-'        Printer.Print " "  'N
-'        Printer.Print Space(72) & DateTime
-'        Printer.Print " "
-'        Printer.Print " "
-'        Printer.Print Space(2) & strExporter & Space(13) & vslName & Space(3) & _
-'                        Trim(Mid(strEntry, 1, 8) & " " & _
-'                        Mid(strEntry, 9, 8) & " " & _
-'                        Mid(strEntry, 17, 8) & " " & _
-'                        Mid(strEntry, 25, 8) & " " & _
-'                        Mid(strEntry, 33, 8))
-'        Printer.Print Space(45) & Trim(Mid(strEntry, 41, 8) & " " & _
-'                        Mid(strEntry, 49, 8) & " " & _
-'                        Mid(strEntry, 57, 8) & " " & _
-'                        Mid(strEntry, 65, 8) & " " & _
-'                        Mid(strEntry, 73, 8))
-'        Printer.Print " "
-'        Printer.Print " "
-'        Printer.Print " "
-'        Printer.Print Space(2) & .Fields("commod")
-'        If CSng(.Fields("dolrte")) > 0 Then
-'            WhfRteAmt = CSng(.Fields("dolrte"))
-'        End If
-'        sngVat = 0
-'        sngWtx = 0
-'        Do While Not .EOF
-'            If .Fields("vatcde") <> "0" Then
-'                sngVat = sngVat + CSng(.Fields("arrvat"))
-'            End If
-'            If .Fields("vatcde") = "2" Or .Fields("vatcde") = "3" Then
-'                sngWtx = sngWtx + CSng(.Fields("arrtax"))
-'            End If
-'            sngArrastre = CSng(.Fields("arramt")) + CSng(.Fields("ovzamt")) + CSng(.Fields("dgramt")) + CSng(.Fields("arrvat")) - CSng(.Fields("arrtax"))
-'            sngWArrastre = CSng(.Fields("arramt")) + CSng(.Fields("ovzamt")) + CSng(.Fields("dgramt"))
-'            sngTArrastre = sngTArrastre + sngArrastre
-'            sngTWArrastre = sngTWArrastre + sngWArrastre
-'            If .Fields("whfcde") = "0" Then
-'                sngWharfage = CSng(.Fields("whfamt"))
-'            Else
-'                sngWharfage = 0
-'            End If
-'            sngTWharfage = sngTWharfage + sngWharfage
-'            If sngArrastre > 0 Then
-'                strArrastre = Format(sngArrastre, "###,###,###.#0")
-'            Else
-'                strArrastre = " "
-'            End If
-'            If sngWArrastre > 0 Then
-'                strWArrastre = Format(sngWArrastre, "###,###,###.#0")
-'            Else
-'                strWArrastre = " "
-'            End If
-'            If sngWharfage > 0 Then
-'                strWharfage = Format(sngWharfage, "###,###,###.#0")
-'            Else
-'                strWharfage = " "
-'            End If
-'            strSize = .Fields("cntsze")
-'            strCtnnum = .Fields("cntnum")
-'            If CSng(.Fields("ovzamt")) > 0 Then
-'                RevTonnage = Format(CSng(.Fields("revton")), "###,###,###.#0")
-'            Else
-'                RevTonnage = ""
-'            End If
-'            Printer.Print Space(2) & strSize & Space(1) & strCtnnum & Space(2) & RevTonnage & Space(2) & strArrastre & Space(29) & strArrastre
-'            ctrCnt = ctrCnt - 1
-'            .MoveNext
-'        Loop
-'        If ctrCnt > 0 Then
-'            For x = 1 To ctrCnt
-'                Printer.Print " "
-'            Next
-'        End If
-'        If sngTArrastre > 0 Then
-'            strTArrastre = Format(sngTArrastre, "###,###,###.#0")
-'        Else
-'            strTArrastre = " "
-'        End If
-'        If sngTWArrastre > 0 Then
-'            strTWArrastre = Format(sngTWArrastre, "###,###,###.#0")
-'        Else
-'            strTWArrastre = " "
-'        End If
-'        If sngTWharfage > 0 Then
-'            strTWharfage = Format(sngTWharfage, "###,###,###.#0")
-'        Else
-'            strTWharfage = " "
-'        End If
-'        If sngVat > 0 Then
-'            If sngWtx > 0 Then
-'                tmpString = "VAT INCLUSIVE LESS W/TAX"
-'            Else
-'                tmpString = "VAT INCLUSIVE"
-'            End If
-'        Else
-'            tmpString = "ZERO RATED VAT"
-'        End If
-'        Printer.Print " " 'N
-'        Printer.Print " " 'N
-'        Printer.Print " " 'N
-'        Printer.Print Space(6) & Space(15) & Space(17) & Space(17) & Trim(tmpString) & Space(10) & strTArrastre
-'        'Printer.Print ""
-'        tmpString = NumToText(CCur(sngTArrastre))
-'        Word1 = Mid(tmpString, 1, 35)
-'        If Len(Trim(Mid(tmpString, 35, 1))) <> 0 And Len(Trim(Mid(tmpString, 36, 1))) <> 0 Then
-'            Word1 = Trim(Word1) & "-"
-'        End If
-'        Word2 = Mid(tmpString, 36, 35)
-'        If Len(Trim(Mid(tmpString, 71, 1))) <> 0 And Len(Trim(Mid(tmpString, 72, 1))) <> 0 Then
-'            Word2 = Trim(Word2) & "-"
-'        End If
-'        Word3 = Mid(tmpString, 72, 35)
-'        Printer.Print " " 'N
-'        Printer.Print Space(46) & Word1
-'        Printer.Print Space(2) & strRemarks & Space(6) & strRemarkOut & Space(7) & Word2
-'
-'        If DomesticMode Then
-'            Printer.Print "  DOMESTIC" & Space(36) & Word3
-'        Else
-'            Printer.Print "  FOREIGN " & Space(36) & Word3
-'        End If
-'        Printer.Print " " 'N
-'        tmpString = strChqAmt & " CK    " & strCshAmt & " CS"
-'        Printer.Print Space(44) & tmpString
-'        tmpString = strAdrAmt & " AD"
-'        Printer.Print Space(5) & UserName  ' & Space(26) & tmpString N
-'        'Printer.Print "" N
-'        If blnChkno1 Then
-'            tmp1 = StrChk1
-'        Else
-'            tmp1 = " "
-'        End If
-'        If blnChkno2 Then
-'            If Len(tmp1) > 0 Then
-'                tmp2 = ", " & StrChk2
-'            Else
-'                tmp2 = " " & StrChk2
-'            End If
-'        Else
-'            tmp2 = " "
-'        End If
-'        Printer.Print Space(44) & Trim(tmp1) & tmp2
-'        If blnChkno3 Then
-'            tmp1 = StrChk3
-'        Else
-'            tmp1 = " "
-'        End If
-'        If blnChkno4 Then
-'            If Len(tmp1) > 0 Then
-'                tmp2 = ", " & StrChk4
-'            Else
-'                tmp2 = " " & StrChk4
-'            End If
-'        Else
-'            tmp2 = " "
-'        End If
-'        Printer.Print Space(44) & Trim(tmp1) & tmp2
-'        If blnChkno5 Then
-'            tmp1 = StrChk5
-'        Else
-'            tmp1 = " "
-'        End If
-'        Printer.Print Space(44) & tmp1
-'        Printer.Print Space(44) & strValidation
-'        Printer.FontSize = 10
-'        Printer.EndDoc
     End With
 End If
+
 CD.Close
 Set CD = Nothing
+
 End Sub
+
+
 Private Function NumToText(dblValue As Currency) As String
     Static ones(0 To 9) As String
     Static teens(0 To 9) As String
@@ -1170,5 +1064,12 @@ NumToTextError:
     Resume EndNumToText
 End Function
 
+Public Function parsenull(variable As Variant) As Variant
+On Error GoTo parse
+parsenull = CCur(variable)
+Exit Function
+parse:
+parsenull = 0
 
+End Function
 

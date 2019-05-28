@@ -10,6 +10,7 @@ Public Customer As String
 Public strCommodity As String
 Public AdrAmount As Single
 
+
 Public strAdrAmt As String * 12
 Public strCashAmt As String * 12
 
@@ -38,6 +39,7 @@ Public ChkAmount4 As Single
 Public ChkAmount5 As Single
 
 Public sngTempAmt As Single
+
 
 Public blnChkno1 As Boolean
 Public blnChkno2 As Boolean

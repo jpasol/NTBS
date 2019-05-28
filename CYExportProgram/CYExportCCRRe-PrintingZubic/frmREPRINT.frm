@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
 Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "MSFLXGRD.OCX"
 Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Begin VB.Form frmREPRINT 
@@ -7,10 +7,10 @@ Begin VB.Form frmREPRINT
    Caption         =   "( SUBIC - ZCCRCYREPRT ) CY Export CCR Re-Printing"
    ClientHeight    =   10770
    ClientLeft      =   150
-   ClientTop       =   720
+   ClientTop       =   795
    ClientWidth     =   15240
    BeginProperty Font 
-      Name            =   "IBM3270 - 1254"
+      Name            =   "Arial"
       Size            =   15
       Charset         =   0
       Weight          =   400
@@ -58,15 +58,15 @@ Begin VB.Form frmREPRINT
          EndProperty
          BeginProperty Panel5 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   6
-            TextSave        =   "7/11/00"
+            TextSave        =   "01/04/2019"
          EndProperty
          BeginProperty Panel6 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
-            TextSave        =   "8:41 AM"
+            TextSave        =   "11:48 AM"
          EndProperty
       EndProperty
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   13.5
          Charset         =   0
          Weight          =   700
@@ -92,29 +92,17 @@ Begin VB.Form frmREPRINT
       TabPicture(0)   =   "frmREPRINT.frx":27B2
       Tab(0).ControlEnabled=   0   'False
       Tab(0).Control(0)=   "txtTab(0)"
-      Tab(0).Control(0).Enabled=   0   'False
       Tab(0).Control(1)=   "cmdByccr"
-      Tab(0).Control(1).Enabled=   0   'False
       Tab(0).Control(2)=   "flxRef"
-      Tab(0).Control(2).Enabled=   0   'False
       Tab(0).Control(3)=   "Frame3"
-      Tab(0).Control(3).Enabled=   0   'False
       Tab(0).Control(4)=   "cmdExit"
-      Tab(0).Control(4).Enabled=   0   'False
       Tab(0).Control(5)=   "cmdPrinter"
-      Tab(0).Control(5).Enabled=   0   'False
       Tab(0).Control(6)=   "cmdPrint"
-      Tab(0).Control(6).Enabled=   0   'False
       Tab(0).Control(7)=   "cmdSearch"
-      Tab(0).Control(7).Enabled=   0   'False
       Tab(0).Control(8)=   "Frame1"
-      Tab(0).Control(8).Enabled=   0   'False
       Tab(0).Control(9)=   "Label4"
-      Tab(0).Control(9).Enabled=   0   'False
       Tab(0).Control(10)=   "Label2"
-      Tab(0).Control(10).Enabled=   0   'False
       Tab(0).Control(11)=   "Label1"
-      Tab(0).Control(11).Enabled=   0   'False
       Tab(0).ControlCount=   12
       TabCaption(1)   =   "By CCR Number"
       TabPicture(1)   =   "frmREPRINT.frx":27CE
@@ -329,7 +317,7 @@ Begin VB.Form frmREPRINT
          BorderStyle     =   1  'Fixed Single
          Caption         =   "     C C R   D E T A I L S"
          BeginProperty Font 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   16.5
             Charset         =   0
             Weight          =   700
@@ -455,6 +443,7 @@ End Sub
 Private Sub cmdSearch2_Click()
     Call AnotherCCR
 End Sub
+
 Private Sub flxRef_KeyPress(KeyAscii As Integer)
     With flxRef
         If KeyAscii <> 13 Then
@@ -545,6 +534,9 @@ End Sub
 Private Sub Form_Unload(Cancel As Integer)
     Set CCR = Nothing
 End Sub
+
+
+
 Private Sub txtTab_Change(Index As Integer)
     txtReference.Caption = " "
 End Sub
@@ -570,6 +562,7 @@ If KeyCode = vbKeyReturn Then
             txtTab(0).SetFocus
         End If
     Else
+        
         If FillGridByCCR Then
             Tab0 (False)
             Tab1 (False)
@@ -665,14 +658,14 @@ Public Sub ByCCR()
     txtTab(1).Enabled = True
 End Sub
 Public Function ReadAndPrintFlxRef() As Boolean
-    Dim x As Integer
+    Dim X As Integer
     If flxR > 1 Then
         With flxRef
-            For x = 1 To (flxR - 1)
-                If Trim(.TextMatrix(x, 0)) = "1" Then
-                    CCR.CCRNumber = CLng(Trim(.TextMatrix(x, 3)))
-                    CCR.PrintCCR CLng(Trim(.TextMatrix(x, 1)))
-                    .TextMatrix(x, 0) = " "
+            For X = 1 To (flxR - 1)
+                If Trim(.TextMatrix(X, 0)) = "1" Then
+                    CCR.CCRNumber = CLng(Trim(.TextMatrix(X, 3)))
+                    CCR.PrintCCR CLng(Trim(.TextMatrix(X, 1)))
+                    .TextMatrix(X, 0) = " "
                 End If
             Next
         End With

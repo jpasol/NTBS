@@ -1,11 +1,11 @@
 VERSION 5.00
 Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT 
-   ClientHeight    =   9765
+   ClientHeight    =   11040
    ClientLeft      =   0
    ClientTop       =   0
-   ClientWidth     =   11175
-   _ExtentX        =   19711
-   _ExtentY        =   17224
+   ClientWidth     =   20805
+   _ExtentX        =   36698
+   _ExtentY        =   19473
    FolderFlags     =   1
    TypeLibGuid     =   "{2D835FC3-0BA4-11D3-BD67-00105A64485A}"
    TypeInfoGuid    =   "{2D835FC4-0BA4-11D3-BD67-00105A64485A}"
@@ -16,7 +16,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
       ConnectionName  =   "Billing"
       ConnDispId      =   1001
       SourceOfData    =   3
-      ConnectionSource=   "Provider=SQLOLEDB.1;Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Billing;Data Source=SBITCBILLING"
+      ConnectionSource=   "Provider=SQLOLEDB.1;Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=billing;Data Source=sbitcbilling"
       Expanded        =   -1  'True
       IsSQL           =   -1  'True
       QuoteChar       =   34
@@ -26,7 +26,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
    BeginProperty Recordset1 
       CommandName     =   "getTotal"
       CommDispId      =   1002
-      RsDispId        =   1029
+      RsDispId        =   1081
       CommandText     =   $"zdeCCRCYREPRT.dsx":0000
       ActiveConnectionName=   "Billing"
       CommandType     =   1
@@ -70,9 +70,10 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
       CommandName     =   "getCCRList"
       CommDispId      =   1009
       RsDispId        =   1015
-      CommandText     =   $"zdeCCRCYREPRT.dsx":00D2
+      CommandText     =   $"zdeCCRCYREPRT.dsx":00E6
       ActiveConnectionName=   "Billing"
       CommandType     =   1
+      Expanded        =   -1  'True
       IsRSReturning   =   -1  'True
       NumFields       =   5
       BeginProperty Field1 
@@ -133,12 +134,13 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
    BeginProperty Recordset3 
       CommandName     =   "getCCRdetails"
       CommDispId      =   1016
-      RsDispId        =   1021
-      CommandText     =   "Select * from CCRcyx where refnum = ? and seqnum = ? and status <> 'CAN'"
+      RsDispId        =   1082
+      CommandText     =   "SELECT * FROM CCRcyx WHERE refnum = ? AND seqnum = ? AND status <> 'CAN' AND CompanyCode IS NOT NULL"
       ActiveConnectionName=   "Billing"
       CommandType     =   1
+      Expanded        =   -1  'True
       IsRSReturning   =   -1  'True
-      NumFields       =   39
+      NumFields       =   46
       BeginProperty Field1 
          Precision       =   8
          Size            =   19
@@ -156,6 +158,14 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Caption         =   "seqnum"
       EndProperty
       BeginProperty Field3 
+         Precision       =   1
+         Size            =   19
+         Scale           =   0
+         Type            =   131
+         Name            =   "itmnum"
+         Caption         =   "itmnum"
+      EndProperty
+      BeginProperty Field4 
          Precision       =   0
          Size            =   12
          Scale           =   0
@@ -163,7 +173,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "cntnum"
          Caption         =   "cntnum"
       EndProperty
-      BeginProperty Field4 
+      BeginProperty Field5 
          Precision       =   8
          Size            =   19
          Scale           =   0
@@ -171,7 +181,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "ccrnum"
          Caption         =   "ccrnum"
       EndProperty
-      BeginProperty Field5 
+      BeginProperty Field6 
          Precision       =   2
          Size            =   19
          Scale           =   0
@@ -179,7 +189,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "cntsze"
          Caption         =   "cntsze"
       EndProperty
-      BeginProperty Field6 
+      BeginProperty Field7 
          Precision       =   0
          Size            =   1
          Scale           =   0
@@ -187,7 +197,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "fulemp"
          Caption         =   "fulemp"
       EndProperty
-      BeginProperty Field7 
+      BeginProperty Field8 
          Precision       =   0
          Size            =   1
          Scale           =   0
@@ -195,15 +205,15 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "dgrcls"
          Caption         =   "dgrcls"
       EndProperty
-      BeginProperty Field8 
+      BeginProperty Field9 
          Precision       =   0
-         Size            =   7
+         Size            =   12
          Scale           =   0
          Type            =   129
          Name            =   "vslcde"
          Caption         =   "vslcde"
       EndProperty
-      BeginProperty Field9 
+      BeginProperty Field10 
          Precision       =   6
          Size            =   19
          Scale           =   2
@@ -211,7 +221,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "whfamt"
          Caption         =   "whfamt"
       EndProperty
-      BeginProperty Field10 
+      BeginProperty Field11 
          Precision       =   8
          Size            =   19
          Scale           =   2
@@ -219,7 +229,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "arramt"
          Caption         =   "arramt"
       EndProperty
-      BeginProperty Field11 
+      BeginProperty Field12 
          Precision       =   8
          Size            =   19
          Scale           =   2
@@ -227,7 +237,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "ovzamt"
          Caption         =   "ovzamt"
       EndProperty
-      BeginProperty Field12 
+      BeginProperty Field13 
          Precision       =   8
          Size            =   19
          Scale           =   2
@@ -235,7 +245,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "dgramt"
          Caption         =   "dgramt"
       EndProperty
-      BeginProperty Field13 
+      BeginProperty Field14 
          Precision       =   8
          Size            =   19
          Scale           =   3
@@ -243,7 +253,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "arrvat"
          Caption         =   "arrvat"
       EndProperty
-      BeginProperty Field14 
+      BeginProperty Field15 
          Precision       =   8
          Size            =   19
          Scale           =   3
@@ -251,7 +261,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "arrtax"
          Caption         =   "arrtax"
       EndProperty
-      BeginProperty Field15 
+      BeginProperty Field16 
          Precision       =   0
          Size            =   1
          Scale           =   0
@@ -259,7 +269,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "vatcde"
          Caption         =   "vatcde"
       EndProperty
-      BeginProperty Field16 
+      BeginProperty Field17 
          Precision       =   6
          Size            =   19
          Scale           =   2
@@ -267,7 +277,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "cntovzl"
          Caption         =   "cntovzl"
       EndProperty
-      BeginProperty Field17 
+      BeginProperty Field18 
          Precision       =   6
          Size            =   19
          Scale           =   2
@@ -275,7 +285,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "cntovzw"
          Caption         =   "cntovzw"
       EndProperty
-      BeginProperty Field18 
+      BeginProperty Field19 
          Precision       =   6
          Size            =   19
          Scale           =   2
@@ -283,7 +293,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "cntovzh"
          Caption         =   "cntovzh"
       EndProperty
-      BeginProperty Field19 
+      BeginProperty Field20 
          Precision       =   0
          Size            =   1
          Scale           =   0
@@ -291,7 +301,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "ovzums"
          Caption         =   "ovzums"
       EndProperty
-      BeginProperty Field20 
+      BeginProperty Field21 
          Precision       =   6
          Size            =   19
          Scale           =   2
@@ -299,7 +309,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "revton"
          Caption         =   "revton"
       EndProperty
-      BeginProperty Field21 
+      BeginProperty Field22 
          Precision       =   0
          Size            =   1
          Scale           =   0
@@ -307,7 +317,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "trncde"
          Caption         =   "trncde"
       EndProperty
-      BeginProperty Field22 
+      BeginProperty Field23 
          Precision       =   0
          Size            =   1
          Scale           =   0
@@ -315,7 +325,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "whfcde"
          Caption         =   "whfcde"
       EndProperty
-      BeginProperty Field23 
+      BeginProperty Field24 
          Precision       =   0
          Size            =   1
          Scale           =   0
@@ -323,7 +333,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "guarntycde"
          Caption         =   "guarntycde"
       EndProperty
-      BeginProperty Field24 
+      BeginProperty Field25 
          Precision       =   5
          Size            =   19
          Scale           =   2
@@ -331,7 +341,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "dolrte"
          Caption         =   "dolrte"
       EndProperty
-      BeginProperty Field25 
+      BeginProperty Field26 
          Precision       =   0
          Size            =   30
          Scale           =   0
@@ -339,7 +349,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "exprtr"
          Caption         =   "exprtr"
       EndProperty
-      BeginProperty Field26 
+      BeginProperty Field27 
          Precision       =   0
          Size            =   30
          Scale           =   0
@@ -347,7 +357,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "broker"
          Caption         =   "broker"
       EndProperty
-      BeginProperty Field27 
+      BeginProperty Field28 
          Precision       =   0
          Size            =   80
          Scale           =   0
@@ -355,7 +365,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "entnum"
          Caption         =   "entnum"
       EndProperty
-      BeginProperty Field28 
+      BeginProperty Field29 
          Precision       =   0
          Size            =   30
          Scale           =   0
@@ -363,7 +373,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "commod"
          Caption         =   "commod"
       EndProperty
-      BeginProperty Field29 
+      BeginProperty Field30 
          Precision       =   0
          Size            =   30
          Scale           =   0
@@ -371,7 +381,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "remark"
          Caption         =   "remark"
       EndProperty
-      BeginProperty Field30 
+      BeginProperty Field31 
          Precision       =   0
          Size            =   20
          Scale           =   0
@@ -379,7 +389,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "trknam"
          Caption         =   "trknam"
       EndProperty
-      BeginProperty Field31 
+      BeginProperty Field32 
          Precision       =   0
          Size            =   10
          Scale           =   0
@@ -387,7 +397,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "pltnum"
          Caption         =   "pltnum"
       EndProperty
-      BeginProperty Field32 
+      BeginProperty Field33 
          Precision       =   0
          Size            =   35
          Scale           =   0
@@ -395,7 +405,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "trkchs"
          Caption         =   "trkchs"
       EndProperty
-      BeginProperty Field33 
+      BeginProperty Field34 
          Precision       =   0
          Size            =   3
          Scale           =   0
@@ -403,7 +413,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "status"
          Caption         =   "status"
       EndProperty
-      BeginProperty Field34 
+      BeginProperty Field35 
          Precision       =   8
          Size            =   19
          Scale           =   0
@@ -411,7 +421,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "ovrccr"
          Caption         =   "ovrccr"
       EndProperty
-      BeginProperty Field35 
+      BeginProperty Field36 
          Precision       =   8
          Size            =   19
          Scale           =   0
@@ -419,7 +429,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "ppanum"
          Caption         =   "ppanum"
       EndProperty
-      BeginProperty Field36 
+      BeginProperty Field37 
          Precision       =   0
          Size            =   10
          Scale           =   0
@@ -427,7 +437,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "userid"
          Caption         =   "userid"
       EndProperty
-      BeginProperty Field37 
+      BeginProperty Field38 
          Precision       =   23
          Size            =   16
          Scale           =   3
@@ -435,7 +445,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "sysdttm"
          Caption         =   "sysdttm"
       EndProperty
-      BeginProperty Field38 
+      BeginProperty Field39 
          Precision       =   0
          Size            =   1
          Scale           =   0
@@ -443,7 +453,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "updcde"
          Caption         =   "updcde"
       EndProperty
-      BeginProperty Field39 
+      BeginProperty Field40 
          Precision       =   23
          Size            =   16
          Scale           =   3
@@ -451,28 +461,74 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "outdttm"
          Caption         =   "outdttm"
       EndProperty
+      BeginProperty Field41 
+         Precision       =   0
+         Size            =   20
+         Scale           =   0
+         Type            =   129
+         Name            =   "supvsr"
+         Caption         =   "supvsr"
+      EndProperty
+      BeginProperty Field42 
+         Precision       =   0
+         Size            =   2
+         Scale           =   0
+         Type            =   11
+         Name            =   "IsN4BillingPermissionGranted"
+         Caption         =   "IsN4BillingPermissionGranted"
+      EndProperty
+      BeginProperty Field43 
+         Precision       =   8
+         Size            =   19
+         Scale           =   2
+         Type            =   131
+         Name            =   "wghamt"
+         Caption         =   "wghamt"
+      EndProperty
+      BeginProperty Field44 
+         Precision       =   0
+         Size            =   2
+         Scale           =   0
+         Type            =   11
+         Name            =   "IsN4BillingDGPermissionGranted"
+         Caption         =   "IsN4BillingDGPermissionGranted"
+      EndProperty
+      BeginProperty Field45 
+         Precision       =   0
+         Size            =   2
+         Scale           =   0
+         Type            =   11
+         Name            =   "IsN4BillingOOGPermissionGranted"
+         Caption         =   "IsN4BillingOOGPermissionGranted"
+      EndProperty
+      BeginProperty Field46 
+         Precision       =   0
+         Size            =   5
+         Scale           =   0
+         Type            =   202
+         Name            =   "CompanyCode"
+         Caption         =   "CompanyCode"
+      EndProperty
       NumGroups       =   0
       ParamCount      =   2
       BeginProperty P1 
          RealName        =   "Param1"
-         UserName        =   "Reference"
          Direction       =   1
          Precision       =   8
          Scale           =   0
          Size            =   19
          DataType        =   131
-         HostType        =   3
+         HostType        =   8
          Required        =   -1  'True
       EndProperty
       BeginProperty P2 
          RealName        =   "Param2"
-         UserName        =   "Sequence"
          Direction       =   1
          Precision       =   3
          Scale           =   0
          Size            =   19
          DataType        =   131
-         HostType        =   3
+         HostType        =   8
          Required        =   -1  'True
       EndProperty
       RelationCount   =   0
@@ -485,6 +541,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
       CommandText     =   "select * from CCRpay where refnum = ?"
       ActiveConnectionName=   "Billing"
       CommandType     =   1
+      Expanded        =   -1  'True
       IsRSReturning   =   -1  'True
       NumFields       =   13
       BeginProperty Field1 
@@ -614,6 +671,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
       CommandText     =   "select * from ccrcyx"
       ActiveConnectionName=   "Billing"
       CommandType     =   1
+      Expanded        =   -1  'True
       IsRSReturning   =   -1  'True
       NumFields       =   39
       BeginProperty Field1 
@@ -940,6 +998,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
       CommandText     =   "select * from ccrpay"
       ActiveConnectionName=   "Billing"
       CommandType     =   1
+      Expanded        =   -1  'True
       IsRSReturning   =   -1  'True
       NumFields       =   28
       BeginProperty Field1 
@@ -1178,6 +1237,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
       CommandText     =   "SELECT noccr = COUNT(DISTINCT ccrnum) FROM ccrcyx WHERE refnum = ? AND seqnum = ?"
       ActiveConnectionName=   "Billing"
       CommandType     =   1
+      Expanded        =   -1  'True
       IsRSReturning   =   -1  'True
       NumFields       =   1
       BeginProperty Field1 
@@ -1222,6 +1282,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
       CommandText     =   "SELECT * FROM ccrcyx WHERE refnum = ? AND seqnum = ? ORDER BY refnum,seqnum,itmnum "
       ActiveConnectionName=   "Billing"
       CommandType     =   1
+      Expanded        =   -1  'True
       IsRSReturning   =   -1  'True
       NumFields       =   40
       BeginProperty Field1 
@@ -1576,6 +1637,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
       CommandText     =   "select workstation=host_name()"
       ActiveConnectionName=   "Billing"
       CommandType     =   1
+      Expanded        =   -1  'True
       IsRSReturning   =   -1  'True
       NumFields       =   1
       BeginProperty Field1 
@@ -1594,12 +1656,13 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
    BeginProperty Recordset10 
       CommandName     =   "GetDetails"
       CommDispId      =   1060
-      RsDispId        =   1079
-      CommandText     =   "select * from ccrcyx where ccrnum = ? order by itmnum"
+      RsDispId        =   1084
+      CommandText     =   "select * from ccrcyx where ccrnum = ? and CompanyCode is not null order by itmnum"
       ActiveConnectionName=   "Billing"
       CommandType     =   1
+      Expanded        =   -1  'True
       IsRSReturning   =   -1  'True
-      NumFields       =   40
+      NumFields       =   46
       BeginProperty Field1 
          Precision       =   8
          Size            =   19
@@ -1666,7 +1729,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
       EndProperty
       BeginProperty Field9 
          Precision       =   0
-         Size            =   7
+         Size            =   12
          Scale           =   0
          Type            =   129
          Name            =   "vslcde"
@@ -1920,6 +1983,54 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
          Name            =   "outdttm"
          Caption         =   "outdttm"
       EndProperty
+      BeginProperty Field41 
+         Precision       =   0
+         Size            =   20
+         Scale           =   0
+         Type            =   129
+         Name            =   "supvsr"
+         Caption         =   "supvsr"
+      EndProperty
+      BeginProperty Field42 
+         Precision       =   0
+         Size            =   2
+         Scale           =   0
+         Type            =   11
+         Name            =   "IsN4BillingPermissionGranted"
+         Caption         =   "IsN4BillingPermissionGranted"
+      EndProperty
+      BeginProperty Field43 
+         Precision       =   8
+         Size            =   19
+         Scale           =   2
+         Type            =   131
+         Name            =   "wghamt"
+         Caption         =   "wghamt"
+      EndProperty
+      BeginProperty Field44 
+         Precision       =   0
+         Size            =   2
+         Scale           =   0
+         Type            =   11
+         Name            =   "IsN4BillingDGPermissionGranted"
+         Caption         =   "IsN4BillingDGPermissionGranted"
+      EndProperty
+      BeginProperty Field45 
+         Precision       =   0
+         Size            =   2
+         Scale           =   0
+         Type            =   11
+         Name            =   "IsN4BillingOOGPermissionGranted"
+         Caption         =   "IsN4BillingOOGPermissionGranted"
+      EndProperty
+      BeginProperty Field46 
+         Precision       =   0
+         Size            =   5
+         Scale           =   0
+         Type            =   202
+         Name            =   "CompanyCode"
+         Caption         =   "CompanyCode"
+      EndProperty
       NumGroups       =   0
       ParamCount      =   1
       BeginProperty P1 
@@ -1938,10 +2049,11 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} zdeCCRCYREPRT
    BeginProperty Recordset11 
       CommandName     =   "GetRefDetails"
       CommDispId      =   1066
-      RsDispId        =   1080
-      CommandText     =   "SELECT DISTINCT refnum, seqnum, ccrnum, exprtr, broker, sysdttm FROM ccrcyx WHERE refnum = ? ORDER BY ccrnum, seqnum"
+      RsDispId        =   1083
+      CommandText     =   $"zdeCCRCYREPRT.dsx":01C3
       ActiveConnectionName=   "Billing"
       CommandType     =   1
+      Expanded        =   -1  'True
       IsRSReturning   =   -1  'True
       NumFields       =   6
       BeginProperty Field1 
@@ -2013,7 +2125,3 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-Private Sub Connection1_InfoMessage(ByVal pError As ADODB.Error, adStatus As ADODB.EventStatusEnum, ByVal pConnection As ADODB.Connection)
-
-End Sub
-
