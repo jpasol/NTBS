@@ -50,7 +50,7 @@ Begin VB.Form frmCYXINQ02
          EndProperty
          BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             AutoSize        =   1
-            Object.Width           =   12409
+            Object.Width           =   12356
          EndProperty
          BeginProperty Panel4 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             AutoSize        =   2
@@ -63,12 +63,13 @@ Begin VB.Form frmCYXINQ02
             Style           =   6
             AutoSize        =   2
             Object.Width           =   2963
-            TextSave        =   "02/22/2019"
+            TextSave        =   "09/02/2019"
          EndProperty
          BeginProperty Panel6 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             AutoSize        =   2
-            TextSave        =   "1:58 PM"
+            Object.Width           =   2593
+            TextSave        =   "11:01 AM"
          EndProperty
       EndProperty
    End
