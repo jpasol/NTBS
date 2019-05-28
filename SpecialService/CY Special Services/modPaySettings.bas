@@ -101,5 +101,3 @@ Dim sBuffer As String
         zCurrentComputer = UCase(Trim(Left$(sBuffer, lSize)))
     End If
 End Function
-
-

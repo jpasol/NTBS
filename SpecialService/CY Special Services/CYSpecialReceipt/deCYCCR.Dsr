@@ -1,11 +1,11 @@
 VERSION 5.00
 Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCYCCR 
-   ClientHeight    =   11295
+   ClientHeight    =   14040
    ClientLeft      =   0
    ClientTop       =   0
-   ClientWidth     =   20550
-   _ExtentX        =   36248
-   _ExtentY        =   19923
+   ClientWidth     =   21345
+   _ExtentX        =   37650
+   _ExtentY        =   24765
    FolderFlags     =   7
    TypeLibGuid     =   "{0917860D-1236-11D3-BD7D-00105A64485A}"
    TypeInfoGuid    =   "{0917860E-1236-11D3-BD7D-00105A64485A}"
@@ -16,7 +16,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCYCCR
       ConnectionName  =   "Billing"
       ConnDispId      =   1001
       SourceOfData    =   3
-      ConnectionSource=   "Provider=SQLOLEDB.1;Password=Ictsi123;Persist Security Info=True;User ID=SA_ICTSI;Initial Catalog=billing;Data Source=SBITCBILLING"
+      ConnectionSource=   $"deCYCCR.dsx":0000
       Expanded        =   -1  'True
       IsSQL           =   -1  'True
       QuoteChar       =   34
@@ -27,7 +27,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCYCCR
       CommandName     =   "getCCRList"
       CommDispId      =   1002
       RsDispId        =   1040
-      CommandText     =   $"deCYCCR.dsx":0000
+      CommandText     =   $"deCYCCR.dsx":0088
       ActiveConnectionName=   "Billing"
       CommandType     =   1
       Expanded        =   -1  'True
@@ -447,7 +447,7 @@ Begin {C0E45035-5775-11D0-B388-00A0C9055D8E} deCYCCR
       CommandName     =   "getTotal"
       CommDispId      =   1019
       RsDispId        =   1053
-      CommandText     =   $"deCYCCR.dsx":00B7
+      CommandText     =   $"deCYCCR.dsx":013F
       ActiveConnectionName=   "Billing"
       CommandType     =   1
       Expanded        =   -1  'True

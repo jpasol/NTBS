@@ -4,12 +4,11 @@ Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "msmask32.ocx"
 Begin VB.Form frmCYSCCR 
    BorderStyle     =   3  'Fixed Dialog
-   Caption         =   "CY Special Services CCR Issuance v2"
+   Caption         =   "CY Special Services CCR Issuance"
    ClientHeight    =   10860
    ClientLeft      =   75
    ClientTop       =   660
    ClientWidth     =   15270
-   ControlBox      =   0   'False
    BeginProperty Font 
       Name            =   "Arial"
       Size            =   12
@@ -358,6 +357,87 @@ Begin VB.Form frmCYSCCR
          TabIndex        =   1
          Top             =   4560
          Width           =   6405
+         Begin VB.Frame Frame9 
+            Caption         =   "ADR Number"
+            Height          =   1815
+            Left            =   3240
+            TabIndex        =   221
+            Top             =   1920
+            Visible         =   0   'False
+            Width           =   2295
+            Begin MSMask.MaskEdBox txtADRNum 
+               Height          =   390
+               Index           =   0
+               Left            =   120
+               TabIndex        =   222
+               Top             =   360
+               Width           =   2055
+               _ExtentX        =   3625
+               _ExtentY        =   688
+               _Version        =   393216
+               ForeColor       =   16711680
+               AutoTab         =   -1  'True
+               MaxLength       =   8
+               BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+                  Name            =   "Arial"
+                  Size            =   12
+                  Charset         =   0
+                  Weight          =   700
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               PromptChar      =   " "
+            End
+            Begin MSMask.MaskEdBox txtADRNum 
+               Height          =   390
+               Index           =   1
+               Left            =   120
+               TabIndex        =   223
+               Top             =   840
+               Width           =   2055
+               _ExtentX        =   3625
+               _ExtentY        =   688
+               _Version        =   393216
+               ForeColor       =   16711680
+               AutoTab         =   -1  'True
+               MaxLength       =   8
+               BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+                  Name            =   "Arial"
+                  Size            =   12
+                  Charset         =   0
+                  Weight          =   700
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               PromptChar      =   " "
+            End
+            Begin MSMask.MaskEdBox txtADRNum 
+               Height          =   390
+               Index           =   2
+               Left            =   120
+               TabIndex        =   224
+               Top             =   1320
+               Width           =   2055
+               _ExtentX        =   3625
+               _ExtentY        =   688
+               _Version        =   393216
+               ForeColor       =   16711680
+               AutoTab         =   -1  'True
+               MaxLength       =   8
+               BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+                  Name            =   "Arial"
+                  Size            =   12
+                  Charset         =   0
+                  Weight          =   700
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               PromptChar      =   " "
+            End
+         End
          Begin VB.TextBox txtLog 
             Height          =   735
             Left            =   120
@@ -772,7 +852,7 @@ Begin VB.Form frmCYSCCR
          End
          Begin MSMask.MaskEdBox txtADRAmt 
             Height          =   390
-            Left            =   2280
+            Left            =   1080
             TabIndex        =   4
             Top             =   1560
             Width           =   2055
@@ -794,6 +874,40 @@ Begin VB.Form frmCYSCCR
             Format          =   "#,###,##0.00"
             PromptChar      =   " "
          End
+         Begin MSMask.MaskEdBox txtADRNumALL 
+            Height          =   390
+            Left            =   3240
+            TabIndex        =   219
+            Top             =   1560
+            Width           =   2055
+            _ExtentX        =   3625
+            _ExtentY        =   688
+            _Version        =   393216
+            ForeColor       =   16711680
+            AutoTab         =   -1  'True
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Arial"
+               Size            =   12
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            PromptChar      =   " "
+         End
+         Begin VB.Label Label85 
+            Alignment       =   2  'Center
+            Appearance      =   0  'Flat
+            BorderStyle     =   1  'Fixed Single
+            Caption         =   "ADR NO."
+            ForeColor       =   &H00004080&
+            Height          =   315
+            Left            =   3240
+            TabIndex        =   220
+            Top             =   1200
+            Width           =   2055
+         End
          Begin VB.Label Label82 
             Alignment       =   2  'Center
             Appearance      =   0  'Flat
@@ -801,7 +915,7 @@ Begin VB.Form frmCYSCCR
             Caption         =   "ADR AMT"
             ForeColor       =   &H00004080&
             Height          =   315
-            Left            =   2280
+            Left            =   1080
             TabIndex        =   209
             Top             =   1200
             Width           =   2055
@@ -1023,20 +1137,20 @@ Begin VB.Form frmCYSCCR
          TabCaption(3)   =   "SOC"
          TabPicture(3)   =   "CYSCCR.frx":0211
          Tab(3).ControlEnabled=   0   'False
-         Tab(3).Control(0)=   "lblSOContSz"
-         Tab(3).Control(1)=   "lblSOFulEmp"
-         Tab(3).Control(2)=   "Label64"
-         Tab(3).Control(3)=   "lblManifest(0)"
-         Tab(3).Control(4)=   "lblManifest(11)"
-         Tab(3).Control(5)=   "Label39"
-         Tab(3).Control(6)=   "Label38"
-         Tab(3).Control(7)=   "Label21"
-         Tab(3).Control(8)=   "Label19"
-         Tab(3).Control(9)=   "mskStoEndDate"
-         Tab(3).Control(10)=   "mskStoStrtDate"
-         Tab(3).Control(11)=   "txtSOCCRNo"
-         Tab(3).Control(12)=   "txtSOContNo"
-         Tab(3).Control(13)=   "txtSOVessel"
+         Tab(3).Control(0)=   "txtSOVessel"
+         Tab(3).Control(1)=   "txtSOContNo"
+         Tab(3).Control(2)=   "txtSOCCRNo"
+         Tab(3).Control(3)=   "mskStoStrtDate"
+         Tab(3).Control(4)=   "mskStoEndDate"
+         Tab(3).Control(5)=   "Label19"
+         Tab(3).Control(6)=   "Label21"
+         Tab(3).Control(7)=   "Label38"
+         Tab(3).Control(8)=   "Label39"
+         Tab(3).Control(9)=   "lblManifest(11)"
+         Tab(3).Control(10)=   "lblManifest(0)"
+         Tab(3).Control(11)=   "Label64"
+         Tab(3).Control(12)=   "lblSOFulEmp"
+         Tab(3).Control(13)=   "lblSOContSz"
          Tab(3).ControlCount=   14
          TabCaption(4)   =   "MSC"
          TabPicture(4)   =   "CYSCCR.frx":022D
@@ -3781,6 +3895,9 @@ If KeyCode = vbKeyF2 Then
 End Sub
 
 Private Sub Form_Load()
+'<Version/>
+Me.Caption = Me.Caption & " v" & App.Major & "." & App.Minor & "." & App.Revision
+'</Version>
     ' connect to CTCS
     'Set clsCTCS = CreateObject("CTCS.cCTCS")
     'If Not clsCTCS.IsConnected Then clsCTCS.Connect
@@ -4271,6 +4388,65 @@ Private Sub txtADRAmt_Change()
     lblChange.Caption = Format(lblChange.Caption, "###,###,##0.00")
 End Sub
 
+Private Sub txtADRAmt_GotFocus()
+With txtADRAmt
+.SelLength = Len(.Text)
+End With
+End Sub
+
+
+Private Sub txtADRAmt_KeyDown(KeyCode As Integer, Shift As Integer)
+'Go to Adrnum on Enter
+If KeyCode = vbKeyReturn Then
+    If CLng(txtADRAmt) > 0 Then txtADRNumALL.SetFocus Else txtChkAmt(0).SetFocus
+End If
+End Sub
+
+Private Sub txtADRAmt_LostFocus()
+On Error GoTo parse
+txtADRAmt = CDbl(txtADRAmt)
+Exit Sub
+parse:
+txtADRAmt = 0
+End Sub
+
+Private Sub txtADRNum_GotFocus(Index As Integer)
+'Highlight All on Focus
+txtADRNum(Index).SelLength = Len(txtADRNum(Index))
+End Sub
+
+Private Sub txtADRNum_KeyDown(Index As Integer, KeyCode As Integer, Shift As Integer)
+If KeyCode = vbKeyReturn Then
+If Index < 2 Then txtADRNum(Index + 1).SetFocus Else txtChkAmt(0).SetFocus
+End If
+End Sub
+
+Private Sub txtADRNum_LostFocus(Index As Integer)
+'Hide Frame
+If Not (ActiveControl = txtADRNum(0) Or ActiveControl = txtADRNum(1) Or ActiveControl = txtADRNum(2)) Then
+Frame9.Visible = False
+End If
+
+'Concatenate in Root Maskbox
+Call txtADRNumALL_LostFocus
+
+'Parsing
+On Error GoTo parse
+txtADRNum(Index) = CLng(txtADRNum(Index))
+Exit Sub
+parse:
+txtADRNum(Index) = 0
+End Sub
+
+Private Sub txtADRNumALL_GotFocus()
+Frame9.Visible = True
+txtADRNum(0).SetFocus
+End Sub
+
+Private Sub txtADRNumALL_LostFocus()
+txtADRNumALL = txtADRNum(0) & " / " & txtADRNum(1) & " / " & txtADRNum(2)
+End Sub
+
 Private Sub txtARRCCRNo_GotFocus()
     With txtARRCCRNo
         .BackColor = &HFFFFC0
@@ -4674,6 +4850,11 @@ Dim n As Integer
     
     'PRNH
     txtADRAmt.Text = ".00"
+    txtADRNum(0).Text = "0"
+    txtADRNum(1).Text = "0"
+    txtADRNum(2).Text = "0"
+    txtADRNumALL_LostFocus
+    
 End Sub
 
 Private Sub txtARROvzHgt_KeyPress(KeyAscii As Integer)
@@ -6025,7 +6206,7 @@ End Function
 
 
 
-Public Sub LoadCYMArr(ByVal pCCRNum As String)
+Public Sub LoadCYMArr(ByVal pCCrnum As String)
 Dim rs As Recordset
 Dim nRowCnt, nVatCde As Integer
 Dim strGuarntyCde As String
@@ -6077,7 +6258,7 @@ Call getCustomer(nRefNo)
 End Sub
 
 
-Public Function RetrieveData(ByVal pCCRNum As String, ByVal pTrans As String) As Recordset
+Public Function RetrieveData(ByVal pCCrnum As String, ByVal pTrans As String) As Recordset
 
 Dim rsTrans As Recordset
 
@@ -6089,13 +6270,13 @@ On Error GoTo ErrRetrieve
     
          strSQL = "Select cntnum,cntsze, arramt+ovzamt+arrvat-arrtax As pArrAmt,cntovzl, " & _
                         "cntovzw, cntovzh,refnum,vatcde,guarntycde,exprtr,broker " & _
-                  "From CCRcyx Where status <> 'CAN' AND ccrnum = " & pCCRNum & ""
+                  "From CCRcyx Where status <> 'CAN' AND ccrnum = " & pCCrnum & ""
     
     Else
         
         strSQL = "Select cntnum,cntsze, stoamt+ovzamt+stovat-stotax As pStoAmt, " & _
                          "cntovl,cntovw, cntovh,refnum,vatcde,gtycde,cnsgne,broker " & _
-                  "From CYMgps Where status <> 'CAN' AND gpsnum = " & pCCRNum & ""
+                  "From CYMgps Where status <> 'CAN' AND gpsnum = " & pCCrnum & ""
     
     End If
     
@@ -6112,7 +6293,7 @@ End Function
 
 
 
-Public Function getCYX(ByVal pCCRNum As String, ByVal pType As String) As Recordset
+Public Function getCYX(ByVal pCCrnum As String, ByVal pType As String) As Recordset
 
 Dim strSQL As String
 Dim rsCyx As Recordset
@@ -6122,12 +6303,12 @@ Set rsCyx = New ADODB.Recordset
 If pType = "CYX" Then
    strSQL = "SELECT  cntnum,cntsze, arramt+ovzamt+arrvat-arrtax As pArrAmt, " & _
                     "cntovzl,cntovzw, cntovzh,refnum,vatcde,guarntycde,exprtr,broker " & _
-            "FROM CCRCYX WHERE status <> 'CAN' AND ccrnum = " & pCCRNum & ""
+            "FROM CCRCYX WHERE status <> 'CAN' AND ccrnum = " & pCCrnum & ""
  
 Else
   strSQL = "SELECT  cntnum,cntsze, stoamt+ovzamt+stovat-stotax As pStoAmt, " & _
                   "cntovl,cntovw, cntovh,refnum,vatcde,gtycde " & _
-           "FROM CYMgps WHERE status <> 'CAN' AND gpsnum = " & pCCRNum & ""
+           "FROM CYMgps WHERE status <> 'CAN' AND gpsnum = " & pCCrnum & ""
   
 End If
 
@@ -6138,7 +6319,7 @@ Set rsCyx = Nothing
 
 End Function
 
-Public Sub TransDetails(ByVal pCCRNum As String, ByVal pTrans As String)
+Public Sub TransDetails(ByVal pCCrnum As String, ByVal pTrans As String)
 
 Dim rsExport As Recordset
 Dim nRowCnt, nVatCode As Integer
@@ -6148,7 +6329,7 @@ Dim strExporter, strBroker As String
 
 On Error GoTo ErrExport
     
-    Set rsExport = RetrieveData(pCCRNum, pTrans)
+    Set rsExport = RetrieveData(pCCrnum, pTrans)
     
     grdCCRDtls.Clear
     With rsExport
@@ -6219,7 +6400,7 @@ ErrExport:
     
 End Sub
 
-Public Sub LoadCYX(ByVal pCCRNum As String, ByVal pType As String)
+Public Sub LoadCYX(ByVal pCCrnum As String, ByVal pType As String)
 Dim rsExport As Recordset
 Dim nRowCnt, nVatCode As Integer
 Dim strUG  As String
@@ -6227,7 +6408,7 @@ Dim nRefNum As Long
 Dim strExporter, strBroker As String
 
 
-Set rsExport = getCYX(pCCRNum, pType)
+Set rsExport = getCYX(pCCrnum, pType)
 
 grdCCRDtls.Clear
 
@@ -6803,7 +6984,7 @@ Private Sub lzClearMsc()
     txtMscCCRNo.SetFocus
     
     'PRNH
-    cmbCompCode.Text = ""
+'   cmbCompCode.Text = ""
     
     grdCCRDtls.Clear
 End Sub
@@ -7074,7 +7255,7 @@ Dim vatRate As Double
     
     If nTotalAmount > 0 Then
         ' new ccr
-        If bNewCCR Or (nCCRCounter > 11) Then '7
+        If bNewCCR Or (nCCRCounter >= 8) Then '7
             bNewCCR = False
             nCCRCounter = 1
         Else
@@ -7207,7 +7388,7 @@ Private Sub lzComputeSOCLOLO(ByVal pContNo As String)
     nTotalAmount = curLOLORate
     If nTotalAmount > 0 Then
         ' new ccr
-        If bNewCCR Or (nCCRCounter > 11) Then '7
+        If bNewCCR Or (nCCRCounter >= 8) Then '7
             bNewCCR = False
             nCCRCounter = 1
         Else
@@ -7294,7 +7475,7 @@ Private Sub lzComputeSOCStorage()
 
     If nTotalAmount > 0 Then
         ' new ccr
-        If bNewCCR Or (nCCRCounter > 11) Then '7
+        If bNewCCR Or (nCCRCounter >= 8) Then '7
             bNewCCR = False
             nCCRCounter = 1
         Else
@@ -8243,7 +8424,7 @@ Dim vatRate As Double
         
     If nTotalAmount > 0 Then
         ' new ccr
-        If bNewCCR Or (nCCRCounter > 11) Then '7
+        If bNewCCR Or (nCCRCounter >= 8) Then '7
             bNewCCR = False
             nCCRCounter = 1
         Else
@@ -8408,7 +8589,7 @@ Dim vatRate As Double
         
   If nTotalAmount > 0 Then
     ' new ccr
-    If bNewCCR Or (nCCRCounter > 11) Then '7
+    If bNewCCR Or (nCCRCounter >= 8) Then '7
         bNewCCR = False
         nCCRCounter = 1
     Else
@@ -8576,7 +8757,7 @@ Dim vatRate As Double
         
     If nTotalAmount > 0 Then
         ' new ccr
-        If bNewCCR Or (nCCRCounter > 11) Then '7
+        If bNewCCR Or (nCCRCounter >= 8) Then '7
             bNewCCR = False
             nCCRCounter = 1
         Else
@@ -8744,7 +8925,7 @@ Dim vatRate As Double
         
     If nTotalAmount > 0 Then
         ' new ccr
-        If bNewCCR Or (nCCRCounter > 11) Then '7
+        If bNewCCR Or (nCCRCounter >= 8) Then '7
             bNewCCR = False
             nCCRCounter = 1
         Else
@@ -9318,7 +9499,7 @@ Private Sub lzSavePrint()
         .Parameters(5).Direction = adParamInput             '
         
         .Parameters(6).Type = adInteger
-        .Parameters(6).Value = 0
+        .Parameters(6).Value = txtADRNum(0).Text
         .Parameters(6).Direction = adParamInput             '
         .Parameters(7).Type = adCurrency
         .Parameters(7).Value = CCur("0" & lblChange)
@@ -9371,7 +9552,10 @@ Private Sub lzSavePrint()
         .Parameters(23).Type = adChar
         .Parameters(23).Value = gUserID
         .Parameters(23).Direction = adParamInput             '
-
+        .Parameters(24).Type = adInteger                'ADRNUM2
+        .Parameters(24).Value = txtADRNum(1).Text
+        .Parameters(25).Type = adInteger                'ADRNUM3
+        .Parameters(25).Value = txtADRNum(2).Text
         .Execute
     
         ' write details next
@@ -9380,6 +9564,8 @@ Private Sub lzSavePrint()
     
         vSeq = 0: vItem = 0: vCCR = vCCR - 1
         For n = 1 To (grdCCRTran.Rows - 2)
+        
+        
             If (grdCCRTran.TextMatrix(n, enRateCode) <> cVoid) Then
                 If (n = 1) Or (grdCCRTran.TextMatrix(n, enCCRTag) = "*") Then
                     vSeq = vSeq + 1
@@ -9556,7 +9742,13 @@ Private Sub lzSavePrint()
         
             End If
             'Save to Sparcs
-'            ConnectToNavis
+            
+            '<Reconnect/>
+            gcnnNavis.Close
+            Set gcnnNavis = Nothing
+            ConnectToNavis
+            '</Reconnect>
+            
             If strContainerNo <> "" Then
                 If Left(Trim(grdCCRTran.TextMatrix(n, enRateCode)), 5) = "MCRFC" Then
                     strGKey = GetGKey(strContainerNo, "INVOICED", "REEFER")
@@ -9715,8 +9907,19 @@ Dim strChqAmt As String
 Dim strCshAmt As String
 Dim rsCCRPay As ADODB.Recordset
 Dim strAdrAmt As String
+Dim intMaxSeq As Integer
+Dim n As Integer
+Dim adrnum As String    'ADR String
+Dim pAdrnum As Long     'ADRNUM 1
+Dim pAdrnum2 As Long    'ADRNUM 2
+Dim pAdrnum3 As Long    'ADRNUM 3
 
-ctrCnt = 11
+
+Set rsCCRDetail = New ADODB.Recordset
+rsCCRDetail.Open "Select Max(seqnum) from CCRdtl where refnum = '" & Trim(CStr(pRefnum)) & "'", gcnnBilling, adOpenDynamic, adLockOptimistic, adCmdText
+intMaxSeq = rsCCRDetail.Fields(0) 'get Max Sequence
+For n = 1 To intMaxSeq
+ctrCnt = 11 'New Lines
 On Error Resume Next
     Set rsCCRPay = New ADODB.Recordset
     rsCCRPay.Open "SELECT cusnam, userid From CCRPay WHERE refnum = " & Trim(CStr(pRefnum)), _
@@ -9728,8 +9931,8 @@ On Error Resume Next
     rsCCRPay.Close
     
 Set rsCCRDetail = New ADODB.Recordset
-rsCCRDetail.Open "SELECT * From CCRdtl WHERE refnum = " & Trim(CStr(pRefnum)) & "" _
-        & " order by itmnum", _
+rsCCRDetail.Open "SELECT * From CCRdtl WHERE refnum = " & Trim(CStr(pRefnum)) & " and seqnum=" & n _
+        & " order by  itmnum", _
         gcnnBilling, adOpenDynamic, adLockOptimistic, adCmdText
 If rsCCRDetail.BOF <> True And rsCCRDetail.EOF <> True Then
     With rsCCRDetail
@@ -9769,6 +9972,7 @@ If rsCCRDetail.BOF <> True And rsCCRDetail.EOF <> True Then
         vslName = .Fields("vslcde") & ""
         
         Printer.Font = "Courier 12cpi"
+'        Printer.Font = "Courier"
         Printer.FontSize = 10
 
         Printer.Print " "
@@ -9903,16 +10107,45 @@ If rsCCRDetail.BOF <> True And rsCCRDetail.EOF <> True Then
             strChqAmt = Format(TotalCheckAmount, "###,###.00")
             strCshAmt = Format(.Fields("cshamt"), "###,###.00")
             
-            tmpString = strChqAmt & " CK    " & strCshAmt & " CS"
-            Printer.Print Space(44) & tmpString
-            
+'            tmpString = strChqAmt & " CK    " & strCshAmt & " CS"
+'            Printer.Print Space(44) & tmpString
+'
             strAdrAmt = Format(.Fields("adramt"), "###,###.00")
-            
-            tmpString = strAdrAmt & " AD"
             
             UserName = .Fields("userid")
             
             Printer.Print Space(5) & UserName  ' & Space(26) & tmpString
+              
+            tmpString = strCshAmt & " CS                  "
+            Printer.CurrentX = Printer.ScaleWidth - Printer.TextWidth(tmpString)
+            Printer.Print tmpString
+              
+            tmpString = strChqAmt & " CK                  "
+            Printer.CurrentX = Printer.ScaleWidth - Printer.TextWidth(tmpString)
+            Printer.Print tmpString
+            
+            ''''''''''''''''''''''''''''''''''''''''
+            pAdrnum = CLng(.Fields("adrnum"))   'Set ADRNUM
+            pAdrnum2 = CLng(.Fields("adrnum2")) '2
+            pAdrnum3 = CLng(.Fields("adrnum3")) '3
+            ''''''''''''''''''''''''''''''''''''''''
+            
+            adrnum = " "                                                                        'Empty
+            If pAdrnum > 0 Then adrnum = adrnum & pAdrnum                                       'Check 1 if >0
+            If pAdrnum2 > 0 Then adrnum = adrnum & " / " & pAdrnum2                             'Check 2
+            If pAdrnum3 > 0 Then adrnum = adrnum & " / " & pAdrnum3                             'Check3
+            If Len(adrnum) <= 18 Then adrnum = adrnum & Space(18): adrnum = Left(adrnum, 18) _
+            Else adrnum = adrnum & Space(5)                                                     'Space 18 then Read 18
+            tmpString = strAdrAmt & " AD" & adrnum                                              'Add AD for Printing
+            
+            Printer.CurrentX = Printer.ScaleWidth - Printer.TextWidth(tmpString)                'Start from left adjusted by 18 spaces
+            Printer.Print tmpString
+            
+'            tmpString = strAdrAmt & " AD"
+            
+'            UserName = .Fields("userid")
+'
+'            Printer.Print Space(5) & UserName  ' & Space(26) & tmpString
             
             If IsNull(.Fields("chkamt1")) = False Then
                 tmp1 = Trim(.Fields("chkno1"))
@@ -9974,8 +10207,10 @@ End If
 
 rsCCRDetail.Close
 Set rsCCRDetail = Nothing
-
+Next n
 End Sub
+
+
 
 Private Function NumToText(dblValue As Currency) As String
     Static ones(0 To 9) As String
@@ -10259,13 +10494,13 @@ Dim lsErrStr As String
         ";Data Source=sbitc-db" & _
         ";Initial Catalog=apex" & _
         ";User ID=tosadmin;Password=tosadmin"
-        
+'
 '    Set gcnnNavis = New ADODB.Connection
 '    gcnnNavis.Open "Provider=sqloledb" & _
 '        ";Data Source=sbitc-dev" & _
 '        ";Initial Catalog=apex" & _
 '        ";User ID=sa_ictsi;password=Ictsi123"
-'
+
     gbNavis = True
     ConnectToNavis = True
     
