@@ -1,12 +1,15 @@
 VERSION 5.00
-Object = "{00025600-0000-0000-C000-000000000046}#5.2#0"; "crystl32.ocx"
+Object = "{C4847593-972C-11D0-9567-00A0C9273C2A}#8.0#0"; "crviewer.dll"
+Object = "{00025600-0000-0000-C000-000000000046}#5.2#0"; "Crystl32.OCX"
 Begin VB.Form frmSubicINVReprint 
+   Appearance      =   0  'Flat
+   BackColor       =   &H80000005&
    BorderStyle     =   1  'Fixed Single
    Caption         =   "CY Invoice Reprint"
-   ClientHeight    =   3135
+   ClientHeight    =   8055
    ClientLeft      =   4950
    ClientTop       =   2895
-   ClientWidth     =   6180
+   ClientWidth     =   10830
    BeginProperty Font 
       Name            =   "Arial"
       Size            =   15
@@ -17,46 +20,85 @@ Begin VB.Form frmSubicINVReprint
       Strikethrough   =   0   'False
    EndProperty
    LinkTopic       =   "Form1"
-   MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   3135
-   ScaleWidth      =   6180
+   ScaleHeight     =   8055
+   ScaleWidth      =   10830
+   StartUpPosition =   2  'CenterScreen
+   Begin VB.ComboBox cmbComp 
+      Height          =   465
+      ItemData        =   "frmSubicINVReprint.frx":0000
+      Left            =   3960
+      List            =   "frmSubicINVReprint.frx":000A
+      TabIndex        =   8
+      Top             =   960
+      Width           =   1815
+   End
+   Begin CRVIEWERLibCtl.CRViewer CRViewer1 
+      Height          =   6015
+      Left            =   0
+      TabIndex        =   6
+      Top             =   2040
+      Width           =   10815
+      DisplayGroupTree=   -1  'True
+      DisplayToolbar  =   -1  'True
+      EnableGroupTree =   0   'False
+      EnableNavigationControls=   -1  'True
+      EnableStopButton=   -1  'True
+      EnablePrintButton=   -1  'True
+      EnableZoomControl=   -1  'True
+      EnableCloseButton=   0   'False
+      EnableProgressControl=   -1  'True
+      EnableSearchControl=   -1  'True
+      EnableRefreshButton=   -1  'True
+      EnableDrillDown =   -1  'True
+      EnableAnimationControl=   -1  'True
+      EnableSelectExpertButton=   0   'False
+      EnableToolbar   =   -1  'True
+      DisplayBorder   =   -1  'True
+      DisplayTabs     =   -1  'True
+      DisplayBackgroundEdge=   -1  'True
+      SelectionFormula=   ""
+      EnablePopupMenu =   -1  'True
+      EnableExportButton=   -1  'True
+      EnableSearchExpertButton=   0   'False
+      EnableHelpButton=   0   'False
+   End
    Begin VB.CommandButton cmdExit 
       Caption         =   "E&xit"
       Height          =   735
-      Left            =   3120
+      Left            =   6600
       TabIndex        =   3
-      Top             =   2040
+      Top             =   1080
       Width           =   2655
    End
    Begin VB.TextBox txtInvNum 
       Height          =   420
-      Left            =   3480
+      Left            =   3960
       MaxLength       =   8
       TabIndex        =   0
-      Top             =   720
+      Top             =   480
       Width           =   1815
    End
    Begin VB.CommandButton cmdDisplay 
       Caption         =   "&Display"
       Height          =   735
-      Left            =   480
+      Left            =   6600
       TabIndex        =   2
-      Top             =   2040
+      Top             =   240
       Width           =   2655
    End
    Begin VB.TextBox txtNumDay 
       Height          =   420
-      Left            =   3480
+      Left            =   3960
       MaxLength       =   2
       TabIndex        =   1
-      Top             =   1320
+      Top             =   1560
       Visible         =   0   'False
       Width           =   495
    End
    Begin Crystal.CrystalReport CYInvoice 
-      Left            =   5520
-      Top             =   240
+      Left            =   6000
+      Top             =   480
       _ExtentX        =   741
       _ExtentY        =   741
       _Version        =   348160
@@ -73,20 +115,28 @@ Begin VB.Form frmSubicINVReprint
       WindowShowExportBtn=   0   'False
       WindowShowProgressCtls=   0   'False
    End
+   Begin VB.Label Label1 
+      Caption         =   "Company Code"
+      Height          =   495
+      Left            =   1680
+      TabIndex        =   7
+      Top             =   960
+      Width           =   2175
+   End
    Begin VB.Label Label3 
       Caption         =   "Invoice Number"
       Height          =   495
-      Left            =   1200
+      Left            =   1680
       TabIndex        =   5
-      Top             =   720
+      Top             =   480
       Width           =   2175
    End
    Begin VB.Label Label2 
       Caption         =   "No. of Days (SA only)"
       Height          =   375
-      Left            =   240
+      Left            =   720
       TabIndex        =   4
-      Top             =   1320
+      Top             =   1560
       Visible         =   0   'False
       Width           =   3135
    End
@@ -131,22 +181,27 @@ Dim tmpInvNo As Long
 '
 '    Else                             'Use of Invoice Number (for MR/Reg. bills only)
     
-        If Not gbConnected Then ConnectToBilling
-        With rsINVict
-            .Open "SELECT * FROM INVICT WHERE (invnum = " & txtInvNum & ")", _
-                   gcnnBilling, , , adCmdText
-            If Not .EOF Then
-                'tmpInvNo = .Fields("refnum")
-                tmpInvNo = .Fields("invnum")
-            End If
-            .Close
-        End With
+'        If Not gbConnected Then ConnectToBilling
+'        With rsINVict
+'            .Open "SELECT * FROM INVICT WHERE (invnum = " & txtInvNum & ")", _
+'                   gcnnBilling, , , adCmdText
+'            If Not .EOF Then
+'                tmpInvNo = .Fields("refnum")
+'                tmpInvNo = .Fields("invnum")
+'            End If
+'            .Close
+'        End With
         'CYInvoice.ReportFileName = App.Path & "\SubicInvoice.rpt"
         'CYInvoice.ParameterFields(1) = "InvoiceNo; " & Trim(tmpInvNo) & ";TRUE"
-        CYInvoice.ReportFileName = App.Path & "\SubicInvoice1.rpt"
-        CYInvoice.ParameterFields(1) = "InvoiceNo; " & Trim(tmpInvNo) & ";TRUE"
-        CYInvoice.PrintReport
+        SubicInvoice.DiscardSavedData
+        On Error Resume Next
+        SubicInvoice.ParameterFields.GetItemByName("INVOICENUMBER").AddCurrentValue CDbl(Trim(txtInvNum.Text))
+        SubicInvoice.ParameterFields.GetItemByName("COMPANYCODE").AddCurrentValue cmbComp.Text
+        On Error GoTo 0
+        CRViewer1.ReportSource = SubicInvoice
+        CRViewer1.ViewReport
         
+        Set SubicInvoice = Nothing
        
     'End If
     Screen.MousePointer = vbDefault
@@ -180,6 +235,16 @@ End Sub
 
 Private Sub cmdExit_Click()
     Unload Me
+End Sub
+
+Private Sub Form_Load()
+Me.Caption = Me.Caption & " v" & App.Major & "." & App.Minor & "." & App.Revision
+cmbComp.ListIndex = 0
+End Sub
+
+Private Sub Form_Resize()
+If ScaleHeight > CRViewer1.Top Then CRViewer1.Height = ScaleHeight - CRViewer1.Top
+CRViewer1.Width = ScaleWidth
 End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
