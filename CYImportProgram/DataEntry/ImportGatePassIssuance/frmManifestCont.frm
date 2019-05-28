@@ -46,7 +46,6 @@ Begin VB.Form frmManifestCont
       _ExtentY        =   19129
       _Version        =   393216
       Tabs            =   6
-      Tab             =   5
       TabsPerRow      =   6
       TabHeight       =   520
       BackColor       =   12632256
@@ -62,41 +61,57 @@ Begin VB.Form frmManifestCont
       EndProperty
       TabCaption(0)   =   "Permit"
       TabPicture(0)   =   "frmManifestCont.frx":0006
-      Tab(0).ControlEnabled=   0   'False
+      Tab(0).ControlEnabled=   -1  'True
       Tab(0).Control(0)=   "lblManifest(35)"
+      Tab(0).Control(0).Enabled=   0   'False
       Tab(0).Control(1)=   "lblManifest(36)"
+      Tab(0).Control(1).Enabled=   0   'False
       Tab(0).Control(2)=   "lblManifest(37)"
+      Tab(0).Control(2).Enabled=   0   'False
       Tab(0).Control(3)=   "lblManifest(29)"
+      Tab(0).Control(3).Enabled=   0   'False
       Tab(0).Control(4)=   "lblManifest(41)"
+      Tab(0).Control(4).Enabled=   0   'False
       Tab(0).Control(5)=   "lblManifest(42)"
+      Tab(0).Control(5).Enabled=   0   'False
       Tab(0).Control(6)=   "lblManifest(43)"
+      Tab(0).Control(6).Enabled=   0   'False
       Tab(0).Control(7)=   "lblManifest(74)"
+      Tab(0).Control(7).Enabled=   0   'False
       Tab(0).Control(8)=   "cmdNextBL"
+      Tab(0).Control(8).Enabled=   0   'False
       Tab(0).Control(9)=   "txtBL"
+      Tab(0).Control(9).Enabled=   0   'False
       Tab(0).Control(10)=   "txtRegistry"
+      Tab(0).Control(10).Enabled=   0   'False
       Tab(0).Control(11)=   "chkForExam"
+      Tab(0).Control(11).Enabled=   0   'False
       Tab(0).Control(12)=   "txtSBMAPermit"
+      Tab(0).Control(12).Enabled=   0   'False
       Tab(0).Control(13)=   "txtCustomPermit"
+      Tab(0).Control(13).Enabled=   0   'False
       Tab(0).Control(14)=   "txtTransactionType"
+      Tab(0).Control(14).Enabled=   0   'False
       Tab(0).Control(15)=   "txtCompCode"
+      Tab(0).Control(15).Enabled=   0   'False
       Tab(0).ControlCount=   16
       TabCaption(1)   =   "Header"
       TabPicture(1)   =   "frmManifestCont.frx":0022
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "lblManifest(2)"
-      Tab(1).Control(1)=   "lblManifest(0)"
-      Tab(1).Control(2)=   "lblManifest(1)"
-      Tab(1).Control(3)=   "lblManifest(4)"
-      Tab(1).Control(4)=   "lblManifest(5)"
-      Tab(1).Control(5)=   "mskGatePassNo"
-      Tab(1).Control(6)=   "txtBrokerNO"
-      Tab(1).Control(7)=   "txtCustomer"
-      Tab(1).Control(8)=   "cboVAT"
-      Tab(1).Control(9)=   "chkWharfageExempt"
-      Tab(1).Control(10)=   "chkWharfageOnly"
-      Tab(1).Control(11)=   "cboUnderGuarantee"
-      Tab(1).Control(12)=   "cmdPreviousHeader"
-      Tab(1).Control(13)=   "cmdNextHeader"
+      Tab(1).Control(0)=   "cmdNextHeader"
+      Tab(1).Control(1)=   "cmdPreviousHeader"
+      Tab(1).Control(2)=   "cboUnderGuarantee"
+      Tab(1).Control(3)=   "chkWharfageOnly"
+      Tab(1).Control(4)=   "chkWharfageExempt"
+      Tab(1).Control(5)=   "cboVAT"
+      Tab(1).Control(6)=   "txtCustomer"
+      Tab(1).Control(7)=   "txtBrokerNO"
+      Tab(1).Control(8)=   "mskGatePassNo"
+      Tab(1).Control(9)=   "lblManifest(5)"
+      Tab(1).Control(10)=   "lblManifest(4)"
+      Tab(1).Control(11)=   "lblManifest(1)"
+      Tab(1).Control(12)=   "lblManifest(0)"
+      Tab(1).Control(13)=   "lblManifest(2)"
       Tab(1).ControlCount=   14
       TabCaption(2)   =   "Other Info"
       TabPicture(2)   =   "frmManifestCont.frx":003E
@@ -128,22 +143,22 @@ Begin VB.Form frmManifestCont
       TabCaption(4)   =   "Charges"
       TabPicture(4)   =   "frmManifestCont.frx":0076
       Tab(4).ControlEnabled=   0   'False
-      Tab(4).Control(0)=   "lblManifest(34)"
-      Tab(4).Control(1)=   "lblManifest(71)"
-      Tab(4).Control(2)=   "mskReeferHours"
-      Tab(4).Control(3)=   "msfCharges"
-      Tab(4).Control(4)=   "cmdPreviousCharges"
-      Tab(4).Control(5)=   "cmdNextCharges"
-      Tab(4).Control(6)=   "fraRunning"
-      Tab(4).Control(7)=   "fraCharges"
-      Tab(4).Control(8)=   "fraStorageInfo"
-      Tab(4).Control(9)=   "fraExpand"
-      Tab(4).Control(10)=   "cmdAnother"
-      Tab(4).Control(11)=   "cmdViewGrid"
+      Tab(4).Control(0)=   "cmdViewGrid"
+      Tab(4).Control(1)=   "cmdAnother"
+      Tab(4).Control(2)=   "fraExpand"
+      Tab(4).Control(3)=   "fraStorageInfo"
+      Tab(4).Control(4)=   "fraCharges"
+      Tab(4).Control(5)=   "fraRunning"
+      Tab(4).Control(6)=   "cmdNextCharges"
+      Tab(4).Control(7)=   "cmdPreviousCharges"
+      Tab(4).Control(8)=   "msfCharges"
+      Tab(4).Control(9)=   "mskReeferHours"
+      Tab(4).Control(10)=   "lblManifest(71)"
+      Tab(4).Control(11)=   "lblManifest(34)"
       Tab(4).ControlCount=   12
       TabCaption(5)   =   "Payment"
       TabPicture(5)   =   "frmManifestCont.frx":0092
-      Tab(5).ControlEnabled=   -1  'True
+      Tab(5).ControlEnabled=   0   'False
       Tab(5).Control(0)=   "fraPayment"
       Tab(5).Control(0).Enabled=   0   'False
       Tab(5).ControlCount=   1
@@ -159,7 +174,7 @@ Begin VB.Form frmManifestCont
             Strikethrough   =   0   'False
          EndProperty
          Height          =   405
-         Left            =   -70560
+         Left            =   4440
          MaxLength       =   30
          TabIndex        =   206
          Top             =   5160
@@ -176,7 +191,7 @@ Begin VB.Form frmManifestCont
             Strikethrough   =   0   'False
          EndProperty
          Height          =   405
-         Left            =   -70560
+         Left            =   4440
          MaxLength       =   1
          TabIndex        =   196
          Text            =   "F"
@@ -194,7 +209,7 @@ Begin VB.Form frmManifestCont
             Strikethrough   =   0   'False
          EndProperty
          Height          =   405
-         Left            =   -70560
+         Left            =   4440
          MaxLength       =   10
          TabIndex        =   185
          Top             =   3240
@@ -211,7 +226,7 @@ Begin VB.Form frmManifestCont
             Strikethrough   =   0   'False
          EndProperty
          Height          =   405
-         Left            =   -70560
+         Left            =   4440
          MaxLength       =   10
          TabIndex        =   184
          Top             =   2520
@@ -228,7 +243,7 @@ Begin VB.Form frmManifestCont
             Strikethrough   =   0   'False
          EndProperty
          Height          =   9375
-         Left            =   960
+         Left            =   -74040
          TabIndex        =   147
          Top             =   840
          Width           =   13575
@@ -701,11 +716,54 @@ Begin VB.Form frmManifestCont
          End
          Begin MSMask.MaskEdBox mskADRNum 
             Height          =   405
+            Index           =   0
             Left            =   6960
-            TabIndex        =   208
+            TabIndex        =   209
             Top             =   4800
-            Width           =   2295
-            _ExtentX        =   4048
+            Width           =   1935
+            _ExtentX        =   3413
+            _ExtentY        =   714
+            _Version        =   393216
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Arial"
+               Size            =   12
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            PromptChar      =   "_"
+         End
+         Begin MSMask.MaskEdBox mskADRNum 
+            Height          =   405
+            Index           =   1
+            Left            =   9000
+            TabIndex        =   210
+            Top             =   4800
+            Width           =   1935
+            _ExtentX        =   3413
+            _ExtentY        =   714
+            _Version        =   393216
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Arial"
+               Size            =   12
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            PromptChar      =   "_"
+         End
+         Begin MSMask.MaskEdBox mskADRNum 
+            Height          =   405
+            Index           =   2
+            Left            =   11040
+            TabIndex        =   211
+            Top             =   4800
+            Width           =   1935
+            _ExtentX        =   3413
             _ExtentY        =   714
             _Version        =   393216
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -735,7 +793,7 @@ Begin VB.Form frmManifestCont
             Height          =   375
             Index           =   75
             Left            =   4800
-            TabIndex        =   209
+            TabIndex        =   208
             Top             =   4800
             Width           =   2055
          End
@@ -1159,7 +1217,7 @@ Begin VB.Form frmManifestCont
             EndProperty
             CalendarBackColor=   16777215
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   191823875
+            Format          =   170786819
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtStorageFree 
@@ -1181,7 +1239,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   191823875
+            Format          =   170786819
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtEndStorage 
@@ -1203,7 +1261,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   191823875
+            Format          =   170786819
             CurrentDate     =   32874
          End
          Begin VB.Label lblManifest 
@@ -2547,7 +2605,7 @@ Begin VB.Form frmManifestCont
             EndProperty
             Height          =   405
             Left            =   5160
-            MaxLength       =   9
+            MaxLength       =   12
             TabIndex        =   191
             Top             =   960
             Width           =   2655
@@ -2564,7 +2622,7 @@ Begin VB.Form frmManifestCont
             EndProperty
             Height          =   405
             Left            =   5160
-            MaxLength       =   9
+            MaxLength       =   12
             TabIndex        =   190
             Top             =   2160
             Width           =   2655
@@ -3486,7 +3544,7 @@ Begin VB.Form frmManifestCont
          EndProperty
          ForeColor       =   &H80000002&
          Height          =   345
-         Left            =   -70560
+         Left            =   4440
          TabIndex        =   7
          Top             =   6240
          Visible         =   0   'False
@@ -3503,7 +3561,7 @@ Begin VB.Form frmManifestCont
             Strikethrough   =   0   'False
          EndProperty
          Height          =   405
-         Left            =   -70560
+         Left            =   4440
          MaxLength       =   12
          TabIndex        =   5
          Top             =   5760
@@ -3520,7 +3578,7 @@ Begin VB.Form frmManifestCont
             Strikethrough   =   0   'False
          EndProperty
          Height          =   405
-         Left            =   -70560
+         Left            =   4440
          MaxLength       =   30
          TabIndex        =   4
          Top             =   4560
@@ -3530,7 +3588,7 @@ Begin VB.Form frmManifestCont
          BackColor       =   &H8000000A&
          Caption         =   "F12 Header"
          Height          =   400
-         Left            =   -62520
+         Left            =   12480
          Picture         =   "frmManifestCont.frx":098C
          TabIndex        =   0
          Top             =   9900
@@ -3611,7 +3669,7 @@ Begin VB.Form frmManifestCont
          _ExtentX        =   25638
          _ExtentY        =   8705
          _Version        =   393216
-         Cols            =   114
+         Cols            =   130
          FixedCols       =   0
          AllowBigSelection=   0   'False
          SelectionMode   =   1
@@ -3663,7 +3721,7 @@ Begin VB.Form frmManifestCont
          ForeColor       =   &H80000002&
          Height          =   375
          Index           =   74
-         Left            =   -73320
+         Left            =   1680
          TabIndex        =   207
          Top             =   5160
          Width           =   2655
@@ -3682,7 +3740,7 @@ Begin VB.Form frmManifestCont
          ForeColor       =   &H80000002&
          Height          =   375
          Index           =   43
-         Left            =   -70080
+         Left            =   4920
          TabIndex        =   197
          Top             =   3960
          Width           =   5895
@@ -3702,7 +3760,7 @@ Begin VB.Form frmManifestCont
          ForeColor       =   &H80000002&
          Height          =   375
          Index           =   42
-         Left            =   -73680
+         Left            =   1320
          TabIndex        =   195
          Top             =   3960
          Width           =   3015
@@ -3722,7 +3780,7 @@ Begin VB.Form frmManifestCont
          ForeColor       =   &H80000002&
          Height          =   375
          Index           =   41
-         Left            =   -68400
+         Left            =   6600
          TabIndex        =   194
          Top             =   5760
          Visible         =   0   'False
@@ -3743,7 +3801,7 @@ Begin VB.Form frmManifestCont
          ForeColor       =   &H80000002&
          Height          =   375
          Index           =   29
-         Left            =   -73200
+         Left            =   1800
          TabIndex        =   183
          Top             =   2520
          Width           =   2535
@@ -3982,7 +4040,7 @@ Begin VB.Form frmManifestCont
          ForeColor       =   &H80000002&
          Height          =   375
          Index           =   37
-         Left            =   -73800
+         Left            =   1200
          TabIndex        =   6
          Top             =   3240
          Width           =   3135
@@ -4002,7 +4060,7 @@ Begin VB.Form frmManifestCont
          ForeColor       =   &H80000002&
          Height          =   375
          Index           =   36
-         Left            =   -73680
+         Left            =   1320
          TabIndex        =   3
          Top             =   5760
          Width           =   3015
@@ -4022,7 +4080,7 @@ Begin VB.Form frmManifestCont
          ForeColor       =   &H80000002&
          Height          =   375
          Index           =   35
-         Left            =   -73320
+         Left            =   1680
          TabIndex        =   2
          Top             =   4560
          Width           =   2655
@@ -4513,6 +4571,7 @@ Dim curPHPAmount As Currency
 
 Dim gConnNav As String
 
+
 'PRNH
 Dim cntIndex As Long, cntCount As Long
 
@@ -4735,8 +4794,8 @@ Private Sub cmdAnother_Click()
     'sstMain.Tab = cTabOtherInfo
     
     'PRNH
-    Call InitializeSomeComputationVariables
     If cntIndex < cntCount - 1 Then
+        Call InitializeSomeComputationVariables
         sstMain.Tab = cTabContainer
         cntIndex = cntIndex + 1
         cmbConNo.ListIndex = cntIndex
@@ -4866,7 +4925,7 @@ Dim prm As ADODB.Parameter
     End With
 End Function
 
-Private Function lzSplitPaid(ByVal pContNo As String, ByVal pRegNum As String) As Boolean
+Private Function lzSplitPaid(ByVal pContNo As String, ByVal pRegnum As String) As Boolean
                                                    
 Dim cmd As ADODB.Command
 Dim prm As ADODB.Parameter
@@ -4887,7 +4946,7 @@ Dim prm As ADODB.Parameter
         .Parameters(1).Direction = adParamInput
         
         .Parameters(2).Type = adChar
-        .Parameters(2).Value = pRegNum
+        .Parameters(2).Value = pRegnum
         .Parameters(2).Direction = adParamInput
         
 
@@ -5131,7 +5190,9 @@ Private Sub InitializePayment()
     txtBank(4) = ""
     
     mskADRAmount = 0
-    mskADRNum = 0
+    mskADRNum(0) = 0
+    mskADRNum(1) = 0
+    mskADRNum(2) = 0
     mskChange = 0
     txtCustomerCode = ""
     txtCustomerName = ""
@@ -5216,7 +5277,7 @@ Private Function SaveHeaders() As Boolean
     
     rsCYMPay.ActiveConnection = gcnnBilling
 updateQuery:
-    updateQuery = "INSERT INTO CYMPAY (Refnum,cuscde,cusnam,phpamt,cshamt,adramt,adrnum,chgamt,trntype,chkno1,chkno2,chkno3,chkno4,chkno5," & _
+    updateQuery = "INSERT INTO CYMPAY (Refnum,cuscde,cusnam,phpamt,cshamt,adramt,adrnum,adrnum2,adrnum3,chgamt,trntype,chkno1,chkno2,chkno3,chkno4,chkno5," & _
                     "chkamt1,chkamt2,chkamt3,chkamt4,chkamt5,chkbnk1,chkbnk2,chkbnk3,chkbnk4,chkbnk5,status,rectag,userid,sysdttm,updcde) "
     
     updateQuery2 = "VALUES("
@@ -5233,8 +5294,11 @@ updateQuery:
         updateQuery2 = updateQuery2 & Replace(mskADRAmount, ",", "") & "," 'adramt
         
         'PRNH - Removed ADR Validation
-        'updateQuery2 = updateQuery2 & lngControlNo & "," 'adrnum
-        updateQuery2 = updateQuery2 & mskADRNum & "," 'adrnum=0
+        'updateQuery2 = updateQuery2 & mskADRNum & "," 'adrnum
+               
+        updateQuery2 = updateQuery2 & mskADRNum(0) & "," 'adrnum1
+        updateQuery2 = updateQuery2 & mskADRNum(1) & "," 'adrnum2
+        updateQuery2 = updateQuery2 & mskADRNum(2) & "," 'adrnum3
         
         updateQuery2 = updateQuery2 & mskChange & "," 'chgamt
         updateQuery2 = updateQuery2 & "'" & txtTransactionType & "'," 'trntype
@@ -5540,6 +5604,8 @@ Private Function SaveDetails() As Boolean
     Dim strRegNo As String
     Dim rsCYMGPS As New ADODB.Command, updateQuery As String, updateQuery2 As String
 
+
+
         strOOGAmount = ""
         strDGAmount = ""
         On Error GoTo ErrSaveDetails
@@ -5736,7 +5802,7 @@ updateQuery:
                 End If
                 
                 'Release Billing Hold/Permission
-                Call ReleaseHold(strContNo1)
+                Call ReleaseHoldalt(strContNo1, strVisit)
                 
                 'Release OOG Hold/Permission
                 If strOOGAmount <> "" And IsNumeric(strOOGAmount) Then
@@ -5805,8 +5871,32 @@ Private Sub Update_Manifest(ByVal strBillNo As String, ByVal strConNo As String,
 End Sub
 
 Private Sub PrintGatePass()
-    Call GetTotalPaymentAmounts
-    Call GetTotalChargePerDetail
+'    Call GetTotalPaymentAmounts
+'    Call GetTotalChargePerDetail
+Dim rsPay As New ADODB.Recordset
+Dim totChk As Double
+
+rsPay.Open "Select cshamt, adramt, chkamt1, chkamt2,chkamt3,chkamt4,chkamt5 from CYMPAY where Refnum=" & lngReferenceNo, gcnnBilling
+
+totChk = rsPay.Fields("chkamt1") + _
+            rsPay.Fields("chkamt2") + _
+            rsPay.Fields("chkamt3") + _
+            rsPay.Fields("chkamt4") + _
+            rsPay.Fields("chkamt5")
+
+ImportPrint.DisplayProgressDialog = False
+
+ImportPrint.DiscardSavedData
+ImportPrint.ParameterFields(1).AddCurrentValue CLng(lngReferenceNo)
+ImportPrint.ParameterFields(2).AddCurrentValue gbSupervisor
+ImportPrint.ParameterFields(3).AddCurrentValue CDbl(rsPay.Fields("cshamt"))
+ImportPrint.ParameterFields(4).AddCurrentValue totChk
+ImportPrint.ParameterFields(5).AddCurrentValue CDbl(rsPay.Fields("adramt"))
+ImportPrint.PrintOut False, 1
+
+rsPay.Close
+Set rsPay = Nothing
+
 End Sub
 
 Private Sub GetTotalPaymentAmounts()
@@ -6703,22 +6793,31 @@ End Function
 
 Private Sub mskADRAmount_KeyDown(KeyCode As Integer, Shift As Integer)
     If KeyCode = 13 Then
-        Call mskADRAmount_LostFocus
-        mskADRNum.SetFocus
+        If mskADRAmount > 0 Then mskADRNum(0).SetFocus Else cmdSave.SetFocus
     End If
 End Sub
 
+Private Sub mskADRNum_GotFocus(Index As Integer)
+    mskADRNum(Index).SelLength = Len(mskADRNum(Index))
+End Sub
 
-Private Sub mskADRNum_KeyDown(KeyCode As Integer, Shift As Integer)
+Private Sub mskADRNum_KeyDown(Index As Integer, KeyCode As Integer, Shift As Integer)
+    With mskADRNum(Index)
     If KeyCode = 13 Then
-        Call mskADRNum_LostFocus
-        If cmdSave.Enabled Then cmdSave.SetFocus
+        If .Text <> 0 And .Text <> "" And Index < 2 Then
+            mskADRNum(Index + 1).SetFocus
+        Else
+            If cmdSave.Enabled Then cmdSave.SetFocus
+        End If
     End If
+    End With
 End Sub
 
-Private Sub mskADRNum_LostFocus()
-    If Not IsNumeric(mskADRNum) Then
-            mskADRNum = 0
+Private Sub mskADRNum_LostFocus(Index As Integer)
+    If Not IsNumeric(mskADRNum(Index)) Then
+        mskADRNum(Index) = 0
+    Else
+        mskADRNum(Index) = CLng(mskADRNum(Index))
     End If
 End Sub
 
@@ -6938,7 +7037,7 @@ End Sub
 
 Private Sub Form_Load()
 Me.Caption = Me.Caption & " v" & App.Major & "." & App.Minor & "." & App.Revision
-
+ImportPrint.Database.LogOnServer "P2SODBC.DLL", CStr(gcnnBilling.Properties("Data Source").Value), CStr(gcnnBilling.Properties("Initial Catalog"))
 On Error GoTo err
     Call LoadColumnNumbers
     Call DisableNextTabs
@@ -7049,6 +7148,8 @@ Private Sub LoadColumnNumbers()
         .SBMAPN = Increment(intColumnCTR)
         .Location = Increment(intColumnCTR)
         .VoyageNo = Increment(intColumnCTR)
+        .TINConsignee = Increment(intColumnCTR)
+        .TINBroker = Increment(intColumnCTR)
 
         .ContainerSize = Increment(intColumnCTR)
         .FullEmpty = Increment(intColumnCTR)
@@ -8384,9 +8485,9 @@ Call Evaluate_ContainerNo
          End If
          Call ComputeArrastre
          Call ComputeReefer
-         If Left(cboStorageStat.Text, 1) <> "8" Then
+         'If Left(cboStorageStat.Text, 1) <> "8" Then
             Call ComputeStorage
-         End If
+         'End If
          Call ComputeWeighing
          
          Call StoreBasicChargesToTemp
@@ -9013,58 +9114,7 @@ Private Sub ComputeStorage()
     Dim curOHRate As Currency
     
     curPHPAmount = SearchInRates("STO$RT", "")
-    If Left(cboStorageStat.Text, 1) = "6" And Left(txtRelayContainer, 1) = "E" Then
-       'curStorageBasic = SearchInRates("EXST", Trim(txtContainer(1)))
-        Select Case txtContainer(1)
-            Case "20"
-                curStorageBasic = SearchInRates("STOEX1", Trim(txtContainer(1)))
-            Case "40"
-                curStorageBasic = SearchInRates("STOEX2", Trim(txtContainer(1)))
-            Case "45"
-                curStorageBasic = SearchInRates("STOEX3", Trim(txtContainer(1)))
-        End Select
-    ElseIf Left(cboStorageStat.Text, 1) = "7" Then
-        Select Case txtContainer(1)
-            Case "20"
-                curStorageBasic = SearchInRates("STOFT1", Trim(txtContainer(1)))
-            Case "40"
-                curStorageBasic = SearchInRates("STOFT2", Trim(txtContainer(1)))
-            Case "45"
-                curStorageBasic = SearchInRates("STOFT3", Trim(txtContainer(1)))
-        End Select
-    Else
-        If txtTransactionType = "F" Then
-           'curStorageBasic = SearchInRates("IMST", Trim(txtContainer(1)))
-            Select Case txtContainer(1)
-                Case "20"
-                    curStorageBasic = SearchInRates("STOIM1", Trim(txtContainer(1)))
-                Case "40"
-                    curStorageBasic = SearchInRates("STOIM2", Trim(txtContainer(1)))
-                Case "45"
-                    curStorageBasic = SearchInRates("STOIM3", Trim(txtContainer(1)))
-            End Select
-        Else
-            'curStorageBasic = SearchInRates("IMSTD", Trim(txtContainer(1)))
-            Select Case txtContainer(1)
-                Case "20"
-                    curStorageBasic = SearchInRates("STODO1", Trim(txtContainer(1)))
-                Case "40"
-                    curStorageBasic = SearchInRates("STODO2", Trim(txtContainer(1)))
-                Case "45"
-                    curStorageBasic = SearchInRates("STODO3", Trim(txtContainer(1)))
-            End Select
-        End If
-        If blnReefer Then
-            Select Case txtContainer(1)
-                Case "20"
-                    curStorageBasic = SearchInRates("STOIM4", Trim(txtContainer(1)))
-                Case "40"
-                    curStorageBasic = SearchInRates("STOIM5", Trim(txtContainer(1)))
-                Case "45"
-                    curStorageBasic = SearchInRates("STOIM6", Trim(txtContainer(1)))
-            End Select
-        End If
-    End If
+
     
     'start storage date
     Select Case Left(cboStorageStat, 1)
@@ -9081,7 +9131,7 @@ Private Sub ComputeStorage()
     
    'free days
     Select Case Left(cboStorageStat, 1)
-        Case "1", "2", "3"
+        Case "1", "2", "3", "8"
             intSubdays = 9 '(10 - 1 INCLUSIVE OF LAST DISCHARGE DAY)
         Case "4"
             intSubdays = CInt(mskDaysFree)
@@ -9132,8 +9182,89 @@ Private Sub ComputeStorage()
     Else
         mskPayableDays = CCur(mskPayableDays) 'sharon + 10
     End If
+''''''''''''''''''''''''''''''''''Placed Later to Use payable days as selector'''''''''''''''''
+    If Left(cboStorageStat.Text, 1) = "6" And Left(txtRelayContainer, 1) = "E" Then
+       'curStorageBasic = SearchInRates("EXST", Trim(txtContainer(1)))
+        Select Case txtContainer(1)
+            Case "20"
+                curStorageBasic = SearchInRates("STOEX1", Trim(txtContainer(1)))
+            Case "40"
+                curStorageBasic = SearchInRates("STOEX2", Trim(txtContainer(1)))
+            Case "45"
+                curStorageBasic = SearchInRates("STOEX3", Trim(txtContainer(1)))
+        End Select
+    ElseIf Left(cboStorageStat.Text, 1) = "7" Then
+        Select Case txtContainer(1)
+            Case "20"
+                curStorageBasic = SearchInRates("STOFT1", Trim(txtContainer(1)))
+            Case "40"
+                curStorageBasic = SearchInRates("STOFT2", Trim(txtContainer(1)))
+            Case "45"
+                curStorageBasic = SearchInRates("STOFT3", Trim(txtContainer(1)))
+        End Select
+    ElseIf Left(cboStorageStat.Text, 1) <> "8" Then
+        If txtTransactionType = "F" Then
+           'curStorageBasic = SearchInRates("IMST", Trim(txtContainer(1)))
+            Select Case txtContainer(1)
+                Case "20"
+                    Select Case CLng(mskPayableDays)
+                    Case 1 To 9
+                        curStorageBasic = SearchInRates("STOIM1", Trim(txtContainer(1)))
+                    Case 10 To 19
+                        curStorageBasic = SearchInRates("STOIPA", Trim(txtContainer(1)))
+                    Case 20 To 29
+                        curStorageBasic = SearchInRates("STOIPC", Trim(txtContainer(1)))
+                    Case Is >= 30
+                        curStorageBasic = SearchInRates("STOIPF", Trim(txtContainer(1)))
+                    End Select
+                Case "40"
+                    Select Case CLng(mskPayableDays)
+                    Case 1 To 9
+                        curStorageBasic = SearchInRates("STOIM2", Trim(txtContainer(1)))
+                    Case 10 To 19
+                        curStorageBasic = SearchInRates("STOIPB", Trim(txtContainer(1)))
+                    Case 20 To 29
+                        curStorageBasic = SearchInRates("STOIPD", Trim(txtContainer(1)))
+                    Case Is >= 30
+                        curStorageBasic = SearchInRates("STOIPG", Trim(txtContainer(1)))
+                    End Select
+                Case "45"
+                    Select Case CLng(mskPayableDays)
+                    Case 1 To 9
+                        curStorageBasic = SearchInRates("STOIM3", Trim(txtContainer(1)))
+                    Case 10 To 19
+                        ''''''''''''''''''''N/A'''''''''''''''''''''
+                    Case 20 To 29
+                        ''''''''''''''''''''N/A'''''''''''''''''''''
+                    Case Is >= 30
+                        curStorageBasic = SearchInRates("STOIPH", Trim(txtContainer(1)))
+                    End Select
+            End Select
+        Else
+            'curStorageBasic = SearchInRates("IMSTD", Trim(txtContainer(1)))
+            Select Case txtContainer(1)
+                Case "20"
+                    curStorageBasic = SearchInRates("STODO1", Trim(txtContainer(1)))
+                Case "40"
+                    curStorageBasic = SearchInRates("STODO2", Trim(txtContainer(1)))
+                Case "45"
+                    curStorageBasic = SearchInRates("STODO3", Trim(txtContainer(1)))
+            End Select
+        End If
+        If blnReefer Then
+            Select Case txtContainer(1)
+                Case "20"
+                    curStorageBasic = SearchInRates("STOIM4", Trim(txtContainer(1)))
+                Case "40"
+                    curStorageBasic = SearchInRates("STOIM5", Trim(txtContainer(1)))
+                Case "45"
+                    curStorageBasic = SearchInRates("STOIM6", Trim(txtContainer(1)))
+            End Select
+        End If
+    End If
+''''''''''''''''''''''''''''''''''Placed Later to Use payable days as selector'''''''''''''''''
 
-    If CCur(mskRevenueTon) > 0 Then
+    If CCur(mskRevenueTon) > 0 And Left(cboStorageStat, 1) <> "8" Then 'No Storage Flat Rack
         Select Case txtContainer(1)
             Case "20"
                 curOHRate = SearchInRates("STOOH1", Trim(txtContainer(1)))

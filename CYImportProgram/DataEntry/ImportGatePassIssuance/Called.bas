@@ -833,7 +833,7 @@ End Function
 '    End With
 'End Function
 
-Public Function lzSplitForExam(ByVal pContNo As String, ByVal pRegNum As String) As Boolean
+Public Function lzSplitForExam(ByVal pContNo As String, ByVal pRegnum As String) As Boolean
                                                         
 Dim cmd As ADODB.Command
 Dim prm As ADODB.Parameter
@@ -853,7 +853,7 @@ Dim prm As ADODB.Parameter
         .Parameters(1).Direction = adParamInput
     
         .Parameters(2).Type = adChar
-        .Parameters(2).Value = pRegNum
+        .Parameters(2).Value = pRegnum
         .Parameters(2).Direction = adParamInput
      
         .Execute
