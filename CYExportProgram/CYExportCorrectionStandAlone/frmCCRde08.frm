@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmCCRde08 
    Caption         =   "( SBMA SUBIC - CCRDE08 ) CY Export CCR Maintenance"
    ClientHeight    =   11025
@@ -7,7 +7,7 @@ Begin VB.Form frmCCRde08
    ClientTop       =   540
    ClientWidth     =   15240
    BeginProperty Font 
-      Name            =   "IBM3270 - 1254"
+      Name            =   "Arial"
       Size            =   15
       Charset         =   0
       Weight          =   400
@@ -44,7 +44,7 @@ Begin VB.Form frmCCRde08
          EndProperty
          BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             AutoSize        =   1
-            Object.Width           =   12586
+            Object.Width           =   12612
             MinWidth        =   2558
          EndProperty
          BeginProperty Panel4 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
@@ -56,12 +56,12 @@ Begin VB.Form frmCCRde08
          BeginProperty Panel5 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   6
             Alignment       =   1
-            TextSave        =   "7/27/00"
+            TextSave        =   "07/27/2018"
          EndProperty
          BeginProperty Panel6 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             Alignment       =   1
-            TextSave        =   "9:19 AM"
+            TextSave        =   "5:05 PM"
          EndProperty
       EndProperty
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
