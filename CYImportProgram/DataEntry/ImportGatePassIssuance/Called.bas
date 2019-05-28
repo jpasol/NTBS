@@ -378,6 +378,7 @@ Public Sub gzApplyCYMGP(ByVal pUser As String, ByVal pGatePassNo As Long, ByVal 
     Set cmdApplyCYMGP = New ADODB.Command
     With cmdApplyCYMGP
         Set .ActiveConnection = gcnnBilling
+ApplyCYMgp:
         .CommandText = "up_applycymgp"
         .CommandType = adCmdStoredProc
     
@@ -392,9 +393,13 @@ Public Sub gzApplyCYMGP(ByVal pUser As String, ByVal pGatePassNo As Long, ByVal 
         .Execute
     End With
     Exit Sub
-    
 err:
     MsgBox err.Description, vbOKOnly, "gzApplyCYMGP"
+    Dim dc As clsCYMDE01
+    dc.Disconnect
+    dc.ConnectByStr (pCnnStr2)
+    cmdApplyCYMGP.ActiveConnection = gcnnBilling
+    GoTo ApplyCYMgp
 End Sub
 
 '--------------------------------------------------------------------
@@ -828,7 +833,7 @@ End Function
 '    End With
 'End Function
 
-Public Function lzSplitForExam(ByVal pContNo As String, ByVal pRegNum As String) As Boolean
+Public Function lzSplitForExam(ByVal pContNo As String, ByVal pRegnum As String) As Boolean
                                                         
 Dim cmd As ADODB.Command
 Dim prm As ADODB.Parameter
@@ -848,7 +853,7 @@ Dim prm As ADODB.Parameter
         .Parameters(1).Direction = adParamInput
     
         .Parameters(2).Type = adChar
-        .Parameters(2).Value = pRegNum
+        .Parameters(2).Value = pRegnum
         .Parameters(2).Direction = adParamInput
      
         .Execute
@@ -1239,6 +1244,7 @@ Dim prmGetCustomer As ADODB.Parameter
     
 End Function
 
+
 Public Function ConnectToNavis() As Boolean '(ByVal pCnnStr As String) As Boolean
 Dim errBilling As ADODB.Error
 Dim lsErrStr As String
@@ -1254,19 +1260,19 @@ Dim lsErrStr As String
 '        ";User ID=tosadmin;Password=tosadmin"
 '
 'PRNH - Prod IP
-'    gcnnNavis.Open "Provider=sqloledb" & _
-'            ";Data Source=192.168.11.151" & _
-'            ";Initial Catalog=apex" & _
-'            ";User ID=tosadmin;Password=tosadmin"
+    gcnnNavis.Open "Provider=sqloledb" & _
+            ";Data Source=192.168.11.151" & _
+            ";Initial Catalog=apex" & _
+            ";User ID=tosadmin;Password=tosadmin"
 
-'PRNH - Test
-        gcnnNavis.Open "Provider=sqloledb" & _
-        ";Data Source=192.168.11.155" & _
-        ";Initial Catalog=apex" & _
-        ";User ID=sa_ictsi;Password=Ictsi123"
+''PRNH -Test
+'        gcnnNavis.Open "Provider=sqloledb" & _
+'        ";Data Source=192.168.11.155" & _
+'        ";Initial Catalog=apex" & _
+'        ";User ID=sa_ictsi;Password=Ictsi123"
 
 
-        
+
     gbNavis = True
     ConnectToNavis = True
    
@@ -1282,3 +1288,11 @@ err_Connect:
         MsgBox lsErrStr, vbCritical
     Next
 End Function
+Public Function ParseNonNum(NonNum As Variant) As Variant
+On Error GoTo err:
+ParseNonNum = CCur(NonNum)
+Exit Function
+err:
+ParseNonNum = 0
+End Function
+

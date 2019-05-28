@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomct2.ocx"
+Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomct2.OCX"
 Object = "{5E9E78A0-531B-11CF-91F6-C2863C385E30}#1.0#0"; "MSFLXGRD.OCX"
 Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "msmask32.ocx"
 Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
@@ -98,20 +98,20 @@ Begin VB.Form frmManifestCont
       TabCaption(1)   =   "Header"
       TabPicture(1)   =   "frmManifestCont.frx":0022
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "lblManifest(2)"
-      Tab(1).Control(1)=   "lblManifest(0)"
-      Tab(1).Control(2)=   "lblManifest(1)"
-      Tab(1).Control(3)=   "lblManifest(4)"
-      Tab(1).Control(4)=   "lblManifest(5)"
-      Tab(1).Control(5)=   "mskGatePassNo"
-      Tab(1).Control(6)=   "txtBrokerNO"
-      Tab(1).Control(7)=   "txtCustomer"
-      Tab(1).Control(8)=   "cboVAT"
-      Tab(1).Control(9)=   "chkWharfageExempt"
-      Tab(1).Control(10)=   "chkWharfageOnly"
-      Tab(1).Control(11)=   "cboUnderGuarantee"
-      Tab(1).Control(12)=   "cmdPreviousHeader"
-      Tab(1).Control(13)=   "cmdNextHeader"
+      Tab(1).Control(0)=   "cmdNextHeader"
+      Tab(1).Control(1)=   "cmdPreviousHeader"
+      Tab(1).Control(2)=   "cboUnderGuarantee"
+      Tab(1).Control(3)=   "chkWharfageOnly"
+      Tab(1).Control(4)=   "chkWharfageExempt"
+      Tab(1).Control(5)=   "cboVAT"
+      Tab(1).Control(6)=   "txtCustomer"
+      Tab(1).Control(7)=   "txtBrokerNO"
+      Tab(1).Control(8)=   "mskGatePassNo"
+      Tab(1).Control(9)=   "lblManifest(5)"
+      Tab(1).Control(10)=   "lblManifest(4)"
+      Tab(1).Control(11)=   "lblManifest(1)"
+      Tab(1).Control(12)=   "lblManifest(0)"
+      Tab(1).Control(13)=   "lblManifest(2)"
       Tab(1).ControlCount=   14
       TabCaption(2)   =   "Other Info"
       TabPicture(2)   =   "frmManifestCont.frx":003E
@@ -123,43 +123,44 @@ Begin VB.Form frmManifestCont
       TabCaption(3)   =   "Container"
       TabPicture(3)   =   "frmManifestCont.frx":005A
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "cmdNextContainer"
-      Tab(3).Control(1)=   "cmdPreviousContainer"
-      Tab(3).Control(2)=   "cmdCompute"
-      Tab(3).Control(3)=   "cboDangClass"
-      Tab(3).Control(4)=   "cboStorageStat"
-      Tab(3).Control(5)=   "chkWeighing"
-      Tab(3).Control(6)=   "fraPlug"
-      Tab(3).Control(7)=   "fraDetail"
-      Tab(3).Control(8)=   "fraOversize"
-      Tab(3).Control(9)=   "fraStorage"
-      Tab(3).Control(10)=   "mskCRODate"
-      Tab(3).Control(11)=   "mskAdvGPDate"
-      Tab(3).Control(12)=   "lblManifest(15)"
-      Tab(3).Control(13)=   "lblManifest(16)"
-      Tab(3).Control(14)=   "lblManifest(11)"
-      Tab(3).Control(15)=   "lblManifest(14)"
+      Tab(3).Control(0)=   "lblManifest(14)"
+      Tab(3).Control(1)=   "lblManifest(11)"
+      Tab(3).Control(2)=   "lblManifest(16)"
+      Tab(3).Control(3)=   "lblManifest(15)"
+      Tab(3).Control(4)=   "mskAdvGPDate"
+      Tab(3).Control(5)=   "mskCRODate"
+      Tab(3).Control(6)=   "fraStorage"
+      Tab(3).Control(7)=   "fraOversize"
+      Tab(3).Control(8)=   "fraDetail"
+      Tab(3).Control(9)=   "fraPlug"
+      Tab(3).Control(10)=   "chkWeighing"
+      Tab(3).Control(11)=   "cboStorageStat"
+      Tab(3).Control(12)=   "cboDangClass"
+      Tab(3).Control(13)=   "cmdCompute"
+      Tab(3).Control(14)=   "cmdPreviousContainer"
+      Tab(3).Control(15)=   "cmdNextContainer"
       Tab(3).ControlCount=   16
       TabCaption(4)   =   "Charges"
       TabPicture(4)   =   "frmManifestCont.frx":0076
       Tab(4).ControlEnabled=   0   'False
-      Tab(4).Control(0)=   "lblManifest(34)"
-      Tab(4).Control(1)=   "lblManifest(71)"
-      Tab(4).Control(2)=   "mskReeferHours"
-      Tab(4).Control(3)=   "msfCharges"
-      Tab(4).Control(4)=   "cmdPreviousCharges"
-      Tab(4).Control(5)=   "cmdNextCharges"
-      Tab(4).Control(6)=   "fraRunning"
-      Tab(4).Control(7)=   "fraCharges"
-      Tab(4).Control(8)=   "fraStorageInfo"
-      Tab(4).Control(9)=   "fraExpand"
-      Tab(4).Control(10)=   "cmdAnother"
-      Tab(4).Control(11)=   "cmdViewGrid"
+      Tab(4).Control(0)=   "cmdViewGrid"
+      Tab(4).Control(1)=   "cmdAnother"
+      Tab(4).Control(2)=   "fraExpand"
+      Tab(4).Control(3)=   "fraStorageInfo"
+      Tab(4).Control(4)=   "fraCharges"
+      Tab(4).Control(5)=   "fraRunning"
+      Tab(4).Control(6)=   "cmdNextCharges"
+      Tab(4).Control(7)=   "cmdPreviousCharges"
+      Tab(4).Control(8)=   "msfCharges"
+      Tab(4).Control(9)=   "mskReeferHours"
+      Tab(4).Control(10)=   "lblManifest(71)"
+      Tab(4).Control(11)=   "lblManifest(34)"
       Tab(4).ControlCount=   12
       TabCaption(5)   =   "Payment"
       TabPicture(5)   =   "frmManifestCont.frx":0092
       Tab(5).ControlEnabled=   0   'False
       Tab(5).Control(0)=   "fraPayment"
+      Tab(5).Control(0).Enabled=   0   'False
       Tab(5).ControlCount=   1
       Begin VB.TextBox txtCompCode 
          Enabled         =   0   'False
@@ -242,7 +243,7 @@ Begin VB.Form frmManifestCont
             Strikethrough   =   0   'False
          EndProperty
          Height          =   9375
-         Left            =   -74062
+         Left            =   -74040
          TabIndex        =   147
          Top             =   840
          Width           =   13575
@@ -713,6 +714,89 @@ Begin VB.Form frmManifestCont
             EndProperty
             PromptChar      =   "_"
          End
+         Begin MSMask.MaskEdBox mskADRNum 
+            Height          =   405
+            Index           =   0
+            Left            =   6960
+            TabIndex        =   209
+            Top             =   4800
+            Width           =   1935
+            _ExtentX        =   3413
+            _ExtentY        =   714
+            _Version        =   393216
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Arial"
+               Size            =   12
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            PromptChar      =   "_"
+         End
+         Begin MSMask.MaskEdBox mskADRNum 
+            Height          =   405
+            Index           =   1
+            Left            =   9000
+            TabIndex        =   210
+            Top             =   4800
+            Width           =   1935
+            _ExtentX        =   3413
+            _ExtentY        =   714
+            _Version        =   393216
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Arial"
+               Size            =   12
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            PromptChar      =   "_"
+         End
+         Begin MSMask.MaskEdBox mskADRNum 
+            Height          =   405
+            Index           =   2
+            Left            =   11040
+            TabIndex        =   211
+            Top             =   4800
+            Width           =   1935
+            _ExtentX        =   3413
+            _ExtentY        =   714
+            _Version        =   393216
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Arial"
+               Size            =   12
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            PromptChar      =   "_"
+         End
+         Begin VB.Label lblManifest 
+            Alignment       =   1  'Right Justify
+            Caption         =   "OR Number:"
+            BeginProperty Font 
+               Name            =   "Arial"
+               Size            =   12
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H8000000D&
+            Height          =   375
+            Index           =   75
+            Left            =   4800
+            TabIndex        =   208
+            Top             =   4800
+            Width           =   2055
+         End
          Begin VB.Label lblManifest 
             Alignment       =   1  'Right Justify
             Caption         =   "Amount to Pay:"
@@ -1133,7 +1217,7 @@ Begin VB.Form frmManifestCont
             EndProperty
             CalendarBackColor=   16777215
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   92209155
+            Format          =   170786819
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtStorageFree 
@@ -1155,7 +1239,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   92209155
+            Format          =   170786819
             CurrentDate     =   32874
          End
          Begin MSComCtl2.DTPicker dtEndStorage 
@@ -1177,7 +1261,7 @@ Begin VB.Form frmManifestCont
                Strikethrough   =   0   'False
             EndProperty
             CustomFormat    =   "yyy-MM-dd"
-            Format          =   92209155
+            Format          =   170786819
             CurrentDate     =   32874
          End
          Begin VB.Label lblManifest 
@@ -2521,7 +2605,7 @@ Begin VB.Form frmManifestCont
             EndProperty
             Height          =   405
             Left            =   5160
-            MaxLength       =   9
+            MaxLength       =   12
             TabIndex        =   191
             Top             =   960
             Width           =   2655
@@ -2538,7 +2622,7 @@ Begin VB.Form frmManifestCont
             EndProperty
             Height          =   405
             Left            =   5160
-            MaxLength       =   9
+            MaxLength       =   12
             TabIndex        =   190
             Top             =   2160
             Width           =   2655
@@ -3585,7 +3669,7 @@ Begin VB.Form frmManifestCont
          _ExtentX        =   25638
          _ExtentY        =   8705
          _Version        =   393216
-         Cols            =   114
+         Cols            =   130
          FixedCols       =   0
          AllowBigSelection=   0   'False
          SelectionMode   =   1
@@ -4254,6 +4338,7 @@ End Type
 '
 Private Type Payments
     ADR As Currency
+    ADRNum As Long
     CheckAmt1 As Currency
     CheckAmt2 As Currency
     CheckAmt3 As Currency
@@ -4469,6 +4554,7 @@ Dim intProcessedContainers As Integer
 Dim lngGPSNum As Long
 Dim lngStartGatepass As Long
 Dim blnBLTagged As Boolean
+Dim EvalContainer As String
 '
 Dim curDangerAMT As Currency
 Dim curOverSizeAMT As Currency
@@ -4484,6 +4570,7 @@ Dim blnReefer As Boolean
 Dim curPHPAmount As Currency
 
 Dim gConnNav As String
+
 
 'PRNH
 Dim cntIndex As Long, cntCount As Long
@@ -4665,14 +4752,18 @@ End Sub
 Private Sub chkWharfageOnly_KeyDown(KeyCode As Integer, Shift As Integer)
     Call FieldAdvance(KeyCode, cboUnderGuarantee, chkWharfageExempt)
 End Sub
-
 Private Sub cmbConNo_Click()
     Call Evaluate_ContainerNo
+    cntIndex = cmbConNo.ListIndex
 End Sub
 
 Private Sub cmbConNo_KeyDown(KeyCode As Integer, Shift As Integer)
-    If KeyCode = vbKeyReturn Then
+    If KeyCode = vbKeyReturn Or KeyCode = vbKeyF8 Then
         Call Evaluate_ContainerNo
+        cntIndex = cmbConNo.ListIndex
+        If EvalContainer = cmbConNo Then
+            Me.txtContainer(2).SetFocus
+        End If
     End If
 End Sub
 
@@ -4691,10 +4782,12 @@ err:
     MsgBox err.Description, vbOKOnly, "Get_ContainerSize"
 End Sub
 
+
 Private Sub cmbConNo_LostFocus()
-    If Trim(cmbConNo.Text) <> "" And sstMain.Tab = 3 Then
+    If sstMain.Tab = 3 Then
         Call Evaluate_ContainerNo
     End If
+    cntIndex = cmbConNo.ListIndex
 End Sub
 
 Private Sub cmdAnother_Click()
@@ -4702,10 +4795,10 @@ Private Sub cmdAnother_Click()
     
     'PRNH
     If cntIndex < cntCount - 1 Then
+        Call InitializeSomeComputationVariables
         sstMain.Tab = cTabContainer
         cntIndex = cntIndex + 1
-        cmbConNo.Text = cmbConNo.List(cntIndex)
-        Evaluate_ContainerNo
+        cmbConNo.ListIndex = cntIndex
     End If
 End Sub
 
@@ -4832,7 +4925,7 @@ Dim prm As ADODB.Parameter
     End With
 End Function
 
-Private Function lzSplitPaid(ByVal pContNo As String, ByVal pRegNum As String) As Boolean
+Private Function lzSplitPaid(ByVal pContNo As String, ByVal pRegnum As String) As Boolean
                                                    
 Dim cmd As ADODB.Command
 Dim prm As ADODB.Parameter
@@ -4853,7 +4946,7 @@ Dim prm As ADODB.Parameter
         .Parameters(1).Direction = adParamInput
         
         .Parameters(2).Type = adChar
-        .Parameters(2).Value = pRegNum
+        .Parameters(2).Value = pRegnum
         .Parameters(2).Direction = adParamInput
         
 
@@ -4941,48 +5034,54 @@ txtLog.Text = txtLog.Text & "cmdSave_Click: vChkCode = False" & vbCrLf
   txtLog.Text = txtLog.Text & "cmdSave_Click: If vChkCode Then" & vbCrLf
     intResponse = MsgBox("Save Transactions to disk?", vbYesNo + vbInformation, "Saving...")
     If intResponse = vbYes Then
+        txtLog.Text = txtLog.Text & "cmdSave_Click: If intResponse = vbYes Then" & vbCrLf
         If OKToSave Then
-        
+            txtLog.Text = txtLog.Text & "cmdSave_Click: If OKToSave Then" & vbCrLf
             lngReferenceNo = gzGetControlNo(cControlType)
-            
+            txtLog.Text = txtLog.Text & "cmdSave_Click: lngReferenceNo = gzGetControlNo(cControlType)" & vbCrLf
             'PRNH - Removed ADR Validation
 '            If mskADRAmount > 0 Then
 '                lngControlNo = lzApplyADR(txtCustomerCode, cControlType, lngReferenceNo, CCur(mskADRAmount), UCase(zCurrentUser()), "")
 '            Else
 '                lngControlNo = 0
 '            End If
+
+
+            If SaveDetails Then
+                If SaveHeaders Then
+                    intResponse = MsgBox("Gatepass will now be printed.", vbOKOnly + vbInformation, "Printing...")
+                    If intResponse = vbOK Then
+                        Call PrintGatePass
+                    End If
             
-            Call SaveHeaders
-            Call SaveDetails
-            
-            
-            
-            intResponse = MsgBox("Gatepass will now be printed.", vbOKOnly + vbInformation, "Printing...")
-            If intResponse = vbOK Then
-                Call PrintGatePass
+                    Call InitializeHeaderVariables
+                    Call InitializeComputationVariables
+                    Call InitializeGridAndOther
+                    Call InitializeOtherInfo
+                    Call InitializePayment
+                    Call DisableNextTabs
+                    Call InitializeAndEnableManifestControls
+                    mskRunning = 0
+                    msfCharges.Rows = 1
+                    cmdAnother.Enabled = True
+                    blnFirstTime = True
+                    sstMain.Tab = cTabBL
+                    With txtSBMAPermit
+                        .SelStart = 0
+                        .SelLength = .MaxLength
+                        .SetFocus
+                    End With
+                End If
             End If
-        
-            Call InitializeHeaderVariables
-            Call InitializeComputationVariables
-            Call InitializeGridAndOther
-            Call InitializeOtherInfo
-            Call InitializePayment
-            Call DisableNextTabs
-            Call InitializeAndEnableManifestControls
-            mskRunning = 0
-            msfCharges.Rows = 1
-            cmdAnother.Enabled = True
-            blnFirstTime = True
-            sstMain.Tab = cTabBL
-            With txtSBMAPermit
-                .SelStart = 0
-                .SelLength = .MaxLength
-                .SetFocus
-            End With
+            End If
         End If
     End If
-  End If
+  Exit Sub
+err:
+  MsgBox "An Error Occurred..."
+  Call WriteLogError
 End Sub
+
 
 Private Function OKToSave() As Boolean
     Dim lngGatePassEnding As Long
@@ -4991,7 +5090,8 @@ Private Function OKToSave() As Boolean
     Dim intCheckCtr As Integer
     
     OKToSave = True
-    If CCur(mskChange) < 0 Then
+    'If CCur(mskChange) < 0 Then
+    If CCur(mskChange) <> 0 Then
         OKToSave = False
         intResponse = MsgBox("Not Balanced. Please check...", vbExclamation + vbOKOnly, "")
         With mskCashAmount
@@ -5090,7 +5190,9 @@ Private Sub InitializePayment()
     txtBank(4) = ""
     
     mskADRAmount = 0
-    mskADRAmount = 0
+    mskADRNum(0) = 0
+    mskADRNum(1) = 0
+    mskADRNum(2) = 0
     mskChange = 0
     txtCustomerCode = ""
     txtCustomerName = ""
@@ -5165,18 +5267,17 @@ End Sub
 'End Sub
 
 'PRNH - Uses ADODB.Command to prevent "Cursor operation conflict" error
-Private Sub SaveHeaders()
+Private Function SaveHeaders() As Boolean
     On Error GoTo ErrSaveHeaders
+    SaveHeaders = False
 
-    dtmSystemDateTime = gzGetSysDate
-    
     Dim rsCYMPay As New ADODB.Command, updateQuery As String, updateQuery2 As String
 
     'cnCYMPay.Open pCnnStr2
     
     rsCYMPay.ActiveConnection = gcnnBilling
-
-    updateQuery = "INSERT INTO CYMPAY (Refnum,cuscde,cusnam,phpamt,cshamt,adramt,adrnum,chgamt,trntype,chkno1,chkno2,chkno3,chkno4,chkno5," & _
+updateQuery:
+    updateQuery = "INSERT INTO CYMPAY (Refnum,cuscde,cusnam,phpamt,cshamt,adramt,adrnum,adrnum2,adrnum3,chgamt,trntype,chkno1,chkno2,chkno3,chkno4,chkno5," & _
                     "chkamt1,chkamt2,chkamt3,chkamt4,chkamt5,chkbnk1,chkbnk2,chkbnk3,chkbnk4,chkbnk5,status,rectag,userid,sysdttm,updcde) "
     
     updateQuery2 = "VALUES("
@@ -5193,8 +5294,11 @@ Private Sub SaveHeaders()
         updateQuery2 = updateQuery2 & Replace(mskADRAmount, ",", "") & "," 'adramt
         
         'PRNH - Removed ADR Validation
-        'updateQuery2 = updateQuery2 & lngControlNo & "," 'adrnum
-        updateQuery2 = updateQuery2 & "0" & "," 'adrnum=0
+        'updateQuery2 = updateQuery2 & mskADRNum & "," 'adrnum
+               
+        updateQuery2 = updateQuery2 & mskADRNum(0) & "," 'adrnum1
+        updateQuery2 = updateQuery2 & mskADRNum(1) & "," 'adrnum2
+        updateQuery2 = updateQuery2 & mskADRNum(2) & "," 'adrnum3
         
         updateQuery2 = updateQuery2 & mskChange & "," 'chgamt
         updateQuery2 = updateQuery2 & "'" & txtTransactionType & "'," 'trntype
@@ -5224,22 +5328,24 @@ Private Sub SaveHeaders()
         rsCYMPay.CommandTimeout = 3000
         rsCYMPay.CommandText = updateQuery
         rsCYMPay.Execute , , adExecuteNoRecords
-        
-    
-    On Error GoTo 0
-    
-    Exit Sub
+        SaveHeaders = True
+    Exit Function
     
 
 ErrSaveHeaders:
     MsgBox err.Description
-    intResponse = MsgBox(err.Description) '"Error writing in header...", vbExclamation + vbDefaultButton2 + vbAbortRetryIgnore, "Error!")
+'    intResponse = MsgBox(err.Description) '"Error writing in header...", vbExclamation + vbDefaultButton2 + vbAbortRetryIgnore, "Error!")
+    intResponse = MsgBox("Error writing in header...", vbExclamation + vbDefaultButton2 + vbAbortRetryIgnore, "Error!")
     If intResponse = vbAbort Then
-        Unload Me
+        Exit Function
     ElseIf (intResponse = vbRetry) Or (intResponse = vbIgnore) Then
-        Resume
+        Dim dc As New clsCYMDE01
+        dc.Disconnect
+        dc.ConnectByStr (pCnnStr2)
+        rsCYMPay.ActiveConnection = gcnnBilling
+        GoTo updateQuery
     End If
-End Sub
+End Function
 
 'OLD - PRNH
 'Private Sub SaveDetails()
@@ -5485,7 +5591,9 @@ End Sub
 'End Sub
 
 'PRNH
-Private Sub SaveDetails()
+Private Function SaveDetails() As Boolean
+    SaveDetails = False
+    dtmSystemDateTime = gzGetSysDate
     Dim strContNo1 As String
     Dim strIsForWeighing As String
     Dim strOOGAmount As String
@@ -5496,6 +5604,8 @@ Private Sub SaveDetails()
     Dim strRegNo As String
     Dim rsCYMGPS As New ADODB.Command, updateQuery As String, updateQuery2 As String
 
+
+
         strOOGAmount = ""
         strDGAmount = ""
         On Error GoTo ErrSaveDetails
@@ -5505,8 +5615,8 @@ Private Sub SaveDetails()
         lngGPSNum = CLng(mskGatePassNo)
         lngStartGatepass = lngGPSNum
         
-        
             For intRow = 1 To (msfCharges.Rows - 1)
+updateQuery:
             updateQuery = "": updateQuery2 = ""
             updateQuery = "INSERT INTO CYMGps (refnum,seqnum,gpsnum,gpstyp,cntnum,enttyp,entnum,voyageno,location,sbmapn,custompn," & _
                     "tincnsgne,tinbroker,cntsze,fulemp,forexm,cntovl,cntovw,cntovh,ovzums,ovzamt,trncde,whfcde,whfrate,whfonly," & _
@@ -5565,7 +5675,7 @@ Private Sub SaveDetails()
                 updateQuery2 = updateQuery2 & "'" & MoveToField(Column.Broker, "C") & "'," 'broker
                 updateQuery2 = updateQuery2 & "'" & txtBrokerNO & "'," 'brknum
                 updateQuery2 = updateQuery2 & "'" & MoveToField(Column.PDIGNo, "C") & "'," 'pdigno
-                updateQuery2 = updateQuery2 & "'" & Replace(MoveToField(Column.Commodity, "C"), "'", " ") & "'," 'commod
+                updateQuery2 = updateQuery2 & "'" & MoveToField(Column.Commodity, "C") & "'," 'commod
                 updateQuery2 = updateQuery2 & "'" & MoveToField(Column.DangerClass, "C") & "'," 'dgrcls
                 updateQuery2 = updateQuery2 & MoveToField(Column.DangerAMT, "N") & ","  'dgramt
                 strDGAmount = MoveToField(Column.DangerAMT, "N")
@@ -5641,15 +5751,15 @@ Private Sub SaveDetails()
                 rsCYMGPS.CommandTimeout = 3000
                 rsCYMGPS.CommandText = updateQuery
                 rsCYMGPS.Execute , , adExecuteNoRecords
-                
-                On Error GoTo ErrWriteIfForExam
-                    Call WriteIfForExam(intRow, Column.ForExam, lngGPSNum)
                 On Error GoTo 0
-
+'                On Error GoTo ErrWriteIfForExam
+                Call WriteIfForExam(intRow, Column.ForExam, lngGPSNum)
+'                On Error GoTo 0
+                On Error GoTo errHandle
                 If intRow <> (msfCharges.Rows - 1) Then
                     lngGPSNum = lngGPSNum + 1
                 End If
-                 'Call SavePaymentToSparcs(MoveToField(Column.ContainerID, "C"), "STORAGE", "", "4992")
+                'Call SavePaymentToSparcs(MoveToField(Column.ContainerID, "C"), "STORAGE", "", "4992")
                
                 'Save to Sparcs
                 strVisit = Sparcs_VisitID(txtRegistry.Text, "IMPRT")
@@ -5692,7 +5802,7 @@ Private Sub SaveDetails()
                 End If
                 
                 'Release Billing Hold/Permission
-                Call ReleaseHold(strContNo1)
+                Call ReleaseHoldalt(strContNo1, strVisit)
                 
                 'Release OOG Hold/Permission
                 If strOOGAmount <> "" And IsNumeric(strOOGAmount) Then
@@ -5712,33 +5822,47 @@ Private Sub SaveDetails()
                 Call Update_Manifest(Trim(txtBL.Text), Trim(MoveToField(Column.ContainerID, "C")), Trim(lngGPSNum), strRegNo)
                 Call gzApplyCYMGP(UCase(zCurrentUser()), lngGPSNum, msfCharges.TextMatrix(intRow, Column.CompanyCode)) ' PRNH
             Next intRow
-            
             'Call gzApplyCYMGP(UCase(zCurrentUser()), lngGPSNum)
         
-        
-    Exit Sub
+        SaveDetails = True
+    Exit Function
 ErrSaveDetails:
-    intResponse = MsgBox("Error writing in detail...", vbExclamation + vbDefaultButton2 + vbAbortRetryIgnore, "Error!")
+    intResponse = MsgBox("Error writing in detail..." & vbNewLine & _
+                    "Error: " & err.Number & _
+                    err.Description, vbExclamation + vbDefaultButton2 + vbAbortRetryIgnore, "Error!")
+    If intResponse = vbAbort Then
+        Unload Me
+    ElseIf (intResponse = vbRetry) Or (intResponse = vbIgnore) Then
+        Dim dc As New clsCYMDE01
+        dc.Disconnect
+        dc.ConnectByStr (pCnnStr2)
+        rsCYMGPS.ActiveConnection = gcnnBilling
+        GoTo updateQuery
+    End If
+'ErrWriteIfForExam:
+'    intResponse = MsgBox("Error writing in Exam file...", vbExclamation + vbDefaultButton2 + vbAbortRetryIgnore, "Error!")
+'    If intResponse = vbAbort Then
+'        Exit Sub
+'    ElseIf (intResponse = vbRetry) Or (intResponse = vbIgnore) Then
+'        Resume
+'    End If
+'ErrWriteToACOCtn:
+'    intResponse = MsgBox("Error writing in ACOCtn file...", vbExclamation + vbDefaultButton2 + vbAbortRetryIgnore, "Error!")
+'    If intResponse = vbAbort Then
+'        Exit Sub
+'    ElseIf (intResponse = vbRetry) Or (intResponse = vbIgnore) Then
+'        Resume
+'    End If
+errHandle:
+    intResponse = MsgBox("Error..." & vbNewLine & _
+                    "Error: " & err.Number & _
+                    err.Description, vbExclamation + vbDefaultButton2 + vbAbortRetryIgnore, "Error!")
     If intResponse = vbAbort Then
         Unload Me
     ElseIf (intResponse = vbRetry) Or (intResponse = vbIgnore) Then
         Resume
     End If
-ErrWriteIfForExam:
-    intResponse = MsgBox("Error writing in Exam file...", vbExclamation + vbDefaultButton2 + vbAbortRetryIgnore, "Error!")
-    If intResponse = vbAbort Then
-        Unload Me
-    ElseIf (intResponse = vbRetry) Or (intResponse = vbIgnore) Then
-        Resume
-    End If
-ErrWriteToACOCtn:
-    intResponse = MsgBox("Error writing in ACOCtn file...", vbExclamation + vbDefaultButton2 + vbAbortRetryIgnore, "Error!")
-    If intResponse = vbAbort Then
-        Unload Me
-    ElseIf (intResponse = vbRetry) Or (intResponse = vbIgnore) Then
-        Resume
-    End If
-End Sub
+End Function
 
 Private Sub Update_Manifest(ByVal strBillNo As String, ByVal strConNo As String, ByVal strGpsNum As String, strregnum As String)
     If Up_Manifest(strBillNo, strConNo, strGpsNum, strregnum) = False Then
@@ -5747,8 +5871,32 @@ Private Sub Update_Manifest(ByVal strBillNo As String, ByVal strConNo As String,
 End Sub
 
 Private Sub PrintGatePass()
-    Call GetTotalPaymentAmounts
-    Call GetTotalChargePerDetail
+'    Call GetTotalPaymentAmounts
+'    Call GetTotalChargePerDetail
+Dim rsPay As New ADODB.Recordset
+Dim totChk As Double
+
+rsPay.Open "Select cshamt, adramt, chkamt1, chkamt2,chkamt3,chkamt4,chkamt5 from CYMPAY where Refnum=" & lngReferenceNo, gcnnBilling
+
+totChk = rsPay.Fields("chkamt1") + _
+            rsPay.Fields("chkamt2") + _
+            rsPay.Fields("chkamt3") + _
+            rsPay.Fields("chkamt4") + _
+            rsPay.Fields("chkamt5")
+
+ImportPrint.DisplayProgressDialog = False
+
+ImportPrint.DiscardSavedData
+ImportPrint.ParameterFields(1).AddCurrentValue CLng(lngReferenceNo)
+ImportPrint.ParameterFields(2).AddCurrentValue gbSupervisor
+ImportPrint.ParameterFields(3).AddCurrentValue CDbl(rsPay.Fields("cshamt"))
+ImportPrint.ParameterFields(4).AddCurrentValue totChk
+ImportPrint.ParameterFields(5).AddCurrentValue CDbl(rsPay.Fields("adramt"))
+ImportPrint.PrintOut False, 1
+
+rsPay.Close
+Set rsPay = Nothing
+
 End Sub
 
 Private Sub GetTotalPaymentAmounts()
@@ -5765,6 +5913,8 @@ Private Sub GetTotalPaymentAmounts()
     With Payment
         txtLog.Text = txtLog.Text & "GetTotalPaymentAmounts: Start Sub" & vbCrLf
         .ADR = rstCYMPay.Fields("adramt")
+        txtLog.Text = txtLog.Text & "GetTotalPaymentAmounts: Start Sub" & vbCrLf
+        .ADRNum = rstCYMPay.Fields("adrnum")
         txtLog.Text = txtLog.Text & "GetTotalPaymentAmounts: Start Sub" & vbCrLf
         .CheckAmt1 = rstCYMPay.Fields("chkamt1")
         txtLog.Text = txtLog.Text & "GetTotalPaymentAmounts: Start Sub" & vbCrLf
@@ -5803,7 +5953,7 @@ Private Sub GetTotalPaymentAmounts()
         .Customer = rstCYMPay.Fields("cusnam")
         .TotalPayment = .ADR + .CheckAmt1 + .CheckAmt2 + .CheckAmt3 + .CheckAmt4 + .CheckAmt5 _
                                 + .Cash - .Change
-                                txtLog.Text = txtLog.Text & "GetTotalPaymentAmounts: Start Sub" & vbCrLf
+        txtLog.Text = txtLog.Text & "GetTotalPaymentAmounts: Start Sub" & vbCrLf
         .RemainingPayment = .TotalPayment
         txtLog.Text = txtLog.Text & "GetTotalPaymentAmounts: Start Sub" & vbCrLf
     End With
@@ -6277,6 +6427,17 @@ Private Sub PrintGatePassDetail()
             Else
                 Printer.Print "DC " & .DangerClass;
             End If
+            '<Payments/>
+                
+            Printer.Print Space(10);
+            Printer.Print
+            strPayment = LiquidatePaymentTypes(1)
+            Printer.Print Space(70);
+            If strPayment <> "" Then
+                Printer.Print Left(strPayment, 11);
+                Printer.Print Space(1);
+                Printer.Print "AD" & "     " & Payment.ADRNum & vbCrLf;
+            End If
             
             strPayment = LiquidatePaymentTypes(2)
             Printer.Print Space(70);
@@ -6568,6 +6729,8 @@ Private Sub WriteIfForExam(pRow As Integer, pCol As Byte, pGatePassNo As Long)
     Dim blnExaminationRequired As Boolean
     blnExaminationRequired = Trim(msfCharges.TextMatrix(pRow, pCol)) = "Y"
     If blnExaminationRequired Then
+On Error GoTo errWriteBOC
+WriteBOC:
         Set rstBOCExam = New ADODB.Recordset
         msfCharges.Row = pRow
         With rstBOCExam
@@ -6582,9 +6745,24 @@ Private Sub WriteIfForExam(pRow As Integer, pCol As Byte, pGatePassNo As Long)
             .Fields("enttyp") = MoveToField(Column.EntryType, "C")
             .Fields("gpsnum") = pGatePassNo
             .Fields("gpsdte") = dtmSystemDateTime
-            .Update
+            .update
             .Close
         End With
+    End If
+    Exit Sub
+errWriteBOC:
+    intResponse = MsgBox("Error writing in Exam File..." & vbNewLine & _
+                    "Error: " & err.Number & _
+                    err.Description, vbExclamation + vbDefaultButton2 + vbAbortRetryIgnore, "Error!")
+    If intResponse = vbAbort Then
+        Unload Me
+    ElseIf (intResponse = vbRetry) Or (intResponse = vbIgnore) Then
+        Dim dc As clsCYMDE01
+        rstBOCExam.CancelUpdate
+        rstBOCExam.Close
+        dc.Disconnect
+        dc.ConnectByStr (pCnnStr2)
+        GoTo WriteBOC
     End If
 End Sub
 
@@ -6593,15 +6771,16 @@ Private Function ConvertToChar(pValue As Integer) As String
 End Function
 
 Private Function MoveToField(pCol As Byte, pFieldType As String) As Variant
+    Dim strTemp As String
     msfCharges.Col = pCol
     Select Case pFieldType
         Case "N"
             MoveToField = CCur(msfCharges.Text)
         Case "C"
             If pCol = Column.ContainerID Then
-                MoveToField = RTrim(msfCharges.Text)
+                MoveToField = Replace(RTrim(msfCharges.Text), "'", "''")
             Else
-                MoveToField = Trim(msfCharges.Text)
+                MoveToField = Replace(Trim(msfCharges.Text), "'", "''")
             End If
         Case "D"
             MoveToField = CDate(msfCharges.Text)
@@ -6614,8 +6793,31 @@ End Function
 
 Private Sub mskADRAmount_KeyDown(KeyCode As Integer, Shift As Integer)
     If KeyCode = 13 Then
-        Call mskADRAmount_LostFocus
-        If cmdSave.Enabled Then cmdSave.SetFocus
+        If mskADRAmount > 0 Then mskADRNum(0).SetFocus Else cmdSave.SetFocus
+    End If
+End Sub
+
+Private Sub mskADRNum_GotFocus(Index As Integer)
+    mskADRNum(Index).SelLength = Len(mskADRNum(Index))
+End Sub
+
+Private Sub mskADRNum_KeyDown(Index As Integer, KeyCode As Integer, Shift As Integer)
+    With mskADRNum(Index)
+    If KeyCode = 13 Then
+        If .Text <> 0 And .Text <> "" And Index < 2 Then
+            mskADRNum(Index + 1).SetFocus
+        Else
+            If cmdSave.Enabled Then cmdSave.SetFocus
+        End If
+    End If
+    End With
+End Sub
+
+Private Sub mskADRNum_LostFocus(Index As Integer)
+    If Not IsNumeric(mskADRNum(Index)) Then
+        mskADRNum(Index) = 0
+    Else
+        mskADRNum(Index) = CLng(mskADRNum(Index))
     End If
 End Sub
 
@@ -6630,7 +6832,8 @@ Private Sub mskBOCGatepassDate_KeyDown(KeyCode As Integer, Shift As Integer)
 End Sub
 
 Private Sub mskChange_Change()
-    If Val(mskChange.Text) >= 0 Then
+    'if Val(mskChange.Text) >= 0 Then
+    If Val(mskChange.Text) = 0 Then
         cmdSave.Enabled = True
     Else
         cmdSave.Enabled = False
@@ -6833,6 +7036,8 @@ Private Sub InitializeOtherInfo()
 End Sub
 
 Private Sub Form_Load()
+Me.Caption = Me.Caption & " v" & App.Major & "." & App.Minor & "." & App.Revision
+ImportPrint.Database.LogOnServer "P2SODBC.DLL", CStr(gcnnBilling.Properties("Data Source").Value), CStr(gcnnBilling.Properties("Initial Catalog"))
 On Error GoTo err
     Call LoadColumnNumbers
     Call DisableNextTabs
@@ -6856,7 +7061,8 @@ End Sub
 Public Function UpdateChargableUnitStorageReeferStatus(ByVal strcContNo As String, ByVal strcCharge As String, ByVal strcGKey As String)
     Dim rstN4Status As ADODB.Recordset
     Dim strN4StatusQuery As String
-    
+    On Error GoTo errHandle
+update:
     Set rstN4Status = New ADODB.Recordset
     
     If strcCharge = "STORAGE" Then
@@ -6873,6 +7079,32 @@ Public Function UpdateChargableUnitStorageReeferStatus(ByVal strcContNo As Strin
     rstN4Status.Open strN4StatusQuery, gcnnNavis, adOpenForwardOnly, adLockReadOnly
     
     Set rstN4Status = Nothing
+    Exit Function
+errHandle:
+    intResponse = MsgBox("Error writing in UpdateChargableUnitStorageReeferStatus..." & vbNewLine & _
+                    "Error: " & err.Number & _
+                    err.Description, vbExclamation + vbDefaultButton2 + vbAbortRetryIgnore, "Error!")
+    If intResponse = vbAbort Then
+    
+    rstN4Status.CancelUpdate
+    rstN4Status.Cancel
+    rstN4Status.Close
+    Set rstN4Status = Nothing
+    
+    Unload Me
+    Else
+    
+    rstN4Status.CancelUpdate
+    rstN4Status.Cancel
+    rstN4Status.Close
+    Set rstN4Status = Nothing
+    
+    gcnnNavis.Close
+    Set gcnnNavis = Nothing
+    Call ConnectToNavis
+    
+    GoTo update
+    End If
 End Function
 
 Private Sub LoadColumnNumbers()
@@ -6916,6 +7148,8 @@ Private Sub LoadColumnNumbers()
         .SBMAPN = Increment(intColumnCTR)
         .Location = Increment(intColumnCTR)
         .VoyageNo = Increment(intColumnCTR)
+        .TINConsignee = Increment(intColumnCTR)
+        .TINBroker = Increment(intColumnCTR)
 
         .ContainerSize = Increment(intColumnCTR)
         .FullEmpty = Increment(intColumnCTR)
@@ -7398,7 +7632,7 @@ Private Sub Retrieve_ManifestData(ByVal strBillNo As String)
                        "CargoMDet ON CargoMHead.bilnum = CargoMDet.bilnum " & _
                        "WHERE CargoMHead.bilnum='" & Trim(strBillNo) & "'"
 
-    rstManifest.Open strManifestQuery, gcnnBilling, adOpenForwardOnly, adLockReadOnly
+    rstManifest.Open strManifestQuery, gcnnBilling, adOpenForwardOnly, adLockReadOnly, adAsyncFetch
     
     If rstManifest.BOF Then
         MsgBox "WARNING:B.L. " & Trim(strBillNo) & " not found!", vbCritical, "Cargo Manifest"
@@ -7416,11 +7650,12 @@ Private Sub Retrieve_ManifestData(ByVal strBillNo As String)
         Else
             txtBroker.Text = ""
         End If
-        txtSealNo.Text = Trim(.Fields("silnum"))
+        txtSealNo.Text = IIf(IsNull(Trim(.Fields("silnum"))), "", Trim(.Fields("silnum")))
         txtVoyageNo.Text = IIf(IsNull(Trim(.Fields("voynum"))), "", Trim(.Fields("voynum")))
         txtCommodity.Text = Trim(.Fields("ctnNameDesc"))
         txtVesselCode.Text = IIf(IsNull(Trim(.Fields("vslname"))), "", Trim(.Fields("vslname")))
         txtShippingLine.Text = Trim(.Fields("carcde"))
+        .Close
     End With
     Set rstManifest = Nothing
     Call PopulateContainerNo(Trim(strBillNo))
@@ -7680,8 +7915,8 @@ Private Sub sstMain_Click(PreviousTab As Integer)
             With cmbConNo
                 .SelStart = 0
                 .SetFocus
+                If .ListCount > 0 Then .ListIndex = cntIndex
             End With
-            If cmbConNo.Text <> "" Then Call cmbConNo_KeyDown(13, 0)
         Case cTabCharges
             If cmdAnother.Enabled = True Then
                 cmdAnother.SetFocus
@@ -7810,8 +8045,10 @@ Private Sub txtContainer_KeyDown(Index As Integer, KeyCode As Integer, Shift As 
 End Sub
 
 Private Sub Evaluate_ContainerNo()
+If cmbConNo.Text = EvalContainer Then
+Exit Sub
+End If
     Dim intResult As Integer
-    
     Dim strGKey, strVisit As String
     Dim sbmaResult As Integer
     Dim bocResult As Integer
@@ -7962,6 +8199,7 @@ Private Sub Evaluate_ContainerNo()
         End If
     End If
     Me.txtContainer(2).SetFocus
+    EvalContainer = cmbConNo.Text
 End Sub
 
 'PRNH - Retrieve LDD
@@ -7998,7 +8236,7 @@ Private Sub RetrieveLDD()
     'End If
 
     
-    strDate = Format(DateAdd("d", 7, CDate(dStorage)), "yyyy-mm-dd") 'CRODate = Last Discharge + 7 days by default
+    strDate = Format(DateAdd("d", 4, CDate(dStorage)), "yyyy-mm-dd") 'CRODate = Last Discharge + 7 days by default
     mskCRODate.Text = strDate
 End Sub
 
@@ -8225,6 +8463,7 @@ Private Sub optWeighing_Click()
 End Sub
 
 Private Sub cmdCompute_Click()
+Call Evaluate_ContainerNo
     blnOKToCompute = ValidateRequiredFields
     If blnOKToCompute Then
          intCheckIfAlreadyExist = CheckIfTranExist(Trim(cmbConNo.Text))
@@ -8246,9 +8485,9 @@ Private Sub cmdCompute_Click()
          End If
          Call ComputeArrastre
          Call ComputeReefer
-         If Left(cboStorageStat.Text, 1) <> "8" Then
+         'If Left(cboStorageStat.Text, 1) <> "8" Then
             Call ComputeStorage
-         End If
+         'End If
          Call ComputeWeighing
          
          Call StoreBasicChargesToTemp
@@ -8267,7 +8506,9 @@ Private Sub cmdCompute_Click()
          sstMain.TabEnabled(cTabCharges) = True
          blnInChargesColumn = True
          
-         Call InitializeSomeComputationVariables
+         cntIndex = cmbConNo.ListIndex
+         
+         'Call InitializeSomeComputationVariables
          With msfCharges
             msfCharges.SetFocus
             msfCharges.Col = 1
@@ -8873,58 +9114,7 @@ Private Sub ComputeStorage()
     Dim curOHRate As Currency
     
     curPHPAmount = SearchInRates("STO$RT", "")
-    If Left(cboStorageStat.Text, 1) = "6" And Left(txtRelayContainer, 1) = "E" Then
-       'curStorageBasic = SearchInRates("EXST", Trim(txtContainer(1)))
-        Select Case txtContainer(1)
-            Case "20"
-                curStorageBasic = SearchInRates("STOEX1", Trim(txtContainer(1)))
-            Case "40"
-                curStorageBasic = SearchInRates("STOEX2", Trim(txtContainer(1)))
-            Case "45"
-                curStorageBasic = SearchInRates("STOEX3", Trim(txtContainer(1)))
-        End Select
-    ElseIf Left(cboStorageStat.Text, 1) = "7" Then
-        Select Case txtContainer(1)
-            Case "20"
-                curStorageBasic = SearchInRates("STOFT1", Trim(txtContainer(1)))
-            Case "40"
-                curStorageBasic = SearchInRates("STOFT2", Trim(txtContainer(1)))
-            Case "45"
-                curStorageBasic = SearchInRates("STOFT3", Trim(txtContainer(1)))
-        End Select
-    Else
-        If txtTransactionType = "F" Then
-           'curStorageBasic = SearchInRates("IMST", Trim(txtContainer(1)))
-            Select Case txtContainer(1)
-                Case "20"
-                    curStorageBasic = SearchInRates("STOIM1", Trim(txtContainer(1)))
-                Case "40"
-                    curStorageBasic = SearchInRates("STOIM2", Trim(txtContainer(1)))
-                Case "45"
-                    curStorageBasic = SearchInRates("STOIM3", Trim(txtContainer(1)))
-            End Select
-        Else
-            'curStorageBasic = SearchInRates("IMSTD", Trim(txtContainer(1)))
-            Select Case txtContainer(1)
-                Case "20"
-                    curStorageBasic = SearchInRates("STODO1", Trim(txtContainer(1)))
-                Case "40"
-                    curStorageBasic = SearchInRates("STODO2", Trim(txtContainer(1)))
-                Case "45"
-                    curStorageBasic = SearchInRates("STODO3", Trim(txtContainer(1)))
-            End Select
-        End If
-        If blnReefer Then
-            Select Case txtContainer(1)
-                Case "20"
-                    curStorageBasic = SearchInRates("STOIM4", Trim(txtContainer(1)))
-                Case "40"
-                    curStorageBasic = SearchInRates("STOIM5", Trim(txtContainer(1)))
-                Case "45"
-                    curStorageBasic = SearchInRates("STOIM6", Trim(txtContainer(1)))
-            End Select
-        End If
-    End If
+
     
     'start storage date
     Select Case Left(cboStorageStat, 1)
@@ -8941,7 +9131,7 @@ Private Sub ComputeStorage()
     
    'free days
     Select Case Left(cboStorageStat, 1)
-        Case "1", "2", "3"
+        Case "1", "2", "3", "8"
             intSubdays = 9 '(10 - 1 INCLUSIVE OF LAST DISCHARGE DAY)
         Case "4"
             intSubdays = CInt(mskDaysFree)
@@ -8992,8 +9182,89 @@ Private Sub ComputeStorage()
     Else
         mskPayableDays = CCur(mskPayableDays) 'sharon + 10
     End If
+''''''''''''''''''''''''''''''''''Placed Later to Use payable days as selector'''''''''''''''''
+    If Left(cboStorageStat.Text, 1) = "6" And Left(txtRelayContainer, 1) = "E" Then
+       'curStorageBasic = SearchInRates("EXST", Trim(txtContainer(1)))
+        Select Case txtContainer(1)
+            Case "20"
+                curStorageBasic = SearchInRates("STOEX1", Trim(txtContainer(1)))
+            Case "40"
+                curStorageBasic = SearchInRates("STOEX2", Trim(txtContainer(1)))
+            Case "45"
+                curStorageBasic = SearchInRates("STOEX3", Trim(txtContainer(1)))
+        End Select
+    ElseIf Left(cboStorageStat.Text, 1) = "7" Then
+        Select Case txtContainer(1)
+            Case "20"
+                curStorageBasic = SearchInRates("STOFT1", Trim(txtContainer(1)))
+            Case "40"
+                curStorageBasic = SearchInRates("STOFT2", Trim(txtContainer(1)))
+            Case "45"
+                curStorageBasic = SearchInRates("STOFT3", Trim(txtContainer(1)))
+        End Select
+    ElseIf Left(cboStorageStat.Text, 1) <> "8" Then
+        If txtTransactionType = "F" Then
+           'curStorageBasic = SearchInRates("IMST", Trim(txtContainer(1)))
+            Select Case txtContainer(1)
+                Case "20"
+                    Select Case CLng(mskPayableDays)
+                    Case 1 To 9
+                        curStorageBasic = SearchInRates("STOIM1", Trim(txtContainer(1)))
+                    Case 10 To 19
+                        curStorageBasic = SearchInRates("STOIPA", Trim(txtContainer(1)))
+                    Case 20 To 29
+                        curStorageBasic = SearchInRates("STOIPC", Trim(txtContainer(1)))
+                    Case Is >= 30
+                        curStorageBasic = SearchInRates("STOIPF", Trim(txtContainer(1)))
+                    End Select
+                Case "40"
+                    Select Case CLng(mskPayableDays)
+                    Case 1 To 9
+                        curStorageBasic = SearchInRates("STOIM2", Trim(txtContainer(1)))
+                    Case 10 To 19
+                        curStorageBasic = SearchInRates("STOIPB", Trim(txtContainer(1)))
+                    Case 20 To 29
+                        curStorageBasic = SearchInRates("STOIPD", Trim(txtContainer(1)))
+                    Case Is >= 30
+                        curStorageBasic = SearchInRates("STOIPG", Trim(txtContainer(1)))
+                    End Select
+                Case "45"
+                    Select Case CLng(mskPayableDays)
+                    Case 1 To 9
+                        curStorageBasic = SearchInRates("STOIM3", Trim(txtContainer(1)))
+                    Case 10 To 19
+                        ''''''''''''''''''''N/A'''''''''''''''''''''
+                    Case 20 To 29
+                        ''''''''''''''''''''N/A'''''''''''''''''''''
+                    Case Is >= 30
+                        curStorageBasic = SearchInRates("STOIPH", Trim(txtContainer(1)))
+                    End Select
+            End Select
+        Else
+            'curStorageBasic = SearchInRates("IMSTD", Trim(txtContainer(1)))
+            Select Case txtContainer(1)
+                Case "20"
+                    curStorageBasic = SearchInRates("STODO1", Trim(txtContainer(1)))
+                Case "40"
+                    curStorageBasic = SearchInRates("STODO2", Trim(txtContainer(1)))
+                Case "45"
+                    curStorageBasic = SearchInRates("STODO3", Trim(txtContainer(1)))
+            End Select
+        End If
+        If blnReefer Then
+            Select Case txtContainer(1)
+                Case "20"
+                    curStorageBasic = SearchInRates("STOIM4", Trim(txtContainer(1)))
+                Case "40"
+                    curStorageBasic = SearchInRates("STOIM5", Trim(txtContainer(1)))
+                Case "45"
+                    curStorageBasic = SearchInRates("STOIM6", Trim(txtContainer(1)))
+            End Select
+        End If
+    End If
+''''''''''''''''''''''''''''''''''Placed Later to Use payable days as selector'''''''''''''''''
 
-    If CCur(mskRevenueTon) > 0 Then
+    If CCur(mskRevenueTon) > 0 And Left(cboStorageStat, 1) <> "8" Then 'No Storage Flat Rack
         Select Case txtContainer(1)
             Case "20"
                 curOHRate = SearchInRates("STOOH1", Trim(txtContainer(1)))
@@ -9452,7 +9723,7 @@ Private Sub RunningTotal()
     mskRunning = 0
     With msfCharges
         For intRow = 1 To (.Rows - 1)
-            mskRunning = CCur(mskRunning) + CCur(.TextMatrix(intRow, Column.PayOnly))
+            mskRunning = CCur(mskRunning) + CCur(ParseNonNum(.TextMatrix(intRow, Column.PayOnly)))
         Next intRow
     End With
     mskRunning = Format(mskRunning, "###,###,##0.00")

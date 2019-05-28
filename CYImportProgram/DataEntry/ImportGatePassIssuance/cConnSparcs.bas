@@ -1,6 +1,6 @@
 Attribute VB_Name = "cConnSparcs"
 
-Public Function Sparcs_LastDisch(ByVal pContNum As String, ByVal pCharge As String, ByVal pPaid As String, ByVal pGKey As String)
+Public Function Sparcs_LastDisch(ByVal pContNum As String, ByVal pCharge As String, ByVal pPaid As String, ByVal pGkey As String)
  Dim strSoapAction As String
     Dim strUrl As String
     Dim strXML As String
@@ -49,7 +49,7 @@ strSoapEnd = "</inv:extractGkey>" & _
 "   </soapenv:Body>" & _
 "</soapenv:Envelope>"
 
-strXML = strScope & pContNum & strChargeFor & pCharge & strPaid & pPaid & strGKey & pGKey & strSoapEnd
+strXML = strScope & pContNum & strChargeFor & pCharge & strPaid & pPaid & strGKey & pGkey & strSoapEnd
 
 
     ' Call PostWebservice and put result in text box
@@ -786,6 +786,7 @@ End Select
 End Function
 
 Public Function Sparcs_VisitID(ByVal pCont As String, ByVal strParamCat As String)
+On Error GoTo errhd
     Dim strSoapAction As String
     Dim strUrl, strFilter, strContNum, strOperator, strCategory As String
     Dim strXML As String
@@ -844,6 +845,11 @@ Public Function Sparcs_VisitID(ByVal pCont As String, ByVal strParamCat As Strin
     
     'PRNH - If no Visit ID was retrieved
     If Sparcs_VisitID = "" Then Sparcs_VisitID = pCont
+    Exit Function
+errhd:
+    MsgBox "Error writing in Sparcs_VisitID..." & vbNewLine & _
+                    "Error: " & err.Number & _
+                    err.Description, vbExclamation + vbOKOnly, "Error!"
 End Function
 
 Public Function GetVisitID(ByVal AsmxUrl As String, ByVal SoapActionUrl As String, ByVal XmlBody As String, ByVal Authorization As String) As String
@@ -903,18 +909,19 @@ Err_PW:
     
     'If no Visit ID used
     GetVisitID = ""
-    MsgBox "Error in retrieving Visit ID. Kindly verify with Operations. Error message: " & err.Description
+    'MsgBox "Error in retrieving Visit ID. Kindly verify with Operations. Error message: " & err.Description
 
 End Function
 
 Public Function GetGKey(ByVal pCont As String, ByVal pStatus As String, ByVal pType As String, ByVal pCat As String, ByVal pVisit As String) As String
+On Error GoTo errhd:
     Dim rstGKey As ADODB.Recordset
     Dim strGKey As String
     
     Set rstGKey = New ADODB.Recordset
     
     strGKey = ""
-    strGKey = "SELECT gkey FROM argo_chargeable_unit_events " & _
+    strGKey = "SELECT gkey,unit_gkey FROM argo_chargeable_unit_events " & _
                 "Where equipment_id = '" & pCont & "' and status = '" & pStatus & "' and " & _
                 "event_type = '" & pType & "' and " & _
                 "category = '" & pCat & "' and ib_id= '" & pVisit & "'"
@@ -924,6 +931,11 @@ Public Function GetGKey(ByVal pCont As String, ByVal pStatus As String, ByVal pT
     If Not rstGKey.BOF = True Or Not rstGKey.EOF = True Then
         GetGKey = rstGKey.Fields(0)
     End If
+    Exit Function
+errhd:
+    MsgBox "Error writing in GetVisitID..." & vbNewLine & _
+                    "Error: " & err.Number & _
+                    err.Description, vbExclamation + vbOKOnly, "Error!"
 End Function
 
 'PRNH - LDD via direct query
@@ -943,12 +955,14 @@ Public Function getLDD(ByVal regNum As String) As String
         "INNER JOIN ref_carrier_service AS rcs ON avd.service = rcs.gkey " & _
         "INNER JOIN inv_unit_fcy_visit AS iufv ON iufv.actual_ib_cv = acv.gkey " & _
         "INNER JOIN inv_unit AS iu ON iu.gkey = iufv.unit_gkey " & _
-        "INNER JOIN ref_equipment AS req ON iu.id = req.id_full " & _
+        "INNER JOIN inv_unit_equip AS ueq on ueq.unit_gkey = iu.gkey " & _
+        "INNER JOIN ref_equipment AS req ON req.gkey = ueq.eq_gkey " & _
         "WHERE vvv.flex_string01 = '" & regNum & "'"
+
 
     rstLDD.Open strLDD, gcnnNavis, adOpenForwardOnly, adLockReadOnly
     
-    If Not rstLDD.BOF = True Or Not rstLDD.EOF = True Or Not IsNull(rstLDD.Fields(0)) Then
+    If ((Not rstLDD.BOF = True Or Not rstLDD.EOF = True) And (Not IsNull(rstLDD.Fields(0)))) Then
         getLDD = rstLDD.Fields(0)
     Else
         getLDD = "1899-12-30"
@@ -975,7 +989,7 @@ Public Function GetCompanyCode(ByVal regNum As String) As String
 
     rstCC.Open strQuery, gcnnNavis, adOpenForwardOnly, adLockReadOnly
     
-    If Not rstCC.BOF = True Or Not rstCC.EOF = True Or Not IsNull(rstCC.Fields(0)) Then
+    If ((Not rstCC.BOF = True) Or (Not rstCC.EOF = True)) And (Not IsNull(rstCC.Fields(0))) Then
         GetCompanyCode = rstCC.Fields(0)
     Else
         GetCompanyCode = ""
@@ -983,13 +997,14 @@ Public Function GetCompanyCode(ByVal regNum As String) As String
     End If
     
 Exit Function
-err:
 
-MsgBox "Error retrieving LDD. Error message:" & err.Description
+err:
+MsgBox "Error retrieving LDD  . Error message:" & err.Description
 End Function
 
-Public Function SavePaymentToSparcs(ByVal pContNum As String, ByVal pCharge As String, ByVal pPaid As String, ByVal pGKey As String)
- Dim strSoapAction As String
+Public Function SavePaymentToSparcs(ByVal pContNum As String, ByVal pCharge As String, ByVal pPaid As String, ByVal pGkey As String)
+On Error GoTo errhd
+    Dim strSoapAction As String
     Dim strUrl As String
     Dim strXML As String
     Dim strParam As String
@@ -1038,16 +1053,20 @@ strSoapEnd = "</inv:extractGkey>" & _
     ' Call PostWebservice and put result in text box
     If pCharge = "STORAGE" Then
         pPaid = Format(Now, "yyyy-mm-dd") & "T" & Format(Now, "hh:mm:ss") & " +0800"
-        strXML = strScope & pContNum & strChargeFor & pCharge & strPaid & pPaid & strGKey & pGKey & strSoapEnd
+        strXML = strScope & pContNum & strChargeFor & pCharge & strPaid & pPaid & strGKey & pGkey & strSoapEnd
         Debug.Print strXML
         strOutput = SavePaidThruDay(strUrl, strSoapAction, strXML, strauthorization)
     ElseIf pCharge = "REEFER" Then
         pPaid = Format(pPaid, "yyyy-mm-dd") & "T" & Format(pPaid, "hh:mm:ss") & " +0800"
-        strXML = strScope & pContNum & strChargeFor & pCharge & strPaid & pPaid & strGKey & pGKey & strSoapEnd
+        strXML = strScope & pContNum & strChargeFor & pCharge & strPaid & pPaid & strGKey & pGkey & strSoapEnd
         Debug.Print strXML
         strOutput = SavePaidThruDay(strUrl, strSoapAction, strXML, strauthorization)
     End If
-
+Exit Function
+errhd:
+    MsgBox "Error in SavePaymentToSparcs..." & vbNewLine & _
+    "Error: " & err.Number & vbNewLine & _
+    err.Description, vbExclamation + vbOKOnly, "Error!"
 End Function
 
 Public Function SavePaidThruDay(ByVal AsmxUrl As String, ByVal SoapActionUrl As String, ByVal XmlBody As String, ByVal Authorization As String) As String
@@ -1105,11 +1124,151 @@ Public Function SavePaidThruDay(ByVal AsmxUrl As String, ByVal SoapActionUrl As 
     Exit Function
     
 Err_PW:
-    SavePaidThruDay = "Error: " & err.Number & " - " & err.Description
-MsgBox err.Description
+    MsgBox "Error writing in SavePaidThruDay..." & vbNewLine & _
+                    "Error: " & err.Number & _
+                    err.Description, vbExclamation + vbOKOnly, "Error!"
+    SavePaidThruDay = "Error: SavePaidThruDay" & err.Number & " - " & err.Description
 End Function
+Public Sub ReleaseHoldalt(ByVal pContNum As String, ByVal Registry As String)
+On Error GoTo errhd
+    Dim rsrelease As New ADODB.Recordset
+    Dim cmdInsert As New ADODB.Command
+    Dim ctxtInsert As String
+    Dim unitGkey As String
+    Dim cvGkey As String
+    Dim sqlUnitGkey As String
+    Dim datenow As Date
+    
+    datenow = gzGetSysDate
+    
+    cmdInsert.ActiveConnection = gcnnNavis
+    With rsrelease
+    
+    sqlUnitGkey = "select gkey "
+    sqlUnitGkey = sqlUnitGkey & "FROM argo_carrier_visit where id = '" & Registry & "' "
+    .Open sqlUnitGkey, gcnnNavis, adOpenKeyset, adLockPessimistic, adCmdText
+    cvGkey = .Fields(0)
+    .Close
+    
+    sqlUnitGkey = "SELECT unit.gkey "
+    sqlUnitGkey = sqlUnitGkey & "FROM inv_unit unit "
+    sqlUnitGkey = sqlUnitGkey & "Inner Join "
+    sqlUnitGkey = sqlUnitGkey & "[inv_unit_fcy_visit] ufv "
+    sqlUnitGkey = sqlUnitGkey & "on unit.gkey = ufv.unit_gkey "
+    sqlUnitGkey = sqlUnitGkey & "where [actual_ib_cv] = '" & cvGkey & "' and unit.id = '" & pContNum & "'"
+      
+    'add 18
+    
+    .Open sqlUnitGkey, gcnnNavis, adOpenKeyset, adLockPessimistic, adCmdText
+    unitGkey = rsrelease.Fields(0).Value
+    .Close
+    
+    ctxtInsert = "insert into srv_flags(flag_type_gkey,applied_to_class,applied_to_gkey,applied_to_natural_key,[placed_time],[placed_by],[operator_gkey],[complex_gkey],[created],[creator])"
+    ctxtInsert = ctxtInsert & "values("
+    ctxtInsert = ctxtInsert & 18 & ","
+    ctxtInsert = ctxtInsert & "'UNIT'" & ","
+    ctxtInsert = ctxtInsert & unitGkey & ","
+    ctxtInsert = ctxtInsert & "'" & pContNum & "',"
+    ctxtInsert = ctxtInsert & "'" & datenow & "',"
+    ctxtInsert = ctxtInsert & "'sa_ictsi'" & ","
+    ctxtInsert = ctxtInsert & 1 & ","
+    ctxtInsert = ctxtInsert & 1 & ","
+    ctxtInsert = ctxtInsert & "'" & datenow & "',"
+    ctxtInsert = ctxtInsert & "'sa_ictsi')"
+    
+    cmdInsert.CommandText = ctxtInsert
+    cmdInsert.Execute
+    
+        ctxtInsert = "insert into srv_flags(flag_type_gkey,applied_to_class,applied_to_gkey,applied_to_natural_key,[placed_time],[placed_by],[operator_gkey],[complex_gkey],[created],[creator])"
+    ctxtInsert = ctxtInsert & "values("
+    ctxtInsert = ctxtInsert & 31 & ","
+    ctxtInsert = ctxtInsert & "'UNIT'" & ","
+    ctxtInsert = ctxtInsert & unitGkey & ","
+    ctxtInsert = ctxtInsert & "'" & pContNum & "',"
+    ctxtInsert = ctxtInsert & "'" & datenow & "',"
+    ctxtInsert = ctxtInsert & "'sa_ictsi'" & ","
+    ctxtInsert = ctxtInsert & 1 & ","
+    ctxtInsert = ctxtInsert & 1 & ","
+    ctxtInsert = ctxtInsert & "'" & datenow & "',"
+    ctxtInsert = ctxtInsert & "'sa_ictsi')"
+    
+    cmdInsert.CommandText = ctxtInsert
+    cmdInsert.Execute
+    
+        ctxtInsert = "insert into srv_flags(flag_type_gkey,applied_to_class,applied_to_gkey,applied_to_natural_key,[placed_time],[placed_by],[operator_gkey],[complex_gkey],[created],[creator])"
+    ctxtInsert = ctxtInsert & "values("
+    ctxtInsert = ctxtInsert & 32 & ","
+    ctxtInsert = ctxtInsert & "'UNIT'" & ","
+    ctxtInsert = ctxtInsert & unitGkey & ","
+    ctxtInsert = ctxtInsert & "'" & pContNum & "',"
+    ctxtInsert = ctxtInsert & "'" & datenow & "',"
+    ctxtInsert = ctxtInsert & "'sa_ictsi'" & ","
+    ctxtInsert = ctxtInsert & 1 & ","
+    ctxtInsert = ctxtInsert & 1 & ","
+    ctxtInsert = ctxtInsert & "'" & datenow & "',"
+    ctxtInsert = ctxtInsert & "'sa_ictsi')"
+    
+    cmdInsert.CommandText = ctxtInsert
+    cmdInsert.Execute
+'    .Open "srv_flags", gcnnNavis, adOpenForwardOnly, adLockBatchOptimistic, adCmdTable
+'
+'    .AddNew
+'    .Fields("flag_type_gkey").Value = 18
+'    .Fields("applied_to_class").Value = "UNIT"
+'    .Fields("applied_to_gkey").Value = unitGkey
+'    .Fields("applied_to_natural_key").Value = pContNum
+'    .Fields("placed_time").Value = dtmSystemDateTime
+'    .Fields("placed_by").Value = "sa_ictsi"
+'    .Fields("operator_gkey").Value = 1
+'    .Fields("complex_gkey").Value = 1
+'    .Fields("created").Value = dtmSystemDateTime
+'    .Fields("creator").Value = "sa_ictsi"
+'    .update
+'    .Requery
+'
+'    .AddNew
+'    .Fields("flag_type_gkey").Value = 31
+'    .Fields("applied_to_class").Value = "UNIT"
+'    .Fields("applied_to_gkey").Value = unitGkey
+'    .Fields("applied_to_natural_key").Value = pContNum
+'    .Fields("placed_time").Value = dtmSystemDateTime
+'    .Fields("placed_by").Value = "sa_ictsi"
+'    .Fields("operator_gkey").Value = 1
+'    .Fields("complex_gkey").Value = 1
+'    .Fields("created").Value = dtmSystemDateTime
+'    .Fields("creator").Value = "sa_ictsi"
+'    .update
+'    .Requery
+'
+'    .AddNew
+'    .Fields("flag_type_gkey").Value = 32
+'    .Fields("applied_to_class").Value = "UNIT"
+'    .Fields("applied_to_gkey").Value = unitGkey
+'    .Fields("applied_to_natural_key").Value = pContNum
+'    .Fields("placed_time").Value = dtmSystemDateTime
+'    .Fields("placed_by").Value = "sa_ictsi"
+'    .Fields("operator_gkey").Value = 1
+'    .Fields("complex_gkey").Value = 1
+'    .Fields("created").Value = dtmSystemDateTime
+'    .Fields("creator").Value = "sa_ictsi"
+'    .update
+'    .Requery
+    
+
+    End With
+    
+    Exit Sub
+errhd:
+    MsgBox "Error writing in ReleaseHold..." & vbNewLine & _
+                    "Error: " & err.Number & _
+                    err.Description, vbExclamation + vbOKOnly, "Error!"
+
+
+End Sub
+
 
 Public Function ReleaseHold(ByVal pContNum As String)
+On Error GoTo errhd:
     Dim objDom As Object
     Dim objXmlHttp As Object
     Dim strSoapAction As String
@@ -1173,10 +1332,15 @@ Debug.Print strXML
    Debug.Print strParam
     ' Close object
     Set objXmlHttp = Nothing
-    
+    Exit Function
+errhd:
+    MsgBox "Error writing in ReleaseHold..." & vbNewLine & _
+                    "Error: " & err.Number & _
+                    err.Description, vbExclamation + vbOKOnly, "Error!"
 End Function
 
 Public Function UpdateConsigneeAndBLNumber(ByVal pContNum As String, ByVal pConsignee As String, ByVal pBLNumber As String)
+On Error GoTo errhd
     Dim objDom As Object
     Dim objXmlHttp As Object
     Dim strSoapAction As String
@@ -1245,11 +1409,16 @@ Debug.Print strXML
    Debug.Print strParam
     ' Close object
     Set objXmlHttp = Nothing
-    
+    Exit Function
+errhd:
+    MsgBox "Error writing in UpdateConsigneeAndBLNumber..." & vbNewLine & _
+                    "Error: " & err.Number & _
+                    err.Description, vbExclamation + vbOKOnly, "Error!"
 End Function
 
 
 Public Function AddWeighingHold(ByVal pContNum As String)
+On Error GoTo errhd
     Dim objDom As Object
     Dim objXmlHttp As Object
     Dim strSoapAction As String
@@ -1314,10 +1483,15 @@ Debug.Print strXML
    Debug.Print strParam
     ' Close object
     Set objXmlHttp = Nothing
-    
+    Exit Function
+errhd:
+    MsgBox "Error writing in AddWeighingHold..." & vbNewLine & _
+           "Error: " & err.Number & _
+           err.Description, vbExclamation + vbOKOnly, "Error!"
 End Function
 
 Public Function ReleaseOOGHold(ByVal pContNum As String)
+On Error GoTo errhd
     Dim objDom As Object
     Dim objXmlHttp As Object
     Dim strSoapAction As String
@@ -1381,11 +1555,16 @@ Debug.Print strXML
    Debug.Print strParam
     ' Close object
     Set objXmlHttp = Nothing
-    
+    Exit Function
+errhd:
+    MsgBox "Error writing in ReleaseOOGHold..." & vbNewLine & _
+                    "Error: " & err.Number & _
+                    err.Description, vbExclamation + vbOKOnly, "Error!"
 End Function
 
 
 Public Function ReleaseDGHold(ByVal pContNum As String)
+On Error GoTo errhd
     Dim objDom As Object
     Dim objXmlHttp As Object
     Dim strSoapAction As String
@@ -1449,7 +1628,11 @@ Debug.Print strXML
    Debug.Print strParam
     ' Close object
     Set objXmlHttp = Nothing
-    
+    Exit Function
+errhd:
+    MsgBox "Error writing in ReleaseDGHold..." & vbNewLine & _
+                    "Error: " & err.Number & _
+                    err.Description, vbExclamation + vbOKOnly, "Error!"
 End Function
 
 
