@@ -5,7 +5,7 @@ Begin VB.UserControl prvusrctrlTime
    ClientTop       =   0
    ClientWidth     =   2535
    BeginProperty Font 
-      Name            =   "IBM3270 - 1254"
+      Name            =   "Arial"
       Size            =   15
       Charset         =   0
       Weight          =   400
@@ -114,16 +114,16 @@ End Sub
 Private Sub Text1_LostFocus()
     Dim hhr As Integer
     Dim mmn As Integer
-    If Len(Trim(Text1.Text)) <> 0 Then
-        hhr = Val(Mid(Text1.Text, 1, 2))
-        mmn = Val(Mid(Text1.Text, 4, 2))
+    If Len(VBA.Trim(Text1.Text)) <> 0 Then
+        hhr = Val(VBA.Mid(Text1.Text, 1, 2))
+        mmn = Val(VBA.Mid(Text1.Text, 4, 2))
         If hhr > 23 Or mmn > 59 Then
             MsgBox "Invalid Time, Please re-enter", vbExclamation + vbOKOnly, "Invalid Time"
             Text1.SelStart = 0
             Text1.SelLength = Len(Text1.Text)
             Text1.SetFocus
         Else
-            Text1.Text = Format(Text1.Text, "hh:mm:ss")
+            Text1.Text = VBA.Format(Text1.Text, "hh:mm:ss")
             Text1.BackColor = &H8000000F
         End If
     Else

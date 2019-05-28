@@ -1,6 +1,6 @@
 VERSION 5.00
-Object = "{C4847593-972C-11D0-9567-00A0C9273C2A}#2.2#0"; "crviewer.dll"
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
+Object = "{C4847593-972C-11D0-9567-00A0C9273C2A}#8.0#0"; "crviewer.dll"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmMonthly 
    Caption         =   " Monthly Report"
    ClientHeight    =   10890
@@ -10,7 +10,7 @@ Begin VB.Form frmMonthly
    ClipControls    =   0   'False
    ControlBox      =   0   'False
    BeginProperty Font 
-      Name            =   "IBM3270 - 1254"
+      Name            =   "Arial"
       Size            =   15
       Charset         =   0
       Weight          =   400
@@ -126,6 +126,7 @@ Begin VB.Form frmMonthly
       EnablePopupMenu =   0   'False
       EnableExportButton=   -1  'True
       EnableSearchExpertButton=   0   'False
+      EnableHelpButton=   0   'False
    End
    Begin VB.CommandButton cmdPreview 
       Caption         =   "F7 - Pre&view"
@@ -201,15 +202,15 @@ Begin VB.Form frmMonthly
          EndProperty
          BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             AutoSize        =   1
-            Object.Width           =   12356
+            Object.Width           =   12250
          EndProperty
          BeginProperty Panel4 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   6
-            TextSave        =   "10/11/2000"
+            TextSave        =   "05/06/2018"
          EndProperty
          BeginProperty Panel5 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
-            TextSave        =   "10:29 AM"
+            TextSave        =   "2:39 PM"
          EndProperty
          BeginProperty Panel6 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Text            =   "CCRRPT"
@@ -217,7 +218,7 @@ Begin VB.Form frmMonthly
          EndProperty
       EndProperty
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   12
          Charset         =   0
          Weight          =   700
@@ -312,7 +313,7 @@ Private Sub cmdExit_Click()
 End Sub
 Private Function OutLiquidator(Preview As Boolean) As Boolean
     Dim LqRpt As New rptMonthly
-    Dim rsCheck As Recordset
+    Dim rsCheck As Adodb.Recordset
     Dim fromDte As Date
     Dim toDte As Date
     Dim TellerToProcess As String * 10
@@ -360,6 +361,8 @@ End Sub
 Private Sub cmdView_Click()
     CRViewer1.SetFocus
 End Sub
+
+
 Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
     Select Case KeyCode
         Case vbKeyF3
@@ -391,7 +394,7 @@ Private Sub Form_Load()
     txtNoted.Text = "" 'MARILOU O. JOLEJOLE"
 End Sub
 Private Sub Initialize()
-    Dim rsUsr As Recordset
+    Dim rsUsr As Adodb.Recordset
     VE.getInformation
     Set rsUsr = VE.rsgetInformation
     SBar.Panels(1) = gUserid

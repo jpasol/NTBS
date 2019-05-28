@@ -5,7 +5,7 @@ Begin VB.UserControl prvusrctrlPlain
    ClientTop       =   0
    ClientWidth     =   3930
    BeginProperty Font 
-      Name            =   "IBM3270 - 1254"
+      Name            =   "Arial"
       Size            =   15
       Charset         =   0
       Weight          =   400
@@ -149,7 +149,7 @@ End Sub
 
 Private Sub Text1_KeyPress(KeyAscii As Integer)
     RaiseEvent KeyPress(KeyAscii)
-    KeyAscii = Asc(UCase(Chr(KeyAscii)))
+    KeyAscii = Asc(VBA.UCase(VBA.Chr(KeyAscii)))
 End Sub
 
 Private Sub Text1_KeyUp(KeyCode As Integer, Shift As Integer)

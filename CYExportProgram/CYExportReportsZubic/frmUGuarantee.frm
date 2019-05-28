@@ -1,6 +1,6 @@
 VERSION 5.00
-Object = "{C4847593-972C-11D0-9567-00A0C9273C2A}#2.2#0"; "crviewer.dll"
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
+Object = "{C4847593-972C-11D0-9567-00A0C9273C2A}#8.0#0"; "crviewer.dll"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmUGuarantee 
    Caption         =   "Under Guarantee Report"
    ClientHeight    =   10890
@@ -8,7 +8,7 @@ Begin VB.Form frmUGuarantee
    ClientTop       =   405
    ClientWidth     =   15240
    BeginProperty Font 
-      Name            =   "IBM3270 - 1254"
+      Name            =   "Arial"
       Size            =   15
       Charset         =   0
       Weight          =   400
@@ -41,7 +41,7 @@ Begin VB.Form frmUGuarantee
       _ExtentX        =   2778
       _ExtentY        =   741
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   15
          Charset         =   0
          Weight          =   400
@@ -60,7 +60,7 @@ Begin VB.Form frmUGuarantee
       _ExtentX        =   3201
       _ExtentY        =   741
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   15
          Charset         =   0
          Weight          =   400
@@ -91,15 +91,15 @@ Begin VB.Form frmUGuarantee
          EndProperty
          BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             AutoSize        =   1
-            Object.Width           =   12277
+            Object.Width           =   12250
          EndProperty
          BeginProperty Panel4 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   6
-            TextSave        =   "7/21/00"
+            TextSave        =   "5/24/2018"
          EndProperty
          BeginProperty Panel5 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
-            TextSave        =   "8:47 AM"
+            TextSave        =   "3:17 PM"
          EndProperty
          BeginProperty Panel6 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Text            =   "CCRRPT"
@@ -107,7 +107,7 @@ Begin VB.Form frmUGuarantee
          EndProperty
       EndProperty
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   12
          Charset         =   0
          Weight          =   700
@@ -181,6 +181,7 @@ Begin VB.Form frmUGuarantee
       EnablePopupMenu =   -1  'True
       EnableExportButton=   -1  'True
       EnableSearchExpertButton=   0   'False
+      EnableHelpButton=   0   'False
    End
    Begin VB.Frame Frame2 
       Height          =   135
@@ -234,7 +235,7 @@ Begin VB.Form frmUGuarantee
       _ExtentX        =   2778
       _ExtentY        =   741
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   15
          Charset         =   0
          Weight          =   400
@@ -312,7 +313,7 @@ Private Sub cmdExit_Click()
 End Sub
 Private Function OutLiquidator(Preview As Boolean) As Boolean
     
-    Dim Mp As Recordset
+    Dim Mp As Adodb.Recordset
     
     Dim ChqAmt As String
     Dim AdrAmt As String
@@ -320,7 +321,7 @@ Private Function OutLiquidator(Preview As Boolean) As Boolean
     Dim TotalAmt As String
    
     Dim LqRpt As New rptAuditorUG
-    Dim rsCheck As Recordset
+    Dim rsCheck As Adodb.Recordset
     Dim fromDte As Date
     Dim toDte As Date
     Dim TellerToProcess As String * 10
@@ -333,7 +334,7 @@ Private Function OutLiquidator(Preview As Boolean) As Boolean
     fromDte = CDate(Trim(RepDte.Text) & " " & Trim(rptFromtime.Text))
     toDte = CDate(Trim(RepDte.Text) & " " & Trim(rptTotime.Text))
     
-    strRange = "From " & Format(fromDte, "yyyy-mm-dd hh:nn:ss") & " To " & Format(toDte, "yyyy-mm-dd hh:nn:ss")
+    strRange = "From " & VBA.Format(fromDte, "yyyy-mm-dd hh:nn:ss") & " To " & VBA.Format(toDte, "yyyy-mm-dd hh:nn:ss")
     strType = "Daily Collection Report (Export Auditor's Copy)"
     toDte = DateAdd("n", 1, toDte)
     
@@ -373,8 +374,8 @@ Private Function OutLiquidator(Preview As Boolean) As Boolean
     Set Mp = Nothing
     
     ' ** Setting the selection formula
-    LqRpt.RecordSelectionFormula = "{CCRcyx.sysdttm} >= DATETIME(" & Format(fromDte, "yyyy,mm,dd,hh,mm,ss") & ")" _
-                                        & " and {CCRcyx.sysdttm} <= DATETIME(" & Format(toDte, "yyyy,mm,dd,hh,mm,ss") & ")" _
+    LqRpt.RecordSelectionFormula = "{CCRcyx.sysdttm} >= DATETIME(" & VBA.Format(fromDte, "yyyy,mm,dd,hh,mm,ss") & ")" _
+                                        & " and {CCRcyx.sysdttm} <= DATETIME(" & VBA.Format(toDte, "yyyy,mm,dd,hh,mm,ss") & ")" _
                                         & " and {CCRcyx.guarntycde} = 'Y' and {CCRcyx.status} <> 'CAN' "
     LqRpt.ParameterFields(1).AddCurrentValue (AdrAmt)
     LqRpt.ParameterFields(2).AddCurrentValue (" ")
@@ -455,7 +456,7 @@ Private Sub Form_Load()
     Set Nav1.CRViewerControl = CRViewer1
 End Sub
 Private Sub Initialize()
-Dim rsUsr As Recordset
+Dim rsUsr As Adodb.Recordset
     VE.getInformation
     Set rsUsr = VE.rsgetInformation
     SBar.Panels(1) = gUserid
@@ -540,7 +541,7 @@ Private Sub RepDte_Change()
     cmdCriteria.Enabled = cmdRun.Enabled
 End Sub
 Private Sub ComputeCash(tmpFrDate As Date, tmpToDate As Date, tmpTeller As String)
-Dim rstCash As Recordset
+Dim rstCash As Adodb.Recordset
 Dim sngChk As Currency
 Dim sngTmpCsh As Currency
 Dim sngTmpChk As Currency

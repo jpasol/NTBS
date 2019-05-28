@@ -11,7 +11,7 @@ Begin VB.UserControl ctrlCRViewerNav
    Begin VB.CommandButton cmdRefresh 
       Caption         =   "&Refresh"
       BeginProperty Font 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   13.5
          Charset         =   0
          Weight          =   400
@@ -31,7 +31,7 @@ Begin VB.UserControl ctrlCRViewerNav
    Begin VB.ComboBox cboPageSize 
       Appearance      =   0  'Flat
       BeginProperty Font 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   13.5
          Charset         =   0
          Weight          =   700
@@ -52,7 +52,7 @@ Begin VB.UserControl ctrlCRViewerNav
    Begin VB.CommandButton cmdPage 
       Caption         =   "&Last"
       BeginProperty Font 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   13.5
          Charset         =   0
          Weight          =   400
@@ -73,7 +73,7 @@ Begin VB.UserControl ctrlCRViewerNav
    Begin VB.CommandButton cmdPage 
       Caption         =   "&Next"
       BeginProperty Font 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   13.5
          Charset         =   0
          Weight          =   400
@@ -94,7 +94,7 @@ Begin VB.UserControl ctrlCRViewerNav
    Begin VB.CommandButton cmdPage 
       Caption         =   "&Prev"
       BeginProperty Font 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   13.5
          Charset         =   0
          Weight          =   400
@@ -115,7 +115,7 @@ Begin VB.UserControl ctrlCRViewerNav
    Begin VB.CommandButton cmdPage 
       Caption         =   "&First"
       BeginProperty Font 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   13.5
          Charset         =   0
          Weight          =   400
@@ -136,7 +136,7 @@ Begin VB.UserControl ctrlCRViewerNav
    Begin VB.CommandButton cmdPrint 
       Caption         =   "&Print"
       BeginProperty Font 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   13.5
          Charset         =   0
          Weight          =   400
@@ -233,7 +233,7 @@ Private Sub lzResizePage()
 Dim i, sz As Integer
     i = cboPageSize.ListIndex
     If (i < 5) Then
-        sz = (left(cboPageSize.List(i), 3))
+        sz = (VBA.left(cboPageSize.List(i), 3))
     ElseIf (i = 5) Then
         sz = CInt(1)
     ElseIf (i = 6) Then

@@ -5,7 +5,7 @@ Begin VB.UserControl usrctrlCYEXRPT
    ClientTop       =   0
    ClientWidth     =   15360
    BeginProperty Font 
-      Name            =   "IBM3270 - 1254"
+      Name            =   "Arial"
       Size            =   15
       Charset         =   0
       Weight          =   400
@@ -25,7 +25,7 @@ Begin VB.UserControl usrctrlCYEXRPT
       _ExtentX        =   6800
       _ExtentY        =   741
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   13.5
          Charset         =   0
          Weight          =   400
@@ -44,7 +44,7 @@ Begin VB.UserControl usrctrlCYEXRPT
       _ExtentX        =   6800
       _ExtentY        =   741
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   13.5
          Charset         =   0
          Weight          =   400
@@ -63,7 +63,7 @@ Begin VB.UserControl usrctrlCYEXRPT
       _ExtentX        =   6800
       _ExtentY        =   741
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   13.5
          Charset         =   0
          Weight          =   400
@@ -82,7 +82,7 @@ Begin VB.UserControl usrctrlCYEXRPT
       _ExtentX        =   6800
       _ExtentY        =   741
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "IBM3270 - 1254"
+         Name            =   "Arial"
          Size            =   13.5
          Charset         =   0
          Weight          =   400
@@ -155,7 +155,7 @@ Begin VB.UserControl usrctrlCYEXRPT
          BackColor       =   &H00808080&
          BorderStyle     =   1  'Fixed Single
          BeginProperty Font 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   13.5
             Charset         =   0
             Weight          =   400
@@ -226,7 +226,7 @@ Begin VB.UserControl usrctrlCYEXRPT
          _ExtentX        =   6800
          _ExtentY        =   741
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "IBM3270 - 1254"
+            Name            =   "Arial"
             Size            =   13.5
             Charset         =   0
             Weight          =   400
@@ -295,7 +295,7 @@ Option Explicit
     Event InTab()
     Event Closing()
 Public Sub StartInitialize()
-    Dim rsUsr As Recordset
+    Dim rsUsr As ADODB.Recordset
     VE.getInformation
     Set rsUsr = VE.rsgetInformation
         lblTeller.Caption = gUserid

@@ -5,7 +5,7 @@ Begin VB.UserControl prvusrctrlDate
    ClientTop       =   0
    ClientWidth     =   2535
    BeginProperty Font 
-      Name            =   "IBM3270 - 1254"
+      Name            =   "Arial"
       Size            =   15
       Charset         =   0
       Weight          =   400
@@ -90,8 +90,8 @@ Private Sub Text1_Change()
 '**********
     
 ' ** Month
-    If IsNumeric(Mid(Trim(Text1.Text), 6, 2)) Then
-        mnthval = Val(Mid(Trim(Text1.Text), 6, 2))
+    If IsNumeric(VBA.Mid(VBA.Trim(Text1.Text), 6, 2)) Then
+        mnthval = Val(VBA.Mid(VBA.Trim(Text1.Text), 6, 2))
         Select Case mnthval
             Case 1
                 m_Month = "January"
@@ -128,17 +128,17 @@ Private Sub Text1_Change()
     End If
     
     ' ** Day
-    If IsNumeric(Mid(Trim(Text1.Text), 9, 2)) Then
-        m_Day = Val(Mid(Trim(Text1.Text), 9, 2))
+    If IsNumeric(VBA.Mid(VBA.Trim(Text1.Text), 9, 2)) Then
+        m_Day = Val(VBA.Mid(VBA.Trim(Text1.Text), 9, 2))
     Else
         m_Day = 0
     End If
     
     If Len(m_Month) <> 0 Then
         If m_Day <> 0 And m_Day < 32 Then
-            m_DateCaption = Trim(m_Month) & " " & Trim(Str(m_Day)) & ", " & Trim(m_Year)
+            m_DateCaption = VBA.Trim(m_Month) & " " & VBA.Trim(VBA.Str(m_Day)) & ", " & VBA.Trim(m_Year)
         Else
-            m_DateCaption = Trim(m_Month) & ", " & Trim(m_Year)
+            m_DateCaption = VBA.Trim(m_Month) & ", " & VBA.Trim(m_Year)
         End If
     Else
         m_DateCaption = ""
@@ -164,7 +164,7 @@ Private Sub Text1_KeyPress(KeyAscii As Integer)
                 KeyAscii = 0
                 Beep
             End If
-            Text1.SelStart = Len(Trim(Text1.Text))
+            Text1.SelStart = Len(VBA.Trim(Text1.Text))
         Else
             If KeyAscii = 13 Then
                 SendKeys "{Tab}", True
@@ -180,18 +180,18 @@ Private Sub Text1_KeyPress(KeyAscii As Integer)
     End If
 End Sub
 Private Sub Text1_LostFocus()
-    If Len(Trim(Text1.Text)) <> 0 Then
+    If Len(VBA.Trim(Text1.Text)) <> 0 Then
         If Not IsDate(Text1.Text) Then
-            MsgBox Trim(Text1.Text) & " is an Invalid Date, Please re-enter ", vbExclamation, "Date Error"
+            MsgBox VBA.Trim(Text1.Text) & " is an Invalid Date, Please re-enter ", vbExclamation, "Date Error"
             Text1.SelStart = 0
             Text1.SelLength = Len(Text1.Text)
             Text1.SetFocus
         Else
-            Text1.Text = Format(Text1.Text, "yyyy-mm-dd")
+            Text1.Text = VBA.Format(Text1.Text, "yyyy-mm-dd")
             Text1.BackColor = &H8000000F
         End If
     Else
-        Text1.Text = Format(Text1.Text, "yyyy-mm-dd")
+        Text1.Text = VBA.Format(Text1.Text, "yyyy-mm-dd")
         Text1.BackColor = &H8000000F
     End If
 End Sub
@@ -268,18 +268,18 @@ Private Sub Text1_KeyDown(KeyCode As Integer, Shift As Integer)
     Dim mnthval As Integer
     RaiseEvent KeyDown(KeyCode, Shift)
     If KeyCode <> 8 Then
-        If Len(Trim(Text1.Text)) = 4 Then
-            Text1.Text = Trim(Text1.Text) & "-"
+        If Len(VBA.Trim(Text1.Text)) = 4 Then
+            Text1.Text = VBA.Trim(Text1.Text) & "-"
             Text1.SelStart = 5
-            m_Year = Mid(Trim(Text1.Text), 1, 4)
+            m_Year = VBA.Mid((Text1.Text), 1, 4)
         End If
-        If Len(Trim(Text1.Text)) = 7 Then
-            Text1.Text = Trim(Text1.Text) & "-"
+        If Len(VBA.Trim(Text1.Text)) = 7 Then
+            Text1.Text = VBA.Trim(Text1.Text) & "-"
             Text1.SelStart = 8
         End If
         
-        If IsNumeric(Mid(Trim(Text1.Text), 6, 2)) Then
-            mnthval = Val(Mid(Trim(Text1.Text), 6, 2))
+        If IsNumeric(VBA.Mid(VBA.Trim(Text1.Text), 6, 2)) Then
+            mnthval = Val(VBA.Mid(VBA.Trim(Text1.Text), 6, 2))
             Select Case mnthval
                 Case 1
                     m_Month = "January"
@@ -313,16 +313,16 @@ Private Sub Text1_KeyDown(KeyCode As Integer, Shift As Integer)
             mnthval = 0
             m_Month = ""
         End If
-        If IsNumeric(Mid(Trim(Text1.Text), 9, 2)) Then
-            m_Day = Val(Mid(Trim(Text1.Text), 9, 2))
+        If IsNumeric(VBA.Mid(VBA.Trim(Text1.Text), 9, 2)) Then
+            m_Day = Val(VBA.Mid(VBA.Trim(Text1.Text), 9, 2))
         Else
             m_Day = 0
         End If
         If Len(m_Month) <> 0 Then
             If m_Day <> 0 And m_Day < 32 Then
-                m_DateCaption = Trim(m_Month) & " " & Trim(Str(m_Day)) & ", " & Trim(m_Year)
+                m_DateCaption = VBA.Trim(m_Month) & " " & VBA.Trim(VBA.Str(m_Day)) & ", " & VBA.Trim(m_Year)
             Else
-                m_DateCaption = Trim(m_Month) & ", " & Trim(m_Year)
+                m_DateCaption = VBA.Trim(m_Month) & ", " & VBA.Trim(m_Year)
             End If
         Else
             m_DateCaption = ""
