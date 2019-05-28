@@ -13,7 +13,7 @@ Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = True
 Attribute VB_Ext_KEY = "SavedWithClassBuilder6" ,"Yes"
 Attribute VB_Ext_KEY = "Top_Level" ,"Yes"
-'local variable(s) to hold property value(s)
+ 'local variable(s) to hold property value(s)
 Private mvarUserid As Variant 'local copy
 Private mvarSuprvsr As Variant 'local copy
 
