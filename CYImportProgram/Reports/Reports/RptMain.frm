@@ -1,6 +1,6 @@
 VERSION 5.00
-Object = "{C4847593-972C-11D0-9567-00A0C9273C2A}#2.2#0"; "crviewer.dll"
-Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "MSMASK32.OCX"
+Object = "{C4847593-972C-11D0-9567-00A0C9273C2A}#8.0#0"; "crviewer.dll"
+Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "msmask32.ocx"
 Begin VB.Form frmRptMain 
    Caption         =   "CY Import Reports"
    ClientHeight    =   9345
@@ -509,14 +509,15 @@ Begin VB.Form frmRptMain
       EnableDrillDown =   -1  'True
       EnableAnimationControl=   0   'False
       EnableSelectExpertButton=   0   'False
-      EnableToolbar   =   0   'False
+      EnableToolbar   =   -1  'True
       DisplayBorder   =   -1  'True
       DisplayTabs     =   0   'False
       DisplayBackgroundEdge=   -1  'True
       SelectionFormula=   ""
       EnablePopupMenu =   0   'False
-      EnableExportButton=   0   'False
+      EnableExportButton=   -1  'True
       EnableSearchExpertButton=   0   'False
+      EnableHelpButton=   0   'False
    End
    Begin VB.Menu mnuReport 
       Caption         =   "&Menu"
@@ -804,6 +805,7 @@ End Sub
 
 Public Sub Form_Load()
     lzInitialize
+    Me.Caption = Me.Caption & " v" & App.Major & "." & App.Minor & "." & App.Revision
 End Sub
 
 Public Sub Form_Resize()
@@ -866,6 +868,7 @@ Public Sub lzViewReport()
                              "," & right(txtToTime.Text, 2) & ",59))"
                     If Len(Trim(txtOther.Text)) > 0 Then
                         rcdSel = "({CYMgps.userid} = '" & Trim(txtOther.Text) & "') AND " & rcdSel
+
                     End If
                     If chkICX.Value = 1 Then
                         rcdSel = "Trim({UserInfo.dptcde}) = 'ICX' AND " & rcdSel
