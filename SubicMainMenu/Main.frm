@@ -1,10 +1,10 @@
 VERSION 5.00
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.1#0"; "MSCOMCTL.OCX"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmMain 
-   BorderStyle     =   1  'Fixed Single
+   BorderStyle     =   0  'None
    ClientHeight    =   1170
-   ClientLeft      =   15
-   ClientTop       =   15
+   ClientLeft      =   0
+   ClientTop       =   0
    ClientWidth     =   11235
    ControlBox      =   0   'False
    LinkTopic       =   "Form1"
@@ -14,6 +14,7 @@ Begin VB.Form frmMain
    Moveable        =   0   'False
    ScaleHeight     =   1170
    ScaleWidth      =   11235
+   ShowInTaskbar   =   0   'False
    StartUpPosition =   3  'Windows Default
    WindowState     =   2  'Maximized
    Begin VB.PictureBox picBackground 

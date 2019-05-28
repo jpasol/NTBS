@@ -45,7 +45,7 @@ End Function
 ' Parameters    :   Start CCR, End CCR
 ' Returns       :   boolean (T - CCR cannot be allocated, F - CCR can be allocated)
 '--------------------------------------------------------------------
-Public Function gzChkCCRExists(ByVal pFrom As Long, pTo As Long) As Long
+Public Function gzChkCCRExists(ByVal pFrom As Long, pTo As Long, pCompanyCode As String) As Long
 Dim cmdGetValidCCR As ADODB.Command
 Dim prmGetValidCCR As ADODB.Parameter
     
@@ -63,6 +63,8 @@ Dim prmGetValidCCR As ADODB.Parameter
         .Parameters.Append prmGetValidCCR
         Set prmGetValidCCR = .CreateParameter(, adInteger, adParamInput, 8, pTo)
         .Parameters.Append prmGetValidCCR
+        Set prmGetValidCCR = .CreateParameter(, adChar, adParamInput, 10, pCompanyCode)
+        .Parameters.Append prmGetValidCCR
         .Execute
         gzChkCCRExists = .Parameters("RETURN_VALUE")
     End With
@@ -72,7 +74,7 @@ End Function
 ' Parameters    :   Start CCR, End CCR
 ' Returns       :   boolean (T - CCR cannot be allocated, F - CCR can be allocated)
 '--------------------------------------------------------------------
-Public Function gzChkGPSExists(ByVal pFrom As Long, pTo As Long, pTyp As Integer) As Long
+Public Function gzChkGPSExists(ByVal pFrom As Long, pTo As Long, pTyp As Integer, pCompanyCode As String) As Long
 Dim cmdGetValidGPS As ADODB.Command
 Dim prmGetValidGPS As ADODB.Parameter
     
@@ -91,6 +93,8 @@ Dim prmGetValidGPS As ADODB.Parameter
         Set prmGetValidGPS = .CreateParameter(, adInteger, adParamInput, 8, pTo)
         .Parameters.Append prmGetValidGPS
         Set prmGetValidGPS = .CreateParameter(, adInteger, adParamInput, 1, pTyp)
+        .Parameters.Append prmGetValidGPS
+        Set prmGetValidGPS = .CreateParameter(, adChar, adParamInput, 10, pCompanyCode)
         .Parameters.Append prmGetValidGPS
         .Execute
         gzChkGPSExists = .Parameters("RETURN_VALUE")
