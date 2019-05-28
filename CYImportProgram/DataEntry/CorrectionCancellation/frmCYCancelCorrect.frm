@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "MSMASK32.OCX"
+Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "msmask32.ocx"
 Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Begin VB.Form frmCYCancelCorrect 
    Caption         =   "Cancellation / Correction"
@@ -1222,14 +1222,14 @@ Begin VB.Form frmCYCancelCorrect
          Width           =   13815
          Begin MSMask.MaskEdBox mskADRNum 
             Height          =   375
-            Left            =   5400
+            Index           =   0
+            Left            =   7200
             TabIndex        =   99
             Top             =   6120
-            Width           =   1815
-            _ExtentX        =   3201
+            Width           =   1935
+            _ExtentX        =   3413
             _ExtentY        =   661
             _Version        =   393216
-            Enabled         =   0   'False
             MaxLength       =   8
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
                Name            =   "Arial"
@@ -1500,7 +1500,6 @@ Begin VB.Form frmCYCancelCorrect
             _ExtentX        =   4471
             _ExtentY        =   714
             _Version        =   393216
-            Enabled         =   0   'False
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
                Name            =   "Arial"
                Size            =   15
@@ -1768,6 +1767,70 @@ Begin VB.Form frmCYCancelCorrect
                Strikethrough   =   0   'False
             EndProperty
             PromptChar      =   "_"
+         End
+         Begin MSMask.MaskEdBox mskADRNum 
+            Height          =   375
+            Index           =   1
+            Left            =   9240
+            TabIndex        =   133
+            Top             =   6120
+            Width           =   1935
+            _ExtentX        =   3413
+            _ExtentY        =   661
+            _Version        =   393216
+            MaxLength       =   8
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Arial"
+               Size            =   15
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            PromptChar      =   "_"
+         End
+         Begin MSMask.MaskEdBox mskADRNum 
+            Height          =   375
+            Index           =   2
+            Left            =   11280
+            TabIndex        =   131
+            Top             =   6120
+            Width           =   1935
+            _ExtentX        =   3413
+            _ExtentY        =   661
+            _Version        =   393216
+            MaxLength       =   8
+            BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+               Name            =   "Arial"
+               Size            =   15
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            PromptChar      =   "_"
+         End
+         Begin VB.Label lblManifest 
+            Alignment       =   1  'Right Justify
+            Caption         =   "OR Number:"
+            BeginProperty Font 
+               Name            =   "Arial"
+               Size            =   15
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H8000000D&
+            Height          =   375
+            Index           =   2
+            Left            =   5400
+            TabIndex        =   132
+            Top             =   6120
+            Width           =   1695
          End
          Begin VB.Label lblManifest 
             Alignment       =   1  'Right Justify
@@ -2072,7 +2135,7 @@ Begin VB.Form frmCYCancelCorrect
             Index           =   1
             Left            =   1680
             TabIndex        =   54
-            Top             =   360
+            Top             =   240
             Width           =   1815
          End
       End
@@ -2599,7 +2662,7 @@ Private Type CYMFields
     outdte As Date
 End Type
 
-Dim rstCYMGps As ADODB.Recordset
+Dim rstCYMGPS As ADODB.Recordset
 Dim rstCYMGpsZ As ADODB.Recordset
 Dim rstCYMPAY As ADODB.Recordset
 Dim rstACOCTN As ADODB.Recordset
@@ -2616,6 +2679,8 @@ Dim curPreviousCheck5 As Currency
 Dim strPreviousCustomerCode As String
 Dim lngControlNo As Long
 Dim intTabNumber As Integer
+Dim Regno As String
+Dim isUG As Boolean
 
 Private Sub FieldAdvance(pKeyCode As Integer, pPreviousControl As Control, pNextControl As Control)
     Select Case pKeyCode
@@ -2679,18 +2744,47 @@ Private Sub chkCustomsGuard_KeyDown(KeyCode As Integer, Shift As Integer)
 End Sub
 
 Private Sub cmdCancelGatepass_Click()
+If IsNumeric(mskReference2) Then
     intResponse = MsgBox("Are you sure you want to cancel this detail?", vbCritical + vbYesNo, "")
     If intResponse = vbYes Then
         intTabNumber = 2
+        Call UpdatePayments(Val(mskReference2), Val(mskSequence2))
         Call WriteCancelGatepassTab
         Call WriteToLogOrig
         Call WriteToLogUpdated
+        Call CancelContainerGPS
         Call InitializeCancelGatepassTab
         mskReference2.SetFocus
         intTabNumber = 0
     Else
         mskReference2.SetFocus
     End If
+    End If
+End Sub
+Private Sub CancelContainerGPS()
+    On Error GoTo err
+    
+    Dim cmdChkBillNo As ADODB.Command
+        
+    ' create command
+    Set cmdChkBillNo = New ADODB.Command
+    With cmdChkBillNo
+    Set .ActiveConnection = gcnnBilling
+        .CommandText = "sp_Manifest_cancelGpsNum"
+        .CommandType = adCmdStoredProc
+        
+        ' set parameters then execute
+        .Parameters("@@pRegNo").Type = adVarChar
+        .Parameters("@@pRegNo").Value = Regno
+        .Parameters("@@pRegNo").Direction = adParamInput
+        .Parameters("@@pConNo").Type = adVarChar
+        .Parameters("@@pConNo").Value = txtContainerNo2.Text
+        .Parameters("@@pConNo").Direction = adParamInput
+        .Execute
+    End With
+    Exit Sub
+err:
+    MsgBox err.Description, vbOKCancel, "Chk_Manifest"
 End Sub
 
 Private Sub cmdCancelGatepass_KeyDown(KeyCode As Integer, Shift As Integer)
@@ -2709,12 +2803,12 @@ Private Sub GetInfo()
     Dim blnPPAExist As Boolean
     Dim blnCancelled As Boolean
     
-    Set rstCYMGps = New ADODB.Recordset
-    rstCYMGps.LockType = adLockOptimistic
-    rstCYMGps.CursorType = adOpenStatic
-    rstCYMGps.Open "Select * from CYMGps where refnum =" & Val(mskReference) & " and seqnum =" & Val(mskSequence), gcnnBilling, , , adCmdText
+    Set rstCYMGPS = New ADODB.Recordset
+    rstCYMGPS.LockType = adLockOptimistic
+    rstCYMGPS.CursorType = adOpenStatic
+    rstCYMGPS.Open "Select * from CYMGps where refnum =" & Val(mskReference) & " and seqnum =" & Val(mskSequence), gcnnBilling, , , adCmdText
 
-    With rstCYMGps
+    With rstCYMGPS
         If .EOF And .BOF Then
             intResponse = MsgBox("Reference/Sequence Number not found.", vbOKOnly + vbInformation, "")
             mskReference.SetFocus
@@ -2749,7 +2843,7 @@ Private Sub GetInfo()
 End Sub
 
 Private Sub getCYMFields()
-    With rstCYMGps
+    With rstCYMGPS
         CYMField.refnum = .Fields("refnum")
         CYMField.seqnum = .Fields("seqnum")
         CYMField.gpsnum = .Fields("gpsnum")
@@ -2877,20 +2971,20 @@ Private Sub GetInfo2()
     rstCYMPAY.Open "Select * from CYMPay where refnum =" & Val(mskReference2), gcnnBilling, , , adCmdText
     
     With rstCYMPAY
-        If .EOF And .BOF Then
+        If .EOF And .BOF And .RecordCount < 0 Then
             intResponse = MsgBox("Reference Number not found.", vbOKOnly + vbInformation, "")
             mskReference2.SetFocus
         Else
-            blnADRPresent = .Fields("adramt") > 0
+            'blnADRPresent = .Fields("adramt") > 0
         End If
     End With
     
-    Set rstCYMGps = New ADODB.Recordset
-    rstCYMGps.LockType = adLockOptimistic
-    rstCYMGps.CursorType = adOpenStatic
-    rstCYMGps.Open "Select * from CYMGps where refnum =" & Val(mskReference2) & " and seqnum =" & Val(mskSequence2), gcnnBilling, , , adCmdText
+    Set rstCYMGPS = New ADODB.Recordset
+    rstCYMGPS.LockType = adLockOptimistic
+    rstCYMGPS.CursorType = adOpenStatic
+    rstCYMGPS.Open "Select * from CYMGps where refnum =" & Val(mskReference2) & " and seqnum =" & Val(mskSequence2), gcnnBilling, , , adCmdText
 
-    With rstCYMGps
+    With rstCYMGPS
         If .EOF And .BOF Then
             intResponse = MsgBox("Reference/Sequence Number not found.", vbOKOnly + vbInformation, "")
             mskReference2.SetFocus
@@ -2923,6 +3017,7 @@ Private Sub GetInfo2()
                 txtVesselCode2 = .Fields("vslcde")
                 txtBroker2 = .Fields("broker")
                 txtRemarks2 = .Fields("remark")
+                Regno = .Fields("regnum")
                 chkCustomsGuard2.Value = ConvertToNum(.Fields("cusgrd"))
                 cmdCancelGatepass.SetFocus
             End If
@@ -2944,11 +3039,13 @@ Private Sub cmdGetCorrectGatePass_KeyDown(KeyCode As Integer, Shift As Integer)
 End Sub
 
 Private Sub cmdGetCorrectPayment_Click()
+    Dim rstCYMGPS As ADODB.Recordset
+    Set rstCYMGPS = New ADODB.Recordset
     Set rstCYMPAY = New ADODB.Recordset
     rstCYMPAY.LockType = adLockOptimistic
     rstCYMPAY.CursorType = adOpenStatic
     rstCYMPAY.Open "Select * from CYMPay where refnum =" & Val(mskReference3), gcnnBilling, , , adCmdText
-    
+    rstCYMGPS.Open "Select * from CYMGps where refnum =" & Val(mskReference3) & "and status <> 'CAN'", gcnnBilling, , , adCmdText
     With rstCYMPAY
         If .EOF And .BOF Then
             intResponse = MsgBox("Reference Number not found.", vbOKOnly + vbInformation, "")
@@ -2956,6 +3053,13 @@ Private Sub cmdGetCorrectPayment_Click()
         Else
             txtCustomerCode = .Fields("cuscde")
             txtCustomerName = .Fields("cusnam")
+            
+            If rstCYMGPS.Fields("gtycde").Value = "A" Then
+                isUG = True
+            Else
+                isUG = False
+            End If
+            
             
             If IsNumeric(txtCustomerCode) Then
                 mskADRBalance = lzGetADRBal(Trim(txtCustomerCode))
@@ -2981,11 +3085,13 @@ Private Sub cmdGetCorrectPayment_Click()
             txtBank(4) = .Fields("chkbnk5")
             '
             mskADRAmount = .Fields("adramt")
-            mskADRNum = .Fields("adrnum")
+            mskADRNum(0) = 0 & .Fields("adrnum")
+            mskADRNum(1) = 0 & .Fields("adrnum2")
+            mskADRNum(2) = 0 & .Fields("adrnum3")
             mskChange = .Fields("chgamt")
-            mskAmountToPay = CCur(mskCashAmount) + CCur(mskCheckAmount(0)) + CCur(mskCheckAmount(1)) _
-                                + CCur(mskCheckAmount(2)) + CCur(mskCheckAmount(3)) + CCur(mskCheckAmount(4)) _
-                                + CCur(mskADRAmount) - CCur(mskChange)
+'            mskAmountToPay = CCur(mskCashAmount) + CCur(mskCheckAmount(0)) + CCur(mskCheckAmount(1)) _
+'                                + CCur(mskCheckAmount(2)) + CCur(mskCheckAmount(3)) + CCur(mskCheckAmount(4)) _
+'                                + CCur(mskADRAmount) - CCur(mskChange)
             curPreviousADRAmount = CCur(mskADRAmount)
             curPreviousCashAmount = CCur(mskCashAmount)
             curPreviousCheck1 = CCur(mskCheckAmount(0))
@@ -2995,18 +3101,50 @@ Private Sub cmdGetCorrectPayment_Click()
             curPreviousCheck5 = CCur(mskCheckAmount(4))
             strPreviousCustomerCode = .Fields("cuscde")
             mskCashAmount.SetFocus
+
         End If
         .Close
+        End With
+With rstCYMGPS
+mskAmountToPay = 0
+    If Not (.BOF And .EOF) Then
+    .MoveFirst
+    End If
+    While Not .EOF
+    mskAmountToPay = mskAmountToPay _
+    + .Fields("arramt") + .Fields("arrvat") - .Fields("arrtax") _
+    + .Fields("stoamt") + .Fields("stovat") - .Fields("stotax") _
+    + .Fields("wghamt") + .Fields("wghvat") - .Fields("wghtax") _
+    + .Fields("rframt") + .Fields("rfrvat") - .Fields("rfrtax") _
+    + .Fields("whfamt")
+    
+    .MoveNext
+    Wend
+    .Close
+    
+    If isUG = True Then mskAmountToPay = 0 'ug to 0
+    
     End With
+    mskADRAmount.Enabled = True
+    mskADRNum(0).Enabled = True
+    mskADRNum(1).Enabled = True
+    mskADRNum(2).Enabled = True
+    On Error GoTo Continue
+    txtCustomerCode = CLng(txtCustomerCode)
+    mskADRAmount.Enabled = False
+    mskADRNum(0).Enabled = False
+    mskADRNum(1).Enabled = False
+    mskADRNum(2).Enabled = False
+Continue:
 End Sub
 
 Private Sub cmdGetView_Click()
-    Set rstCYMGps = New ADODB.Recordset
-    rstCYMGps.LockType = adLockOptimistic
-    rstCYMGps.CursorType = adOpenStatic
-    rstCYMGps.Open "Select * from CYMGps where refnum =" & Val(mskReference4) & " and seqnum =" & Val(mskSequence4), gcnnBilling, , , adCmdText
+    Set rstCYMGPS = New ADODB.Recordset
+    rstCYMGPS.LockType = adLockOptimistic
+    rstCYMGPS.CursorType = adOpenStatic
+    rstCYMGPS.Open "Select * from CYMGps where refnum =" & Val(mskReference4) & " and seqnum =" & Val(mskSequence4), gcnnBilling, , , adCmdText
 
-    With rstCYMGps
+    With rstCYMGPS
         If .EOF And .BOF Then
             intResponse = MsgBox("Reference/Sequence Number not found.", vbOKOnly + vbInformation, "")
             mskReference4.SelStart = 0
@@ -3047,15 +3185,18 @@ Private Sub cmdGetView_Click()
 End Sub
 
 Private Sub cmdSaveCorrectGatePass_Click()
+If IsNumeric(mskReference) Then ' added for button to do nothing when mskReference is not numeric
     intResponse = MsgBox("Save the following changes?", vbYesNo + vbInformation, "")
     If intResponse = vbYes Then
-        If CLng(mskGatePassNo) <> lngPreviousGatepass Then
-            If lzChkCYMgpIfExist(mskGatePassNo) Then
+        If CLng(ParseNonNum(mskGatePassNo)) <> lngPreviousGatepass Then
+            If lzChkCYMgpIfExist(ParseNonNum(mskGatePassNo)) Then
                 intResponse = MsgBox("Cannot continue. Gatepass already existing.", vbOKOnly + vbExclamation, "")
                 mskGatePassNo.SetFocus
             Else
                 intTabNumber = 1
-                Call WriteCorrectGatepassTab
+                If WriteCorrectGatepassTab = -1 Then
+                GoTo ErrcmdSaveCorrectGatePass
+                End If
                 Call WriteToLogOrig
                 Call WriteToLogUpdated
                 Call InitializeCorrectGatepassTab
@@ -3064,7 +3205,9 @@ Private Sub cmdSaveCorrectGatePass_Click()
             End If
         Else
             intTabNumber = 1
-            Call WriteCorrectGatepassTab
+            If WriteCorrectGatepassTab = -1 Then
+            GoTo ErrcmdSaveCorrectGatePass
+            End If
             Call WriteToLogOrig
             Call WriteToLogUpdated
             Call InitializeCorrectGatepassTab
@@ -3072,8 +3215,19 @@ Private Sub cmdSaveCorrectGatePass_Click()
             mskReference.SetFocus
         End If
     End If
+    End If
+    Exit Sub
+ErrcmdSaveCorrectGatePass:
+    MsgBox "An Error Occurred in cmdSaveCorrectGatePass_Click"
+    Call InitializeCorrectGatepassTab
 End Sub
-
+Function ParseNonNum(variable As Variant) As Variant 'Function to convert null or empty string values
+On Error GoTo ErrParseNonNum
+ParseNonNum = CLng(variable)
+Exit Function
+ErrParseNonNum:
+ParseNonNum = 0
+End Function
 Private Sub WriteToLogOrig()
     Set rstCYMGpsZ = New ADODB.Recordset
     rstCYMGpsZ.LockType = adLockOptimistic
@@ -3202,7 +3356,7 @@ Private Sub WriteToLogOrig()
         If Not IsNull(CYMField.outdte) Then
             .Fields("outdte") = CYMField.outdte
         End If
-        .Update
+        .update
     End With
 End Sub
 
@@ -3385,18 +3539,19 @@ Private Sub WriteToLogUpdated()
         If Not IsNull(CYMField.outdte) Then
             .Fields("outdte") = CYMField.outdte
         End If
-        .Update
+        .update
         .Close
     End With
 End Sub
 
-Private Sub WriteCorrectGatepassTab()
-    Set rstCYMGps = New ADODB.Recordset
-    rstCYMGps.LockType = adLockOptimistic
-    rstCYMGps.CursorType = adOpenDynamic
-    rstCYMGps.Open "Select * from CYMGps where refnum =" & Val(mskReference) & " and seqnum =" & Val(mskSequence), gcnnBilling, , , adCmdText
+Private Function WriteCorrectGatepassTab() As Integer
+    Set rstCYMGPS = New ADODB.Recordset
+    On Error GoTo errWriteCorrectGatepassTab
+    rstCYMGPS.LockType = adLockOptimistic
+    rstCYMGPS.CursorType = adOpenDynamic
+    rstCYMGPS.Open "Select * from CYMGps where refnum =" & Val(mskReference) & " and seqnum =" & Val(mskSequence), gcnnBilling, , , adCmdText
     
-    With rstCYMGps
+    With rstCYMGPS
         .Fields("gpsnum") = CLng(mskGatePassNo)
         .Fields("cntnum") = Trim(txtContainerNo)
         .Fields("commod") = txtCommodity
@@ -3409,30 +3564,42 @@ Private Sub WriteCorrectGatepassTab()
         .Fields("remark") = txtRemarks
         .Fields("cusgrd") = ConvertToChar(chkCustomsGuard.Value)
         .Fields("updcde") = "U"
-        .Update
+        .update
         .Close
     End With
-End Sub
+    Exit Function
+errWriteCorrectGatepassTab:
+    WriteCorrectGatepassTab = -1
+End Function
 
 Private Sub WriteCancelGatepassTab()
     Dim lngGatepass As Long
     Dim strContainer As String
-    Set rstCYMGps = New ADODB.Recordset
-    rstCYMGps.LockType = adLockOptimistic
-    rstCYMGps.CursorType = adOpenDynamic
-    rstCYMGps.Open "Select * from CYMGps where refnum =" & Val(mskReference2) & " and seqnum =" & Val(mskSequence2), gcnnBilling, , , adCmdText
+    If IsNumeric(mskReference2) Then
+    Set rstCYMGPS = New ADODB.Recordset
+    On Error GoTo errWriteCancelGatepassTab
+    rstCYMGPS.LockType = adLockOptimistic
+    rstCYMGPS.CursorType = adOpenDynamic
+    rstCYMGPS.Open "Select * from CYMGps where refnum =" & Val(mskReference2) & " and seqnum =" & Val(mskSequence2), gcnnBilling, , , adCmdText
     
-    With rstCYMGps
+    With rstCYMGPS
         lngGatepass = .Fields("gpsnum")
         strContainer = Trim(.Fields("cntnum"))
         Call UpdateACOCTN(lngGatepass, strContainer)
         .Fields("status") = "CAN"
-        .Update
+        .update
         .Close
     End With
+    End If
+    
+    Exit Sub
+errWriteCancelGatepassTab:
+    MsgBox ("An Error Occurred in WriteCancelGatepassTab")
+    
 End Sub
 
 Private Sub UpdateACOCTN(pGatePass As Long, pContainer As String)
+
     Dim cmdCancel As ADODB.Command
     
     Set cmdCancel = New ADODB.Command
@@ -3443,8 +3610,110 @@ Private Sub UpdateACOCTN(pGatePass As Long, pContainer As String)
                             "'" & (Left(pContainer, 10) & "_") & "' and ctn_gpsnum = " & pGatePass
     cmdCancel.Execute
 End Sub
+Private Sub UpdatePayments(lngRefno As Long, lngSeqno As Long)
+Dim rstDetails As ADODB.Recordset
+Dim rstPayments As ADODB.Recordset
+
+Dim TotalCharges As Currency
+Dim TotalPayments As Currency
+
+Dim counter As Integer
+TotalCharges = 0
+TotalPayments = 0
+
+'get totalcharges from details
+Set rstDetails = New ADODB.Recordset
+Set rstPayments = New ADODB.Recordset
+rstDetails.Open "Select * from CYMGps where refnum =" & lngRefno & " and seqnum =" & lngSeqno & " and status <> 'CAN' order by seqnum", gcnnBilling, , , adCmdText
+rstPayments.Open "Select * from CYMPay where refnum =" & lngRefno, gcnnBilling, , adLockOptimistic, adCmdText
+
+'summarize charges
+With rstDetails
+    If Not (.BOF And .EOF) Then
+    .MoveFirst
+    End If
+    While Not .EOF
+    TotalCharges = TotalCharges _
+    + .Fields("arramt") + .Fields("arrvat") - .Fields("arrtax") _
+    + .Fields("stoamt") + .Fields("stovat") - .Fields("stotax") _
+    + .Fields("wghamt") + .Fields("wghvat") - .Fields("wghtax") _
+    + .Fields("rframt") + .Fields("rfrvat") - .Fields("rfrtax") _
+    + .Fields("whfamt")
+    
+    .MoveNext
+    Wend
+    .Close
+    End With
+'get payments
+With rstPayments
+    If (.BOF And .EOF) Then Exit Sub
+    'add adr
+    TotalPayments = TotalPayments + .Fields("adramt")
+    
+    'add cheque 1 to 5
+    For counter = 1 To 5
+    TotalPayments = TotalPayments + .Fields(CStr("chkamt" & counter))
+    Next
+    
+    'add cash
+    TotalPayments = TotalPayments + .Fields("cshamt")
+    
+'calculate payments
+    'ADR
+    If .Fields("adramt") > 0 And .Fields("adramt") <= TotalCharges Then
+    TotalCharges = TotalCharges - .Fields("adramt")
+    TotalPayments = TotalPayments - .Fields("adramt")
+    .Fields("adramt") = 0
+    .Fields("adrnum") = 0
+    Else
+    If .Fields("adramt") > TotalCharges Then
+    .Fields("adramt") = .Fields("adramt") - TotalCharges
+    TotalPayments = TotalPayments - TotalCharges
+    TotalCharges = 0
+    GoTo update
+    End If
+    End If
+    
+    'Cheques 1 to 5
+    For counter = 1 To 5
+    If .Fields(CStr("chkamt" & counter)) > 0 And .Fields(CStr("chkamt" & counter)) <= TotalCharges Then
+    TotalCharges = TotalCharges - .Fields(CStr("chkamt" & counter))
+    TotalPayments = TotalPayments - .Fields(CStr("chkamt" & counter))
+    .Fields(CStr("chkamt" & counter)) = 0
+    .Fields(CStr("chkno" & counter)) = 0
+    .Fields(CStr("chkbnk" & counter)) = ""
+    Else
+    If .Fields(CStr("chkamt" & counter)) > TotalCharges Then
+    .Fields(CStr("chkamt" & counter)) = .Fields(CStr("chkamt" & counter)) - TotalCharges
+    TotalPayments = TotalPayments - TotalCharges
+    TotalCharges = 0
+    GoTo update
+    End If
+    End If
+    Next
+    
+    'Cash
+    If .Fields("cshamt") > 0 And .Fields("cshamt") <= TotalCharges Then
+    TotalCharges = TotalCharges - .Fields("cshamt")
+    TotalPayments = TotalPayments - .Fields("cshamt")
+    .Fields("cshamt") = 0
+    Else
+    If .Fields("cshamt") > TotalCharges Then
+    .Fields("cshamt") = .Fields("cshamt") - TotalCharges
+    TotalPayments = TotalPayments - TotalCharges
+    TotalCharges = 0
+    GoTo update
+    End If
+    End If
+    
+update:
+    .update
+    .Close
+    End With
+End Sub
+
 Private Sub InitializeCorrectGatepassTab()
-   'mskReference = ""
+    'mskReference = ""
     mskSequence = ""
     mskGatePassNo = ""
     txtContainerNo = ""
@@ -3495,7 +3764,9 @@ Private Sub InitializeCorrectPayment()
     txtBank(3) = ""
     txtBank(4) = ""
     mskADRAmount = 0
-    mskADRNum = ""
+    mskADRNum(0) = 0
+    mskADRNum(1) = 0
+    mskADRNum(2) = 0
     mskChange = 0
     txtCustomerCode = ""
     txtCustomerName = ""
@@ -3506,41 +3777,44 @@ Private Sub cmdSaveCorrectPayment_Click()
     Dim curComputedTotal As Currency
     Dim curADRDifference As Currency
     
-    If curPreviousADRAmount = mskADRAmount And curPreviousCashAmount = mskCashAmount Then
+    'If curPreviousADRAmount = NonNumtoZero(mskADRAmount) And curPreviousCashAmount = NonNumtoZero(mskCashAmount) Then
         'no need
-    Else
+    'Else
         'compute first
-        If mskChange < 0 Then
+        If mskChange <> 0 Then
             intResponse = MsgBox("not balanced. please fix.", vbExclamation + vbOKOnly, "")
             Exit Sub
         Else
-            If (curPreviousADRAmount <> CCur(mskADRAmount)) And (curPreviousADRAmount > 0 Or CCur(mskADRAmount) > 0) Then
-                curADRDifference = curPreviousADRAmount + CCur(mskADRBalance) - mskADRAmount
-                If curADRDifference < 0 Then
-                    intResponse = MsgBox("insuffficient ADR amount. please check.", vbExclamation + vbOKOnly, "")
-                    Exit Sub
-                Else
-                    If (curPreviousADRAmount = 0) And (CCur(mskADRAmount) > 0) Then
-                        lngControlNo = lzApplyADR(txtCustomerCode, "CYM", CCur(mskReference3), CCur(mskADRAmount), UCase(zCurrentUser()), "")
-                    ElseIf (curPreviousADRAmount > 0) And (CCur(mskADRAmount) = 0) Then
-                        lngControlNo = lzVoidADR(strPreviousCustomerCode, mskADRNum, UCase(zCurrentUser()), "")
-                    ElseIf (curPreviousADRAmount > 0) And (CCur(mskADRAmount) > 0) Then
-                        lngControlNo = lzVoidADR(strPreviousCustomerCode, mskADRNum, UCase(zCurrentUser()), "")
-                        lngControlNo = lzApplyADR(txtCustomerCode, "CYM", CCur(mskReference3), CCur(mskADRAmount), UCase(zCurrentUser()), "")
-                    End If
-                End If
-            Else
-                txtCustomerCode = ""
-                txtCustomerName = ""
-                mskADRAmount = 0
-            End If
+'            If (curPreviousADRAmount <> CCur(mskADRAmount)) And (curPreviousADRAmount > 0 Or CCur(mskADRAmount) > 0) Then
+'                curADRDifference = curPreviousADRAmount + CCur(mskADRBalance) - mskADRAmount
+'                If curADRDifference < 0 Then
+'                    intResponse = MsgBox("insufficient ADR amount. please check.", vbExclamation + vbOKOnly, "")
+'                    Exit Sub
+'               Else
+'                    If (curPreviousADRAmount = 0) And (CCur(mskADRAmount) > 0) Then
+'                        lngControlNo = lzApplyADR(txtCustomerCode, "CYM", CCur(mskReference3), CCur(mskADRAmount), UCase(zCurrentUser()), "")
+'                    ElseIf (curPreviousADRAmount > 0) And (CCur(mskADRAmount) = 0) Then
+'                        lngControlNo = lzVoidADR(strPreviousCustomerCode, mskADRNum, UCase(zCurrentUser()), "")
+'                    ElseIf (curPreviousADRAmount > 0) And (CCur(mskADRAmount) > 0) Then
+'                        lngControlNo = lzVoidADR(strPreviousCustomerCode, mskADRNum, UCase(zCurrentUser()), "")
+'                        lngControlNo = lzApplyADR(txtCustomerCode, "CYM", CCur(mskReference3), CCur(mskADRAmount), UCase(zCurrentUser()), "")
+'                    End If
+'                End If
+'            Else
+'                txtCustomerCode = ""
+'                txtCustomerName = ""
+'                mskADRAmount = 0
+'            End If
             Call SaveCorrectPayment
             Call InitializeCorrectPayment
+
         End If
-    End If
+    'End If
 End Sub
 
 Private Sub SaveCorrectPayment()
+    If IsNumeric(mskReference3) Then
+    On Error GoTo errSaveCorrectPayment
     Set rstCYMPAY = New ADODB.Recordset
     rstCYMPAY.LockType = adLockOptimistic
     rstCYMPAY.CursorType = adOpenStatic
@@ -3551,7 +3825,9 @@ Private Sub SaveCorrectPayment()
         .Fields("cusnam") = txtCustomerName
         .Fields("cshamt") = CCur(mskCashAmount)
         .Fields("adramt") = CCur(mskADRAmount)
-        .Fields("adrnum") = lngControlNo
+        .Fields("adrnum") = mskADRNum(0)
+        .Fields("adrnum2") = mskADRNum(1)
+        .Fields("adrnum3") = mskADRNum(2)
         .Fields("chgamt") = CCur(mskChange)
         .Fields("chkno1") = "" & mskCheckNo(0)
         .Fields("chkno2") = "" & mskCheckNo(1)
@@ -3568,25 +3844,43 @@ Private Sub SaveCorrectPayment()
         .Fields("chkbnk3") = "" & txtBank(2)
         .Fields("chkbnk4") = "" & txtBank(3)
         .Fields("chkbnk5") = "" & txtBank(4)
-        .Update
+        .update
         .Close
     End With
+    End If
+    Exit Sub
+    
+errSaveCorrectPayment:
+    MsgBox ("An Error Occurred in SaveCorrectPayment")
+    
+    
 End Sub
 
 Private Sub Form_Activate()
     mskReference.SetFocus
 End Sub
 
-Private Sub mskADRAmount_KeyDown(KeyCode As Integer, Shift As Integer)
-    Call FieldAdvance(KeyCode, mskADRAmount, txtCustomerCode)
+
+Private Sub Form_Load()
+Me.Caption = Me.Caption & " v" & App.Major & "." & App.Minor & "." & App.Revision
 End Sub
+
+Private Sub mskADRAmount_KeyDown(KeyCode As Integer, Shift As Integer)
+    Call FieldAdvance(KeyCode, mskADRAmount, mskADRNum(0))
+End Sub
+Private Function NonNumtoZero(variable As Object)
+    If Not IsNumeric(variable) Then
+    variable = 0
+    End If
+End Function
 
 Private Sub mskADRAmount_LostFocus()
     If Not IsNumeric(mskADRAmount) Then
             mskADRAmount = 0
     Else
-        If (CCur(mskADRAmount) > CCur(mskADRBalance)) Or (CCur(mskADRAmount) > CCur(mskAmountToPay)) Then
-            mskADRAmount = mskAmountToPay
+
+        If (CCur(mskADRAmount) > CCur(NonNumtoZero(mskADRBalance))) Or (CCur(mskADRAmount) > CCur(mskAmountToPay)) Then
+           ' mskADRAmount = mskAmountToPay
         End If
     End If
     Call SumPaymentTypes
@@ -3594,9 +3888,25 @@ Private Sub mskADRAmount_LostFocus()
         txtCustomerCode = ""
         txtCustomerName = ""
         mskADRBalance = 0
-        mskADRAmount.Enabled = False
+        'mskADRAmount.Enabled = False
     End If
     mskADRAmount = Format(mskADRAmount, "###,###,##0.00")
+End Sub
+
+Private Sub mskADRNum_GotFocus(Index As Integer)
+    mskADRNum(Index).SelLength = Len(mskADRNum(Index))
+End Sub
+
+Private Sub mskADRNum_KeyDown(Index As Integer, KeyCode As Integer, Shift As Integer)
+    Call FieldAdvance(KeyCode, IIf((Index = 0), mskADRAmount, mskADRNum(Index)), IIf(Index < 2, mskADRNum(Index + 1), txtCustomerCode))
+End Sub
+
+Private Sub mskADRNum_LostFocus(Index As Integer)
+    On Error GoTo zero
+    mskADRNum(Index) = CLng(mskADRNum(Index))
+    Exit Sub
+zero:
+    mskADRNum(Index) = 0
 End Sub
 
 Private Sub mskCashAmount_KeyDown(KeyCode As Integer, Shift As Integer)
@@ -3657,6 +3967,7 @@ End Sub
 Private Sub mskReference2_KeyDown(KeyCode As Integer, Shift As Integer)
     Call FieldAdvance(KeyCode, sstMain, mskSequence2)
 End Sub
+
 
 Private Sub mskReference3_KeyDown(KeyCode As Integer, Shift As Integer)
     Call FieldAdvance(KeyCode, sstMain, cmdGetCorrectPayment)
@@ -3761,6 +4072,8 @@ Private Sub txtCustomerCode_KeyDown(KeyCode As Integer, Shift As Integer)
         Call FieldAdvance(KeyCode, mskCheckAmount(4), cmdSaveCorrectPayment)
     End If
 End Sub
+
+
 
 Private Sub txtDeclaredWeight_KeyDown(KeyCode As Integer, Shift As Integer)
     Call FieldAdvance(KeyCode, txtBoatNote, txtVesselCode)
